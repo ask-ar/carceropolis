@@ -1,21 +1,23 @@
 <template name="Layout">
-  <div id="flashMessages">
-    {{> flashMessages }}
+  <div class="container-fluid">
+    <div id="flashMessages">
+      {{> flashMessages }}
+    </div>
+
+    <header>
+      {{#if currentUser }}
+        <a href="/adm">adm</a>
+        <a href="#" class="logout">logout</a>
+      {{else}}
+        <a href="/login">login</a>
+      {{/if}}
+    </header>
+
+    <section>
+        {{> yield}}
+    </section>
+
+    <footer></footer>
   </div>
-
-  <header>
-    {{#if currentUser }}
-      <a href="/adm">adm</a>
-      <a href="#" class="logout">logout</a>
-    {{else}}
-      <a href="/login">login</a>
-    {{/if}}
-  </header>
-
-  <section>
-    {{> yield}}
-  </section>
-
-  <footer></footer>
 
 </template>
