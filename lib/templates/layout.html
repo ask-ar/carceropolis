@@ -1,7 +1,15 @@
 <template name="Layout">
+  <div id="flashMessages">
+    {{> flashMessages }}
+  </div>
 
   <header>
-    <h1>Carceiropolis</h1>
+    {{#if currentUser }}
+      <a href="/adm">adm</a>
+      <a href="#" class="logout">logout</a>
+    {{else}}
+      <a href="/login">login</a>
+    {{/if}}
   </header>
 
   <section>
