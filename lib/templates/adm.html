@@ -1,3 +1,21 @@
 <template name="adm">
-  ADM
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="post" class="active"><a href="#post" aria-controls="post" role="tab" data-toggle="tab">Postagens</a></li>
+    <li role="user" class=""><a href="#user" aria-controls="user" role="tab" data-toggle="tab">Usuários</a></li>
+  </ul>
+
+
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="post">
+      <h1>POST</h1>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="user">
+      <h1>User</h1>
+    </div>
+
+  </div>
+
 </template>
