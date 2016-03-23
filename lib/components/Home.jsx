@@ -1,8 +1,9 @@
 Home = React.createClass({
   render() {
+    const msg = 'Welcome HOME' + (Meteor.user() ? `, ${Meteor.user().username}` : '');
     return (
       <div className="home">
-        WELCOME HOME, {this.props.name} !
+        {msg} !
       </div>
     );
   }

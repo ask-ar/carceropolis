@@ -1,12 +1,5 @@
 if (Meteor.isClient) {
 
-  Template.Layout.events({
-    "click .logout": event => {
-      event.preventDefault();
-      Meteor.logout(() => { Router.go("home"); } );
-    }
-  })
-
   Template.login.events({
     "submit .login": event => {
       event.preventDefault();
@@ -21,7 +14,7 @@ if (Meteor.isClient) {
 
         } else {
           event.target.reset();
-          Router.go('home');
+          window.location = Router.path('home');
         }
       });
     }

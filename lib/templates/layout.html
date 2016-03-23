@@ -4,15 +4,7 @@
       {{> flashMessages }}
     </div>
 
-    <header>
-      {{#if currentUser }}
-        <a href="/adm">adm</a>
-        <a href="#" class="logout">logout</a>
-      {{else}}
-        <a href="/login">login</a>
-      {{/if}}
-    </header>
-    {{> navbar }}
+    <div data-react-component='Navbar'></div>
 
     <section class="content">
         {{> yield}}
