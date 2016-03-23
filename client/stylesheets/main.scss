@@ -1,5 +1,45 @@
 @import '{reywood:bootstrap3-sass}/bootstrap';
 
+$bg-light: #dbdbdb;
+$bg-dark: #9e9e9e;
+
+$fg-light: #555;
+$fg-dark: #333;
+
+$red-dark: #ef4242;
+
+$base-size: 14px;
+
+body{
+	font-family: Roboto;
+  text-size: $base-size;
+  color: $fg-light;
+  background-color: $bg-light;
+}
+
+.navbar {
+  background-color: darken($bg-light, 5%);
+  box-shadow: 0px ($base-size / 4) ($base-size / 2) 0px rgba(125, 125, 125, 0.5);
+  border: none;
+
+  &.home {
+    background-color: none;
+    box-shadow: none;
+  }
+
+  .menu-icon {
+    display: inline-block;
+    font-size: 1.5em;
+    color: $red-dark;
+    margin-left: 0.75em;
+    margin-top: 0.75em;
+  }
+}
+
+.content {
+  margin-top: 4 * $base-size;
+}
+
 #flashMessages {
   position: absolute;
   top: 20px;
