@@ -1,4 +1,4 @@
-# carceiropolis
+# carceropolis
 
 ## Getting started
 
