@@ -1,0 +1,31 @@
+body{
+  text-size: $base-size;
+  color: $fg-light;
+  background-color: $bg-light;
+}
+
+.btn {
+  background-color: $cp-red;
+  color: $cp-white;
+  
+  &:hover {
+    background-color: darken($cp-red, 5%);
+    color: darken($cp-white, 5%);
+  }
+}
+.content {
+  margin-top: 4 * $base-size;
+}
+
+#flashMessages {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  z-index: 1080;
+  text-align: center;
+
+  .close {
+    margin-top: -5px;
+  }
+}

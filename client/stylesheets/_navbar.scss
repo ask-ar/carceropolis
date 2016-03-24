@@ -1,0 +1,35 @@
+.cp-menu-small {
+  .navbar {
+    background-color: darken($bg-light, 5%);
+    box-shadow: 0px ($base-size / 4) ($base-size / 2) 0px rgba(125, 125, 125, 0.5);
+    border: none;
+
+    &.home {
+      background-color: rgba(0, 0, 0, 0%);
+      box-shadow: none;
+    }
+
+    .menu-icon {
+      display: inline-block;
+      font-size: 1.5em;
+      color: $cp-red;
+      margin-left: 0.75em;
+      margin-top: 0.75em;
+    }
+  }
+
+  .navmenu {
+    .nav li:hover { background-color: $bg-dark; }
+  }
+}
+
+.cp-menu-large {
+  .navbar {
+    background-color: $cp-green;
+
+    .navbar-brand, .nav > li a {
+      color: $cp-white;
+    }
+    .navbar-actions { margin-right: $base-size; }
+  }
+}
