@@ -34,9 +34,16 @@ Navbar = React.createClass({
     return (
       <div>
         <nav id="nav-menu" className="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-          <a className="navmenu-brand" href="#">Brand</a>
+          <h2 className="navmenu-brand">MENU</h2>
           <ul className="nav navmenu-nav">
-            <li className="active"><a href="#">Home</a></li>
+            <hr />
+            <li><a href="#">DADOS</a></li>
+            <li><a href="#">PUBLICAÇÕES</a></li>
+
+            <hr />
+            <li><a href="#">Banco de Especialistas</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="#">Sobre Nós</a></li>
 
             <hr />
             { this.loggedIn() ? <li><a href="/adm">Admin</a></li> : false }
