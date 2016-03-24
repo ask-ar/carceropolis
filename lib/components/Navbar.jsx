@@ -1,6 +1,10 @@
 Navbar = React.createClass({
-  componentWillMount() {
-    this.setState({ user: Meteor.user() });
+  mixins: [ ReactMeteorData ],
+
+  getMeteorData() {
+    return {
+      user: Meteor.user()
+    };
   },
 
   isHome() {
@@ -8,16 +12,20 @@ Navbar = React.createClass({
   },
 
   loggedIn() {
-    return !!this.state.user;
+    return !!this.data.user;
   },
 
   handleLogout(event) {
-    console.log('handleLogout');
     event.preventDefault();
-    Meteor.logout(() => { window.location = Router.path('home') })
+    this.hideMenu();
+    Meteor.logout(() => { Router.go('home') });
   },
 
   handleLogin(event) {
+    this.hideMenu();
+  },
+
+  hideMenu() {
     $("#nav-menu").offcanvas('hide');
   },
 
@@ -37,7 +45,7 @@ Navbar = React.createClass({
             { !this.loggedIn() ? <li><a href="/login" onClick={this.handleLogin}>Login</a></li> : false }
           </ul>
         </nav>
-        <div className={navbarCls}>
+        <div className={navbarCls} >
           <a href="#" className="menu-icon" data-toggle="offcanvas" data-target="#nav-menu" data-canvas="body"><i className="glyphicon glyphicon-menu-hamburger"></i></a>
         </div>
       </div>

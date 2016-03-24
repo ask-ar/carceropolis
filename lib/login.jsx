@@ -14,7 +14,7 @@ if (Meteor.isClient) {
 
         } else {
           event.target.reset();
-          window.location = Router.path('home');
+          Router.go('home');
         }
       });
     }
