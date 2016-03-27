@@ -1,11 +1,11 @@
 .cp-menu-small {
   .navbar {
+    @extend .cp-box-shadow;
     background-color: darken($bg-light, 5%);
-    box-shadow: 0px ($base-size / 4) ($base-size / 2) 0px rgba(125, 125, 125, 0.5);
     border: none;
 
     &.home {
-      background-color: rgba(0, 0, 0, 0%);
+      background-color: rgba(0, 0, 0, 0);
       box-shadow: none;
     }
 
@@ -25,7 +25,10 @@
 
 .cp-menu-large {
   .navbar {
+    @extend .cp-box-shadow;
+
     background-color: $cp-green;
+    border: none;
 
     .navbar-brand, .nav > li a {
       color: $cp-white;

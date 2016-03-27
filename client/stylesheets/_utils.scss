@@ -1,3 +1,7 @@
+.cp-box-shadow {
+  box-shadow: 0px ($base-size / 4) ($base-size / 2) 0px rgba(45, 45, 45, 0.5);
+}
+
 body{
   text-size: $base-size;
   color: $fg-light;
@@ -7,7 +11,7 @@ body{
 .btn {
   background-color: $cp-red;
   color: $cp-white;
-  
+
   &:hover {
     background-color: darken($cp-red, 5%);
     color: darken($cp-white, 5%);
