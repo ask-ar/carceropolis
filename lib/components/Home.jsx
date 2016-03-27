@@ -10,10 +10,11 @@ Home = React.createClass({
   render() {
     return (
       <div className="home">
-        <video autoPlay loop muted poster="/presidio.jpg" className="home--bgvid">
-          <source src="/ff.webm" type="video/webm" />
-        </video>
-        <div className="home--overlay"></div>
+        <div className="home--video">
+          <video autoPlay loop muted poster="/presidio.jpg" className="home--bgvid">
+            <source src="/ff.webm" type="video/webm" />
+          </video>          
+        </div>
         <div className="home--content col-md-6 col-md-offset-3">
           <div className="home--brand">Carcerópolis</div>
           <p className="home--teaser">

@@ -1,44 +1,48 @@
 .home {
-  video.home--bgvid {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(presidio.jpg) no-repeat;
-    background-size: cover;
+  .home--video {
+    video.home--bgvid {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      background: url(presidio.jpg) no-repeat;
+      background-size: cover;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 0.75);
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      background-size: cover;
+    }
   }
 
-  .home--overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 0.75);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    background-size: cover;
-  }
 
   .home--content {
     color: $cp-white;
 
     .home--brand {
-      font-size: 4*$base-size;
+      font-size: 3*$base-size;
       font-weight: bold;
       text-align: center;
-      margin-top: 150px;
+      margin-top: 100px;
       margin-bottom: 50px;
     }
 
@@ -48,7 +52,7 @@
 
     .home--links {
       text-align: center;
-      margin-top: 3em;
+      margin: 3em 0;
       a {
         @extend .cp-box-shadow;
         margin: 1*$base-size 3*$base-size;

@@ -19,7 +19,17 @@
   }
 
   .navmenu {
-    .nav li:hover { background-color: $bg-dark; }
+    background-color: $cp-green;
+    color: $cp-white;
+    border-right: none;
+
+    .navmenu-brand { color: $cp-white; }
+    .nav li {
+      & > a { color: $cp-white; }
+      &:hover, &.active { background-color: $cp-red; }
+
+      i { margin-right: 1em; }
+    }
   }
 }
 

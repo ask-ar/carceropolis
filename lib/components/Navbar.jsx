@@ -37,19 +37,27 @@ Navbar = React.createClass({
           <h2 className="navmenu-brand">MENU</h2>
           <ul className="nav navmenu-nav">
             <hr />
-            <li><a href="#">DADOS</a></li>
-            <li><a href="#">PUBLICAÇÕES</a></li>
+            <li><a href="#"><i className="glyphicon glyphicon-equalizer"></i>DADOS</a></li>
+            <li><a href="#"><i className="glyphicon glyphicon-list-alt"></i>PUBLICAÇÕES</a></li>
+
 
             <hr />
-            <li><a href="#">Banco de Especialistas</a></li>
-            <li><a href="#">Fale Conosco</a></li>
-            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#"><i className="glyphicon glyphicon-book"></i>BANCO DE ESPECIALISTAS</a></li>
+            <li><a href="#"><i className="glyphicon glyphicon-comment"></i>FALE CONOSCO</a></li>
+            <li><a href="#"><i className="glyphicon glyphicon-user"></i>SOBRE NÓS</a></li>
 
             <hr />
-            { this.loggedIn() ? <li><a href="/adm">Admin</a></li> : false }
-            { this.loggedIn() ? <li><a href="#" onClick={this.handleLogout}>Logout</a></li> : false }
+            { this.loggedIn() ?
+              <li><a href="/adm"><i className="glyphicon glyphicon-cog"></i>Admin</a></li>
+              : false }
 
-            { !this.loggedIn() ? <li><a href="/login" onClick={this.handleLogin}>Login</a></li> : false }
+            { this.loggedIn() ?
+              <li><a href="#" onClick={this.handleLogout}><i className="glyphicon glyphicon-log-out"></i>Logout</a></li>
+              : false }
+
+            { !this.loggedIn() ?
+              <li><a href="/login" onClick={this.handleLogin}><i className="glyphicon glyphicon-log-in"></i>Login</a></li>
+              : false }
           </ul>
         </nav>
         <div className={navbarCls} >
@@ -73,10 +81,17 @@ Navbar = React.createClass({
             <li><a href="#">SOBRE NÓS</a></li>
           </ul>
           <ul className="nav navbar-nav navbar-right navbar-actions">
-            { this.loggedIn() ? <li><a href="/adm">Admin</a></li> : false }
-            { this.loggedIn() ? <li><a href="#" onClick={this.handleLogout}>Logout</a></li> : false }
+            { this.loggedIn() ?
+              <li><a href="/adm" title="Admin"><i className="glyphicon glyphicon-cog"></i></a></li>
+              : false }
 
-            { !this.loggedIn() ? <li><a href="/login" onClick={this.handleLogin}>Login</a></li> : false }
+            { this.loggedIn() ?
+              <li><a href="#" onClick={this.handleLogout} title="Logout"><i className="glyphicon glyphicon-log-out"></i></a></li>
+              : false }
+
+            { !this.loggedIn() ?
+              <li><a href="/login" onClick={this.handleLogin} title="Login"><i className="glyphicon glyphicon-log-in"></i></a></li>
+              : false }
           </ul>
         </nav>
       </div>
