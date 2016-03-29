@@ -21,12 +21,17 @@ Navbar = React.createClass({
     Meteor.logout(() => { Router.go('home') });
   },
 
-  handleLogin(event) {
+  hideMenu() {
+    $("#nav-menu").offcanvas('hide');
+  },
+
+  handleLinkClick(event) {
     this.hideMenu();
   },
 
-  hideMenu() {
-    $("#nav-menu").offcanvas('hide');
+  linkTo(url, title, icon) {
+    const cls = `glyphicon glyphicon-${icon}`
+    return <li><a href={url} onClick={this.handleLinkClick}><i className={cls}></i>{title}</a></li>
   },
 
   menuSmall() {
@@ -37,27 +42,22 @@ Navbar = React.createClass({
           <h2 className="navmenu-brand">MENU</h2>
           <ul className="nav navmenu-nav">
             <hr />
-            <li><a href="#"><i className="glyphicon glyphicon-equalizer"></i>DADOS</a></li>
-            <li><a href="#"><i className="glyphicon glyphicon-list-alt"></i>PUBLICAÇÕES</a></li>
-
-
-            <hr />
-            <li><a href="#"><i className="glyphicon glyphicon-book"></i>BANCO DE ESPECIALISTAS</a></li>
-            <li><a href="#"><i className="glyphicon glyphicon-comment"></i>FALE CONOSCO</a></li>
-            <li><a href="#"><i className="glyphicon glyphicon-user"></i>SOBRE NÓS</a></li>
+            {this.linkTo('#', 'DADOS', 'equalizer')}
+            {this.linkTo('#', 'PUBLICAÇÕES', 'list-alt')}
 
             <hr />
-            { this.loggedIn() ?
-              <li><a href="/adm"><i className="glyphicon glyphicon-cog"></i>Admin</a></li>
-              : false }
+            {this.linkTo('#', 'BANCO DE ESPECIALISTAS', 'book')}
+            {this.linkTo('#', 'FALE CONOSCO', 'comment')}
+            {this.linkTo('#', 'SOBRE NÓS', 'user')}
+
+            <hr />
+            { this.loggedIn() ? this.linkTo('/adm', 'Admin', 'cog') : false }
 
             { this.loggedIn() ?
               <li><a href="#" onClick={this.handleLogout}><i className="glyphicon glyphicon-log-out"></i>Logout</a></li>
               : false }
 
-            { !this.loggedIn() ?
-              <li><a href="/login" onClick={this.handleLogin}><i className="glyphicon glyphicon-log-in"></i>Login</a></li>
-              : false }
+            { !this.loggedIn() ? this.linkTo('/login', 'Login', 'log-in') : false }
           </ul>
         </nav>
         <div className={navbarCls} >
@@ -90,7 +90,7 @@ Navbar = React.createClass({
               : false }
 
             { !this.loggedIn() ?
-              <li><a href="/login" onClick={this.handleLogin} title="Login"><i className="glyphicon glyphicon-log-in"></i></a></li>
+              <li><a href="/login" title="Login"><i className="glyphicon glyphicon-log-in"></i></a></li>
               : false }
           </ul>
         </nav>
