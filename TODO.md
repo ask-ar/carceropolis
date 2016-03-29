@@ -7,13 +7,13 @@
   - [ ] add post
   - [ ] invite new user
 
-- [ ] layout
-  - [ ]nav bar
-  - [ ] side menu
+- [x] layout
+  - [x] nav bar
+  - [x] side menu
 
-- [ ] home page
-  - [ ] background image
-  - [ ] logo
+- [x] home page
+  - [x] background video
+  - [x] logo
 
 - [ ] Dados
   - [ ] list?
