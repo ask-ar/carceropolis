@@ -8,7 +8,7 @@ body{
   background-color: $bg-light;
 }
 
-.btn {
+.btn-red {
   background-color: $cp-red;
   color: $cp-white;
 
@@ -20,6 +20,12 @@ body{
 .content {
   margin-top: 4 * $base-size;
 }
+
+// sumernote
+// .note-editor .btn, .note-btn-group .btn {
+//   background-color: $bg-light;
+//   color: $fg-light;
+// }
 
 #flashMessages {
   position: absolute;

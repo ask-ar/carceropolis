@@ -13,7 +13,7 @@ Home = React.createClass({
         <div className="home--video">
           <video autoPlay loop muted poster="/presidio.jpg" className="home--bgvid">
             <source src="/ff.webm" type="video/webm" />
-          </video>          
+          </video>
         </div>
         <div className="home--content col-md-6 col-md-offset-3">
           <div className="home--brand">Carcerópolis</div>
@@ -22,8 +22,8 @@ Home = React.createClass({
 narwhal Neutra
           </p>
           <div className="home--links">
-            <a className="btn btn-large" href="/dados">DADOS</a>
-            <a className="btn btn-large" href="/posts">PUBLICAÇÕES</a>
+            <a className="btn btn-red btn-large" href="/dados">DADOS</a>
+            <a className="btn btn-red btn-large" href="/posts">PUBLICAÇÕES</a>
           </div>
         </div>
       </div>

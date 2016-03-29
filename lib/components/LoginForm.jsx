@@ -28,7 +28,7 @@ LoginForm = React.createClass({
             <input type="password" name="password" className="form-control password" placeholder="Password" required />
           </div>
 
-          <button className="btn submit-btn" type="submit" value="Register">ACESSAR</button>
+          <button className="btn btn-red submit-btn" type="submit" value="Register">ACESSAR</button>
         </form>
       </div>
     );

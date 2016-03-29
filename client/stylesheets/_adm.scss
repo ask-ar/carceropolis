@@ -1,0 +1,25 @@
+.adm {
+  .nav-tabs {
+    border-bottom: solid 1px $cp-green;
+
+    & > li {
+      &:hover > a {
+        border-bottom-color: $cp-green;
+      }
+      &.active > a {
+        background-color: $bg-light;
+        border: solid 1px $cp-green;
+        border-bottom-color: $bg-light;
+        color: $cp-red;
+      }
+
+      & > a {
+        color: $fg-light;
+      }
+    }
+  }
+
+  .adm-post--form {
+    .submit-btn { display: block; margin: 0 auto; }
+  }
+}
