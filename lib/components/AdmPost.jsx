@@ -16,7 +16,7 @@ AdmPost = React.createClass({
         <a href={path} className='post-title'>{post.title}</a>
         <aside>
           por <span className="post-info">{post.username}</span>
-          em  <span className="post-info">{moment(post.createdAt).format('DD/MM/YYYY')}</span>
+        em  <span className="post-info">{moment(post.createdAt).format('DD/MM/YYYY HH:MM')}</span>
         </aside>
       </li>
     );
