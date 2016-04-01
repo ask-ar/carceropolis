@@ -4,7 +4,7 @@
     - [x] access control
 
 - [ ] admin
-    - [ ] add post
+    - [x] add post
     - [ ] invite new user
 
 - [x] layout

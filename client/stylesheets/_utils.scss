@@ -3,6 +3,7 @@
 }
 
 body{
+  font-family: 'Source Sans Pro', sans-serif;
   text-size: $base-size;
   color: $fg-light;
   background-color: $bg-light;
@@ -20,12 +21,6 @@ body{
 .content {
   margin-top: 5 * $base-size;
 }
-
-// sumernote
-// .note-editor .btn, .note-btn-group .btn {
-//   background-color: $bg-light;
-//   color: $fg-light;
-// }
 
 #flashMessages {
   position: absolute;

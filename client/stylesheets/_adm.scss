@@ -21,7 +21,46 @@
 
   .adm-post--form {
     margin-top: 2em;
-    
+
     .submit-btn { display: block; margin: 0 auto; }
+  }
+  .adm-post--list {
+    margin: 4em 0;
+    border-top: solid 2px $cp-green;
+
+    h2 {
+      margin: 1em 0;
+      text-align: center;
+    }
+
+    ul { list-style: none; }
+    .adm-post--list-item {
+      border-top: solid 1px darken($bg-light, 5%);
+      border-bottom: solid 1px darken($bg-light, 5%);
+      padding: 2em 1em;
+
+      &:hover {
+        background-color: darken($bg-light, 5%);
+      }
+
+      .post-title {
+        font-size: 1.5em;
+        color: $fg-dark;
+        margin-right: 1em;
+      }
+
+      aside {
+        display: inline-block;
+        float: right;
+        margin-top: 6px;
+
+        .post-info {
+          font-weight: bold;
+          text-transform: uppercase;
+          color: lighten($fg-light, 5%);
+          padding-right: 5px;
+        }
+      }
+    }
   }
 }
