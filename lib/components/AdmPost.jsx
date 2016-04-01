@@ -10,9 +10,10 @@ AdmPost = React.createClass({
   },
 
   renderPost(post) {
+    const path = `/adm/posts/${post._id}`;
     return (
       <li key={post._id} className='adm-post--list-item'>
-        <a href="#" className='post-title'>{post.title}</a>
+        <a href={path} className='post-title'>{post.title}</a>
         <aside>
           por <span className="post-info">{post.username}</span>
           em  <span className="post-info">{moment(post.createdAt).format('DD/MM/YYYY')}</span>
