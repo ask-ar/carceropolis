@@ -64,7 +64,52 @@
     }
   }
 
-  .adm-post.post-details {
-    
+  .post {
+    margin-top: 1em;
+    padding: 1em;
+
+    .post--header {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 120px;
+      background-image: url('post_placeholder.jpg');
+      background-size: 100% 120px;
+
+      &:before {
+        @extend .cp-overlay;
+
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .post--title {
+      position: relative;
+      top: -5em;
+      color: $cp-white;
+      z-index: 2;
+      padding: 0 1.5em;
+    }
+
+    aside {
+      margin-top: -4em;
+      color: lighten($fg-light, 10%);
+
+      .post--author {
+        font-weight: bold;
+        text-transform: uppercase;
+        padding-right: 5px;
+      }
+    }
+    .post--content {
+      background-color: lighten($bg-light, 5%);
+      margin-top: 4em;
+      padding: 0.5em 1em;
+      border-radius: .5em;
+
+      .note-video-clip {
+        width: 100% !important;
+      }
+    }
   }
 }
