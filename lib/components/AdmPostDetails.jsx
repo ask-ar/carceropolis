@@ -9,6 +9,15 @@ AdmPostDetails = React.createClass({
     };
   },
 
+  handleDelete(event) {
+    event.preventDefault();
+
+    if( window.confirm('A exclusão deste Post não poderá ser desfeita. \nVocê deseja realmente remover esse item?') ) {
+      Meteor.call('posts.remove', this.props.id);
+      Router.go('/adm');      
+    }
+  },
+
   render() {
     if (!this.data.post) { return false; }
 
@@ -26,7 +35,7 @@ AdmPostDetails = React.createClass({
       <div className="adm">
         <div className="post-details-actions col-md-6 col-md-offset-3">
           <a href="/adm" className="btn btn-default">&laquo; retornar</a>
-          <button className="btn btn-action btn-red"><i className="glyphicon glyphicon-trash"></i></button>
+          <button className="btn btn-action btn-red" onClick={this.handleDelete}><i className="glyphicon glyphicon-trash"></i></button>
           <button className="btn btn-action btn-primary">Editar</button>
         </div>
 
