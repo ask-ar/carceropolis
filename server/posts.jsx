@@ -14,7 +14,7 @@ Meteor.methods({
     Posts.remove(id);
   },
 
-  'tasks.update'(id, params) {
+  'posts.update'(id, params) {
     Posts.update(id, { $set: params });
   },
 });

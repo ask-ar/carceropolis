@@ -14,7 +14,7 @@ AdmPostDetails = React.createClass({
 
     if( window.confirm('A exclusão deste Post não poderá ser desfeita. \nVocê deseja realmente remover esse item?') ) {
       Meteor.call('posts.remove', this.props.id);
-      Router.go('/adm');      
+      Router.go('/adm');
     }
   },
 
@@ -31,20 +31,23 @@ AdmPostDetails = React.createClass({
       headerStyle['backgroundImage'] = "url('" + titleImg.attr("src") + "')";
     }
 
+    const editPath = `/adm/posts/${post._id}/edit`
+
     return (
       <div className="adm">
-        <div className="post-details-actions col-md-6 col-md-offset-3">
+        <div className="post-details-actions col-md-8 col-md-offset-2">
           <a href="/adm" className="btn btn-default">&laquo; retornar</a>
           <button className="btn btn-action btn-red" onClick={this.handleDelete}><i className="glyphicon glyphicon-trash"></i></button>
-          <button className="btn btn-action btn-primary">Editar</button>
+          <a href={editPath} className="btn btn-action btn-primary">Editar</a>
         </div>
 
-        <div className="post col-md-6 col-md-offset-3">
+        <div className="post col-md-8 col-md-offset-2">
           <div className="post--header" style={headerStyle}></div>
           <div className="post--title"><h2>{post.title}</h2></div>
           <aside>
             por <span className="post--author">{post.username}</span>
-          em <span className="post--time">{moment(post.createdAt).format('DD/MM/YYYY HH:MM')}</span>
+            em <span className="post--time">{moment(post.createdAt).format('DD/MM/YYYY HH:MM')}</span>
+          <span className="post--theme">{lodash.startCase(post.theme)}</span>
           </aside>
           <div className="post--content" dangerouslySetInnerHTML={markup} />
         </div>

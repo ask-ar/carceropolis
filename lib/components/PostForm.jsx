@@ -1,7 +1,21 @@
 PostForm = React.createClass({
+  getInitialState() {
+    return {title: '', content: '', category: 'post', theme: 'funcionamento-do-sistema'};
+  },
+
+  updateState(obj) {
+    this.setState(Object.assign({}, this.state, obj));
+  },
+
+  componentWillMount() {
+    if (this.props.post) { this.updateState(this.props.post); }
+  },
 
   componentDidMount() {
-    this.editor().summernote({height: 300});
+    const editor = this.editor().summernote({height: 300});
+    if (this.props.post) {
+      editor.summernote('code', this.props.post.content);
+    }
   },
 
   editor() {
@@ -20,15 +34,28 @@ PostForm = React.createClass({
     event.preventDefault();
 
     const target = $(event.target);
+    const postId = this.props.post ? this.props.post._id : null;
     const post = this.postData(target);
 
-    Meteor.call('posts.insert', post, (err, result)=> {
-      if (err) { return FlashMessages.sendError(`Erro: ${err.error}`); }
+    // update existing post
+    if (postId) {
+      Meteor.call('posts.update', postId, post, (err, result)=> {
+        if (err) { return FlashMessages.sendError(`Erro: ${err.error}`); }
 
-      event.target.reset();
-      this.clearEditor();
-      FlashMessages.sendSuccess('Post adicionado com sucesso!');
-    });
+        Router.go('admPost', {id: postId});
+        FlashMessages.sendSuccess('Post atualizado com sucesso!');
+      });
+
+    // insert new post
+    } else {
+      Meteor.call('posts.insert', post, (err, result)=> {
+        if (err) { return FlashMessages.sendError(`Erro: ${err.error}`); }
+
+        event.target.reset();
+        this.clearEditor();
+        FlashMessages.sendSuccess('Post adicionado com sucesso!');
+      });
+    }
   },
 
   postData(form) {
@@ -40,12 +67,22 @@ PostForm = React.createClass({
     return data;
   },
 
+  handleChange(event) {
+    const target = $(event.target);
+    var obj = {};
+    obj[target.attr('name')] = target.val();
+    this.updateState(obj);
+  },
+
   render() {
+    const post = this.props.post || {};
+    const submitLabel = (post._id) ? 'ATUALIZAR' : 'POSTAR';
+
     return (
       <form className="adm-post--form" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label className="control-label" htmlFor='title'>Título</label>
-          <input type='text' className="form-control" name='title' placeholder="Título do post" required/>
+          <input type='text' className="form-control" name='title' placeholder="Título do post" value={this.state.title} onChange={this.handleChange} required/>
         </div>
         <div className="form-group">
           <label className="control-label">Conteúdo</label>
@@ -54,7 +91,7 @@ PostForm = React.createClass({
         <div className="row">
           <div className="form-group col-md-6">
             <label htmlFor="theme">Tema:</label>
-            <select className="form-control" name="theme">
+            <select className="form-control" name="theme" value={this.state.theme} onChange={this.handleChange}>
               <option value="funcionamento-do-sistema">Funcionamento do Sistema</option>
               <option value="perfil-populacional">Perfil Populacional</option>
               <option value="politica-criminal">Política Criminal</option>
@@ -64,13 +101,13 @@ PostForm = React.createClass({
           </div>
           <div className="form-group col-md-6">
             <label htmlFor="category">Categoria:</label>
-            <select className="form-control" name="category">
+            <select className="form-control" name="category" value={this.state.category} onChange={this.handleChange}>
               <option value="post">Post</option>
               <option value="edital">Edital</option>
             </select>
           </div>
         </div>
-        <button className="btn btn-red submit-btn" type="submit">POSTAR</button>
+        <button className="btn btn-red submit-btn" type="submit">{submitLabel}</button>
       </form>
     );
   }
