@@ -17,6 +17,9 @@ Router.map(function(){
   this.route('admPost', { path: '/adm/posts/:id', template: 'AdmPost', data: detailsAction });
   this.route('admPostEdit', { path: '/adm/posts/:id/edit', template: 'AdmPostEdit', data: detailsAction });
   this.route('posts');
+  this.route('postsFiltered', { path: '/posts/:theme', template: 'postsFiltered', data: function() {
+    return { props: JSON.stringify({theme: this.params.theme}) };
+  }});
 });
 
 
