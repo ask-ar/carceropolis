@@ -1,7 +1,7 @@
 .posts {
   .posts--theme {
     box-sizing: border-box;
-    height: 350px;
+    height: 300px;
     border: solid 1em $bg-light;
 
     &:visited { text-decoration: none; }
@@ -39,7 +39,7 @@
       display: block;
       margin: 0 auto;
       text-align: center;
-      margin-top: 160px;
+      margin-top: 140px;
       color: $cp-white;
     }
   }
