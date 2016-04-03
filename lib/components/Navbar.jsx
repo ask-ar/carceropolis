@@ -124,6 +124,10 @@ Navbar = React.createClass({
     );
   },
 
+  componentDidUpdate() {
+    renderSubmenu(<span></span>);
+  },
+
   render() {
     return (
       <div>
