@@ -39,7 +39,7 @@ Navbar = React.createClass({
     return (
       <div className='hidden-md hidden-lg cp-menu-small'>
         <nav id="nav-menu" className="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-          <h2 className="navmenu-brand"><a href="/">Carcerópolis</a></h2>
+          <h2 className="navmenu-brand"><a href="/" onClick={this.handleLinkClick}>Carcerópolis</a></h2>
           <ul className="nav navmenu-nav">
             <hr />
             {this.linkTo('#', 'DADOS', 'equalizer')}
