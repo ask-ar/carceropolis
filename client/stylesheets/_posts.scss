@@ -1,0 +1,46 @@
+.posts {
+  .posts--theme {
+    box-sizing: border-box;
+    height: 350px;
+    border: solid 1em $bg-light;
+
+    &:visited { text-decoration: none; }
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    &[data-posts-theme=geral] {
+      background-image: url('theme-geral.jpg');
+      background-size: 100% 100%;
+    }
+    &[data-posts-theme=perfil-populacional] {
+      background-image: url('theme-perfil-populacional.jpg');
+      background-size: 100% 100%;
+    }
+    &[data-posts-theme=funcionamento-do-sistema] {
+      background-image: url('theme-funcionamento-do-sistema.jpg');
+      background-size: 100% 100%;
+    }
+    &[data-posts-theme=politica-criminal] {
+      background-image: url('theme-politica-criminal.jpg');
+      background-size: 100% 100%;
+    }
+    &[data-posts-theme=sistemas-internacionais] {
+      background-image: url('theme-sistemas-internacionais.jpg');
+      background-size: 100% 100%;
+    }
+    &[data-posts-theme=violencia-institucional] {
+      background-image: url('theme-violencia-institucional.jpg');
+      background-size: 100% 100%;
+    }
+
+    h3 {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 160px;
+      color: $cp-white;
+    }
+  }
+}

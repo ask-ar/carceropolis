@@ -16,6 +16,7 @@ Router.map(function(){
   this.route('adm');
   this.route('admPost', { path: '/adm/posts/:id', template: 'AdmPost', data: detailsAction });
   this.route('admPostEdit', { path: '/adm/posts/:id/edit', template: 'AdmPostEdit', data: detailsAction });
+  this.route('posts');
 });
 
 

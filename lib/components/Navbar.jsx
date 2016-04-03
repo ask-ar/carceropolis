@@ -43,7 +43,7 @@ Navbar = React.createClass({
           <ul className="nav navmenu-nav">
             <hr />
             {this.linkTo('#', 'DADOS', 'equalizer')}
-            {this.linkTo('#', 'PUBLICAÇÕES', 'list-alt')}
+            {this.linkTo('/posts', 'PUBLICAÇÕES', 'list-alt')}
 
             <hr />
             {this.linkTo('#', 'BANCO DE ESPECIALISTAS', 'book')}
@@ -74,7 +74,7 @@ Navbar = React.createClass({
           <a href="/" className="navbar-brand">Carceropólis</a>
           <ul className="nav navbar-nav">
             <li><a href="#">DADOS</a></li>
-            <li><a href="#">PUBLICAÇÕES</a></li>
+            <li><a href="/posts">PUBLICAÇÕES</a></li>
 
             <li><a href="#">BANCO DE ESPECIALISTAS</a></li>
             <li><a href="#">FALE CONOSCO</a></li>
