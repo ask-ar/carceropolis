@@ -1,6 +1,24 @@
 _glob = this;
 
 if (Meteor.isClient) {
+  // Event bus for using pub/sub. You should always use this mediator
+  // to communicate between components
+  mediator = {
+    obj: $({}),
+
+    publish: function (channel, data) {
+      this.obj.trigger(channel, data);
+    },
+
+    subscribe: function (channel, fn) {
+      this.obj.bind(channel, fn);
+    },
+
+    unsubscribe: function (channel, fn) {
+      this.obj.unbind(channel, fn);
+    }
+  };
+  
   var initialize = function() {
     $(document).find('[data-react-component]').each(function(i, container) {
 

@@ -39,7 +39,7 @@ Navbar = React.createClass({
     return (
       <div className='hidden-md hidden-lg cp-menu-small'>
         <nav id="nav-menu" className="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-          <h2 className="navmenu-brand">MENU</h2>
+          <h2 className="navmenu-brand"><a href="/">Carcerópolis</a></h2>
           <ul className="nav navmenu-nav">
             <hr />
             {this.linkTo('#', 'DADOS', 'equalizer')}
@@ -62,6 +62,7 @@ Navbar = React.createClass({
         </nav>
         <div className={navbarCls} >
           <a href="#" className="menu-icon" data-toggle="offcanvas" data-target="#nav-menu" data-canvas="body"><i className="glyphicon glyphicon-menu-hamburger"></i></a>
+          <NavbarActions />
         </div>
       </div>
     );

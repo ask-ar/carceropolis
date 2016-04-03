@@ -9,6 +9,12 @@ PostsFilteredList = React.createClass({
     return { posts: Posts.find(params).fetch() };
   },
 
+  componentDidMount() {
+    mediator.subscribe('navbar:action', (evt, obj)=> {
+      console.log('onAction', obj);
+    })
+  },
+
   render() {
     return (
       <div className="posts col-md-8 col-md-offset-2">

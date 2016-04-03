@@ -1,7 +1,7 @@
 .cp-menu-small {
   .navbar {
     @extend .cp-box-shadow;
-    background-color: darken($bg-light, 5%);
+    background-color: $cp-green;
     border: none;
 
     &.home {
@@ -9,21 +9,37 @@
       box-shadow: none;
     }
 
-    .menu-icon {
+    .menu-icon{
       display: inline-block;
       font-size: 1.5em;
       color: $cp-red;
       margin-left: 0.75em;
       margin-top: 0.75em;
     }
+
+    .context-actions {
+      float: right;
+      margin-left: 0.75em;
+      margin-top: 0.75em;
+
+      a {
+        font-size: 1.5em;
+        margin: 0 0.5em;
+        color: $cp-red;
+
+        &:hover { cursor: pointer; }
+      }
+    }
   }
 
   .navmenu {
+    @extend .cp-box-shadow;
+
     background-color: $cp-green;
     color: $cp-white;
     border-right: none;
 
-    .navmenu-brand { color: $cp-white; }
+    .navmenu-brand a { color: $cp-white; }
     .nav li {
       & > a { color: $cp-white; }
       &:hover, &.active { background-color: $cp-red; }
