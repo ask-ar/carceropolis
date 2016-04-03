@@ -82,17 +82,30 @@ Navbar = React.createClass({
             <li><a href="#">SOBRE NÓS</a></li>
           </ul>
           <ul className="nav navbar-nav navbar-right navbar-actions">
-            { this.loggedIn() ?
-              <li><a href="/adm" title="Admin"><i className="glyphicon glyphicon-cog"></i></a></li>
-              : false }
+            <li>
+              <NavbarActions />
+            </li>
+            <li>
+              <div className="dropdown">
+                <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span className="caret"></span>
+                </a>
 
-            { this.loggedIn() ?
-              <li><a href="#" onClick={this.handleLogout} title="Logout"><i className="glyphicon glyphicon-log-out"></i></a></li>
-              : false }
+                <ul className="dropdown-menu" aria-labelledby="dLabel">
+                  { this.loggedIn() ?
+                    <li><a href="/adm" title="Admin"><i className="glyphicon glyphicon-cog"></i>Admin</a></li>
+                    : false }
 
-            { !this.loggedIn() ?
-              <li><a href="/login" title="Login"><i className="glyphicon glyphicon-log-in"></i></a></li>
-              : false }
+                  { this.loggedIn() ?
+                    <li><a href="#" onClick={this.handleLogout} title="Logout"><i className="glyphicon glyphicon-log-out"></i>Logout</a></li>
+                    : false }
+
+                  { !this.loggedIn() ?
+                    <li><a href="/login" title="Login"><i className="glyphicon glyphicon-log-in"></i>Login</a></li>
+                    : false }
+                </ul>
+              </div>              
+            </li>
           </ul>
         </nav>
       </div>
