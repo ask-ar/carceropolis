@@ -44,3 +44,21 @@
     }
   }
 }
+.posts-submenu {
+  list-style: none;
+  box-sizing: border-box;
+  margin-bottom: 0;
+
+  a {
+    color: $cp-white;
+    &:hover, &:visited { text-decoration: none; }
+  }
+
+  li{
+    text-align: center;
+    padding: 0.5em 0;
+
+    border-bottom: solid 2px $cp-green;
+    &:hover, &.active { border-bottom: solid 2px $cp-white; }
+  }
+}

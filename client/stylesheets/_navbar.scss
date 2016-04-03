@@ -65,21 +65,28 @@
         a { cursor: pointer; }
         i { margin-right: 0.5em; }
       }
-
+    }
+    .navbar-central {
+      margin-left: 15%;
     }
   }
 }
 
-.navbar .context-actions {
-  float: right;
-  margin-left: 0.75em;
-  margin-top: 0.75em;
+.navbar {
+  .context-actions {
+    float: right;
+    margin-left: 0.75em;
+    margin-top: 0.75em;
 
-  a {
-    font-size: 1.5em;
-    margin: 0 0.5em;
-    color: $cp-red;
+    a {
+      font-size: 1.5em;
+      margin: 0 0.5em;
+      color: $cp-red;
 
-    &:hover { cursor: pointer; }
+      &:hover { cursor: pointer; }
+    }
+  }
+  .navbar-row {
+    padding: 0 1em;
   }
 }
