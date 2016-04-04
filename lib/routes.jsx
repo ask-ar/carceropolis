@@ -20,6 +20,7 @@ Router.map(function(){
   this.route('postsFiltered', { path: '/posts/:theme', template: 'postsFiltered', data: function() {
     return { props: JSON.stringify({theme: this.params.theme}) };
   }});
+  this.route('postDetails', { path: '/post/:id', template: 'postDetails', data: detailsAction });
 });
 
 
