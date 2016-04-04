@@ -21,10 +21,10 @@
     - [ ] mapa
     - [ ] search
 
-- [ ] Publicações
-    - [ ] list temas
-    - [ ] view tema
-    - [ ] view post
+- [x] Publicações
+    - [x] list temas
+    - [x] view tema
+    - [x] view post
 
 - [ ] mapa
     - [ ] todo brasil
@@ -38,8 +38,6 @@
 - [ ] search
 
 - [ ] share
-    - [ ] fb
-    - [ ] twitter
 
 - [ ] fale conosco
 - [ ] sobre nós
