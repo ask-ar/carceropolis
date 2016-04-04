@@ -44,15 +44,49 @@ PostsFilteredList = React.createClass({
     );
   },
 
+  postPath(post) {
+    return `/post/${post._id}`;
+  },
+
   render() {
+    const post = this.data.posts[0] || {};
+
+    // get the first image to be the post header background
+    const titleImg = $(post.content).find('img').first();
+    var headerStyle = {};
+    if (titleImg.length > 0 ) {
+      headerStyle['backgroundImage'] = "url('" + titleImg.attr("src") + "')";
+    }
+
     return (
-      <div className="posts col-md-8 col-md-offset-2">
+      <div className="posts filtered-posts col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
 
-        <h2>POSTS FOR:  {this.state.theme}</h2>
+        <div className="posts--breadcrumbs">{`Publicações / ${lodash.startCase(this.state.theme)} / ${lodash.startCase(this.state.category)}`}</div>
 
-        <ul>
-          { this.data.posts.map( post => <li key={post._id}>{post.title}</li> ) }
-        </ul>
+        {
+          (this.data.posts.length == 0) ? (
+            <h2 className="posts--list__empty">Não há postagens para esse tema.</h2>
+
+          ) : (
+            <ul className="posts--list">
+              <li className="posts--item">
+                <a href={this.postPath(post)} className="post--header" style={headerStyle}></a>
+                <a href={this.postPath(post)} className="post--title"><h2>{post.title}</h2></a>
+                <aside>
+                  por <span className="post--author">{post.username}</span>
+                  em <span className="post--time">{moment(post.createdAt).format('DD/MM/YYYY HH:MM')}</span>
+                </aside>
+                <div className="post--teaser">
+                  { $(post.content).text().substring(0, 200) }
+                  ... <a href={this.postPath(post)}>[Leia mais &raquo;]</a>
+                </div>
+              </li>
+
+              <hr />
+              { this.data.posts.slice(2).map( post => <li key={post._id}>{post.title}</li> ) }
+            </ul>
+          )
+        }
       </div>
     );
   }
