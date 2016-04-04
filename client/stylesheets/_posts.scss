@@ -52,7 +52,7 @@
     }
 
     .posts--list__empty {
-      margin-top: 2em;
+      margin-top: 1em;
       text-align: center;
       color: lighten($fg-light, 5%);
     }
@@ -64,7 +64,7 @@
       background-color: $cp-white;
       padding: 0;
 
-      .posts--item {
+      .first-post {
         margin-top: 1em;
 
         .post--header {
@@ -74,6 +74,7 @@
           height: 200px;
           background-image: url('post_placeholder.jpg');
           background-size: 100% 200px;
+          z-index: 0;
 
           &:before {
             @extend .cp-overlay;
@@ -83,6 +84,7 @@
           }
         }
         .post--title {
+          display: block;
           position: relative;
           top: -5em;
           color: $cp-white;
@@ -104,7 +106,37 @@
         .post--teaser {
           padding: 1.5em 1em;
         }
+      } // first-post
 
+      .posts--item {
+        // margin-top: 1em;
+
+        .post--title {
+          display: block;
+          color: $fg-light;
+          font-weight: bold;
+          padding: 0 1em;
+
+          &:hover {
+            cursor: pointer;
+            text-decoration: none;
+            color: $cp-green;
+          }
+        }
+
+        aside {
+          padding: 0 1em;
+          color: lighten($fg-light, 20%);
+
+          .post--author {
+            font-weight: bold;
+            text-transform: uppercase;
+            padding-right: 5px;
+          }
+        }
+        .post--teaser {
+          padding: 1.5em 1em;
+        }
       } // .post--item
     } // .post--list
   }

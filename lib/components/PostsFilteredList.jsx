@@ -11,7 +11,7 @@ PostsFilteredList = React.createClass({
     if (this.state && this.state.theme !== 'geral') { params.theme = this.state.theme }
     if (this.state && this.state.category !== 'geral') { params.category = this.state.category }
 
-    return { posts: Posts.find(params).fetch() };
+    return { posts: Posts.find(params, { sort: { createdAt: -1 } }).fetch() };
   },
 
   componentDidMount() {
@@ -69,7 +69,7 @@ PostsFilteredList = React.createClass({
 
           ) : (
             <ul className="posts--list">
-              <li className="posts--item">
+              <li className="first-post">
                 <a href={this.postPath(post)} className="post--header" style={headerStyle}></a>
                 <a href={this.postPath(post)} className="post--title"><h2>{post.title}</h2></a>
                 <aside>
@@ -83,7 +83,20 @@ PostsFilteredList = React.createClass({
               </li>
 
               <hr />
-              { this.data.posts.slice(2).map( post => <li key={post._id}>{post.title}</li> ) }
+              { this.data.posts.slice(2).map( post => (
+                <li className="posts--item">
+                  <a href={this.postPath(post)} className="post--title"><h2>{post.title}</h2></a>
+                  <aside>
+                    por <span className="post--author">{post.username}</span>
+                    em <span className="post--time">{moment(post.createdAt).format('DD/MM/YYYY HH:MM')}</span>
+                  </aside>
+                  <div className="post--teaser">
+                    { $(post.content).text().substring(0, 200) }
+                    ... <a href={this.postPath(post)}>[Leia mais &raquo;]</a>
+                  </div>
+                  <hr />
+                </li>
+              )) }
             </ul>
           )
         }
