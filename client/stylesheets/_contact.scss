@@ -1,0 +1,49 @@
+.contact {
+  & p{
+    color: rgba(255, 255, 255, 0.8);
+  }
+  ::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  :-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  ::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  :-ms-input-placeholder {  
+    color: rgba(255, 255, 255, 0.8);
+  }
+  & .background-img{
+    background-image: url("/background-contact.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 2em 0 2em;
+    margin-top: 1em;
+  }
+  & .row {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .form-control {
+    background-color: inherit;
+    background-image: none;
+    border: none;
+    border-radius: initial;
+    -webkit-box-shadow: inherit;
+    box-shadow: inherit;
+    -webkit-transition: inherit;
+    -o-transition: inherit;
+    transition: inherit;
+    color:#fff;
+  }
+  & input.form-control{
+    border-bottom: 2px solid $cp-yellow;
+  }
+  & textarea.form-control{
+    border: 2px solid $cp-yellow;
+  }
+  & .btn{
+    width: 200px;
+  }
+}
