@@ -53,9 +53,9 @@ Navbar = React.createClass({
             {this.linkTo('/posts', 'PUBLICAÇÕES', 'list-alt')}
 
             <hr />
-            {this.linkTo('#', 'BANCO DE ESPECIALISTAS', 'book')}
-            {this.linkTo('#', 'FALE CONOSCO', 'comment')}
-            {this.linkTo('#', 'SOBRE NÓS', 'user')}
+            {this.linkTo('/experts', 'BANCO DE ESPECIALISTAS', 'book')}
+            {this.linkTo('/contact', 'FALE CONOSCO', 'contact')}
+            {this.linkTo('/about', 'SOBRE NÓS', 'user')}
 
             <hr />
             { this.loggedIn() ? this.linkTo('/adm', 'Admin', 'cog') : false }
@@ -86,9 +86,9 @@ Navbar = React.createClass({
               <li><a href="#">DADOS</a></li>
               <li><a href="/posts">PUBLICAÇÕES</a></li>
 
-              <li><a href="#">BANCO DE ESPECIALISTAS</a></li>
-              <li><a href="#">FALE CONOSCO</a></li>
-              <li><a href="#">SOBRE NÓS</a></li>
+              <li><a href="/experts">BANCO DE ESPECIALISTAS</a></li>
+              <li><a href="/contact">FALE CONOSCO</a></li>
+              <li><a href="/about">SOBRE NÓS</a></li>
             </ul>
             <ul className="nav navbar-nav navbar-right navbar-actions">
               <li>

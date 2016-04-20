@@ -39,6 +39,8 @@
 
 - [ ] share
 
-- [ ] fale conosco
-- [ ] sobre nós
-- [ ] banco de espcialistas
+- [x] fale conosco
+- [x] sobre nós
+- [x] banco de espcialistas para celular (responsividade)
+- [ ] banco de espcialistas para tablet (responsividade)
+- [ ] banco de espcialistas para desktop (responsividade)
