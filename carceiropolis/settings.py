@@ -230,6 +230,11 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+    # "flat",
+    # "moderna",
+    # "nova",
+    # "solid",
+    "carceiropolis_theme",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -247,8 +252,8 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    # "mezzanine.accounts",
-    # "mezzanine.mobile",
+    "mezzanine.accounts",
+    "mezzanine.mobile",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
