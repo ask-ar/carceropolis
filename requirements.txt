@@ -1,3 +1,4 @@
 Mezzanine==4.1.0
 Fabric3==1.12.0.post1
-django_extensions
+django-extensions
+django-shell-plus

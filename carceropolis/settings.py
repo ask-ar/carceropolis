@@ -235,6 +235,7 @@ INSTALLED_APPS = (
     # "nova",
     # "solid",
     "carceropolis_theme",
+    'django_extensions',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
