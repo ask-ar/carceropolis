@@ -443,7 +443,7 @@ def install():
     # Install system requirements
     sudo("apt-get update -y -q")
     apt("nginx libjpeg-dev python-dev python-setuptools git-core "
-        "postgresql libpq-dev memcached supervisor python-pip")
+        "postgresql libpq-dev memcached supervisor python-pip vim tmux")
     run("mkdir -p /home/%s/logs" % env.user)
 
     # Install Python requirements
