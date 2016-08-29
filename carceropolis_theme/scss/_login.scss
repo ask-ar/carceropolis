@@ -1,0 +1,12 @@
+.login {
+  margin-top: 2 * $base-size;
+  border: solid 1px $bg-dark;
+  border-radius: $base-size / 2;
+  padding: 2 * $base-size;
+
+  .submit-btn {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+}

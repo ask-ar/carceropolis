@@ -1,0 +1,119 @@
+body {
+	padding-top: 0;
+
+	@media (min-width: 768px) {
+		padding-top: 80px;
+	}
+}
+
+.banner {
+
+	.video	{
+		background: url(../images/slider/carceropolis.png) no-repeat;
+		background-size: cover;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		height: auto;
+		position: fixed;
+		top: 50%;
+		-ms-transform: translateX(-50%) translateY(-50%);
+		-moz-transform: translateX(-50%) translateY(-50%);
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+		width: auto;
+		z-index: -100;
+	}
+
+	h2 {
+		@include hidetext;
+		background: url(../images/carceropolis-logo.svg?c) no-repeat;
+		background-size: 100% auto;
+		display: block;
+		font-size: 100%;
+		height: 70px;
+		line-height: inherit;
+		margin: 20% auto 30px;
+		max-width: 80%;
+		padding: 0;
+
+		@media (min-width: 480px) {
+			margin: 10% auto 40px;
+    		width: 380px;
+    	}
+	}
+
+	p {
+		margin: 0 auto 100px;
+		max-width: 800px;
+		padding: 0 20px;
+	}
+
+	.intro {
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 30px;
+		text-align: center;
+		color: white;
+	}
+
+	.links {
+
+		@media (min-width: 480px) {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+
+		a {
+			@extend .cp-box-shadow;
+			background-color: $cp-orange-dark;
+			color: white;
+			padding: 5px 0;
+			text-align: center;
+			width: 200px;
+
+			@media (max-width: 480px) {
+				display: block;
+				margin: 0 auto 30px;
+				padding: 10px;
+				width: 100px;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+    }
+}
+
+#footer {
+	background: black;
+	border: none;
+	text-align: center;
+
+	.nav.navbar-nav.navbar-right {
+		display: block;
+		float: none !important;
+
+		li {
+			display: inline-block;
+			float: none;
+
+			a {
+				color: white;
+			}
+
+			a:hover,
+			a:active,
+			&.active a, {
+				background: none;
+			}
+		}
+	}
+
+	.social-media {
+		li { list-style: none; }
+	}
+}

@@ -1,0 +1,206 @@
+.navbar {
+	border: 0;
+	margin: 0;
+	min-height: inherit;
+
+
+	&.navbar-inverse {
+
+		background: transparent;
+
+		.navbar-toggle {
+			border: none;
+    		float: left;
+    		margin-right: 0;
+    		margin-left: 2px;
+    		border-radius: 0;
+
+			&:hover,
+			&:focus {
+				background: none;
+			}
+
+			.icon-bar {
+				background: $cp-red;
+			}
+		}
+
+		.navbar-nav {
+			background: $cp-red;
+			margin: 0;
+		}
+
+		.navbar-collapse {
+			border-color: white;
+			padding: 0;
+		}
+
+		.navbar-nav > li {
+
+			> a {
+				color: white;
+				padding: 20px;
+				text-transform: uppercase;
+			}
+
+			&:active > a,
+			&:hover > a,
+			&.active > a {
+    			background: $cp-orange;
+			}
+		}
+
+	}
+
+	.navbar-brand {
+		@include hidetext;
+		background: url(../images/carceropolis-logo-vermelho.svg) no-repeat;
+		background-size: 100% auto;
+		display: none;
+		font-size: 100%;
+		height: 35px;
+		line-height: inherit;
+		padding: 0;
+    	width: 200px;
+	}
+
+
+	@media (min-width: 768px) {
+
+		min-height: 80px;
+
+		.navbar-brand {
+			display: block;
+		}
+
+		&.navbar-inverse {
+			background-color: $cp-grey;
+
+			.navbar-nav {
+				background: transparent;
+			}
+
+			.navbar-nav > li {
+
+				> a {
+					color: $cp-red;
+					padding: 10px 15px;
+	    			border-bottom: 2px solid transparent;
+				}
+
+				&:active > a,
+				&:hover > a,
+				&.active > a {
+	    			background: none;
+	    			color: $cp-orange;
+	    			border-color: $cp-orange;
+				}
+			}
+		}
+
+		.container .navbar-brand {
+			margin-left: 0;
+		}
+
+		.navbar-header {
+			padding-top: 20px;
+		}
+
+		.collapse.navbar-collapse {
+			padding-top: 22px;
+		}
+	}
+}
+
+// .cp-menu-small {
+//   .navbar {
+//     @extend .cp-box-shadow;
+//     background-color: $cp-green;
+//     border: none;
+
+//     &.home {
+//       background-color: rgba(0, 0, 0, 0);
+//       box-shadow: none;
+//     }
+
+//     .menu-icon{
+//       display: inline-block;
+//       font-size: 1.5em;
+//       color: $cp-red;
+//       margin-left: 0.75em;
+//       margin-top: 0.75em;
+//     }
+//   }
+
+//   .navmenu {
+//     @extend .cp-box-shadow;
+
+//     background-color: $cp-green;
+//     color: white;
+//     border-right: none;
+
+//     .navmenu-brand a { color: white; }
+//     .nav li {
+//       & > a { color: white; }
+//       &:hover, &.active { background-color: $cp-red; }
+
+//       i { margin-right: 1em; }
+//     }
+//   }
+// }
+
+// .cp-menu-large {
+//   .navbar {
+//     @extend .cp-box-shadow;
+
+//     background-color: $cp-green;
+//     border: none;
+
+//     .navbar-brand, .nav > li a {
+//       color: white;
+//     }
+//     .navbar-actions {
+//       margin-right: $base-size;
+
+//       .dropdown {
+//         margin-top: 0.75em;
+
+//         & > a { color: white; }
+//         .dropdown-menu a { color: $fg-light; }
+//         .caret {
+//           width: 0;
+//           height: 0;
+//           margin-left: 4px;
+//           vertical-align: middle;
+//           border-top: 8px dashed;
+//           border-right: 8px solid transparent;
+//           border-left: 8px solid transparent;
+//         }
+//         a { cursor: pointer; }
+//         i { margin-right: 0.5em; }
+//       }
+//     }
+//     .navbar-central {
+//       margin-left: 15%;
+//     }
+//   }
+// }
+
+// .navbar {
+//   .context-actions {
+//     float: right;
+//     margin-left: 0.75em;
+//     margin-top: 0.75em;
+
+//     a {
+//       font-size: 1.5em;
+//       margin: 0 0.5em;
+//       color: $cp-red;
+
+//       &:hover { cursor: pointer; }
+//     }
+//   }
+//   .navbar-row {
+//     padding: 0 1em;
+//   }
+// }

@@ -25,10 +25,7 @@
     <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="{% static "css/prettyPhoto.css" %}" rel="stylesheet">
     <link href="{% static "css/animate.css" %}" rel="stylesheet">
-    <link href="{% static "css/main.css" %}" rel="stylesheet">
-
-
-
+    <link href="{% static "css/carceropolis.css" %}" rel="stylesheet">
 
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/rtl.css" %}">
@@ -44,13 +41,12 @@
  <!--[if lt IE 9]>
     <script src="{% static "js/html5shiv.js" %}"></script>
     <script src="{% static "js/respond.min.js" %}"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-
 
 
 {% compress js %}
@@ -71,8 +67,6 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-
-
 <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
         <div class="container">
             <div class="navbar-header">
@@ -83,11 +77,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-				{% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
             </div>
             <div class="collapse navbar-collapse">
                {% page_menu "pages/menus/dropdown.html" %}
-                </ul>
             </div>
         </div>
     </header><!--/header-->
@@ -109,8 +101,6 @@
 {% endnevercache %}
 
 
-
-
 </div>
 {% block top %}
 <section class="emerald" id="title">
@@ -118,7 +108,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h1>{% block title %}{% endblock %}</h1>
-                    
+
                 </div>
                 <div class="col-sm-6">
                     <ul class="breadcrumb pull-right">
@@ -132,45 +122,17 @@
    </section>
 {% endblock %}
 
+{% block left_panel %}{% endblock %}
+{% block main %}{% endblock %}
 
-    {% block left_panel %}
-    
-    {% endblock %}
-
-
-
-    {% block main %}{% endblock %}
-
-
- 
-   
-    
-    
-<section id="bottom" class="wet-asphalt">
-	<div class="container">
-	{% page_menu "pages/menus/footer.html" %}
-</div>
-</section>
 <footer id="footer" class="midnight-blue">
-<div class="container">
-
-
-<div class="row">
-<div class="col-sm-6">
-                    Mezzanine theme by <a href="http://thecodinghouse.in">CodingHouse</a>. HTML template by <a href="http://shapebootstrap.net">Shapebootstrap
-                </div>
-<div class="col-sm-6">
-                    <ul class="pull-right">
-                        
-                        <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li><!--#gototop-->
-                    </ul>
-                </div>
-
-</div>
-</div>
+    <div class="container">
+	   {% page_menu "pages/menus/footer.html" %}
+        <a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a>
+    </div>
 </footer>
- <script src="{% static "js/jquery.prettyPhoto.js" %}"></script>
- <script src="{% static "js/jquery.isotope.min.js" %}"></script>
-    <script src="{% static "js/main.js" %}"></script>
+<script src="{% static "js/jquery.prettyPhoto.js" %}"></script>
+<script src="{% static "js/jquery.isotope.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
 </body>
 </html>

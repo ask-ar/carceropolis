@@ -92,3 +92,5 @@ ENV/
 *.db
 .DS_Store
 /static
+*.sublime-workspace
+.sass-cache/
