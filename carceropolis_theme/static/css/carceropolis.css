@@ -1,3 +1,9 @@
+/* line 3, ../../scss/carceropolis.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 /* line 2, ../../scss/_utils.scss */
 .cp-box-shadow, .banner .links a, .posts.filtered-posts .posts--list {
   box-shadow: 0px 3.5px 7px 0px rgba(45, 45, 45, 0.5);
@@ -272,30 +278,94 @@ body {
 #footer {
   background: black;
   border: none;
+  margin: 0;
+  padding: 50px 0 40px;
   text-align: center;
 }
-/* line 96, ../../scss/_home.scss */
+/* line 98, ../../scss/_home.scss */
 #footer .nav.navbar-nav.navbar-right {
   display: block;
   float: none !important;
 }
-/* line 100, ../../scss/_home.scss */
+/* line 102, ../../scss/_home.scss */
 #footer .nav.navbar-nav.navbar-right li {
   display: inline-block;
   float: none;
 }
-/* line 104, ../../scss/_home.scss */
+/* line 106, ../../scss/_home.scss */
 #footer .nav.navbar-nav.navbar-right li a {
   color: white;
+  text-transform: uppercase;
 }
-/* line 108, ../../scss/_home.scss */
+/* line 111, ../../scss/_home.scss */
 #footer .nav.navbar-nav.navbar-right li a:hover,
 #footer .nav.navbar-nav.navbar-right li a:active, #footer .nav.navbar-nav.navbar-right li.active a {
   background: none;
 }
-/* line 117, ../../scss/_home.scss */
+/* line 121, ../../scss/_home.scss */
+#footer .social-media ul {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto 40px;
+  max-width: 126px;
+  padding: 0;
+}
+/* line 130, ../../scss/_home.scss */
 #footer .social-media li {
   list-style: none;
+}
+/* line 134, ../../scss/_home.scss */
+#footer .social-media .icon-facebook {
+  background-color: #f18941;
+  border-radius: 0.05em;
+  color: black;
+  font-size: 26px;
+  line-height: 35px;
+}
+/* line 141, ../../scss/_home.scss */
+#footer .social-media .icon-facebook:before {
+  margin-left: 6px;
+}
+/* line 145, ../../scss/_home.scss */
+#footer .social-media .icon-twitter {
+  color: #f18941;
+  font-size: 30px;
+}
+/* line 150, ../../scss/_home.scss */
+#footer .social-media [class^="icon-"] {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+/* line 156, ../../scss/_home.scss */
+#footer .social-media a:hover {
+  text-decoration: none;
+}
+/* line 162, ../../scss/_home.scss */
+#footer .author h5 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+/* line 168, ../../scss/_home.scss */
+#footer .author h5:after {
+  content: '';
+  display: block;
+  background: url(../images/conectas-logo.svg) no-repeat;
+  width: 247px;
+  height: 100px;
+  margin: 20px auto 0;
+}
+/* line 179, ../../scss/_home.scss */
+#footer address {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}
+/* line 184, ../../scss/_home.scss */
+#footer #gototop {
+  display: none;
 }
 
 /* line 2, ../../scss/_adm.scss */

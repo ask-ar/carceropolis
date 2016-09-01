@@ -1,5 +1,10 @@
 //@import '{reywood:bootstrap3-sass}/bootstrap';
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 @import
   'variables',
   'utils',
