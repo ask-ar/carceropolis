@@ -39,6 +39,8 @@
 
 			> a {
 				color: white;
+				font-family: $semibold;
+				font-size: 18px;
 				padding: 20px;
 				text-transform: uppercase;
 			}
@@ -74,7 +76,9 @@
 		}
 
 		&.navbar-inverse {
-			background-color: $cp-grey;
+			background: $cp-grey url(../images/simbolo-conectas.svg) no-repeat;
+		    background-position: 110%;
+    		background-size: contain;
 
 			.navbar-nav {
 				background: transparent;
@@ -83,7 +87,7 @@
 			.navbar-nav > li {
 
 				> a {
-					color: $cp-red;
+					color: $navbar-links;
 					padding: 10px 15px;
 	    			border-bottom: 2px solid transparent;
 				}

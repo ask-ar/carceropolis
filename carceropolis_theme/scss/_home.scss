@@ -1,11 +1,3 @@
-body {
-	padding-top: 0;
-
-	@media (min-width: 768px) {
-		padding-top: 80px;
-	}
-}
-
 .banner {
 
 	.video	{
@@ -50,8 +42,8 @@ body {
 	}
 
 	.intro {
-		font-size: 18px;
-		font-weight: bold;
+		font-family: $semibold;
+		font-size: 20px;
 		line-height: 30px;
 		text-align: center;
 		color: white;
@@ -69,9 +61,12 @@ body {
 		a {
 			@extend .cp-box-shadow;
 			background-color: $cp-orange-dark;
+			border-radius: 2px;
 			color: white;
-			padding: 5px 0;
+			font-family: $semibold;
+			padding: 6px 0;
 			text-align: center;
+			text-transform: uppercase;
 			width: 200px;
 
 			@media (max-width: 480px) {
@@ -105,6 +100,7 @@ body {
 
 			a {
 				color: white;
+				font-family: $semibold;
 				text-transform: uppercase;
 			}
 
@@ -161,17 +157,20 @@ body {
 	.author {
 		h5 {
 			color: rgba(255,255,255,.5);
-			font-size: 16px;
+			font-size: 15px;
+			font-family: inherit;
+			font-weight: normal;
 			padding-bottom: 50px;
 			text-align: center;
 
 			&:after {
+				background: url(../images/conectas-logo.svg) no-repeat;
+				background-size: contain;
 				content: '';
 				display: block;
-				background: url(../images/conectas-logo.svg) no-repeat;
-				width: 247px;
 				height: 100px;
 				margin: 20px auto 0;
+				width: 247px;
 			}
 		}
 	}
