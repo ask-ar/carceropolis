@@ -1,7 +1,7 @@
 .banner {
 
 	.video	{
-		background: url(../images/slider/carceropolis.png) no-repeat;
+		//background: url(../images/slider/carceropolis.png) no-repeat;
 		background-size: cover;
 		left: 50%;
 		min-width: 100%;
@@ -25,8 +25,8 @@
 		font-size: 100%;
 		height: 70px;
 		line-height: inherit;
-		margin: 20% auto 30px;
-		max-width: 80%;
+		margin: 30% auto 30px;
+		max-width: 60%;
 		padding: 0;
 
 		@media (min-width: 480px) {
@@ -36,17 +36,24 @@
 	}
 
 	p {
-		margin: 0 auto 100px;
+		margin: 0 auto;
 		max-width: 800px;
 		padding: 0 20px;
 	}
 
 	.intro {
-		font-family: $semibold;
-		font-size: 20px;
-		line-height: 30px;
-		text-align: center;
 		color: white;
+		font-family: $semibold;
+		font-size: 14px;
+		line-height: 30px;
+		margin-bottom: 50px;
+		text-align: center;
+		text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+
+		@media (min-width: 480px) {
+			font-size: 20px;
+			margin-bottom: 100px;
+		}
 	}
 
 	.links {
@@ -71,9 +78,13 @@
 
 			@media (max-width: 480px) {
 				display: block;
-				margin: 0 auto 30px;
+				margin: 0 auto;
 				padding: 10px;
-				width: 100px;
+				width: 120px;
+
+				&:first-of-type {
+					margin-bottom: 40px;
+				}
 			}
 
 			&:hover {
@@ -83,104 +94,6 @@
     }
 }
 
-#footer {
-	background: black;
-	border: none;
-	margin: 0;
-	padding: 50px 0 40px;
-	text-align: center;
-
-	.nav.navbar-nav.navbar-right {
-		display: block;
-		float: none !important;
-
-		li {
-			display: inline-block;
-			float: none;
-
-			a {
-				color: white;
-				font-family: $semibold;
-				text-transform: uppercase;
-			}
-
-			a:hover,
-			a:active,
-			&.active a, {
-				background: none;
-			}
-		}
-	}
-
-	.social-media {
-
-		ul {
-			align-items: center;
-			display: flex;
-			justify-content: space-between;
-			margin: 30px auto 40px;
-			max-width: 126px;
-			padding: 0;
-		}
-
-		li {
-			list-style: none;
-		}
-
-		.icon-facebook {
-			background-color: $cp-orange;
-			border-radius: 0.05em;
-			color: black;
-			font-size: 26px;
-			line-height: 35px;
-
-			&:before { margin-left: 6px; }
-
-		}
-
-		.icon-twitter {
-			color: $cp-orange;
-			font-size: 30px;
-		}
-
-		[class^="icon-"] {
-			display: block;
-			width: 26px;
-			height: 26px;
-		}
-
-		a:hover {
-			text-decoration: none;
-		}
-	}
-
-	.author {
-		h5 {
-			color: rgba(255,255,255,.5);
-			font-size: 15px;
-			font-family: inherit;
-			font-weight: normal;
-			padding-bottom: 50px;
-			text-align: center;
-
-			&:after {
-				background: url(../images/conectas-logo.svg) no-repeat;
-				background-size: contain;
-				content: '';
-				display: block;
-				height: 100px;
-				margin: 20px auto 0;
-				width: 247px;
-			}
-		}
-	}
-
-	address {
-		color: rgba(255,255,255,.5);
-		font-size: 16px;
-	}
-
-	#gototop {
-		display: none;
-	}
+#home #footer {
+	display: none;
 }

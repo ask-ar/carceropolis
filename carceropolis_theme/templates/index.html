@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
-{% block meta_title %}{% trans "Home" %}{% endblock %}
-{% block title %}{% trans "Home" %}{% endblock %}
+{% block meta_title %}{% trans "Carceropolis" %}{% endblock %}
+{% block title %}{% trans "Carceropolis" %}{% endblock %}
+{% block body_id %}home{% endblock %}
 {% block top %}
 
 {% endblock %}
@@ -9,7 +10,11 @@
 {% block main %}
 <section class="no-margin" id="main-slider">
     <div class="banner">
-        <div class="video"></div>
+        <video id="intro-video" class="video" poster="static/images/slider/carceropolis.png" muted loop>
+          <source src="static/videos/video-demo.mp4" type="video/mp4">
+          <!-- <source src="media/demo.ogv" type="video/ogg">
+          <source src="media/demo.webm" type="video/webm"> -->
+        </video><!-- /video -->
         <h2>Carcerópolis</h2>
         <p class="intro">
             Single-origin coffee put a bird on it craft beer YOLO, Portland hella deep v Schlitz. Tumblr Bushwick post-ironic Thundercats. Vinyl 90's keytar, literally cardigan Williamsburg YOLO squid pickled Etsy salvia lo-fi locavore. Meh leggings retro narwhal Neutra.
@@ -20,4 +25,13 @@
         </p>
     </div>
 </section>
+<script>
+(function() {
+  var video = document.getElementById("intro-video");
+
+  video.addEventListener( "canplay", function() {
+    video.play();
+  });
+})();
+</script>
 {% endblock %}
