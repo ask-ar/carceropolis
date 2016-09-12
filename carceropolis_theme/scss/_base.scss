@@ -7,6 +7,10 @@ body {
 	height: 100%;
 	padding-top: 0;
 }
+#editable-toolbar, .editable-link {
+    right: 0 !important;
+    left: inherit !important;
+}
 
 section.container {
 	min-height: 50%;
@@ -16,8 +20,12 @@ section.container {
 	background: black;
 	border: none;
 	margin: 0;
-	padding: 50px 0 40px;
+	padding: 30px 20px 0;
 	text-align: center;
+
+	@media (min-width: 768px) {
+		padding: 50px 0 40px;
+	}
 
 	.nav.navbar-nav.navbar-right {
 		display: block;
@@ -89,8 +97,12 @@ section.container {
 			font-size: 15px;
 			font-family: inherit;
 			font-weight: normal;
-			padding-bottom: 50px;
+			padding-bottom: 30px;
 			text-align: center;
+
+			@media (min-width: 768px) {
+				padding-bottom: 50px;
+			}
 
 			&:after {
 				background: url(../images/conectas-logo.svg) no-repeat;

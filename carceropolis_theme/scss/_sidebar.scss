@@ -19,7 +19,7 @@
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 280px;
 }
 
 #sidebar-wrapper {
@@ -28,10 +28,10 @@
 
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    left: 280px;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-left: -280px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -40,7 +40,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 280px;
 }
 
 #page-content-wrapper {
@@ -50,7 +50,7 @@
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -250px;
+    margin-right: -280px;
 }
 
 /* Sidebar Styles */
@@ -58,7 +58,7 @@
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 250px;
+    width: 280px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -115,12 +115,14 @@
 
 /* Custom */
 
+
+
 .sidebar-brand {
     border-bottom: 1px solid white;
     display: block;
-    padding: 15px;
+    padding: 15px 15px 20px;
 
-    &:after {
+    &:before {
         background: url(../images/carceropolis-logo-branco.svg) no-repeat;
         background-size: 100% auto;
         content: '';
@@ -131,24 +133,36 @@
 }
 
 
+.sidebar-nav .conectas {
+    position: absolute;
+    top: 32px;
+    left: 15px;
+    color: white;
+    font-size: .6em;
+    letter-spacing: .04em;
+}
 
 .sidebar-nav .nav.navbar-nav.navbar-right li {
 
-    > a {
+    a {
         color: white;
         font-family: $semibold;
         font-size: 14px;
-        margin: 5px 0;
-        padding: 5px 0 12px;
+        padding: 10px 0;
         text-transform: uppercase;
     }
 
-    // &:active > a,
-    // &:hover > a,
-    // &.active > a {
-    //     background: $cp-orange;
-    // }
+    &:active > a,
+    &:hover > a,
+    &.active > a {
+        color: $cp-orange-dark !important;
+    }
 
+}
+
+.sidebar-nav .nav.navbar-nav.navbar-right > li > {
+    margin: 5px 0;
+    padding: 5px 0 12px;
 }
 
 .navbar-nav {
@@ -157,7 +171,7 @@
 
 .sidebar-nav .nav.navbar-nav.navbar-right {
 
-    li a:before {
+    > li > a:before {
         background-position: 0 100%;
         background-repeat: no-repeat;
         background-size: 100% auto;
@@ -169,27 +183,49 @@
         width: 20px;
     }
 
-    li:nth-child(1) a:before {
+    > li:nth-child(1) > a:before {
         background-image: url(../images/dados.svg);
         top: 4px;
     }
-    li:nth-child(2) a:before {
+    > li:nth-child(2) > a:before {
         background-image: url(../images/publicacoes.svg);
         top: 5px;
     }
-    li:nth-child(3) a:before {
+    > li:nth-child(3) > a:before {
         background-image: url(../images/especialistas.svg);
         top: 1px;
         margin-left: -4px;
         width: 24px;
     }
-    li:nth-child(4) a:before {
+    > li:nth-child(4) > a:before {
         background-image: url(../images/contato.svg);
         top: 8px;
     }
-    li:nth-child(5) a:before {
+    > li:nth-child(5) > a:before {
         background-image: url(../images/sobre.svg);
         top: 4px;
+    }
+
+    .dropdown-menu {
+        display: block !important;
+        position: static;
+        z-index: 0;
+        float: none;
+        min-width: inherit;
+        padding:0 0 10px;
+        margin: 0;
+        font-size: inherit;
+        list-style: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        border-radius: 0;
+        box-shadow: none;
+
+        li a {
+            text-transform: none;
+            padding-left: 54px;
+        }
     }
 
 }
