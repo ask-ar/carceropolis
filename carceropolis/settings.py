@@ -243,6 +243,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
+    "django_extensions",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",
@@ -251,9 +252,9 @@ INSTALLED_APPS = (
     "mezzanine.blog",
     "mezzanine.forms",
     "mezzanine.galleries",
-    "mezzanine.twitter",
+    # "mezzanine.twitter",
     "mezzanine.accounts",
-    #"mezzanine.mobile",
+    # "mezzanine.mobile",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
