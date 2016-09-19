@@ -1,0 +1,132 @@
+.header-dados {
+	@media (min-width: 768px) {
+		position: relative;
+	}
+}
+
+.filters {
+
+	position: absolute;
+	top: 7px;
+	right: 20px;
+
+	@media (min-width: 768px) {
+		top: 40px;
+	}
+
+	ul {
+		display: -webkit-flex;
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.map,
+	.filter,
+	.text {
+		@include hidetext;
+		height: 30px;
+		margin: 2px;
+		width: 30px;
+
+		&:before {
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 22px;
+		    margin: 4px auto 0;
+			width: 22px;
+		}
+	}
+
+	.map:before {
+		background-image: url(../images/icon-mapa.svg);
+	}
+
+	.filter:before {
+		background-image: url(../images/icon-filtro.svg);
+		margin-top: 8px;
+	}
+
+	.text:before {
+		background-image: url(../images/icon-busca.svg);
+	}
+}
+
+.tabs {
+	margin: 0 auto;
+	width: 300px;
+
+	@media (min-width: 768px) {
+		margin-top: 30px;
+	}
+
+	ul {
+		display: -webkit-flex;
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+
+		color: $cp-orange-dark;
+		border-bottom: 2px solid transparent;
+		display: block;
+		font-family: $semibold;
+		font-size: 9px;
+		height: 100%;
+		line-height: 9px;
+		padding: 5px 10px;
+		text-align: center;
+		text-transform: uppercase;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&:before {
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: 50% 50%;
+			content: '';
+			display: block;
+			height: 26px;
+		    margin: 4px auto 0;
+			width: 22px;
+		}
+
+		&:hover,
+		&.active {
+			border-bottom-color: $cp-orange-dark;
+		}
+
+	}
+
+	li:nth-child(1) a:before {
+		background-image: url(../images/icon-macro-dados.svg);
+		width: 26px;
+	}
+
+	li:nth-child(2) a:before {
+		background-image: url(../images/icon-populacao.svg);
+		width: 28px;
+	}
+
+	li:nth-child(3) a:before {
+		background-image: url(../images/icon-unidades.svg);
+		height: 20px;
+	    margin-bottom: 10px;
+	}
+
+	li:nth-child(4) a:before {
+		background-image: url(../images/icon-politicas.svg);
+		height: 22px;
+	    margin-bottom: 4px;
+	}
+}
+
+.Dados {}

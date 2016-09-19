@@ -95,6 +95,25 @@
                {% page_menu "pages/menus/dropdown.html" %}
             </div>
         </div>
+        {% if page.title == "Dados" %}
+        <div class="header-dados container">
+            <div class="filters" alt="Filtros">
+                <ul>
+                    <li class="map">Mapa</li>
+                    <li class="filter">Filtros</li>
+                    <li class="text">Buscar por texto</li>
+                </ul>
+            </div>
+            <div class="tabs">
+                <ul>
+                    <li><a href="#macrodados" class="active"><span>Macro-dados</span></a></li>
+                    <li><a href="#perfil-populacao"><span>Perfil da População</span></a></li>
+                    <li><a href="#unidades"><span>Unidades</span></a></li>
+                    <li><a href="#politicas-publicas"><span>Políticas Públicas</span></a></li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
     </header><!--/header-->
 
 
@@ -118,17 +137,12 @@
     <section class="emerald" id="title">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <h1>{% block title %}{% endblock %}</h1>
-
-                    </div>
-                    <div class="col-sm-6">
-                        <ul class="breadcrumb pull-right">
-                            {% spaceless %}
-    							{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-    						{% endspaceless %}
-                        </ul>
-                    </div>
+                    <ul class="breadcrumb">
+                        {% spaceless %}
+							{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+						{% endspaceless %}
+                    </ul>
+                    <h1 class="page-title">{% block title %}{% endblock %}</h1>
                 </div>
             </div>
        </section>
@@ -145,14 +159,6 @@
     </footer>
     </div><!-- /#page-content-wrapper -->
 </div> <!-- /#wrapper -->
-<script>
-(function() {
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-})();
-</script>
 <script src="{% static "js/jquery.prettyPhoto.js" %}"></script>
 <script src="{% static "js/jquery.isotope.min.js" %}"></script>
 <script src="{% static "js/main.js" %}"></script>

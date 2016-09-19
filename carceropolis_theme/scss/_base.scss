@@ -3,18 +3,30 @@ html {
 }
 
 body {
+	background-color: $cp-grey;
 	font-family: "source_sans_proregular";
 	height: 100%;
 	padding-top: 0;
 }
-#editable-toolbar, .editable-link {
-    right: 0 !important;
-    left: inherit !important;
+
+@media (max-width: 768px) {
+	#editable-toolbar, .editable-link {
+	    right: 0 !important;
+	    left: inherit !important;
+	}
 }
 
 section.container {
 	min-height: 50%;
 }
+
+.breadcrumb {
+	background: transparent;
+	color: rgb(182,182,182);
+	> .active,
+	a {color: rgb(182,182,182);}
+}
+
 
 #footer {
 	background: black;

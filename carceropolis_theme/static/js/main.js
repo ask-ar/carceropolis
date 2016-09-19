@@ -1,5 +1,11 @@
 jQuery(function($) {
 
+	//sidebar mobile menu
+	$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
 	//#main-slider
 	$(function(){
 		$('#main-slider.carousel').carousel({
@@ -57,7 +63,5 @@ jQuery(function($) {
 	//Pretty Photo
 	$("a[rel^='prettyPhoto']").prettyPhoto({
 		social_tools: false
-	});	
+	});
 });
-
- 	

@@ -1,11 +1,11 @@
 .navbar {
-
+	background-color: $cp-grey;
 	background-image: url(../images/simbolo-conectas.svg);
 	background-position: calc(100% + 5px);
 	background-repeat: no-repeat;
 	background-size: contain;
 	border: 0;
-	box-shadow: 0 0 10px #666;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	margin: 0;
 	min-height: inherit;
 	position: relative;
@@ -47,7 +47,6 @@
 	@media (min-width: 768px) {
 		background-color: $cp-grey;
 		background-position: calc(100% + 15px);
-		box-shadow: none;
 		min-height: 80px;
 
 		.conectas {
@@ -118,9 +117,16 @@
 		.main-nav {
 			padding-top: 22px;
 		}
+
+		.dropdown-menu {
+			display: none !important;
+		}
 	}
 }
 
-#home .navbar {
-	box-shadow: none;
+@media (max-width: 768px) {
+	#home .navbar {
+		background: none;
+		box-shadow: none;
+	}
 }
