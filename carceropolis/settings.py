@@ -245,6 +245,7 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
     "django_extensions",
+    "phonenumber_field",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",
@@ -303,6 +304,13 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
+
+
+#########################
+# CARCEROPOLIS SETTINGS #
+#########################
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'BR'
 
 ##################
 # LOCAL SETTINGS #
