@@ -100,7 +100,7 @@ ALLOWED_HOSTS = ['carceropolis.org.br']
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
@@ -304,7 +304,6 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_GRAPPELLI,
 )
 
-
 #########################
 # CARCEROPOLIS SETTINGS #
 #########################
@@ -332,7 +331,6 @@ if os.path.exists(f):
     module.__file__ = f
     sys.modules[module_name] = module
     exec(open(f, "rb").read())
-
 
 ####################
 # DYNAMIC SETTINGS #
