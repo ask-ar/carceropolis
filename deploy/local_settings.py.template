@@ -1,4 +1,3 @@
-# coding: utf-8
 from __future__ import unicode_literals
 
 SECRET_KEY = "%(secret_key)s"
@@ -15,20 +14,28 @@ ALLOWED_HOSTS = [%(domains_python)s]
 # Controls the ordering and grouping of the admin menu.
 
 ADMIN_MENU_ORDER = (
-    ("Conteúdos", ("pages.Page", "blog.BlogPost",
-                   "generic.ThreadedComment", (_("Media Library"),
-                                               "media-library"),)),
-    ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
-    ("Usuários", ("auth.User", "auth.Group",)),
+    ("Carceropolis", (
+        ("Especialistas", "carceropolis_theme.Especialista"),
+        ("Publicacoes", "carceropolis_theme.Publicacao"),
+    )),
+    ("Carceropolis Admin", (
+        ("Areas de Atuacao", "carceropolis_theme.AreaDeAtuacao"),
+        ("Especialidades", "carceropolis_theme.Especialidade"),
+    )),
+    ("Conteudos", (("Paginas", "pages.Page"),
+                    ("Comentarios", "generic.ThreadedComment"),
+                    ("Conteudo de Midia", "media-library"))),
+    ("Site", (
+        # ("Site", "sites.Site"),
+        ("Redirecionamento", "redirects.Redirect"),
+        ("Configuracoes", "conf.Setting"))),
+    ("Usuarios", (
+        "auth.User",
+        "auth.Group",
+        "carceropolis_theme.models.Especialista")),
 )
 
-ADMIN_REMOVAL = ('')
-
-ACCOUNTS_APPROVAL_EMAILS = u''
-
-ACCOUNTS_APPROVAL_REQUIRED = True
-
-ACCOUNTS_VERIFICATION_REQUIRED = True
+ADMIN_REMOVAL = ['django.contrib.sites.models.Site',]
 
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
@@ -100,6 +107,12 @@ DATABASES = {
 }
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+
+ACCOUNTS_APPROVAL_REQUIRED = True
+
+ACCOUNTS_VERIFICATION_REQUIRED = True
+
+ACCOUNTS_APPROVAL_EMAILS = u''
 
 CACHE_MIDDLEWARE_SECONDS = 60
 
