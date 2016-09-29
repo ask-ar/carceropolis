@@ -94,6 +94,7 @@ urlpatterns += [
     # need to use the ``SITE_PREFIX`` setting as well.
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+    url("^", include("carceropolis_theme.urls")),
 
 ]
 
