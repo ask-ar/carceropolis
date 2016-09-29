@@ -6,19 +6,20 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 CATEGORIAS = (
-    ('GERAL', 'GERAL'),
     ('SISTEMA', 'FUNCIONAMENTO DO SISTEMA'),
     ('PERFIL', 'PERFIL POPULACIONAL'),
-    ('POLITICA', 'POLITICA CRIMINAL'),
+    (u'POLÍTICA', u'POLÍTICA CRIMINAL'),
     ('INTERNACIONAL', 'SISTEMAS INTERNACIONAIS'),
-    ('VIOLENCIA', 'VIOLENCIA INSTITUCIONAL')
+    (u'VIOLÊNCIA', u'VIOLÊNCIA INSTITUCIONAL'),
+    ('OUTROS', 'OUTROS'),
 )
 
 
 class AreaDeAtuacao(models.Model):
     """Categorias Gerais de classificação de Especialistas e Publicações."""
-    nome_da_area = models.CharField(max_length=250)
+    nome_da_area = models.CharField(max_length=250, unique=True)
     descricao = models.TextField()
+    ordem = models.IntegerField(unique=True)
 
     def __unicode__(self):
         return self.nome_da_area
@@ -26,7 +27,7 @@ class AreaDeAtuacao(models.Model):
 
 class Especialidade(models.Model):
     """Definição das Especialidades principais mapeadas no projeto."""
-    nome_da_especialidade = models.CharField(max_length=35)
+    nome_da_especialidade = models.CharField(max_length=80, unique=True)
     descricao = models.TextField(blank=True)
     # slug = models.CharField(max_length=250)
 
@@ -51,3 +52,8 @@ class Especialista(models.Model):
 class Publicacao(BlogPost):
     """Publicações relacionadas à temática do site."""
     categorias = models.ManyToManyField(AreaDeAtuacao)
+    arquivo_publicacao = models.FileField('Arquivo da Publicação',
+                                          upload_to='publicacoes/')
+
+    class Meta:
+        verbose_name_plural = 'Publicações'
