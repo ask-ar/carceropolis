@@ -8,8 +8,43 @@ from django.views.i18n import set_language
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
 
+from . import views
+
+_slash = '/'
 
 admin.autodiscover()
+
+# Publicacao patterns.
+publicacao_pattern = [
+    # url(r'^feeds/(?P<format>.*)%s$' % _slash,
+    #     views.publicacao_feed, name='publicacao_feed'),
+    url(r'^tag/(?P<tag>.*)/feeds/(?P<format>.*)%s$' % _slash,
+        views.publicacao_feed, name='publicacao_feed_tag'),
+    url(r'^tag/(?P<tag>.*)%s$' % _slash,
+        views.publicacao_list, name='publicacao_list_tag'),
+    url(r'^categoria/(?P<categoria>.*)/feeds/(?P<format>.*)%s$' % _slash,
+        views.publicacao_feed, name='publicacao_feed_categoria'),
+    url(r'^categoria/(?P<categoria>.*)%s$' % _slash,
+        views.publicacao_list, name='publicacao_list_categoria'),
+    url(r'^author/(?P<username>.*)/feeds/(?P<format>.*)%s$' % _slash,
+        views.publicacao_feed, name='publicacao_feed_author'),
+    url(r'^author/(?P<username>.*)%s$' % _slash,
+        views.publicacao_list, name='publicacao_list_author'),
+    url(r'^archive/(?P<year>\d{4})/(?P<month>\d{1,2})%s$' % _slash,
+        views.publicacao_list, name='publicacao_list_month'),
+    url(r'^archive/(?P<year>\d{4})%s$' % _slash,
+        views.publicacao_list, name='publicacao_list_year'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/'
+        '(?P<slug>.*)%s$' % _slash,
+        views.publicacao_detail, name='publicacao_detail_day'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<slug>.*)%s$' % _slash,
+        views.publicacao_detail, name='publicacao_detail_month'),
+    url(r'^(?P<year>\d{4})/(?P<slug>.*)%s$' % _slash,
+        views.publicacao_detail, name='publicacao_detail_year'),
+    url(r'^(?P<slug>.*)%s$' % _slash,
+        views.publicacao_detail, name='publicacao_detail'),
+    url(r'^$', views.publicacao_list, name='publicacao_list'),
+]
 
 # Add the urlpatterns for any custom Django applications here.
 # You can also change the ``home`` view to add your own functionality
@@ -27,6 +62,7 @@ if settings.USE_MODELTRANSLATION:
     ]
 
 urlpatterns += [
+    url(r'^[Pp]ublicacoes/', include(publicacao_pattern)),
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 
@@ -94,7 +130,6 @@ urlpatterns += [
     # need to use the ``SITE_PREFIX`` setting as well.
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
-    url("^", include("carceropolis_theme.urls")),
 
 ]
 
