@@ -1,0 +1,30 @@
+.about {
+  & #title-1 h4, & #title-1 p,
+  & #title-2 h4, & #title-2 p,{
+    color: rgba(255, 255, 255, 1);
+  }
+  & .background-img{
+    background-image: url("/background-multiply.png"), url("/background-contact.jpg");
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+  }
+  & #title-2{
+    background-color:#262a2d;
+  }
+  & #title-1, & #title-2, & #title-3{
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  & .row {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+  }
+  
+  & #title-3{
+    background:white;
+    color: #212121;
+  }
+  
+}
