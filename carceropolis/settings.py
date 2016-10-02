@@ -107,11 +107,11 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "pt-BR"
+LANGUAGE_CODE = 'pt-br'
 
 # Supported languages
 LANGUAGES = (
-    ('pt-BR', _('Portugues')),
+    ('pt-br', _('Portugues')),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -233,7 +233,7 @@ INSTALLED_APPS = (
     # "moderna",
     # "nova",
     # "solid",
-    "carceropolis_theme",
+    "carceropolis",
     'django_extensions',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -243,7 +243,6 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
-    "django_extensions",
     "phonenumber_field",
     "mezzanine.boot",
     "mezzanine.conf",
@@ -309,6 +308,7 @@ OPTIONAL_APPS = (
 #########################
 PHONENUMBER_DB_FORMAT = 'NATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'BR'
+BLOG_SLUG = 'publicacoes'
 
 ##################
 # LOCAL SETTINGS #

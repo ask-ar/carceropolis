@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 SECRET_KEY = "%(secret_key)s"
@@ -14,25 +15,29 @@ ALLOWED_HOSTS = [%(domains_python)s]
 # Controls the ordering and grouping of the admin menu.
 
 ADMIN_MENU_ORDER = (
-    ("Carceropolis", (
-        ("Especialistas", "carceropolis_theme.Especialista"),
-        ("Publicacoes", "carceropolis_theme.Publicacao"),
+    ("Carcerópolis", (
+        ("Especialistas", "caceropolis.Especialista"),
+        ("Publicações", "caceropolis.Publicacao"),
     )),
-    ("Carceropolis Admin", (
-        ("Areas de Atuacao", "carceropolis_theme.AreaDeAtuacao"),
-        ("Especialidades", "carceropolis_theme.Especialidade"),
+    ("Carcerópolis Admin", (
+        ('Áreas de Atuação', "caceropolis.AreaDeAtuacao"),
+        ("Especialidades", "caceropolis.Especialidade"),
     )),
-    ("Conteudos", (("Paginas", "pages.Page"),
-                    ("Comentarios", "generic.ThreadedComment"),
-                    ("Conteudo de Midia", "media-library"))),
+    ("Conteúdos", (
+        ("Páginas", "pages.Page"),
+        ("Comentários", "generic.ThreadedComment"),
+        ("Conteúdo de Mídia", "media-library"),
+    )),
+    ("Usuários", (
+        ("Usuários", "auth.User"),
+        ("Grupos", "auth.Group"),
+        ("Especialistas", "caceropolis.Especialista"),
+    )),
     ("Site", (
         # ("Site", "sites.Site"),
         ("Redirecionamento", "redirects.Redirect"),
-        ("Configuracoes", "conf.Setting"))),
-    ("Usuarios", (
-        "auth.User",
-        "auth.Group",
-        "carceropolis_theme.models.Especialista")),
+        ("Configurações", "conf.Setting"),
+    )),
 )
 
 ADMIN_REMOVAL = ['django.contrib.sites.models.Site',]
@@ -113,6 +118,8 @@ ACCOUNTS_APPROVAL_REQUIRED = True
 ACCOUNTS_VERIFICATION_REQUIRED = True
 
 ACCOUNTS_APPROVAL_EMAILS = u''
+
+PUBLICACAO_PER_PAGE = 5
 
 CACHE_MIDDLEWARE_SECONDS = 60
 
