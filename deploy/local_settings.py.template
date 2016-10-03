@@ -31,12 +31,11 @@ ADMIN_MENU_ORDER = (
     ("Usuários", (
         ("Usuários", "auth.User"),
         ("Grupos", "auth.Group"),
-        ("Especialistas", "caceropolis.Especialista"),
     )),
-    ("Site", (
-        # ("Site", "sites.Site"),
+    ("Sites", (
+        ("Site", "sites.Site"),
         ("Redirecionamento", "redirects.Redirect"),
-        ("Configurações", "conf.Setting"),
+        ("Configuracoes", "conf.Setting"),
     )),
 )
 
