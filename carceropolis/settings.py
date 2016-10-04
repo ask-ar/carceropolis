@@ -26,6 +26,40 @@ from django.utils.translation import ugettext_lazy as _
 #     ("Users", ("auth.User", "auth.Group",)),
 # )
 
+ADMIN_MENU_ORDER = (
+    ("Carcerópolis", (
+        ("Especialistas", "caceropolis.Especialista"),
+        ("Publicações", "caceropolis.Publicacao"),
+    )),
+    ("Carcerópolis Admin", (
+        ('Áreas de Atuação', "caceropolis.AreaDeAtuacao"),
+        ("Especialidades", "caceropolis.Especialidade"),
+    )),
+    ("Conteúdos", (
+        ("Páginas", "pages.Page"),
+        ("Comentários", "generic.ThreadedComment"),
+        ("Conteúdo de Mídia", "media-library"),
+    )),
+    ("Usuários", (
+        ("Usuários", "auth.User"),
+        ("Grupos", "auth.Group"),
+    )),
+    ("Sites", (
+        ("Site", "sites.Site"),
+        ("Redirecionamento", "redirects.Redirect"),
+        ("Configuracoes", "conf.Setting"),
+    )),
+)
+
+ADMIN_REMOVAL = ['django.contrib.sites.models.Site',]
+
+ACCOUNTS_APPROVAL_REQUIRED = True
+
+ACCOUNTS_VERIFICATION_REQUIRED = True
+
+PUBLICACAO_PER_PAGE = 5
+
+
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
 #
