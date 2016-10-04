@@ -1156,34 +1156,36 @@ body {
   background-position: center;
   background-size: cover;
 }
-/* line 8, ../../scss/_contact.scss */
-.fale-conosco .breadcrumb {
-  background: whitesmoke;
+@media (max-width: 768px) {
+  /* line 10, ../../scss/_contact.scss */
+  .fale-conosco .breadcrumb {
+    background: whitesmoke;
+  }
 }
-/* line 12, ../../scss/_contact.scss */
+/* line 15, ../../scss/_contact.scss */
 .fale-conosco .editable-original {
   color: white;
 }
 @media (min-width: 768px) {
-  /* line 12, ../../scss/_contact.scss */
+  /* line 15, ../../scss/_contact.scss */
   .fale-conosco .editable-original {
     float: right;
   }
 }
 
-/* line 21, ../../scss/_contact.scss */
+/* line 24, ../../scss/_contact.scss */
 .contact-form {
   padding: 10px 30px 30px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 768px) {
-  /* line 21, ../../scss/_contact.scss */
+  /* line 24, ../../scss/_contact.scss */
   .contact-form {
     padding: 20px;
     width: 40%;
   }
 }
-/* line 31, ../../scss/_contact.scss */
+/* line 34, ../../scss/_contact.scss */
 .contact-form:after {
   clear: both;
   content: '';
@@ -1191,25 +1193,25 @@ body {
   height: 0;
   width: 0;
 }
-/* line 35, ../../scss/_contact.scss */
+/* line 38, ../../scss/_contact.scss */
 .contact-form .mezzanine-form {
   display: block;
   margin-top: 50px;
 }
 @media (min-width: 768px) {
-  /* line 35, ../../scss/_contact.scss */
+  /* line 38, ../../scss/_contact.scss */
   .contact-form .mezzanine-form {
     float: left;
     margin: 0;
   }
 }
-/* line 45, ../../scss/_contact.scss */
+/* line 48, ../../scss/_contact.scss */
 .contact-form legend {
   border: 0;
   color: white;
   font-size: 14px;
 }
-/* line 51, ../../scss/_contact.scss */
+/* line 54, ../../scss/_contact.scss */
 .contact-form .btn-primary,
 .contact-form .help-block {
   color: white;
@@ -1218,7 +1220,7 @@ body {
   font-size: 12px;
   letter-spacing: .05em;
 }
-/* line 61, ../../scss/_contact.scss */
+/* line 64, ../../scss/_contact.scss */
 .contact-form .btn-primary,
 .contact-form .form-group > input[type="text"],
 .contact-form .form-group > input[type="password"],
@@ -1250,7 +1252,7 @@ body {
   width: 100%;
 }
 @media (min-width: 768px) {
-  /* line 61, ../../scss/_contact.scss */
+  /* line 64, ../../scss/_contact.scss */
   .contact-form .btn-primary,
   .contact-form .form-group > input[type="text"],
   .contact-form .form-group > input[type="password"],
@@ -1271,14 +1273,14 @@ body {
     width: 400px;
   }
 }
-/* line 96, ../../scss/_contact.scss */
+/* line 99, ../../scss/_contact.scss */
 .contact-form .form-group > textarea {
   border: 1px solid #ea702e;
   line-height: 24px;
   margin-top: 30px;
   padding: 5px;
 }
-/* line 103, ../../scss/_contact.scss */
+/* line 106, ../../scss/_contact.scss */
 .contact-form .form-actions {
   background-color: transparent;
   border: none;
@@ -1286,7 +1288,7 @@ body {
   margin-bottom: 0;
   border-radius: 0;
 }
-/* line 111, ../../scss/_contact.scss */
+/* line 114, ../../scss/_contact.scss */
 .contact-form .btn-primary {
   border: 1px solid #ea702e;
   float: right;

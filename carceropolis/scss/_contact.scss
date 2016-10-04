@@ -5,8 +5,11 @@
         background-size: cover;
     }
 
-    .breadcrumb {
-        background: $cp-grey;
+
+    @media (max-width: 768px) {
+        .breadcrumb {
+            background: $cp-grey;
+        }
     }
 
     .editable-original {
