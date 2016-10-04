@@ -23,8 +23,14 @@ section.container {
 .breadcrumb {
 	background: transparent;
 	color: rgb(182,182,182);
+	border-radius: 0;
+
 	> .active,
 	a {color: rgb(182,182,182);}
+
+	@media (max-width: 768px) {
+	    padding: 15px;
+	}
 }
 
 

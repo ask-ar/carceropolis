@@ -45,7 +45,6 @@
 }
 
 #page-content-wrapper {
-    height: 100%;
     width: 100%;
     position: absolute;
 }
@@ -107,6 +106,8 @@
 
     #page-content-wrapper {
         position: relative;
+        height: auto;
+        width: auto;
     }
 
     #wrapper.toggled #page-content-wrapper {

@@ -117,22 +117,22 @@
     </header><!--/header-->
 
 
-    <div class="container">
-
-        {% nevercache %}
+    {% nevercache %}
         {% if messages %}
-        <div class="messages">
-        {% for message in messages %}
-        <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{ message }}
-        </div>
-        {% endfor %}
+        <div class="container">
+
+            <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+            </div>
+
         </div>
         {% endif %}
-        {% endnevercache %}
-
-    </div>
+    {% endnevercache %}
     {% block top %}
     <section class="emerald" id="title">
             <div class="container">
@@ -142,7 +142,7 @@
                             {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
                         {% endspaceless %}
                     </ul>
-                    <h1 class="page-title">{% block title %}{% endblock %}</h1>
+                    <!-- <h1 class="page-title">{% block title %}{% endblock %}</h1> -->
                 </div>
             </div>
        </section>

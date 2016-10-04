@@ -1,49 +1,118 @@
-.contact {
-  & p{
-    color: rgba(255, 255, 255, 0.8);
-  }
-  ::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  :-moz-placeholder {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  ::-moz-placeholder {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  :-ms-input-placeholder {  
-    color: rgba(255, 255, 255, 0.8);
-  }
-  & .background-img{
-    background-image: url("/background-contact.jpg");
-    background-size: cover;
-    background-position: center;
-    padding: 2em 0 2em;
-    margin-top: 1em;
-  }
-  & .row {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-  .form-control {
-    background-color: inherit;
-    background-image: none;
-    border: none;
-    border-radius: initial;
-    -webkit-box-shadow: inherit;
-    box-shadow: inherit;
-    -webkit-transition: inherit;
-    -o-transition: inherit;
-    transition: inherit;
-    color:#fff;
-  }
-  & input.form-control{
-    border-bottom: 2px solid $cp-yellow;
-  }
-  & textarea.form-control{
-    border: 2px solid $cp-yellow;
-  }
-  & .btn{
-    width: 200px;
-  }
+.fale-conosco {
+    #page-content-wrapper {
+        background-image: url(../images/background-contact.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+
+    .breadcrumb {
+        background: $cp-grey;
+    }
+
+    .editable-original {
+        color: white;
+
+        @media(min-width:768px) {
+            float: right;
+        }
+    }
+}
+
+.contact-form {
+
+    padding: 10px 30px 30px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+
+    @media(min-width:768px) {
+        padding: 20px;
+        width: 40%;
+    }
+
+    &:after {
+        @include clearfix;
+    }
+
+    .mezzanine-form{
+        display: block;
+        margin-top: 50px;
+
+        @media(min-width:768px) {
+            float: left;
+            margin: 0;
+        }
+    }
+
+    legend {
+        border: 0;
+        color: white;
+        font-size: 14px;
+    }
+
+    .btn-primary,
+    .help-block {
+        color: white;
+        font-family: $light;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: .05em;
+    }
+
+
+    .btn-primary,
+    .form-group > input[type="text"],
+    .form-group > input[type="password"],
+    .form-group > input[type="datetime"],
+    .form-group > input[type="datetime-local"],
+    .form-group > input[type="date"],
+    .form-group > input[type="month"],
+    .form-group > input[type="time"],
+    .form-group > input[type="week"],
+    .form-group > input[type="number"],
+    .form-group > input[type="email"],
+    .form-group > input[type="url"],
+    .form-group > input[type="search"],
+    .form-group > input[type="tel"],
+    .form-group > input[type="color"],
+    .form-group > select,
+    .form-group > textarea {
+        background-color: transparent;
+        background-image: none;
+        border: none;
+        border-bottom: 1px solid $cp-orange-dark;
+        border-radius: initial;
+        box-shadow: inherit;
+        color: white;
+        display: block;
+        max-width: inherit;
+        padding: 0;
+        transition: inherit;
+        width: 100%;
+
+        @media(min-width:768px) {
+            width: 400px;
+        }
+    }
+
+    .form-group > textarea {
+        border: 1px solid $cp-orange-dark;
+        line-height: 24px;
+        margin-top: 30px;
+        padding: 5px;
+    }
+
+    .form-actions {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+
+    .btn-primary {
+        border: 1px solid $cp-orange-dark;
+        float: right;
+        padding: 10px;
+        width: 100px;
+    }
+
 }
