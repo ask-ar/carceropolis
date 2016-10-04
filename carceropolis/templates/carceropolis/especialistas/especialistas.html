@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}
+    {% if page %}
+        {{ page.meta_title }}
+    {% else %}
+        {% trans "Especialistas" %}
+    {% endif %}
+{% endblock %}
+
+
+{% block main %}
+
+{% for especialista in especialistas %}
+{{especialista.nome}} | {{especialista.email}} | {{especialista.area_de_atuacao}}
+{% endfor %}
+
+{% endblock %}

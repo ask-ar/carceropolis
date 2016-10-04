@@ -8,7 +8,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.template.response import TemplateResponse
 
-from .models import Publicacao, AreaDeAtuacao, Especialidade
+from .models import Publicacao, AreaDeAtuacao, Especialidade, Especialista
 from mezzanine.conf import settings
 from mezzanine.utils.views import paginate
 # from mezzanine.utils.views import render
@@ -95,3 +95,32 @@ def publicacao_feed(request, format, **kwargs):
         return {"rss": PostsRSS, "atom": PostsAtom}[format](**kwargs)(request)
     except KeyError:
         raise Http404()
+
+
+def especialistas_list(request, area_de_atuacao=None, especialidade=None):
+    """Display a list of blog posts that are filtered by tag, year, month,
+    author or categoria. Custom templates are checked for using the name
+    ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is
+    either the categoria slug or author's username if given.
+    """
+    templates = []
+    context = {}
+    especialistas = Especialista.objects.all()
+    if area_de_atuacao is not None:
+        area_de_atuacao = get_object_or_404(AreaDeAtuacao, slug=area_de_atuacao)
+        especialistas = especialistas.filter(area_de_atuacao=area_de_atuacao)
+        templates.append(u"carceropolis/especialistas/area_atuacao.html")
+        context['area_de_atuacao'] = area_de_atuacao
+    if especialidade is not None:
+        especialidade = get_object_or_404(Especialidade, slug=especialidade)
+        especialistas = especialistas.filter(especialidade=especialidade)
+        templates.append(u"carceropolis/especialistas/especialidade.html")
+        context['especialidade'] = especialidade
+
+    prefetch = ("area_de_atuacao", 'especialidades')
+    especialistas = paginate(especialistas, request.GET.get("page", 1),
+                           settings.PUBLICACAO_PER_PAGE,
+                           settings.MAX_PAGING_LINKS)
+    context = {"especialistas": especialistas}
+    templates.append(u'carceropolis/especialistas/especialistas.html')
+    return TemplateResponse(request, templates, context)

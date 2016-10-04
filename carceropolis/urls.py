@@ -50,6 +50,11 @@ publicacao_pattern = [
     url(r'^$', views.publicacao_list, name='publicacao_list'),
 ]
 
+especialistas_pattern = [
+    url(r'^$',
+        views.especialistas_list, name='especialista_list'),
+]
+
 # Add the urlpatterns for any custom Django applications here.
 # You can also change the ``home`` view to add your own functionality
 # to the project's homepage.
@@ -67,6 +72,7 @@ if settings.USE_MODELTRANSLATION:
 
 urlpatterns += [
     url(r'^[Pp]ublicacoes/', include(publicacao_pattern)),
+    url(r'^[Ee]specialistas/', include(especialistas_pattern)),
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 
