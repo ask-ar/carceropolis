@@ -1,5 +1,6 @@
 # coding= utf-8
 """Modelos definidos para o Projeto carcerópolis."""
+from cidades.models import Cidade, STATE_CHOICES
 from django.db import models
 from mezzanine.blog.models import BlogPost
 from phonenumber_field.modelfields import PhoneNumberField
@@ -13,7 +14,6 @@ CATEGORIAS = (
     (u'VIOLÊNCIA', u'VIOLÊNCIA INSTITUCIONAL'),
     ('OUTROS', 'OUTROS'),
 )
-
 
 class AreaDeAtuacao(models.Model):
     """Categorias Gerais de classificação de Especialistas e Publicações."""
@@ -57,3 +57,20 @@ class Publicacao(BlogPost):
 
     class Meta:
         verbose_name_plural = 'Publicações'
+
+
+class UnidadePrisional(models.Model):
+    """Unidades Prisionais."""
+    nome_unidade = models.CharField(max_length=255)
+    sigla_unidade = models.CharField(max_length=10)
+    tipo_logradouro = models.CharField(max_length=15)
+    nome_logradouro = models.CharField(max_length=255)
+    numero = models.IntegerField(blank=True)
+    complemento = models.CharField(max_length=255, blank=True)
+    bairro = models.CharField(max_length=255)
+    municipio = models.ForeignKey(Cidade)
+    uf = models.CharField(max_length=2, choices=STATE_CHOICES)
+    cep = models.CharField(max_length=8)
+    ddd = models.IntegerField()
+    telefone = models.IntegerField()
+    email = models.EmailField()

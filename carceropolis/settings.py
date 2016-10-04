@@ -34,6 +34,7 @@ ADMIN_MENU_ORDER = (
     ("Carcerópolis Admin", (
         ('Áreas de Atuação', "caceropolis.AreaDeAtuacao"),
         ("Especialidades", "caceropolis.Especialidade"),
+        ('Unidades Prisionais', "carceropolis.UnidadePrisional"),
     )),
     ("Conteúdos", (
         ("Páginas", "pages.Page"),
@@ -59,6 +60,7 @@ ACCOUNTS_VERIFICATION_REQUIRED = True
 
 PUBLICACAO_PER_PAGE = 5
 
+MUNICIPIOS_GEO = False
 
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
@@ -267,6 +269,7 @@ INSTALLED_APPS = (
     # "moderna",
     # "nova",
     # "solid",
+    "cidades",
     "carceropolis",
     'django_extensions',
     "django.contrib.admin",

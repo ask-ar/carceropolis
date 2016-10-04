@@ -3,7 +3,8 @@
 from copy import deepcopy
 from django.contrib import admin
 from mezzanine.blog.admin import BlogPostAdmin
-from .models import AreaDeAtuacao, Especialidade, Especialista, Publicacao
+from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
+                     UnidadePrisional)
 
 publicacao_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
 fields = publicacao_fieldsets[0][1]["fields"]
@@ -31,7 +32,16 @@ class PublicacaoAdmin(BlogPostAdmin):
     fieldsets = publicacao_fieldsets
 
 
+class UnidadePrisionalAdmin(admin.ModelAdmin):
+    fieldsets = [(None, {u'fields': [u'nome_unidade', u'sigla_unidade',
+                                     u'tipo_logradouro', u'nome_logradouro',
+                                     u'numero', u'complemento', u'bairro',
+                                     u'municipio', u'uf', u'cep', u'ddd',
+                                     u'telefone', u'email']})]
+
+
 admin.site.register(AreaDeAtuacao, AreaDeAtuacaoAdmin)
 admin.site.register(Especialidade, EspecialidadeAdmin)
 admin.site.register(Especialista, EspecialistaAdmin)
 admin.site.register(Publicacao, PublicacaoAdmin)
+admin.site.register(UnidadePrisional, UnidadePrisionalAdmin)
