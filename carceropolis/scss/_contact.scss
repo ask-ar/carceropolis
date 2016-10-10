@@ -5,10 +5,9 @@
         background-size: cover;
     }
 
-
-    @media (max-width: 768px) {
-        .breadcrumb {
-            background: $cp-grey;
+    @media (min-width: 768px) {
+        #title {
+            margin-bottom: 20px;
         }
     }
 
@@ -23,12 +22,12 @@
 
 .contact-form {
 
-    padding: 10px 30px 30px;
+    padding: 2em;
     text-shadow: 1px 1px 1px rgba(0,0,0,.5);
 
     @media(min-width:768px) {
         padding: 20px;
-        width: 40%;
+        width: 768px;
     }
 
     &:after {
@@ -49,6 +48,10 @@
         border: 0;
         color: white;
         font-size: 14px;
+
+        @media(min-width:768px) {
+            display: none;
+        }
     }
 
     .btn-primary,

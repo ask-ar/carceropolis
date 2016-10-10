@@ -92,37 +92,49 @@ body {
   padding-top: 0;
 }
 
+/* line 12, ../../scss/_base.scss */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "source_sans_prosemibold";
+}
+
 @media (max-width: 768px) {
-  /* line 13, ../../scss/_base.scss */
+  /* line 17, ../../scss/_base.scss */
   #editable-toolbar, .editable-link {
     right: 0 !important;
     left: inherit !important;
   }
 }
-/* line 19, ../../scss/_base.scss */
+/* line 23, ../../scss/_base.scss */
 section.container {
   min-height: 50%;
 }
 
-/* line 23, ../../scss/_base.scss */
+/* line 28, ../../scss/_base.scss */
+#title {
+  background: whitesmoke;
+}
+
+/* line 32, ../../scss/_base.scss */
 .breadcrumb {
   background: transparent;
-  color: #b6b6b6;
   border-radius: 0;
+  color: #b6b6b6;
+  margin: 0;
+  padding: 15px;
 }
-/* line 28, ../../scss/_base.scss */
+/* line 39, ../../scss/_base.scss */
 .breadcrumb > .active,
 .breadcrumb a {
   color: #b6b6b6;
 }
 @media (max-width: 768px) {
-  /* line 23, ../../scss/_base.scss */
+  /* line 32, ../../scss/_base.scss */
   .breadcrumb {
     padding: 15px;
   }
 }
 
-/* line 37, ../../scss/_base.scss */
+/* line 48, ../../scss/_base.scss */
 #footer {
   background: black;
   border: none;
@@ -131,33 +143,33 @@ section.container {
   text-align: center;
 }
 @media (min-width: 768px) {
-  /* line 37, ../../scss/_base.scss */
+  /* line 48, ../../scss/_base.scss */
   #footer {
     padding: 50px 0 40px;
   }
 }
-/* line 48, ../../scss/_base.scss */
+/* line 59, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right {
   display: block;
   float: none !important;
 }
-/* line 52, ../../scss/_base.scss */
+/* line 63, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right li {
   display: inline-block;
   float: none;
 }
-/* line 56, ../../scss/_base.scss */
+/* line 67, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right li a {
   color: white;
   font-family: "source_sans_prosemibold";
   text-transform: uppercase;
 }
-/* line 62, ../../scss/_base.scss */
+/* line 73, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right li a:hover,
 #footer .nav.navbar-nav.navbar-right li a:active, #footer .nav.navbar-nav.navbar-right li.active a {
   background: none;
 }
-/* line 72, ../../scss/_base.scss */
+/* line 83, ../../scss/_base.scss */
 #footer .social-media ul {
   align-items: center;
   display: flex;
@@ -166,11 +178,11 @@ section.container {
   max-width: 126px;
   padding: 0;
 }
-/* line 81, ../../scss/_base.scss */
+/* line 92, ../../scss/_base.scss */
 #footer .social-media li {
   list-style: none;
 }
-/* line 85, ../../scss/_base.scss */
+/* line 96, ../../scss/_base.scss */
 #footer .social-media .icon-facebook {
   background-color: #f18941;
   border-radius: 0.05em;
@@ -178,26 +190,26 @@ section.container {
   font-size: 26px;
   line-height: 35px;
 }
-/* line 92, ../../scss/_base.scss */
+/* line 103, ../../scss/_base.scss */
 #footer .social-media .icon-facebook:before {
   margin-left: 6px;
 }
-/* line 96, ../../scss/_base.scss */
+/* line 107, ../../scss/_base.scss */
 #footer .social-media .icon-twitter {
   color: #f18941;
   font-size: 30px;
 }
-/* line 101, ../../scss/_base.scss */
+/* line 112, ../../scss/_base.scss */
 #footer .social-media [class^="icon-"] {
   display: block;
   width: 26px;
   height: 26px;
 }
-/* line 107, ../../scss/_base.scss */
+/* line 118, ../../scss/_base.scss */
 #footer .social-media a:hover {
   text-decoration: none;
 }
-/* line 113, ../../scss/_base.scss */
+/* line 124, ../../scss/_base.scss */
 #footer .author h5 {
   color: rgba(255, 255, 255, 0.5);
   font-size: 15px;
@@ -207,12 +219,12 @@ section.container {
   text-align: center;
 }
 @media (min-width: 768px) {
-  /* line 113, ../../scss/_base.scss */
+  /* line 124, ../../scss/_base.scss */
   #footer .author h5 {
     padding-bottom: 50px;
   }
 }
-/* line 125, ../../scss/_base.scss */
+/* line 136, ../../scss/_base.scss */
 #footer .author h5:after {
   background: url(../images/conectas-logo.svg) no-repeat;
   background-size: contain;
@@ -222,12 +234,12 @@ section.container {
   margin: 20px auto 0;
   width: 247px;
 }
-/* line 137, ../../scss/_base.scss */
+/* line 148, ../../scss/_base.scss */
 #footer address {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
 }
-/* line 142, ../../scss/_base.scss */
+/* line 153, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
 }
@@ -1156,36 +1168,36 @@ body {
   background-position: center;
   background-size: cover;
 }
-@media (max-width: 768px) {
-  /* line 10, ../../scss/_contact.scss */
-  .fale-conosco .breadcrumb {
-    background: whitesmoke;
+@media (min-width: 768px) {
+  /* line 9, ../../scss/_contact.scss */
+  .fale-conosco #title {
+    margin-bottom: 20px;
   }
 }
-/* line 15, ../../scss/_contact.scss */
+/* line 14, ../../scss/_contact.scss */
 .fale-conosco .editable-original {
   color: white;
 }
 @media (min-width: 768px) {
-  /* line 15, ../../scss/_contact.scss */
+  /* line 14, ../../scss/_contact.scss */
   .fale-conosco .editable-original {
     float: right;
   }
 }
 
-/* line 24, ../../scss/_contact.scss */
+/* line 23, ../../scss/_contact.scss */
 .contact-form {
-  padding: 10px 30px 30px;
+  padding: 2em;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 768px) {
-  /* line 24, ../../scss/_contact.scss */
+  /* line 23, ../../scss/_contact.scss */
   .contact-form {
     padding: 20px;
-    width: 40%;
+    width: 768px;
   }
 }
-/* line 34, ../../scss/_contact.scss */
+/* line 33, ../../scss/_contact.scss */
 .contact-form:after {
   clear: both;
   content: '';
@@ -1193,25 +1205,31 @@ body {
   height: 0;
   width: 0;
 }
-/* line 38, ../../scss/_contact.scss */
+/* line 37, ../../scss/_contact.scss */
 .contact-form .mezzanine-form {
   display: block;
   margin-top: 50px;
 }
 @media (min-width: 768px) {
-  /* line 38, ../../scss/_contact.scss */
+  /* line 37, ../../scss/_contact.scss */
   .contact-form .mezzanine-form {
     float: left;
     margin: 0;
   }
 }
-/* line 48, ../../scss/_contact.scss */
+/* line 47, ../../scss/_contact.scss */
 .contact-form legend {
   border: 0;
   color: white;
   font-size: 14px;
 }
-/* line 54, ../../scss/_contact.scss */
+@media (min-width: 768px) {
+  /* line 47, ../../scss/_contact.scss */
+  .contact-form legend {
+    display: none;
+  }
+}
+/* line 57, ../../scss/_contact.scss */
 .contact-form .btn-primary,
 .contact-form .help-block {
   color: white;
@@ -1220,7 +1238,7 @@ body {
   font-size: 12px;
   letter-spacing: .05em;
 }
-/* line 64, ../../scss/_contact.scss */
+/* line 67, ../../scss/_contact.scss */
 .contact-form .btn-primary,
 .contact-form .form-group > input[type="text"],
 .contact-form .form-group > input[type="password"],
@@ -1252,7 +1270,7 @@ body {
   width: 100%;
 }
 @media (min-width: 768px) {
-  /* line 64, ../../scss/_contact.scss */
+  /* line 67, ../../scss/_contact.scss */
   .contact-form .btn-primary,
   .contact-form .form-group > input[type="text"],
   .contact-form .form-group > input[type="password"],
@@ -1273,14 +1291,14 @@ body {
     width: 400px;
   }
 }
-/* line 99, ../../scss/_contact.scss */
+/* line 102, ../../scss/_contact.scss */
 .contact-form .form-group > textarea {
   border: 1px solid #ea702e;
   line-height: 24px;
   margin-top: 30px;
   padding: 5px;
 }
-/* line 106, ../../scss/_contact.scss */
+/* line 109, ../../scss/_contact.scss */
 .contact-form .form-actions {
   background-color: transparent;
   border: none;
@@ -1288,7 +1306,7 @@ body {
   margin-bottom: 0;
   border-radius: 0;
 }
-/* line 114, ../../scss/_contact.scss */
+/* line 117, ../../scss/_contact.scss */
 .contact-form .btn-primary {
   border: 1px solid #ea702e;
   float: right;
@@ -1296,36 +1314,49 @@ body {
   width: 100px;
 }
 
-/* line 2, ../../scss/_about.scss */
-.about #title-1 h4, .about #title-1 p, .about #title-2 h4, .about #title-2 p {
+@media (max-width: 768px) {
+  /* line 3, ../../scss/_about.scss */
+  .sobre #page-content-wrapper > .container {
+    padding: 0;
+  }
+}
+/* line 9, ../../scss/_about.scss */
+.sobre .editable-original {
   color: white;
 }
-/* line 6, ../../scss/_about.scss */
-.about .background-img {
-  background-image: url("/background-multiply.png"), url("/background-contact.jpg");
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: multiply;
+@media (min-width: 768px) {
+  /* line 9, ../../scss/_about.scss */
+  .sobre .editable-original {
+    display: flex;
+    margin-bottom: 3.5em;
+  }
 }
-/* line 12, ../../scss/_about.scss */
-.about #title-2 {
-  background-color: #262a2d;
+/* line 17, ../../scss/_about.scss */
+.sobre .editable-original > section {
+  padding: 3em 2em;
 }
-/* line 15, ../../scss/_about.scss */
-.about #title-1, .about #title-2, .about #title-3 {
-  padding-top: 2em;
-  padding-bottom: 2em;
-}
-/* line 19, ../../scss/_about.scss */
-.about .row {
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 1em;
+/* line 21, ../../scss/_about.scss */
+.sobre .editable-original h2 {
+  margin: 0 0 1em;
 }
 /* line 25, ../../scss/_about.scss */
-.about #title-3 {
+.sobre .editable-original p {
+  margin: 0;
+  padding-bottom: .5em;
+}
+/* line 31, ../../scss/_about.scss */
+.sobre .archives {
+  background: url(../images/archives.jpg);
+  background-size: cover;
+}
+/* line 36, ../../scss/_about.scss */
+.sobre .black {
+  background: black;
+}
+/* line 40, ../../scss/_about.scss */
+.sobre .white {
   background: white;
-  color: #212121;
+  color: black;
 }
 
 /* line 3, ../../scss/_experts.scss */

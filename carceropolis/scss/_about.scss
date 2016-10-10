@@ -1,30 +1,45 @@
-.about {
-  & #title-1 h4, & #title-1 p,
-  & #title-2 h4, & #title-2 p,{
-    color: rgba(255, 255, 255, 1);
+.sobre {
+
+  #page-content-wrapper > .container {
+    @media (max-width: 768px) {
+      padding: 0;
+    }
   }
-  & .background-img{
-    background-image: url("/background-multiply.png"), url("/background-contact.jpg");
+
+  .editable-original {
+    color: white;
+
+    @media (min-width: 768px) {
+      display: flex;
+      margin-bottom: 3.5em;
+    }
+
+    > section {
+      padding: 3em 2em;
+    }
+
+    h2 {
+      margin: 0 0 1em;
+    }
+
+    p {
+      margin: 0;
+      padding-bottom: .5em;
+    }
+  }
+
+  .archives {
+    background: url(../images/archives.jpg);
     background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
   }
-  & #title-2{
-    background-color:#262a2d;
+
+  .black {
+    background: black;
   }
-  & #title-1, & #title-2, & #title-3{
-    padding-top: 2em;
-    padding-bottom: 2em;
+
+  .white {
+    background: white;
+    color: black;
   }
-  & .row {
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-bottom: 1em;
-  }
-  
-  & #title-3{
-    background:white;
-    color: #212121;
-  }
-  
+
 }

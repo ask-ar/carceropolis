@@ -9,6 +9,10 @@ body {
 	padding-top: 0;
 }
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: $semibold;
+}
+
 @media (max-width: 768px) {
 	#editable-toolbar, .editable-link {
 	    right: 0 !important;
@@ -20,10 +24,17 @@ section.container {
 	min-height: 50%;
 }
 
+
+#title {
+	background: $cp-grey;
+}
+
 .breadcrumb {
 	background: transparent;
-	color: rgb(182,182,182);
 	border-radius: 0;
+	color: rgb(182,182,182);
+	margin: 0;
+	padding: 15px;
 
 	> .active,
 	a {color: rgb(182,182,182);}
