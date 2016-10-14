@@ -1,26 +1,58 @@
-.experts {
+.especialistas .intro {
+  background: white;
+  margin: 0 1em 1em;
 
-  & .row:first-child {
-    padding: 0 1em 1em 1em;
+  @media (min-width: 768px) {
+     margin: 0 auto 3.5em;
   }
-  & #title-1 h4, & #title-1 p,
-  & #title-2 h4, & #title-2 p,{
-    color: rgba(255, 255, 255, 1);
+
+  > p {
+    margin: 0;
+    padding: 1em;
   }
-  & .box {
-    margin: 0 1em 0.2em 1em;
-    background-color: white;
-    padding-top: 1em;
+}
+
+.lista-especialistas {
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
   }
-  & .expert-box {
-    margin-bottom: 2em;
-    overflow: auto;
+
+  li {
+    border-bottom: 1px solid $cp-grey;
+    color: black;
+    list-style: none;
+    padding: 1.5em 1em;
+
+    @media (min-width: 768px) {
+      width: 25%;
+    }
   }
-  & .expert-box:last-child {
-    margin-bottom: 0.5em;
+
+  h3 {
+    font-size: 18px;
+    margin: 0 0 .5em;
   }
-  & .email{
-    margin-right: 0.5em;
+
+  .email{
+    color: black;
+    display: block;
+    line-height: 30px;
+    margin-right: .5em;
+
+    &:before {
+      background: url(../images/icon-mail.svg) no-repeat left center;
+      background-size: 30px auto;
+      content: '';
+      display: block;
+      float: left;
+      height: 30px;
+      margin-right: 10px;
+      width: 30px;
+    }
   }
-  
+
 }

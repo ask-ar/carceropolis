@@ -1359,30 +1359,68 @@ body {
   color: black;
 }
 
-/* line 3, ../../scss/_experts.scss */
-.experts .row:first-child {
-  padding: 0 1em 1em 1em;
+/* line 1, ../../scss/_experts.scss */
+.especialistas .intro {
+  background: white;
+  margin: 0 1em 1em;
 }
-/* line 6, ../../scss/_experts.scss */
-.experts #title-1 h4, .experts #title-1 p, .experts #title-2 h4, .experts #title-2 p {
-  color: white;
+@media (min-width: 768px) {
+  /* line 1, ../../scss/_experts.scss */
+  .especialistas .intro {
+    margin: 0 auto 3.5em;
+  }
 }
-/* line 10, ../../scss/_experts.scss */
-.experts .box {
-  margin: 0 1em 0.2em 1em;
-  background-color: white;
-  padding-top: 1em;
+/* line 9, ../../scss/_experts.scss */
+.especialistas .intro > p {
+  margin: 0;
+  padding: 1em;
 }
+
 /* line 15, ../../scss/_experts.scss */
-.experts .expert-box {
-  margin-bottom: 2em;
-  overflow: auto;
+.lista-especialistas {
+  margin: 0;
+  padding: 0;
 }
-/* line 19, ../../scss/_experts.scss */
-.experts .expert-box:last-child {
-  margin-bottom: 0.5em;
+@media (min-width: 768px) {
+  /* line 15, ../../scss/_experts.scss */
+  .lista-especialistas {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
-/* line 22, ../../scss/_experts.scss */
-.experts .email {
-  margin-right: 0.5em;
+/* line 24, ../../scss/_experts.scss */
+.lista-especialistas li {
+  border-bottom: 1px solid whitesmoke;
+  color: black;
+  list-style: none;
+  padding: 1.5em 1em;
+}
+@media (min-width: 768px) {
+  /* line 24, ../../scss/_experts.scss */
+  .lista-especialistas li {
+    width: 25%;
+  }
+}
+/* line 35, ../../scss/_experts.scss */
+.lista-especialistas h3 {
+  font-size: 18px;
+  margin: 0 0 .5em;
+}
+/* line 40, ../../scss/_experts.scss */
+.lista-especialistas .email {
+  color: black;
+  display: block;
+  line-height: 30px;
+  margin-right: .5em;
+}
+/* line 46, ../../scss/_experts.scss */
+.lista-especialistas .email:before {
+  background: url(../images/icon-mail.svg) no-repeat left center;
+  background-size: 30px auto;
+  content: '';
+  display: block;
+  float: left;
+  height: 30px;
+  margin-right: 10px;
+  width: 30px;
 }

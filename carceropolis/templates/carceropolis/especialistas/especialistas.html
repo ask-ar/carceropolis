@@ -12,8 +12,28 @@
 
 {% block main %}
 
-{% for especialista in especialistas %}
-{{especialista.nome}} | {{especialista.email}} | {{especialista.area_de_atuacao}}
-{% endfor %}
+<section class="container intro">
+	<p>
+		Hella narwhal Cosby sweater McSweeney's, salvia kitsch before they sold out High Life. Umami tattooed sriracha meggings pickled Marfa Blue Bottle High Life next level four loko PBR.
+	</p>
+
+	<ul class="lista-especialistas">
+	{% for especialista in especialistas %}
+		<li>
+			<h3>
+				{{especialista.nome}}
+			</h3>
+			<p>
+				{{especialista.mini_bio}}
+			</p>
+			<p>
+				Especialidade: {{especialista.area_de_atuacao}}
+			</p>
+			<a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+</section>
+
 
 {% endblock %}
