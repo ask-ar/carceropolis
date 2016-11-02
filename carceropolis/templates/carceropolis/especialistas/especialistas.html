@@ -27,7 +27,10 @@
 				{{especialista.mini_bio}}
 			</p>
 			<p>
-				Especialidade: {{especialista.area_de_atuacao}}
+				Especialidade: {{especialista.especialidades}}
+				{% for especialidade in especialista.especilidades %}
+				{{especialidade.nome_da_especialidade}}
+				{% endfor %}
 			</p>
 			<a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
 		</li>

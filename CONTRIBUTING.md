@@ -158,3 +158,27 @@ python manage.py runserver
 ```
 
 e visite, em seu navegador, o endereço: http://127.0.0.1:8000
+
+### Trabalhando com o CSS
+Este projeto utiliza o Compass para escrever CSS. O Compass é um pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.  
+
+Para utilizar o Compass, você deve instalar o [Ruby](http://rubyinstaller.org/) em seu computador e depois instalar o [Compass](http://compass-style.org/).  
+
+Após instalação, você pode verificar as configurações de compilação no arquivo ./carceropolis/config.rb  
+
+Os arquivos .scss (compass) estão no diretório ./carceropolis/scss  
+
+Para trabalhar com arquivos .sccs você deve iniciar o serviço que observa modificações neles, para compilar-los assim que salvos. Para isto você deve digitar no terminal no diretório onde o arquivo config.rb está salvo.
+
+`$ compass watch`  
+
+Siga a sintaxe da linguagem para realizar as modificações necessárias.  
+
+Nunca faça modificações direto nos arquivos CSS pois estes serão apagados a toda nova compilação do Compass.  
+
+Para compilar apenas uma vez:  
+
+`$ compass compile`  
+
+Parar parar o watch `control c`
+

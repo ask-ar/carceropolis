@@ -45,7 +45,6 @@
 <!-- TESTE -->
 {{publicacoes}}
 {% for publicacao in teste %}
-{{publicacao}}
 {% endfor %}
 <!-- TESTE -->
 
@@ -134,19 +133,6 @@
     {% endif %}
     <p>
     <a href="{{ publicacao.get_absolute_url }}">{% trans "read more" %}</a>
-    {% if publicacao.allow_comments %}
-    /
-    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-    <a href="{{ publicacao.get_absolute_url }}#disqus_thread"
-        data-disqus-identifier="{% disqus_id_for publicacao %}">
-        {% trans "Comments" %}
-    </a>
-    {% else %}
-    <a href="{{ publicacao.get_absolute_url }}#comments">
-        {% blocktrans count comments_count=publicacao.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-    </a>
-    {% endif %}
-    {% endif %}
     </p>
 </div>
 {% endblock %}
