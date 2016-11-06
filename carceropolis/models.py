@@ -24,6 +24,10 @@ class AreaDeAtuacao(models.Model):
     def __unicode__(self):
         return self.nome_da_area
 
+    class Meta:
+        verbose_name = 'Área de Atuação'
+        verbose_name_plural = 'Áreas de Atuação'
+
 
 class Especialidade(models.Model):
     """Definição das Especialidades principais mapeadas no projeto."""
@@ -33,6 +37,10 @@ class Especialidade(models.Model):
 
     def __unicode__(self):
         return self.nome_da_especialidade
+
+    class Meta:
+        verbose_name = 'Especialidade'
+        verbose_name_plural = 'Especialidades'
 
 
 class Especialista(models.Model):
@@ -48,14 +56,20 @@ class Especialista(models.Model):
     def __unicode__(self):
         return self.nome
 
+    class Meta:
+        verbose_name = 'Especialista'
+        verbose_name_plural = 'Especialistas'
+
 
 class Publicacao(BlogPost):
     """Publicações relacionadas à temática do site."""
+    autoria = models.CharField(max_length=150)
     categorias = models.ManyToManyField(AreaDeAtuacao)
     arquivo_publicacao = models.FileField('Arquivo da Publicação',
                                           upload_to='publicacoes/')
 
     class Meta:
+        verbose_name = 'Publicação'
         verbose_name_plural = 'Publicações'
 
 
@@ -74,3 +88,8 @@ class UnidadePrisional(models.Model):
     ddd = models.IntegerField()
     telefone = models.IntegerField()
     email = models.EmailField()
+
+    class Meta:
+        verbose_name = 'Unidade Prisional'
+        verbose_name_plural = 'Unidades Prisionais'
+

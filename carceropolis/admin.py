@@ -12,6 +12,7 @@ idx = fields.index('categories')
 content_idx = fields.index('content')
 fields[idx] = 'categorias'
 fields.insert(content_idx, 'arquivo_publicacao')
+fields.insert(fields.index('title') + 1, 'autoria')
 
 
 class AreaDeAtuacaoAdmin(admin.ModelAdmin):
