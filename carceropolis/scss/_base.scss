@@ -52,10 +52,6 @@ section.container {
 	padding: 0 0 10px;
 	text-align: center;
 
-	@media (min-width: 768px) {
-		padding: 50px 0 40px;
-	}
-
 	.nav.navbar-nav.navbar-right {
 		display: block;
 		float: none !important;
@@ -128,10 +124,6 @@ section.container {
 			font-weight: normal;
 			padding-bottom: 30px;
 			text-align: center;
-
-			@media (min-width: 768px) {
-				padding-bottom: 50px;
-			}
 
 			&:after {
 				background: url(../images/conectas-logo.svg) no-repeat;

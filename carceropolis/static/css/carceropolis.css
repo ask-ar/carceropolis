@@ -142,34 +142,28 @@ section.container {
   padding: 0 0 10px;
   text-align: center;
 }
-@media (min-width: 768px) {
-  /* line 48, ../../scss/_base.scss */
-  #footer {
-    padding: 50px 0 40px;
-  }
-}
-/* line 59, ../../scss/_base.scss */
+/* line 55, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right {
   display: block;
   float: none !important;
 }
-/* line 63, ../../scss/_base.scss */
+/* line 59, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right li {
   display: inline-block;
   float: none;
 }
-/* line 67, ../../scss/_base.scss */
+/* line 63, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right li a {
   color: white;
   font-family: "source_sans_prosemibold";
   text-transform: uppercase;
 }
-/* line 73, ../../scss/_base.scss */
+/* line 69, ../../scss/_base.scss */
 #footer .nav.navbar-nav.navbar-right li a:hover,
 #footer .nav.navbar-nav.navbar-right li a:active, #footer .nav.navbar-nav.navbar-right li.active a {
   background: none;
 }
-/* line 83, ../../scss/_base.scss */
+/* line 79, ../../scss/_base.scss */
 #footer .social-media ul {
   align-items: center;
   display: flex;
@@ -178,11 +172,11 @@ section.container {
   max-width: 126px;
   padding: 0;
 }
-/* line 92, ../../scss/_base.scss */
+/* line 88, ../../scss/_base.scss */
 #footer .social-media li {
   list-style: none;
 }
-/* line 96, ../../scss/_base.scss */
+/* line 92, ../../scss/_base.scss */
 #footer .social-media .icon-facebook {
   background-color: #f18941;
   border-radius: 0.05em;
@@ -190,26 +184,26 @@ section.container {
   font-size: 26px;
   line-height: 35px;
 }
-/* line 103, ../../scss/_base.scss */
+/* line 99, ../../scss/_base.scss */
 #footer .social-media .icon-facebook:before {
   margin-left: 6px;
 }
-/* line 107, ../../scss/_base.scss */
+/* line 103, ../../scss/_base.scss */
 #footer .social-media .icon-twitter {
   color: #f18941;
   font-size: 30px;
 }
-/* line 112, ../../scss/_base.scss */
+/* line 108, ../../scss/_base.scss */
 #footer .social-media [class^="icon-"] {
   display: block;
   width: 26px;
   height: 26px;
 }
-/* line 118, ../../scss/_base.scss */
+/* line 114, ../../scss/_base.scss */
 #footer .social-media a:hover {
   text-decoration: none;
 }
-/* line 124, ../../scss/_base.scss */
+/* line 120, ../../scss/_base.scss */
 #footer .author h5 {
   color: rgba(255, 255, 255, 0.5);
   font-size: 15px;
@@ -218,13 +212,7 @@ section.container {
   padding-bottom: 30px;
   text-align: center;
 }
-@media (min-width: 768px) {
-  /* line 124, ../../scss/_base.scss */
-  #footer .author h5 {
-    padding-bottom: 50px;
-  }
-}
-/* line 136, ../../scss/_base.scss */
+/* line 128, ../../scss/_base.scss */
 #footer .author h5:after {
   background: url(../images/conectas-logo.svg) no-repeat;
   background-size: contain;
@@ -234,12 +222,12 @@ section.container {
   margin: 20px auto 0;
   width: 247px;
 }
-/* line 148, ../../scss/_base.scss */
+/* line 140, ../../scss/_base.scss */
 #footer address {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
 }
-/* line 153, ../../scss/_base.scss */
+/* line 145, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
 }
