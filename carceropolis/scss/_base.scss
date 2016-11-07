@@ -52,6 +52,16 @@ section.container {
 	padding: 0 0 10px;
 	text-align: center;
 
+	.container{
+    	-webkit-align-items: center;
+    	align-items: center;
+		display: flex;
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
+	    -webkitjustify-content: center;
+	    justify-content: center;
+	}
+
 	.nav.navbar-nav.navbar-right {
 		display: block;
 		float: none !important;
@@ -75,6 +85,8 @@ section.container {
 	}
 
 	.social-media {
+
+		display: none;
 
 		ul {
 			align-items: center;
@@ -118,28 +130,37 @@ section.container {
 
 	.author {
 		h5 {
-			color: rgba(255,255,255,.5);
-			font-size: 15px;
-			font-family: inherit;
-			font-weight: normal;
-			padding-bottom: 30px;
-			text-align: center;
 
-			&:after {
-				background: url(../images/conectas-logo.svg) no-repeat;
-				background-size: contain;
-				content: '';
+			margin: 0;
+			position: relative;
+
+			span {
+				color: rgba(255,255,255,.5);
+				font-size: 15px;
+				font-family: inherit;
+				font-weight: normal;
+				padding-bottom: 30px;
+				text-align: center;
+				position: absolute;
+				top: 20px;
+				left: 0;
+
+			}
+
+			img {
 				display: block;
 				height: 100px;
-				margin: 20px auto 0;
-				width: 247px;
+				margin: 20px auto;
+				width: 200px;
 			}
 		}
 	}
 
 	address {
 		color: rgba(255,255,255,.5);
+		display: block;
 		font-size: 16px;
+		width: 100%;
 	}
 
 	#gototop {
