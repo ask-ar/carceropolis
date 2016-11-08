@@ -44,8 +44,6 @@
 {% block main %}
 <!-- TESTE -->
 {{publicacoes}}
-{% for publicacao in teste %}
-{% endfor %}
 <!-- TESTE -->
 
 {% if tag or Categoria or year or month or author %}
@@ -87,13 +85,11 @@
 {% block publicacao_list_post_metainfo %}
 {% editable publicacao.publish_date %}
 <h6 class="post-meta">
-    {% trans "Posted by" %}:
-    {% with publicacao.user as author %}
-    <a href="{% url "publicacao_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-    {% endwith %}
+    {% trans "Por" %}:
+    {{ publicacao.autoria }}
     {% with publicacao.categorias.all as categorias %}
     {% if categorias %}
-    {% trans "in" %}
+    {% trans "em" %}
     {% for categoria in categorias %}
     <a href="{% url "publicacao_list_categoria" categoria.slug %}">{{ categoria }}</a>{% if not forloop.last %}, {% endif %}
     {% endfor %}
