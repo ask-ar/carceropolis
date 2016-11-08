@@ -118,6 +118,7 @@ def especialistas_list(request, area_de_atuacao=None, especialidade=None):
         context['especialidade'] = especialidade
 
     prefetch = ("area_de_atuacao", 'especialidades')
+    especialistas = especialistas.prefetch_related(*prefetch)
     especialistas = paginate(especialistas, request.GET.get("page", 1),
                            settings.PUBLICACAO_PER_PAGE,
                            settings.MAX_PAGING_LINKS)
