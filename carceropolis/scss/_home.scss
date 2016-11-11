@@ -1,99 +1,99 @@
 .banner {
 
-	.video	{
-		//background: url(../images/home_background.jpg) no-repeat;
-		background-size: cover;
-		left: 50%;
-		min-width: 100%;
-		min-height: 100%;
-		height: auto;
-		position: fixed;
-		top: 50%;
-		-ms-transform: translateX(-50%) translateY(-50%);
-		-moz-transform: translateX(-50%) translateY(-50%);
-		-webkit-transform: translateX(-50%) translateY(-50%);
-		transform: translateX(-50%) translateY(-50%);
-		width: auto;
-		z-index: -100;
-	}
+  .video  {
+    background: url(../images/home_background.jpg) no-repeat;
+    background-size: cover;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: auto;
+    z-index: -100;
+  }
 
-	h2 {
-		@include hidetext;
-		background: url(../images/carceropolis-logo.svg?c) no-repeat;
-		background-size: 100% auto;
-		display: block;
-		font-size: 100%;
-		height: 70px;
-		line-height: inherit;
-		margin: 30% auto 30px;
-		max-width: 60%;
-		padding: 0;
+  h2 {
+    @include hidetext;
+    background: url(../images/carceropolis-logo.svg?c) no-repeat;
+    background-size: 100% auto;
+    display: block;
+    font-size: 100%;
+    height: 70px;
+    line-height: inherit;
+    margin: 30% auto 30px;
+    max-width: 60%;
+    padding: 0;
 
-		@media (min-width: 480px) {
-			margin: 10% auto 40px;
-    		width: 380px;
-    	}
-	}
+    @media (min-width: 480px) {
+      margin: 10% auto 40px;
+        width: 380px;
+      }
+  }
 
-	p {
-		margin: 0 auto;
-		max-width: 800px;
-		padding: 0 20px;
-	}
+  p {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+  }
 
-	.intro {
-		color: white;
-		font-family: $semibold;
-		font-size: 14px;
-		line-height: 30px;
-		margin-bottom: 50px;
-		text-align: center;
-		text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+  .intro {
+    color: white;
+    font-family: $semibold;
+    font-size: 14px;
+    line-height: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.2);
 
-		@media (min-width: 480px) {
-			font-size: 20px;
-			margin-bottom: 100px;
-		}
-	}
+    @media (min-width: 480px) {
+      font-size: 20px;
+      margin-bottom: 100px;
+    }
+  }
 
-	.links {
+  .links {
 
-		@media (min-width: 480px) {
-			align-items: center;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-		}
+    @media (min-width: 480px) {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
 
-		a {
-			@extend .cp-box-shadow;
-			background-color: $cp-orange-dark;
-			border-radius: 2px;
-			color: white;
-			font-family: $semibold;
-			padding: 6px 0;
-			text-align: center;
-			text-transform: uppercase;
-			width: 200px;
+    a {
+      @extend .cp-box-shadow;
+      background-color: $cp-orange-dark;
+      border-radius: 2px;
+      color: white;
+      font-family: $semibold;
+      padding: 6px 0;
+      text-align: center;
+      text-transform: uppercase;
+      width: 200px;
 
-			@media (max-width: 480px) {
-				display: block;
-				margin: 0 auto;
-				padding: 10px;
-				width: 120px;
+      @media (max-width: 480px) {
+        display: block;
+        margin: 0 auto;
+        padding: 10px;
+        width: 120px;
 
-				&:first-of-type {
-					margin-bottom: 40px;
-				}
-			}
+        &:first-of-type {
+          margin-bottom: 40px;
+        }
+      }
 
-			&:hover {
-				text-decoration: none;
-			}
-		}
+      &:hover {
+        text-decoration: none;
+      }
+    }
     }
 }
 
 #home #footer {
-	display: none;
+  display: none;
 }

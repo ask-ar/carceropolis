@@ -1,9 +1,29 @@
-.sobre {
+[class^='sobre'] {
+
+  #page-content-wrapper::before {
+    content: "";
+    background: url(../images/about.jpg) no-repeat;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; 
+  }
 
   #page-content-wrapper > .container {
     @media (max-width: 768px) {
       padding: 0;
     }
+  }
+
+  .container {
+    color: white;
+    font-size: 16px;
+    font-family: "source_sans_prosemibold";
+    padding-right: 3.5em;
+    padding-left: 3.5em;
   }
 
   .editable-original {
@@ -26,20 +46,6 @@
       margin: 0;
       padding-bottom: .5em;
     }
-  }
-
-  .archives {
-    background: url(../images/archives.jpg);
-    background-size: cover;
-  }
-
-  .black {
-    background: black;
-  }
-
-  .white {
-    background: white;
-    color: black;
   }
 
 }
