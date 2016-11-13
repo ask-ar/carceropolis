@@ -151,7 +151,7 @@ section.container {
   background: black;
   border: none;
   margin: 0;
-  padding: 0 0 10px;
+  padding: 15px 0;
   text-align: center;
 }
 /* line 55, ../../scss/_base.scss */
@@ -229,12 +229,16 @@ section.container {
 #footer .social-media a:hover {
   text-decoration: none;
 }
-/* line 132, ../../scss/_base.scss */
+/* line 131, ../../scss/_base.scss */
+#footer .author {
+  display: none;
+}
+/* line 134, ../../scss/_base.scss */
 #footer .author h5 {
   margin: 0;
   position: relative;
 }
-/* line 137, ../../scss/_base.scss */
+/* line 139, ../../scss/_base.scss */
 #footer .author h5 span {
   color: rgba(255, 255, 255, 0.5);
   font-size: 15px;
@@ -246,21 +250,23 @@ section.container {
   top: 20px;
   left: 0;
 }
-/* line 150, ../../scss/_base.scss */
+/* line 152, ../../scss/_base.scss */
 #footer .author h5 img {
   display: block;
   height: 100px;
   margin: 20px auto;
   width: 200px;
 }
-/* line 159, ../../scss/_base.scss */
+/* line 161, ../../scss/_base.scss */
 #footer address {
   color: rgba(255, 255, 255, 0.5);
   display: block;
   font-size: 16px;
+  margin: 0;
   width: 100%;
+  font-family: "source_sans_prolight";
 }
-/* line 166, ../../scss/_base.scss */
+/* line 170, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
 }
