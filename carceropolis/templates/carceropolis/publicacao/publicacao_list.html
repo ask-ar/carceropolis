@@ -23,6 +23,7 @@
 {% endif %}
 {% endblock %}
 
+
 {% block breadcrumb_menu %}
 {{ block.super }}
 {% if tag or categoria or year or month or author %}
@@ -41,10 +42,10 @@
 {% endif %}
 {% endblock %}
 
+
 {% block main %}
-<!-- TESTE -->
-{{publicacoes}}
-<!-- TESTE -->
+<section class="container frame">
+<!-- {{publicacoes}} -->
 
 {% if tag or Categoria or year or month or author %}
     {% block publicacao_list_filterinfo %}
@@ -74,71 +75,77 @@
     {% endif %}
 {% endif %}
 
-{% for publicacao in publicacoes.object_list %}
-{% block publicacao_list_post_title %}
-{% editable publicacao.title %}
-<h2>
-    <a href="{{ publicacao.get_absolute_url }}">{{ publicacao.title }}</a>
-</h2>
-{% endeditable %}
-{% endblock %}
-{% block publicacao_list_post_metainfo %}
-{% editable publicacao.publish_date %}
-<h6 class="post-meta">
-    {% trans "Por" %}:
-    {{ publicacao.autoria }}
-    {% with publicacao.categorias.all as categorias %}
-    {% if categorias %}
-    {% trans "em" %}
-    {% for categoria in categorias %}
-    <a href="{% url "publicacao_list_categoria" categoria.slug %}">{{ categoria }}</a>{% if not forloop.last %}, {% endif %}
-    {% endfor %}
+<ul class="lista-publicacoes">
+    {% for publicacao in publicacoes.object_list %}
+    <li>
+    {% block publicacao_list_post_title %}
+    {% editable publicacao.title %}
+    <h2>
+        <a href="{{ publicacao.get_absolute_url }}">{{ publicacao.title }}</a>
+    </h2>
+    {% endeditable %}
+    {% endblock %}
+    {% block publicacao_list_post_metainfo %}
+    {% editable publicacao.publish_date %}
+    <h6 class="post-meta">
+        <span class="autoria">{% trans "Por" %} <strong>{{ publicacao.autoria }}</strong></span>
+        <span class="data">{% blocktrans with sometime=publicacao.publish_date %}{{ sometime }}{% endblocktrans %}</span>
+        <span class="categorias">
+            {% with publicacao.categorias.all as categorias %}
+            {% if categorias %}
+            <!-- {% trans "em" %} -->
+                {% for categoria in categorias %}
+                    <a href="{% url "publicacao_list_categoria" categoria.slug %}">{{ categoria }}</a>{% if not forloop.last %}{% endif %}
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </span>
+    </h6>
+    {% endeditable %}
+    {% endblock %}
+
+    {% if settings.BLOG_USE_FEATURED_IMAGE and publicacao.featured_image %}
+    {% block publicacao_list_post_featured_image %}
+    <a href="{{ publicacao.get_absolute_url }}">
+        <img class="img-thumbnail pull-left" src="{{ MEDIA_URL }}{% thumbnail publicacao.featured_image 90 90 %}">
+    </a>
+    {% endblock %}
     {% endif %}
-    {% endwith %}
-    {% blocktrans with sometime=publicacao.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
-{% endeditable %}
-{% endblock %}
 
-{% if settings.BLOG_USE_FEATURED_IMAGE and publicacao.featured_image %}
-{% block publicacao_list_post_featured_image %}
-<a href="{{ publicacao.get_absolute_url }}">
-    <img class="img-thumbnail pull-left" src="{{ MEDIA_URL }}{% thumbnail publicacao.featured_image 90 90 %}">
-</a>
-{% endblock %}
-{% endif %}
+    {% block publicacao_list_post_content %}
+    {% editable publicacao.content %}
+    {{ publicacao.description_from_content|safe }}
+    {% endeditable %}
+    {% endblock %}
 
-{% block publicacao_list_post_content %}
-{% editable publicacao.content %}
-{{ publicacao.description_from_content|safe }}
-{% endeditable %}
-{% endblock %}
-
-{% block publicacao_list_post_links %}
-<div class="publicacao-list-detail">
-    {% keywords_for publicacao as tags %}
-    {% if tags %}
-    <ul class="list-inline tags">
-    {% trans "Tags" %}:
-    {% spaceless %}
-    {% for tag in tags %}
-    <li><a href="{% url "publicacao_list_tag" tag.slug %}" class="tag">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>
+    {% block publicacao_list_post_links %}
+    <div class="publicacao-list-detail">
+        {% keywords_for publicacao as tags %}
+        {% if tags %}
+        <ul class="list-inline tags">
+        {% trans "Tags" %}:
+        {% spaceless %}
+        {% for tag in tags %}
+        <li><a href="{% url "publicacao_list_tag" tag.slug %}" class="tag">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>
+        {% endfor %}
+        {% endspaceless %}
+        </ul>
+        {% endif %}
+        <p>
+        <!-- <a href="{{ publicacao.get_absolute_url }}">{% trans "read more" %}</a> -->
+        </p>
+    </div>
+    {% endblock %}
+    </li>
     {% endfor %}
-    {% endspaceless %}
-    </ul>
-    {% endif %}
-    <p>
-    <a href="{{ publicacao.get_absolute_url }}">{% trans "read more" %}</a>
-    </p>
-</div>
-{% endblock %}
-{% endfor %}
+</ul>
 
 {% pagination_for publicacoes %}
 
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_counts.html" %}
 {% endif %}
+</section>
 
 {% endblock %}
 

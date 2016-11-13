@@ -73,3 +73,97 @@
 		background-image: url(../images/violencia-institucional.jpg);
 	}
 }
+
+//Lista de publicações\
+.publicacoes .container.frame {
+	padding: 0;
+
+	@media (min-width: 768px) {
+		background: none
+	}
+}
+
+.lista-publicacoes {
+	list-style: none;
+	padding: 0;
+
+	@media (min-width: 768px) {
+	    -webkit-display: flex;
+	    display: flex;
+	    -webkit-flex-wrap: wrap;
+	    flex-wrap: wrap;
+
+		&:after {
+			@include clearfix;
+		}
+	}
+
+	li {
+    	border-bottom: 2px solid $cp-grey;
+		padding: 10px 15px;
+
+		@media (min-width: 768px) {
+			border-right: 2px solid $cp-grey;
+			width: 25%;
+			background: white;
+		}
+
+		&:last-child { border-bottom: none; }
+	}
+
+	h2 {
+		margin: 0;
+
+		a {
+			color: $title-publication;
+			font-size: 24px;
+		}
+	}
+
+	p { margin: 0; }
+
+	.post-meta {
+		margin: 10px 0;
+	}
+
+	.autoria {
+		color: $author-publication;
+		text-transform: lowercase;
+
+		strong {
+			font-weight: normal;
+			text-transform: uppercase;
+		}
+	}
+
+	.data {
+		color: $title-publication;
+		font-size: 12px;
+		text-transform: uppercase;
+
+	}
+
+	.categorias {
+		display: block;
+		padding: 10px 0 0;
+
+		a {
+			background: #efefef;
+			border-radius: 3px;
+			color:$author-publication;
+			display: inline-block;
+			font-size: 12px;
+			margin-bottom: 3px;
+			padding: 5px 8px;
+			text-transform: lowercase;
+		}
+	}
+
+	img {
+		display: block;
+		height: auto;
+		margin-bottom: 10px;
+		margin-left: -15px;
+		max-width: calc(100% + 30px);
+	}
+}

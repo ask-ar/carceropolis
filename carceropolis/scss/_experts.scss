@@ -1,15 +1,6 @@
-.especialistas .intro {
-  background: white;
-  margin: 0 1em 1em;
-
-  @media (min-width: 768px) {
-     margin: 0 auto 3.5em;
-  }
-
-  > p {
-    margin: 0;
-    padding: 1em;
-  }
+.especialistas .frame > p {
+  margin: 0;
+  padding: 1em;
 }
 
 .lista-especialistas {
@@ -17,7 +8,9 @@
   padding: 0;
 
   @media (min-width: 768px) {
+    -webkit-display: flex;
     display: flex;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
   }
 
