@@ -25,10 +25,10 @@
         </p>
         {% with especialista.especialidades.all as especialidades %}
           {% if especialidades %}
-            <p>Especialidade:</p>
-            <ul class='especialista-especialidades'>
+            <strong>Especialidade(s):</strong>
+            <ul class="especialidades">
             {% for especialidade in especialidades %}
-              <li class='especialista-especialidade'>
+              <li>
                 {{ especialidade.nome_da_especialidade }}
               </li>
             {% endfor %}

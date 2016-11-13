@@ -1547,41 +1547,49 @@ body {
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    padding-bottom: 1em;
   }
 }
-/* line 17, ../../scss/_experts.scss */
-.lista-especialistas li {
-  border-bottom: 1px solid whitesmoke;
+/* line 18, ../../scss/_experts.scss */
+.lista-especialistas > li {
+  border-bottom: 2px solid whitesmoke;
   color: black;
   list-style: none;
   padding: 1.5em 1em;
 }
 @media (min-width: 768px) {
-  /* line 17, ../../scss/_experts.scss */
-  .lista-especialistas li {
-    width: 25%;
+  /* line 18, ../../scss/_experts.scss */
+  .lista-especialistas > li {
+    border: 2px solid whitesmoke;
+    margin: 10px;
+    width: calc(25% - 20px);
   }
 }
-/* line 28, ../../scss/_experts.scss */
+@media (max-width: 768px) {
+  /* line 31, ../../scss/_experts.scss */
+  .lista-especialistas > li:last-child {
+    border-bottom: none;
+  }
+}
+/* line 35, ../../scss/_experts.scss */
 .lista-especialistas h3 {
   font-size: 18px;
   margin: 0 0 .5em;
 }
-/* line 33, ../../scss/_experts.scss */
+/* line 40, ../../scss/_experts.scss */
 .lista-especialistas .email {
   color: black;
   display: block;
   line-height: 30px;
   margin-right: .5em;
 }
-/* line 39, ../../scss/_experts.scss */
+/* line 46, ../../scss/_experts.scss */
 .lista-especialistas .email:before {
-  background: url(../images/icon-mail.svg) no-repeat left center;
-  background-size: 30px auto;
+  background: url(../images/icon-mail.svg) no-repeat center;
+  background-size: 70% auto;
   content: '';
   display: block;
   float: left;
   height: 30px;
-  margin-right: 10px;
   width: 30px;
 }

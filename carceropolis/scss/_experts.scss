@@ -12,16 +12,23 @@
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    padding-bottom: 1em;
   }
 
-  li {
-    border-bottom: 1px solid $cp-grey;
+  > li {
+    border-bottom: 2px solid $cp-grey;
     color: black;
     list-style: none;
     padding: 1.5em 1em;
 
     @media (min-width: 768px) {
-      width: 25%;
+      border: 2px solid $cp-grey;
+      margin: 10px;
+      width: calc(25% - 20px);
+    }
+
+    @media (max-width: 768px) {
+      &:last-child { border-bottom: none; }
     }
   }
 
@@ -37,15 +44,18 @@
     margin-right: .5em;
 
     &:before {
-      background: url(../images/icon-mail.svg) no-repeat left center;
-      background-size: 30px auto;
+      background: url(../images/icon-mail.svg) no-repeat center;
+      background-size: 70% auto;
       content: '';
       display: block;
       float: left;
       height: 30px;
-      margin-right: 10px;
       width: 30px;
     }
+  }
+
+  .especialidades {
+
   }
 
 }
