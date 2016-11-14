@@ -453,19 +453,18 @@ body {
 
 /* line 47, ../../scss/_sidebar.scss */
 #page-content-wrapper {
-  height: 100%;
   position: absolute;
   width: 100%;
 }
 
-/* line 53, ../../scss/_sidebar.scss */
+/* line 52, ../../scss/_sidebar.scss */
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
   margin-right: -280px;
 }
 
 /* Sidebar Styles */
-/* line 60, ../../scss/_sidebar.scss */
+/* line 59, ../../scss/_sidebar.scss */
 .sidebar-nav {
   position: absolute;
   top: 0;
@@ -475,73 +474,75 @@ body {
   list-style: none;
 }
 
-/* line 69, ../../scss/_sidebar.scss */
+/* line 68, ../../scss/_sidebar.scss */
 .sidebar-nav li {
   text-indent: 20px;
   line-height: 40px;
 }
 
-/* line 74, ../../scss/_sidebar.scss */
+/* line 73, ../../scss/_sidebar.scss */
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
   color: #999999;
 }
 
-/* line 80, ../../scss/_sidebar.scss */
+/* line 79, ../../scss/_sidebar.scss */
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 86, ../../scss/_sidebar.scss */
+/* line 85, ../../scss/_sidebar.scss */
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
 }
 
 @media (min-width: 768px) {
-  /* line 92, ../../scss/_sidebar.scss */
+  /* line 91, ../../scss/_sidebar.scss */
   #wrapper {
     padding-left: 0;
   }
 
-  /* line 96, ../../scss/_sidebar.scss */
+  /* line 95, ../../scss/_sidebar.scss */
   #wrapper.toggled {
     padding-left: 0;
   }
 
-  /* line 100, ../../scss/_sidebar.scss */
+  /* line 99, ../../scss/_sidebar.scss */
   #sidebar-wrapper {
     width: 0;
   }
 
-  /* line 104, ../../scss/_sidebar.scss */
+  /* line 103, ../../scss/_sidebar.scss */
   #wrapper.toggled #sidebar-wrapper {
     width: 0;
   }
 
-  /* line 108, ../../scss/_sidebar.scss */
+  /* line 107, ../../scss/_sidebar.scss */
   #page-content-wrapper {
+    height: 100%;
+    min-height: 100%;
     position: relative;
     width: auto;
   }
 
-  /* line 113, ../../scss/_sidebar.scss */
+  /* line 114, ../../scss/_sidebar.scss */
   #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
   }
 }
 /* Custom */
-/* line 123, ../../scss/_sidebar.scss */
+/* line 124, ../../scss/_sidebar.scss */
 .sidebar-brand {
   border-bottom: 1px solid white;
   display: block;
   padding: 15px 15px 20px;
 }
-/* line 128, ../../scss/_sidebar.scss */
+/* line 129, ../../scss/_sidebar.scss */
 .sidebar-brand:before {
   background: url(../images/carceropolis-logo-branco.svg) no-repeat;
   background-size: 100% auto;
@@ -551,7 +552,7 @@ body {
   width: 120px;
 }
 
-/* line 139, ../../scss/_sidebar.scss */
+/* line 140, ../../scss/_sidebar.scss */
 .sidebar-nav .conectas {
   position: absolute;
   top: 32px;
@@ -561,7 +562,7 @@ body {
   letter-spacing: .04em;
 }
 
-/* line 150, ../../scss/_sidebar.scss */
+/* line 151, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right li a {
   color: white;
   font-family: "source_sans_prosemibold";
@@ -569,23 +570,23 @@ body {
   padding: 10px 0;
   text-transform: uppercase;
 }
-/* line 158, ../../scss/_sidebar.scss */
+/* line 159, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right li:active > a, .sidebar-nav .nav.navbar-nav.navbar-right li:hover > a, .sidebar-nav .nav.navbar-nav.navbar-right li.active > a {
   color: #ea702e !important;
 }
 
-/* line 166, ../../scss/_sidebar.scss */
+/* line 167, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li > {
   margin: 5px 0;
   padding: 5px 0 12px;
 }
 
-/* line 171, ../../scss/_sidebar.scss */
+/* line 172, ../../scss/_sidebar.scss */
 .navbar-nav {
   margin: 0;
 }
 
-/* line 177, ../../scss/_sidebar.scss */
+/* line 178, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li > a:before {
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -597,34 +598,34 @@ body {
   position: relative;
   width: 20px;
 }
-/* line 189, ../../scss/_sidebar.scss */
+/* line 190, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(1) > a:before {
   background-image: url(../images/dados.svg);
   top: 4px;
 }
-/* line 193, ../../scss/_sidebar.scss */
+/* line 194, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(2) > a:before {
   background-image: url(../images/publicacoes.svg);
   top: 5px;
 }
-/* line 197, ../../scss/_sidebar.scss */
+/* line 198, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(3) > a:before {
   background-image: url(../images/especialistas.svg);
   top: 1px;
   margin-left: -4px;
   width: 24px;
 }
-/* line 203, ../../scss/_sidebar.scss */
+/* line 204, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(4) > a:before {
   background-image: url(../images/contato.svg);
   top: 8px;
 }
-/* line 207, ../../scss/_sidebar.scss */
+/* line 208, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(5) > a:before {
   background-image: url(../images/sobre.svg);
   top: 4px;
 }
-/* line 212, ../../scss/_sidebar.scss */
+/* line 213, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right .dropdown-menu {
   display: block !important;
   position: static;
@@ -641,7 +642,7 @@ body {
   border-radius: 0;
   box-shadow: none;
 }
-/* line 228, ../../scss/_sidebar.scss */
+/* line 229, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right .dropdown-menu li a {
   text-transform: none;
   padding-left: 54px;
@@ -1478,55 +1479,52 @@ body {
   width: 100px;
 }
 
-/* line 3, ../../scss/_about.scss */
-[class^='sobre'] #page-content-wrapper::before {
-  content: "";
-  background: url(../images/about.jpg) no-repeat;
-  opacity: 0.8;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-}
-@media (max-width: 768px) {
-  /* line 15, ../../scss/_about.scss */
-  [class^='sobre'] #page-content-wrapper > .container {
-    padding: 0;
+@media (min-width: 768px) {
+  /* line 4, ../../scss/_about.scss */
+  [class^='sobre'] #page-content-wrapper {
+    background-image: url(../images/about.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  /* line 10, ../../scss/_about.scss */
+  [class^='sobre'] #footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
   }
 }
-/* line 21, ../../scss/_about.scss */
-[class^='sobre'] .container {
-  color: white;
-  font-size: 16px;
-  font-family: "source_sans_prosemibold";
-  padding-right: 3.5em;
-  padding-left: 3.5em;
-}
-/* line 29, ../../scss/_about.scss */
+/* line 17, ../../scss/_about.scss */
 [class^='sobre'] .editable-original {
-  color: white;
+  background: #333;
+  margin: 0 0 1em;
+  padding: 1em;
 }
 @media (min-width: 768px) {
-  /* line 29, ../../scss/_about.scss */
+  /* line 17, ../../scss/_about.scss */
   [class^='sobre'] .editable-original {
-    display: flex;
-    margin-bottom: 3.5em;
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+    -webkit-column-gap: 3em;
+    -moz-column-gap: 3em;
+    column-gap: 3em;
+    margin: 3em;
+    padding: 2em 2.5em;
   }
 }
-/* line 37, ../../scss/_about.scss */
-[class^='sobre'] .editable-original > section {
-  padding: 3em 2em;
-}
-/* line 41, ../../scss/_about.scss */
+/* line 33, ../../scss/_about.scss */
 [class^='sobre'] .editable-original h2 {
   margin: 0 0 1em;
 }
-/* line 45, ../../scss/_about.scss */
+/* line 37, ../../scss/_about.scss */
 [class^='sobre'] .editable-original p {
-  margin: 0;
+  color: #fff;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  margin: 0 0 1em;
   padding-bottom: .5em;
+  text-align: justify;
+  text-indent: 2em;
 }
 
 /* line 1, ../../scss/_experts.scss */

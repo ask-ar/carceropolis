@@ -1,51 +1,48 @@
 [class^='sobre'] {
 
-  #page-content-wrapper::before {
-    content: "";
-    background: url(../images/about.jpg) no-repeat;
-    opacity: 0.8;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1; 
-  }
-
-  #page-content-wrapper > .container {
-    @media (max-width: 768px) {
-      padding: 0;
-    }
-  }
-
-  .container {
-    color: white;
-    font-size: 16px;
-    font-family: "source_sans_prosemibold";
-    padding-right: 3.5em;
-    padding-left: 3.5em;
-  }
-
-  .editable-original {
-    color: white;
-
     @media (min-width: 768px) {
-      display: flex;
-      margin-bottom: 3.5em;
+        #page-content-wrapper {
+            background-image: url(../images/about.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        #footer {
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+        }
     }
 
-    > section {
-      padding: 3em 2em;
-    }
+    .editable-original {
+        background: $fg-dark;
+        margin: 0 0 1em;
+        padding: 1em;
 
-    h2 {
-      margin: 0 0 1em;
-    }
+        @media (min-width: 768px) {
+            -webkit-column-count: 4;
+            -moz-column-count: 4;
+            column-count: 4;
+            -webkit-column-gap: 3em;
+            -moz-column-gap: 3em;
+            column-gap: 3em;
+            margin: 3em;
+            padding: 2em 2.5em;
+        }
 
-    p {
-      margin: 0;
-      padding-bottom: .5em;
+        h2 {
+            margin: 0 0 1em;
+        }
+
+        p {
+            color: #fff;
+            font-size: 1.2em;
+            line-height: 1.4em;
+            margin: 0 0 1em;
+            padding-bottom: .5em;
+            text-align: justify;
+            text-indent: 2em;
+        }
     }
-  }
 
 }

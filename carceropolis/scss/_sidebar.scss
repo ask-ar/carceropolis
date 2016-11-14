@@ -45,7 +45,6 @@
 }
 
 #page-content-wrapper {
-    height: 100%;
     position: absolute;
     width: 100%;
 }
@@ -106,6 +105,8 @@
     }
 
     #page-content-wrapper {
+        height: 100%;
+        min-height: 100%;
         position: relative;
         width: auto;
     }
