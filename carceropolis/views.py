@@ -23,18 +23,28 @@ User = get_user_model()
                   # {'LANGUAGES':settings.LANGUAGES,
                    # 'SELECTEDLANG':request.LANGUAGE_CODE})
 
-
-def publicacao_list(request, tag=None, year=None, month=None, username=None,
-                    categoria=None, template="carceropolis/publicacao/publicacao_list.html",
-                    extra_context=None):
+def publicacao_home(request):
+    """Display the Publicações Home page, which is a matrix with all available
+    categories (only categories, not the items from the Publicação Class).
     """
-    Display a list of blog posts that are filtered by tag, year, month,
+    categorias = AreaDeAtuacao.objects.all()
+    categorias = categorias.order_by('ordem')
+    templates = ["carceropolis/publicacao/publicacao_home.html"]
+    context = {'categorias': categorias}
+    return TemplateResponse(request, templates, context)
+
+def publicacao_list_categoria(request, categoria, tag=None, year=None,
+                              month=None, username=None, extra_context=None):
+    """Display a list of blog posts that are filtered by tag, year, month,
     author or categoria. Custom templates are checked for using the name
-    ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is either the
-    categoria slug or author's username if given.
+    ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is
+    either the categoria slug or author's username if given.
     """
     templates = []
+    template = "carceropolis/publicacao/publicacao_list.html"
     publicacoes = Publicacao.objects.published()
+    categoria = get_object_or_404(AreaDeAtuacao, slug=categoria)
+    publicacoes = publicacoes.filter(categorias__nome_da_area__in=[categoria])
     if tag is not None:
         tag = get_object_or_404(Keyword, slug=tag)
         publicacoes = publicacoes.filter(keywords__keyword=tag)
@@ -46,58 +56,44 @@ def publicacao_list(request, tag=None, year=None, month=None, username=None,
                 month = month_name[int(month)]
             except IndexError:
                 raise Http404()
-    if categoria is not None:
-        categoria = get_object_or_404(AreaDeAtuacao, slug=categoria)
-        publicacoes = publicacoes.filter(categories=categoria)
-        templates.append(u"carceropolis/publicacao/publicacao_list_%s.html" %
-                         str(categoria.slug))
     author = None
     if username is not None:
         author = get_object_or_404(User, username=username)
         publicacoes = publicacoes.filter(user=author)
-        templates.append(u"carceropolis/publicacao/publicacao_list_%s.html" %
-                         username)
+        # templates.append(u"carceropolis/publicacao/publicacao_list_%s.html" %
+        #                  username)
 
     prefetch = ("categorias", "keywords__keyword")
-    publicacoes = publicacoes.select_related("user").prefetch_related(*prefetch)
+    publicacoes = publicacoes.prefetch_related(*prefetch)
     publicacoes = paginate(publicacoes, request.GET.get("page", 1),
                            settings.PUBLICACAO_PER_PAGE,
                            settings.MAX_PAGING_LINKS)
     context = {"publicacoes": publicacoes, "year": year, "month": month,
-               "tag": tag, "categoria": categoria, "author": author,
-               'teste': Publicacao.objects.all()}
+               "tag": tag, "categoria": categoria, "author": author}
     context.update(extra_context or {})
     templates.append(template)
     return TemplateResponse(request, templates, context)
 
 
-def publicacao_detail(request, slug, year=None, month=None, day=None,
-                     template="carceropolis/publicacao/publicacao_detail.html",
-                     extra_context=None):
-    """. Custom templates are checked for using the name
-    ``carceropolis/publicacao/publicacao_detail_XXX.html`` where ``XXX`` is the blog
-    posts's slug.
-    """
-    publicacoes = Publicacao.objects.published(
-                                     for_user=request.user).select_related()
+def publicacao_detail(request, slug, extra_context=None):
+    """Presenting a specific publication (publicaço)."""
+    template = "carceropolis/publicacao/publicacao_detail.html"
+    publicacoes = Publicacao.objects.published().select_related()
     publicacao = get_object_or_404(publicacoes, slug=slug)
-    related_posts = publicacao.related_posts.published(for_user=request.user)
+    related_posts = publicacao.related_posts.published()
     context = {"publicacao": publicacao, "editable_obj": publicacao,
                "related_posts": related_posts}
     context.update(extra_context or {})
-    templates = [u"carceropolis/publicacao/publicacao_detail_%s.html" % str(slug), template]
+    templates = [template]
     return TemplateResponse(request, templates, context)
 
 
-def publicacao_feed(request, format, **kwargs):
-    """
-    Blog posts feeds - maps format to the correct feed view.
-    """
+def publicacao_feed(request, fmt, **kwargs):
+    """Blog posts feeds - maps format to the correct feed view."""
     try:
-        return {"rss": PostsRSS, "atom": PostsAtom}[format](**kwargs)(request)
+        return {"rss": PostsRSS, "atom": PostsAtom}[fmt](**kwargs)(request)
     except KeyError:
         raise Http404()
-
 
 def especialistas_list(request, area_de_atuacao=None, especialidade=None):
     """Display a list of blog posts that are filtered by tag, year, month,
