@@ -1,17 +1,18 @@
 # coding: utf-8
 from __future__ import unicode_literals
-from future.builtins import str
-from future.builtins import int
+
 from calendar import month_name
 
 from django.contrib.auth import get_user_model
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.template.response import TemplateResponse
-
-from .models import Publicacao, AreaDeAtuacao, Especialidade, Especialista
+from future.builtins import int, str
 from mezzanine.conf import settings
 from mezzanine.utils.views import paginate
+
+from .models import AreaDeAtuacao, Especialidade, Especialista, Publicacao
+
 # from mezzanine.utils.views import render
 
 User = get_user_model()
@@ -107,22 +108,31 @@ def especialistas_list(request, area_de_atuacao=None, especialidade=None):
     templates = []
     context = {}
     especialistas = Especialista.objects.all()
+    especialistas = especialistas.order_by('nome')
     if area_de_atuacao is not None:
         area_de_atuacao = get_object_or_404(AreaDeAtuacao, slug=area_de_atuacao)
-        especialistas = especialistas.filter(area_de_atuacao=area_de_atuacao)
-        templates.append(u"carceropolis/especialistas/area_atuacao.html")
+        especialistas = especialistas.filter(area_de_atuacao__nome_da_area__in=[area_de_atuacao])
+        # templates.append(u"carceropolis/especialistas/area_atuacao.html")
         context['area_de_atuacao'] = area_de_atuacao
     if especialidade is not None:
         especialidade = get_object_or_404(Especialidade, slug=especialidade)
-        especialistas = especialistas.filter(especialidade=especialidade)
-        templates.append(u"carceropolis/especialistas/especialidade.html")
+        especialistas = especialistas.filter(especialidades__nome_da_especialidade__in=[especialidade])
+        # templates.append(u"carceropolis/especialistas/especialidade.html")
         context['especialidade'] = especialidade
 
     prefetch = ("area_de_atuacao", 'especialidades')
     especialistas = especialistas.prefetch_related(*prefetch)
-    especialistas = paginate(especialistas, request.GET.get("page", 1),
-                           settings.PUBLICACAO_PER_PAGE,
-                           settings.MAX_PAGING_LINKS)
-    context = {"especialistas": especialistas}
+    # especialistas = paginate(especialistas, request.GET.get("page", 1),
+                             # settings.PUBLICACAO_PER_PAGE,
+                             # settings.MAX_PAGING_LINKS)
+    areas_de_atuacao = AreaDeAtuacao.objects.all()
+    areas_de_atuacao = areas_de_atuacao.order_by('ordem')
+    agrupados = []
+    for area in areas_de_atuacao:
+        item = {'area': area, 'especialistas':
+                especialistas.filter(area_de_atuacao=area)}
+        if item['especialistas']:
+            agrupados.append(item)
+    context = {"especialistas_agrupados": agrupados}
     templates.append(u'carceropolis/especialistas/especialistas.html')
     return TemplateResponse(request, templates, context)

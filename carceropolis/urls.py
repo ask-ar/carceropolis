@@ -5,11 +5,10 @@ from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sites.models import Site
-from mezzanine.blog.models import BlogPost
 from django.views.i18n import set_language
-
-from mezzanine.core.views import direct_to_template
+from mezzanine.blog.models import BlogPost
 from mezzanine.conf import settings
+from mezzanine.core.views import direct_to_template
 
 from . import views
 
@@ -52,8 +51,13 @@ publicacao_pattern = [
 ]
 
 especialistas_pattern = [
-    url(r'^$',
+    url(r'^area_de_atuacao/(?P<area_de_atuacao>.*)%s$' % _slash,
         views.especialistas_list, name='especialista_list'),
+    url(r'^especialidade/(?P<especialidade>.*)%s$' % _slash,
+        views.especialistas_list, name='especialista_list'),
+    url(r'^(?P<slug>.*)%s$' % _slash, views.publicacao_detail,
+        name='publicacao_detail'),
+    url(r'^$', views.especialistas_list, name='especialista_list'),
 ]
 
 # Add the urlpatterns for any custom Django applications here.

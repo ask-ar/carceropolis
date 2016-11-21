@@ -14,31 +14,36 @@
 
 <section class="container frame">
   <p>Hella narwhal Cosby sweater McSweeney's, salvia kitsch before they sold out High Life. Umami tattooed sriracha meggings pickled Marfa Blue Bottle High Life next level four loko PBR.</p>
-  <ul class="lista-especialistas">
-  {% for especialista in especialistas %}
-    <li>
-        <h3>
-            {{especialista.nome}}
-        </h3>
-        <p>
-            {{especialista.mini_bio}}
-        </p>
-        {% with especialista.especialidades.all as especialidades %}
-          {% if especialidades %}
-            <strong>Especialidade(s):</strong>
-            <ul class="especialidades">
-            {% for especialidade in especialidades %}
-              <li>
-                {{ especialidade.nome_da_especialidade }}
-              </li>
-            {% endfor %}
-            </ul>
+  {% for grupo in especialistas_agrupados %}
+  <h1><a href='/especialistas/area_de_atuacao/{{grupo.area.slug}}'>{{grupo.area}}</a></h1>
+    <p>{{grupo.area.descricao}}</p>
+    </a>
+    <ul class="lista-especialistas area-{{grupo.area}}">
+      {% for especialista in grupo.especialistas %}
+        <li>
+          <h2>{{especialista.nome}}</h2>
+          <p>{{especialista.instituicao}}</p>
+          <p>{{especialista.mini_bio}}</p>
+          {% with especialista.especialidades.all as especialidades %}
+            {% if especialidades %}
+              <h3>Especialidade(s):</h3>
+              <ul class="especialidades">
+              {% for especialidade in especialidades %}
+                <li>
+                  <a href='/especialistas/especialidade/{{especialidade.slug}}/'>{{ especialidade.nome_da_especialidade }}</a>
+                </li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+          {% if user.is_authenticated %}
+            <p>{{especialista.telefone}}</p>
+            <a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
           {% endif %}
-        {% endwith %}
-        <a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
-    </li>
+        </li>
+      {% endfor %}
+    </ul>
   {% endfor %}
-  </ul>
 </section>
 
 {% endblock %}
