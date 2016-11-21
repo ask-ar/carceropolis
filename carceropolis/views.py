@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from django.template.response import TemplateResponse
 from future.builtins import int, str
 from mezzanine.conf import settings
+from mezzanine.generic.models import Keyword
 from mezzanine.utils.views import paginate
 
 from .models import AreaDeAtuacao, Especialidade, Especialista, Publicacao
@@ -32,6 +33,30 @@ def publicacao_home(request):
     templates = ["carceropolis/publicacao/publicacao_home.html"]
     context = {'categorias': categorias}
     return TemplateResponse(request, templates, context)
+
+
+def publicacao_list_tag(request, tag, extra_context=None):
+    """Display a list of blog posts that are filtered by tag, year, month,
+    author or categoria. Custom templates are checked for using the name
+    ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is
+    either the categoria slug or author's username if given.
+    """
+    templates = []
+    template = "carceropolis/publicacao/publicacao_list.html"
+    publicacoes = Publicacao.objects.published()
+    tag = get_object_or_404(Keyword, slug=tag)
+    publicacoes = publicacoes.filter(keywords__keyword=tag)
+
+    prefetch = ("categorias", "keywords__keyword")
+    publicacoes = publicacoes.prefetch_related(*prefetch)
+    publicacoes = paginate(publicacoes, request.GET.get("page", 1),
+                           settings.PUBLICACAO_PER_PAGE,
+                           settings.MAX_PAGING_LINKS)
+    context = {"publicacoes": publicacoes, "tag": tag,}
+    context.update(extra_context or {})
+    templates.append(template)
+    return TemplateResponse(request, templates, context)
+
 
 def publicacao_list_categoria(request, categoria, tag=None, year=None,
                               month=None, username=None, extra_context=None):
