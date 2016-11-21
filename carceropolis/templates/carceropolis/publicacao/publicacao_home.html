@@ -32,7 +32,7 @@
 {% block main %}
 <section class="container frame">
 
-<ul class="categorias-de-publicacoes">
+<ul class="categorias-publicacoes">
   {% for categoria in categorias %} <!-- Categoria == Área de Atuação -->
     <li class="categoria-{{categoria}}">
         <a href="categoria/{{ categoria.slug }}">{{ categoria.nome_da_area }}</a>
