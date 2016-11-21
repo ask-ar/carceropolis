@@ -4,6 +4,7 @@ from cidades.models import Cidade, STATE_CHOICES
 from django.db import models
 from mezzanine.blog.models import BlogPost
 from phonenumber_field.modelfields import PhoneNumberField
+from autoslug import AutoSlugField
 
 
 CATEGORIAS = (
@@ -20,6 +21,7 @@ class AreaDeAtuacao(models.Model):
     nome_da_area = models.CharField(max_length=250, unique=True)
     descricao = models.TextField()
     ordem = models.IntegerField(unique=True)
+    slug = AutoSlugField(populate_from='nome_da_area', always_update=True)
 
     def __unicode__(self):
         return self.nome_da_area
@@ -33,7 +35,7 @@ class Especialidade(models.Model):
     """Definição das Especialidades principais mapeadas no projeto."""
     nome_da_especialidade = models.CharField(max_length=80, unique=True)
     descricao = models.TextField(blank=True)
-    # slug = models.CharField(max_length=250)
+    slug = AutoSlugField(populate_from='nome_da_especialidade', always_update=True)
 
     def __unicode__(self):
         return self.nome_da_especialidade
