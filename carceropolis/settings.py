@@ -343,7 +343,7 @@ OPTIONAL_APPS = (
 #########################
 # CARCEROPOLIS SETTINGS #
 #########################
-PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DB_FORMAT = 'E164'
 PHONENUMBER_DEFAULT_REGION = 'BR'
 BLOG_SLUG = 'publicacoes'
 
