@@ -6,13 +6,30 @@ from mezzanine.blog.admin import BlogPostAdmin
 from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
                      UnidadePrisional)
 
-publicacao_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
-fields = publicacao_fieldsets[0][1]["fields"]
-idx = fields.index('categories')
-content_idx = fields.index('content')
-fields[idx] = 'categorias'
-fields.insert(content_idx, 'arquivo_publicacao')
-fields.insert(fields.index('title') + 1, 'autoria')
+
+def generate_publicacao_fieldset():
+    publicacao_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
+    fields = publicacao_fieldsets[0][1]["fields"]
+
+    cat_idx = fields.index('categories')
+    fields[cat_idx] = 'categorias'
+
+    dates_idx = fields.index((u'publish_date', u'expiry_date'))
+    fields[dates_idx] = 'publish_date'
+
+    content_idx = fields.index('content')
+    fields.insert(content_idx, 'arquivo_publicacao')
+
+    fields.insert(fields.index('title') + 1, 'autoria')
+
+    fields.remove('allow_comments')
+    fields.remove('status')
+
+    tags = publicacao_fieldsets[2][1]['fields'].remove('keywords')
+    fields.append('keywords')
+    # fields[fields.index('keywords')] = 'tags'
+
+    return publicacao_fieldsets
 
 
 class AreaDeAtuacaoAdmin(admin.ModelAdmin):
@@ -30,7 +47,7 @@ class EspecialistaAdmin(admin.ModelAdmin):
 
 
 class PublicacaoAdmin(BlogPostAdmin):
-    fieldsets = publicacao_fieldsets
+    fieldsets = generate_publicacao_fieldset()
 
 
 class UnidadePrisionalAdmin(admin.ModelAdmin):
@@ -41,6 +58,7 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
                                      u'telefone', u'email']})]
 
 
+# admin.site.unregister(BlogPost, BlogPostAdmin)
 admin.site.register(AreaDeAtuacao, AreaDeAtuacaoAdmin)
 admin.site.register(Especialidade, EspecialidadeAdmin)
 admin.site.register(Especialista, EspecialistaAdmin)

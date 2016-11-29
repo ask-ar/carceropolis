@@ -65,14 +65,28 @@ class Especialista(models.Model):
 
 class Publicacao(BlogPost):
     """Publicações relacionadas à temática do site."""
-    autoria = models.CharField(max_length=150)
-    categorias = models.ManyToManyField(AreaDeAtuacao)
-    arquivo_publicacao = models.FileField('Arquivo da Publicação',
-                                          upload_to='publicacoes/')
+    titulo = models.TextField()
+    autoria = models.CharField(max_length=150,
+                               verbose_name='Autoria')
+    categorias = models.ManyToManyField(AreaDeAtuacao,
+                                        verbose_name='Categorias')
+    data_de_publicacao = models.DateField(verbose_name='Data de Publicação')
+    arquivo_publicacao = models.FileField(upload_to='publicacoes/',
+                                          verbose_name='Arquivo da Publicação')
 
     class Meta:
         verbose_name = 'Publicação'
         verbose_name_plural = 'Publicações'
+
+
+Publicacao._meta.get_field('title').verbose_name = 'Título'
+Publicacao._meta.get_field('publish_date').verbose_name = 'Publicado em'
+Publicacao._meta.get_field('content').verbose_name = 'Descrição'
+Publicacao._meta.get_field('keywords').verbose_name = 'Tags'
+Publicacao._meta.get_field('related_posts').verbose_name = 'Posts Relacionados'
+Publicacao._meta.get_field('_meta_title').verbose_name = 'Tílulo'
+Publicacao._meta.get_field('description').verbose_name = 'Descrição curta'
+Publicacao._meta.get_field('gen_description').verbose_name = 'Gerar descrição'
 
 
 class UnidadePrisional(models.Model):
