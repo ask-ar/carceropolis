@@ -26,7 +26,6 @@
 #sidebar-wrapper {
     background: $sidebar-bg url(../images/simbolo-conectas-sidenav.svg) no-repeat;
     background-position: calc(100% + 20px) -10px;
-
     z-index: 1000;
     position: fixed;
     left: 280px;
@@ -152,7 +151,7 @@
         color: white;
         font-family: $semibold;
         font-size: 14px;
-        padding: 10px 0;
+        padding: 0 0 10px;
         text-transform: uppercase;
     }
 
@@ -170,7 +169,7 @@
 }
 
 .navbar-nav {
-    margin: 0;
+    margin: 10px 0 0;
 }
 
 .sidebar-nav .nav.navbar-nav.navbar-right {

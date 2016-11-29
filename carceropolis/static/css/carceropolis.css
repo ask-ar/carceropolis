@@ -446,25 +446,25 @@ body {
   transition: all 0.5s ease;
 }
 
-/* line 43, ../../scss/_sidebar.scss */
+/* line 42, ../../scss/_sidebar.scss */
 #wrapper.toggled #sidebar-wrapper {
   width: 280px;
 }
 
-/* line 47, ../../scss/_sidebar.scss */
+/* line 46, ../../scss/_sidebar.scss */
 #page-content-wrapper {
   position: absolute;
   width: 100%;
 }
 
-/* line 52, ../../scss/_sidebar.scss */
+/* line 51, ../../scss/_sidebar.scss */
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
   margin-right: -280px;
 }
 
 /* Sidebar Styles */
-/* line 59, ../../scss/_sidebar.scss */
+/* line 58, ../../scss/_sidebar.scss */
 .sidebar-nav {
   position: absolute;
   top: 0;
@@ -474,54 +474,54 @@ body {
   list-style: none;
 }
 
-/* line 68, ../../scss/_sidebar.scss */
+/* line 67, ../../scss/_sidebar.scss */
 .sidebar-nav li {
   text-indent: 20px;
   line-height: 40px;
 }
 
-/* line 73, ../../scss/_sidebar.scss */
+/* line 72, ../../scss/_sidebar.scss */
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
   color: #999999;
 }
 
-/* line 79, ../../scss/_sidebar.scss */
+/* line 78, ../../scss/_sidebar.scss */
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 85, ../../scss/_sidebar.scss */
+/* line 84, ../../scss/_sidebar.scss */
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
 }
 
 @media (min-width: 768px) {
-  /* line 91, ../../scss/_sidebar.scss */
+  /* line 90, ../../scss/_sidebar.scss */
   #wrapper {
     padding-left: 0;
   }
 
-  /* line 95, ../../scss/_sidebar.scss */
+  /* line 94, ../../scss/_sidebar.scss */
   #wrapper.toggled {
     padding-left: 0;
   }
 
-  /* line 99, ../../scss/_sidebar.scss */
+  /* line 98, ../../scss/_sidebar.scss */
   #sidebar-wrapper {
     width: 0;
   }
 
-  /* line 103, ../../scss/_sidebar.scss */
+  /* line 102, ../../scss/_sidebar.scss */
   #wrapper.toggled #sidebar-wrapper {
     width: 0;
   }
 
-  /* line 107, ../../scss/_sidebar.scss */
+  /* line 106, ../../scss/_sidebar.scss */
   #page-content-wrapper {
     height: 100%;
     min-height: 100%;
@@ -529,20 +529,20 @@ body {
     width: auto;
   }
 
-  /* line 114, ../../scss/_sidebar.scss */
+  /* line 113, ../../scss/_sidebar.scss */
   #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
   }
 }
 /* Custom */
-/* line 124, ../../scss/_sidebar.scss */
+/* line 123, ../../scss/_sidebar.scss */
 .sidebar-brand {
   border-bottom: 1px solid white;
   display: block;
   padding: 15px 15px 20px;
 }
-/* line 129, ../../scss/_sidebar.scss */
+/* line 128, ../../scss/_sidebar.scss */
 .sidebar-brand:before {
   background: url(../images/carceropolis-logo-branco.svg) no-repeat;
   background-size: 100% auto;
@@ -552,7 +552,7 @@ body {
   width: 120px;
 }
 
-/* line 140, ../../scss/_sidebar.scss */
+/* line 139, ../../scss/_sidebar.scss */
 .sidebar-nav .conectas {
   position: absolute;
   top: 32px;
@@ -562,31 +562,31 @@ body {
   letter-spacing: .04em;
 }
 
-/* line 151, ../../scss/_sidebar.scss */
+/* line 150, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right li a {
   color: white;
   font-family: "source_sans_prosemibold";
   font-size: 14px;
-  padding: 10px 0;
+  padding: 0 0 10px;
   text-transform: uppercase;
 }
-/* line 159, ../../scss/_sidebar.scss */
+/* line 158, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right li:active > a, .sidebar-nav .nav.navbar-nav.navbar-right li:hover > a, .sidebar-nav .nav.navbar-nav.navbar-right li.active > a {
   color: #ea702e !important;
 }
 
-/* line 167, ../../scss/_sidebar.scss */
+/* line 166, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li > {
   margin: 5px 0;
   padding: 5px 0 12px;
 }
 
-/* line 172, ../../scss/_sidebar.scss */
+/* line 171, ../../scss/_sidebar.scss */
 .navbar-nav {
-  margin: 0;
+  margin: 10px 0 0;
 }
 
-/* line 178, ../../scss/_sidebar.scss */
+/* line 177, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li > a:before {
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -598,34 +598,34 @@ body {
   position: relative;
   width: 20px;
 }
-/* line 190, ../../scss/_sidebar.scss */
+/* line 189, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(1) > a:before {
   background-image: url(../images/dados.svg);
   top: 4px;
 }
-/* line 194, ../../scss/_sidebar.scss */
+/* line 193, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(2) > a:before {
   background-image: url(../images/publicacoes.svg);
   top: 5px;
 }
-/* line 198, ../../scss/_sidebar.scss */
+/* line 197, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(3) > a:before {
   background-image: url(../images/especialistas.svg);
   top: 1px;
   margin-left: -4px;
   width: 24px;
 }
-/* line 204, ../../scss/_sidebar.scss */
+/* line 203, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(4) > a:before {
   background-image: url(../images/contato.svg);
   top: 8px;
 }
-/* line 208, ../../scss/_sidebar.scss */
+/* line 207, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(5) > a:before {
   background-image: url(../images/sobre.svg);
   top: 4px;
 }
-/* line 213, ../../scss/_sidebar.scss */
+/* line 212, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right .dropdown-menu {
   display: block !important;
   position: static;
@@ -642,7 +642,7 @@ body {
   border-radius: 0;
   box-shadow: none;
 }
-/* line 229, ../../scss/_sidebar.scss */
+/* line 228, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right .dropdown-menu li a {
   text-transform: none;
   padding-left: 54px;
@@ -667,7 +667,7 @@ body {
 
 /* line 15, ../../scss/_home.scss */
 .banner {
-  margin-top: -48px;
+  margin-top: 10px;
 }
 @media (min-width: 768px) {
   /* line 15, ../../scss/_home.scss */
@@ -782,25 +782,36 @@ body {
 }
 
 @media (min-width: 768px) {
-  /* line 1, ../../scss/_dados.scss */
+  /* line 2, ../../scss/_dados.scss */
   .header-dados {
     position: relative;
   }
-}
 
-/* line 7, ../../scss/_dados.scss */
+  /* line 7, ../../scss/_dados.scss */
+  .dados .navbar, .Dados .navbar {
+    background-position: calc(100% + 5px) 0;
+    background-size: 50px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 17, ../../scss/_dados.scss */
+  .dados .navbar, .Dados .navbar {
+    background-image: none;
+  }
+}
+/* line 23, ../../scss/_dados.scss */
 .filters {
   position: absolute;
   top: 7px;
   right: 20px;
 }
 @media (min-width: 768px) {
-  /* line 7, ../../scss/_dados.scss */
+  /* line 23, ../../scss/_dados.scss */
   .filters {
     top: 40px;
   }
 }
-/* line 17, ../../scss/_dados.scss */
+/* line 33, ../../scss/_dados.scss */
 .filters ul {
   display: -webkit-flex;
   display: flex;
@@ -808,7 +819,7 @@ body {
   margin: 0;
   padding: 0;
 }
-/* line 25, ../../scss/_dados.scss */
+/* line 41, ../../scss/_dados.scss */
 .filters .map,
 .filters .filter,
 .filters .text {
@@ -819,7 +830,7 @@ body {
   margin: 2px;
   width: 30px;
 }
-/* line 33, ../../scss/_dados.scss */
+/* line 49, ../../scss/_dados.scss */
 .filters .map:before,
 .filters .filter:before,
 .filters .text:before {
@@ -831,32 +842,32 @@ body {
   margin: 4px auto 0;
   width: 22px;
 }
-/* line 44, ../../scss/_dados.scss */
+/* line 60, ../../scss/_dados.scss */
 .filters .map:before {
   background-image: url(../images/icon-mapa.svg);
 }
-/* line 48, ../../scss/_dados.scss */
+/* line 64, ../../scss/_dados.scss */
 .filters .filter:before {
   background-image: url(../images/icon-filtro.svg);
   margin-top: 8px;
 }
-/* line 53, ../../scss/_dados.scss */
+/* line 69, ../../scss/_dados.scss */
 .filters .text:before {
   background-image: url(../images/icon-busca.svg);
 }
 
-/* line 58, ../../scss/_dados.scss */
+/* line 74, ../../scss/_dados.scss */
 .tabs {
   margin: 0 auto;
   width: 300px;
 }
 @media (min-width: 768px) {
-  /* line 58, ../../scss/_dados.scss */
+  /* line 74, ../../scss/_dados.scss */
   .tabs {
     margin-top: 30px;
   }
 }
-/* line 66, ../../scss/_dados.scss */
+/* line 82, ../../scss/_dados.scss */
 .tabs ul {
   display: -webkit-flex;
   display: flex;
@@ -864,7 +875,7 @@ body {
   margin: 0;
   padding: 0;
 }
-/* line 74, ../../scss/_dados.scss */
+/* line 90, ../../scss/_dados.scss */
 .tabs a {
   color: #ea702e;
   border-bottom: 2px solid transparent;
@@ -877,11 +888,11 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 87, ../../scss/_dados.scss */
+/* line 103, ../../scss/_dados.scss */
 .tabs a:hover {
   text-decoration: none;
 }
-/* line 91, ../../scss/_dados.scss */
+/* line 107, ../../scss/_dados.scss */
 .tabs a:before {
   background-repeat: no-repeat;
   background-size: contain;
@@ -892,27 +903,27 @@ body {
   margin: 4px auto 0;
   width: 22px;
 }
-/* line 102, ../../scss/_dados.scss */
+/* line 118, ../../scss/_dados.scss */
 .tabs a:hover, .tabs a.active {
   border-bottom-color: #ea702e;
 }
-/* line 109, ../../scss/_dados.scss */
+/* line 125, ../../scss/_dados.scss */
 .tabs li:nth-child(1) a:before {
   background-image: url(../images/icon-macro-dados.svg);
   width: 26px;
 }
-/* line 114, ../../scss/_dados.scss */
+/* line 130, ../../scss/_dados.scss */
 .tabs li:nth-child(2) a:before {
   background-image: url(../images/icon-populacao.svg);
   width: 28px;
 }
-/* line 119, ../../scss/_dados.scss */
+/* line 135, ../../scss/_dados.scss */
 .tabs li:nth-child(3) a:before {
   background-image: url(../images/icon-unidades.svg);
   height: 20px;
   margin-bottom: 10px;
 }
-/* line 125, ../../scss/_dados.scss */
+/* line 141, ../../scss/_dados.scss */
 .tabs li:nth-child(4) a:before {
   background-image: url(../images/icon-politicas.svg);
   height: 22px;
@@ -1502,9 +1513,9 @@ body {
 @media (min-width: 768px) {
   /* line 17, ../../scss/_about.scss */
   [class^='sobre'] .editable-original {
-    -webkit-column-count: 4;
-    -moz-column-count: 4;
-    column-count: 4;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
     -webkit-column-gap: 3em;
     -moz-column-gap: 3em;
     column-gap: 3em;
