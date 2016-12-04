@@ -1,5 +1,6 @@
 # coding= utf-8
 """Modelos definidos para o Projeto carcerópolis."""
+from datetime import datetime
 from cidades.models import Cidade, STATE_CHOICES
 from django.db import models
 from mezzanine.blog.models import BlogPost
@@ -15,6 +16,13 @@ CATEGORIAS = (
     (u'VIOLÊNCIA', u'VIOLÊNCIA INSTITUCIONAL'),
     ('OUTROS', 'OUTROS'),
 )
+
+
+YEAR_CHOICES = [(r, r) for r in range(1900, datetime.now().year+1)]
+
+def current_year():
+    return datetime.now().year
+
 
 class AreaDeAtuacao(models.Model):
     """Categorias Gerais de classificação de Especialistas e Publicações."""
@@ -65,12 +73,13 @@ class Especialista(models.Model):
 
 class Publicacao(BlogPost):
     """Publicações relacionadas à temática do site."""
-    titulo = models.TextField()
     autoria = models.CharField(max_length=150,
                                verbose_name='Autoria')
     categorias = models.ManyToManyField(AreaDeAtuacao,
                                         verbose_name='Categorias')
-    data_de_publicacao = models.DateField(verbose_name='Data de Publicação')
+    data_de_publicacao = models.IntegerField(verbose_name='Data de publicacão',
+                                             choices=YEAR_CHOICES,
+                                             default=current_year)
     arquivo_publicacao = models.FileField(upload_to='publicacoes/',
                                           verbose_name='Arquivo da Publicação')
 
@@ -87,6 +96,7 @@ Publicacao._meta.get_field('related_posts').verbose_name = 'Posts Relacionados'
 Publicacao._meta.get_field('_meta_title').verbose_name = 'Tílulo'
 Publicacao._meta.get_field('description').verbose_name = 'Descrição curta'
 Publicacao._meta.get_field('gen_description').verbose_name = 'Gerar descrição'
+Publicacao._meta.get_field('allow_comments').default = False
 
 
 class UnidadePrisional(models.Model):

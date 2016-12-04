@@ -15,7 +15,7 @@ def generate_publicacao_fieldset():
     fields[cat_idx] = 'categorias'
 
     dates_idx = fields.index((u'publish_date', u'expiry_date'))
-    fields[dates_idx] = 'publish_date'
+    fields[dates_idx] = 'data_de_publicacao'
 
     content_idx = fields.index('content')
     fields.insert(content_idx, 'arquivo_publicacao')
