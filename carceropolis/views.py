@@ -1,5 +1,6 @@
 # coding: utf-8
 from __future__ import unicode_literals
+import json
 
 from calendar import month_name
 
@@ -164,4 +165,21 @@ def dados_home(request):
     """
     templates = ["carceropolis/dados/dados.html"]
     context = {}
+
+    return TemplateResponse(request, templates, context)
+
+
+def dados_genero_e_raca(request):
+    """First test"""
+    templates = [u'carceropolis/dados/genero_e_raca.html']
+    context = {}
+
+    return TemplateResponse(request, templates, context)
+
+
+def dados_educacao(request):
+    """Second test"""
+    templates = [u'carceropolis/dados/educacao.html']
+    context = {}
+
     return TemplateResponse(request, templates, context)

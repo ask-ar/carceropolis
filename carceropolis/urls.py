@@ -19,7 +19,10 @@ admin.site.unregister(BlogPost)
 admin.site.unregister(Site)
 
 dados_pattern = [
-    url(r'^$', views.dados_home, name='dados_home'),
+    url(r'^genero_e_raca/$', views.dados_genero_e_raca,
+        name='dados_genero_e_raca'),
+    url(r'^educacao/$', views.dados_educacao, name='dados_educacao'),
+    url(r'^$', views.dados_home, name='dados_home')
 ]
 
 # Publicacao patterns.
