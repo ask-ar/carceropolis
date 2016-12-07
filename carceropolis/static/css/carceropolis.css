@@ -1576,6 +1576,312 @@ body[class^='sobre'] section.container p {
   text-indent: 2em;
 }
 
+/* Based on https://codepen.io/cssgirl/pen/NGKgrM */
+/* line 2, ../../scss/_charts.scss */
+#data-main-container {
+  /* Center Content */
+  max-width: 1100px;
+  margin: 0 auto;
+  /* Todo clean up some crappy code */
+  /* General styles for page to make it prettier ;P */
+  /* body { */
+  /* background :#f0f0f0; */
+  /* font-size: 17px;  */
+  /* line-height: 1.4; */
+  /* font-family: 'Jaldi', sans-serif; */
+  /* } */
+}
+/* line 11, ../../scss/_charts.scss */
+#data-main-container .cards {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 1.5%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 26, ../../scss/_charts.scss */
+#data-main-container .card {
+  flex-grow: 1;
+  flex-basis: 33%;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  background: #fefff9;
+  color: #363636;
+  /* the whole content of the card becomes linked, so this will give the text a "norma;" appearance */
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+  border-radius: 4px;
+  border-radius: 4px;
+  border-radius: 4px;
+}
+@media (max-width: 1920px) {
+  /* line 26, ../../scss/_charts.scss */
+  #data-main-container .card {
+    flex-basis: 40%;
+  }
+}
+@media (max-width: 700px) {
+  /* line 26, ../../scss/_charts.scss */
+  #data-main-container .card {
+    flex-basis: 100%;
+  }
+}
+@media (min-width: 700px) {
+  /* line 26, ../../scss/_charts.scss */
+  #data-main-container .card {
+    /* switch to 2 columns */
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  /* line 47, ../../scss/_charts.scss */
+  #data-main-container .card:nth-child(even) {
+    margin-right: 0;
+  }
+}
+/* line 51, ../../scss/_charts.scss */
+#data-main-container .card .card-header {
+  height: 80px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background: rgba(157, 187, 63, 0.85);
+  background-blend-mode: overlay;
+  border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  justify-content: center;
+  align-items: center;
+}
+/* line 69, ../../scss/_charts.scss */
+#data-main-container .card .card-header .card-title {
+  flex-basis: 100%;
+  padding: 3.5% 0 2.5% 0;
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 1.2;
+  padding: 0 3.5%;
+  margin: 0;
+  font-family: "source_sans_prosemibold";
+}
+/* line 88, ../../scss/_charts.scss */
+#data-main-container .card .card-chart {
+  padding: 5% 5% 3% 5%;
+}
+/* line 92, ../../scss/_charts.scss */
+#data-main-container .card .card-meta {
+  max-height: 0;
+  overflow: hidden;
+  color: #666;
+  font-size: .78em;
+  text-transform: uppercase;
+  padding: 0 5%;
+  transition-property: max-height;
+  transition-property: max-height;
+  transition-property: max-height;
+  transition-property: max-height;
+  transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+/* line 103, ../../scss/_charts.scss */
+#data-main-container .card:hover, #data-main-container .card:focus {
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
+}
+/* line 106, ../../scss/_charts.scss */
+#data-main-container .card:hover .card-header, #data-main-container .card:focus .card-header {
+  background: rgba(157, 187, 63, 0.95);
+}
+/* line 109, ../../scss/_charts.scss */
+#data-main-container .card:hover .card-meta, #data-main-container .card:focus .card-meta {
+  max-height: 1em;
+}
+/* line 115, ../../scss/_charts.scss */
+#data-main-container img {
+  max-width: 100%;
+  /*  stop images from breaking out of their bounding boxes. */
+}
+/* line 127, ../../scss/_charts.scss */
+#data-main-container * {
+  transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
+  transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
+  transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
+  transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
+  transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-timing-function: linear;
+  transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+
+@media (min-width: 768px) {
+  /* line 1, ../../scss/_dados.scss */
+  .header-dados {
+    position: relative;
+  }
+}
+
+/* line 7, ../../scss/_dados.scss */
+.filters {
+  position: absolute;
+  top: 7px;
+  right: 20px;
+}
+@media (min-width: 768px) {
+  /* line 7, ../../scss/_dados.scss */
+  .filters {
+    top: 40px;
+  }
+}
+/* line 17, ../../scss/_dados.scss */
+.filters ul {
+  display: -webkit-flex;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 25, ../../scss/_dados.scss */
+.filters .map,
+.filters .filter,
+.filters .text {
+  color: transparent;
+  overflow: hidden;
+  text-indent: -999em;
+  height: 30px;
+  margin: 2px;
+  width: 30px;
+}
+/* line 33, ../../scss/_dados.scss */
+.filters .map:before,
+.filters .filter:before,
+.filters .text:before {
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  height: 22px;
+  margin: 4px auto 0;
+  width: 22px;
+}
+/* line 44, ../../scss/_dados.scss */
+.filters .map:before {
+  background-image: url(../images/icon-mapa.svg);
+}
+/* line 48, ../../scss/_dados.scss */
+.filters .filter:before {
+  background-image: url(../images/icon-filtro.svg);
+  margin-top: 8px;
+}
+/* line 53, ../../scss/_dados.scss */
+.filters .text:before {
+  background-image: url(../images/icon-busca.svg);
+}
+
+/* line 58, ../../scss/_dados.scss */
+.tabs {
+  margin: 0 auto;
+  width: 300px;
+}
+@media (min-width: 768px) {
+  /* line 58, ../../scss/_dados.scss */
+  .tabs {
+    margin-top: 30px;
+  }
+}
+/* line 66, ../../scss/_dados.scss */
+.tabs ul {
+  display: -webkit-flex;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 74, ../../scss/_dados.scss */
+.tabs a {
+  color: #ea702e;
+  border-bottom: 2px solid transparent;
+  display: block;
+  font-family: "source_sans_prosemibold";
+  font-size: 9px;
+  height: 100%;
+  line-height: 9px;
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 87, ../../scss/_dados.scss */
+.tabs a:hover {
+  text-decoration: none;
+}
+/* line 91, ../../scss/_dados.scss */
+.tabs a:before {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  content: '';
+  display: block;
+  height: 26px;
+  margin: 4px auto 0;
+  width: 22px;
+}
+/* line 102, ../../scss/_dados.scss */
+.tabs a:hover, .tabs a.active {
+  border-bottom-color: #ea702e;
+}
+/* line 109, ../../scss/_dados.scss */
+.tabs li:nth-child(1) a:before {
+  background-image: url(../images/icon-macro-dados.svg);
+  width: 26px;
+}
+/* line 114, ../../scss/_dados.scss */
+.tabs li:nth-child(2) a:before {
+  background-image: url(../images/icon-populacao.svg);
+  width: 28px;
+}
+/* line 119, ../../scss/_dados.scss */
+.tabs li:nth-child(3) a:before {
+  background-image: url(../images/icon-unidades.svg);
+  height: 20px;
+  margin-bottom: 10px;
+}
+/* line 125, ../../scss/_dados.scss */
+.tabs li:nth-child(4) a:before {
+  background-image: url(../images/icon-politicas.svg);
+  height: 22px;
+  margin-bottom: 4px;
+}
+
 /* line 1, ../../scss/_experts.scss */
 .especialistas .frame > p {
   margin: 0;
