@@ -1,8 +1,10 @@
+var charts = [];
 // Gender timeline chart
 $(function () {
-    Highcharts.chart('gender-timeline-chart', {
+    width = $('#gender-timeline-chart').width();
+    chart = Highcharts.chart('gender-timeline-chart', {
       chart: {
-        width: 300
+        width: width
       },
       title: {
           text: '',
@@ -42,8 +44,9 @@ $(function () {
           data: [224, 208]
       }]
     });
+    charts.push(chart);
 
-    Highcharts.chart('race-timeline-chart', {
+    chart = Highcharts.chart('race-timeline-chart', {
       chart: {
         width: 300
       },
@@ -100,8 +103,11 @@ $(function () {
          data: [0, 0]
         }]
     });
+
+    charts.push(chart);
+
     // BAR CHARTS
-    Highcharts.chart('gender-timeline-bar-chart', {
+    chart = Highcharts.chart('gender-timeline-bar-chart', {
       chart: {
         width: 300,
         type: 'column'
@@ -145,7 +151,9 @@ $(function () {
       }]
     });
 
-    Highcharts.chart('race-timeline-bar-chart', {
+    charts.push(chart);
+
+    chart = Highcharts.chart('race-timeline-bar-chart', {
       chart: {
         width: 300,
         type: 'column'
@@ -203,4 +211,5 @@ $(function () {
          data: [0, 0]
         }]
     });
+    charts.push(chart);
 });

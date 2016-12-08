@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
-
+<script>var chart = [];</script>
 {% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Dados" %}{% endif %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
@@ -23,11 +23,9 @@
 {% endif %}
 {% endblock %}
 
-
 {% block breadcrumb_menu %}
 {{ block.super }}
 {% endblock %}
-
 
 {% block main %}
 <section class="container dados">
