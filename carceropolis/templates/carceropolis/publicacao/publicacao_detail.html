@@ -13,7 +13,7 @@
 {% endmetablock %}{% endblock %}
 
 {% block title %}
-{% editable publicacao.title %}{{ publicacao.title }}{% endeditable %}
+    {% editable publicacao.title %}{{ publicacao.title }}{% endeditable %}
 {% endblock %}
 
 {% block breadcrumb_menu %}
@@ -24,24 +24,26 @@
 {% block main %}
 
 {% block publicacao_detail_postedby %}
+<h3>{{ publicacao.title }}</h3>
 {% editable publicacao.publish_date %}
 <h6 class="post-meta"> Publicado por: {{ publicacao.autoria }} </h6>
 {% endeditable %}
 {% endblock %}
 {% block publicacao_detail_commentlink %}
-<p>
-  {% if publicacao.allow_comments %}
-    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-      (<a href="{{ publicacao.get_absolute_url }}#disqus_thread"
-        data-disqus-identifier="{% disqus_id_for publicacao %}">{% spaceless %}
-        {% trans "Comments" %}
+{% if publicacao.allow_comments and settings.ENABLE_COMMENTS %}
+  {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+    (<a href="{{ publicacao.get_absolute_url }}#disqus_thread"
+      data-disqus-identifier="{% disqus_id_for publicacao %}">{% spaceless %}
+      {% trans "Comments" %}
+    {% endspaceless %}</a>)
+  {% else %}(<a href="#comments">{% spaceless %}
+    <p>
+      {% blocktrans count comments_count=publicacao.comments_count %}
+        {{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
       {% endspaceless %}</a>)
-    {% else %}(<a href="#comments">{% spaceless %}
-      {% blocktrans count comments_count=publicacao.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-      {% endspaceless %}</a>)
-    {% endif %}
+    </p>
   {% endif %}
-</p>
+{% endif %}
 {% endblock %}
 
 {% block publicacao_detail_featured_image %}
@@ -55,9 +57,10 @@
 {% endif %}
 
 {% block publicacao_detail_content %}
-{% editable publicacao.content %}
-{{ publicacao.content|richtext_filters|safe }}
-{% endeditable %}
+  {% editable publicacao.content %}
+    {{ publicacao.content|richtext_filters|safe }}
+    <a href="{{ publicacao.arquivo_publicacao.url }}">Faça o download da publicação clicando aqui.</a>
+  {% endeditable %}
 {% endblock %}
 
 {% block publicacao_detail_keywords %}
@@ -94,7 +97,7 @@
 {% endblock %}
 
 {% block publicacao_detail_comments %}
-{% if publicacao.allow_comments %}{% comments_for publicacao %}{% endif %}
+{% if publicacao.allow_comments and settings.ENABLE_COMMENTS %}{% comments_for publicacao %}{% endif %}
 {% endblock %}
 
 {% endblock %}
