@@ -183,3 +183,11 @@ def dados_educacao(request):
     context = {}
 
     return TemplateResponse(request, templates, context)
+
+
+def dados_piramide_etaria(request):
+    """Third test"""
+    templates = [u'carceropolis/dados/piramide_etaria.html']
+    context = {}
+
+    return TemplateResponse(request, templates, context)
