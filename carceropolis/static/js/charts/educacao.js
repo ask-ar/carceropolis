@@ -2,9 +2,6 @@ var charts = [];
 // Gender timeline chart
 $(function () {
     chart = Highcharts.chart('escolaridade-timeline-chart', {
-      chart: {
-        width: 300
-      },
       title: {
           text: '',
           x: -20 //center

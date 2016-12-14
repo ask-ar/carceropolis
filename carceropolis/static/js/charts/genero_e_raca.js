@@ -1,11 +1,7 @@
 var charts = [];
 // Gender timeline chart
 $(function () {
-    width = $('#gender-timeline-chart').width();
     chart = Highcharts.chart('gender-timeline-chart', {
-      chart: {
-        width: width
-      },
       title: {
           text: '',
           x: -20 //center
@@ -47,9 +43,6 @@ $(function () {
     charts.push(chart);
 
     chart = Highcharts.chart('race-timeline-chart', {
-      chart: {
-        width: 300
-      },
         title: {
             text: '',
             x: -20 //center
@@ -108,10 +101,6 @@ $(function () {
 
     // BAR CHARTS
     chart = Highcharts.chart('gender-timeline-bar-chart', {
-      chart: {
-        width: 300,
-        type: 'column'
-      },
       title: {
           text: '',
           x: -20 //center
@@ -150,14 +139,9 @@ $(function () {
           data: [224, 208]
       }]
     });
-
     charts.push(chart);
 
     chart = Highcharts.chart('race-timeline-bar-chart', {
-      chart: {
-        width: 300,
-        type: 'column'
-      },
         title: {
             text: '',
             x: -20 //center
