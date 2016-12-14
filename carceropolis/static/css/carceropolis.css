@@ -1721,7 +1721,7 @@ body[class^='sobre'] section.container p {
 }
 /* line 109, ../../scss/_charts.scss */
 #data-main-container .card:hover .card-meta, #data-main-container .card:focus .card-meta {
-  max-height: 1em;
+  max-height: 2em;
 }
 /* line 115, ../../scss/_charts.scss */
 #data-main-container img {
