@@ -69,7 +69,7 @@ def publicacao_list_categoria(request, categoria, tag=None, year=None,
     template = "carceropolis/publicacao/publicacao_list.html"
     publicacoes = Publicacao.objects.published()
     categoria = get_object_or_404(AreaDeAtuacao, slug=categoria)
-    publicacoes = publicacoes.filter(categorias__nome_da_area__in=[categoria])
+    publicacoes = publicacoes.filter(categorias__nome__in=[categoria])
     if tag is not None:
         tag = get_object_or_404(Keyword, slug=tag)
         publicacoes = publicacoes.filter(keywords__keyword=tag)
@@ -132,12 +132,12 @@ def especialistas_list(request, area_de_atuacao=None, especialidade=None):
     especialistas = especialistas.order_by('nome')
     if area_de_atuacao is not None:
         area_de_atuacao = get_object_or_404(AreaDeAtuacao, slug=area_de_atuacao)
-        especialistas = especialistas.filter(area_de_atuacao__nome_da_area__in=[area_de_atuacao])
+        especialistas = especialistas.filter(area_de_atuacao__nome__in=[area_de_atuacao])
         # templates.append(u"carceropolis/especialistas/area_atuacao.html")
         context['area_de_atuacao'] = area_de_atuacao
     if especialidade is not None:
         especialidade = get_object_or_404(Especialidade, slug=especialidade)
-        especialistas = especialistas.filter(especialidades__nome_da_especialidade__in=[especialidade])
+        especialistas = especialistas.filter(especialidades__nome__in=[especialidade])
         # templates.append(u"carceropolis/especialistas/especialidade.html")
         context['especialidade'] = especialidade
 

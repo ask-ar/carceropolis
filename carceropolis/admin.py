@@ -33,11 +33,11 @@ def generate_publicacao_fieldset():
 
 
 class AreaDeAtuacaoAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {u'fields': ['nome_da_area', 'ordem', 'descricao']})]
+    fieldsets = [(None, {u'fields': ['nome', 'ordem', 'descricao']})]
 
 
 class EspecialidadeAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {u'fields': [u'nome_da_especialidade', u'descricao']})]
+    fieldsets = [(None, {u'fields': [u'nome', u'descricao']})]
 
 
 class EspecialistaAdmin(admin.ModelAdmin):

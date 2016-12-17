@@ -26,13 +26,14 @@ def current_year():
 
 class AreaDeAtuacao(models.Model):
     """Categorias Gerais de classificação de Especialistas e Publicações."""
-    nome_da_area = models.CharField(max_length=250, unique=True)
-    descricao = models.TextField()
-    ordem = models.IntegerField(unique=True)
-    slug = AutoSlugField(populate_from='nome_da_area', always_update=True)
+    nome = models.CharField(max_length=250, unique=True,
+                            verbose_name='Nome da área')
+    descricao = models.TextField(verbose_name='Descrição')
+    ordem = models.IntegerField(unique=True, verbose_name='Ordem')
+    slug = AutoSlugField(populate_from='nome', always_update=True)
 
     def __unicode__(self):
-        return self.nome_da_area
+        return self.nome
 
     class Meta:
         verbose_name = 'Área de Atuação'
@@ -41,12 +42,14 @@ class AreaDeAtuacao(models.Model):
 
 class Especialidade(models.Model):
     """Definição das Especialidades principais mapeadas no projeto."""
-    nome_da_especialidade = models.CharField(max_length=80, unique=True)
-    descricao = models.TextField(blank=True)
-    slug = AutoSlugField(populate_from='nome_da_especialidade', always_update=True)
+    nome = models.CharField(max_length=80, unique=True,
+                            verbose_name='Nome da especialidade')
+    descricao = models.TextField(blank=True, verbose_name='Descrição')
+    slug = AutoSlugField(populate_from='nome',
+                         always_update=True)
 
     def __unicode__(self):
-        return self.nome_da_especialidade
+        return self.nome
 
     class Meta:
         verbose_name = 'Especialidade'
@@ -59,8 +62,10 @@ class Especialista(models.Model):
     email = models.EmailField()
     telefone = PhoneNumberField(blank=True)
     mini_bio = models.CharField(max_length=250, blank=True)
-    instituicao = models.CharField(max_length=250)
-    area_de_atuacao = models.ManyToManyField(AreaDeAtuacao)
+    instituicao = models.CharField(max_length=250,
+                                   verbose_name='Instituição')
+    area_de_atuacao = models.ManyToManyField(AreaDeAtuacao,
+                                             verbose_name='Área de atuação')
     especialidades = models.ManyToManyField(Especialidade)
 
     def __unicode__(self):
@@ -81,7 +86,7 @@ class Publicacao(BlogPost):
                                              choices=YEAR_CHOICES,
                                              default=current_year)
     arquivo_publicacao = models.FileField(upload_to='publicacoes/',
-                                          verbose_name='Arquivo da Publicação')
+                                          verbose_name='Arquivo da publicação')
 
     class Meta:
         verbose_name = 'Publicação'
@@ -105,10 +110,10 @@ class UnidadePrisional(models.Model):
     sigla_unidade = models.CharField(max_length=10)
     tipo_logradouro = models.CharField(max_length=15)
     nome_logradouro = models.CharField(max_length=255)
-    numero = models.IntegerField(blank=True)
+    numero = models.IntegerField(blank=True, verbose_name='Número')
     complemento = models.CharField(max_length=255, blank=True)
     bairro = models.CharField(max_length=255)
-    municipio = models.ForeignKey(Cidade)
+    municipio = models.ForeignKey(Cidade, verbose_name='Município')
     uf = models.CharField(max_length=2, choices=STATE_CHOICES)
     cep = models.CharField(max_length=8)
     ddd = models.IntegerField()
