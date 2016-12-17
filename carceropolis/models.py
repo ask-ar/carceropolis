@@ -1,27 +1,11 @@
 # coding= utf-8
 """Modelos definidos para o Projeto carcerópolis."""
-from datetime import datetime
 from cidades.models import Cidade, STATE_CHOICES
 from django.db import models
 from mezzanine.blog.models import BlogPost
 from phonenumber_field.modelfields import PhoneNumberField
 from autoslug import AutoSlugField
-
-
-CATEGORIAS = (
-    ('SISTEMA', 'FUNCIONAMENTO DO SISTEMA'),
-    ('PERFIL', 'PERFIL POPULACIONAL'),
-    (u'POLÍTICA', u'POLÍTICA CRIMINAL'),
-    ('INTERNACIONAL', 'SISTEMAS INTERNACIONAIS'),
-    (u'VIOLÊNCIA', u'VIOLÊNCIA INSTITUCIONAL'),
-    ('OUTROS', 'OUTROS'),
-)
-
-
-YEAR_CHOICES = [(r, r) for r in range(1900, datetime.now().year+1)]
-
-def current_year():
-    return datetime.now().year
+from .options import current_year, YEAR_CHOICES
 
 
 class AreaDeAtuacao(models.Model):
