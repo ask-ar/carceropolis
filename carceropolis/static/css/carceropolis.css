@@ -279,12 +279,13 @@ section.container {
   background-repeat: no-repeat;
   background-size: contain;
   border: 0;
+  border-radius: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: 0;
   min-height: inherit;
   position: relative;
 }
-/* line 13, ../../scss/_navbar.scss */
+/* line 14, ../../scss/_navbar.scss */
 .navbar .navbar-toggle {
   border: none;
   float: left;
@@ -292,25 +293,25 @@ section.container {
   margin-left: 2px;
   border-radius: 0;
 }
-/* line 20, ../../scss/_navbar.scss */
+/* line 21, ../../scss/_navbar.scss */
 .navbar .navbar-toggle:hover, .navbar .navbar-toggle:focus {
   background: none;
 }
-/* line 25, ../../scss/_navbar.scss */
+/* line 26, ../../scss/_navbar.scss */
 .navbar .navbar-toggle .icon-bar {
   background: #9c0009;
 }
-/* line 30, ../../scss/_navbar.scss */
+/* line 31, ../../scss/_navbar.scss */
 .navbar .navbar-nav {
   background: #9c0009;
   margin: 0;
 }
-/* line 35, ../../scss/_navbar.scss */
+/* line 36, ../../scss/_navbar.scss */
 .navbar .main-nav {
   border-color: white;
   padding: 0;
 }
-/* line 40, ../../scss/_navbar.scss */
+/* line 41, ../../scss/_navbar.scss */
 .navbar .navbar-nav > li > a {
   font-family: "source_sans_prosemibold";
   font-size: 18px;
@@ -324,46 +325,46 @@ section.container {
     background-position: calc(100% + 15px);
     min-height: 80px;
   }
-  /* line 52, ../../scss/_navbar.scss */
+  /* line 53, ../../scss/_navbar.scss */
   .navbar .conectas {
     position: absolute;
     top: 5px;
     right: 60px;
   }
-  /* line 57, ../../scss/_navbar.scss */
+  /* line 58, ../../scss/_navbar.scss */
   .navbar .conectas h2 {
     margin: 0;
     padding: 0;
     font-size: 11px;
   }
-  /* line 63, ../../scss/_navbar.scss */
+  /* line 64, ../../scss/_navbar.scss */
   .navbar .conectas h2 a {
     color: #a5a5a5;
     font-weight: normal;
     text-decoration: none;
   }
-  /* line 70, ../../scss/_navbar.scss */
+  /* line 71, ../../scss/_navbar.scss */
   .navbar .navbar-nav {
     background: transparent;
   }
-  /* line 76, ../../scss/_navbar.scss */
+  /* line 77, ../../scss/_navbar.scss */
   .navbar .navbar-nav > li > a {
     color: #ab0e00;
     padding: 10px 15px;
     border-bottom: 2px solid transparent;
   }
-  /* line 82, ../../scss/_navbar.scss */
+  /* line 83, ../../scss/_navbar.scss */
   .navbar .navbar-nav > li:active > a, .navbar .navbar-nav > li:hover > a, .navbar .navbar-nav > li.active > a {
     background: none;
     color: #f18941;
     border-color: #f18941;
   }
-  /* line 91, ../../scss/_navbar.scss */
+  /* line 92, ../../scss/_navbar.scss */
   .navbar .navbar-brand {
     margin: 0;
     padding: 0;
   }
-  /* line 95, ../../scss/_navbar.scss */
+  /* line 96, ../../scss/_navbar.scss */
   .navbar .navbar-brand a {
     color: transparent;
     overflow: hidden;
@@ -378,26 +379,26 @@ section.container {
     padding: 0;
     width: 200px;
   }
-  /* line 109, ../../scss/_navbar.scss */
+  /* line 110, ../../scss/_navbar.scss */
   .navbar .container .navbar-brand {
     margin-left: 0;
   }
-  /* line 113, ../../scss/_navbar.scss */
+  /* line 114, ../../scss/_navbar.scss */
   .navbar .navbar-header {
     padding-top: 20px;
   }
-  /* line 117, ../../scss/_navbar.scss */
+  /* line 118, ../../scss/_navbar.scss */
   .navbar .main-nav {
     padding-top: 22px;
   }
-  /* line 121, ../../scss/_navbar.scss */
+  /* line 122, ../../scss/_navbar.scss */
   .navbar .dropdown-menu {
     display: none !important;
   }
 }
 
 @media (max-width: 768px) {
-  /* line 128, ../../scss/_navbar.scss */
+  /* line 129, ../../scss/_navbar.scss */
   #home .navbar {
     background: none;
     box-shadow: none;
