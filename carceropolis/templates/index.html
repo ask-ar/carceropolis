@@ -10,10 +10,8 @@
 {% block main %}
 <section class="no-margin" id="main-slider">
   <div class="banner">
-    <video id="intro-video" class="video" poster="static/images/slider/carceropolis.png" muted loop>
-      <source src="static/videos/carceropolis-intro.webm" type="video/webm">
+    <video id="intro-video" class="video" poster="static/images/slider/carceropolis.png" muted loop autoplay>
       <source src="static/videos/carceropolis-intro.mp4" type="video/mp4">
-      <!-- <source src="media/demo.ogv" type="video/ogg"> -->
     </video><!-- /video -->
     <h2>Carcerópolis</h2>
     <p class="intro">
@@ -25,13 +23,4 @@
     </p>
   </div>
 </section>
-<script>
-(function() {
-  var video = document.getElementById("intro-video");
-
-  video.addEventListener( "canplay", function() {
-    video.play();
-  });
-})();
-</script>
 {% endblock %}
