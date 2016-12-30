@@ -3,6 +3,7 @@
         background-image: url(../images/background-contact.jpg);
         background-position: center;
         background-size: cover;
+        height: auto;
     }
 
     @media (min-width: 768px) {
@@ -10,24 +11,25 @@
             margin-bottom: 20px;
         }
     }
-
-    .editable-original {
-        color: white;
-
-        @media(min-width:768px) {
-            float: right;
-        }
-    }
 }
 
 .contact-form {
 
+    color: white;
     padding: 2em;
     text-shadow: 1px 1px 1px rgba(0,0,0,.5);
 
     @media(min-width:768px) {
         padding: 20px;
         width: 768px;
+
+        .layoutArea,
+        .editable-original,
+        > p {
+            float: right;
+            padding-top: 20px;
+            width: 35%;
+        }
     }
 
     &:after {
@@ -62,7 +64,6 @@
         font-size: 12px;
         letter-spacing: .05em;
     }
-
 
     .btn-primary,
     .form-group > input[type="text"],
