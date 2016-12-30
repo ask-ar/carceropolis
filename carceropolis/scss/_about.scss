@@ -1,4 +1,4 @@
-[class^='sobre'] {
+body[class^='sobre'] {
 
     @media (min-width: 768px) {
         #page-content-wrapper {
@@ -14,7 +14,7 @@
         }
     }
 
-    .editable-original {
+    section.container {
         background: $fg-dark;
         margin: 0 0 1em;
         padding: 1em;

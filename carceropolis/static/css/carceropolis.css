@@ -1492,27 +1492,27 @@ body {
 
 @media (min-width: 768px) {
   /* line 4, ../../scss/_about.scss */
-  [class^='sobre'] #page-content-wrapper {
+  body[class^='sobre'] #page-content-wrapper {
     background-image: url(../images/about.jpg);
     background-position: center;
     background-size: cover;
   }
   /* line 10, ../../scss/_about.scss */
-  [class^='sobre'] #footer {
+  body[class^='sobre'] #footer {
     bottom: 0;
     position: fixed;
     width: 100%;
   }
 }
 /* line 17, ../../scss/_about.scss */
-[class^='sobre'] .editable-original {
+body[class^='sobre'] section.container {
   background: #333;
   margin: 0 0 1em;
   padding: 1em;
 }
 @media (min-width: 768px) {
   /* line 17, ../../scss/_about.scss */
-  [class^='sobre'] .editable-original {
+  body[class^='sobre'] section.container {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
@@ -1524,11 +1524,11 @@ body {
   }
 }
 /* line 33, ../../scss/_about.scss */
-[class^='sobre'] .editable-original h2 {
+body[class^='sobre'] section.container h2 {
   margin: 0 0 1em;
 }
 /* line 37, ../../scss/_about.scss */
-[class^='sobre'] .editable-original p {
+body[class^='sobre'] section.container p {
   color: #fff;
   font-size: 1.2em;
   line-height: 1.4em;
