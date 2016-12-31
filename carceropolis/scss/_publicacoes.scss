@@ -1,3 +1,5 @@
+//Seleção de categorias de publicações ======================
+
 #body.Publicacoes {
 
   .emerald {
@@ -47,7 +49,7 @@
     flex-wrap: wrap;
     margin: 7px 0;
 
-    li {
+    > li {
       height: 268px;
       margin: 7px;
       width: 32%;
@@ -74,7 +76,8 @@
   }
 }
 
-//Lista de publicações\
+//Lista de publicações ======================
+
 .publicacoes .container.frame {
   padding: 0;
 
@@ -98,13 +101,13 @@
     }
   }
 
-  li {
-      border-bottom: 2px solid $cp-grey;
-    padding: 10px 15px;
+  > li {
+    border-bottom: 2px solid $cp-grey;
+    padding: 10px 17px;
 
     @media (min-width: 768px) {
       border-right: 2px solid $cp-grey;
-      width: 25%;
+      width: 33.3%;
       background: white;
     }
 
@@ -113,18 +116,22 @@
 
   h2 {
     margin: 0;
+    min-height: 131px;
 
     a {
       color: $title-publication;
       font-size: 24px;
+
+      &:hover {
+        color: $cp-orange;
+        text-decoration: none;
+      }
     }
   }
 
-  p { margin: 0; }
+  p { margin: 0 0 15px; }
 
-  .post-meta {
-    margin: 10px 0;
-  }
+  .post-meta { margin: 10px 0; }
 
   .autoria {
     color: $author-publication;
@@ -139,8 +146,6 @@
   .data {
     color: $title-publication;
     font-size: 12px;
-    text-transform: uppercase;
-
   }
 
   .categorias {
@@ -148,22 +153,39 @@
     padding: 10px 0 0;
 
     a {
-      background: #efefef;
-      border-radius: 3px;
-      color:$author-publication;
+      color: $cp-orange;
       display: inline-block;
       font-size: 12px;
-      margin-bottom: 3px;
-      padding: 5px 8px;
-      text-transform: lowercase;
+      line-height: 18px;
+
+      &:hover {
+        color: black;
+        text-decoration: none;
+      }
     }
   }
 
   img {
     display: block;
     height: auto;
-    margin-bottom: 10px;
-    margin-left: -15px;
-    max-width: calc(100% + 30px);
+    margin: 0 auto 10px;
+    max-width: 100%;
+  }
+
+  .publicacao-list-detail a {
+    background: #efefef;
+    border-radius: 3px;
+    color: $author-publication;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 3px;
+    padding: 1px 8px;
+    text-transform: lowercase;
+
+    &:hover {
+      background-color: $cp-orange;
+      color: white;
+      text-decoration: none;
+    }
   }
 }

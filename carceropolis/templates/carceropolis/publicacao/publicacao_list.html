@@ -95,7 +95,7 @@
             {% if categorias %}
             <!-- {% trans "em" %} -->
                 {% for categoria in categorias %}
-                    <a href="{% url "publicacao_list_categoria" categoria.slug %}">{{ categoria }}</a>{% if not forloop.last %}{% endif %}
+                    <a href="{% url "publicacao_list_categoria" categoria.slug %}">{{ categoria }}</a>,{% if not forloop.last %}{% endif %}
             {% endfor %}
             {% endif %}
         {% endwith %}
