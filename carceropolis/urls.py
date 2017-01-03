@@ -18,6 +18,10 @@ admin.autodiscover()
 admin.site.unregister(BlogPost)
 admin.site.unregister(Site)
 
+dados_pattern = [
+    url(r'^$', views.dados_home, name='dados_home'),
+]
+
 # Publicacao patterns.
 publicacao_pattern = [
     # url(r'^feeds/(?P<format>.*)%s$' % _slash,
@@ -78,6 +82,7 @@ if settings.USE_MODELTRANSLATION:
 urlpatterns += [
     url(r'^[Pp]ublicacoes/', include(publicacao_pattern)),
     url(r'^[Ee]specialistas/', include(especialistas_pattern)),
+    url(r'^[Dd]ados/', include(dados_pattern)),
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 

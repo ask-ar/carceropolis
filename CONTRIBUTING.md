@@ -147,8 +147,8 @@ Agora iremos rodar o projeto para que as principais configurações sejam
 implementadas:
 
 ```
-python manage.py createdb
 python manage.py migrate
+python manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
 ```
 
 Agora, para ver o projeto rodando, utilize o comando abaixo:

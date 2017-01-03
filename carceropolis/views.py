@@ -157,3 +157,11 @@ def especialistas_list(request, area_de_atuacao=None, especialidade=None):
     context = {"especialistas_agrupados": agrupados}
     templates.append(u'carceropolis/especialistas/especialistas.html')
     return TemplateResponse(request, templates, context)
+
+def dados_home(request):
+    """Display the Dados Home page, which is a matrix with all available
+    categories (only categories, not the items from the Publicação Class).
+    """
+    templates = ["carceropolis/dados/dados.html"]
+    context = {}
+    return TemplateResponse(request, templates, context)
