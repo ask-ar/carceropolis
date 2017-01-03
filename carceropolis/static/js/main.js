@@ -65,3 +65,30 @@ jQuery(function($) {
     social_tools: false
   });
 });
+
+function hide_all_modals(){
+  $('#login_modal').modal('hide');
+  $('#cadastro_modal').modal('hide');
+  $('#recupera_senha_modal').modal('hide');
+}
+
+function check_modals(){
+  if (matches = window.location.href.match(/#login/)) {
+    hide_all_modals();
+    $('#login_modal').modal('show');
+  } else if (matches = window.location.href.match(/#cadastro/)) {
+    hide_all_modals();
+    $('#cadastro_modal').modal('show');
+  } else if (matches = window.location.href.match(/#recuperarsenha/)) {
+    hide_all_modals();
+    $('#recupera_senha_modal').modal('show');
+  }
+}
+
+$(window).on('hashchange', function() {
+  check_modals();
+});
+
+$(window).ready(function(){
+  check_modals();
+})

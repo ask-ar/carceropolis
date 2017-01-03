@@ -6,6 +6,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sites.models import Site
 from django.views.i18n import set_language
+from mezzanine.accounts.views import logout
 from mezzanine.blog.models import BlogPost
 from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
@@ -88,6 +89,10 @@ urlpatterns += [
     url(r'^[Pp]ublicacoes/', include(publicacao_pattern)),
     url(r'^[Ee]specialistas/', include(especialistas_pattern)),
     url(r'^[Dd]ados/', include(dados_pattern)),
+    url(r'^entrar/$', views.login_user),
+    url(r'^sair/$', logout),
+    url(r'^cadastro/$', views.register_user),
+    url(r'^recuperar_senha/$', views.password_recovery),
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 
@@ -156,6 +161,7 @@ urlpatterns += [
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
 
+    url("^", include("mezzanine.accounts.urls")),
 ]
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error

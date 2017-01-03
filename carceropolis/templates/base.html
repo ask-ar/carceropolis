@@ -66,6 +66,88 @@
 </head>
 
 <body id="{% block body_id %}body{% endblock %}" class="{{ page.html_id }}">
+<div id="login_modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Entrar</h4>
+    </div>
+    <div class="modal-body">
+      {% if request.user.is_authenticated %}
+        <p>Você já está conectado(a). Para se conectar como uma outra pessoa, faça seu logoff <a href="/accounts/logout/?next={{ request.get_full_path }}">clicando aqui</a>.</p>
+      {% else %}
+        <p> Para acessar os contatos dos especialistas você deve se cadastrar em nosso sistema e fazer seu login.</p>
+        <div id="login">
+          <form class="form-horizontal" name="LoginForm" action="/entrar/?next={{ request.get_full_path }}" method="post">
+            <fieldset> {% csrf_token %}
+              <input type="hidden" name="next" id='next' value="{{ request.get_full_path }}" />
+              {% fields_for login_form %}
+              <div class="control-group"><div class="controls">
+                <button type="submit" class="btn">Entrar</button>
+              </div></div>
+            </fieldset>
+          </form>
+        </div>
+        <p>Se você não possui uma conta você pode <a href="{{ request.get_full_path }}#cadastro">clicar aqui para registrar-se</a> agora.</p>
+        {% url "mezzanine_password_reset" as password_reset_url %}
+        <p>Você também pode <a href="{{ request.get_full_path }}#recuperarsenha">clicar aqui para resetar sua senha</a> se você a esqueceu.</p></p>
+      {% endif %}
+    </div>
+  </div></div> <!-- /.modal-content --> <!-- /.modal-dialog -->
+</div> <!-- end of login modal -->
+<div id="cadastro_modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Cadastro</h4>
+    </div>
+    <div class="modal-body">
+      {% if request.user.is_authenticated %}
+        <p>Você já está conectado(a). Para criar um novo usuário, faça seu logoff <a href="/accounts/logout/?next={{ request.get_full_path }}">clicando aqui</a>.</p>
+      {% else %}
+        <div id="cadastro">
+          <form class="form-horizontal" name="CadastroForm" action="/cadastro/?next={{ request.get_full_path }}" method="post">
+            <fieldset> {% csrf_token %}
+              <input type="hidden" name="next" id='next' value="{{ request.get_full_path }}" />
+              {% fields_for registration_form %}
+              <div class="control-group"><div class="controls">
+                <button type="submit" class="btn">Cadastrar-se</button>
+              </div></div>
+            </fieldset>
+          </form>
+        </div>
+        <p>Se você já possui uma conta e deseja apenas fazer o login, <a href="{{ request.get_full_path }}#login">clique aqui</a>.</p>
+      {% endif %}
+    </div>
+  </div></div> <!-- /.modal-content --> <!-- /.modal-dialog -->
+</div> <!-- end of login modal -->
+<div id="recupera_senha_modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Recuperar Senha</h4>
+    </div>
+    <div class="modal-body">
+      {% if request.user.is_authenticated %}
+        <p>Você já está conectado(a). Para se conectar como uma outra pessoa, faça seu logoff <a href="/accounts/logout/?next={{ request.get_full_path }}">clicando aqui</a>.</p>
+      {% else %}
+        <div id="recuperarSenha">
+          <form class="form-horizontal" name="RecuperarSenha" action="/password_recovery/?next={{ request.get_full_path }}" method="post">
+            <fieldset> {% csrf_token %}
+              <input type="hidden" name="next" id='next' value="{{ request.get_full_path }}" />
+              {% fields_for password_recovery_form %}
+              <div class="control-group"><div class="controls">
+                <button type="submit" class="btn">Recuperar Senha</button>
+              </div></div>
+            </fieldset>
+          </form>
+        </div>
+        <p>Se você já possui uma conta e deseja apenas fazer o login, <a href="{{ request.get_full_path }}#login">clique aqui</a>.</p>
+        <p>Se você não possui uma conta você pode <a href="{{ request.get_full_path }}#cadastro">clicar aqui para registrar-se</a> agora.</p>
+      {% endif %}
+    </div>
+  </div></div> <!-- /.modal-content --> <!-- /.modal-dialog -->
+</div> <!-- end of login modal -->
 <div id="wrapper">
 
     <div id="sidebar-wrapper">
@@ -99,20 +181,28 @@
 
 
     {% nevercache %}
-        {% if messages %}
-        <div class="container">
-
-            <div class="messages">
-            {% for message in messages %}
-            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                {{ message }}
-            </div>
-            {% endfor %}
-            </div>
-
+      {% if messages %}
+      <div class="container">
+        <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{ message }}
         </div>
-        {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if form and form.errors %}
+        <div class="container">
+          <div class="messages">
+            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <p>Your username and password didn't match. Please try again.</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
     {% endnevercache %}
     {% block top %}
     <section class="emerald" id="title">

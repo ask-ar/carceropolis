@@ -9,9 +9,10 @@
 {% if field.is_hidden %}
 {{ field }}
 {% else %}
-<div class="form-group input_{{ field.id_for_label }} {{ field.field.type }}
+<div class="control-group input_{{ field.id_for_label }} {{ field.field.type }}
     {% if field.errors %} has-error{% endif %}">
-    
+
+    <label class='control-label' for='{{ field.id_for_label }}'>{{ field.name }}</label>
     {{ field }}
     {% if field.errors %}
     <p class="help-block">

@@ -4,14 +4,19 @@ import json
 
 from calendar import month_name
 
-from django.contrib.auth import get_user_model
-from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate, get_user_model, login, logout
+from django.contrib.messages import info, error
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
+from django.template import RequestContext
 from future.builtins import int, str
+from mezzanine.accounts import get_profile_form
 from mezzanine.conf import settings
 from mezzanine.generic.models import Keyword
+from mezzanine.utils.email import send_verification_mail, send_approve_mail
 from mezzanine.utils.views import paginate
+from mezzanine.utils.urls import login_redirect, next_url
 
 from .models import AreaDeAtuacao, Especialidade, Especialista, Publicacao
 
@@ -191,3 +196,54 @@ def dados_piramide_etaria(request):
     context = {}
 
     return TemplateResponse(request, templates, context)
+
+def login_user(request):
+    logout(request)
+    username = password = ''
+    if request.POST:
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            login(request, user)
+        else:
+            error(request, "Usuário e/ou senha inválidos.")
+    return redirect(next_url(request) or request.META['HTTP_REFERER'])
+
+
+def register_user(request):
+    print("registrando um novo usuário")
+    profile_form = get_profile_form()
+    form = profile_form(request.POST or None, request.FILES or None)
+    print(form)
+    print(dir(form))
+    print(form.is_valid())
+    if request.method == "POST" and form.is_valid():
+        print("Método post e form válido")
+        new_user = form.save()
+        if not new_user.is_active:
+            if settings.ACCOUNTS_APPROVAL_REQUIRED:
+                print('Usuário cadastrado, aguardando aprovação')
+                send_approve_mail(request, new_user)
+                info(request, "Obrigado por se cadastrar! Você receberá um "
+                              "email quando sua conta for ativada.")
+            else:
+                print('Usuário cadastrado, aguardando confirmação')
+                send_verification_mail(request, new_user, "signup_verify")
+                info(request, "Um email de verificação foi enviado com um "
+                              "link para ativação de sua conta.")
+            return redirect(next_url(request) or "/")
+        else:
+            print('usuário cadastrado com sucesso')
+            info(request, "Cadastro realizado com sucesso")
+            login(request, new_user)
+            return login_redirect(request)
+    else:
+        error(request, form)
+        return redirect(request.META['HTTP_REFERER']+"#cadastro", kwargs={'registration_form': form})
+    return redirect(next_url(request) or request.META['HTTP_REFERER'])
+
+
+def password_recovery(request):
+    # TODO
+    pass

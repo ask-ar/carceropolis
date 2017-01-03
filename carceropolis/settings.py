@@ -54,11 +54,11 @@ ADMIN_MENU_ORDER = (
 
 ADMIN_REMOVAL = ['django.contrib.sites.models.Site',]
 
-ACCOUNTS_APPROVAL_REQUIRED = True
+ACCOUNTS_APPROVAL_REQUIRED = False
 
 ACCOUNTS_VERIFICATION_REQUIRED = True
 
-PUBLICACAO_PER_PAGE = 5
+PUBLICACAO_PER_PAGE = 9
 
 MUNICIPIOS_GEO = False
 
@@ -248,6 +248,9 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "mezzanine.conf.context_processors.settings",
                 "mezzanine.pages.context_processors.page",
+                "carceropolis.context_processors.add_login_form",
+                "carceropolis.context_processors.add_registration_form",
+                "carceropolis.context_processors.add_password_recover_form",
             ],
             "builtins": [
                 "mezzanine.template.loader_tags",

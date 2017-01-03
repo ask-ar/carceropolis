@@ -38,6 +38,10 @@
           {% if user.is_authenticated %}
             <p>{{especialista.telefone}}</p>
             <a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
+          {% else %}
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login_modal">
+              Clique aqui para fazer seu login
+            </button>
           {% endif %}
         </li>
       {% endfor %}
