@@ -49,12 +49,7 @@
   color: #f2f2f2;
 }
 
-/* line 16, ../../scss/_utils.scss */
-.content {
-  margin-top: 70px;
-}
-
-/* line 19, ../../scss/_utils.scss */
+/* line 17, ../../scss/_utils.scss */
 .cp-overlay, .posts.filtered-posts .posts--list .first-post .post--header:before, .post--details .post--header:before {
   content: '';
   position: absolute;
@@ -71,7 +66,7 @@
   background-size: cover;
 }
 
-/* line 35, ../../scss/_utils.scss */
+/* line 33, ../../scss/_utils.scss */
 #flashMessages {
   position: absolute;
   top: 20px;
@@ -80,12 +75,12 @@
   z-index: 1080;
   text-align: center;
 }
-/* line 43, ../../scss/_utils.scss */
+/* line 41, ../../scss/_utils.scss */
 #flashMessages .close {
   margin-top: -5px;
 }
 
-/* line 48, ../../scss/_utils.scss */
+/* line 46, ../../scss/_utils.scss */
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
@@ -269,6 +264,36 @@ section.container {
 /* line 170, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
+}
+
+/* line 175, ../../scss/_base.scss */
+.pagination > li > a {
+  color: #ea702e;
+}
+
+/* line 179, ../../scss/_base.scss */
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: #ea702e;
+  border-color: #ea702e;
+}
+
+/* line 189, ../../scss/_base.scss */
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+
+/* line 194, ../../scss/_base.scss */
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 /* line 1, ../../scss/_navbar.scss */
@@ -891,25 +916,45 @@ body {
   background: rgba(234, 112, 46, 0.9);
 }
 
-/* line 5, ../../scss/_publicacoes.scss */
-#body.Publicacoes .emerald {
-  display: none;
+/* line 6, ../../scss/_publicacoes.scss */
+#body.Publicacoes .tag,
+#body.publicacoes .tag {
+  display: inline-block;
+  margin: 3px 0;
+}
+/* line 11, ../../scss/_publicacoes.scss */
+#body.Publicacoes .tag a,
+#body.publicacoes .tag a {
+  background: #efefef;
+  border-radius: 3px;
+  color: #868584;
+  display: inline-block;
+  font-size: 12px;
+  padding: 1px 8px;
+  text-transform: lowercase;
+}
+/* line 20, ../../scss/_publicacoes.scss */
+#body.Publicacoes .tag a:hover,
+#body.publicacoes .tag a:hover {
+  background-color: #f18941;
+  color: white;
+  text-decoration: none;
 }
 
-/* line 10, ../../scss/_publicacoes.scss */
+/* line 29, ../../scss/_publicacoes.scss */
 .categorias-publicacoes {
   list-style: none;
   margin: 15px 0;
   padding: 0;
 }
-/* line 15, ../../scss/_publicacoes.scss */
+/* line 34, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li {
   background-repeat: no-repeat;
   background-size: cover;
   height: 254px;
   margin: 0 0 15px;
 }
-/* line 21, ../../scss/_publicacoes.scss */
+/* line 40, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li a {
   -webkit-align-items: center;
   align-items: center;
@@ -925,14 +970,14 @@ body {
   text-shadow: 0 0 10px #000;
   text-transform: uppercase;
 }
-/* line 36, ../../scss/_publicacoes.scss */
+/* line 55, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li a:active, .categorias-publicacoes li a:hover {
   background-color: rgba(0, 0, 0, 0.2);
   color: #f2a623;
   text-decoration: none;
 }
 @media (min-width: 768px) {
-  /* line 10, ../../scss/_publicacoes.scss */
+  /* line 29, ../../scss/_publicacoes.scss */
   .categorias-publicacoes {
     -webkit-display: flex;
     display: flex;
@@ -940,74 +985,63 @@ body {
     flex-wrap: wrap;
     margin: 7px 0;
   }
-  /* line 52, ../../scss/_publicacoes.scss */
+  /* line 71, ../../scss/_publicacoes.scss */
   .categorias-publicacoes > li {
     height: 268px;
     margin: 7px;
     width: 32%;
   }
 }
-/* line 59, ../../scss/_publicacoes.scss */
+/* line 78, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li:nth-child(1) {
   background-image: url(../images/geral.jpg);
 }
-/* line 62, ../../scss/_publicacoes.scss */
+/* line 81, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li:nth-child(2) {
   background-image: url(../images/funcionamento-sistema.jpg);
 }
-/* line 65, ../../scss/_publicacoes.scss */
+/* line 84, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li:nth-child(3) {
   background-image: url(../images/perfil-populacional.jpg);
 }
-/* line 68, ../../scss/_publicacoes.scss */
+/* line 87, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li:nth-child(4) {
   background-image: url(../images/politica-criminal.jpg);
 }
-/* line 71, ../../scss/_publicacoes.scss */
+/* line 90, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li:nth-child(5) {
   background-image: url(../images/sistemas-internacionais.jpg);
 }
-/* line 74, ../../scss/_publicacoes.scss */
+/* line 93, ../../scss/_publicacoes.scss */
 .categorias-publicacoes li:nth-child(6) {
   background-image: url(../images/violencia-institucional.jpg);
 }
 
-/* line 81, ../../scss/_publicacoes.scss */
+/* line 100, ../../scss/_publicacoes.scss */
 .publicacoes .container.frame {
   padding: 0;
 }
 @media (min-width: 768px) {
-  /* line 81, ../../scss/_publicacoes.scss */
+  /* line 100, ../../scss/_publicacoes.scss */
   .publicacoes .container.frame {
     background: none;
   }
 }
 
-/* line 89, ../../scss/_publicacoes.scss */
+/* line 108, ../../scss/_publicacoes.scss */
 .lista-publicacoes {
   list-style: none;
   padding: 0;
 }
-/* line 93, ../../scss/_publicacoes.scss */
-.lista-publicacoes li {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-/* line 98, ../../scss/_publicacoes.scss */
-.lista-publicacoes li > p {
-  align-self: flex-start;
-  flex-grow: 1;
-}
 @media (min-width: 768px) {
-  /* line 89, ../../scss/_publicacoes.scss */
+  /* line 108, ../../scss/_publicacoes.scss */
   .lista-publicacoes {
     -webkit-display: flex;
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
   }
-  /* line 111, ../../scss/_publicacoes.scss */
+  /* line 118, ../../scss/_publicacoes.scss */
   .lista-publicacoes:after {
     clear: both;
     content: '';
@@ -1016,13 +1050,21 @@ body {
     width: 0;
   }
 }
-/* line 116, ../../scss/_publicacoes.scss */
+/* line 123, ../../scss/_publicacoes.scss */
 .lista-publicacoes > li {
   border-bottom: 2px solid whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px 17px;
 }
+/* line 130, ../../scss/_publicacoes.scss */
+.lista-publicacoes > li > p {
+  align-self: flex-start;
+  flex-grow: 1;
+}
 @media (min-width: 768px) {
-  /* line 116, ../../scss/_publicacoes.scss */
+  /* line 123, ../../scss/_publicacoes.scss */
   .lista-publicacoes > li {
     border-right: 2px solid whitesmoke;
     width: calc(33.3% - 12px);
@@ -1031,90 +1073,114 @@ body {
     border-radius: 7px;
   }
 }
-/* line 128, ../../scss/_publicacoes.scss */
+/* line 143, ../../scss/_publicacoes.scss */
 .lista-publicacoes > li:last-child {
   border-bottom: none;
 }
-/* line 131, ../../scss/_publicacoes.scss */
-.lista-publicacoes h2 {
-  margin: 0;
-  min-height: 131px;
+/* line 146, ../../scss/_publicacoes.scss */
+.lista-publicacoes header {
+  margin-bottom: 5px;
 }
-/* line 135, ../../scss/_publicacoes.scss */
-.lista-publicacoes h2 a {
+/* line 150, ../../scss/_publicacoes.scss */
+.lista-publicacoes h3 {
+  margin: 0 0 15px;
+}
+/* line 153, ../../scss/_publicacoes.scss */
+.lista-publicacoes h3 a {
   color: #32373b;
   font-size: 24px;
 }
-/* line 139, ../../scss/_publicacoes.scss */
-.lista-publicacoes h2 a:hover {
+/* line 157, ../../scss/_publicacoes.scss */
+.lista-publicacoes h3 a:hover {
   color: #f18941;
   text-decoration: none;
 }
-/* line 146, ../../scss/_publicacoes.scss */
+/* line 164, ../../scss/_publicacoes.scss */
 .lista-publicacoes p {
   margin: 0 0 15px;
+  text-indent: 15px;
 }
-/* line 148, ../../scss/_publicacoes.scss */
+/* line 169, ../../scss/_publicacoes.scss */
 .lista-publicacoes .post-meta {
   margin: 2px 0;
   font-weight: normal;
 }
-/* line 153, ../../scss/_publicacoes.scss */
+/* line 174, ../../scss/_publicacoes.scss */
 .lista-publicacoes .autoria {
   color: #868584;
   text-transform: lowercase;
-  margin-top: 6px;
+  margin: 5px 0;
 }
-/* line 158, ../../scss/_publicacoes.scss */
+/* line 179, ../../scss/_publicacoes.scss */
 .lista-publicacoes .autoria strong {
   font-weight: normal;
   text-transform: uppercase;
 }
-/* line 164, ../../scss/_publicacoes.scss */
+/* line 185, ../../scss/_publicacoes.scss */
 .lista-publicacoes .data {
   color: #32373b;
   font-size: 12px;
+  margin: 5px 0;
 }
-/* line 169, ../../scss/_publicacoes.scss */
+/* line 191, ../../scss/_publicacoes.scss */
 .lista-publicacoes .categorias {
   display: block;
+  list-style: none;
   margin-bottom: 6px;
 }
-/* line 173, ../../scss/_publicacoes.scss */
+/* line 196, ../../scss/_publicacoes.scss */
+.lista-publicacoes .categorias li {
+  font-size: 12px;
+  line-height: 18px;
+  padding: 0 3px 0 0;
+}
+/* line 202, ../../scss/_publicacoes.scss */
 .lista-publicacoes .categorias a {
   color: #f18941;
   display: inline-block;
-  font-size: 12px;
-  line-height: 18px;
 }
-/* line 179, ../../scss/_publicacoes.scss */
+/* line 207, ../../scss/_publicacoes.scss */
 .lista-publicacoes .categorias a:hover {
   color: black;
   text-decoration: none;
 }
-/* line 186, ../../scss/_publicacoes.scss */
+/* line 213, ../../scss/_publicacoes.scss */
 .lista-publicacoes img {
   display: block;
   height: auto;
   margin: 0 auto 10px;
   max-width: 100%;
 }
-/* line 193, ../../scss/_publicacoes.scss */
-.lista-publicacoes .publicacao-list-detail .tag {
-  background: #efefef;
-  border-radius: 3px;
-  color: #868584;
-  display: inline-block;
-  font-size: 12px;
-  margin: 3px;
-  padding: 1px 8px;
-  text-transform: lowercase;
+
+/* line 224, ../../scss/_publicacoes.scss */
+.publicacoes .content {
+  background: white;
+  margin-bottom: 3.5em;
+  padding: 0 1.5em;
 }
-/* line 203, ../../scss/_publicacoes.scss */
-.lista-publicacoes .publicacao-list-detail .tag:hover {
-  background-color: #f18941;
-  color: white;
-  text-decoration: none;
+/* line 229, ../../scss/_publicacoes.scss */
+.publicacoes .content header {
+  margin-bottom: 2em;
+}
+/* line 233, ../../scss/_publicacoes.scss */
+.publicacoes .content .post-title {
+  font-family: "source_sans_prolight";
+  font-size: 4em;
+}
+/* line 242, ../../scss/_publicacoes.scss */
+.publicacoes .content p {
+  font-size: 16px;
+  line-height: 30px;
+  text-indent: 1em;
+}
+/* line 249, ../../scss/_publicacoes.scss */
+.publicacoes .content p a {
+  color: #ab0e00;
+}
+/* line 253, ../../scss/_publicacoes.scss */
+.publicacoes .content footer {
+  background: none;
+  margin-top: 2em;
 }
 
 /* line 2, ../../scss/_posts.scss */

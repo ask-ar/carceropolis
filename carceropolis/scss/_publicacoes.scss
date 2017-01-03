@@ -1,10 +1,29 @@
 //Seleção de categorias de publicações ======================
 
-#body.Publicacoes {
+#body.Publicacoes,
+#body.publicacoes {
 
-  .emerald {
-    display: none;
-  }
+  .tag {
+
+    display: inline-block;
+    margin: 3px 0;
+
+    a {
+        background: #efefef;
+        border-radius: 3px;
+        color: $author-publication;
+        display: inline-block;
+        font-size: 12px;
+        padding: 1px 8px;
+        text-transform: lowercase;
+
+        &:hover {
+          background-color: $cp-orange;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
 }
 
 .categorias-publicacoes {
@@ -90,18 +109,6 @@
   list-style: none;
   padding: 0;
 
-  li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    > p {
-      align-self: flex-start;
-      flex-grow: 1;
-    }
-
-  }
-
   @media (min-width: 768px) {
       -webkit-display: flex;
       display: flex;
@@ -115,7 +122,15 @@
 
   > li {
     border-bottom: 2px solid $cp-grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px 17px;
+
+    > p {
+      align-self: flex-start;
+      flex-grow: 1;
+    }
 
     @media (min-width: 768px) {
       border-right: 2px solid $cp-grey;
@@ -128,9 +143,12 @@
     &:last-child { border-bottom: none; }
   }
 
-  h2 {
-    margin: 0;
-    min-height: 131px;
+  header {
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    margin: 0 0 15px;
 
     a {
       color: $title-publication;
@@ -143,7 +161,10 @@
     }
   }
 
-  p { margin: 0 0 15px; }
+  p {
+    margin: 0 0 15px;
+    text-indent: 15px;
+  }
 
   .post-meta {
     margin: 2px 0;
@@ -153,7 +174,7 @@
   .autoria {
     color: $author-publication;
     text-transform: lowercase;
-    margin-top: 6px;
+    margin: 5px 0;
 
     strong {
       font-weight: normal;
@@ -164,22 +185,28 @@
   .data {
     color: $title-publication;
     font-size: 12px;
+    margin: 5px 0;
   }
 
   .categorias {
     display: block;
+    list-style: none;
     margin-bottom: 6px;
+
+    li {
+      font-size: 12px;
+      line-height: 18px;
+      padding: 0 3px 0 0;
+    }
 
     a {
       color: $cp-orange;
       display: inline-block;
-      font-size: 12px;
-      line-height: 18px;
+    }
 
-      &:hover {
+    a:hover {
         color: black;
         text-decoration: none;
-      }
     }
   }
 
@@ -190,20 +217,41 @@
     max-width: 100%;
   }
 
-  .publicacao-list-detail .tag {
-    background: #efefef;
-    border-radius: 3px;
-    color: $author-publication;
-    display: inline-block;
-    font-size: 12px;
-    margin: 3px;
-    padding: 1px 8px;
-    text-transform: lowercase;
+}
 
-    &:hover {
-      background-color: $cp-orange;
-      color: white;
-      text-decoration: none;
+// Publicação detalhe / conteúdo
+
+.publicacoes .content {
+    background: white;
+    margin-bottom: 3.5em;
+    padding: 0 1.5em;
+
+    header {
+      margin-bottom: 2em;
     }
-  }
+
+    .post-title {
+      font-family: $light;
+      font-size: 4em;
+    }
+
+    .post-meta {
+
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 30px;
+      text-indent: 1em;
+    }
+
+
+    p a {
+      color: $navbar-links;
+    }
+
+    footer {
+        background: none;
+        margin-top: 2em;
+    }
 }

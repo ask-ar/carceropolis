@@ -171,3 +171,28 @@ section.container {
 		display: none;
 	}
 }
+
+.pagination>li>a {
+	color: $cp-orange-dark;
+}
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus {
+    background-color: $cp-orange-dark;
+    border-color: $cp-orange-dark;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+}
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}

@@ -18,86 +18,100 @@
 
 {% block breadcrumb_menu %}
 {{ block.super }}
-<li class="active">{{ publicacao.title }}</li>
 {% endblock %}
 
 {% block main %}
+<article class="container content">
+  <header>
+    {% block publicacao_detail_postedby %}
+      <h1 class="post-title">{{ publicacao.title }}</h1>
+      {% editable publicacao.publish_date %}
+        <h6 class="post-meta"> Publicado por: {{ publicacao.autoria }} </h6>
+      {% endeditable %}
+    {% endblock %}
 
-{% block publicacao_detail_postedby %}
-<h3>{{ publicacao.title }}</h3>
-{% editable publicacao.publish_date %}
-<h6 class="post-meta"> Publicado por: {{ publicacao.autoria }} </h6>
-{% endeditable %}
-{% endblock %}
-{% block publicacao_detail_commentlink %}
-{% if publicacao.allow_comments and settings.ENABLE_COMMENTS %}
+    {% block publicacao_detail_commentlink %}
+      {% if publicacao.allow_comments and settings.ENABLE_COMMENTS %}
+        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+          (<a href="{{ publicacao.get_absolute_url }}#disqus_thread"
+        data-disqus-identifier="{% disqus_id_for publicacao %}">{% spaceless %}
+            {% trans "Comments" %}
+          {% endspaceless %}</a>)
+        {% else %}
+          (<a href="#comments">{% spaceless %}
+            <p>
+              {% blocktrans count comments_count=publicacao.comments_count %}
+              {{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+            {% endspaceless %}</p></a>)
+        {% endif %}
+      {% endif %}
+    {% endblock %}
+  </header>
+
+  {% block publicacao_detail_featured_image %}
+    {% if settings.BLOG_USE_FEATURED_IMAGE and publicacao.featured_image %}
+      <figure class="featured-image">
+        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail publicacao.featured_image 600 0 %}">
+      </figure>
+    {% endif %}
+  {% endblock %}
+
   {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-    (<a href="{{ publicacao.get_absolute_url }}#disqus_thread"
-      data-disqus-identifier="{% disqus_id_for publicacao %}">{% spaceless %}
-      {% trans "Comments" %}
-    {% endspaceless %}</a>)
-  {% else %}(<a href="#comments">{% spaceless %}
-    <p>
-      {% blocktrans count comments_count=publicacao.comments_count %}
-        {{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-      {% endspaceless %}</a>)
-    </p>
+    {% include "generic/includes/disqus_counts.html" %}
   {% endif %}
-{% endif %}
-{% endblock %}
 
-{% block publicacao_detail_featured_image %}
-{% if settings.BLOG_USE_FEATURED_IMAGE and publicacao.featured_image %}
-<p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail publicacao.featured_image 600 0 %}"></p>
-{% endif %}
-{% endblock %}
+  {% block publicacao_detail_content %}
+    {% editable publicacao.content %}
+      {{ publicacao.content|richtext_filters|safe }}
+      <p class="download-publicacao">
+        <a href="{{ publicacao.arquivo_publicacao.url }}">
+          Faça o download da publicação clicando aqui.
+        </a>
+      </p>
+    {% endeditable %}
+  {% endblock %}
 
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{% include "generic/includes/disqus_counts.html" %}
-{% endif %}
+  <footer>
+    {% block publicacao_detail_keywords %}
+      {% keywords_for publicacao as tags %}
+        {% if tags %}
+          {% spaceless %}
+            <ul class="list-inline tags">
+                <li>{% trans "Tags" %}:</li>
+                {% for tag in tags %}
+                <li class="tag"><a href="{% url "publicacao_list_tag" tag.slug %}">{{ tag }}</a>{% if not forloop.last %}{% endif %}</li>
+                {% endfor %}
+            </ul>
+          {% endspaceless %}
+        {% endif %}
+    {% endblock %}
 
-{% block publicacao_detail_content %}
-  {% editable publicacao.content %}
-    {{ publicacao.content|richtext_filters|safe }}
-    <a href="{{ publicacao.arquivo_publicacao.url }}">Faça o download da publicação clicando aqui.</a>
-  {% endeditable %}
-{% endblock %}
+    {% block publicacao_detail_sharebuttons %}
+      {% set_short_url_for publicacao %}
+        <a class="btn btn-sm share-twitter" target="_blank" href="http://twitter.com/home?status={{ publicacao.short_url|urlencode }}%20{{ publicacao.title|urlencode }}">{% trans "Share on Twitter" %}</a>
+        <a class="btn btn-sm share-facebook" target="_blank" href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ publicacao.title|urlencode }}">{% trans "Share on Facebook" %}</a>
+      {% endblock %}
+    </footer>
+</article>
 
-{% block publicacao_detail_keywords %}
-{% keywords_for publicacao as tags %}
-{% if tags %}
-{% spaceless %}
-<ul class="list-inline tags">
-    <li>{% trans "Tags" %}:</li>
-    {% for tag in tags %}
-    <li><a href="{% url "publicacao_list_tag" tag.slug %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>
-    {% endfor %}
-</ul>
-{% endspaceless %}
-{% endif %}
-{% endblock %}
+  {% block publicacao_detail_related_posts %}
+    {% if related_posts %}
+    <section id="related-posts">
+      <h3>{% trans 'Related posts' %}</h3>
+      <ul class="list-unstyled">
+      {% for post in related_posts %}
+        <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+      {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  {% endblock %}
 
-{% block publicacao_detail_sharebuttons %}
-{% set_short_url_for publicacao %}
-<a class="btn btn-sm share-twitter" target="_blank" href="http://twitter.com/home?status={{ publicacao.short_url|urlencode }}%20{{ publicacao.title|urlencode }}">{% trans "Share on Twitter" %}</a>
-<a class="btn btn-sm share-facebook" target="_blank" href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ publicacao.title|urlencode }}">{% trans "Share on Facebook" %}</a>
-{% endblock %}
-
-{% block publicacao_detail_related_posts %}
-{% if related_posts %}
-<div id="related-posts">
-<h3>{% trans 'Related posts' %}</h3>
-<ul class="list-unstyled">
-{% for post in related_posts %}
-     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
-</div>
-{% endif %}
-{% endblock %}
-
-{% block publicacao_detail_comments %}
-{% if publicacao.allow_comments and settings.ENABLE_COMMENTS %}{% comments_for publicacao %}{% endif %}
-{% endblock %}
-
+  {% block publicacao_detail_comments %}
+    {% if publicacao.allow_comments and settings.ENABLE_COMMENTS %}
+      <aside class="post-comments">
+        {% comments_for publicacao %}
+      </aside>
+    {% endif %}
+  {% endblock %}
 {% endblock %}
