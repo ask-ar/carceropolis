@@ -19,8 +19,8 @@ admin.site.unregister(BlogPost)
 admin.site.unregister(Site)
 
 dados_pattern = [
-    url(r'^genero_e_raca/$', views.dados_genero_e_raca,
-        name='dados_genero_e_raca'),
+    url(r'^perfil_populacional/$', views.dados_perfil_populacional,
+        name='dados_perfil_populacional'),
     url(r'^educacao/$', views.dados_educacao, name='dados_educacao'),
     url(r'^piramide_etaria/$', views.dados_piramide_etaria,
         name='dados_piramide_etaria'),

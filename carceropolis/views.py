@@ -169,9 +169,9 @@ def dados_home(request):
     return TemplateResponse(request, templates, context)
 
 
-def dados_genero_e_raca(request):
+def dados_perfil_populacional(request):
     """First test"""
-    templates = [u'carceropolis/dados/genero_e_raca.html']
+    templates = [u'carceropolis/dados/perfil_populacional.html']
     context = {}
 
     return TemplateResponse(request, templates, context)
