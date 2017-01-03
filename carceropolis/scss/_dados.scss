@@ -1,153 +1,146 @@
-@media (min-width: 768px) {
-	.header-dados {
-		position: relative;
+.dados, .Dados {
+	.navbar {
+		background-position: calc(100% + 5px) 0;
+		background-size: 50px;
 	}
-
-	.dados, .Dados {
-		.navbar {
-			background-position: calc(100% + 5px) 0;
-			background-size: 50px;
-		}
-	}
-
 }
 
 @media (max-width: 768px) {
-	.dados, .Dados {
-		.navbar {
-			background-image: none;
-		}
-
-		.breadcrumb {
-			display: none;
-		}
+	.breadcrumb {
+		display: none;
 	}
 }
 
-.filters {
+// @media (min-width: 768px) {
+// 	.header-dados {
+// 		position: relative;
+// 	}
+// }
 
-	position: absolute;
-	top: 7px;
-	right: 20px;
+// .filters {
 
-	@media (min-width: 768px) {
-		top: 40px;
-	}
+// 	position: absolute;
+// 	top: 7px;
+// 	right: 20px;
 
-	ul {
-		display: -webkit-flex;
-		display: flex;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+// 	@media (min-width: 768px) {
+// 		top: 40px;
+// 	}
 
-	.map,
-	.filter,
-	.text {
-		@include hidetext;
-		height: 30px;
-		margin: 2px;
-		width: 30px;
+// 	ul {
+// 		display: -webkit-flex;
+// 		display: flex;
+// 		list-style: none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
 
-		&:before {
-			background-repeat: no-repeat;
-			background-size: contain;
-			content: '';
-			display: block;
-			height: 22px;
-		    margin: 4px auto 0;
-			width: 22px;
-		}
-	}
+// 	.map,
+// 	.filter,
+// 	.text {
+// 		@include hidetext;
+// 		height: 30px;
+// 		margin: 2px;
+// 		width: 30px;
 
-	.map:before {
-		background-image: url(../images/icon-mapa.svg);
-	}
+// 		&:before {
+// 			background-repeat: no-repeat;
+// 			background-size: contain;
+// 			content: '';
+// 			display: block;
+// 			height: 22px;
+// 		    margin: 4px auto 0;
+// 			width: 22px;
+// 		}
+// 	}
 
-	.filter:before {
-		background-image: url(../images/icon-filtro.svg);
-		margin-top: 8px;
-	}
+// 	.map:before {
+// 		background-image: url(../images/icon-mapa.svg);
+// 	}
 
-	.text:before {
-		background-image: url(../images/icon-busca.svg);
-	}
-}
+// 	.filter:before {
+// 		background-image: url(../images/icon-filtro.svg);
+// 		margin-top: 8px;
+// 	}
 
-.tabs {
-	margin: 0 auto;
-	width: 300px;
+// 	.text:before {
+// 		background-image: url(../images/icon-busca.svg);
+// 	}
+// }
 
-	@media (min-width: 768px) {
-		margin-top: 30px;
-	}
+// .tabs {
+// 	margin: 0 auto;
+// 	width: 300px;
 
-	ul {
-		display: -webkit-flex;
-		display: flex;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+// 	@media (min-width: 768px) {
+// 		margin-top: 30px;
+// 	}
 
-	a {
+// 	ul {
+// 		display: -webkit-flex;
+// 		display: flex;
+// 		list-style: none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
 
-		color: $cp-orange-dark;
-		border-bottom: 2px solid transparent;
-		display: block;
-		font-family: $semibold;
-		font-size: 9px;
-		height: 100%;
-		line-height: 9px;
-		padding: 5px 10px;
-		text-align: center;
-		text-transform: uppercase;
+// 	a {
 
-		&:hover {
-			text-decoration: none;
-		}
+// 		color: $cp-orange-dark;
+// 		border-bottom: 2px solid transparent;
+// 		display: block;
+// 		font-family: $semibold;
+// 		font-size: 9px;
+// 		height: 100%;
+// 		line-height: 9px;
+// 		padding: 5px 10px;
+// 		text-align: center;
+// 		text-transform: uppercase;
 
-		&:before {
-			background-repeat: no-repeat;
-			background-size: contain;
-			background-position: 50% 50%;
-			content: '';
-			display: block;
-			height: 26px;
-		    margin: 4px auto 0;
-			width: 22px;
-		}
+// 		&:hover {
+// 			text-decoration: none;
+// 		}
 
-		&:hover,
-		&.active {
-			border-bottom-color: $cp-orange-dark;
-		}
+// 		&:before {
+// 			background-repeat: no-repeat;
+// 			background-size: contain;
+// 			background-position: 50% 50%;
+// 			content: '';
+// 			display: block;
+// 			height: 26px;
+// 		    margin: 4px auto 0;
+// 			width: 22px;
+// 		}
 
-	}
+// 		&:hover,
+// 		&.active {
+// 			border-bottom-color: $cp-orange-dark;
+// 		}
 
-	li:nth-child(1) a:before {
-		background-image: url(../images/icon-macro-dados.svg);
-		width: 26px;
-	}
+// 	}
 
-	li:nth-child(2) a:before {
-		background-image: url(../images/icon-populacao.svg);
-		width: 28px;
-	}
+// 	li:nth-child(1) a:before {
+// 		background-image: url(../images/icon-macro-dados.svg);
+// 		width: 26px;
+// 	}
 
-	li:nth-child(3) a:before {
-		background-image: url(../images/icon-unidades.svg);
-		height: 20px;
-	    margin-bottom: 10px;
-	}
+// 	li:nth-child(2) a:before {
+// 		background-image: url(../images/icon-populacao.svg);
+// 		width: 28px;
+// 	}
 
-	li:nth-child(4) a:before {
-		background-image: url(../images/icon-politicas.svg);
-		height: 22px;
-	    margin-bottom: 4px;
-	}
-}
+// 	li:nth-child(3) a:before {
+// 		background-image: url(../images/icon-unidades.svg);
+// 		height: 20px;
+// 	    margin-bottom: 10px;
+// 	}
+
+// 	li:nth-child(4) a:before {
+// 		background-image: url(../images/icon-politicas.svg);
+// 		height: 22px;
+// 	    margin-bottom: 4px;
+// 	}
+// }
 
 // Categorias / Home de Dados
 
