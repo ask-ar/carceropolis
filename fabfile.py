@@ -95,8 +95,8 @@ templates = {
     "supervisor": {
         "local_path": "deploy/supervisor.conf.template",
         "remote_path": "/etc/supervisor/conf.d/%(proj_name)s.conf",
-        "start_supervisor": "supervisorctl -c /etc/supervisor/supervisord.conf",
-        "reload_command": "supervisorctl update gunicorn_%(proj_name)s",
+        "start_supervisor": "supervisorctl -c /etc/supervisor/supervisord.conf start",
+        "reload_command": "supervisorctl -c /etc/supervisor/supervisord.conf update gunicorn_%(proj_name)s",
     },
     "cron": {
         "local_path": "deploy/crontab.template",
@@ -272,7 +272,7 @@ def rsync_upload():
     Uploads the project with rsync excluding some files and folders.
     """
     excludes = ["*.pyc", "*.pyo", "*.db", ".DS_Store", ".coverage",
-                "local_settings.py", "/static", "/.git", "/.hg"]
+                "local_settings.py", "/static", "/.git", "/.hg", ".sass-cache"]
     local_dir = os.getcwd() + os.sep
     return rsync_project(remote_dir=env.proj_path, local_dir=local_dir,
                          exclude=excludes)
@@ -536,7 +536,7 @@ def create():
         pip("gunicorn setproctitle psycopg2 "
             "django-compressor python-memcached")
     # Bootstrap the DB
-        manage("createdb --noinput --nodata")
+        manage("migrate --noinput")
         python("from django.conf import settings;"
                "from django.contrib.sites.models import Site;"
                "Site.objects.filter(id=settings.SITE_ID).update(domain='%s');"
@@ -555,6 +555,17 @@ def create():
             python(user_py, show=False)
             shadowed = "*" * len(pw)
             print_command(user_py.replace("'%s'" % pw, "'%s'" % shadowed))
+
+    return True
+
+
+@task
+@log_call
+def load_initial_data():
+    """
+    Load project initial_data.
+    """
+    manage("loaddata %s/carceropolis/fixtures/initialdata.json.bz2" % env.proj_path)
 
     return True
 
@@ -595,7 +606,7 @@ def restart():
     if exists(pid_path):
         run("kill -HUP `cat %s`" % pid_path)
     else:
-        sudo("supervisorctl update")
+        sudo("supervisorctl -c /etc/supervisor/supervisord.conf update")
 
 
 @task
@@ -643,7 +654,6 @@ def deploy():
             rsync_upload()
     with project():
         manage("collectstatic -v 0 --noinput")
-        # manage("syncdb --noinput")
         manage("migrate --noinput")
     for name in get_templates():
         upload_template_and_reload(name)
@@ -691,3 +701,4 @@ def all():
     install()
     if create():
         deploy()
+        load_initial_data()
