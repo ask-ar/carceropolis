@@ -2,7 +2,7 @@ lines (7 sloc)  129 Bytes
 root = true
 
 [*]
-indent_style = tab
+indent_style = space
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
