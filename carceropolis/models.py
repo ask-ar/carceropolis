@@ -105,7 +105,7 @@ class UnidadePrisional(models.Model):
     municipio = models.ForeignKey(Cidade, verbose_name='Município')
     uf = models.CharField(max_length=2, choices=STATE_CHOICES)
     cep = models.CharField(max_length=8)
-    ddd = models.IntegerField()
+    ddd = models.IntegerField(verbose_name='DDD')
     telefone = models.IntegerField()
     email = models.EmailField()
 
