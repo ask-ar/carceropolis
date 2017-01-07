@@ -66,7 +66,7 @@ class Publicacao(BlogPost):
                                verbose_name='Autoria')
     categorias = models.ManyToManyField(AreaDeAtuacao,
                                         verbose_name='Categorias')
-    data_de_publicacao = models.IntegerField(verbose_name='Data de publicacão',
+    ano_de_publicacao = models.IntegerField(verbose_name='Ano de publicacão',
                                              choices=YEAR_CHOICES,
                                              default=current_year)
     arquivo_publicacao = models.FileField(upload_to='publicacoes/',
@@ -75,6 +75,9 @@ class Publicacao(BlogPost):
     class Meta:
         verbose_name = 'Publicação'
         verbose_name_plural = 'Publicações'
+
+    def __unicode__(self):
+        return self.title
 
 
 Publicacao._meta.get_field('title').verbose_name = 'Título'
@@ -90,11 +93,12 @@ Publicacao._meta.get_field('allow_comments').default = False
 
 class UnidadePrisional(models.Model):
     """Unidades Prisionais."""
-    nome_unidade = models.CharField(max_length=255)
+    nome_unidade = models.CharField(max_length=255,
+                                    verbose_name='Nome da Unidade')
     sigla_unidade = models.CharField(max_length=10)
     tipo_logradouro = models.CharField(max_length=15)
     nome_logradouro = models.CharField(max_length=255)
-    numero = models.IntegerField(blank=True, verbose_name='Número')
+    numero = models.IntegerField(blank=True, null=True, verbose_name='Número')
     complemento = models.CharField(max_length=255, blank=True)
     bairro = models.CharField(max_length=255)
     municipio = models.ForeignKey(Cidade, verbose_name='Município')
@@ -108,3 +112,5 @@ class UnidadePrisional(models.Model):
         verbose_name = 'Unidade Prisional'
         verbose_name_plural = 'Unidades Prisionais'
 
+    def __unicode__(self):
+        return "%s (%s/%s)" % (self.nome_unidade, self.municipio, self.uf)

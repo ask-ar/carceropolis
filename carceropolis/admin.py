@@ -2,9 +2,18 @@
 """Admin module of Carceropolis project personalizations."""
 from copy import deepcopy
 from django.contrib import admin
+from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext as _
 from mezzanine.blog.admin import BlogPostAdmin
 from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
                      UnidadePrisional)
+
+
+class EspecialistaAdmin(admin.ModelAdmin):
+    search_fields = ['nome', 'instituicao', 'area_de_atuacao__nome',
+                     'especialidades__nome']
+    list_filter = ['area_de_atuacao', 'especialidades', 'instituicao']
+    list_display = ['nome', 'instituicao', 'email', 'telefone']
 
 
 def generate_publicacao_fieldset():
@@ -15,7 +24,7 @@ def generate_publicacao_fieldset():
     fields[cat_idx] = 'categorias'
 
     dates_idx = fields.index((u'publish_date', u'expiry_date'))
-    fields[dates_idx] = 'data_de_publicacao'
+    fields[dates_idx] = 'ano_de_publicacao'
 
     content_idx = fields.index('content')
     fields.insert(content_idx, 'arquivo_publicacao')
@@ -27,27 +36,20 @@ def generate_publicacao_fieldset():
 
     tags = publicacao_fieldsets[2][1]['fields'].remove('keywords')
     fields.append('keywords')
-    # fields[fields.index('keywords')] = 'tags'
 
     return publicacao_fieldsets
 
 
-class AreaDeAtuacaoAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {u'fields': ['nome', 'ordem', 'descricao']})]
-
-
-class EspecialidadeAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {u'fields': [u'nome', u'descricao']})]
-
-
-class EspecialistaAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {u'fields': [u'nome', u'email', u'telefone',
-                                     u'mini_bio', u'instituicao',
-                                     u'area_de_atuacao', u'especialidades']})]
-
-
 class PublicacaoAdmin(BlogPostAdmin):
     fieldsets = generate_publicacao_fieldset()
+    list_display = ['title', 'autoria', 'status', 'view_link']
+    list_filter = ['ano_de_publicacao', 'categorias', 'status', 'keywords']
+
+    def view_link(self, obj):
+        return mark_safe('<a href="{0}">{1}</a>'.format(obj.get_absolute_url(),
+                                                        _("View on Site")))
+    view_link.allow_tags = True
+    view_link.short_description = _("View on Site")
 
 
 class UnidadePrisionalAdmin(admin.ModelAdmin):
@@ -56,11 +58,14 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
                                      u'numero', u'complemento', u'bairro',
                                      u'municipio', u'uf', u'cep', u'ddd',
                                      u'telefone', u'email']})]
+    list_display = ['nome_unidade', 'municipio', 'uf']
+    search_fields = ['nome_unidade', 'municipio__nome', 'uf']
+    list_filter = ['uf']
 
 
 # admin.site.unregister(BlogPost, BlogPostAdmin)
-admin.site.register(AreaDeAtuacao, AreaDeAtuacaoAdmin)
-admin.site.register(Especialidade, EspecialidadeAdmin)
+admin.site.register(AreaDeAtuacao)
+admin.site.register(Especialidade)
 admin.site.register(Especialista, EspecialistaAdmin)
 admin.site.register(Publicacao, PublicacaoAdmin)
 admin.site.register(UnidadePrisional, UnidadePrisionalAdmin)

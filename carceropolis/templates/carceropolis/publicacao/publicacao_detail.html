@@ -25,9 +25,8 @@
   <header>
     {% block publicacao_detail_postedby %}
       <h1 class="post-title">{{ publicacao.title }}</h1>
-      {% editable publicacao.publish_date %}
-        <h6 class="post-meta"> Publicado por: {{ publicacao.autoria }} </h6>
-      {% endeditable %}
+      <h6 class="post-meta"> Publicado por: {{ publicacao.autoria }} </h6>
+      <h6 class="post-meta"> Publicado em: {{ publicacao.ano_de_publicacao }} </h6>
     {% endblock %}
 
     {% block publicacao_detail_commentlink %}

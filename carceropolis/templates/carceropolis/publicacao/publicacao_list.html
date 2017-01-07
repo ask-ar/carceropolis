@@ -92,7 +92,7 @@
         {% trans "Por" %} <strong>{{ publicacao.autoria }}</strong>
       </h5>
       <h6 class="post-meta data">
-          Publicado em: {% blocktrans with sometime=publicacao.data_de_publicacao %}{{ sometime }}{% endblocktrans %}
+          Publicado em: {% blocktrans with sometime=publicacao.ano_de_publicacao %}{{ sometime }}{% endblocktrans %}
       </h6>
       <ul class="post-meta list-inline categorias">
         <li>Categorias:</li>
