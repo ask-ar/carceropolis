@@ -44,6 +44,7 @@ class PublicacaoAdmin(BlogPostAdmin):
     fieldsets = generate_publicacao_fieldset()
     list_display = ['title', 'autoria', 'status', 'view_link']
     list_filter = ['ano_de_publicacao', 'categorias', 'status', 'keywords']
+    search_fields = ['title', 'autoria']
 
     def view_link(self, obj):
         return mark_safe('<a href="{0}">{1}</a>'.format(obj.get_absolute_url(),
