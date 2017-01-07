@@ -1,6 +1,7 @@
 # coding= utf-8
 """Modelos definidos para o Projeto carcerópolis."""
 from cidades.models import Cidade, STATE_CHOICES
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from mezzanine.blog.models import BlogPost
 from phonenumber_field.modelfields import PhoneNumberField
@@ -112,5 +113,101 @@ class UnidadePrisional(models.Model):
         verbose_name = 'Unidade Prisional'
         verbose_name_plural = 'Unidades Prisionais'
 
+    @classmethod
+    def _new_from_dict(cls, data):
+        """Generate a new 'Unidade Prisional' and return it.
+
+        The 'data' attribute is a dictionary with the necessary fields to
+        generate a new Unidade Prisional.
+        """
+
+        unidade = UnidadePrisional()
+        unidade.nome_unidade = data['nome_unidade']
+        unidade.sigla_unidade = data['sigla_unidade']
+        unidade.tipo_logradouro = data['tipo_logradouro']
+        unidade.nome_logradouro = data['nome_logradouro']
+        if isinstance(data['numero'], int):
+            unidade.numero = data['numero']
+        unidade.complemento = data['complemento']
+        unidade.bairro = data['bairro']
+        unidade.municipio = Cidade.objects.get(nome=data['municipio'],
+                                               estado=data['uf'])
+        unidade.uf = data['uf']
+        unidade.cep = data['cep']
+        unidade.ddd = data['ddd']
+        unidade.telefone = data['telefone']
+        unidade.email = data['email']
+        return unidade
+
+    @classmethod
+    def _import_from_csv(cls, data):
+        """Populate the DB from CSV data.
+
+        The 'data' attribute must be a list of dictionaries, being each dict
+        a representation of one UnidadePrisional.
+        You should generate the 'data' attribute using the csv.DictRead method.
+        """
+        atualizadas = []
+        novas = []
+        errors = []
+        for row in data:
+            try:
+                unidade = UnidadePrisional.objects.get(
+                    nome_unidade=row['nome_unidade'])
+                unidade._update_from_dict(row)
+                unidade.save()
+                atualizadas.append(unidade.nome_unidade)
+            except ObjectDoesNotExist:
+                try:
+                    unidade = UnidadePrisional._new_from_dict(row)
+                    unidade.save()
+                    novas.append(unidade.nome_unidade)
+                except Exception as e:
+                    error = {'nome_unidade': row['nome_unidade'],
+                             'erro': e,
+                             'data': row}
+                    errors.append(error)
+
+        msg = 'Resumo da operação:\n'
+        if atualizadas:
+            msg += '    - '
+            msg += '{} unidades foram atualizadas.\n'.format(len(atualizadas))
+        if novas:
+            msg += '    - '
+            msg += '{} unidades foram adicionadas.\n'.format(len(novas))
+
+        if errors:
+            msg += 'Ocorreram {} erros de importação:\n'.format(len(errors))
+            for error in errors:
+                msg += '    - '
+                msg += 'Nome da Unidade: {}\n'.format(error['nome_unidade'])
+                msg += ' | {}'.format(error['erro'])
+
+        print(msg)
+
     def __unicode__(self):
         return "%s (%s/%s)" % (self.nome_unidade, self.municipio, self.uf)
+
+    def _update_from_dict(self, data):
+        """Update a 'Unidade Prisional' based on its name and return it.
+
+        The 'data' attribute is a dictionary with the necessary fields to
+        generate a new Unidade Prisional.
+        """
+
+        self.sigla_unidade = data['sigla_unidade']
+        self.tipo_logradouro = data['tipo_logradouro']
+        self.nome_logradouro = data['nome_logradouro']
+        if isinstance(data['numero'], int):
+            self.numero = data['numero']
+        else:
+            self.numero = None
+        self.complemento = data['complemento']
+        self.bairro = data['bairro']
+        self.municipio = Cidade.objects.get(nome=data['municipio'],
+                                               estado=data['uf'])
+        self.uf = data['uf']
+        self.cep = data['cep']
+        self.ddd = data['ddd']
+        self.telefone = data['telefone']
+        self.email = data['email']
