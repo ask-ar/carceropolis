@@ -109,6 +109,9 @@ class UnidadePrisional(models.Model):
     telefone = models.IntegerField()
     email = models.EmailField()
 
+    def __unicode__(self):
+        return self.nome
+
     class Meta:
         verbose_name = 'Unidade Prisional'
         verbose_name_plural = 'Unidades Prisionais'
