@@ -5,8 +5,8 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from mezzanine.blog.admin import BlogPostAdmin
-from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
-                     UnidadePrisional)
+from .models import (AreaDeAtuacao, BaseMJ, Especialidade, Especialista,
+                     Publicacao, UnidadePrisional)
 
 
 class EspecialistaAdmin(admin.ModelAdmin):
@@ -49,6 +49,7 @@ class PublicacaoAdmin(BlogPostAdmin):
     def view_link(self, obj):
         return mark_safe('<a href="{0}">{1}</a>'.format(obj.get_absolute_url(),
                                                         _("View on Site")))
+
     view_link.allow_tags = True
     view_link.short_description = _("View on Site")
 
@@ -64,8 +65,25 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
     list_filter = ['uf']
 
 
-# admin.site.unregister(BlogPost, BlogPostAdmin)
+class BaseMJAdmin(admin.ModelAdmin):
+    list_display = ['mes', 'ano', 'salvo_em']
+    list_filter = ['mes', 'ano']
+    readonly_fields=()
+
+    def get_readonly_fields(self, request, obj=None):
+        """Return the list of readyonly fields.
+
+        If the user is creating a new object (ADD), then there are no readonly
+        fields, otherwise, all fields are readonly.
+        """
+        if obj:
+            return ['mes', 'ano', 'salvo_em', 'arquivo']
+        else:
+            return []
+
+
 admin.site.register(AreaDeAtuacao)
+admin.site.register(BaseMJ, BaseMJAdmin)
 admin.site.register(Especialidade)
 admin.site.register(Especialista, EspecialistaAdmin)
 admin.site.register(Publicacao, PublicacaoAdmin)
