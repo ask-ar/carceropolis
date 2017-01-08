@@ -25,8 +25,8 @@
   <header>
     {% block publicacao_detail_postedby %}
       <h1 class="post-title">{{ publicacao.title }}</h1>
-      <h6 class="post-meta"> Publicado por: {{ publicacao.autoria }} </h6>
-      <h6 class="post-meta"> Publicado em: {{ publicacao.ano_de_publicacao }} </h6>
+      <h6 class="post-meta"> Autoria: {{ publicacao.autoria }} </h6>
+      <h6 class="post-meta"> Data da publicação: {{ publicacao.ano_de_publicacao }} </h6>
     {% endblock %}
 
     {% block publicacao_detail_commentlink %}
@@ -61,12 +61,12 @@
 
   {% block publicacao_detail_content %}
     {% editable publicacao.content %}
-      {{ publicacao.content|richtext_filters|safe }}
       <p class="download-publicacao">
-        <a href="{{ publicacao.arquivo_publicacao.url }}">
-          Faça o download da publicação clicando aqui.
+        <a href="{{ publicacao.arquivo_publicacao.url }}" title="Baixe o arquivo desta publicação clicando aqui">
+          <span lang="en">Download</span> da Publicação
         </a>
       </p>
+      {{ publicacao.content|richtext_filters|safe }}
     {% endeditable %}
   {% endblock %}
 

@@ -51,12 +51,14 @@
       text-align: center;
       text-shadow: 0 0 10px #000;
       text-transform: uppercase;
+      transition: 1s;
 
       &:active,
       &:hover {
         background-color: rgba(0,0,0,.2);
         color: $cp-yellow;
         text-decoration: none;
+        transition: 1s;
       }
     }
   }
@@ -223,8 +225,13 @@
 
 .publicacoes .content {
     background: white;
-    margin-bottom: 3.5em;
+    margin-bottom: 0;
     padding: 0 1.5em;
+
+
+    @media (min-width: 768px){
+      margin-bottom: 3.5em;
+    }
 
     header {
       margin-bottom: 2em;
@@ -232,16 +239,25 @@
 
     .post-title {
       font-family: $light;
-      font-size: 4em;
+      font-size: 2em;
+      line-height: 1.3em;
+      text-align: center;
+
+        @media (min-width: 768px) {
+          font-size: 4em;
+          text-align: left;
+        }
     }
 
     .post-meta {
-
+      color: $author-publication;
+      line-height: 18px;
     }
 
     p {
       font-size: 16px;
       line-height: 30px;
+      text-align: justify;
       text-indent: 1em;
     }
 
@@ -250,8 +266,66 @@
       color: $navbar-links;
     }
 
+    .download-publicacao a {
+        border-radius: 5px;
+        color: $title-publication;
+        display: block;
+        line-height: 22px;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: rgba(242, 166, 35, .5);
+        text-align: center;
+
+        &:before {
+          background: url(../images/article.svg) no-repeat;
+          content: '';
+          display: inline-block;
+          height: 24px;
+          width: 22px;
+
+          @media (max-width: 768px){
+              position: relative;
+              top: 8px;
+              margin-left: -22px;
+              margin-top: -7px;
+          }
+        }
+    }
+
+    @media (min-width: 768px){
+
+    .download-publicacao {
+      float: right;
+
+      a {
+          background: none;
+          color: $title-publication;
+          line-height: 22px;
+          margin: -20px 20px 0;
+          padding: 20px;
+          text-align: center;
+          width: 250px;
+          transition: background 500ms;
+
+          &:before {
+            display: block;
+            height: 100px;
+            margin: 0 auto 15px;
+            width: 100px;
+          }
+
+          &:hover {
+            background: rgba(242, 166, 35, .5);
+            text-decoration: none;
+            transition: background 500ms;
+          }
+        }
+      }
+    }
+
     footer {
         background: none;
+        clear: both;
         margin-top: 2em;
     }
 }

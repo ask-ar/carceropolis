@@ -32,12 +32,12 @@ section.container {
 .breadcrumb {
 	background: transparent;
 	border-radius: 0;
-	color: rgb(182,182,182);
+	color: $breadcrumb;
 	margin: 0;
 	padding: 15px;
 
 	> .active,
-	a {color: rgb(182,182,182);}
+	a {color: $breadcrumb;}
 
 	@media (max-width: 768px) {
 	    padding: 15px;

@@ -3,6 +3,16 @@
   padding: 1em;
 }
 
+.area-titulo {
+  border-bottom: 4px solid $sidebar-bg;
+  color: black;
+  display: block;
+  font-size: 28px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 white;
+}
+
 .lista-especialistas {
   margin: 0;
   padding: 0;
@@ -12,19 +22,19 @@
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
-    padding-bottom: 1em;
   }
 
   > li {
+    background: white;
     border-bottom: 2px solid $cp-grey;
     color: black;
     list-style: none;
     padding: 1.5em 1em;
 
     @media (min-width: 768px) {
-      border: 2px solid $cp-grey;
+      border: none;
       margin: 10px;
-      width: calc(25% - 20px);
+      width: calc(33.3% - 20px);
     }
 
     @media (max-width: 768px) {
@@ -32,9 +42,22 @@
     }
   }
 
-  h3 {
-    font-size: 18px;
-    margin: 0 0 .5em;
+  .especilista-nome {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .instituicao {
+    color: $author-publication;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .biografia {
+    margin-bottom: 15px;
+    padding: 0 5px;
+    text-align: justify;
+    text-indent: 10px;
   }
 
   .email{
@@ -54,8 +77,24 @@
     }
   }
 
-  .especialidades {
+  .especialidade {
+    color: $title-publication;
+    font-size: 18px;
+    margin: 0 0 .5em;
+  }
 
+  .especialidades  {
+    color: $navbar-links;
+    margin: 0 0 10px 10px;
+
+    a {
+      color: $navbar-links;
+    }
+  }
+
+  .btn {
+    background: $cp-yellow;
+    border: 0;
   }
 
 }

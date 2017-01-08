@@ -15,9 +15,10 @@ body[class^='sobre'] {
     }
 
     section.container {
-        background: $fg-dark;
-        margin: 0 0 1em;
+        background: rgba(50,50,100,.9);
+        margin: 1em auto;
         padding: 1em;
+        min-height: auto;
 
         @media (min-width: 768px) {
             -webkit-column-count: 2;
@@ -26,7 +27,7 @@ body[class^='sobre'] {
             -webkit-column-gap: 3em;
             -moz-column-gap: 3em;
             column-gap: 3em;
-            margin: 3em;
+            margin: 3em auto;
             padding: 2em 2.5em;
         }
 

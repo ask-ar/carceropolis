@@ -12,20 +12,18 @@
 
 {% block main %}
 
-<section class="container frame">
+<section class="container">
   {% for grupo in especialistas_agrupados %}
-  <h1><a href='/especialistas/area_de_atuacao/{{grupo.area.slug}}'>{{grupo.area}}</a></h1>
-    <p>{{grupo.area.descricao}}</p>
-    </a>
+  <h1 class="area-titulo" id="{{grupo.area.slug}}">{{grupo.area}}</h1>
     <ul class="lista-especialistas area-{{grupo.area}}">
       {% for especialista in grupo.especialistas %}
         <li>
-          <h2>{{especialista.nome}}</h2>
-          <p>{{especialista.instituicao}}</p>
-          <p>{{especialista.mini_bio}}</p>
+          <h2 class="especilista-nome">{{especialista.nome}}</h2>
+          <p class="instituicao">{{especialista.instituicao}}</p>
+          <p class="biografia">{{especialista.mini_bio}}</p>
           {% with especialista.especialidades.all as especialidades %}
             {% if especialidades %}
-              <h3>Especialidade(s):</h3>
+              <h3 class="especialidade">Especialidade(s):</h3>
               <ul class="especialidades">
               {% for especialidade in especialidades %}
                 <li>
@@ -40,7 +38,7 @@
             <a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
           {% else %}
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#login_modal">
-              Clique aqui para fazer seu login
+              Faça login para entrar em contato
             </button>
           {% endif %}
         </li>

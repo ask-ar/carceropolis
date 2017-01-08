@@ -78,6 +78,7 @@
 				color: $navbar-links;
 				padding: 10px 15px;
     			border-bottom: 2px solid transparent;
+    			transition: .30s;
 			}
 
 			&:active > a,
@@ -86,6 +87,7 @@
     			background: none;
     			color: $cp-orange;
     			border-color: $cp-orange;
+    			transition: .30s;
 			}
 		}
 
