@@ -6,7 +6,8 @@ from django.db import models
 from mezzanine.blog.models import BlogPost
 from phonenumber_field.modelfields import PhoneNumberField
 from autoslug import AutoSlugField
-from .options import current_year, YEAR_CHOICES
+from .options import current_month, current_year, MONTH_CHOICES, YEAR_CHOICES
+from .validators import check_filetype
 
 
 class AreaDeAtuacao(models.Model):
@@ -214,3 +215,21 @@ class UnidadePrisional(models.Model):
         self.ddd = data['ddd']
         self.telefone = data['telefone']
         self.email = data['email']
+
+
+class BaseMJ(models.Model):
+    """Manage the multiple versions of MJ Infopen raw database."""
+
+    ano = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
+    mes = models.CharField(verbose_name='Mês', max_length=40,
+                           choices=MONTH_CHOICES, default=current_month)
+    arquivo = models.FileField(upload_to='base_bruta_mj/',
+                               validators=[check_filetype])
+    salvo_em = models.DateTimeField(verbose_name='Salvo em', auto_now_add=True)
+
+    def __unicode__(self):
+        return "{}/{}".format(self.mes, self.ano)
+
+    class Meta:
+        verbose_name = 'Base bruta MJ'
+        verbose_name_plural = 'Bases brutas MJ'
