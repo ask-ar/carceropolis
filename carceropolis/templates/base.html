@@ -205,18 +205,20 @@
       {% endif %}
     {% endnevercache %}
     {% block top %}
-    <section class="emerald" id="title">
-            <div class="container">
-                <div class="row">
-                    <ul class="breadcrumb">
-                        {% spaceless %}
-                            {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-                        {% endspaceless %}
-                    </ul>
-                    <!-- <h1 class="page-title">{% block title %}{% endblock %}</h1> -->
-                </div>
+      {% if page.html_id != 'sobre-nos' and page.html_id != 'fale-conosco' and page.html_id != 'especialistas' %}
+        <section class="emerald" id="title">
+          <div class="container">
+            <div class="row">
+              <ul class="breadcrumb">
+                {% spaceless %}
+                  {% block breadcrumb_menu %}
+                    {% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+                {% endspaceless %}
+              </ul>
             </div>
-       </section>
+          </div>
+        </section>
+      {% endif %}
     {% endblock %}
 
     {% block left_panel %}{% endblock %}
