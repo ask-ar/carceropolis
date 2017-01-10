@@ -77,22 +77,22 @@
     }
   }
 
-  li:nth-child(1) {
+  li.categoria-outros {
     background-image: url(../images/geral.jpg);
   }
-  li:nth-child(2) {
+  li.categoria-funcionamento-do-sistema {
     background-image: url(../images/funcionamento-sistema.jpg);
   }
-  li:nth-child(3) {
+  li.categoria-perfil-populacional {
     background-image: url(../images/perfil-populacional.jpg);
   }
-  li:nth-child(4) {
+  li.categoria-politica-criminal {
     background-image: url(../images/politica-criminal.jpg);
   }
-  li:nth-child(5) {
+  li.categoria-sistemas-internacionais {
     background-image: url(../images/sistemas-internacionais.jpg);
   }
-  li:nth-child(6) {
+  li.categoria-violencia-institucional {
     background-image: url(../images/violencia-institucional.jpg);
   }
 }
