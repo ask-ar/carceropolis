@@ -1185,7 +1185,7 @@ body {
 @media (min-width: 768px) {
   /* line 240, ../../scss/_publicacoes.scss */
   .publicacoes .content .post-title {
-    font-size: 4em;
+    font-size: 3em;
     text-align: left;
   }
 }
