@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}
+    {% if page %}
+        {{ page.meta_title }}
+    {% else %}
+        {% trans "Publicação" %}
+    {% endif %}
+{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Dados" %}
+{% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}{% endblock %}
+
+{% block main %}
+<section class="container frame">
+    <ol class="categorias-dados">
+        <li class="dados-gerais"><a href="#">Dados Gerais</a></li>
+        <li class="infra-estrutura"><a href="#">Infra Estrutura</a></li>
+        <li class="perfil-populacional"><a href="./perfil_populacional">Perfil Populacional</a></li>
+        <li class="trabalho"><a href="#">Trabalho</a></li>
+        <li class="educacao"><a href="./educacao">Educação</a></li>
+        <li class="saude"><a href="#">Saúde</a></li>
+        <li class="alas-exclusivas"><a href="#">Alas Exclusivas</a></li>
+        <li class="materno-infantil"><a href="#">Materno Infantil</a></li>
+        <li class="download"><a href="#">Dados Download</a></li>
+    </ol>
+</section>
+{% endblock %}

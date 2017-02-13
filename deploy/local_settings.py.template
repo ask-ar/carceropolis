@@ -1,0 +1,67 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+SECRET_KEY = "%(secret_key)s"
+NEVERCACHE_KEY = "%(nevercache_key)s"
+ALLOWED_HOSTS = [%(domains_python)s]
+
+# The following settings are already defined with default values in
+# the ``defaults.py`` module within each of Mezzanine's apps, but are
+# common enough to be put here, commented out, for conveniently
+# overriding. Please consult the settings documentation for a full list
+# of settings Mezzanine implements:
+# http://mezzanine.jupo.org/docs/configuration.html#default-settings
+
+DATABASES = {
+    "default": {
+        # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        # DB name or path to database file if using sqlite3.
+        "NAME": "%(proj_name)s",
+        # Not used with sqlite3.
+        "USER": "%(proj_name)s",
+        # Not used with sqlite3.
+        "PASSWORD": "%(db_pass)s",
+        # Set to empty string for localhost. Not used with sqlite3.
+        "HOST": "127.0.0.1",
+        # Set to empty string for default. Not used with sqlite3.
+        "PORT": "",
+    }
+}
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+
+ACCOUNTS_APPROVAL_REQUIRED = True
+
+ACCOUNTS_VERIFICATION_REQUIRED = True
+
+ACCOUNTS_APPROVAL_EMAILS = u''
+
+PUBLICACAO_PER_PAGE = 9
+
+CACHE_MIDDLEWARE_SECONDS = 60
+
+CACHE_MIDDLEWARE_KEY_PREFIX = "%(proj_name)s"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+        "LOCATION": "127.0.0.1:11211",
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+# 2.5MB - 2621440
+# 5MB - 5242880
+# 10MB - 10485760
+# 20MB - 20971520
+# 50MB - 5242880
+# 100MB 104857600
+# 250MB - 214958080
+# 500MB - 429916160
+MAX_UPLOAD_SIZE = "5242880"
+
+COMMENTS_DISQUS_SHORTNAME = False
+
+ENABLE_COMMENTS = False

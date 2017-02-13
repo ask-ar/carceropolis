@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}
+    {% if page %}
+        {{ page.meta_title }}
+    {% else %}
+        {% trans "Especialistas" %}
+    {% endif %}
+{% endblock %}
+
+
+{% block main %}
+
+<section class="container">
+  {% for grupo in especialistas_agrupados %}
+  <h1 class="area-titulo" id="{{grupo.area.slug}}">{{grupo.area}}</h1>
+    <ul class="lista-especialistas area-{{grupo.area}}">
+      {% for especialista in grupo.especialistas %}
+        <li>
+          <h2 class="especilista-nome">{{especialista.nome}}</h2>
+          <p class="instituicao">{{especialista.instituicao}}</p>
+          <p class="biografia">{{especialista.mini_bio}}</p>
+          {% with especialista.especialidades.all as especialidades %}
+            {% if especialidades %}
+              <h3 class="especialidade">Especialidade(s):</h3>
+              <ul class="especialidades">
+              {% for especialidade in especialidades %}
+                <li>
+                  <a href='/especialistas/especialidade/{{especialidade.slug}}/'>{{ especialidade.nome }}</a>
+                </li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+          {% if user.is_authenticated %}
+            <p>{{especialista.telefone}}</p>
+            <a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
+          {% else %}
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#login_modal">
+              Faça login para ver os contatos
+            </button>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</section>
+
+{% endblock %}

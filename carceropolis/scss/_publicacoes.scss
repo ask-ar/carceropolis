@@ -1,0 +1,331 @@
+//Seleção de categorias de publicações ======================
+
+#body.Publicacoes,
+#body.publicacoes {
+
+  .tag {
+
+    display: inline-block;
+    margin: 3px 0;
+
+    a {
+        background: #efefef;
+        border-radius: 3px;
+        color: $author-publication;
+        display: inline-block;
+        font-size: 12px;
+        padding: 1px 8px;
+        text-transform: lowercase;
+
+        &:hover {
+          background-color: $cp-orange;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+}
+
+.categorias-publicacoes {
+  list-style: none;
+  margin: 15px 0;
+  padding: 0;
+
+  li {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 254px;
+    margin: 0 0 15px;
+
+    a {
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-display: flex;
+      display: flex;
+      color: white;
+      font-family: $semibold;
+      font-size: 18px;
+      height: 100%;
+      -webkit-justify-content: center;
+      justify-content: center;
+      text-align: center;
+      text-shadow: 0 0 10px #000;
+      text-transform: uppercase;
+      transition: 1s;
+
+      &:active,
+      &:hover {
+        background-color: rgba(0,0,0,.2);
+        color: $cp-yellow;
+        text-decoration: none;
+        transition: 1s;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    -webkit-display: flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 7px 0;
+
+    > li {
+      height: 268px;
+      margin: 7px;
+      width: 32%;
+    }
+  }
+
+  li.categoria-outros {
+    background-image: url(../images/geral.jpg);
+  }
+  li.categoria-funcionamento-do-sistema {
+    background-image: url(../images/funcionamento-sistema.jpg);
+  }
+  li.categoria-perfil-populacional {
+    background-image: url(../images/perfil-populacional.jpg);
+  }
+  li.categoria-politica-criminal {
+    background-image: url(../images/politica-criminal.jpg);
+  }
+  li.categoria-sistemas-internacionais {
+    background-image: url(../images/sistemas-internacionais.jpg);
+  }
+  li.categoria-violencia-institucional {
+    background-image: url(../images/violencia-institucional.jpg);
+  }
+}
+
+//Lista de publicações ======================
+
+.publicacoes .container.frame {
+  padding: 0;
+
+  @media (min-width: 768px) {
+    background: none
+  }
+}
+
+.lista-publicacoes {
+  list-style: none;
+  padding: 0;
+
+  @media (min-width: 768px) {
+      -webkit-display: flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+
+    &:after {
+      @include clearfix;
+    }
+  }
+
+  > li {
+    border-bottom: 2px solid $cp-grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 17px;
+
+    > p {
+      align-self: flex-start;
+      flex-grow: 1;
+    }
+
+    @media (min-width: 768px) {
+      border-right: 2px solid $cp-grey;
+      width: calc(33.3% - 12px);
+      background: white;
+      margin: 2px;
+      border-radius: 7px;
+    }
+
+    &:last-child { border-bottom: none; }
+  }
+
+  header {
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    margin: 0 0 15px;
+
+    a {
+      color: $title-publication;
+      font-size: 24px;
+
+      &:hover {
+        color: $cp-orange;
+        text-decoration: none;
+      }
+    }
+  }
+
+  p {
+    margin: 0 0 15px;
+    text-indent: 15px;
+  }
+
+  .post-meta {
+    margin: 2px 0;
+    font-weight: normal;
+  }
+
+  .autoria {
+    color: $author-publication;
+    text-transform: lowercase;
+    margin: 5px 0;
+
+    strong {
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+  }
+
+  .data {
+    color: $title-publication;
+    font-size: 12px;
+    margin: 5px 0;
+  }
+
+  .categorias {
+    display: block;
+    list-style: none;
+    margin-bottom: 6px;
+
+    li {
+      font-size: 12px;
+      line-height: 18px;
+      padding: 0 3px 0 0;
+    }
+
+    a {
+      color: $cp-orange;
+      display: inline-block;
+    }
+
+    a:hover {
+        color: black;
+        text-decoration: none;
+    }
+  }
+
+  img {
+    display: block;
+    height: auto;
+    margin: 0 auto 10px;
+    max-width: 100%;
+  }
+
+}
+
+// Publicação detalhe / conteúdo
+
+.publicacoes .content {
+    background: white;
+    margin-bottom: 0;
+    padding: 0 1.5em;
+
+
+    @media (min-width: 768px){
+      margin-bottom: 3.5em;
+    }
+
+    header {
+      margin-bottom: 2em;
+    }
+
+    .post-title {
+      font-family: $light;
+      font-size: 2em;
+      line-height: 1.3em;
+      text-align: center;
+
+        @media (min-width: 768px) {
+          font-size: 3em;
+          text-align: left;
+        }
+    }
+
+    .post-meta {
+      color: $author-publication;
+      line-height: 18px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 30px;
+      text-align: justify;
+      text-indent: 1em;
+    }
+
+
+    p a {
+      color: $navbar-links;
+    }
+
+    .download-publicacao a {
+        border-radius: 5px;
+        color: $title-publication;
+        display: block;
+        line-height: 22px;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: rgba(242, 166, 35, .5);
+        text-align: center;
+
+        &:before {
+          background: url(../images/article.svg) no-repeat;
+          content: '';
+          display: inline-block;
+          height: 24px;
+          width: 22px;
+
+          @media (max-width: 768px){
+              position: relative;
+              top: 8px;
+              margin-left: -22px;
+              margin-top: -7px;
+          }
+        }
+    }
+
+    @media (min-width: 768px){
+
+    .download-publicacao {
+      float: right;
+
+      a {
+          background: none;
+          color: $title-publication;
+          line-height: 22px;
+          margin: -20px 20px 0;
+          padding: 20px;
+          text-align: center;
+          width: 250px;
+          transition: background 500ms;
+
+          &:before {
+            display: block;
+            height: 100px;
+            margin: 0 auto 15px;
+            width: 100px;
+          }
+
+          &:hover {
+            background: rgba(242, 166, 35, .5);
+            text-decoration: none;
+            transition: background 500ms;
+          }
+        }
+      }
+    }
+
+    footer {
+        background: none;
+        clear: both;
+        margin-top: 2em;
+    }
+}

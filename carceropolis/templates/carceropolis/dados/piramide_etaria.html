@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Publicação" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/vendors/highcharts.js"></script>
+{% endblock %}
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Dados" %}
+{% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+{% if tag or categoria or year or month or author %}
+<li>{% spaceless %}
+{% if tag %}
+    {% trans "Tag:" %} {{ tag }}
+{% else %}{% if categoria %}
+    {% trans "Categoria:" %} {{ Categoria }}
+{% else %}{% if year or month %}
+    {% if month %}{{ month }}, {% endif %}{{ year }}
+{% else %}{% if author %}
+    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% endif %}{% endif %}{% endif %}{% endif %}
+{% endspaceless %}
+</li>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+<section class="container frame">
+  <h2>Exemplo de piramide etária</h2>
+  <div id='data-main-container'>
+    <div class='cards'>
+      <div id="piramide-etaria" class='card'>
+        <div class="card-header">
+          <div class="card-title">
+            Piramide Etária
+          </div>
+        </div>
+        <form>
+          Ano:
+          <select onchange="javascript:changeSerie(this.form);" name="selectAno" id="selectAno">
+            <option value="2009" selected="">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+          </select>
+          Região:
+          <select onchange="javascript:changeSerie(this.form);" name="selectRegiao" id="selectRegiao">
+            <option value="em todas as regiões" selected="">Todas</option>
+            <option value="Região Centro-Oeste">Centro-Oeste</option>
+            <option value="Região Nordeste">Nordeste</option>
+            <option value="Região Norte">Norte</option>
+            <option value="Região Sudeste">Sudeste</option>
+            <option value="Região Sul">Sul</option>
+          </select>
+        </form>
+        <div class="card-chart" id='piramide-etaria-chart'>
+        </div>
+        <div class="card-meta">
+          Fonte: http://tabnet.datasus.gov.br/cgi/deftohtm.exe?ibge/cnv/popuf.def
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block final_js%}
+<script src='/static/js/charts/piramide_etaria.js'></script>
+{% endblock %}
+<script>
+
+</script>
+{% endblock %}
+
+{% block right_panel %}
+
+{% endblock %}
+

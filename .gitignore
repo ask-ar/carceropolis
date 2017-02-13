@@ -87,3 +87,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Mezzanine extra ignores
+*.db
+.DS_Store
+/static
+*.sublime-workspace
+.sass-cache/

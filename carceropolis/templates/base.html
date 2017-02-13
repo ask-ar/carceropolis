@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+
+{% compress css %}
+
+<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+
+
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/prettyPhoto.css" %}" rel="stylesheet">
+    <link href="{% static "css/animate.css" %}" rel="stylesheet">
+    <link href="{% static "css/carceropolis.css" %}" rel="stylesheet">
+
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+{% endifinstalled %}
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+ <!--[if lt IE 9]>
+    <script src="{% static "js/html5shiv.js" %}"></script>
+    <script src="{% static "js/respond.min.js" %}"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{% static "images/ico/favicon.ico" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
+{% compress js %}
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/bootstrap-extras.js" %}"></script>
+{% block extra_js %}{% endblock %}
+{% include "includes/footer_scripts.html" %}
+{% endcompress %}
+
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}body{% endblock %}" class="{{ page.html_id }}">
+<div id="login_modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Entrar</h4>
+    </div>
+    <div class="modal-body">
+      {% if request.user.is_authenticated %}
+        <p>Você já está conectado(a). Para se conectar como uma outra pessoa, faça seu logoff <a href="/accounts/logout/?next={{ request.get_full_path }}">clicando aqui</a>.</p>
+      {% else %}
+        <p> Para acessar os contatos dos especialistas você deve se cadastrar em nosso sistema e fazer seu login.</p>
+        <div id="login">
+          <form class="form-horizontal" name="LoginForm" action="/entrar/?next={{ request.get_full_path }}" method="post">
+            <fieldset> {% csrf_token %}
+              <input type="hidden" name="next" id='next' value="{{ request.get_full_path }}" />
+              {% fields_for login_form %}
+              <div class="control-group"><div class="controls">
+                <button type="submit" class="btn">Entrar</button>
+              </div></div>
+            </fieldset>
+          </form>
+        </div>
+        <p>Se você não possui uma conta você pode <a href="{{ request.get_full_path }}#cadastro">clicar aqui para registrar-se</a> agora.</p>
+        {% url "mezzanine_password_reset" as password_reset_url %}
+        <p>Você também pode <a href="{{ request.get_full_path }}#recuperarsenha">clicar aqui para resetar sua senha</a> se você a esqueceu.</p></p>
+      {% endif %}
+    </div>
+  </div></div> <!-- /.modal-content --> <!-- /.modal-dialog -->
+</div> <!-- end of login modal -->
+<div id="cadastro_modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Cadastro</h4>
+    </div>
+    <div class="modal-body">
+      {% if request.user.is_authenticated %}
+        <p>Você já está conectado(a). Para criar um novo usuário, faça seu logoff <a href="/accounts/logout/?next={{ request.get_full_path }}">clicando aqui</a>.</p>
+      {% else %}
+        <div id="cadastro">
+          <form class="form-horizontal" name="CadastroForm" action="/cadastro/?next={{ request.get_full_path }}" method="post">
+            <fieldset> {% csrf_token %}
+              <input type="hidden" name="next" id='next' value="{{ request.get_full_path }}" />
+              {% fields_for registration_form %}
+              <div class="control-group"><div class="controls">
+                <button type="submit" class="btn">Cadastrar-se</button>
+              </div></div>
+            </fieldset>
+          </form>
+        </div>
+        <p>Se você já possui uma conta e deseja apenas fazer o login, <a href="{{ request.get_full_path }}#login">clique aqui</a>.</p>
+      {% endif %}
+    </div>
+  </div></div> <!-- /.modal-content --> <!-- /.modal-dialog -->
+</div> <!-- end of login modal -->
+<div id="recupera_senha_modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Recuperar Senha</h4>
+    </div>
+    <div class="modal-body">
+      {% if request.user.is_authenticated %}
+        <p>Você já está conectado(a). Para se conectar como uma outra pessoa, faça seu logoff <a href="/accounts/logout/?next={{ request.get_full_path }}">clicando aqui</a>.</p>
+      {% else %}
+        <div id="recuperarSenha">
+          <form class="form-horizontal" name="RecuperarSenha" action="/password_recovery/?next={{ request.get_full_path }}" method="post">
+            <fieldset> {% csrf_token %}
+              <input type="hidden" name="next" id='next' value="{{ request.get_full_path }}" />
+              {% fields_for password_recovery_form %}
+              <div class="control-group"><div class="controls">
+                <button type="submit" class="btn">Recuperar Senha</button>
+              </div></div>
+            </fieldset>
+          </form>
+        </div>
+        <p>Se você já possui uma conta e deseja apenas fazer o login, <a href="{{ request.get_full_path }}#login">clique aqui</a>.</p>
+        <p>Se você não possui uma conta você pode <a href="{{ request.get_full_path }}#cadastro">clicar aqui para registrar-se</a> agora.</p>
+      {% endif %}
+    </div>
+  </div></div> <!-- /.modal-content --> <!-- /.modal-dialog -->
+</div> <!-- end of login modal -->
+<div id="wrapper">
+
+    <div id="sidebar-wrapper">
+        <div class="sidebar-nav">
+            <a class="sidebar-brand" href="/"></a>
+            <a class="conectas" href="http://www.conectas.org/">Por Conectas Direitos Humanos</a>
+            {% page_menu "pages/menus/dropdown.html" %}
+        </div>
+    </div>
+
+<div id="page-content-wrapper">
+    <header class="navbar wet-asphalt" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#menu-toggle" class="navbar-toggle sb-toggle-left" id="menu-toggle" data-toggle="collapse" data-target=".sidebar-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                {% if settings.SITE_TITLE %}<h1 class="navbar-brand hidden-xs"><a href="/">{{ settings.SITE_TITLE }}</a></h1>{% endif %}
+            </div>
+            <div class="conectas hidden-xs">
+                <h2><a href="http://www.conectas.org/">Por Conectas Direitos Humanos</a></h2>
+            </div>
+            <div class="main-nav hidden-xs">
+               {% page_menu "pages/menus/dropdown.html" %}
+            </div>
+        </div>
+    </header><!--/header-->
+
+
+    {% nevercache %}
+      {% if messages %}
+      <div class="container">
+        <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{ message }}
+        </div>
+        {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if form and form.errors %}
+        <div class="container">
+          <div class="messages">
+            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <p>Your username and password didn't match. Please try again.</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endnevercache %}
+    {% block top %}
+      {% if page.html_id != 'sobre-nos' and page.html_id != 'fale-conosco' and page.html_id != 'especialistas' %}
+        <section class="emerald" id="title">
+          <div class="container">
+            <div class="row">
+              <ul class="breadcrumb">
+                {% spaceless %}
+                  {% block breadcrumb_menu %}
+                    {% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+                {% endspaceless %}
+              </ul>
+            </div>
+          </div>
+        </section>
+      {% endif %}
+    {% endblock %}
+
+    {% block left_panel %}{% endblock %}
+    {% block main %}{% endblock %}
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+           {% page_menu "pages/menus/footer.html" %}
+            <a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a>
+        </div>
+    </footer>
+    </div><!-- /#page-content-wrapper -->
+</div> <!-- /#wrapper -->
+<script src="{% static "js/jquery.prettyPhoto.js" %}"></script>
+<script src="{% static "js/jquery.isotope.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
+{% block final_js %}{% endblock %}
+</body>
+</html>

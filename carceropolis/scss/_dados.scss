@@ -1,0 +1,248 @@
+.dados, .Dados {
+	.navbar {
+		background-position: calc(100% + 5px) 0;
+		background-size: 50px;
+	}
+}
+
+@media (max-width: 768px) {
+	.breadcrumb {
+		display: none;
+	}
+}
+
+// @media (min-width: 768px) {
+// 	.header-dados {
+// 		position: relative;
+// 	}
+// }
+
+// .filters {
+
+// 	position: absolute;
+// 	top: 7px;
+// 	right: 20px;
+
+// 	@media (min-width: 768px) {
+// 		top: 40px;
+// 	}
+
+// 	ul {
+// 		display: -webkit-flex;
+// 		display: flex;
+// 		list-style: none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+
+// 	.map,
+// 	.filter,
+// 	.text {
+// 		@include hidetext;
+// 		height: 30px;
+// 		margin: 2px;
+// 		width: 30px;
+
+// 		&:before {
+// 			background-repeat: no-repeat;
+// 			background-size: contain;
+// 			content: '';
+// 			display: block;
+// 			height: 22px;
+// 		    margin: 4px auto 0;
+// 			width: 22px;
+// 		}
+// 	}
+
+// 	.map:before {
+// 		background-image: url(../images/icon-mapa.svg);
+// 	}
+
+// 	.filter:before {
+// 		background-image: url(../images/icon-filtro.svg);
+// 		margin-top: 8px;
+// 	}
+
+// 	.text:before {
+// 		background-image: url(../images/icon-busca.svg);
+// 	}
+// }
+
+// .tabs {
+// 	margin: 0 auto;
+// 	width: 300px;
+
+// 	@media (min-width: 768px) {
+// 		margin-top: 30px;
+// 	}
+
+// 	ul {
+// 		display: -webkit-flex;
+// 		display: flex;
+// 		list-style: none;
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+
+// 	a {
+
+// 		color: $cp-orange-dark;
+// 		border-bottom: 2px solid transparent;
+// 		display: block;
+// 		font-family: $semibold;
+// 		font-size: 9px;
+// 		height: 100%;
+// 		line-height: 9px;
+// 		padding: 5px 10px;
+// 		text-align: center;
+// 		text-transform: uppercase;
+
+// 		&:hover {
+// 			text-decoration: none;
+// 		}
+
+// 		&:before {
+// 			background-repeat: no-repeat;
+// 			background-size: contain;
+// 			background-position: 50% 50%;
+// 			content: '';
+// 			display: block;
+// 			height: 26px;
+// 		    margin: 4px auto 0;
+// 			width: 22px;
+// 		}
+
+// 		&:hover,
+// 		&.active {
+// 			border-bottom-color: $cp-orange-dark;
+// 		}
+
+// 	}
+
+// 	li:nth-child(1) a:before {
+// 		background-image: url(../images/icon-macro-dados.svg);
+// 		width: 26px;
+// 	}
+
+// 	li:nth-child(2) a:before {
+// 		background-image: url(../images/icon-populacao.svg);
+// 		width: 28px;
+// 	}
+
+// 	li:nth-child(3) a:before {
+// 		background-image: url(../images/icon-unidades.svg);
+// 		height: 20px;
+// 	    margin-bottom: 10px;
+// 	}
+
+// 	li:nth-child(4) a:before {
+// 		background-image: url(../images/icon-politicas.svg);
+// 		height: 22px;
+// 	    margin-bottom: 4px;
+// 	}
+// }
+
+// Categorias / Home de Dados
+
+.dados .container.frame {
+  padding: 0;
+
+  @media (min-width: 768px) {
+    background: none
+  }
+}
+
+.categorias-dados {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 154px;
+		margin: 0 0 15px;
+
+		a {
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-display: flex;
+			display: flex;
+			color: white;
+			font-family: $semibold;
+			font-size: 18px;
+			height: 100%;
+			-webkit-justify-content: center;
+			justify-content: center;
+			text-align: center;
+			text-transform: uppercase;
+			transition: 1s;
+
+			&:active,
+			&:hover {
+				box-shadow: inset 0 0 100px rgba(171,14,0,.5);
+				text-decoration: none;
+				transition: 1s;
+			}
+		}
+	}
+
+	@media (min-width: 768px) {
+	    -webkit-display: flex;
+	    display: flex;
+	    -webkit-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	    margin: 7px 0;
+
+	    > li {
+	      height: 168px;
+	      margin: 7px;
+	      width: 32%;
+    	}
+    }
+
+	.dados-gerais {
+		background: rgba(234, 112, 46, .9);
+	}
+
+	.infra-estrutura {
+		// background: #ccc;
+		background: rgba(234, 112, 46, .8);
+	}
+
+	.perfil-populacional {
+		// background: #bbb;
+		background: rgba(234, 112, 46, .7);
+	}
+
+	.trabalho {
+		// background: #aaa;
+		background: rgba(234, 112, 46, .4);
+	}
+
+	.educacao {
+		// background: #999
+		background: rgba(234, 112, 46, .5);
+	}
+
+	.saude {
+		// background: #888;
+		background: rgba(234, 112, 46, .6);
+	}
+
+	.alas-exclusivas {
+		// background: #777;
+		background: rgba(234, 112, 46, .7);
+	}
+
+	.materno-infantil {
+		// background: #666;
+		background: rgba(234, 112, 46, .8);
+	}
+
+	.download {
+		// background: #555;
+		background: rgba(234, 112, 46, .9);
+	}
+
+}

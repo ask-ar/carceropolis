@@ -1,0 +1,236 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+ body {
+    overflow-x: hidden;
+ }
+
+/* Toggle Styles */
+
+#wrapper {
+    height: 100%;
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 280px;
+}
+
+#sidebar-wrapper {
+    background: $sidebar-bg url(../images/simbolo-conectas-sidenav.svg) no-repeat;
+    background-position: calc(100% + 20px) -10px;
+    z-index: 1000;
+    position: fixed;
+    left: 280px;
+    width: 0;
+    height: 100%;
+    margin-left: -280px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 280px;
+}
+
+#page-content-wrapper {
+    position: absolute;
+    width: 100%;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -280px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 280px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    line-height: 40px;
+    margin-bottom: 10px;
+    text-indent: 20px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 0;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        height: 100%;
+        min-height: 100%;
+        position: relative;
+        width: auto;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+/* Custom */
+
+
+
+.sidebar-brand {
+    border-bottom: 1px solid white;
+    display: block;
+    padding: 15px 15px 20px;
+
+    &:before {
+        background: url(../images/carceropolis-logo-branco.svg) no-repeat;
+        background-size: 100% auto;
+        content: '';
+        display: block;
+        height: 22px;
+        width: 120px;
+    }
+}
+
+
+.sidebar-nav .conectas {
+    position: absolute;
+    top: 32px;
+    left: 15px;
+    color: white;
+    font-size: .6em;
+    letter-spacing: .04em;
+}
+
+.sidebar-nav .nav.navbar-nav.navbar-right li {
+
+    a {
+        color: white;
+        font-family: $semibold;
+        font-size: 14px;
+        padding: 0 0 10px;
+        text-transform: uppercase;
+    }
+
+    &:active > a,
+    &:hover > a,
+    &.active > a {
+        color: $cp-orange-dark !important;
+    }
+
+}
+
+.sidebar-nav .nav.navbar-nav.navbar-right > li > {
+    margin: 5px 0;
+    padding: 5px 0 12px;
+}
+
+.navbar-nav {
+    margin: 10px 0 0;
+}
+
+.sidebar-nav .nav.navbar-nav.navbar-right {
+
+    > li > a:before {
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        content: '';
+        display: inline-block;
+        height: 24px;
+        margin-right: 10px;
+        position: relative;
+        width: 20px;
+    }
+
+    > li:nth-child(1) > a:before {
+        background-image: url(../images/dados.svg);
+        top: 4px;
+    }
+    > li:nth-child(2) > a:before {
+        background-image: url(../images/publicacoes.svg);
+        top: 5px;
+    }
+    > li:nth-child(3) > a:before {
+        background-image: url(../images/especialistas.svg);
+        top: 1px;
+        margin-left: -4px;
+        width: 24px;
+    }
+    > li:nth-child(4) > a:before {
+        background-image: url(../images/contato.svg);
+        top: 8px;
+    }
+    > li:nth-child(5) > a:before {
+        background-image: url(../images/sobre.svg);
+        top: 4px;
+    }
+
+    .dropdown-menu {
+        display: block !important;
+        position: static;
+        z-index: 0;
+        float: none;
+        min-width: inherit;
+        padding:0 0 10px;
+        margin: 0;
+        font-size: inherit;
+        list-style: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        border-radius: 0;
+        box-shadow: none;
+
+        li a {
+            text-transform: none;
+            padding-left: 54px;
+        }
+    }
+
+}
+

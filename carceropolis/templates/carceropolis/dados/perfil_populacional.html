@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Publicação" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/vendors/highcharts.js"></script>
+{% endblock %}
+
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Dados" %}
+{% endif %}
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+{% if tag or categoria or year or month or author %}
+<li>{% spaceless %}
+{% if tag %}
+    {% trans "Tag:" %} {{ tag }}
+{% else %}{% if categoria %}
+    {% trans "Categoria:" %} {{ Categoria }}
+{% else %}{% if year or month %}
+    {% if month %}{{ month }}, {% endif %}{{ year }}
+{% else %}{% if author %}
+    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% endif %}{% endif %}{% endif %}{% endif %}
+{% endspaceless %}
+</li>
+{% endif %}
+{% endblock %}
+
+
+{% block main %}
+<section class="container frame">
+  <h2>ESTABELECIMENTO PRISIONAL FEMININO SANTA LUZIA</h2>
+  <div id='data-main-container'>
+    <div class='cards'>
+      <div id="gender-timeline" class='card'>
+        <div class="card-header">
+          <div class="card-title">
+            Evolução da população carcerária, por gênero
+          </div>
+        </div>
+        <div class="card-chart" id='gender-timeline-chart'>
+        </div>
+        <div class="card-meta">
+          Fonte: Infopen
+        </div>
+      </div>
+      <div id="race-timeline" class='card'>
+        <div class="card-header" >
+          <div class="card-title">
+            Evolução da população carcerária, por raça/etnia/cor de pele
+          </div>
+        </div>
+        <div class="card-chart" id='race-timeline-chart'>
+        </div>
+        <div class="card-meta">
+          Fonte: Infopen
+        </div>
+      </div>
+      <!-- bar charts -->
+      <div id="gender-timeline-bar" class='card'>
+        <div class="card-header" >
+          <div class="card-title">
+            Evolução da população carcerária, por gênero
+          </div>
+        </div>
+        <div class="card-chart" id='gender-timeline-bar-chart'>
+          A chart will also be present. Usually two to three brief sentences about the content on the detail page.
+        </div>
+        <div class="card-meta">
+          Fonte: Infopen
+        </div>
+      </div>
+      <div id="race-timeline-bar" class='card'>
+        <div class="card-header" >
+          <div class="card-title">
+            Evolução da população carcerária, por raça/etnia/cor de pele
+          </div>
+        </div>
+        <div class="card-chart" id='race-timeline-bar-chart'>
+        </div>
+        <div class="card-meta">
+          Fonte: Infopen
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block final_js%}
+<script src='/static/js/charts/genero_e_raca.js'></script>
+{% endblock %}
+<script>
+
+</script>
+{% endblock %}
+
+{% block right_panel %}
+
+{% endblock %}

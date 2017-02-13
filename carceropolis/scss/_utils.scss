@@ -1,0 +1,50 @@
+
+.cp-box-shadow {
+  box-shadow: 0px ($base-size / 4) ($base-size / 2) 0px rgba(45, 45, 45, 0.5);
+}
+
+
+.btn-red {
+  background-color: $cp-red;
+  color: white;
+
+  &:hover {
+    background-color: darken($cp-red, 5%);
+    color: darken(white, 5%);
+  }
+}
+
+.cp-overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.75);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-size: cover;
+}
+
+#flashMessages {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  z-index: 1080;
+  text-align: center;
+
+  .close {
+    margin-top: -5px;
+  }
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+

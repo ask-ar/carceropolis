@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Publicação" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Publicacação" %}
+{% endif %}
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+{% if tag or categoria or year or month or author %}
+<li>{% spaceless %}
+{% if tag %}
+    {% trans "Tag:" %} {{ tag }}
+{% else %}{% if categoria %}
+    <!-- {% trans "Categoria:" %}  -->{{ categoria }}
+{% else %}{% if year or month %}
+    {% if month %}{{ month }}, {% endif %}{{ year }}
+{% else %}{% if author %}
+    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% endif %}{% endif %}{% endif %}{% endif %}
+{% endspaceless %}
+</li>
+{% endif %}
+{% endblock %}
+
+
+{% block main %}
+<section class="container frame">
+<!-- {{publicacoes}} -->
+
+{% if tag or Categoria or year or month or author %}
+    {% block publicacao_list_filterinfo %}
+    <p>
+    {% if tag %}
+        {% trans "Viewing posts tagged" %} {{ tag }}
+    {% else %}{% if Categoria %}
+        {% trans "Viewing posts for the Categoria" %} {{ Categoria }}
+    {% else %}{% if year or month %}
+        {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}
+        {{ year }}
+    {% else %}{% if author %}
+        {% trans "Viewing posts by" %}
+        {{ author.get_full_name|default:author.username }}
+    {% endif %}{% endif %}{% endif %}{% endif %}
+    {% endblock %}
+    </p>
+{% else %}
+    {% if page %}
+    {% block publicaca_list_pagecontent %}
+    {% if page.get_content_model.content %}
+        {% editable page.get_content_model.content %}
+        {{ page.get_content_model.content|richtext_filters|safe }}
+        {% endeditable %}
+    {% endif %}
+    {% endblock %}
+    {% endif %}
+{% endif %}
+
+<ul class="lista-publicacoes">
+    {% for publicacao in publicacoes.object_list %}
+    <li>
+    <header>
+      {% block publicacao_list_post_title %}
+      {% editable publicacao.title %}
+        <h3>
+          <a href="{{ publicacao.get_absolute_url }}">{{ publicacao.title }}</a>
+        </h3>
+      {% endeditable %}
+      {% endblock %}
+      {% block publicacao_list_post_metainfo %}
+      {% editable publicacao.publish_date %}
+      <h5 class="post-meta autoria">
+        {% trans "Por" %} <strong>{{ publicacao.autoria }}</strong>
+      </h5>
+      <h6 class="post-meta data">
+          Publicado em: {% blocktrans with sometime=publicacao.ano_de_publicacao %}{{ sometime }}{% endblocktrans %}
+      </h6>
+      <ul class="post-meta list-inline categorias">
+        <li>Categorias:</li>
+        {% with publicacao.categorias.all as categorias %}
+          {% if categorias %}
+            <!-- {% trans "em" %} -->
+            {% for categoria in categorias %}
+              <li><a href="{% url "publicacao_list_categoria" categoria.slug %}">{{ categoria }}</a>{% if not forloop.last %},{% endif %}</li>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </ul>
+      {% endeditable %}
+      {% endblock %}
+    </header>
+
+    {% if settings.BLOG_USE_FEATURED_IMAGE and publicacao.featured_image %}
+      {% block publicacao_list_post_featured_image %}
+        <a href="{{ publicacao.get_absolute_url }}">
+          <img class="img-thumbnail pull-left" src="{{ MEDIA_URL }}{% thumbnail publicacao.featured_image 90 90 %}">
+        </a>
+      {% endblock %}
+    {% endif %}
+
+    {% block publicacao_list_post_content %}
+      {% editable publicacao.content %}
+        {{ publicacao.description_from_content|safe }}
+      {% endeditable %}
+    {% endblock %}
+
+    {% block publicacao_list_post_links %}
+      <div class="publicacao-list-detail">
+        {% keywords_for publicacao as tags %}
+        {% if tags %}
+          <ul class="list-inline tags">
+          <li>{% trans "Tags" %}:</li>
+          {% spaceless %}
+          {% for tag in tags %}
+            <li class="tag">
+              <a href="{% url "publicacao_list_tag" tag.slug %}">{{ tag }}</a>
+            </li>
+          {% endfor %}
+          {% endspaceless %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endblock %}
+    </li>
+    {% endfor %}
+</ul>
+
+{% pagination_for publicacoes %}
+
+{% if settings.COMMENTS_DISQUS_SHORTNAME %}
+{% include "generic/includes/disqus_counts.html" %}
+{% endif %}
+</section>
+
+{% endblock %}
+
+{% block right_panel %}
+{% include "publicacao/includes/filter_panel.html" %}
+{% endblock %}

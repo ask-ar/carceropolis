@@ -1,0 +1,6 @@
+Mezzanine==4.1.0
+Fabric3==1.12.0.post1
+django-autoslug
+django-extensions
+django-shell-plus
+django-phonenumber-field
