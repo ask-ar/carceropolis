@@ -1283,87 +1283,86 @@ body {
     margin-bottom: 20px;
   }
 }
-
-/* line 16, ../../scss/_contact.scss */
-.contact-form {
+/* line 15, ../../scss/_contact.scss */
+.fale-conosco .contact-form {
   color: white;
   padding: 2em;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 768px) {
-  /* line 16, ../../scss/_contact.scss */
-  .contact-form {
+  /* line 15, ../../scss/_contact.scss */
+  .fale-conosco .contact-form {
     padding: 20px;
     width: 768px;
   }
-  /* line 26, ../../scss/_contact.scss */
-  .contact-form .layoutArea,
-  .contact-form .editable-original,
-  .contact-form > p {
+  /* line 25, ../../scss/_contact.scss */
+  .fale-conosco .contact-form .layoutArea,
+  .fale-conosco .contact-form .editable-original,
+  .fale-conosco .contact-form > p {
     float: right;
     padding-top: 20px;
     width: 35%;
   }
 }
-/* line 35, ../../scss/_contact.scss */
-.contact-form:after {
+/* line 34, ../../scss/_contact.scss */
+.fale-conosco .contact-form:after {
   clear: both;
   content: '';
   display: block;
   height: 0;
   width: 0;
 }
-/* line 39, ../../scss/_contact.scss */
-.contact-form .mezzanine-form {
+/* line 38, ../../scss/_contact.scss */
+.fale-conosco .contact-form .mezzanine-form {
   display: block;
   margin-top: 50px;
 }
 @media (min-width: 768px) {
-  /* line 39, ../../scss/_contact.scss */
-  .contact-form .mezzanine-form {
+  /* line 38, ../../scss/_contact.scss */
+  .fale-conosco .contact-form .mezzanine-form {
     float: left;
     margin: 0;
   }
 }
-/* line 49, ../../scss/_contact.scss */
-.contact-form legend {
+/* line 48, ../../scss/_contact.scss */
+.fale-conosco .contact-form legend {
   border: 0;
   color: white;
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  /* line 49, ../../scss/_contact.scss */
-  .contact-form legend {
+  /* line 48, ../../scss/_contact.scss */
+  .fale-conosco .contact-form legend {
     display: none;
   }
 }
-/* line 59, ../../scss/_contact.scss */
-.contact-form .btn-primary,
-.contact-form .help-block {
+/* line 58, ../../scss/_contact.scss */
+.fale-conosco .contact-form .btn-primary,
+.fale-conosco .contact-form .help-block {
   color: white;
   font-family: "source_sans_prolight";
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: .05em;
 }
-/* line 68, ../../scss/_contact.scss */
-.contact-form .btn-primary,
-.contact-form .form-group > input[type="text"],
-.contact-form .form-group > input[type="password"],
-.contact-form .form-group > input[type="datetime"],
-.contact-form .form-group > input[type="datetime-local"],
-.contact-form .form-group > input[type="date"],
-.contact-form .form-group > input[type="month"],
-.contact-form .form-group > input[type="time"],
-.contact-form .form-group > input[type="week"],
-.contact-form .form-group > input[type="number"],
-.contact-form .form-group > input[type="email"],
-.contact-form .form-group > input[type="url"],
-.contact-form .form-group > input[type="search"],
-.contact-form .form-group > input[type="tel"],
-.contact-form .form-group > input[type="color"],
-.contact-form .form-group > select,
-.contact-form .form-group > textarea {
+/* line 67, ../../scss/_contact.scss */
+.fale-conosco .contact-form .btn-primary,
+.fale-conosco .contact-form .form-group > input[type="text"],
+.fale-conosco .contact-form .form-group > input[type="password"],
+.fale-conosco .contact-form .form-group > input[type="datetime"],
+.fale-conosco .contact-form .form-group > input[type="datetime-local"],
+.fale-conosco .contact-form .form-group > input[type="date"],
+.fale-conosco .contact-form .form-group > input[type="month"],
+.fale-conosco .contact-form .form-group > input[type="time"],
+.fale-conosco .contact-form .form-group > input[type="week"],
+.fale-conosco .contact-form .form-group > input[type="number"],
+.fale-conosco .contact-form .form-group > input[type="email"],
+.fale-conosco .contact-form .form-group > input[type="url"],
+.fale-conosco .contact-form .form-group > input[type="search"],
+.fale-conosco .contact-form .form-group > input[type="tel"],
+.fale-conosco .contact-form .form-group > input[type="color"],
+.fale-conosco .contact-form .form-group > select,
+.fale-conosco .contact-form .form-group > textarea {
   background-color: transparent;
   background-image: none;
   border: none;
@@ -1378,48 +1377,61 @@ body {
   width: 100%;
 }
 @media (min-width: 768px) {
-  /* line 68, ../../scss/_contact.scss */
-  .contact-form .btn-primary,
-  .contact-form .form-group > input[type="text"],
-  .contact-form .form-group > input[type="password"],
-  .contact-form .form-group > input[type="datetime"],
-  .contact-form .form-group > input[type="datetime-local"],
-  .contact-form .form-group > input[type="date"],
-  .contact-form .form-group > input[type="month"],
-  .contact-form .form-group > input[type="time"],
-  .contact-form .form-group > input[type="week"],
-  .contact-form .form-group > input[type="number"],
-  .contact-form .form-group > input[type="email"],
-  .contact-form .form-group > input[type="url"],
-  .contact-form .form-group > input[type="search"],
-  .contact-form .form-group > input[type="tel"],
-  .contact-form .form-group > input[type="color"],
-  .contact-form .form-group > select,
-  .contact-form .form-group > textarea {
+  /* line 67, ../../scss/_contact.scss */
+  .fale-conosco .contact-form .btn-primary,
+  .fale-conosco .contact-form .form-group > input[type="text"],
+  .fale-conosco .contact-form .form-group > input[type="password"],
+  .fale-conosco .contact-form .form-group > input[type="datetime"],
+  .fale-conosco .contact-form .form-group > input[type="datetime-local"],
+  .fale-conosco .contact-form .form-group > input[type="date"],
+  .fale-conosco .contact-form .form-group > input[type="month"],
+  .fale-conosco .contact-form .form-group > input[type="time"],
+  .fale-conosco .contact-form .form-group > input[type="week"],
+  .fale-conosco .contact-form .form-group > input[type="number"],
+  .fale-conosco .contact-form .form-group > input[type="email"],
+  .fale-conosco .contact-form .form-group > input[type="url"],
+  .fale-conosco .contact-form .form-group > input[type="search"],
+  .fale-conosco .contact-form .form-group > input[type="tel"],
+  .fale-conosco .contact-form .form-group > input[type="color"],
+  .fale-conosco .contact-form .form-group > select,
+  .fale-conosco .contact-form .form-group > textarea {
     width: 400px;
   }
 }
-/* line 103, ../../scss/_contact.scss */
-.contact-form .form-group > textarea {
+/* line 102, ../../scss/_contact.scss */
+.fale-conosco .contact-form .form-group > textarea {
   border: 2px solid #ea702e;
   line-height: 24px;
   margin-top: 30px;
   padding: 5px;
 }
-/* line 110, ../../scss/_contact.scss */
-.contact-form .form-actions {
+/* line 109, ../../scss/_contact.scss */
+.fale-conosco .contact-form .form-actions {
   background-color: transparent;
   border: none;
   padding: 0;
   margin-bottom: 0;
   border-radius: 0;
 }
-/* line 118, ../../scss/_contact.scss */
-.contact-form .btn-primary {
+/* line 117, ../../scss/_contact.scss */
+.fale-conosco .contact-form .btn-primary {
   border: 2px solid #ea702e;
   float: right;
   padding: 10px;
   width: 100px;
+}
+/* line 124, ../../scss/_contact.scss */
+.fale-conosco .contact-form .control-group {
+  display: flex;
+  flex-direction: column;
+}
+/* line 128, ../../scss/_contact.scss */
+.fale-conosco .contact-form .control-group .help-block {
+  order: -1;
+}
+/* line 132, ../../scss/_contact.scss */
+.fale-conosco .contact-form .control-group input, .fale-conosco .contact-form .control-group textarea {
+  order: 1;
 }
 
 @media (min-width: 768px) {

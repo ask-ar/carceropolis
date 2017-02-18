@@ -1,68 +1,67 @@
 .fale-conosco {
-    #page-content-wrapper {
-        background-image: url(../images/background-contact.jpg);
-        background-position: center;
-        background-size: cover;
-        height: auto;
-    }
+  #page-content-wrapper {
+    background-image: url(../images/background-contact.jpg);
+    background-position: center;
+    background-size: cover;
+    height: auto;
+  }
 
-    @media (min-width: 768px) {
-        #title {
-            margin-bottom: 20px;
-        }
+  @media (min-width: 768px) {
+    #title {
+      margin-bottom: 20px;
     }
-}
+  }
 
-.contact-form {
+  .contact-form {
 
     color: white;
     padding: 2em;
     text-shadow: 1px 1px 1px rgba(0,0,0,.5);
 
     @media(min-width:768px) {
-        padding: 20px;
-        width: 768px;
+      padding: 20px;
+      width: 768px;
 
-        .layoutArea,
-        .editable-original,
-        > p {
-            float: right;
-            padding-top: 20px;
-            width: 35%;
-        }
+      .layoutArea,
+      .editable-original,
+      > p {
+        float: right;
+        padding-top: 20px;
+        width: 35%;
+      }
     }
 
     &:after {
-        @include clearfix;
+      @include clearfix;
     }
 
     .mezzanine-form{
-        display: block;
-        margin-top: 50px;
+      display: block;
+      margin-top: 50px;
 
-        @media(min-width:768px) {
-            float: left;
-            margin: 0;
-        }
+      @media(min-width:768px) {
+        float: left;
+        margin: 0;
+      }
     }
 
     legend {
-        border: 0;
-        color: white;
-        font-size: 14px;
+      border: 0;
+      color: white;
+      font-size: 14px;
 
-        @media(min-width:768px) {
-            display: none;
-        }
+      @media(min-width:768px) {
+        display: none;
+      }
     }
 
     .btn-primary,
     .help-block {
-        color: white;
-        font-family: $light;
-        text-transform: uppercase;
-        font-size: 12px;
-        letter-spacing: .05em;
+      color: white;
+      font-family: $light;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .05em;
     }
 
     .btn-primary,
@@ -82,44 +81,58 @@
     .form-group > input[type="color"],
     .form-group > select,
     .form-group > textarea {
-        background-color: transparent;
-        background-image: none;
-        border: none;
-        border-bottom: 2px solid $cp-orange-dark;
-        border-radius: initial;
-        box-shadow: inherit;
-        color: white;
-        display: block;
-        max-width: inherit;
-        padding: 0;
-        transition: inherit;
-        width: 100%;
+      background-color: transparent;
+      background-image: none;
+      border: none;
+      border-bottom: 2px solid $cp-orange-dark;
+      border-radius: initial;
+      box-shadow: inherit;
+      color: white;
+      display: block;
+      max-width: inherit;
+      padding: 0;
+      transition: inherit;
+      width: 100%;
 
-        @media(min-width:768px) {
-            width: 400px;
-        }
+      @media(min-width:768px) {
+        width: 400px;
+      }
     }
 
     .form-group > textarea {
-        border: 2px solid $cp-orange-dark;
-        line-height: 24px;
-        margin-top: 30px;
-        padding: 5px;
+      border: 2px solid $cp-orange-dark;
+      line-height: 24px;
+      margin-top: 30px;
+      padding: 5px;
     }
 
     .form-actions {
-        background-color: transparent;
-        border: none;
-        padding: 0;
-        margin-bottom: 0;
-        border-radius: 0;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      margin-bottom: 0;
+      border-radius: 0;
     }
 
     .btn-primary {
-        border: 2px solid $cp-orange-dark;
-        float: right;
-        padding: 10px;
-        width: 100px;
+      border: 2px solid $cp-orange-dark;
+      float: right;
+      padding: 10px;
+      width: 100px;
     }
 
+    .control-group {
+      display: flex;
+      flex-direction: column;
+
+      .help-block {
+        order: -1;
+      }
+
+      input, textarea {
+        order: 1;
+      }
+    }
+
+  }
 }
