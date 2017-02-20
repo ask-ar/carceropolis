@@ -13,7 +13,7 @@ class EspecialistaAdmin(admin.ModelAdmin):
     search_fields = ['nome', 'instituicao', 'area_de_atuacao__nome',
                      'especialidades__nome']
     list_filter = ['area_de_atuacao', 'especialidades', 'instituicao']
-    list_display = ['nome', 'instituicao', 'email', 'telefone']
+    list_display = ['nome', 'instituicao', 'email', 'ddi', 'ddd', 'telefone']
 
 
 def generate_publicacao_fieldset():

@@ -4,7 +4,6 @@ from cidades.models import Cidade, STATE_CHOICES
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from mezzanine.blog.models import BlogPost
-from phonenumber_field.modelfields import PhoneNumberField
 from autoslug import AutoSlugField
 from .options import current_month, current_year, MONTH_CHOICES, YEAR_CHOICES
 from .validators import check_filetype
@@ -46,7 +45,11 @@ class Especialista(models.Model):
     """Classe que define os especialistas para o 'Banco de Especialistas'."""
     nome = models.CharField(max_length=250)
     email = models.EmailField()
-    telefone = PhoneNumberField(blank=True)
+    ddi = models.IntegerField(verbose_name='DDI', blank=True, null=True,
+                              default=55)
+    ddd = models.IntegerField(verbose_name='DDD', blank=True, null=True)
+    telefone = models.IntegerField(verbose_name='Telefone', blank=True,
+                                   null=True)
     mini_bio = models.CharField(max_length=600, blank=True)
     instituicao = models.CharField(max_length=250,
                                    verbose_name='Instituição')
