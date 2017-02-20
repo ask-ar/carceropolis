@@ -47,7 +47,7 @@ class Especialista(models.Model):
     nome = models.CharField(max_length=250)
     email = models.EmailField()
     telefone = PhoneNumberField(blank=True)
-    mini_bio = models.CharField(max_length=250, blank=True)
+    mini_bio = models.CharField(max_length=600, blank=True)
     instituicao = models.CharField(max_length=250,
                                    verbose_name='Instituição')
     area_de_atuacao = models.ManyToManyField(AreaDeAtuacao,
