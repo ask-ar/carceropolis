@@ -113,12 +113,12 @@ class UnidadePrisional(models.Model):
     telefone = models.IntegerField(null=True, blank=True)
     email = models.EmailField()
 
-    def __unicode__(self):
-        return self.nome
-
     class Meta:
         verbose_name = 'Unidade Prisional'
         verbose_name_plural = 'Unidades Prisionais'
+
+    def __unicode__(self):
+        return "%s (%s/%s)" % (self.nome_unidade, self.municipio, self.uf)
 
     @classmethod
     def _new_from_dict(cls, data):
