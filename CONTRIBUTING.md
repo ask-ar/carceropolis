@@ -3,6 +3,7 @@ Abaixo os principais passos para instalação do projeto em ambiente de desenvol
 
 ### GNU/Linux - Básico
 Sistemas GNU/Linux contém python por padrão, então o que precisaremos é garantir que duas aplicações python estejam instaladas:
+O Projeto funciona apenas com Python2.7, ainda não há suporte a Python3.
 
 ```
 sudo apt-get install python-pip
@@ -107,17 +108,17 @@ com as devidas modificações de conteúdo/valor das variáveis:
 
     # This file is exec'd from settings.py, so it has access to and can
     # modify all the variables in settings.py.
-    
+
     # If this file is changed in development, the development server will
     # have to be manually restarted because changes will not be noticed
     # immediately.
-    
+
     DEBUG = True
-    
+
     # Make these unique, and don't share it with anybody.
     SECRET_KEY = "as9d8j(*HJw(*&DHWQ87d!HQW87dhQ87whd(*"
     NEVERCACHE_KEY = "&!@HFDmfmfiwfm8)#$*jfmkaslmdapdo213#@)"
-    
+
     DATABASES = {
         "default": {
             # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
@@ -134,20 +135,21 @@ com as devidas modificações de conteúdo/valor das variáveis:
             "PORT": "",
         }
     }
-    
+
     ###################
     # DEPLOY SETTINGS #
     ###################
-    
+
     # Domains for public site
     ALLOWED_HOSTS = [""]
-    
+
 
 Agora iremos rodar o projeto para que as principais configurações sejam
 implementadas:
 
 ```
 python manage.py migrate
+python manage.py loaddata cidades/fixtures/cidade.json.bz2
 python manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
 ```
 
@@ -160,25 +162,25 @@ python manage.py runserver
 e visite, em seu navegador, o endereço: http://127.0.0.1:8000
 
 ### Trabalhando com o CSS
-Este projeto utiliza o Compass para escrever CSS. O Compass é um pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.  
+Este projeto utiliza o Compass para escrever CSS. O Compass é um pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.
 
-Para utilizar o Compass, você deve instalar o [Ruby](http://rubyinstaller.org/) em seu computador e depois instalar o [Compass](http://compass-style.org/).  
+Para utilizar o Compass, você deve instalar o [Ruby](http://rubyinstaller.org/) em seu computador e depois instalar o [Compass](http://compass-style.org/).
 
-Após instalação, você pode verificar as configurações de compilação no arquivo ./carceropolis/config.rb  
+Após instalação, você pode verificar as configurações de compilação no arquivo ./carceropolis/config.rb
 
-Os arquivos .scss (compass) estão no diretório ./carceropolis/scss  
+Os arquivos .scss (compass) estão no diretório ./carceropolis/scss
 
 Para trabalhar com arquivos .sccs você deve iniciar o serviço que observa modificações neles, para compilar-los assim que salvos. Para isto você deve digitar no terminal no diretório onde o arquivo config.rb está salvo.
 
-`$ compass watch`  
+`$ compass watch`
 
-Siga a sintaxe da linguagem para realizar as modificações necessárias.  
+Siga a sintaxe da linguagem para realizar as modificações necessárias.
 
-Nunca faça modificações direto nos arquivos CSS pois estes serão apagados a toda nova compilação do Compass.  
+Nunca faça modificações direto nos arquivos CSS pois estes serão apagados a toda nova compilação do Compass.
 
-Para compilar apenas uma vez:  
+Para compilar apenas uma vez:
 
-`$ compass compile`  
+`$ compass compile`
 
 Parar parar o watch `control c`
 
