@@ -1,5 +1,5 @@
-Mezzanine==4.1.0
-Fabric3==1.12.0.post1
+Mezzanine==4.2.2
+Fabric3==1.12.post1
 django-autoslug
 django-extensions
 django-shell-plus
