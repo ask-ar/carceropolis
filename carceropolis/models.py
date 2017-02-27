@@ -1,5 +1,8 @@
 # coding= utf-8
 """Modelos definidos para o Projeto carcerópolis."""
+import csv
+import logging
+
 from cidades.models import Cidade, STATE_CHOICES
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
@@ -7,6 +10,8 @@ from mezzanine.blog.models import BlogPost
 from autoslug import AutoSlugField
 from .options import current_month, current_year, MONTH_CHOICES, YEAR_CHOICES
 from .validators import check_filetype
+
+log = logging.getLogger(__name__)
 
 
 class AreaDeAtuacao(models.Model):
@@ -135,19 +140,36 @@ class UnidadePrisional(models.Model):
         unidade.nome_logradouro = data['nome_logradouro']
         if isinstance(data['numero'], int):
             unidade.numero = data['numero']
+        else:
+            try:
+                unidade.numero = int(data['numero'])
+            except:
+                unidade.numero = None
         unidade.complemento = data['complemento']
         unidade.bairro = data['bairro']
         unidade.municipio = Cidade.objects.get(nome=data['municipio'],
                                                estado=data['uf'])
         unidade.uf = data['uf']
         unidade.cep = data['cep']
-        unidade.ddd = data['ddd']
-        unidade.telefone = data['telefone']
+        if isinstance(data['ddd'], int):
+            unidade.ddd = data['ddd']
+        else:
+            try:
+                unidade.ddd = int(data['ddd'])
+            except:
+                unidade.ddd = None
+        if isinstance(data['telefone'], int):
+            unidade.telefone = data['telefone']
+        else:
+            try:
+                unidade.telefone = int(data['telefone'])
+            except:
+                unidade.telefone = None
         unidade.email = data['email']
         return unidade
 
     @classmethod
-    def _import_from_csv(cls, data):
+    def _import_from_csv(cls, filename):
         """Populate the DB from CSV data.
 
         The 'data' attribute must be a list of dictionaries, being each dict
@@ -157,28 +179,46 @@ class UnidadePrisional(models.Model):
         atualizadas = []
         novas = []
         errors = []
-        for row in data:
-            try:
-                unidade = UnidadePrisional.objects.get(
-                    nome_unidade=row['nome_unidade'])
-                unidade._update_from_dict(row)
-                unidade.save()
-                atualizadas.append(unidade.nome_unidade)
-            except ObjectDoesNotExist:
+
+        fieldnames = ['remove1', 'nome_unidade', 'sigla_unidade',
+                      'tipo_logradouro', 'nome_logradouro', 'numero',
+                      'complemento', 'bairro', 'municipio', 'uf', 'cep', 'ddd',
+                      'telefone', 'email', 'remove2']
+        with open(filename, 'r') as csv_file:
+            data = csv.DictReader(csv_file, fieldnames=fieldnames)
+
+            for row in data:
+                if row['nome_unidade'] == 'nome_unidade':
+                    row = data.next()
+
+                del row['remove1']
+                del row['remove2']
+
                 try:
-                    unidade = UnidadePrisional._new_from_dict(row)
+                    unidade = UnidadePrisional.objects.get(
+                        nome_unidade=row['nome_unidade'],
+                        municipio=Cidade.objects.get(nome=row['municipio'],
+                                                     estado=row['uf']))
+                    unidade._update_from_dict(row)
                     unidade.save()
-                    novas.append(unidade.nome_unidade)
-                except Exception as e:
-                    error = {'nome_unidade': row['nome_unidade'],
-                             'erro': e,
-                             'data': row}
-                    errors.append(error)
+                    atualizadas.append(unidade.nome_unidade)
+                except ObjectDoesNotExist:
+                    try:
+                        unidade = UnidadePrisional._new_from_dict(row)
+                        unidade.save()
+                        novas.append(unidade.nome_unidade)
+                    except Exception as e:
+                        error = {'nome_unidade': row['nome_unidade'],
+                                 'erro': str(e),
+                                 'data': row}
+                        errors.append(error)
 
         msg = 'Resumo da operação:\n'
         if atualizadas:
             msg += '    - '
             msg += '{} unidades foram atualizadas.\n'.format(len(atualizadas))
+            log.info('    {}'.format(atualizadas))
+
         if novas:
             msg += '    - '
             msg += '{} unidades foram adicionadas.\n'.format(len(novas))
@@ -187,13 +227,12 @@ class UnidadePrisional(models.Model):
             msg += 'Ocorreram {} erros de importação:\n'.format(len(errors))
             for error in errors:
                 msg += '    - '
-                msg += 'Nome da Unidade: {}\n'.format(error['nome_unidade'])
-                msg += ' | {}'.format(error['erro'])
+                msg += 'Unidade: {:.30}'.format(error['nome_unidade'])
+                msg += ' | {} | {}/{}\n'.format(error['erro'],
+                                                error['data']['uf'],
+                                                error['data']['municipio'])
 
-        print(msg)
-
-    def __unicode__(self):
-        return "%s (%s/%s)" % (self.nome_unidade, self.municipio, self.uf)
+        log.info(msg)
 
     def _update_from_dict(self, data):
         """Update a 'Unidade Prisional' based on its name and return it.
@@ -208,15 +247,30 @@ class UnidadePrisional(models.Model):
         if isinstance(data['numero'], int):
             self.numero = data['numero']
         else:
-            self.numero = None
+            try:
+                self.numero = int(data['numero'])
+            except:
+                self.numero = None
         self.complemento = data['complemento']
         self.bairro = data['bairro']
         self.municipio = Cidade.objects.get(nome=data['municipio'],
-                                               estado=data['uf'])
+                                            estado=data['uf'])
         self.uf = data['uf']
         self.cep = data['cep']
-        self.ddd = data['ddd']
-        self.telefone = data['telefone']
+        if isinstance(data['ddd'], int):
+            self.ddd = data['ddd']
+        else:
+            try:
+                self.ddd = int(data['ddd'])
+            except:
+                self.ddd = None
+        if isinstance(data['telefone'], int):
+            self.telefone = data['telefone']
+        else:
+            try:
+                self.telefone = int(data['telefone'])
+            except:
+                self.telefone = None
         self.email = data['email']
 
 
