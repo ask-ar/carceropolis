@@ -101,7 +101,7 @@ class UnidadePrisional(models.Model):
     nome_unidade = models.CharField(max_length=255,
                                     verbose_name='Nome da Unidade')
     sigla_unidade = models.CharField(max_length=10)
-    tipo_logradouro = models.CharField(max_length=15)
+    tipo_logradouro = models.CharField(max_length=20)
     nome_logradouro = models.CharField(max_length=255)
     numero = models.IntegerField(blank=True, null=True, verbose_name='Número')
     complemento = models.CharField(max_length=255, blank=True)
@@ -109,8 +109,8 @@ class UnidadePrisional(models.Model):
     municipio = models.ForeignKey(Cidade, verbose_name='Município')
     uf = models.CharField(max_length=2, choices=STATE_CHOICES)
     cep = models.CharField(max_length=8)
-    ddd = models.IntegerField(verbose_name='DDD')
-    telefone = models.IntegerField()
+    ddd = models.IntegerField(verbose_name='DDD', null=True, blank=True)
+    telefone = models.IntegerField(null=True, blank=True)
     email = models.EmailField()
 
     def __unicode__(self):
