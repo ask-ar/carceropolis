@@ -38,7 +38,7 @@ def generate_publicacao_fieldset():
     fields.remove('allow_comments')
     fields.remove('status')
 
-    tags = publicacao_fieldsets[2][1]['fields'].remove('keywords')
+    publicacao_fieldsets[2][1]['fields'].remove('keywords')
     fields.append('keywords')
 
     return publicacao_fieldsets
@@ -125,12 +125,13 @@ class LogEntryAdmin(admin.ModelAdmin):
         if obj.action_flag == DELETION:
             link = escape(obj.object_repr)
         else:
-            ct = obj.content_type
-            link = u'<a href="%s">%s</a>' % (
-                reverse('admin:%s_%s_change' % (ct.app_label, ct.model), args=[obj.object_id]),
-                escape(obj.object_repr),
-            )
+            ctype = obj.content_type
+            url = 'admin:{}_{}_change'.format(ctype.app_label, ctype.model)
+            url = reverse(url, args=[obj.object_id])
+            text = escape(obj.object_repr)
+            link = u'<a href="{}">{}</a>'.format(url, text)
         return link
+
     object_link.allow_tags = True
     object_link.admin_order_field = 'object_repr'
     object_link.short_description = u'object'

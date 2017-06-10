@@ -73,13 +73,12 @@ class Especialista(models.Model):
 
 class Publicacao(BlogPost):
     """Publicações relacionadas à temática do site."""
-    autoria = models.CharField(max_length=150,
-                               verbose_name='Autoria')
+    autoria = models.CharField(max_length=150, verbose_name='Autoria')
     categorias = models.ManyToManyField(AreaDeAtuacao,
                                         verbose_name='Categorias')
-    ano_de_publicacao = models.IntegerField(verbose_name='Ano de publicacão',
-                                             choices=YEAR_CHOICES,
-                                             default=current_year)
+    ano_de_publicacao = models.IntegerField(verbose_name='Ano de publicação',
+                                            choices=YEAR_CHOICES,
+                                            default=current_year)
     arquivo_publicacao = models.FileField(upload_to='publicacoes/',
                                           verbose_name='Arquivo da publicação')
 
