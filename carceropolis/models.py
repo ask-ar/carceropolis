@@ -290,3 +290,21 @@ class BaseMJ(models.Model):
     class Meta:
         verbose_name = 'Base bruta MJ'
         verbose_name_plural = 'Bases brutas MJ'
+
+
+class ArquivoBaseCarceropolis(models.Model):
+    """Manage the multiple raw versions of the cleaned MJ/Infopen database."""
+
+    ano = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
+    mes = models.CharField(verbose_name='Mês', max_length=40,
+                           choices=MONTH_CHOICES, default=current_month)
+    arquivo = models.FileField(upload_to='base_bruta_carceropolis/',
+                               validators=[check_filetype])
+    salvo_em = models.DateTimeField(verbose_name='Salvo em', auto_now_add=True)
+
+    def __unicode__(self):
+        return "{}/{}".format(self.mes, self.ano)
+
+    class Meta:
+        verbose_name = u'Base bruta Carcerópolis'
+        verbose_name_plural = u'Bases brutas Carcerópolis'

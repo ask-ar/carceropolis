@@ -5,13 +5,12 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from mezzanine.blog.admin import BlogPostAdmin
-from .models import (AreaDeAtuacao, BaseMJ, Especialidade, Especialista,
-                     Publicacao, UnidadePrisional)
+from .models import (AreaDeAtuacao, ArquivoBaseCarceropolis, BaseMJ,
+                     Especialidade, Especialista, Publicacao, UnidadePrisional)
 
 from django.contrib.admin.models import LogEntry, DELETION
 from django.utils.html import escape
 from django.core.urlresolvers import reverse
-
 
 
 class EspecialistaAdmin(admin.ModelAdmin):
@@ -73,7 +72,7 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
 class BaseMJAdmin(admin.ModelAdmin):
     list_display = ['mes', 'ano', 'salvo_em']
     list_filter = ['mes', 'ano']
-    readonly_fields=()
+    readonly_fields = ()
 
     def get_readonly_fields(self, request, obj=None):
         """Return the list of readyonly fields.
@@ -85,6 +84,7 @@ class BaseMJAdmin(admin.ModelAdmin):
             return ['mes', 'ano', 'salvo_em', 'arquivo']
         else:
             return []
+
 
 class LogEntryAdmin(admin.ModelAdmin):
 
@@ -102,7 +102,6 @@ class LogEntryAdmin(admin.ModelAdmin):
         'object_repr',
         'change_message'
     ]
-
 
     list_display = [
         'action_time',
@@ -143,8 +142,28 @@ class LogEntryAdmin(admin.ModelAdmin):
 
 admin.site.register(LogEntry, LogEntryAdmin)
 
+
+class ArquivoBaseCarceropolisAdmin(admin.ModelAdmin):
+    list_display = ['mes', 'ano', 'salvo_em']
+    list_filter = ['mes', 'ano']
+    readonly_fields = ()
+
+    @staticmethod
+    def get_readonly_fields(request, obj=None):
+        """Return the list of readyonly fields.
+
+        If the user is creating a new object (ADD), then there are no readonly
+        fields, otherwise, all fields are readonly.
+        """
+        if obj:
+            return ['mes', 'ano', 'salvo_em', 'arquivo']
+        else:
+            return []
+
+
 admin.site.register(AreaDeAtuacao)
 admin.site.register(BaseMJ, BaseMJAdmin)
+admin.site.register(ArquivoBaseCarceropolis, ArquivoBaseCarceropolisAdmin)
 admin.site.register(Especialidade)
 admin.site.register(Especialista, EspecialistaAdmin)
 admin.site.register(Publicacao, PublicacaoAdmin)
