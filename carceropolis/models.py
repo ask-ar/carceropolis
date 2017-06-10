@@ -1,13 +1,14 @@
 # coding= utf-8
 """Modelos definidos para o Projeto carcerópolis."""
-import csv
 import logging
 
 from cidades.models import Cidade, STATE_CHOICES
+from csv import DictReader
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from mezzanine.blog.models import BlogPost
 from autoslug import AutoSlugField
+
 from .options import current_month, current_year, MONTH_CHOICES, YEAR_CHOICES
 from .validators import check_filetype
 
@@ -169,12 +170,11 @@ class UnidadePrisional(models.Model):
         return unidade
 
     @classmethod
-    def _import_from_csv(cls, filename):
+    def _import_from_csv(cls, path):
         """Populate the DB from CSV data.
 
-        The 'data' attribute must be a list of dictionaries, being each dict
-        a representation of one UnidadePrisional.
-        You should generate the 'data' attribute using the csv.DictRead method.
+        The 'path' attribute is the absolute path to the CSV file that must be
+        inserted on the database.
         """
         atualizadas = []
         novas = []
@@ -184,8 +184,8 @@ class UnidadePrisional(models.Model):
                       'tipo_logradouro', 'nome_logradouro', 'numero',
                       'complemento', 'bairro', 'municipio', 'uf', 'cep', 'ddd',
                       'telefone', 'email', 'remove2']
-        with open(filename, 'r') as csv_file:
-            data = csv.DictReader(csv_file, fieldnames=fieldnames)
+        with open(path, 'r') as csv_file:
+            data = DictReader(csv_file, fieldnames=fieldnames)
 
             for row in data:
                 if row['nome_unidade'] == 'nome_unidade':
