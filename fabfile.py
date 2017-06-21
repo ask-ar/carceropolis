@@ -330,7 +330,7 @@ def pip(packages):
     Installs one or more Python packages within the virtual environment.
     """
     with virtualenv():
-        return run("pip install %s" % packages)
+        return run("pip3 install %s" % packages)
 
 
 def postgres(command):
@@ -443,12 +443,12 @@ def install():
     """
     # Install system requirements
     sudo("apt-get update -y -q")
-    apt("nginx libjpeg-dev python-dev python-setuptools git-core "
-        "postgresql libpq-dev memcached supervisor python-pip vim tmux")
+    apt("nginx libjpeg-dev python3-dev python3-setuptools git-core "
+        "postgresql libpq-dev memcached supervisor python3-pip vim tmux")
     run("mkdir -p /home/%s/logs" % env.user)
 
     # Install Python requirements
-    sudo("pip install -U pip virtualenv virtualenvwrapper mercurial")
+    sudo("pip3 install -U pip virtualenv virtualenvwrapper")
 
     # Set up virtualenv
     run("mkdir -p %s" % env.venv_home)
@@ -456,7 +456,7 @@ def install():
                                                               env.user))
     run("echo 'source /usr/local/bin/virtualenvwrapper.sh' >> "
         "/home/%s/.bashrc" % env.user)
-    print(green("Successfully set up git, mercurial, pip, virtualenv, "
+    print(green("Successfully set up git, pip, virtualenv, "
                 "supervisor, memcached.", bold=True))
 
 
@@ -489,7 +489,7 @@ def create():
                 run("rm -rf %s" % env.proj_name)
             else:
                 abort()
-        run("virtualenv %s" % env.proj_name)
+        run("virtualenv -p /usr/bin/python3 %s" % env.proj_name)
 
     # Upload project files
     if env.deploy_tool in env.vcs_tools:
