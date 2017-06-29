@@ -23,7 +23,7 @@ class AreaDeAtuacao(models.Model):
     ordem = models.IntegerField(unique=True, verbose_name='Ordem')
     slug = AutoSlugField(populate_from='nome', always_update=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nome
 
     class Meta:
@@ -39,7 +39,7 @@ class Especialidade(models.Model):
     slug = AutoSlugField(populate_from='nome',
                          always_update=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nome
 
     class Meta:
@@ -63,7 +63,7 @@ class Especialista(models.Model):
                                              verbose_name='Área de atuação')
     especialidades = models.ManyToManyField(Especialidade)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nome
 
     class Meta:
@@ -86,7 +86,7 @@ class Publicacao(BlogPost):
         verbose_name = 'Publicação'
         verbose_name_plural = 'Publicações'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
@@ -122,7 +122,7 @@ class UnidadePrisional(models.Model):
         verbose_name = 'Unidade Prisional'
         verbose_name_plural = 'Unidades Prisionais'
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s (%s/%s)" % (self.nome_unidade, self.municipio, self.uf)
 
     @classmethod
@@ -283,7 +283,7 @@ class BaseMJ(models.Model):
                                validators=[check_filetype])
     salvo_em = models.DateTimeField(verbose_name='Salvo em', auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "{}/{}".format(self.mes, self.ano)
 
     class Meta:
@@ -301,7 +301,7 @@ class ArquivoBaseCarceropolis(models.Model):
                                validators=[check_filetype])
     salvo_em = models.DateTimeField(verbose_name='Salvo em', auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "{}/{}".format(self.mes, self.ano)
 
     class Meta:
