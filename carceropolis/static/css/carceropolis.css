@@ -1755,3 +1755,75 @@ body[class^='sobre'] section.container p {
   background: #f2a623;
   border: 0;
 }
+
+/* line 5, ../../scss/_infografico.scss */
+.dados header + section {
+  display: none;
+}
+
+/* line 9, ../../scss/_infografico.scss */
+.infografico {
+  counter-reset: section;
+}
+/* line 13, ../../scss/_infografico.scss */
+.infografico section {
+  background: #b81f3c;
+  color: white;
+  height: calc(100vh);
+  padding: 1em;
+}
+/* line 19, ../../scss/_infografico.scss */
+.infografico section:first-child {
+  height: calc(100vh - 80px);
+}
+/* line 23, ../../scss/_infografico.scss */
+.infografico section:nth-child(even) {
+  background: #330129;
+}
+/* line 27, ../../scss/_infografico.scss */
+.infografico section h1 {
+  border-bottom: 1px solid white;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 0 0 1rem 0;
+}
+/* line 33, ../../scss/_infografico.scss */
+.infografico section h1::after {
+  clear: both;
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+}
+/* line 38, ../../scss/_infografico.scss */
+.infografico section h1 a {
+  color: white;
+  display: block;
+  line-height: 40px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+/* line 45, ../../scss/_infografico.scss */
+.infografico section h1 a:hover {
+  text-decoration: none;
+}
+/* line 49, ../../scss/_infografico.scss */
+.infografico section h1 a::before {
+  counter-increment: section;
+  content: counter(section) ". ";
+}
+/* line 54, ../../scss/_infografico.scss */
+.infografico section h1 a::after {
+  background: white;
+  color: #330129;
+  content: '+';
+  float: right;
+  height: 40px;
+  text-align: center;
+  width: 40px;
+}
+/* line 65, ../../scss/_infografico.scss */
+.infografico section h1 a:hover::after {
+  background: #330129;
+  color: white;
+}
