@@ -1,0 +1,1466 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"S",
+				"SELECT"
+			],
+			[
+				"admin",
+				"admin_user"
+			],
+			[
+				"tex",
+				"text-indent"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"font-",
+				"font-style"
+			],
+			[
+				"tet",
+				"text-align"
+			],
+			[
+				"widt",
+				"width"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"p",
+				"pictures/"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"border-",
+				"border-radius"
+			],
+			[
+				"margi",
+				"margin-right"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"col",
+				"background-color"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"mariala",
+				"marialab"
+			],
+			[
+				"bac",
+				"background-repeat"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"aria-s",
+				"aria-use"
+			],
+			[
+				"mg",
+				"mg-scss-imgurl\tCalls the image url function"
+			],
+			[
+				"mg-",
+				"mg-img\tImage Skin Url"
+			],
+			[
+				"modal",
+				"modalMsg"
+			],
+			[
+				"a",
+				"append"
+			],
+			[
+				"mf",
+				"mg-storeInfo\tGets store information"
+			],
+			[
+				"_",
+				"_collapsible.scss"
+			],
+			[
+				"mg-r",
+				"mg-ref\tAdd reference tag"
+			],
+			[
+				"mg-te",
+				"mg-xml-text\tFree text in XML"
+			],
+			[
+				"mgla",
+				"mg-set-template\tAction to set a new root template."
+			],
+			[
+				"mgur",
+				"mg-url\tGet Url"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"f",
+				"focus"
+			],
+			[
+				"mglo",
+				"mg-local-xml\tWrites the basic structure to a new local.xml file"
+			],
+			[
+				"remve",
+				"removeClass"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"bacn",
+				"background-color"
+			],
+			[
+				"box",
+				"box-sizing"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"mr",
+				"margin-right"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"s",
+				"sprite.png\tw:300 h:300"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"m",
+				"margin-bottom"
+			],
+			[
+				"list-st",
+				"list-style-position"
+			],
+			[
+				"bor",
+				"border-top"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"de",
+				"default"
+			],
+			[
+				"str",
+				"stringSplit"
+			],
+			[
+				"rom",
+				"galactToRoman"
+			],
+			[
+				"string",
+				"stringSplit"
+			],
+			[
+				"to",
+				"toRoman"
+			],
+			[
+				"conver",
+				"Convert"
+			],
+			[
+				"fun",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 167.0,
+		"last_filter": "set html",
+		"selected_items":
+		[
+			[
+				"set html",
+				"Set Syntax: HTML"
+			],
+			[
+				"html",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"set sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"set mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"instal ",
+				"Package Control: Install Package"
+			],
+			[
+				"set hytml",
+				"Set Syntax: HTML"
+			],
+			[
+				"set htn",
+				"Set Syntax: HTML (Erlang)"
+			],
+			[
+				"set ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"set xml",
+				"Set Syntax: XML"
+			],
+			[
+				"set scss",
+				"Set Syntax: CSS"
+			],
+			[
+				"SET html",
+				"Set Syntax: HTML"
+			],
+			[
+				"set js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"set h",
+				"Set Syntax: HTML"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"est html",
+				"Set Syntax: HTML"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"update",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"scope",
+				"Scope Hunter: Toggle Instant Scoper"
+			],
+			[
+				"package add",
+				"Package Control: Add Repository"
+			],
+			[
+				"et xml",
+				"Set Syntax: XML"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"set css",
+				"Set Syntax: CSS"
+			],
+			[
+				"SET HTML",
+				"Set Syntax: HTML"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Vanessa/Sites/carceropolis",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/carceropolis",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/carceropolis/especialistas",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/carceropolis/publicacao",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/pages/menus",
+		"/Users/Vanessa/Sites/carceropolis/cidades",
+		"/Users/Vanessa/Sites/mezzanine"
+	],
+	"file_history":
+	[
+		"/Users/Vanessa/Sites/carceropolis/CONTRIBUTING.md",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_about.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/carceropolis.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/config.rb",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_variables.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_sidebar.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_home.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_contact.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/carceropolis/especialistas/especialistas.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_publicacoes.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_experts.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/pages/menus/footer.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_base.scss",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/index.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/pages/index.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/carceropolis/publicacao/publicacao_list.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/models.py",
+		"/Users/Vanessa/Sites/mezzanine/mezzanine/core/models.py",
+		"/Users/Vanessa/Sites/mezzanine/mezzanine/blog/templates/blog/blog_post_detail.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/pages/gallery.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/pages/page.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/base.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/views.py",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/admin.py",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/scss/_dados.scss",
+		"/Users/Vanessa/Desktop/sobre.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/static/images/icon-mail.svg",
+		"/Users/Vanessa/Sites/carceropolis/README.md",
+		"/Users/Vanessa/Sites/carceiropolis_bruto/sobre.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/includes/editable_form.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/includes/form_errors.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/includes/search_form.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/pages/form.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis/templates/includes/form_fields.html",
+		"/Users/Vanessa/Sites/carceropolis/.editorconfig",
+		"/Users/Vanessa/Sites/carceiropolis_bruto/publicacoes.html",
+		"/Users/Vanessa/Sites/carceropolis/carceropolis_theme/scss/_publicacoes.scss",
+		"/Applications/MAMP/htdocs/oscarreales/maximilianojabugo.com/.htaccess",
+		"/Users/Vanessa/Downloads/git flujo tabajo interactiv4 - documentacion/git-nuevo-flujo-trabajo.html",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/index.html",
+		"/Users/Vanessa/Sites/fisl17/Procfile",
+		"/Users/Vanessa/Sites/fisl17/src/documents/themes/yellow-swan/css/theme.less",
+		"/Users/Vanessa/Sites/fisl17/docpad.js",
+		"/Users/Vanessa/Sites/fisl17/out/themes/yellow-swan/css/theme.less",
+		"/Users/Vanessa/Sites/mytalks/.gitignore",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/theme.less",
+		"/Users/Vanessa/Sites/mytalks/README.md",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/gulpfile.js",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/package.json",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/old/index.html",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/oficina-fisl.txt",
+		"/Users/Vanessa/Sites/fisl17/out/themes/fisl17/css/theme.less",
+		"/Users/Vanessa/Sites/fisl17/out/themes/fisl17/css/main.css",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/oficina-fisl.txt",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/old/oficina-fisl.txt",
+		"/Users/Vanessa/Sites/shower/package.json",
+		"/Users/Vanessa/Sites/fisl17/src/documents/themes/fisl17/css/theme.less",
+		"/Users/Vanessa/Sites/fisl17/.editorconfig",
+		"/Users/Vanessa/Sites/fisl17/.gitignore",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/scss/slides.scss",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/config.rb",
+		"/Users/Vanessa/Sites/mytalks/fisl/17/heroku-confboilerplate/styles/slides.css",
+		"/Users/Vanessa/Downloads/Munduruku.md",
+		"/Users/Vanessa/Sites/casadejesus.org.br/CECJ-2013/header.php",
+		"/Users/Vanessa/Google Drive/windows10-dell-xps.txt",
+		"/Users/Vanessa/Google Drive/JOBS_WEB_bruto/Centro Espirita Casa de Jesus/Escala de Palestras/2016/escala.html",
+		"/Users/Vanessa/Google Drive/JOBS_WEB_bruto/Centro Espirita Casa de Jesus/Escala de Palestras/2016/06_junho/escala.html",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique/style.css",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique/content.php",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique/languages/pt_BR.pot",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique/content-page.php",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique/languages/oblique.pot",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-config.php",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique/inc/custom-header.php",
+		"/Users/Vanessa/Sites/casadejesus.org.br/CECJ-2013/404.php",
+		"/Users/Vanessa/Sites/casadejesus.org.br/CECJ-2013/footer.php",
+		"/Users/Vanessa/Sites/casadejesus.org.br/CECJ-2013/style.css",
+		"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/twentysixteen/functions.php",
+		"/Users/Vanessa/Desktop/baixo-desc.txt",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/partials/section/schedule.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/docpad.js",
+		"/Users/Vanessa/Sites/mulheresTechDay/package.json",
+		"/Users/Vanessa/Sites/mulheresTechDay/Procfile",
+		"/Users/Vanessa/Sites/mulheresTechDay/.gitignore",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/documents/themes/yellow-swan/css/base.less",
+		"/Users/Vanessa/Desktop/santander-now.txt",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/layouts/default.html.eco",
+		"/Users/Vanessa/Sites/frontend-vanessatonini/index.html",
+		"/Users/Vanessa/Sites/frontend-vanessatonini/scss/main.scss",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/documents/themes/yellow-swan/css/main.css.less",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/partials/section/partners.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/partials/section/about.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/documents/themes/yellow-swan/css/theme.less",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/partials/header.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/README.md",
+		"/Users/Vanessa/Sites/mulheresTechDay/out/themes/yellow-swan/css/theme.less",
+		"/Users/Vanessa/Sites/mulheresTechDay/out/themes/yellow-swan/css/base.less",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/partials/section/by.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/partials/section/speakers.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/partials/section/sponsors.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/src/documents/index.html.eco",
+		"/Users/Vanessa/Sites/mulheresTechDay/views/partials/header.ejs",
+		"/Users/Vanessa/Sites/mulheresTechDay/views/pages/index.ejs",
+		"/Users/Vanessa/Sites/mulheresTechDay/public/stylesheets/____main.css",
+		"/Users/Vanessa/Sites/mulheresTechDay/less/main.less",
+		"/Users/Vanessa/Sites/mulheresTechDay/gulpfile.js",
+		"/Users/Vanessa/Sites/mulheresTechDay/public/css/main.css",
+		"/Users/Vanessa/Sites/mulheresTechDay/public/stylesheets/main.css",
+		"/Users/Vanessa/Sites/node-js-getting-started/package.json",
+		"/Users/Vanessa/Sites/mulheresTechDay/index.js",
+		"/Users/Vanessa/Sites/node-js-getting-started/.gitignore",
+		"/Users/Vanessa/Sites/mulheresTechDay/app.json",
+		"/Users/Vanessa/Sites/node-js-getting-started/index.js",
+		"/Users/Vanessa/Sites/node-js-getting-started/Procfile",
+		"/Users/Vanessa/Sites/frontend-vanessatonini/js/main.js",
+		"/Users/Vanessa/Sites/frontend-vanessatonini/js/visitorCounter.js",
+		"/Users/Vanessa/Documents/agile-coach-booking.txt",
+		"/Users/Vanessa/Desktop/reuniao-st-now-15012016.txt",
+		"/Users/Vanessa/Sites/Marialab/arcade-basic/style.css",
+		"/Users/Vanessa/Sites/Marialab/arcade-basic/front-page.php",
+		"/Users/Vanessa/Sites/Marialab/arcade-basic/functions.php",
+		"/Users/Vanessa/Sites/Marialab/arcade-basic/header.php",
+		"/Users/Vanessa/Desktop/virus.txt",
+		"/Users/Vanessa/Sites/Trama Celeste/twentytwelve/style.css",
+		"/Users/Vanessa/Sites/Trama Celeste/twentytwelve/footer.php",
+		"/Users/Vanessa/Sites/Trama Celeste/twentytwelve/category.php",
+		"/Users/Vanessa/Sites/Trama Celeste/twentytwelve/index.php",
+		"/Users/Vanessa/Sites/Trama Celeste/collapsing-categories/collapsCatStyles.php"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			"/Users/Vanessa/Sites/carceropolis/carceropolis/scss",
+			"/Users/Vanessa/Sites/mezzanine",
+			"/Users/Vanessa/Sites/carceropolis/carceropolis/templates",
+			"/Users/Vanessa/Sites/carceropolis/carceropolis/scss",
+			"/Users/Vanessa/Sites/carceropolis",
+			"/Users/Vanessa/Sites/carceropolis/carceropolis",
+			"/Users/Vanessa/Sites/carceropolis",
+			"/Users/Vanessa/Sites/carceropolis/carceropolis",
+			"/Users/Vanessa/Sites/carceropolis/carceropolis/scss",
+			"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique",
+			"/Applications/MAMP/htdocs/ceobompastor",
+			"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique",
+			"/Users/Vanessa/Sites/casadejesus.org.br/CECJ-2013",
+			"/Applications/MAMP/htdocs/ceobompastor/wp-content/themes/oblique",
+			"/Applications/MAMP/htdocs/ceobompastor",
+			"/Users/Vanessa/Sites/mulheresTechDay/src/documents/themes/yellow-swan/css",
+			"/Users/Vanessa/Sites/mulheresTechDay",
+			"/Users/Vanessa/Sites/mulheresTechDay/src/documents/themes/yellow-swan/css",
+			"/Users/Vanessa/Sites/mulheresTechDay/src/documents",
+			"/Users/Vanessa/Sites/node-js-getting-started/views",
+			"/Users/Vanessa/Sites/Marialab/arcade-basic",
+			"/Users/Vanessa/Sites/casadejesus.org.br",
+			"/Users/Vanessa/Sites/CECJ-2013",
+			"/Users/Vanessa/Sites/Trama Celeste/twentytwelve",
+			"/Users/Vanessa/Sites/Trama Celeste/collapsing-categories",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass/cms",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/base/default/template",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/js",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass/components",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive/dufry",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/base/default/layout",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/js",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive/dufry",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/base",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive/dufry",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive/dufry/template",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass/components",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass/components",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/skin/frontend/b-responsive/dufry/sass/components",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/base/default/layout",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive/default/layout",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/base",
+			"/Applications/MAMP/htdocs/i4/de-ec-dufry/app/design/frontend/b-responsive",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/base/default/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/base",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template/checkout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/base",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/default",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default/template/ixcbadv",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template/checkout/onepage",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template/checkout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template/checkout/onepage",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template/catalog",
+			"/Users/Vanessa/Sites/esmart/SmartStore/skin/frontend/smartmobile/default/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/base/default/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/js",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/etc/modules",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/base/default/template/catalog/product/view",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/base/default/template/catalog/product",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/code/core/Mage/Catalog",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/css",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/base",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/js",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/redmobile/scss",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default",
+			"/Applications/MAMP/htdocs/i4/lampscom/skin/frontend/lamps/default",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/default/template",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile/layout",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps",
+			"/Applications/MAMP/htdocs/i4/lampscom/app/design/frontend/lamps/redmobile"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"{\n",
+			"2",
+			"100%",
+			"[class^='sobre']",
+			";\n",
+			"#page-content-wrapper",
+			">\n",
+			"\t@",
+			"display: flex;\n\t\tflex-wrap: wrap;",
+			"date",
+			"timesince",
+			"date",
+			"time",
+			"date",
+			"frame",
+			"intro",
+			"publicacao_list.html",
+			";\n",
+			"mp4",
+			".pm4",
+			"area",
+			"bio",
+			"area_de_atuacao",
+			"python manage.py runserver",
+			"\";",
+			"sobre-nós",
+			"Ou mande uma mensagem:",
+			"bread",
+			",",
+			"form",
+			"page-content-wrapper",
+			"clearfix",
+			"############################################\n# Store View: English(España)\n#www.maximilianojabugo.com/es/\nSetEnvIf HOST .*maximilianojabugo\\.com MAGE_RUN_CODE=default\nSetEnvIf HOST .*maximilianojabugo\\.com MAGE_RUN_TYPE=store\n\n\n############################################\n# Store View: English(España)\n#www.vitaminajota.com/es/\nSetEnvIf HOST .*vitaminajota\\.com MAGE_RUN_CODE=vj_es\nSetEnvIf HOST .*vitaminajota\\.com MAGE_RUN_TYPE=store\n\n############################################\n## uncomment these lines for CGI mode\n## make sure to specify the correct cgi php binary file name\n## it might be /cgi-bin/php-cgi\n\n#    Action php5-cgi /cgi-bin/php5-cgi\n#    AddHandler php5-cgi .php\n\n############################################\n## GoDaddy specific options\n\n#   Options -MultiViews\n\n## you might also need to add this line to php.ini\n##     cgi.fix_pathinfo = 1\n## if it still doesn't work, rename php.ini to php5.ini\n\n############################################\n## this line is specific for 1and1 hosting\n\n    #AddType x-mapp-php5 .php\n    #AddHandler x-mapp-php5 .php\n\n############################################\n## default index file\n\n    DirectoryIndex index.php\n\n<IfModule mod_php5.c>\n\n############################################\n## adjust memory limit\n\n#    php_value memory_limit 64M\n    php_value memory_limit 256M\n    php_value max_execution_time 18000\n\n############################################\n## disable magic quotes for php request vars\n\n    php_flag magic_quotes_gpc off\n\n############################################\n## disable automatic session start\n## before autoload was initialized\n\n    php_flag session.auto_start off\n\n############################################\n## enable resulting html compression\n\n    #php_flag zlib.output_compression on\n\n###########################################\n# disable user agent verification to not break multiple image upload\n\n    php_flag suhosin.session.cryptua off\n\n###########################################\n# turn off compatibility with PHP4 when dealing with objects\n\n    php_flag zend.ze1_compatibility_mode Off\n\n</IfModule>\n\n<IfModule mod_security.c>\n###########################################\n# disable POST processing to not break multiple image upload\n\n    SecFilterEngine Off\n    SecFilterScanPOST Off\n</IfModule>\n\n<IfModule mod_deflate.c>\n\n############################################\n## enable apache served files compression\n## http://developer.yahoo.com/performance/rules.html#gzip\n\n    # Insert filter on all content\n    SetOutputFilter DEFLATE\n    # Insert filter on selected content types only\n    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript\n\n    # Netscape 4.x has some problems...\n    BrowserMatch ^Mozilla/4 gzip-only-text/html\n\n    # Netscape 4.06-4.08 have some more problems\n    BrowserMatch ^Mozilla/4\\.0[678] no-gzip\n\n    # MSIE masquerades as Netscape, but it is fine\n    BrowserMatch \\bMSIE !no-gzip !gzip-only-text/html\n\n    # Don't compress images\n    SetEnvIfNoCase Request_URI \\.(?:gif|jpe?g|png)$ no-gzip dont-vary\n\n    # Make sure proxies don't deliver the wrong content\n    Header append Vary User-Agent env=!dont-vary\n\n</IfModule>\n\n<IfModule mod_ssl.c>\n\n############################################\n## make HTTPS env vars available for CGI mode\n\n    SSLOptions StdEnvVars\n\n</IfModule>\n\n<IfModule mod_rewrite.c>\n\n############################################\n## enable rewrites\n\n    Options +FollowSymLinks\n    RewriteEngine on\n\n############################################\n## you can put here your magento root folder\n## path relative to web root\n\n    #RewriteBase /magento/\n\n\n############################################\n## Rewrite 301 para antiguas URLs de español\n## que ahora iran al directorio nuevo /es\n\n    RewriteCond %{REQUEST_URI} ^.*\\.html\n    RewriteCond %{REQUEST_URI} !^/(media|skin|static|admin|panel|index\\.php|es).*\n    RewriteCond %{REQUEST_FILENAME} !-f\n    RewriteCond %{REQUEST_FILENAME} !-d\n    RewriteCond %{REQUEST_FILENAME} !-l\n    RewriteRule (.*) /es/$1 [L,R=301]\n\n    RewriteRule ^no-route$ /es/no-route [L,R=301]\n    RewriteRule ^home$ /es/home [L,R=301]\n    RewriteRule ^conocenos$ /es/conocenos [L,R=301]\n    RewriteRule ^terminos-y-condiciones$ /es/terminos-y-condiciones [L,R=301]\n    RewriteRule ^politica-cookies$ /es/politica-cookies [L,R=301]\n    RewriteRule ^aviso-legal$ /es/aviso-legal [L,R=301]\n    RewriteRule ^equipo$ /es/equipo [L,R=301]\n    RewriteRule ^garantia-sin-preguntas$ /es/garantia-sin-preguntas [L,R=301]\n    RewriteRule ^jabugo-al-maximo$ /es/jabugo-al-maximo [L,R=301]\n    RewriteRule ^metodos-pago$ /es/metodos-pago [L,R=301]\n    RewriteRule ^por-que-maximiliano$ /es/por-que-maximiliano [L,R=301]\n    RewriteRule ^preguntas-frecuentes$ /es/preguntas-frecuentes [L,R=301]\n    RewriteRule ^contacto$ /es/contacto [L,R=301]\n\n\n############################################\n## uncomment next line to enable light API calls processing\n\n#    RewriteRule ^api/([a-z][0-9a-z_]+)/?$ api.php?type=$1 [QSA,L]\n\n############################################\n## rewrite API2 calls to api.php (by now it is REST only)\n\n    RewriteRule ^api/rest api.php?type=rest [QSA,L]\n\n############################################\n## workaround for HTTP authorization\n## in CGI environment\n\n    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\n\n############################################\n## TRACE and TRACK HTTP methods disabled to prevent XSS attacks\n\n    RewriteCond %{REQUEST_METHOD} ^TRAC[EK]\n    RewriteRule .* - [L,R=405]\n\n############################################\n## redirect for mobile user agents\n\n    #RewriteCond %{REQUEST_URI} !^/mobiledirectoryhere/.*$\n    #RewriteCond %{HTTP_USER_AGENT} \"android|blackberry|ipad|iphone|ipod|iemobile|opera mobile|palmos|webos|googlebot-mobile\" [NC]\n    #RewriteRule ^(.*)$ /mobiledirectoryhere/ [L,R=302]\n\n############################################\n## always send 404 on missing files in these folders\n\n    RewriteCond %{REQUEST_URI} !^/(media|skin|js)/\n\n############################################\n## never rewrite for existing files, directories and links\n\n    RewriteCond %{REQUEST_FILENAME} !-f\n    RewriteCond %{REQUEST_FILENAME} !-d\n    RewriteCond %{REQUEST_FILENAME} !-l\n\n############################################\n## rewrite everything else to index.php\n\n    RewriteRule .* index.php [L]\n\n</IfModule>\n\n\n############################################\n## Prevent character encoding issues from server overrides\n## If you still have problems, use the second line instead\n\n    AddDefaultCharset Off\n    #AddDefaultCharset UTF-8\n\n## <IfModule mod_expires.c>\n\n############################################\n## Add default Expires header\n## http://developer.yahoo.com/performance/rules.html#expires\n\n##   ExpiresDefault \"access plus 1 year\"\n\n<IfModule mod_expires.c>\n# Enable expirations\nExpiresActive On \n# Default directive\nExpiresDefault \"access plus 1 month\"\n# My favicon\nExpiresByType image/x-icon \"access plus 1 year\"\n# Images\nExpiresByType image/gif \"access plus 1 month\"\nExpiresByType image/png \"access plus 1 month\"\nExpiresByType image/jpg \"access plus 1 month\"\nExpiresByType image/jpeg \"access plus 1 month\"\n# CSS\nExpiresByType text/css \"access 1 month\"\n# Javascript\nExpiresByType application/javascript \"access plus 1 year\"\n</IfModule>\n\n\n############################################\n## By default allow all access\n\n    Order allow,deny\n    Allow from all\n\n###########################################\n## Deny access to release notes to prevent disclosure of the installed Magento version\n\n    <Files RELEASE_NOTES.txt>\n        order allow,deny\n        deny from all\n    </Files>\n\n############################################\n## If running in cluster environment, uncomment this\n## http://developer.yahoo.com/performance/rules.html#etags\n\n    #FileETag none\n\n############################################\n## para cargar fuentes desde origin externo\n## o local cuando es balanceada la carga\n<FilesMatch \"\\.(ttf|otf|eot|woff|font.css)$\">\n   <IfModule mod_headers.c>\n      Header set Access-Control-Allow-Origin \"*\"\n   </IfModule>\n</FilesMatch>",
+			"https",
+			"less",
+			"\t\t<",
+			"heroku",
+			"<h2>Conf Boilerplate</h2>",
+			">\n",
+			"STYLE",
+			"less",
+			"git",
+			"<td>2</td>",
+			"<td>1</td>",
+			"/08",
+			"<td>/08</td>",
+			"Início do conteúdo adicionado ",
+			"Fim do conteúdo adicionado",
+			"&hellip;",
+			"'",
+			"continue read",
+			"continue",
+			"WPLANG",
+			"Continue reading",
+			"Continue reading …",
+			"Continue",
+			".site-header",
+			"cover",
+			"medalha61anos",
+			"61",
+			"eval",
+			".site-header",
+			"cover",
+			"wp_set_password",
+			"presentation",
+			".speech-title",
+			"title",
+			"conference description",
+			"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
+			"header",
+			"wrapper",
+			"footer",
+			"fooer",
+			"sponsor",
+			".sponsor",
+			".sponsor--lin",
+			".sponsor--link",
+			"logo-name",
+			"10em",
+			"only",
+			"css",
+			"less",
+			"6h53m35s",
+			".only-on-home #site-meta",
+			"#home-page-widgets",
+			".home-widget",
+			"home-page-top-area",
+			"home-page-widgets",
+			"widge",
+			"aside",
+			" var CX = '014507248910412988164:5jjrwx4h2by';",
+			"theboatersnetwork",
+			"<script",
+			"script\t",
+			"script",
+			"theboatersnetwork",
+			"text-indent",
+			"#widget-collapscat-2-top li.collapsing.categories",
+			"archive-title",
+			"files",
+			"font-fam",
+			"sym",
+			";\n",
+			"&nbsp;",
+			"the_excerpt()",
+			"red",
+			"<br>",
+			"we-",
+			"section > div",
+			"position: absolute",
+			"big",
+			"high",
+			"vanessa",
+			"/08",
+			".std",
+			";\n",
+			"+",
+			"p + h3",
+			"calling-code",
+			"callin",
+			"date-birth",
+			"residen",
+			"date of b",
+			"#dob",
+			"date-birth",
+			"age-advice",
+			"date-",
+			"dob"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			",\n",
+			"/06",
+			"<td>/06</td>",
+			"",
+			"/11",
+			"<p><a class=\"back-top\">Back to top</a></p>",
+			"'Email'",
+			"",
+			"class=\"input-text form-control ",
+			"* Mandatory Fields",
+			"h4",
+			"</p></div>",
+			"p",
+			"h4",
+			"<div data-role=\"collapsible\"><dt>",
+			"background-color: $color_bright_sun_approx;;",
+			"background-color: $color_bright_sun_approx;",
+			"",
+			"$seashell",
+			"$orange",
+			"",
+			" fill=\"#999999\" ",
+			"stroke=\"#FFFFFF\" ",
+			"%controlgroup",
+			"",
+			"#ffffff;",
+			";",
+			"",
+			"%clearfix",
+			"%dialog",
+			"$lato",
+			"$mont",
+			"$lato",
+			"$mont",
+			"$lato",
+			" ",
+			";",
+			"",
+			"/*{d-bdown-background-end}*/",
+			"",
+			"FILE",
+			"YOUR_BASE",
+			"YOUR_PASSWORD",
+			"YOUR",
+			" \n",
+			" ",
+			"",
+			"{{media url='",
+			"direct_url='",
+			"'}}\"",
+			"direct_url='",
+			"{{media url='",
+			"direct_url='",
+			"'}}\"",
+			"",
+			"#FFFFFF",
+			"\nlocal",
+			"checkmark-vino.svg",
+			"#333333",
+			"#840000",
+			"museo500-regular-webfont",
+			"museo300-regular-webfont",
+			"",
+			"http://www.cebmenezes.org.br/ure13",
+			" :: ",
+			":: ",
+			"",
+			"*",
+			"",
+			"/12",
+			"currencySplit",
+			"romanCurrency",
+			"roman",
+			" | ",
+			"/10"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/Users/Vanessa/Sites/carceropolis"
+		},
+		{
+			"path": "/Users/Vanessa/Sites/mezzanine"
+		}
+	],
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.scope_viewer":
+	{
+		"height": 148.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 122.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"sethtml",
+				"downloader/template/settings.phtml"
+			],
+			[
+				"app/code/local/dufry/cms/fixtures",
+				"app/code/local/Dufry/CMS/fixtures/block/footer_social.txt"
+			],
+			[
+				"amps/default/template/ixcbadv/lwa.phtml",
+				"app/design/frontend/lamps/default/template/ixcbadv/lwa.phtml"
+			],
+			[
+				"lamps/redmobile/template/persistent/customer/form/login.phtml",
+				"app/design/frontend/lamps/redmobile/template/persistent/customer/form/login.phtml"
+			],
+			[
+				"lamps/default/template/ixcbadv/checkout/onepage/payment.phtml",
+				"app/design/frontend/lamps/default/template/ixcbadv/checkout/onepage/payment.phtml"
+			],
+			[
+				"/redmobile/template/ixcbadv/checkout/onepage/method.phtml",
+				"app/design/frontend/lamps/redmobile/template/ixcbadv/checkout/onepage/method.phtml"
+			],
+			[
+				"default/template/customer/widget/name.phtml",
+				"app/design/frontend/base/default/template/customer/widget/name.phtml"
+			],
+			[
+				"lamps/default/template/ixcbadv/checkout/onepage/method.phtml",
+				"app/design/frontend/lamps/default/template/ixcbadv/checkout/onepage/method.phtml"
+			],
+			[
+				"template/catalog/layer/view.phtml",
+				"app/design/frontend/lamps/redmobile/template/catalog/layer/view.phtml"
+			],
+			[
+				"lamps/default/template/catalog/layer/view.phtml",
+				"app/design/frontend/lamps/default/template/catalog/layer/view.phtml"
+			],
+			[
+				"template/catalog/layer/filter.phtml",
+				"app/design/frontend/lamps/default/template/catalog/layer/filter.phtml"
+			],
+			[
+				"app/design/frontend/lamps/redmobile/layout/page.xml",
+				"app/design/frontend/lamps/redmobile/layout/page.xml"
+			],
+			[
+				"app/design/frontend/lamps/redmobile/layout/catalog.xml",
+				"app/design/frontend/lamps/redmobile/layout/catalog.xml"
+			],
+			[
+				"form.mini.phtml",
+				"app/design/frontend/base/default/template/catalogsearch/form.mini.phtml"
+			],
+			[
+				"_navigation",
+				"skin/frontend/lamps/redmobile/scss/_navigation.scss"
+			],
+			[
+				"shell/abstract.p",
+				"shell/abstract.php"
+			],
+			[
+				"shell/abstract.php",
+				"shell/abstract.php"
+			],
+			[
+				"unode50/unode50-v2/template/catalog/product/view.phtml",
+				"app/design/frontend/unode50/unode50-v2/template/catalog/product/view.phtml"
+			],
+			[
+				"unode50-v2/scss/theme/partials/common/_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"skin/frontend/unode50/unode50-v2/js/app.js",
+				"skin/frontend/unode50/unode50-v2/js/app.js"
+			],
+			[
+				"/unode50-v2/template/catalog/product/view.phtml",
+				"app/design/frontend/unode50/unode50-v2/template/catalog/product/view.phtml"
+			],
+			[
+				"unode50-v2/scss/theme/catalog/_product.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/catalog/_product.scss"
+			],
+			[
+				"unode50-v2/template/catalog/product/view.phtml",
+				"app/design/frontend/unode50/unode50-v2/template/catalog/product/view.phtml"
+			],
+			[
+				"unode50-v2/scss/theme/checkout/cart_mini/_mini.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/checkout/cart_mini/_mini.scss"
+			],
+			[
+				"unode50-v2/scss/theme/partials/_products-grid.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/_products-grid.scss"
+			],
+			[
+				"/partials/common/header/_stycky-header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/header/_stycky-header.scss"
+			],
+			[
+				"/theme/partials/common/header/_stycky-header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/header/_stycky-header.scss"
+			],
+			[
+				"unode50-v2/locale/es_es/translate.csv",
+				"app/design/frontend/unode50/unode50-v2/locale/es_ES/translate.csv"
+			],
+			[
+				"ntend/unode50/unode50-v2/locale/es_es/translate.csv",
+				"app/design/frontend/unode50/unode50-v2/locale/es_ES/translate.csv"
+			],
+			[
+				"unode50/unode50-v2/js/app.js",
+				"skin/frontend/unode50/unode50-v2/js/app.js"
+			],
+			[
+				"/scss/theme/catalog/category/_product-list.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/catalog/category/_product-list.scss"
+			],
+			[
+				"50/unode50-v2/scss/theme/partials/_products-grid.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/_products-grid.scss"
+			],
+			[
+				"/scss/theme/catalog/_product.scs",
+				"skin/frontend/unode50/unode50-v2/scss/theme/catalog/_product.scss"
+			],
+			[
+				"scss/theme/partials/_products-grid.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/_products-grid.scss"
+			],
+			[
+				"css/theme/catalog/category/_product-list.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/catalog/category/_product-list.scss"
+			],
+			[
+				"e50-v2/scss/theme/partials/common/_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"scss/theme/partials/common/header/_stycky-header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/header/_stycky-header.scss"
+			],
+			[
+				"_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"header.",
+				"app/design/frontend/unode50/unode50-v2/template/page/html/header.phtml"
+			],
+			[
+				"header.phtml",
+				"app/design/frontend/unode50/unode50-v2/template/page/html/header.phtml"
+			],
+			[
+				"de50/unode50-v2/scss/theme/partials/common/_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"header",
+				"app/design/frontend/unode50/unode50-v2/template/page/html/header.phtml"
+			],
+			[
+				"d/unode50/unode50-v2/scss/theme/partials/common/_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"frontend/unode50/unode50-v2/template/catalog/product/view.phtml",
+				"app/design/frontend/unode50/unode50-v2/template/catalog/product/view.phtml"
+			],
+			[
+				"app/design/frontend/unode50/unode50/template/catalog/product/view.phtml",
+				"app/design/frontend/unode50/unode50/template/catalog/product/view.phtml"
+			],
+			[
+				"scss/theme/checkout/cart_mini/_mini.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/checkout/cart_mini/_mini.scss"
+			],
+			[
+				"/scss/theme/partials/common/_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"scss/theme/catalog/_product.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/catalog/_product.scss"
+			],
+			[
+				"/scss/theme/checkout/cart_mini/_mini.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/checkout/cart_mini/_mini.scss"
+			],
+			[
+				"sticky-",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/header/_stycky-header.scss"
+			],
+			[
+				"scss/theme/catalog/category/_product-list.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/catalog/category/_product-list.scss"
+			],
+			[
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/_products-grid.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/_products-grid.scss"
+			],
+			[
+				"rtials/_products-grid.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/_products-grid.scss"
+			],
+			[
+				"node50/unode50-v2/scss/theme/partials/common/_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"js/varien/menu.js",
+				"js/varien/menu.js"
+			],
+			[
+				"sticky-header",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/header/_stycky-header.scss"
+			],
+			[
+				"scss/theme/checkout/checkout/_payment.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/checkout/checkout/_payment.scss"
+			],
+			[
+				"/scss/theme/partials/common/_footer.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_footer.scss"
+			],
+			[
+				"scss/theme/customer/account/_main.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/customer/account/_main.scss"
+			],
+			[
+				"/theme/customer/account/_main.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/customer/account/_main.scss"
+			],
+			[
+				"unode50/unode50/template/sales/order/history.phtml",
+				"app/design/frontend/unode50/unode50/template/sales/order/history.phtml"
+			],
+			[
+				"/scss/theme/customer/account/_orders.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/customer/account/_orders.scss"
+			],
+			[
+				"scss/theme/_layout.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/_layout.scss"
+			],
+			[
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/_header.scss"
+			],
+			[
+				"app/design/frontend/unode50/unode50-v2/template/page/html/header.phtml",
+				"app/design/frontend/unode50/unode50-v2/template/page/html/header.phtml"
+			],
+			[
+				"ode50/scss/vendor/foundation/framework/components/_buttons.scss",
+				"skin/frontend/unode50/unode50/scss/vendor/foundation/framework/components/_buttons.scss"
+			],
+			[
+				"vendor/foundation/framework/components/_forms.scss",
+				"skin/frontend/unode50/unode50/scss/vendor/foundation/framework/components/_forms.scss"
+			],
+			[
+				"theme/cms/_home.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/cms/_home.scss"
+			],
+			[
+				"me/checkout/cart_mini/_mini.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/checkout/cart_mini/_mini.scss"
+			],
+			[
+				"theme/partials/common/header/_stycky-header.scss",
+				"skin/frontend/unode50/unode50-v2/scss/theme/partials/common/header/_stycky-header.scss"
+			],
+			[
+				"404",
+				"errors/404.php"
+			],
+			[
+				"setxml",
+				"lib/Zend/Locale/Data/sid_ET.xml"
+			],
+			[
+				"tend/base/default/template/i4arvato/form/child.phtml",
+				"app/design/frontend/base/default/template/i4arvato/form/child.phtml"
+			],
+			[
+				"ontend/interactiv4/gocco/template/aw_autorelated/blocks/product/product.phtml",
+				"app/design/frontend/interactiv4/gocco/template/aw_autorelated/blocks/product/product.phtml"
+			],
+			[
+				"ault/template/aw_autorelated/blocks.phtml",
+				"app/design/frontend/base/default/template/aw_autorelated/blocks.phtml"
+			],
+			[
+				"/template/aw_autorelated/blocks/product/product.phtml",
+				"app/design/frontend/interactiv4/gocco/template/aw_autorelated/blocks/product/product.phtml"
+			],
+			[
+				"catalog/product/list/homerecommender1.phtml",
+				"app/design/frontend/interactiv4/gocco/template/catalog/product/list/homeRecommender1.phtml"
+			],
+			[
+				"/interactiv4/gocco/template/aw_autorelated/blocks/product/product.phtml",
+				"app/design/frontend/interactiv4/gocco/template/aw_autorelated/blocks/product/product.phtml"
+			],
+			[
+				"phone.scss",
+				"skin/frontend/interactiv4/oledeals/sass/oledeals/mediaqueries/_phone.scss"
+			],
+			[
+				"default.css",
+				"skin/frontend/interactiv4/oledeals/css/pickadate/themes/default.css"
+			],
+			[
+				"calendar/content.phtml",
+				"app/design/frontend/base/default/template/i4productcalendar/modal/content.phtml"
+			],
+			[
+				"_phone.scss",
+				"skin/frontend/interactiv4/oledeals/sass/oledeals/mediaqueries/_phone.scss"
+			],
+			[
+				"config.rb",
+				"skin/frontend/interactiv4/oledeals/config.rb"
+			],
+			[
+				"scripts.js",
+				"skin/frontend/interactiv4/oledeals/js/scripts.js"
+			],
+			[
+				"oledeals/type/grouped.phtml",
+				"app/design/frontend/interactiv4/oledeals/template/catalog/product/view/type/grouped.phtml"
+			],
+			[
+				"grouped.phtml",
+				"app/design/frontend/interactiv4/oledeals_mobile/template/catalog/product/view/type/grouped.phtml"
+			],
+			[
+				"scritps.js",
+				"skin/frontend/interactiv4/oledeals/js/scripts.js"
+			],
+			[
+				"lib/zend/validate/hostname.php",
+				"lib/Zend/Validate/Hostname.php"
+			],
+			[
+				"oledeals/template/catalog/product/view/type/grouped.phtml",
+				"app/design/frontend/interactiv4/oledeals/template/catalog/product/view/type/grouped.phtml"
+			],
+			[
+				"vinoteca/local",
+				"app/design/frontend/b-responsive/vinoteca/layout/local.xml"
+			],
+			[
+				"_navig",
+				"skin/frontend/b-responsive/vinoteca/scss/_navigation.scss"
+			],
+			[
+				"bootstrap.css",
+				"skin/frontend/b-responsive/default/css/bootstrap.css"
+			],
+			[
+				"base/default/magazento/easytopseller/style.css",
+				"skin/frontend/base/default/magazento/easytopseller/style.css"
+			],
+			[
+				"base/default/css/cookienotice.css",
+				"skin/frontend/base/default/css/cookienotice.css"
+			],
+			[
+				"base/default/css/widgets.css",
+				"skin/frontend/base/default/css/widgets.css"
+			],
+			[
+				"base/default/css/screen.css",
+				"skin/frontend/base/default/css/screen.css"
+			],
+			[
+				"base/default/css/backorder.css",
+				"skin/frontend/base/default/css/backorder.css"
+			],
+			[
+				"default/default/css/aw_zblocks.css",
+				"skin/frontend/default/default/css/aw_zblocks.css"
+			],
+			[
+				"base/default/aw_blog/css/style.css",
+				"skin/frontend/base/default/aw_blog/css/style.css"
+			],
+			[
+				"base/default/css/gomage/advanced-navigation.css",
+				"skin/frontend/base/default/css/gomage/advanced-navigation.css"
+			],
+			[
+				"base/default/css/aw_afptc/styles.css",
+				"skin/frontend/base/default/css/aw_afptc/styles.css"
+			],
+			[
+				"app/design/frontend/interactiv4/vinoteca/template/page/html/header.phtml",
+				"app/design/frontend/interactiv4/vinoteca/template/page/html/header.phtml"
+			],
+			[
+				"styles.css",
+				"skin/frontend/amoesmalte/default/css/styles.css"
+			],
+			[
+				"page.xml",
+				"app/design/frontend/base/default/layout/page.xml"
+			],
+			[
+				"amoesmaltelocal.xml",
+				"app/design/frontend/amoesmalte/default/layout/local.xml"
+			],
+			[
+				"setcss",
+				"downloader/skin/install/reset.css"
+			],
+			[
+				"",
+				"app/design/frontend/amoesmalte/default/template/easytabs/catalogproductreview.phtml"
+			],
+			[
+				"ault/template/easytabs/catalogproductreview.phtml",
+				"app/design/frontend/amoesmalte/default/template/easytabs/catalogproductreview.phtml"
+			],
+			[
+				"firecheckout.css",
+				"skin/frontend/amoesmalte/default/css/firecheckout.css"
+			],
+			[
+				"frontend/base/default/template/firecheckout/checkout/review/item.phtml",
+				"app/design/frontend/base/default/template/firecheckout/checkout/review/item.phtml"
+			],
+			[
+				"frontend/base/default/template/firecheckout/checkout.phtml",
+				"app/design/frontend/base/default/template/firecheckout/checkout.phtml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 258.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
