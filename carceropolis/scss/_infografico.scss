@@ -15,6 +15,14 @@ $purple: rgba(51,1,41,1);
         color: white;
         height: calc(100vh);
         padding: 1em;
+        opacity: 0;
+        transform: translateX(-500px);
+        transition: 1s ease-in-out;
+
+        &.animacao-scroll {
+            opacity: 1;
+            transform: translateX(0px);
+        }
 
         &:first-child {
             height: calc(100vh - 80px);
@@ -52,19 +60,13 @@ $purple: rgba(51,1,41,1);
             }
 
             &::after {
-                background: white;
+                background: url(../images/infografico/plus-button.svg) no-repeat top left;
                 color: $purple;
-                content: '+';
+                content: '';
                 float: right;
                 height: 40px;
-                
                 text-align: center;
                 width: 40px;
-            }
-
-            &:hover::after {
-                background:$purple;
-                color: white;
             }
         }
 
