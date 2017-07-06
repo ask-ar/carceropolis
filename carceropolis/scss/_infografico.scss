@@ -1,6 +1,7 @@
 $dark-pink: rgba(184,31,60,1);
 $mid-pink: rgba(201,61,101,1);
 $purple: rgba(51,1,41,1);
+$arrow-color: white;
 
 .dados header + section{
     display: none;
@@ -26,6 +27,10 @@ $purple: rgba(51,1,41,1);
 
         &:first-child {
             height: calc(100vh - 80px);
+        }
+
+        &:last-child {
+            height: calc(100vh - 52px);
         }
  
         &:nth-child(even){
@@ -68,6 +73,7 @@ $purple: rgba(51,1,41,1);
                 text-align: center;
                 width: 40px;
             }
+
         }
 
     }
@@ -95,4 +101,66 @@ $purple: rgba(51,1,41,1);
 
 	.alas-exclusivas {
 	}
+}
+
+.scrolldown-arrow {
+    position: absolute;
+    bottom: 4em;
+    right: 4em;
+    z-index: 1;
+}
+
+$size: 30px;
+
+.arrow-down{
+  animation: softBlink 1500ms infinite;
+  opacity: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -10px;
+  height: $size;
+  width: $size;
+  border: 5px solid transparent;
+  border-right-color: $arrow-color;
+  border-bottom-color: $arrow-color;
+  transform: rotate(45deg);
+  transition: 1s ease-in-out;
+
+  &:nth-child(2){
+     animation: softBlink-mid 1500ms infinite;
+  }
+
+  &:nth-child(3){
+     animation: softBlink-opaque 1500ms infinite;
+  }
+}
+@keyframes softBlink{
+
+  60%{
+    opacity: 0;
+  }
+  100%{
+    opacity: .2;
+    transform: translateY($size/2) rotate(45deg);
+  }
+}
+
+@keyframes softBlink-mid{
+  40%{
+    opacity: 0;
+  }
+  100%{
+    opacity: .5;
+    transform: translateY($size/2) rotate(45deg);
+  }
+}
+
+@keyframes softBlink-opaque{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    transform: translateY($size/2) rotate(45deg);
+  }
 }
