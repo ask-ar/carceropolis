@@ -92,6 +92,6 @@ ENV/
 *.db
 .DS_Store
 /static
-*.sublime-workspace
+.sublime-workspace
 .sass-cache/
 .editorconfig
