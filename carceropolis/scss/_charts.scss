@@ -137,4 +137,18 @@
     @include transition-duration(0.2s);
     @include transition-timing-function(linear);
   }
+
+}
+
+.graf {
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  .graf-nota {
+    padding-left: 5px;
+
+    &:before{
+        content: '- ';
+    }
+  }
 }

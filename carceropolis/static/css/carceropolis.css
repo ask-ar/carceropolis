@@ -1615,6 +1615,20 @@ body[class^='sobre'] section.container p {
   transition-timing-function: linear;
 }
 
+/* line 143, ../../scss/_charts.scss */
+.graf {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+/* line 147, ../../scss/_charts.scss */
+.graf .graf-nota {
+  padding-left: 5px;
+}
+/* line 150, ../../scss/_charts.scss */
+.graf .graf-nota:before {
+  content: '- ';
+}
+
 /* line 1, ../../scss/_forms.scss */
 .modal-body .form-horizontal .control-label {
   text-align: left;

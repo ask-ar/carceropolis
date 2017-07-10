@@ -25,6 +25,7 @@ dados_pattern = [
     url(r'^educacao/$', views.dados_educacao, name='dados_educacao'),
     url(r'^piramide_etaria/$', views.dados_piramide_etaria,
         name='dados_piramide_etaria'),
+    url(r'^gerais/$', views.dados_gerais, name='dados_gerais'),
     url(r'^$', views.dados_home, name='dados_home')
 ]
 

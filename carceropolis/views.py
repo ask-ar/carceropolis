@@ -1,20 +1,28 @@
 # coding: utf-8
-from __future__ import unicode_literals
 import logging
-import json
 import operator
-import re
+from collections import OrderedDict
+from csv import DictReader
+import json
 
-from calendar import month_name
+import plotly as py
+import plotly.offline as opy
+import plotly.graph_objs as go
+import pandas as pd
+import plotly.dashboard_objs as dashboard
+import IPython.display
+from IPython.display import Image
+
+from requests.compat import json as _json
+from plotly import utils
 
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.messages import info, error
-from django.db.models import CharField, Q
-from django.http import Http404, HttpResponseRedirect
+from django.db.models import Q
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
-from django.template import RequestContext
-from future.builtins import int, str
+from django.utils.text import slugify
 from mezzanine.accounts import get_profile_form
 from mezzanine.conf import settings
 from mezzanine.generic.models import Keyword
@@ -220,6 +228,135 @@ def dados_home(request):
     context = {}
 
     return TemplateResponse(request, templates, context)
+
+
+def dados_gerais(request):
+    """Display the Dados Home page, which is a matrix with all available
+    categories (only categories, not the items from the Publicação Class).
+    """
+    templates = ["carceropolis/dados/dados_gerais.html"]
+    context = {}
+    graficos = []
+
+    data_files = {
+        '01': 'carceropolis/static/data/dados_gerais/01.csv',
+        '02': 'carceropolis/static/data/dados_gerais/02.csv',
+        '03': 'carceropolis/static/data/dados_gerais/03.csv',
+        '04': 'carceropolis/static/data/dados_gerais/04.csv'
+    }
+
+    for item, url in data_files.items():
+        content = {}
+        with open(url, 'r') as fo:
+            content['data_file_url'] = url.split('/static/')[-1]
+            content['titulo'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
+            content['unidade'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
+            content['fonte'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
+            content['fonte_url'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
+            notas = fo.readline().split(',')[1].lstrip('"').rstrip('"')
+            content['notas'] = notas.split(';') if notas else None
+            next(fo)  # Pula uma linha em branco
+            data = pd.read_csv(fo, decimal=",", quotechar='"')
+
+        if item == '01':
+            data['Data'] = pd.to_datetime(data['Data'], format='%m/%Y')
+            trace1 = go.Scatter(x=data['Data'], y=data['População'],
+                                mode='lines',
+                                line={'color': "#ea702e"})
+            graf_data = go.Data([trace1])
+            layout = go.Layout(title=content['titulo'],
+                               yaxis={'rangemode': 'tozero'},
+                               xaxis={
+                                   'tickangle': -45,
+                                   'dtick': "M6",
+                                   'tick0': min(data['Data']),
+                                   'tickformat': '%b-%y',
+                                   'range': [min(data['Data']) - pd.DateOffset(months=1),
+                                             max(data['Data'])]
+                               })
+        elif item == '02':
+            # data['Ano'] = pd.to_datetime(data['Ano'], format='%Y')
+            trace1 = go.Scatter(x=data['Ano'], y=data['EUA'], mode='lines',
+                                name='EUA', connectgaps=True)
+            trace2 = go.Scatter(x=data['Ano'], y=data['China'], mode='lines',
+                                name='China', connectgaps=True)
+            trace3 = go.Scatter(x=data['Ano'], y=data['Rússia'], mode='lines',
+                                name='Rússia', connectgaps=True)
+            trace4 = go.Scatter(x=data['Ano'], y=data['Brasil'], mode='lines',
+                                name='Brasil', connectgaps=True)
+            trace5 = go.Scatter(x=data['Ano'], y=data['ONU'], mode='lines',
+                                name='ONU', connectgaps=True)
+            graf_data = go.Data([trace1, trace2, trace3, trace4, trace5])
+            layout = go.Layout(title=content['titulo'],
+                               yaxis={'rangemode': 'tozero'},
+                               xaxis={
+                                   'tickangle': -45,
+                                   'dtick': 1,
+                                   'tick0': min(data['Ano']),
+                                   'range': [min(data['Ano']),
+                                             max(data['Ano'])]
+                               })
+        elif item == '03':
+            dados_estados = data[(data['Estado'] != 'BR') &
+                                 (data['Estado'] != 'ONU')]
+            trace1 = go.Bar(x=dados_estados['População prisional'],
+                            y=dados_estados['Estado'],
+                            orientation='h',
+                            marker={
+                                'line':{
+                                    'color': "#bb551d"
+                                },
+                                'color': '#ea702e'
+                            })
+            graf_data = go.Data([trace1])
+            layout = go.Layout(title=content['titulo'],
+                               xaxis={'rangemode': 'tozero'},
+                               height=600)
+        elif item == '04':
+            dados_estados = data[(data['Estado'] != 'BR') &
+                                 (data['Estado'] != 'ONU')]
+            trace1 = go.Bar(x=dados_estados['Taxa de encarceramento'],
+                            y=dados_estados['Estado'],
+                            orientation='h',
+                            marker={
+                                'line':{
+                                    'color': "#bb551d"
+                                },
+                                'color': '#ea702e'
+                            })
+            graf_data = go.Data([trace1])
+            layout = go.Layout(title=content['titulo'],
+                               xaxis={'rangemode': 'tozero'},
+                               height=600)
+
+        content['dados'] = data
+        figure = go.Figure(data=graf_data, layout=layout)
+
+        div = opy.plot(figure, auto_open=False, output_type='div',
+                       include_plotlyjs=False)
+        content['graph'] = div
+        content['data'] = _json.dumps(figure.get('data', []),
+                                      cls=utils.PlotlyJSONEncoder)
+        content['layout'] = _json.dumps(figure.get('layout', {}),
+                                        cls=utils.PlotlyJSONEncoder)
+        graficos.append(content)
+
+    context['graficos'] = graficos
+
+    return TemplateResponse(request, templates, context)
+
+
+def _fileId_from_url(url):
+    """Return fileId from a url."""
+    index = url.find('~')
+    fileId = url[index + 1:]
+    # local_id_index = fileId.find('/')
+
+    share_key_index = fileId.find('?share_key')
+    if share_key_index == -1:
+        return fileId.replace('/', ':')
+    else:
+        return fileId[:share_key_index].replace('/', ':')
 
 
 def dados_perfil_populacional(request):
