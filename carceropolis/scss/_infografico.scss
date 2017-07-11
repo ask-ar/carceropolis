@@ -3,22 +3,32 @@ $mid-pink: rgba(201,61,101,1);
 $purple: rgba(51,1,41,1);
 $arrow-color: white;
 
-.dados header + section{
-    display: none;
+.dados {
+
+    background: $dark-pink;
+
+    header + section{
+        display: none;
+    }
 }
 
 .infografico {
 
     counter-reset: section;
 
+    .container {
+        height: 100%;
+    }
+
     section {
         background: $dark-pink;
         color: white;
         height: calc(100vh);
+        font-family: $light;
         padding: 1em;
-        opacity: 0;
-        transform: translateX(-500px);
-        transition: 1s ease-in-out;
+        // opacity: 0;
+        //transform: translateX(-500px);
+        //transition: 1s ease-in-out;
 
         &.animacao-scroll {
             opacity: 1;
@@ -26,22 +36,24 @@ $arrow-color: white;
         }
 
         &:first-child {
-            height: calc(100vh - 80px);
+            $alturaPrimeiraSecao: calc(100vh - 80px);
+            height: $alturaPrimeiraSecao;
         }
 
         &:last-child {
             height: calc(100vh - 52px);
         }
  
-        &:nth-child(even){
+        &:nth-child(odd){
             background: $purple;
         }
 
         h1 {
             border-bottom: 1px solid white;
-            font-size: 20px;
-            letter-spacing: 1px;
-            margin: 0 0 1rem 0;
+            font-size: 2em;
+            letter-spacing: .2em;
+            margin: 0;
+            width: 100%;
 
              &::after {
                  @include clearfix;
@@ -76,9 +88,63 @@ $arrow-color: white;
 
         }
 
+        ol, ul, li {
+            list-style: none;
+        }
+        strong {
+            font-family: $bold;
+        }
+
     }
 
 	.dados-gerais {
+        padding-bottom: 2em;
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        ol {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            //height: calc( 100vh / 2);
+            width: 50%;
+        }
+
+        li:nth-child(1){
+            font-size: 6em;
+            line-height: 1.2em;
+        }
+
+        li:nth-child(2){
+            font-size: 4em;
+            color: $purple;
+            text-align: right;
+            strong {
+                text-transform: uppercase;
+            }
+        }
+
+        li:nth-child(3){
+            font-size: 4em;
+            strong {
+                font-size: 1.3em
+            }
+        }
+
+        li:nth-child(4){
+            font-size: 2em;
+        }
+
+
 	}
 
 	.perfil-populacional {
@@ -103,14 +169,15 @@ $arrow-color: white;
 	}
 }
 
+//= Setas de scroll ======================================= /
+$size: 30px;
+
 .scrolldown-arrow {
-    position: absolute;
+    position: fixed;
     bottom: 4em;
     right: 4em;
     z-index: 1;
 }
-
-$size: 30px;
 
 .arrow-down{
   animation: softBlink 1500ms infinite;

@@ -97,6 +97,6 @@ animusjs.init();
 
 $(document).ready(
   () => {
-    $('.dados-gerais').addClass('animacao-scroll')
+    $('.dados-gerais').addClass('animated fadeInDownBig')
   }
 );
