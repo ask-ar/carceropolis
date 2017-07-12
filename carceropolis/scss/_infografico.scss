@@ -3,6 +3,17 @@ $mid-pink: rgba(201,61,101,1);
 $purple: rgba(51,1,41,1);
 $arrow-color: white;
 
+/*
+help unidades
+
+24pt => 32px (1em)
+30pt => 40px (1.7em)
+40pt => 53.3px (2.2em)
+48.2pt => 64.2px
+55pt => 73.3px
+60pt => 80px (3.3em)
+
+*/
 .dados {
 
     background: $dark-pink;
@@ -15,6 +26,7 @@ $arrow-color: white;
 .infografico {
 
     counter-reset: section;
+    font-size: 32px;
 
     .container {
         height: 100%;
@@ -27,10 +39,10 @@ $arrow-color: white;
     section {
         background: $dark-pink;
         color: white;
-        height: calc(100vh);
+        height: 100vh;
         font-family: $light;
         font-weight: lighter;
-        padding: 1em;
+        letter-spacing: .01em;
 
         &:first-child {
             $alturaPrimeiraSecao: calc(100vh - 80px);
@@ -47,9 +59,10 @@ $arrow-color: white;
 
         h1 {
             align-self: baseline;
-            font-size: 2em;
-            letter-spacing: .2em;
-            margin: 0;
+            font-family: $bold;
+            font-size: 1.25em;
+            letter-spacing: .01em;
+            margin: 1em auto;
             width: 100%;
 
             &::after {
@@ -58,11 +71,11 @@ $arrow-color: white;
         }
 
         h1 a {
-            border-bottom: 1px solid white;
+            border-bottom: 2px solid rgba(255,255,255,.9);
             color: white;
             display: block;
             line-height: 40px;
-            margin: 1rem 0;
+            padding-bottom: 1rem;
             text-transform: uppercase;
 
             &:hover {
@@ -96,7 +109,8 @@ $arrow-color: white;
     }
 
 	.dados-gerais {
-        padding-bottom: 2em;
+
+        transform: translateY(1.4em);
 
         .container {
             height: 100%;
@@ -107,34 +121,40 @@ $arrow-color: white;
             @include flexcenter;
         }
 
-        li {
+        li{
             width: 50%;
+
+            &:not(:first-child) {
+                text-align: right;
+            }
         }
 
         li:nth-child(1){
-            font-size: 6em;
+            border-bottom: 3px solid white;
+            font-size: 2.5em;
             line-height: 1.2em;
+            margin-bottom: .5em;
+            padding-bottom: .5em;
         }
 
         li:nth-child(2){
-            font-size: 4em;
+            font-size: 1.65em;
             color: $purple;
-            text-align: right;
+
             strong {
                 text-transform: uppercase;
+                font-size: 1.2em
             }
         }
 
         li:nth-child(3){
-            font-size: 4em;
+            font-size: 1.65em;
+
             strong {
-                font-size: 1.3em
+                font-size: 1.2em
             }
         }
 
-        li:nth-child(4){
-            font-size: 2em;
-        }
 	}
 
 	.perfil-populacional {
@@ -153,7 +173,6 @@ $arrow-color: white;
 
         ol {
             @include flexcenter;
-            font-size: 2.3em;
         }
 
         li:nth-child(1){
@@ -167,7 +186,7 @@ $arrow-color: white;
             }
 
             strong {
-                font-size: 2.5em;
+                font-size: 2.55em;
                 line-height: .9em;
             }
         }
@@ -195,6 +214,57 @@ $arrow-color: white;
 	}
 
 	.infraestrutura {
+
+        height: auto;
+
+        h1 {
+            margin-bottom: 1.5em;
+        }
+
+        strong{
+            font-size: 2.3em;
+        }
+
+        li{
+
+            &:not(:last-child) {
+                margin-bottom: 2em;
+                text-align: right;
+            }
+
+            &:last-child {
+                margin: -1em auto 2em;
+                text-align: center;
+
+                span {
+                    border-bottom: 1px solid white;
+                    font-size: 1.13em;
+                    letter-spacing: .06em;
+                    padding-bottom: .1em;
+                    text-transform: uppercase;
+                }
+
+                strong {
+                    display: inline-block;
+                    font-size: 3em;
+                    transform: translate(.3em, .1em);
+                }
+            }
+
+            &::after {
+                @include clearfix;
+            }
+        }
+
+        .cela {
+            background: $purple;
+            height: 10em;
+            float: right;
+            margin-left: 1em;
+            margin-top: -.5em;
+            width: 50%;
+        }
+
 	}
 
 	.situacao-juridica {
@@ -218,8 +288,8 @@ $size: 30px;
 
 .scrolldown-arrow {
     position: fixed;
-    bottom: 4em;
-    right: 4em;
+    bottom: 1em;
+    right: 1em;
     z-index: 1;
 }
 
