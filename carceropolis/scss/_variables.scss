@@ -69,6 +69,13 @@ $semibold: 'source_sans_prosemibold';
     width: 0;
 }
 
+@mixin flexcenter {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .frame {
     background: white;
     margin: 0 1em 1em;

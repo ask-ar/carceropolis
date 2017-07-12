@@ -20,20 +20,17 @@ $arrow-color: white;
         height: 100%;
     }
 
+    .br {
+        display: block;
+    }
+
     section {
         background: $dark-pink;
         color: white;
         height: calc(100vh);
         font-family: $light;
+        font-weight: lighter;
         padding: 1em;
-        // opacity: 0;
-        //transform: translateX(-500px);
-        //transition: 1s ease-in-out;
-
-        &.animacao-scroll {
-            opacity: 1;
-            transform: translateX(0px);
-        }
 
         &:first-child {
             $alturaPrimeiraSecao: calc(100vh - 80px);
@@ -49,22 +46,23 @@ $arrow-color: white;
         }
 
         h1 {
-            border-bottom: 1px solid white;
+            align-self: baseline;
             font-size: 2em;
             letter-spacing: .2em;
             margin: 0;
             width: 100%;
 
-             &::after {
-                 @include clearfix;
-             }
+            &::after {
+                @include clearfix;
+            }
         }
 
         h1 a {
+            border-bottom: 1px solid white;
             color: white;
             display: block;
             line-height: 40px;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
             text-transform: uppercase;
 
             &:hover {
@@ -102,20 +100,14 @@ $arrow-color: white;
 
         .container {
             height: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
+            @include flexcenter;
         }
 
         ol {
-            align-items: center;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            @include flexcenter;
         }
 
         li {
-            //height: calc( 100vh / 2);
             width: 50%;
         }
 
@@ -143,11 +135,63 @@ $arrow-color: white;
         li:nth-child(4){
             font-size: 2em;
         }
-
-
 	}
 
 	.perfil-populacional {
+        background: $purple;
+        color: white;
+
+        h1 a {
+            border-color: $dark-pink;
+            color: $dark-pink;
+        }
+
+        .container {
+            height: 100%;
+            @include flexcenter;
+        }
+
+        ol {
+            @include flexcenter;
+            font-size: 2.3em;
+        }
+
+        li:nth-child(1){
+            border-bottom: 3px solid $dark-pink;
+            margin-bottom: 2em;
+            padding-bottom: 2em;
+            width: 100%;
+
+            p:not(:first-of-type){
+                color: $dark-pink;
+            }
+
+            strong {
+                font-size: 2.5em;
+                line-height: .9em;
+            }
+        }
+
+        li:nth-child(2) {
+            @include flexcenter;
+            flex-wrap: nowrap;
+            width: 95%;
+
+            strong {
+                color: $dark-pink;
+            }
+
+            span::before {
+                content: '';
+                background: $dark-pink;
+                display: block;
+                height: 150px;
+                float: left;
+                margin: 0 1em;
+                width: 40%;
+            }
+        }
+
 	}
 
 	.infraestrutura {
