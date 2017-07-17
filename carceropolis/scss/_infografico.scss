@@ -1,17 +1,21 @@
 $dark-pink: rgba(184,31,60,1);
 $mid-pink: rgba(201,61,101,1);
 $purple: rgba(51,1,41,1);
+$light-purple: rgb(97,51,83);
 $arrow-color: white;
 
 /*
 help unidades
 
 24pt => 32px (1em)
-30pt => 40px (1.7em)
-40pt => 53.3px (2.2em)
-48.2pt => 64.2px
-55pt => 73.3px
-60pt => 80px (3.3em)
+26pt -> 34.6px (1.08em)
+27pt => 36px (1.13em)
+30pt => 40px (1.25em)
+40pt => 53.3px (1.65em)
+48.2pt => 64.2px (1.2em relação ao parent)
+55pt => 73.3px (2.3em)
+60pt => 80px (2.5em)
+72pt => 96px (3em)
 
 */
 .dados {
@@ -26,7 +30,11 @@ help unidades
 .infografico {
 
     counter-reset: section;
-    font-size: 32px;
+
+
+    $font-size: 32px;
+
+    font-size: $font-size;
 
     .container {
         height: 100%;
@@ -39,7 +47,7 @@ help unidades
     section {
         background: $dark-pink;
         color: white;
-        height: 100vh;
+        min-height: 100vh;  
         font-family: $light;
         font-weight: lighter;
         letter-spacing: .01em;
@@ -267,8 +275,77 @@ help unidades
 
 	}
 
-	.situacao-juridica {
-	}
+	section.situacao-juridica {
+
+            background: linear-gradient(to right, $purple 0%, $purple 50%, $light-purple 50%, $light-purple 100%);
+
+            ol:not(.full) li:nth-child(1){
+                display: inline-block;
+                font-size: 1.65em;
+                padding-bottom: $font-size;
+                width: 50%;
+            }
+
+            ol:not(.full) li:nth-child(1) strong:first-of-type {
+                font-size: 1.82em;
+            }
+
+            ol:not(.full) li:nth-child(2){
+                display: inline-block;
+                padding-bottom: $font-size;
+                width: 50%;
+
+                strong {
+                    color: $dark-pink;
+                }
+            }
+
+            ol:not(.full) li:nth-child(2) strong:first-of-type {
+                font-size: 3em;
+                line-height: 1;
+            }
+
+            .full .container {
+                padding-top: $font-size;
+                padding-bottom: $font-size;
+            }
+
+            .full li:nth-child(1){
+                background: white;
+                color: $purple;
+                font-size: 1.65em;
+
+            }
+
+            .full li:nth-child(2){
+                background: $purple;
+                text-align: center;
+
+                p {
+                    font-size: 1.65em;
+                }
+
+                p:first-of-type {
+                    font-size: 1.08em;
+                    text-transform: uppercase;
+                }
+
+                em {
+                    font-style: normal;
+                    font-family: $bold;
+                    color: $dark-pink;
+                }
+
+                strong:first-of-type {
+                    background: $dark-pink;
+                    border-radius: 50%;
+                    width: ($font-size*2)+10;
+                    height: ($font-size*2)+10;
+                    display: inline-block;
+                }
+            }
+
+        }
 
 	.trabalho-educacao {
 	}

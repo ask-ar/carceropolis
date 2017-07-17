@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 3, ../../scss/carceropolis.scss */
 * {
   margin: 0;
@@ -1774,57 +1775,60 @@ body[class^='sobre'] section.container p {
 help unidades
 
 24pt => 32px (1em)
-30pt => 40px (1.7em)
-40pt => 53.3px (2.2em)
-48.2pt => 64.2px
-55pt => 73.3px
-60pt => 80px (3.3em)
+26pt -> 34.6px (1.08em)
+27pt => 36px (1.13em)
+30pt => 40px (1.25em)
+40pt => 53.3px (1.65em)
+48.2pt => 64.2px (1.2em relação ao parent)
+55pt => 73.3px (2.3em)
+60pt => 80px (2.5em)
+72pt => 96px (3em)
 
 */
-/* line 17, ../../scss/_infografico.scss */
+/* line 21, ../../scss/_infografico.scss */
 .dados {
   background: #b81f3c;
 }
-/* line 21, ../../scss/_infografico.scss */
+/* line 25, ../../scss/_infografico.scss */
 .dados header + section {
   display: none;
 }
 
-/* line 26, ../../scss/_infografico.scss */
+/* line 30, ../../scss/_infografico.scss */
 .infografico {
   counter-reset: section;
   font-size: 32px;
 }
-/* line 31, ../../scss/_infografico.scss */
+/* line 39, ../../scss/_infografico.scss */
 .infografico .container {
   height: 100%;
 }
-/* line 35, ../../scss/_infografico.scss */
+/* line 43, ../../scss/_infografico.scss */
 .infografico .br {
   display: block;
 }
-/* line 39, ../../scss/_infografico.scss */
+/* line 47, ../../scss/_infografico.scss */
 .infografico section {
   background: #b81f3c;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "source_sans_prolight";
   font-weight: lighter;
   letter-spacing: .01em;
 }
-/* line 47, ../../scss/_infografico.scss */
+/* line 55, ../../scss/_infografico.scss */
 .infografico section:first-child {
   height: calc(100vh - 80px);
 }
-/* line 52, ../../scss/_infografico.scss */
+/* line 60, ../../scss/_infografico.scss */
 .infografico section:last-child {
   height: calc(100vh - 52px);
 }
-/* line 56, ../../scss/_infografico.scss */
+/* line 64, ../../scss/_infografico.scss */
 .infografico section:nth-child(odd) {
   background: #330129;
 }
-/* line 60, ../../scss/_infografico.scss */
+/* line 68, ../../scss/_infografico.scss */
 .infografico section h1 {
   align-self: baseline;
   font-family: "source_sans_probold";
@@ -1833,7 +1837,7 @@ help unidades
   margin: 1em auto;
   width: 100%;
 }
-/* line 68, ../../scss/_infografico.scss */
+/* line 76, ../../scss/_infografico.scss */
 .infografico section h1::after {
   clear: both;
   content: '';
@@ -1841,7 +1845,7 @@ help unidades
   height: 0;
   width: 0;
 }
-/* line 73, ../../scss/_infografico.scss */
+/* line 81, ../../scss/_infografico.scss */
 .infografico section h1 a {
   border-bottom: 2px solid rgba(255, 255, 255, 0.9);
   color: white;
@@ -1850,16 +1854,16 @@ help unidades
   padding-bottom: 1rem;
   text-transform: uppercase;
 }
-/* line 81, ../../scss/_infografico.scss */
+/* line 89, ../../scss/_infografico.scss */
 .infografico section h1 a:hover {
   text-decoration: none;
 }
-/* line 85, ../../scss/_infografico.scss */
+/* line 93, ../../scss/_infografico.scss */
 .infografico section h1 a::before {
   counter-increment: section;
   content: counter(section) ". ";
 }
-/* line 90, ../../scss/_infografico.scss */
+/* line 98, ../../scss/_infografico.scss */
 .infografico section h1 a::after {
   background: url(../images/infografico/plus-button.svg) no-repeat top left;
   color: #330129;
@@ -1869,19 +1873,19 @@ help unidades
   text-align: center;
   width: 40px;
 }
-/* line 102, ../../scss/_infografico.scss */
+/* line 110, ../../scss/_infografico.scss */
 .infografico section ol, .infografico section ul, .infografico section li {
   list-style: none;
 }
-/* line 105, ../../scss/_infografico.scss */
+/* line 113, ../../scss/_infografico.scss */
 .infografico section strong {
   font-family: "source_sans_probold";
 }
-/* line 111, ../../scss/_infografico.scss */
+/* line 119, ../../scss/_infografico.scss */
 .infografico .dados-gerais {
   transform: translateY(1.4em);
 }
-/* line 115, ../../scss/_infografico.scss */
+/* line 123, ../../scss/_infografico.scss */
 .infografico .dados-gerais .container {
   height: 100%;
   align-items: center;
@@ -1889,22 +1893,22 @@ help unidades
   flex-wrap: wrap;
   justify-content: center;
 }
-/* line 120, ../../scss/_infografico.scss */
+/* line 128, ../../scss/_infografico.scss */
 .infografico .dados-gerais ol {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-/* line 124, ../../scss/_infografico.scss */
+/* line 132, ../../scss/_infografico.scss */
 .infografico .dados-gerais li {
   width: 50%;
 }
-/* line 127, ../../scss/_infografico.scss */
+/* line 135, ../../scss/_infografico.scss */
 .infografico .dados-gerais li:not(:first-child) {
   text-align: right;
 }
-/* line 132, ../../scss/_infografico.scss */
+/* line 140, ../../scss/_infografico.scss */
 .infografico .dados-gerais li:nth-child(1) {
   border-bottom: 3px solid white;
   font-size: 2.5em;
@@ -1912,35 +1916,35 @@ help unidades
   margin-bottom: .5em;
   padding-bottom: .5em;
 }
-/* line 140, ../../scss/_infografico.scss */
+/* line 148, ../../scss/_infografico.scss */
 .infografico .dados-gerais li:nth-child(2) {
   font-size: 1.65em;
   color: #330129;
 }
-/* line 144, ../../scss/_infografico.scss */
+/* line 152, ../../scss/_infografico.scss */
 .infografico .dados-gerais li:nth-child(2) strong {
   text-transform: uppercase;
   font-size: 1.2em;
 }
-/* line 150, ../../scss/_infografico.scss */
+/* line 158, ../../scss/_infografico.scss */
 .infografico .dados-gerais li:nth-child(3) {
   font-size: 1.65em;
 }
-/* line 153, ../../scss/_infografico.scss */
+/* line 161, ../../scss/_infografico.scss */
 .infografico .dados-gerais li:nth-child(3) strong {
   font-size: 1.2em;
 }
-/* line 160, ../../scss/_infografico.scss */
+/* line 168, ../../scss/_infografico.scss */
 .infografico .perfil-populacional {
   background: #330129;
   color: white;
 }
-/* line 164, ../../scss/_infografico.scss */
+/* line 172, ../../scss/_infografico.scss */
 .infografico .perfil-populacional h1 a {
   border-color: #b81f3c;
   color: #b81f3c;
 }
-/* line 169, ../../scss/_infografico.scss */
+/* line 177, ../../scss/_infografico.scss */
 .infografico .perfil-populacional .container {
   height: 100%;
   align-items: center;
@@ -1948,30 +1952,30 @@ help unidades
   flex-wrap: wrap;
   justify-content: center;
 }
-/* line 174, ../../scss/_infografico.scss */
+/* line 182, ../../scss/_infografico.scss */
 .infografico .perfil-populacional ol {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-/* line 178, ../../scss/_infografico.scss */
+/* line 186, ../../scss/_infografico.scss */
 .infografico .perfil-populacional li:nth-child(1) {
   border-bottom: 3px solid #b81f3c;
   margin-bottom: 2em;
   padding-bottom: 2em;
   width: 100%;
 }
-/* line 184, ../../scss/_infografico.scss */
+/* line 192, ../../scss/_infografico.scss */
 .infografico .perfil-populacional li:nth-child(1) p:not(:first-of-type) {
   color: #b81f3c;
 }
-/* line 188, ../../scss/_infografico.scss */
+/* line 196, ../../scss/_infografico.scss */
 .infografico .perfil-populacional li:nth-child(1) strong {
   font-size: 2.55em;
   line-height: .9em;
 }
-/* line 194, ../../scss/_infografico.scss */
+/* line 202, ../../scss/_infografico.scss */
 .infografico .perfil-populacional li:nth-child(2) {
   align-items: center;
   display: flex;
@@ -1980,11 +1984,11 @@ help unidades
   flex-wrap: nowrap;
   width: 95%;
 }
-/* line 199, ../../scss/_infografico.scss */
+/* line 207, ../../scss/_infografico.scss */
 .infografico .perfil-populacional li:nth-child(2) strong {
   color: #b81f3c;
 }
-/* line 203, ../../scss/_infografico.scss */
+/* line 211, ../../scss/_infografico.scss */
 .infografico .perfil-populacional li:nth-child(2) span::before {
   content: '';
   background: #b81f3c;
@@ -1994,29 +1998,29 @@ help unidades
   margin: 0 1em;
   width: 40%;
 }
-/* line 216, ../../scss/_infografico.scss */
+/* line 224, ../../scss/_infografico.scss */
 .infografico .infraestrutura {
   height: auto;
 }
-/* line 220, ../../scss/_infografico.scss */
+/* line 228, ../../scss/_infografico.scss */
 .infografico .infraestrutura h1 {
   margin-bottom: 1.5em;
 }
-/* line 224, ../../scss/_infografico.scss */
+/* line 232, ../../scss/_infografico.scss */
 .infografico .infraestrutura strong {
   font-size: 2.3em;
 }
-/* line 230, ../../scss/_infografico.scss */
+/* line 238, ../../scss/_infografico.scss */
 .infografico .infraestrutura li:not(:last-child) {
   margin-bottom: 2em;
   text-align: right;
 }
-/* line 235, ../../scss/_infografico.scss */
+/* line 243, ../../scss/_infografico.scss */
 .infografico .infraestrutura li:last-child {
   margin: -1em auto 2em;
   text-align: center;
 }
-/* line 239, ../../scss/_infografico.scss */
+/* line 247, ../../scss/_infografico.scss */
 .infografico .infraestrutura li:last-child span {
   border-bottom: 1px solid white;
   font-size: 1.13em;
@@ -2024,13 +2028,13 @@ help unidades
   padding-bottom: .1em;
   text-transform: uppercase;
 }
-/* line 247, ../../scss/_infografico.scss */
+/* line 255, ../../scss/_infografico.scss */
 .infografico .infraestrutura li:last-child strong {
   display: inline-block;
   font-size: 3em;
   transform: translate(0.3em, 0.1em);
 }
-/* line 254, ../../scss/_infografico.scss */
+/* line 262, ../../scss/_infografico.scss */
 .infografico .infraestrutura li::after {
   clear: both;
   content: '';
@@ -2038,7 +2042,7 @@ help unidades
   height: 0;
   width: 0;
 }
-/* line 259, ../../scss/_infografico.scss */
+/* line 267, ../../scss/_infografico.scss */
 .infografico .infraestrutura .cela {
   background: #330129;
   height: 10em;
@@ -2047,8 +2051,77 @@ help unidades
   margin-top: -.5em;
   width: 50%;
 }
-
+/* line 278, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica {
+  background: linear-gradient(to right, #330129 0%, #330129 50%, #613353 50%, #613353 100%);
+}
+/* line 282, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica ol:not(.full) li:nth-child(1) {
+  display: inline-block;
+  font-size: 1.65em;
+  padding-bottom: 32px;
+  width: 50%;
+}
 /* line 289, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica ol:not(.full) li:nth-child(1) strong:first-of-type {
+  font-size: 1.82em;
+}
+/* line 293, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica ol:not(.full) li:nth-child(2) {
+  display: inline-block;
+  padding-bottom: 32px;
+  width: 50%;
+}
+/* line 298, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica ol:not(.full) li:nth-child(2) strong {
+  color: #b81f3c;
+}
+/* line 303, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica ol:not(.full) li:nth-child(2) strong:first-of-type {
+  font-size: 3em;
+  line-height: 1;
+}
+/* line 308, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full .container {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+/* line 313, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full li:nth-child(1) {
+  background: white;
+  color: #330129;
+  font-size: 1.65em;
+}
+/* line 320, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full li:nth-child(2) {
+  background: #330129;
+  text-align: center;
+}
+/* line 324, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full li:nth-child(2) p {
+  font-size: 1.65em;
+}
+/* line 328, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full li:nth-child(2) p:first-of-type {
+  font-size: 1.08em;
+  text-transform: uppercase;
+}
+/* line 333, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full li:nth-child(2) em {
+  font-style: normal;
+  font-family: "source_sans_probold";
+  color: #b81f3c;
+}
+/* line 339, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full li:nth-child(2) strong:first-of-type {
+  background: #b81f3c;
+  border-radius: 50%;
+  width: 74px;
+  height: 74px;
+  display: inline-block;
+}
+
+/* line 366, ../../scss/_infografico.scss */
 .scrolldown-arrow {
   position: fixed;
   bottom: 1em;
@@ -2056,7 +2129,7 @@ help unidades
   z-index: 1;
 }
 
-/* line 296, ../../scss/_infografico.scss */
+/* line 373, ../../scss/_infografico.scss */
 .arrow-down {
   animation: softBlink 1500ms infinite;
   opacity: 0;
@@ -2071,11 +2144,11 @@ help unidades
   transform: rotate(45deg);
   transition: 1s ease-in-out;
 }
-/* line 310, ../../scss/_infografico.scss */
+/* line 387, ../../scss/_infografico.scss */
 .arrow-down:nth-child(2) {
   animation: softBlink-mid 1500ms infinite;
 }
-/* line 314, ../../scss/_infografico.scss */
+/* line 391, ../../scss/_infografico.scss */
 .arrow-down:nth-child(3) {
   animation: softBlink-opaque 1500ms infinite;
 }
