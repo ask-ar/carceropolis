@@ -277,77 +277,147 @@ help unidades
 
 	section.situacao-juridica {
 
-            background: linear-gradient(to right, $purple 0%, $purple 50%, $light-purple 50%, $light-purple 100%);
+        background: linear-gradient(to right, $purple 0%, $purple 50%, $light-purple 50%, $light-purple 100%);
 
-            ol:not(.full) li:nth-child(1){
-                display: inline-block;
-                font-size: 1.65em;
-                padding-bottom: $font-size;
-                width: 50%;
+        ol:not(.full) li:nth-child(1){
+            display: inline-block;
+            font-size: 1.65em;
+            padding-bottom: $font-size;
+            width: 50%;
+        }
+
+        ol:not(.full) li:nth-child(1) strong:first-of-type {
+            font-size: 1.82em;
+        }
+
+        ol:not(.full) li:nth-child(2){
+            display: inline-block;
+            padding-bottom: $font-size;
+            width: 50%;
+
+            strong {
+                color: $dark-pink;
             }
+        }
 
-            ol:not(.full) li:nth-child(1) strong:first-of-type {
-                font-size: 1.82em;
-            }
+        ol:not(.full) li:nth-child(2) strong:first-of-type {
+            font-size: 3em;
+            line-height: 1;
+        }
 
-            ol:not(.full) li:nth-child(2){
-                display: inline-block;
-                padding-bottom: $font-size;
-                width: 50%;
+        .full .container {
+            padding-top: $font-size;
+            padding-bottom: $font-size;
+        }
 
-                strong {
-                    color: $dark-pink;
-                }
-            }
-
-            ol:not(.full) li:nth-child(2) strong:first-of-type {
-                font-size: 3em;
-                line-height: 1;
-            }
-
-            .full .container {
-                padding-top: $font-size;
-                padding-bottom: $font-size;
-            }
-
-            .full li:nth-child(1){
-                background: white;
-                color: $purple;
-                font-size: 1.65em;
-
-            }
-
-            .full li:nth-child(2){
-                background: $purple;
-                text-align: center;
-
-                p {
-                    font-size: 1.65em;
-                }
-
-                p:first-of-type {
-                    font-size: 1.08em;
-                    text-transform: uppercase;
-                }
-
-                em {
-                    font-style: normal;
-                    font-family: $bold;
-                    color: $dark-pink;
-                }
-
-                strong:first-of-type {
-                    background: $dark-pink;
-                    border-radius: 50%;
-                    width: ($font-size*2)+10;
-                    height: ($font-size*2)+10;
-                    display: inline-block;
-                }
-            }
+        .full li:nth-child(1){
+            background: white;
+            color: $purple;
+            font-size: 1.65em;
 
         }
 
-	.trabalho-educacao {
+        .full li:nth-child(2){
+            background: $purple;
+            text-align: center;
+
+            p {
+                font-size: 1.65em;
+            }
+
+            p:first-of-type {
+                font-size: 1.08em;
+                text-transform: uppercase;
+            }
+
+            em {
+                font-style: normal;
+                font-family: $bold;
+                color: $dark-pink;
+            }
+
+            strong:first-of-type {
+                background: $dark-pink;
+                border-radius: 50%;
+                width: ($font-size*2)+10;
+                height: ($font-size*2)+10;
+                display: inline-block;
+            }
+        }
+
+    }
+
+    .trabalho-educacao {
+
+        li:nth-child(1){
+            font-size: 1.65em;
+            padding-bottom: $font-size;
+            text-align: right;
+        }
+
+        li:nth-child(2){
+            border-top: 3px solid white;
+        }
+
+        li:nth-child(2) div {
+            background: linear-gradient(to right, rgba(51,1,41,1) 0%,rgba(51,1,41,0.91) 10%,rgba(0,0,0,0.05) 100%); 
+            font-size: 1.13em;
+            padding: $font-size 0 $font-size  $font-size;
+            text-transform: uppercase;
+            width: 40%;
+
+            .br{
+                text-transform: none;
+            }
+
+            strong {
+                font-size: 2.66em;
+                line-height: 1;
+            }
+        }
+
+        li:nth-child(3){
+            border-bottom: 3px solid white;
+            text-align: right;
+
+            strong {
+                font-size: 1.65em
+            }
+
+            div {
+                padding: $font-size 0 $font-size;
+                width: 50%;
+            }
+        }
+
+        li:nth-child(4){
+            color: $purple;
+            padding: $font-size 0 $font-size;
+
+            strong {
+                display: block;
+                font-size: 1.65em;
+                padding-left: 10%;
+            }
+
+            strong .load {
+                display: inline-block;
+                width: 75%;
+                height: 64px;
+                margin: 32px auto;
+                background: $purple;
+                position: relative;
+            }
+
+            strong .load::before {
+                content: '18%';
+                background: white;
+                display: inline-block;
+                height: 100%;
+                position: absolute;
+                width: 18%;
+            }
+        }
 	}
 
 	.saude {

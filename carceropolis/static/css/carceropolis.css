@@ -2120,8 +2120,78 @@ help unidades
   height: 74px;
   display: inline-block;
 }
+/* line 352, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(1) {
+  font-size: 1.65em;
+  padding-bottom: 32px;
+  text-align: right;
+}
+/* line 358, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(2) {
+  border-top: 3px solid white;
+}
+/* line 362, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(2) div {
+  background: linear-gradient(to right, #330129 0%, rgba(51, 1, 41, 0.91) 10%, rgba(0, 0, 0, 0.05) 100%);
+  font-size: 1.13em;
+  padding: 32px 0 32px 32px;
+  text-transform: uppercase;
+  width: 40%;
+}
+/* line 369, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(2) div .br {
+  text-transform: none;
+}
+/* line 373, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(2) div strong {
+  font-size: 2.66em;
+  line-height: 1;
+}
+/* line 379, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(3) {
+  border-bottom: 3px solid white;
+  text-align: right;
+}
+/* line 383, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(3) strong {
+  font-size: 1.65em;
+}
+/* line 387, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(3) div {
+  padding: 32px 0 32px;
+  width: 50%;
+}
+/* line 393, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(4) {
+  color: #330129;
+  padding: 32px 0 32px;
+}
+/* line 397, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(4) strong {
+  display: block;
+  font-size: 1.65em;
+  padding-left: 10%;
+}
+/* line 403, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(4) strong .load {
+  display: inline-block;
+  width: 75%;
+  height: 64px;
+  margin: 32px auto;
+  background: #330129;
+  position: relative;
+}
+/* line 412, ../../scss/_infografico.scss */
+.infografico .trabalho-educacao li:nth-child(4) strong .load::before {
+  content: '18%';
+  background: white;
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  width: 18%;
+}
 
-/* line 366, ../../scss/_infografico.scss */
+/* line 436, ../../scss/_infografico.scss */
 .scrolldown-arrow {
   position: fixed;
   bottom: 1em;
@@ -2129,7 +2199,7 @@ help unidades
   z-index: 1;
 }
 
-/* line 373, ../../scss/_infografico.scss */
+/* line 443, ../../scss/_infografico.scss */
 .arrow-down {
   animation: softBlink 1500ms infinite;
   opacity: 0;
@@ -2144,11 +2214,11 @@ help unidades
   transform: rotate(45deg);
   transition: 1s ease-in-out;
 }
-/* line 387, ../../scss/_infografico.scss */
+/* line 457, ../../scss/_infografico.scss */
 .arrow-down:nth-child(2) {
   animation: softBlink-mid 1500ms infinite;
 }
-/* line 391, ../../scss/_infografico.scss */
+/* line 461, ../../scss/_infografico.scss */
 .arrow-down:nth-child(3) {
   animation: softBlink-opaque 1500ms infinite;
 }
