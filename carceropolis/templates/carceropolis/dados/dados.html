@@ -33,11 +33,6 @@
 
 {% block main %}
 <article class="infografico">
-    <div class="scrolldown-arrow">
-        <div class="arrow-down"></div>
-        <div class="arrow-down"></div>
-        <div class="arrow-down"></div>
-    </div>
     <section class="dados-gerais">
         <div class="container">
             <h1><a href="#">Dados Gerais</a></h1>
@@ -57,7 +52,7 @@
             </ol>
         </div>
     </section>
-    <section class="perfil-populacional" anim-in-out="animacao-scroll">
+    <section class="perfil-populacional animated" anim-out="bounceInDown">
         <div class="container">
             <h1><a href="#">Perfil Populacional</a></h1>
             <ol>
@@ -143,7 +138,7 @@
             </li>
         </ol>
     </section>
- <section class="trabalho-educacao" anim-in-out="animacao-scroll">
+    <section class="trabalho-educacao" anim-in-out="animacao-scroll">
         <div class="container">
             <h1><a href="#">Trabalho e Educação</a></h1>
             <ol>
@@ -234,7 +229,13 @@
             <h1><a href="#">Alas exclusivas</a></h1>
             <ol>
                 <li>
-                    <strong>1.294</strong> pessoas com deficiências dísicas são negligenciadas pelo sistema prisional.
+                    <strong class="br">1.294</strong> 
+                    pessoas com 
+                    deficiências 
+                    físicas são 
+                    negligenciadas 
+                    pelo sistema 
+                    prisional.
                 </li>
                 <li>
                     <strong>Apenas 12%</strong> das prisões brasileiras dispõem de pelo menos uma cela adaptada.
@@ -243,4 +244,9 @@
         </div>
     </section>
 </article>
+<div class="scrolldown-arrow">
+    <div class="arrow-down"></div>
+    <div class="arrow-down"></div>
+    <div class="arrow-down"></div>
+</div>
 {% endblock %}

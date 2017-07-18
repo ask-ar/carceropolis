@@ -34,14 +34,8 @@ help unidades
 
     counter-reset: section;
 
-
     $font-size: 32px;
-
     font-size: $font-size;
-
-    .container {
-        height: 100%;
-    }
 
     .br {
         display: block;
@@ -67,6 +61,10 @@ help unidades
         //     opacity: 1;
         // }
 
+        > .container {
+            height: 100%;
+        }
+
         &:first-child {
             $alturaPrimeiraSecao: calc(100vh - 80px);
             height: $alturaPrimeiraSecao;
@@ -76,7 +74,7 @@ help unidades
             height: calc(100vh - 52px);
         }
 
-        &:nth-child(odd){
+        &:nth-child(even){
             background: $purple;
         }
 
@@ -95,6 +93,7 @@ help unidades
 
         h1 a {
             border-bottom: 2px solid rgba(255,255,255,.9);
+            border-color: currentColor;
             color: white;
             display: block;
             line-height: 40px;
@@ -185,7 +184,6 @@ help unidades
         color: white;
 
         h1 a {
-            border-color: $dark-pink;
             color: $dark-pink;
         }
 
@@ -497,10 +495,15 @@ help unidades
         }
 	}
 
-	.materno-infantil {
+	section.materno-infantil {
+        
+        background-color: pink;
+
+        h1 a {
+            color: $dark-pink;
+        }
 
         li:nth-child(1) {
-            background-color: pink;
             color: $dark-pink;
             text-align: right;
         }
@@ -544,6 +547,46 @@ help unidades
 	}
 
 	.alas-exclusivas {
+
+        h1.container {
+            height: auto;
+        }
+
+        h1 a {
+            color: $dark-pink;
+        }
+
+        ol {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        li {
+            width: 50%;
+        }
+
+        li:nth-child(1){
+            font-size: 2.5em;
+            line-height: 1.1;
+            padding: $font-size;
+            text-align: right;
+        }
+
+        li:nth-child(1) strong{
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        li:nth-child(2){
+            font-size: 1.25em;
+            padding: $font-size;
+        }
+
+        li:nth-child(2) strong{
+            font-size: 1.6em;
+            line-height: 1;
+        }
+
 	}
 }
 
