@@ -3,6 +3,8 @@ $mid-pink: rgba(201,61,101,1);
 $purple: rgba(51,1,41,1);
 $light-purple: rgb(97,51,83);
 $arrow-color: white;
+$carmine: rgb(95,5,46);
+$dark-carmine: rgb(45,0,19);
 
 /*
 help unidades
@@ -13,6 +15,7 @@ help unidades
 30pt => 40px (1.25em)
 40pt => 53.3px (1.65em)
 48.2pt => 64.2px (1.2em relação ao parent)
+48.2pt => 64.2px 2em
 55pt => 73.3px (2.3em)
 60pt => 80px (2.5em)
 72pt => 96px (3em)
@@ -44,6 +47,10 @@ help unidades
         display: block;
     }
 
+    .upper {
+        text-transform: uppercase;
+    }
+
     section {
         background: $dark-pink;
         color: white;
@@ -51,6 +58,14 @@ help unidades
         font-family: $light;
         font-weight: lighter;
         letter-spacing: .01em;
+
+        // &:not(:first-child){
+        //     opacity: 0;
+        // }
+
+        // .animacao-scroll {
+        //     opacity: 1;
+        // }
 
         &:first-child {
             $alturaPrimeiraSecao: calc(100vh - 80px);
@@ -60,7 +75,7 @@ help unidades
         &:last-child {
             height: calc(100vh - 52px);
         }
- 
+
         &:nth-child(odd){
             background: $purple;
         }
@@ -421,6 +436,65 @@ help unidades
 	}
 
 	.saude {
+
+        position: relative;
+
+        &::before {
+            content: '';
+            background: rgba(51,1,41,.4);
+            display: block;
+            height: 240px;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            width: 100%;
+
+        }
+
+        h1 {
+            position: relative;
+        }
+
+        li:nth-child(1) div:first-of-type{
+            color: white;
+            font-size: 1.65em;
+            padding-bottom: $font-size;
+            position: relative;
+            text-align: center;
+        }
+
+        li:nth-child(1) div:nth-child(2) {
+            color: $dark-carmine;
+            font-size: 3em;
+            line-height: 1;
+            padding: $font-size 0;
+            text-align: right;
+        }
+
+        li:nth-child(2){
+            background: white;
+            color: $dark-pink;
+            font-size: 2em;
+            padding: $font-size 0;
+            text-align: center;
+        }
+
+        .upper {
+            font-size: 1.13em;
+        }
+        .br.upper {
+            padding-top: $font-size;
+        }
+
+        li:nth-child(3) {
+            padding: $font-size 0;
+
+            strong {
+            line-height: .9;
+                color: $dark-pink;
+                font-size: 3em;
+            }
+        }
 	}
 
 	.materno-infantil {
