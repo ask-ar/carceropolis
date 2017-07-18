@@ -2256,8 +2256,51 @@ help unidades
   color: #b81f3c;
   font-size: 3em;
 }
+/* line 502, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(1) {
+  background-color: pink;
+  color: #b81f3c;
+  text-align: right;
+}
+/* line 508, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(1) div:first-of-type strong {
+  font-size: 3em;
+  line-height: 1;
+}
+/* line 513, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(1) div:first-of-type span {
+  font-size: 2.5em;
+  line-height: 1;
+}
+/* line 518, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(1) div:nth-child(2) {
+  font-family: 1.25em;
+  padding: 32px 0;
+}
+/* line 523, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(2) {
+  background: white;
+  color: black;
+  font-size: 1.65em;
+  padding: 32px 0;
+}
+/* line 530, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(2) strong {
+  color: #b81f3c;
+  font-size: 1.22em;
+}
+/* line 535, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(3) {
+  font-size: 1.65em;
+  padding: 32px 0;
+  text-align: center;
+}
+/* line 541, ../../scss/_infografico.scss */
+.infografico .materno-infantil li:nth-child(3) strong {
+  font-size: 1.22em;
+}
 
-/* line 510, ../../scss/_infografico.scss */
+/* line 553, ../../scss/_infografico.scss */
 .scrolldown-arrow {
   position: fixed;
   bottom: 1em;
@@ -2265,7 +2308,7 @@ help unidades
   z-index: 1;
 }
 
-/* line 517, ../../scss/_infografico.scss */
+/* line 560, ../../scss/_infografico.scss */
 .arrow-down {
   animation: softBlink 1500ms infinite;
   opacity: 0;
@@ -2280,11 +2323,11 @@ help unidades
   transform: rotate(45deg);
   transition: 1s ease-in-out;
 }
-/* line 531, ../../scss/_infografico.scss */
+/* line 574, ../../scss/_infografico.scss */
 .arrow-down:nth-child(2) {
   animation: softBlink-mid 1500ms infinite;
 }
-/* line 535, ../../scss/_infografico.scss */
+/* line 578, ../../scss/_infografico.scss */
 .arrow-down:nth-child(3) {
   animation: softBlink-opaque 1500ms infinite;
 }

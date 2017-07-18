@@ -498,6 +498,49 @@ help unidades
 	}
 
 	.materno-infantil {
+
+        li:nth-child(1) {
+            background-color: pink;
+            color: $dark-pink;
+            text-align: right;
+        }
+
+        li:nth-child(1) div:first-of-type strong{
+            font-size: 3em;
+            line-height: 1;
+        }
+
+        li:nth-child(1) div:first-of-type span {
+            font-size: 2.5em;
+            line-height: 1;
+        }
+
+        li:nth-child(1) div:nth-child(2) {
+            font-family: 1.25em;
+            padding: $font-size 0;
+        }
+
+        li:nth-child(2){
+            background: white;
+            color: black;
+            font-size: 1.65em;
+            padding: $font-size 0;
+        }
+
+        li:nth-child(2) strong {
+            color: $dark-pink;
+            font-size: 1.22em;
+        }
+
+        li:nth-child(3) {
+            font-size: 1.65em;
+            padding: $font-size 0;
+            text-align: center
+        }
+
+        li:nth-child(3) strong {
+            font-size: 1.22em;
+        }
 	}
 
 	.alas-exclusivas {
