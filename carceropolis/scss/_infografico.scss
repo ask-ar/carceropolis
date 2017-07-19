@@ -109,13 +109,10 @@ help unidades
                 content: counter(section) ". ";
             }
 
-            &::after {
-                background: url(../images/infografico/plus-button.svg) no-repeat top left;
-                color: $purple;
-                content: '';
+            svg {
+                fill: currentColor;
                 float: right;
-                height: 40px;
-                text-align: center;
+                height: 41px;
                 width: 40px;
             }
 
@@ -134,34 +131,45 @@ help unidades
 
         transform: translateY(1.4em);
 
+        h1 {
+            margin-bottom: 0;
+        }
+
         .container {
             height: 100%;
-            @include flexcenter;
+            //@include flexcenter;
         }
 
         ol {
-            @include flexcenter;
+            //@include flexcenter;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         li{
             width: 50%;
-
-            &:not(:first-child) {
-                text-align: right;
-            }
         }
 
         li:nth-child(1){
+            align-self: flex-end;
             border-bottom: 3px solid white;
             font-size: 2.5em;
             line-height: 1.2em;
-            margin-bottom: .5em;
-            padding-bottom: .5em;
+            padding-bottom: $font-size;
         }
 
         li:nth-child(2){
-            font-size: 1.65em;
+            align-self: baseline;
+            background-blend-mode: luminosity;
+            background-color: $dark-pink;
+            background-image: url(../images/infografico/aracaju.png);
+            background-repeat: no-repeat;
+            background-size: cover;
             color: $purple;
+            font-size: 1.65em;
+            line-height: 1.1;
+            padding: 30vh $font-size $font-size 0 ;
+            text-align: right;
 
             strong {
                 text-transform: uppercase;
@@ -170,11 +178,17 @@ help unidades
         }
 
         li:nth-child(3){
+            padding-top: $font-size;
             font-size: 1.65em;
 
             strong {
                 font-size: 1.2em
             }
+        }
+
+        li:nth-child(4){
+            padding-top: $font-size;
+            text-align: right;
         }
 
 	}
@@ -194,6 +208,12 @@ help unidades
 
         ol {
             @include flexcenter;
+
+            background-image: url(../images/infografico/bg-grafico-perfil.svg);
+            background-size: auto 47%;
+            background-repeat: no-repeat;
+            background-position: top right;
+
         }
 
         li:nth-child(1){
@@ -221,9 +241,7 @@ help unidades
                 color: $dark-pink;
             }
 
-            span::before {
-                content: '';
-                background: $dark-pink;
+            svg {
                 display: block;
                 height: 150px;
                 float: left;
