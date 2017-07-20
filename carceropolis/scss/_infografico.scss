@@ -24,8 +24,6 @@ help unidades
 
 .infografico {
 
-    counter-reset: section;
-
     $font-size: 32px;
     font-size: $font-size;
 
@@ -96,16 +94,19 @@ help unidades
                 text-decoration: none;
             }
 
-            &::before{
-                counter-increment: section;
-                content: counter(section) ". ";
+            &::before,
+            &::after {
+                font-family: 'cp_infografico';
             }
 
-            svg {
-                fill: currentColor;
+            &::before {
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+            &::after {
+                @extend .icon-btn-mais:after;
                 float: right;
-                height: 41px;
-                width: 40px;
             }
 
         }
@@ -125,6 +126,10 @@ help unidades
 
         h1 {
             margin-bottom: 0;
+        }
+
+        h1 a::before {
+            @extend .icon-dados-gerais:before;
         }
 
         .container {
@@ -193,6 +198,10 @@ help unidades
             color: $dark-pink;
         }
 
+        h1 a::before {
+            @extend .icon-perfil-populacional:before;
+        }
+
         .container {
             height: 100%;
             @include flexcenter;
@@ -252,6 +261,10 @@ help unidades
             margin-bottom: 1.5em;
         }
 
+        h1 a::before {
+            @extend .icon-infraestrutura:before;
+        }
+
         strong{
             font-size: 2.3em;
         }
@@ -301,6 +314,11 @@ help unidades
 	section.situacao-juridica {
 
         background: linear-gradient(to right, $purple 0%, $purple 50%, $light-purple 50%, $light-purple 100%);
+
+
+        h1 a::before {
+            @extend .icon-juridica:before;
+        }
 
         ol:not(.full) li:nth-child(1){
             display: inline-block;
@@ -371,6 +389,10 @@ help unidades
     }
 
     .trabalho-educacao {
+
+        h1 a::before {
+            @extend .icon-trabalho-educacao:before;
+        }
 
         li:nth-child(1){
             font-size: 1.65em;
@@ -463,6 +485,10 @@ help unidades
             position: relative;
         }
 
+        h1 a::before {
+            @extend .icon-saude:before;
+        }
+
         li:nth-child(1) div:first-of-type{
             color: white;
             font-size: 1.65em;
@@ -513,6 +539,10 @@ help unidades
             color: $dark-pink;
         }
 
+        h1 a::before {
+            @extend .icon-materno:before;
+        }
+
         li:nth-child(1) {
             color: $dark-pink;
             text-align: right;
@@ -558,12 +588,12 @@ help unidades
 
 	.alas-exclusivas {
 
-        h1.container {
-            height: auto;
-        }
-
         h1 a {
             color: $dark-pink;
+        }
+
+        h1 a::before {
+            @extend .icon-alas-exclusivas:before;
         }
 
         ol {
