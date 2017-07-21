@@ -42,6 +42,7 @@ help unidades
         font-family: $light;
         font-weight: lighter;
         letter-spacing: .01em;
+        padding-top: 1em;
 
         // &:not(:first-child){
         //     opacity: 0;
@@ -53,11 +54,6 @@ help unidades
 
         > .container {
             height: 100%;
-        }
-
-        &:first-child {
-            $alturaPrimeiraSecao: calc(100vh - 80px);
-            height: $alturaPrimeiraSecao;
         }
 
         &:last-child {
@@ -73,7 +69,7 @@ help unidades
             font-family: $bold;
             font-size: 1.25em;
             letter-spacing: .01em;
-            margin: 1em auto;
+            margin: 0 auto 1em;
             width: 100%;
 
             &::after {
@@ -102,6 +98,8 @@ help unidades
             &::before {
                 display: inline-block;
                 margin-right: 10px;
+                position: relative;
+                top: 6px;
             }
 
             &::after {
@@ -134,11 +132,9 @@ help unidades
 
         .container {
             height: 100%;
-            //@include flexcenter;
         }
 
         ol {
-            //@include flexcenter;
             display: flex;
             flex-wrap: wrap;
         }
@@ -165,7 +161,7 @@ help unidades
             color: $purple;
             font-size: 1.65em;
             line-height: 1.1;
-            padding: 30vh $font-size $font-size 0 ;
+            padding: 10% $font-size $font-size 0 ;
             text-align: right;
 
             strong {
@@ -255,6 +251,11 @@ help unidades
 
 	.infraestrutura {
 
+        background-image: url(../images/infografico/infraestrutura@2x.png);
+        background-blend-mode: luminosity;
+        background-color: $dark-pink;
+        background-repeat: no-repeat;
+        background-size: cover;
         height: auto;
 
         h1 {
@@ -277,6 +278,7 @@ help unidades
             }
 
             &:last-child {
+                background: $dark-pink;
                 margin: -1em auto 2em;
                 text-align: center;
 
@@ -320,6 +322,13 @@ help unidades
             @extend .icon-juridica:before;
         }
 
+        ol:not(.full){
+            background-image: url(../images/infografico/grafico-juridico.svg);
+            background-repeat: no-repeat;
+            background-position: top right;
+            background-size: 30%;
+        }
+
         ol:not(.full) li:nth-child(1){
             display: inline-block;
             font-size: 1.65em;
@@ -352,10 +361,10 @@ help unidades
         }
 
         .full li:nth-child(1){
-            background: white;
+            background: white url(../images/infografico/balanca.svg) no-repeat;
+            background-position: 100% 13px;
             color: $purple;
             font-size: 1.65em;
-
         }
 
         .full li:nth-child(2){
@@ -386,6 +395,35 @@ help unidades
             }
         }
 
+        .justica-mulheres {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .justica-mulheres div {
+            background: white;
+            height: 80px;
+            overflow: hidden;
+            padding: 0 5px;
+            width: 100px;
+
+            &:before {
+                content: '';
+                background: $dark-pink;
+                border: 2px dashed $dark-pink;
+                border-radius: 50%;
+                bottom: -30px;
+                display: block;
+                height: 90px;
+                position: relative;
+                width: 90px;
+            }
+
+            &.vazio:before {
+                background: none;
+            }
+        }
+
     }
 
     .trabalho-educacao {
@@ -394,17 +432,18 @@ help unidades
             @extend .icon-trabalho-educacao:before;
         }
 
-        li:nth-child(1){
+        .container > ol > li:nth-child(1){
             font-size: 1.65em;
             padding-bottom: $font-size;
-            text-align: right;
         }
 
-        li:nth-child(2){
+        .container > ol > li:nth-child(2){
+            background-image: url(../images/infografico/trabalho-educacao-bg.png);
+            background-position: top right;
             border-top: 3px solid white;
         }
 
-        li:nth-child(2) div {
+        .container > ol > li:nth-child(2) div {
             background: linear-gradient(to right, rgba(51,1,41,1) 0%,rgba(51,1,41,0.91) 10%,rgba(0,0,0,0.05) 100%); 
             font-size: 1.13em;
             padding: $font-size 0 $font-size  $font-size;
@@ -421,21 +460,51 @@ help unidades
             }
         }
 
-        li:nth-child(3){
+        .container > ol > li:nth-child(3){
             border-bottom: 3px solid white;
             text-align: right;
-
-            strong {
-                font-size: 1.65em
-            }
+            display: flex;
+            flex-wrap: wrap;
 
             div {
                 padding: $font-size 0 $font-size;
                 width: 50%;
             }
+
+            .ideal, .real{
+                padding-left: $font-size;
+                text-align: left;
+
+                strong {
+                    display: block;
+                    font-size: 3em;
+                    line-height: 1;
+                    float:left;
+                    padding-right: 10px;
+                }
+            }
+
+            .quantidade {
+                float:left;
+                max-width: calc(100% - 44px);
+
+                li {
+                    background: $purple;
+                    height:20px;
+                    margin-bottom: 5px;
+                    width: 20px;
+                }
+            }
+
+            .real .quantidade {
+                column-gap: 5px;
+                columns: 16;
+            }
+
+
         }
 
-        li:nth-child(4){
+        .container > ol > li:nth-child(4){
             color: $purple;
             padding: $font-size 0 $font-size;
 
