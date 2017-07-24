@@ -56,10 +56,6 @@ help unidades
             height: 100%;
         }
 
-        &:last-child {
-            height: calc(100vh - 52px);
-        }
-
         &:nth-child(even){
             background: $purple;
         }
@@ -107,6 +103,10 @@ help unidades
                 float: right;
             }
 
+        }
+
+        ol {
+            margin-bottom: 0;
         }
 
         ol, ul, li {
@@ -505,12 +505,9 @@ help unidades
         }
 
         .container > ol > li:nth-child(4){
-            color: $purple;
-            padding: $font-size 0 $font-size;
 
             strong {
                 display: block;
-                font-size: 1.65em;
                 padding-left: 10%;
             }
 
