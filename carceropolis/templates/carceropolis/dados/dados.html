@@ -32,6 +32,7 @@
 {% block breadcrumb_menu %}{% endblock %}
 
 {% block main %}
+<body class="dados">
 <article class="infografico">
     <section class="dados-gerais">
         <div class="container">
@@ -258,11 +259,11 @@
                     </div>
                 </li>
                 <li>
-                    <span class="br">O trabalho também é para poucos:</span>
-                    <strong>
-                        apenas <span class="load">18%</span> 
-                        têm alguma ocupação laboral.
-                    </strong>
+                    <div>O trabalho também é para poucos:</div>
+                    <div>
+                        <strong>apenas</strong> <span class="load">18%</span>
+                        <span class="br">têm alguma ocupação laboral.</span>
+                    </div>
                 </li>
             </ol>
         </div>
@@ -272,12 +273,12 @@
             <h1><a href="#">Saúde</a></h1>
         </div>
         <ol>
-            <li>
-                <div class="container">
-                    Apenas <strong>metade</strong> dos presídios brasileiros conta com
-                </div>
-                <div>
-                    <strong class="br container">
+            <li class="container">
+                <div >
+                    Apenas <strong>metade</strong> dos 
+                    <span class="br">presídios brasileiros </span>
+                    conta com
+                    <strong class="br">
                         <span class="br">consultório</span> médico
                     </strong>
                 </div>

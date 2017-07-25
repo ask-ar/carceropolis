@@ -153,9 +153,7 @@ help unidades
 
         li:nth-child(2){
             align-self: baseline;
-            background-blend-mode: luminosity;
-            background-color: $dark-pink;
-            background-image: url(../images/infografico/aracaju.png);
+            background-image: url(../images/infografico/dados-gerais-bg.png);
             background-repeat: no-repeat;
             background-size: cover;
             color: $purple;
@@ -315,18 +313,17 @@ help unidades
 
 	section.situacao-juridica {
 
-        background: linear-gradient(to right, $purple 0%, $purple 50%, $light-purple 50%, $light-purple 100%);
-
+        h1 {
+            margin-bottom: 0;
+        }
 
         h1 a::before {
             @extend .icon-juridica:before;
         }
 
         ol:not(.full){
-            background-image: url(../images/infografico/grafico-juridico.svg);
-            background-repeat: no-repeat;
-            background-position: top right;
-            background-size: 30%;
+            background: url(../images/infografico/grafico-juridico.svg) 69% 50%/25%  no-repeat,
+                        url(../images/infografico/juridico-bg.png) 100% 50%/50% repeat-y;
         }
 
         ol:not(.full) li:nth-child(1){
@@ -505,75 +502,97 @@ help unidades
         }
 
         .container > ol > li:nth-child(4){
+            padding: $font-size 0;
 
-            strong {
-                display: block;
-                padding-left: 10%;
+            div:first-of-type{ 
+                text-align: right;
+                width: 50%;
             }
 
-            strong .load {
-                display: inline-block;
-                width: 75%;
-                height: 64px;
-                margin: 32px auto;
-                background: $purple;
+            div:first-of-type + div{ 
+                margin-left: auto;
+                padding: 0 $font-size;
                 position: relative;
+                width: 50%;
+
+                strong {
+                    left: -3.2em;
+                    position: absolute;
+                    top: .75em;
+                }
             }
 
-            strong .load::before {
+            .load {
+                background: $purple;
+                display: inline-block;
+                height: 34px;
+                margin: $font-size 0;
+                position: relative;
+                width: 100%;
+            }
+
+            .load::before {
                 content: '18%';
                 background: white;
+                color: $purple;
                 display: inline-block;
+                font-family: $bold;
+                line-height: 34px;
                 height: 100%;
+                padding-left: 10px;
                 position: absolute;
                 width: 18%;
             }
         }
 	}
 
-	.saude {
+	section.saude {
 
+        background: white;
+        color: $dark-pink;
         position: relative;
 
-        &::before {
-            content: '';
-            background: rgba(51,1,41,.4);
-            display: block;
-            height: 240px;
-            position: absolute;
-            top: 0;
-            z-index: 0;
-            width: 100%;
-
+        h1 {
+            margin-bottom: 0;
         }
 
-        h1 {
-            position: relative;
+        h1 a {
+            color: $dark-pink;
+            padding-bottom: .7em;
         }
 
         h1 a::before {
             @extend .icon-saude:before;
+            font-size: 1.1em;
+            margin-right: 20px;
+            top: 3px;
+        }
+
+        li:nth-child(1)  {
+            background: url(../images/infografico/saude-bg.png) no-repeat;
+            background-size: calc(50% - 15px);
+            background-position: 15px 0;
+            padding-left: 0;
         }
 
         li:nth-child(1) div:first-of-type{
-            color: white;
-            font-size: 1.65em;
+            border-left: 3px solid currentColor;
+            font-size: 1.6em;
+            line-height: 1.2;
+            margin-left: auto;
             padding-bottom: $font-size;
-            position: relative;
-            text-align: center;
-        }
-
-        li:nth-child(1) div:nth-child(2) {
-            color: $dark-carmine;
-            font-size: 3em;
-            line-height: 1;
-            padding: $font-size 0;
             text-align: right;
+            width: 50%;
+
+            strong.br {
+                font-size: 1.88em;
+                line-height: 1;
+            }
         }
 
         li:nth-child(2){
-            background: white;
-            color: $dark-pink;
+            background: $dark-pink;
+            color: white;
             font-size: 2em;
             padding: $font-size 0;
             text-align: center;
@@ -581,28 +600,44 @@ help unidades
 
         .upper {
             font-size: 1.13em;
+            padding-left: $font-size;
         }
+
         .br.upper {
             padding-top: $font-size;
         }
 
         li:nth-child(3) {
+            color: $purple;
             padding: $font-size 0;
+            position: relative;
 
             strong {
-            line-height: .9;
                 color: $dark-pink;
+                display: block;
                 font-size: 3em;
+                line-height: .9;
+                padding: 0 0 $font-size $font-size;
+            }
+
+            &:before {
+                content: "\e909 \e909 \e909";
+                font-family: 'cp_infografico';
+                color: $purple;
+                font-size: 7.5em;
+                letter-spacing: .2em;
+                position: absolute;
+                right: -.2em;
+                top: 0;
+                z-index: 0;
             }
         }
 	}
 
 	section.materno-infantil {
-        
-        background-color: pink;
+
 
         h1 a {
-            color: $dark-pink;
         }
 
         h1 a::before {
@@ -610,7 +645,10 @@ help unidades
         }
 
         li:nth-child(1) {
+            background-image: url(../images/infografico/materno-bg.png);
+            background-size: cover;
             color: $dark-pink;
+            padding: $font-size;
             text-align: right;
         }
 
