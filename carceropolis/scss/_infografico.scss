@@ -38,19 +38,11 @@ help unidades
     section {
         background: $dark-pink;
         color: white;
-        min-height: 100vh;  
+        // min-height: 100vh;  
         font-family: $light;
         font-weight: lighter;
         letter-spacing: .01em;
-        padding-top: 1em;
-
-        // &:not(:first-child){
-        //     opacity: 0;
-        // }
-
-        // .animacao-scroll {
-        //     opacity: 1;
-        // }
+        padding: 1em 0;
 
         > .container {
             height: 100%;
@@ -245,6 +237,26 @@ help unidades
             }
         }
 
+        .sp, .ibge {
+            position: relative;
+
+            >span {
+                font-family: $bold;
+                position: absolute;
+            }
+        }
+
+        .sp span {
+            bottom: 36px;
+            left: 135px;
+        }
+
+        .ibge span {
+            bottom: 23px;
+            color: $purple;
+            left: 118px;
+        }
+
 	}
 
 	.infraestrutura {
@@ -302,11 +314,27 @@ help unidades
 
         .cela {
             background: $purple;
+            display: flex;
             height: 10em;
+            flex-wrap: wrap;
             float: right;
             margin-left: 1em;
             margin-top: -.5em;
+            overflow: hidden;
             width: 50%;
+
+        }
+
+        .pessoa {
+            color: white;
+            font-family: 'cp_infografico';
+            font-size: 3em;
+            text-align: center;
+            width: 20%;
+        }
+
+        .pessoa::before{
+            @extend .icon-pessoa:before;
         }
 
 	}
@@ -637,11 +665,24 @@ help unidades
 	section.materno-infantil {
 
 
+        h1 {
+            margin-bottom: 0;
+            padding: 0;
+        }
+
         h1 a {
+            padding-bottom: $font-size;
         }
 
         h1 a::before {
             @extend .icon-materno:before;
+            font-size: 1.5em;
+            margin-right: 15px;
+            top: 15px;
+        }
+
+        h1 a::after {
+            margin-top: 18px;
         }
 
         li:nth-child(1) {
@@ -671,7 +712,23 @@ help unidades
             background: white;
             color: black;
             font-size: 1.65em;
+        }
+
+        li:nth-child(2) .container {
             padding: $font-size 0;
+            position: relative;
+
+            &::before {
+                @extend .icon-bebe:before;
+                color: $dark-pink;
+                font-family: 'cp_infografico';
+                font-size: 4.5em;
+                line-height: 1;
+                position: absolute;
+                right: -20px;
+                top: -10px;
+                z-index: 0;
+            }
         }
 
         li:nth-child(2) strong {
@@ -682,6 +739,7 @@ help unidades
         li:nth-child(3) {
             font-size: 1.65em;
             padding: $font-size 0;
+            position: relative;
             text-align: center
         }
 
@@ -692,6 +750,10 @@ help unidades
 
 	.alas-exclusivas {
 
+        h1 {
+            margin-bottom: 0;
+        }
+
         h1 a {
             color: $dark-pink;
         }
@@ -700,35 +762,68 @@ help unidades
             @extend .icon-alas-exclusivas:before;
         }
 
-        ol {
+        .conteudo {
             display: flex;
             flex-wrap: wrap;
         }
 
-        li {
-            width: 50%;
-        }
-
-        li:nth-child(1){
+        .col-1 {
+            background: url(../images/infografico/alas-exclusivas-bg.png);
+            background-size: cover;
             font-size: 2.5em;
             line-height: 1.1;
             padding: $font-size;
             text-align: right;
+            width: 50%;
         }
 
-        li:nth-child(1) strong{
+        .col-1 strong{
             font-size: 1.2em;
             line-height: 1;
         }
 
-        li:nth-child(2){
-            font-size: 1.25em;
+        .col-2 {
+            // font-size: 1.25em;
             padding: $font-size;
+            text-align: right;
+            width: 50%;
         }
 
-        li:nth-child(2) strong{
+        .col-2 .big {
             font-size: 1.6em;
             line-height: 1;
+        }
+
+        .comum, .adaptada {
+            font-family: 'cp_infografico'
+        }
+
+        .comum {
+            color: $dark-pink;
+            opacity: .5;
+
+        }
+        .comum:before {
+            @extend .icon-prisao:before;
+        }
+
+        .adaptada:before {
+            @extend .icon-cadeirante:before;
+        }
+
+        .celas {
+            margin-top: 1.6em;
+        }
+
+        .celas ol {
+            font-size: 2.2em;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row-reverse;
+        }
+
+        .celas li {
+            width: 20%;
         }
 
 	}
