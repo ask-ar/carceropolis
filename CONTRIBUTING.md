@@ -2,15 +2,24 @@
 Abaixo os principais passos para instalação do projeto em ambiente de desenvolvimento.
 
 ### GNU/Linux - Básico
-Sistemas GNU/Linux contém python por padrão, então o que precisaremos é garantir que duas aplicações python estejam instaladas:
-O Projeto funciona apenas com Python2.7, ainda não há suporte a Python3.
+Sistemas GNU/Linux contém python por padrão, então o que precisaremos é
+garantir que duas aplicações python estejam instaladas: O projeto está rodando
+com Python3.
 
 ```
-sudo apt-get install python-pip
-sudo pip install virtualenv
+sudo apt install python3 python3-pip
+sudo pip3 install virtualenv
+```
+
+Além disso, você precisa instalar o postgresql:
+```
+sudo apt install postgresql
 ```
 
 ### MacOS - Básico
+
+> Esta seção precisa ser revisada para "subir" de python2 para python3.
+
 Para instalar o projeto localmente precisamos do Python. No caso do Mac, iremos
 utilizar o `Homebrew`. Para instalá-lo, rode a linha de comando abaixo em um
 Terminal (para mais informações: http://brew.sh/):
@@ -72,7 +81,7 @@ sudo pip install virtualenv
 ### Para todas as plataformas
 Seguindo com a instalação localmente depois dos ambientes configurados.
 
-O passo seguinte é navegar até a pasta do projeto carcerópolis.
+O passo seguinte é navegar até a pasta do projeto carceropolis.
 
 Agora iremos criar um 'virtualenv' ('ambiente virtual'), que ficará armazenado
 na pasta "venv":
@@ -83,19 +92,29 @@ virtualenv venv
 
 Com o ambiente criado, o passo seguinte é "ativá-lo", ou seja, dizer que na
 sessão atual do terminal o python a ser utilizado é o do "ambiente virtual"
-(então todas as istalações serão feitas só no contexto desse ambiente)
+(então todas as instalações serão feitas só no contexto desse ambiente)
 
 ```
 source venv/bin/activate
 ```
 
-Agora iremos instalar os requisitos do projeto no ambiente virtual:
+Vamos nos certificar de que estamos com o virtualenv rodando python3:
+```
+python --version
+```
+
+Verifique o output para confirmar se o python do venv é de alguma versão do
+python3. Caso não seja, será preciso criar novamente o venv com python3 (veja
+seção abaixo `Virtualenv com python3` sobre isso.)
+
+Continuando, agora iremos instalar os requisitos do projeto no ambiente
+virtual:
 
 ```
 pip install -r requirements.txt
 ```
 
-O presente projeto é desenvolvido em Django. dessa forma, ele possui um arquivo
+O presente projeto é desenvolvido em Django. Dessa forma, ele possui um arquivo
 de configuração (settings.py), que, no nosso caso, fica no diretório
 `carceropolis`. Este arquivo contém as configurações principais e gerais do
 projeto. Precisamos também de um segundo arquivo, de nome `local_settings.py`,
@@ -159,28 +178,45 @@ Agora, para ver o projeto rodando, utilize o comando abaixo:
 python manage.py runserver
 ```
 
-e visite, em seu navegador, o endereço: http://127.0.0.1:8000
+E visite, em seu navegador, o endereço: http://127.0.0.1:8000
+
+#### Virtualenv com python3
+
+Caso você tenha criado um virtualenv com python2 ao invés de python3, saia do
+virtualenv (`deactivate`), remova o diretório do virtualenv (`rm venv`), e rode
+o comando:
+```
+virtualenv venv $(which python3)
+```
+
+Pronto, agora você tem um virtualenv com a versão do python3 instalada no seu
+sistema. =)
 
 ### Trabalhando com o CSS
-Este projeto utiliza o Compass para escrever CSS. O Compass é um pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.
+Este projeto utiliza o Compass para escrever CSS. O Compass é um
+pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.
 
-Para utilizar o Compass, você deve instalar o [Ruby](http://rubyinstaller.org/) em seu computador e depois instalar o [Compass](http://compass-style.org/).
+Para utilizar o Compass, você deve instalar o [Ruby](http://rubyinstaller.org/)
+em seu computador e depois instalar o [Compass](http://compass-style.org/).
 
-Após instalação, você pode verificar as configurações de compilação no arquivo ./carceropolis/config.rb
+Após instalação, você pode verificar as configurações de compilação no arquivo
+`./carceropolis/config.rb`
 
-Os arquivos .scss (compass) estão no diretório ./carceropolis/scss
+Os arquivos .scss (compass) estão no diretório `./carceropolis/scss`
 
-Para trabalhar com arquivos .sccs você deve iniciar o serviço que observa modificações neles, para compilar-los assim que salvos. Para isto você deve digitar no terminal no diretório onde o arquivo config.rb está salvo.
+Para trabalhar com arquivos .sccs você deve iniciar o serviço que observa
+modificações neles, para compilar-los assim que salvos. Para isto você deve
+digitar no terminal no diretório onde o arquivo `config.rb` está salvo.
 
 `$ compass watch`
 
 Siga a sintaxe da linguagem para realizar as modificações necessárias.
 
-Nunca faça modificações direto nos arquivos CSS pois estes serão apagados a toda nova compilação do Compass.
+Nunca faça modificações direto nos arquivos CSS pois estes serão apagados a
+toda nova compilação do Compass.
 
 Para compilar apenas uma vez:
 
 `$ compass compile`
 
 Parar parar o watch `control c`
-
