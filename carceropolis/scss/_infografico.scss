@@ -196,7 +196,7 @@ help unidades
             @include flexcenter;
 
             background-image: url(../images/infografico/bg-grafico-perfil.svg);
-            background-size: auto 47%;
+            background-size: auto 52%;
             background-repeat: no-repeat;
             background-position: top right;
 
@@ -206,6 +206,7 @@ help unidades
             border-bottom: 3px solid $dark-pink;
             margin-bottom: 2em;
             padding-bottom: 2em;
+            position: relative;
             width: 100%;
 
             p:not(:first-of-type){
@@ -215,6 +216,19 @@ help unidades
             strong {
                 font-size: 2.55em;
                 line-height: .9em;
+            }
+
+            svg {
+                position: absolute;
+                right: 0;
+                top: 20px;
+                width: 45%;
+            }
+
+            svg path {
+                fill: none;
+                stroke: white;
+                stroke-width: 3px;
             }
         }
 
@@ -323,15 +337,14 @@ help unidades
             margin-top: -.5em;
             overflow: hidden;
             width: 50%;
-
         }
 
-        .pessoa {
-            color: white;
-            font-family: 'cp_infografico';
-            font-size: 3em;
-            text-align: center;
-            width: 20%;
+        svg {
+            width: 100%;
+        }
+
+        svg path {
+            fill: white;
         }
 
         .pessoa::before{
@@ -351,7 +364,7 @@ help unidades
         }
 
         ol:not(.full){
-            background: url(../images/infografico/grafico-juridico.svg) 69% 50%/25%  no-repeat,
+            background: url(../images/infografico/grafico-juridico.svg) 80% 50% / 70% no-repeat,
                         url(../images/infografico/juridico-bg.png) 100% 50%/50% repeat-y;
         }
 
@@ -608,7 +621,7 @@ help unidades
         }
 
         li:nth-child(1) div:first-of-type{
-            border-left: 3px solid currentColor;
+            border-left: 2px solid currentColor;
             font-size: 1.6em;
             line-height: 1.2;
             margin-left: auto;
