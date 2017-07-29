@@ -13,19 +13,16 @@ help unidades
 72pt => 96px (3em)
 
 */
-.dados {
-
-    background: $dark-pink;
-
-    header + section{
-        display: none;
-    }
+.dados  header + section {
+    display: none;
 }
 
 .infografico {
 
+    background: $dark-pink;
     $font-size: 32px;
     font-size: $font-size;
+    line-height: 110%;
 
     .br {
         display: block;
@@ -103,6 +100,7 @@ help unidades
 
         ol, ul, li {
             list-style: none;
+            padding: 0;
         }
         strong {
             font-family: $bold;
@@ -161,8 +159,9 @@ help unidades
         }
 
         li:nth-child(3){
-            padding-top: $font-size;
             font-size: 1.65em;
+            line-height: 1;
+            padding-top: $font-size;
 
             strong {
                 font-size: 1.2em
@@ -235,6 +234,7 @@ help unidades
                 margin: 0 1em;
                 width: 40%;
             }
+
         }
 
         .sp, .ibge {
@@ -247,12 +247,12 @@ help unidades
         }
 
         .sp span {
-            bottom: 36px;
+            bottom: 13px;
             left: 135px;
         }
 
         .ibge span {
-            bottom: 23px;
+            bottom: -2px;
             color: $purple;
             left: 118px;
         }
@@ -278,6 +278,7 @@ help unidades
 
         strong{
             font-size: 2.3em;
+            line-height: 1;
         }
 
         li{
@@ -289,7 +290,7 @@ help unidades
 
             &:last-child {
                 background: $dark-pink;
-                margin: -1em auto 2em;
+                margin: -1em auto 1em;
                 text-align: center;
 
                 span {
@@ -357,12 +358,14 @@ help unidades
         ol:not(.full) li:nth-child(1){
             display: inline-block;
             font-size: 1.65em;
+            line-height: 1;
             padding-bottom: $font-size;
             width: 50%;
         }
 
         ol:not(.full) li:nth-child(1) strong:first-of-type {
             font-size: 1.82em;
+            
         }
 
         ol:not(.full) li:nth-child(2){
@@ -377,7 +380,6 @@ help unidades
 
         ol:not(.full) li:nth-child(2) strong:first-of-type {
             font-size: 3em;
-            line-height: 1;
         }
 
         .full .container {
@@ -390,6 +392,7 @@ help unidades
             background-position: 100% 13px;
             color: $purple;
             font-size: 1.65em;
+            line-height: 1;
         }
 
         .full li:nth-child(2){
@@ -398,6 +401,7 @@ help unidades
 
             p {
                 font-size: 1.65em;
+                line-height: 1.2;
             }
 
             p:first-of-type {
@@ -414,9 +418,10 @@ help unidades
             strong:first-of-type {
                 background: $dark-pink;
                 border-radius: 50%;
-                width: ($font-size*2)+10;
-                height: ($font-size*2)+10;
                 display: inline-block;
+                height: ($font-size*2)+10;
+                line-height: initial;
+                width: ($font-size*2)+10;
             }
         }
 
@@ -459,6 +464,7 @@ help unidades
 
         .container > ol > li:nth-child(1){
             font-size: 1.65em;
+            line-height: 1;
             padding-bottom: $font-size;
         }
 
@@ -481,15 +487,14 @@ help unidades
 
             strong {
                 font-size: 2.66em;
-                line-height: 1;
             }
         }
 
         .container > ol > li:nth-child(3){
             border-bottom: 3px solid white;
-            text-align: right;
             display: flex;
             flex-wrap: wrap;
+            text-align: right;
 
             div {
                 padding: $font-size 0 $font-size;
@@ -502,9 +507,9 @@ help unidades
 
                 strong {
                     display: block;
+                    float: left;
                     font-size: 3em;
-                    line-height: 1;
-                    float:left;
+                    line-height: 90%;
                     padding-right: 10px;
                 }
             }
@@ -553,7 +558,7 @@ help unidades
             .load {
                 background: $purple;
                 display: inline-block;
-                height: 34px;
+                height: 40px;
                 margin: $font-size 0;
                 position: relative;
                 width: 100%;
@@ -565,7 +570,6 @@ help unidades
                 color: $purple;
                 display: inline-block;
                 font-family: $bold;
-                line-height: 34px;
                 height: 100%;
                 padding-left: 10px;
                 position: absolute;
@@ -622,6 +626,7 @@ help unidades
             background: $dark-pink;
             color: white;
             font-size: 2em;
+            line-height: 1;
             padding: $font-size 0;
             text-align: center;
         }
@@ -654,6 +659,7 @@ help unidades
                 color: $purple;
                 font-size: 7.5em;
                 letter-spacing: .2em;
+                line-height: 130%;
                 position: absolute;
                 right: -.2em;
                 top: 0;
@@ -664,6 +670,7 @@ help unidades
 
 	section.materno-infantil {
 
+        padding-bottom: 0;
 
         h1 {
             margin-bottom: 0;
@@ -683,6 +690,10 @@ help unidades
 
         h1 a::after {
             margin-top: 18px;
+        }
+
+        ol {
+            overflow: hidden;
         }
 
         li:nth-child(1) {
@@ -712,6 +723,7 @@ help unidades
             background: white;
             color: black;
             font-size: 1.65em;
+            line-height: 1;
         }
 
         li:nth-child(2) .container {
@@ -738,6 +750,7 @@ help unidades
 
         li:nth-child(3) {
             font-size: 1.65em;
+            line-height: 1;
             padding: $font-size 0;
             position: relative;
             text-align: center
@@ -783,7 +796,7 @@ help unidades
         }
 
         .col-2 {
-            // font-size: 1.25em;
+            line-height: 1.2;
             padding: $font-size;
             text-align: right;
             width: 50%;
@@ -816,10 +829,11 @@ help unidades
         }
 
         .celas ol {
-            font-size: 2.2em;
             display: flex;
+            font-size: 2.2em;
             flex-wrap: wrap;
             flex-direction: row-reverse;
+            line-height: 1.4;
         }
 
         .celas li {
