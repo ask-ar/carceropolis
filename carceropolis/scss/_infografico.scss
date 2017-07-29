@@ -198,12 +198,6 @@ help unidades
 
         ol {
             @include flexcenter;
-
-            background-image: url(../images/infografico/bg-grafico-perfil.svg);
-            background-size: auto 52%;
-            background-repeat: no-repeat;
-            background-position: top right;
-
         }
 
         li:nth-child(1){
@@ -225,15 +219,36 @@ help unidades
             svg {
                 position: absolute;
                 right: 0;
-                top: 20px;
-                width: 45%;
+                top: 0;
+                width: 49%;
+
+                .symbol{
+                    fill:$dark-pink;
+                    opacity: .2;
+                }
+
+                .dotted{
+                    opacity: .4;
+                    stroke: $dark-pink;
+                    stroke-miterlimit:10;
+                    stroke-dasharray:2 3;
+                }
             }
 
-            svg path {
+            svg text {
+                fill: $dark-pink;
+                font-size: 13px;
+            }
+
+            svg .linha {
+                width: 90%;
+            }
+            
+            svg .linha path {
                 fill: none;
                 stroke: white;
                 stroke-width: 3px;
-            }
+            } 
         }
 
         li:nth-child(2) {
