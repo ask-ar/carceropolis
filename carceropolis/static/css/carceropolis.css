@@ -2474,9 +2474,9 @@ help unidades
 }
 /* line 637, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(1) {
-  background: url(../images/infografico/saude-bg.png) no-repeat;
+  background: url(../images/infografico/saude-bg.png) repeat-y;
   background-size: calc(50% - 15px);
-  background-position: 15px 0;
+  background-position: 15px 50%;
   padding-left: 0;
 }
 /* line 644, ../../scss/_infografico.scss */
