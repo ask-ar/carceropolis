@@ -391,7 +391,7 @@ help unidades
             display: inline-block;
             font-size: 1.65em;
             line-height: 1;
-            padding-bottom: $font-size;
+            padding: $font-size 0;
             width: 50%;
         }
 
@@ -420,11 +420,15 @@ help unidades
         }
 
         .full li:nth-child(1){
-            background: white url(../images/infografico/balanca.svg) no-repeat;
-            background-position: 100% 13px;
+            background-color: white;
             color: $purple;
             font-size: 1.65em;
             line-height: 1;
+
+            .container {
+                background: url(../images/infografico/balanca.svg) no-repeat;
+                background-position: 100% 13px;
+            }
         }
 
         .full li:nth-child(2){
@@ -460,6 +464,9 @@ help unidades
         .justica-mulheres {
             display: flex;
             justify-content: space-between;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1400px;
         }
 
         .justica-mulheres div {
@@ -571,12 +578,12 @@ help unidades
         .container > ol > li:nth-child(4){
             padding: $font-size 0;
 
-            div:first-of-type{ 
+            > div:first-of-type{ 
                 text-align: right;
                 width: 50%;
             }
 
-            div:first-of-type + div{ 
+            > div:first-of-type + div{ 
                 margin-left: auto;
                 padding: 0 $font-size;
                 position: relative;
@@ -608,6 +615,32 @@ help unidades
                 padding-left: 10px;
                 position: absolute;
                 width: 18%;
+            }
+
+            .load .de-cem {
+                border-color: white;
+                border-width: 1px;
+                border-left-style: solid;
+                border-right-style: solid;
+                position: relative;
+                height: 10px;
+                top: 10px;
+            }
+
+            .load .de-cem::before {
+                border-top: 1px dashed white;
+                content: '';
+                display: block;
+                position: absolute;
+                top: 5px;
+                width: 100%;
+            }
+
+            .load .de-cem span {
+                font-size: .5em;
+                position: absolute;
+                right: -20px;
+                top: 10px;
             }
         }
 	}
