@@ -10,3 +10,150 @@
 		display: none;
 	}
 }
+
+
+.menu-dados {
+
+	height: 50px;
+	float: right;
+	margin: 20px 0;
+
+	a {
+		color: $breadcrumb;
+		display: block;
+		float: left;
+		height: 100%;
+	}
+
+	a.active {
+		color: $dark-pink;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	span {
+		display: inline-block;
+		text-indent: -99999em;
+		width: 0;
+	}
+
+
+	a::before {
+		display: block;
+		font-family: 'cp_infografico';
+		font-size: 2.4em;
+		height: 100%;
+		line-height: 50px;
+		text-align: center;
+		text-indent: 0;
+		width: 50px;
+	}
+	
+	.gerais::before {
+		@extend .icon-dados-gerais:before;
+	}
+	
+	.perfil::before {
+		@extend .icon-perfil-populacional:before;
+	}
+	
+	.infra::before {
+		@extend .icon-infraestrutura:before;
+	}
+	
+	.juridico::before {
+		@extend .icon-juridica:before;
+	}
+	
+	.educacao::before {
+		@extend .icon-trabalho-educacao:before;
+	}
+	
+	.saude::before {
+		@extend .icon-saude:before;
+	}
+	
+	.materno::before {
+		@extend .icon-materno:before;
+	}
+	
+	.alas-exclusivas::before {
+		@extend .icon-alas-exclusivas:before;
+	}
+}
+
+.dados-interna {
+	a {
+		color: $dark-pink;
+	}
+
+	h1 {
+		background: $dark-pink;
+		color: white;
+		font-family: $bold;
+		font-weight: bolder;
+		margin: 0 0 30px;
+		padding: 20px;
+		text-transform: uppercase;
+	}
+
+	p {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+
+	.graf {
+		padding: 15px;
+		position: relative;
+		margin: 0 0 80px;
+	}
+
+	
+	.graf-meta {
+		color: $author-publication;
+
+		.js-plot-link-container {
+				color: $author-publication;
+		}
+
+		dl { 
+			margin: 0;
+			max-width: 70%;
+		}
+
+		dd {
+			text-indent: 10px;
+		}
+	}
+
+	.graf .download {
+		background: white;
+		font-size: 14px;
+		padding: 0 2px 5px;
+		position: absolute;
+		right: 0;
+		top: calc(100% + 1px);
+		text-transform: lowercase;
+
+		a:hover {
+			text-decoration: none;
+		}
+
+		::before, ::after {
+			font-family: $bold;
+			font-size: 2em;
+			position: relative;
+			top: 3px;
+		} 
+
+		::before {
+			content: '['
+		}
+
+		::after {
+			content: ']'
+		}
+	}
+}

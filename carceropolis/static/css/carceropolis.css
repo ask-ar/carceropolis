@@ -45,12 +45,12 @@
 }
 
 /* line 93, ../../scss/_variables.scss */
-.icon-trabalho-educacao:before, .infografico .trabalho-educacao h1 a::before {
+.icon-trabalho-educacao:before, .menu-dados .educacao::before, .infografico .trabalho-educacao h1 a::before {
   content: "\e900";
 }
 
 /* line 96, ../../scss/_variables.scss */
-.icon-saude:before, .infografico section.saude h1 a::before {
+.icon-saude:before, .menu-dados .saude::before, .infografico section.saude h1 a::before {
   content: "\e901";
 }
 
@@ -65,27 +65,27 @@
 }
 
 /* line 105, ../../scss/_variables.scss */
-.icon-perfil-populacional:before, .infografico .perfil-populacional h1 a::before {
+.icon-perfil-populacional:before, .menu-dados .perfil::before, .infografico .perfil-populacional h1 a::before {
   content: "\e904";
 }
 
 /* line 108, ../../scss/_variables.scss */
-.icon-materno:before, .infografico section.materno-infantil h1 a::before {
+.icon-materno:before, .menu-dados .materno::before, .infografico section.materno-infantil h1 a::before {
   content: "\e905";
 }
 
 /* line 111, ../../scss/_variables.scss */
-.icon-juridica:before, .infografico section.situacao-juridica h1 a::before {
+.icon-juridica:before, .menu-dados .juridico::before, .infografico section.situacao-juridica h1 a::before {
   content: "\e906";
 }
 
 /* line 114, ../../scss/_variables.scss */
-.icon-infraestrutura:before, .infografico .infraestrutura h1 a::before {
+.icon-infraestrutura:before, .menu-dados .infra::before, .infografico .infraestrutura h1 a::before {
   content: "\e907";
 }
 
 /* line 117, ../../scss/_variables.scss */
-.icon-dados-gerais:before, .infografico .dados-gerais h1 a::before {
+.icon-dados-gerais:before, .menu-dados .gerais::before, .infografico .dados-gerais h1 a::before {
   content: "\e908";
 }
 
@@ -115,7 +115,7 @@
 }
 
 /* line 135, ../../scss/_variables.scss */
-.icon-alas-exclusivas:before, .infografico .alas-exclusivas h1 a::before {
+.icon-alas-exclusivas:before, .menu-dados .alas-exclusivas::before, .infografico .alas-exclusivas h1 a::before {
   content: "\e90e";
 }
 
@@ -920,6 +920,117 @@ body {
     display: none;
   }
 }
+/* line 15, ../../scss/_dados.scss */
+.menu-dados {
+  height: 50px;
+  float: right;
+  margin: 20px 0;
+}
+/* line 21, ../../scss/_dados.scss */
+.menu-dados a {
+  color: #b6b6b6;
+  display: block;
+  float: left;
+  height: 100%;
+}
+/* line 28, ../../scss/_dados.scss */
+.menu-dados a.active {
+  color: #b81f3c;
+}
+/* line 32, ../../scss/_dados.scss */
+.menu-dados a:hover {
+  text-decoration: none;
+}
+/* line 36, ../../scss/_dados.scss */
+.menu-dados span {
+  display: inline-block;
+  text-indent: -99999em;
+  width: 0;
+}
+/* line 43, ../../scss/_dados.scss */
+.menu-dados a::before {
+  display: block;
+  font-family: 'cp_infografico';
+  font-size: 2.4em;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  text-indent: 0;
+  width: 50px;
+}
+
+/* line 88, ../../scss/_dados.scss */
+.dados-interna a {
+  color: #b81f3c;
+}
+/* line 92, ../../scss/_dados.scss */
+.dados-interna h1 {
+  background: #b81f3c;
+  color: white;
+  font-family: "source_sans_probold";
+  font-weight: bolder;
+  margin: 0 0 30px;
+  padding: 20px;
+  text-transform: uppercase;
+}
+/* line 102, ../../scss/_dados.scss */
+.dados-interna p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+/* line 107, ../../scss/_dados.scss */
+.dados-interna .graf {
+  padding: 15px;
+  position: relative;
+  margin: 0 0 80px;
+}
+/* line 114, ../../scss/_dados.scss */
+.dados-interna .graf-meta {
+  color: #868584;
+}
+/* line 117, ../../scss/_dados.scss */
+.dados-interna .graf-meta .js-plot-link-container {
+  color: #868584;
+}
+/* line 121, ../../scss/_dados.scss */
+.dados-interna .graf-meta dl {
+  margin: 0;
+  max-width: 70%;
+}
+/* line 126, ../../scss/_dados.scss */
+.dados-interna .graf-meta dd {
+  text-indent: 10px;
+}
+/* line 131, ../../scss/_dados.scss */
+.dados-interna .graf .download {
+  background: white;
+  font-size: 14px;
+  padding: 0 2px 5px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 1px);
+  text-transform: lowercase;
+}
+/* line 140, ../../scss/_dados.scss */
+.dados-interna .graf .download a:hover {
+  text-decoration: none;
+}
+/* line 144, ../../scss/_dados.scss */
+.dados-interna .graf .download ::before, .dados-interna .graf .download ::after {
+  font-family: "source_sans_probold";
+  font-size: 2em;
+  position: relative;
+  top: 3px;
+}
+/* line 151, ../../scss/_dados.scss */
+.dados-interna .graf .download ::before {
+  content: "[";
+}
+/* line 155, ../../scss/_dados.scss */
+.dados-interna .graf .download ::after {
+  content: "]";
+}
+
 /* line 6, ../../scss/_publicacoes.scss */
 #body.Publicacoes .tag,
 #body.publicacoes .tag {
