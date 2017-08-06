@@ -148,7 +148,7 @@ LANGUAGE_CODE = 'pt-BR'
 
 # Supported languages
 LANGUAGES = (
-    ("pt-BR", _("Portugues")),
+    ("pt-br", _("Portugues")),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
