@@ -92,3 +92,11 @@ $(window).on('hashchange', function() {
 $(window).ready(function(){
   check_modals();
 })
+
+animusjs.init();
+
+$(document).ready(
+  () => {
+    $('.dados-gerais').addClass('animated fadeInDownBig')
+  }
+);

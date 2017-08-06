@@ -27,14 +27,15 @@ from django.utils.translation import ugettext_lazy as _
 # )
 
 ADMIN_MENU_ORDER = (
+    ("Carcerópolis Admin", (
+        ("Áreas de Atuação", "caceropolis.AreaDeAtuacao"),
+        ("Especialidades", "caceropolis.Especialidade"),
+        ("Unidades Prisionais", "carceropolis.UnidadePrisional"),
+        ("Logs", "django.contrib.admin.models.LogEntry"),
+    )),
     ("Carcerópolis", (
         ("Especialistas", "caceropolis.Especialista"),
         ("Publicações", "caceropolis.Publicacao"),
-    )),
-    ("Carcerópolis Admin", (
-        ('Áreas de Atuação', "caceropolis.AreaDeAtuacao"),
-        ("Especialidades", "caceropolis.Especialidade"),
-        ('Unidades Prisionais', "carceropolis.UnidadePrisional"),
     )),
     ("Conteúdos", (
         ("Páginas", "pages.Page"),
@@ -48,11 +49,11 @@ ADMIN_MENU_ORDER = (
     ("Sites", (
         ("Site", "sites.Site"),
         ("Redirecionamento", "redirects.Redirect"),
-        ("Configuracoes", "conf.Setting"),
+        ("Configurações", "conf.Setting"),
     )),
 )
 
-ADMIN_REMOVAL = ['django.contrib.sites.models.Site',]
+ADMIN_REMOVAL = ["django.contrib.sites.models.Site"]
 
 ACCOUNTS_APPROVAL_REQUIRED = False
 
@@ -127,7 +128,7 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['carceropolis.org.br']
+ALLOWED_HOSTS = ["carceropolis.org.br"]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -136,7 +137,7 @@ ALLOWED_HOSTS = ['carceropolis.org.br']
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = "America/Sao_Paulo"
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
@@ -147,7 +148,7 @@ LANGUAGE_CODE = 'pt-BR'
 
 # Supported languages
 LANGUAGES = (
-    ('pt-br', _('Portugues')),
+    ("pt-BR", _("Portugues")),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -274,7 +275,7 @@ INSTALLED_APPS = (
     # "solid",
     "cidades",
     "carceropolis",
-    'django_extensions',
+    "django_extensions",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -303,15 +304,15 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
 
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
     # Uncomment if using internationalisation or localisation
-    # 'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.auth.middleware.SessionAuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 
     "mezzanine.core.request.CurrentRequestMiddleware",
     "mezzanine.core.middleware.RedirectFallbackMiddleware",
@@ -346,9 +347,9 @@ OPTIONAL_APPS = (
 #########################
 # CARCEROPOLIS SETTINGS #
 #########################
-PHONENUMBER_DB_FORMAT = 'E164'
-PHONENUMBER_DEFAULT_REGION = 'BR'
-BLOG_SLUG = 'publicacoes'
+PHONENUMBER_DB_FORMAT = "E164"
+PHONENUMBER_DEFAULT_REGION = "BR"
+BLOG_SLUG = "publicacoes"
 
 # 2.5MB - 2621440
 # 5MB - 5242880

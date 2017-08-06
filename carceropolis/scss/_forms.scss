@@ -1,0 +1,31 @@
+.modal-body .form-horizontal .control-label {
+  text-align: left;
+}
+
+#publicacao_filters {
+  padding-bottom: 5px;
+  //background-color: rgba(255,255,255, 0.8);
+  margin-bottom: 5px;
+  padding-top: 5px;
+  border-radius: 5px;
+  position: relative;
+
+  .help-block {
+    margin-bottom: 5px;
+  }
+
+  * {
+    font-weight: normal;
+  }
+
+  .control-group {
+    float: left;
+    margin: auto 10px;
+
+    button {
+      position: absolute;
+      bottom: 5px;
+    }
+  }
+}
+

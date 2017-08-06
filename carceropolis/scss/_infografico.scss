@@ -1,0 +1,974 @@
+/*
+help unidades
+
+24pt => 32px (1em)
+26pt -> 34.6px (1.08em)
+27pt => 36px (1.13em)
+30pt => 40px (1.25em)
+40pt => 53.3px (1.65em)
+48.2pt => 64.2px (1.2em relação ao parent)
+48.2pt => 64.2px 2em
+55pt => 73.3px (2.3em)
+60pt => 80px (2.5em)
+72pt => 96px (3em)
+
+*/
+.dados  header + section {
+    display: none;
+}
+
+.infografico {
+
+    background: $dark-pink;
+    $font-size: 32px;
+    font-size: $font-size;
+    line-height: 110%;
+
+    .br {
+        display: block;
+    }
+
+    .upper {
+        text-transform: uppercase;
+    }
+
+    section {
+        background: $dark-pink;
+        color: white;
+        // min-height: 100vh;  
+        font-family: $light;
+        font-weight: lighter;
+        letter-spacing: .01em;
+        padding: 1em 0;
+
+        > .container {
+            height: 100%;
+        }
+
+        &:nth-child(even){
+            background: $purple;
+        }
+
+        h1 {
+            align-self: baseline;
+            font-family: $bold;
+            font-size: 1.25em;
+            letter-spacing: .01em;
+            margin: 0 auto 1em;
+            width: 100%;
+
+            &::after {
+                @include clearfix;
+            }
+        }
+
+        h1 a {
+            border-bottom: 2px solid rgba(255,255,255,.9);
+            border-color: currentColor;
+            color: white;
+            display: block;
+            line-height: 40px;
+            padding-bottom: 1rem;
+            text-transform: uppercase;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            &::before,
+            &::after {
+                font-family: 'cp_infografico';
+            }
+
+            &::before {
+                display: inline-block;
+                margin-right: 10px;
+                position: relative;
+                top: 6px;
+            }
+
+            &::after {
+                @extend .icon-btn-mais:after;
+                float: right;
+            }
+
+        }
+
+        ol {
+            margin-bottom: 0;
+        }
+
+        ol, ul, li {
+            list-style: none;
+            padding: 0;
+        }
+        strong {
+            font-family: $bold;
+        }
+
+    }
+
+	.dados-gerais {
+
+        transform: translateY(1.4em);
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        h1 a::before {
+            @extend .icon-dados-gerais:before;
+        }
+
+        .container {
+            height: 100%;
+        }
+
+        ol {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        li{
+            width: 50%;
+        }
+
+        li:nth-child(1){
+            align-self: flex-end;
+            border-bottom: 3px solid white;
+            font-size: 2.5em;
+            line-height: 1.2em;
+            padding: $font-size 0;
+        }
+
+        .aracaju {
+            align-content: flex-end;
+            align-self: stretch;
+            background-image: url(../images/infografico/dados-gerais-bg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: $purple;
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 1.65em;
+            justify-content: flex-end;
+            line-height: 1.1;
+            padding: 0 $font-size $font-size 0 ;
+            text-align: right;
+
+            strong {
+                text-transform: uppercase;
+                font-size: 1.2em
+            }
+        }
+
+        li:nth-child(3){
+            font-size: 1.65em;
+            line-height: 1;
+            padding-top: $font-size;
+
+            strong {
+                font-size: 1.2em
+            }
+        }
+
+        li:nth-child(4){
+            padding-top: $font-size;
+            text-align: right;
+        }
+
+	}
+
+	.perfil-populacional {
+        background: $purple;
+        color: white;
+
+        h1 a {
+            color: $dark-pink;
+        }
+
+        h1 a::before {
+            @extend .icon-perfil-populacional:before;
+        }
+
+        .container {
+            height: 100%;
+            @include flexcenter;
+        }
+
+        ol {
+            @include flexcenter;
+        }
+
+        li:nth-child(1){
+            border-bottom: 3px solid $dark-pink;
+            margin-bottom: 2em;
+            padding-bottom: 2em;
+            position: relative;
+            width: 100%;
+
+            p:not(:first-of-type){
+                color: $dark-pink;
+            }
+
+            strong {
+                font-size: 2.55em;
+                line-height: .9em;
+            }
+
+            svg {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 49%;
+
+                .symbol{
+                    fill:$dark-pink;
+                    opacity: .2;
+                }
+
+                .dotted{
+                    opacity: .4;
+                    stroke: $dark-pink;
+                    stroke-miterlimit:10;
+                    stroke-dasharray:2 3;
+                }
+            }
+
+            svg text {
+                fill: $dark-pink;
+                font-size: 13px;
+            }
+
+            svg .linha {
+                width: 90%;
+            }
+            
+            svg .linha path {
+                fill: none;
+                stroke: white;
+                stroke-width: 3px;
+            } 
+        }
+
+        li:nth-child(2) {
+            @include flexcenter;
+            flex-wrap: nowrap;
+            width: 95%;
+
+            strong {
+                color: $dark-pink;
+            }
+
+            svg {
+                display: block;
+                height: 150px;
+                float: left;
+                margin: 0 1em;
+                width: 40%;
+            }
+
+        }
+
+        .sp, .ibge {
+            position: relative;
+
+            >span {
+                font-family: $bold;
+                position: absolute;
+            }
+        }
+
+        .sp span {
+            bottom: 13px;
+            left: 135px;
+        }
+
+        .ibge span {
+            bottom: -2px;
+            color: $purple;
+            left: 118px;
+        }
+
+	}
+
+	.infraestrutura {
+
+        background-image: url(../images/infografico/infraestrutura@2x.png);
+        background-blend-mode: luminosity;
+        background-color: $dark-pink;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: auto;
+
+        h1 {
+            margin-bottom: 1.5em;
+        }
+
+        h1 a::before {
+            @extend .icon-infraestrutura:before;
+        }
+
+        strong{
+            font-size: 2.3em;
+            line-height: 1;
+        }
+
+        li{
+
+            &:not(:last-child) {
+                margin-bottom: 2em;
+                text-align: right;
+            }
+
+            &:last-child {
+                background: $dark-pink;
+                margin: -1em auto 1em;
+                text-align: center;
+
+                span {
+                    border-bottom: 1px solid white;
+                    font-size: 1.13em;
+                    letter-spacing: .06em;
+                    padding-bottom: .1em;
+                    text-transform: uppercase;
+                }
+
+                strong {
+                    display: inline-block;
+                    font-size: 3em;
+                    transform: translate(.3em, .1em);
+                }
+            }
+
+            &::after {
+                @include clearfix;
+            }
+        }
+
+        .cela {
+            background: $purple;
+            display: flex;
+            height: 10em;
+            flex-wrap: wrap;
+            float: right;
+            margin-left: 1em;
+            margin-top: -.5em;
+            overflow: hidden;
+            width: 50%;
+        }
+
+        svg {
+            width: 100%;
+        }
+
+        svg path {
+            fill: white;
+        }
+
+        .pessoa::before{
+            @extend .icon-pessoa:before;
+        }
+
+	}
+
+	section.situacao-juridica {
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        h1 a::before {
+            @extend .icon-juridica:before;
+        }
+
+        ol:not(.full){
+            background: url(../images/infografico/grafico-juridico.svg) 80% 50% / 70% no-repeat,
+                        url(../images/infografico/juridico-bg.png) 100% 50%/50% repeat-y;
+        }
+
+        ol:not(.full) li:nth-child(1){
+            display: inline-block;
+            font-size: 1.65em;
+            line-height: 1;
+            padding: $font-size 0;
+            width: 50%;
+        }
+
+        ol:not(.full) li:nth-child(1) strong:first-of-type {
+            font-size: 1.82em;
+            
+        }
+
+        ol:not(.full) li:nth-child(2){
+            display: inline-block;
+            padding-bottom: $font-size;
+            width: 50%;
+
+            strong {
+                color: $dark-pink;
+            }
+        }
+
+        ol:not(.full) li:nth-child(2) strong:first-of-type {
+            font-size: 3em;
+        }
+
+        .full .container {
+            padding-top: $font-size;
+            padding-bottom: $font-size;
+        }
+
+        .full li:nth-child(1){
+            background-color: white;
+            color: $purple;
+            font-size: 1.65em;
+            line-height: 1;
+
+            .container {
+                background: url(../images/infografico/balanca.svg) no-repeat;
+                background-position: 100% 13px;
+            }
+        }
+
+        .full li:nth-child(2){
+            background: $purple;
+            text-align: center;
+
+            p {
+                font-size: 1.65em;
+                line-height: 1.2;
+            }
+
+            p:first-of-type {
+                font-size: 1.08em;
+                text-transform: uppercase;
+            }
+
+            em {
+                font-style: normal;
+                font-family: $bold;
+                color: $dark-pink;
+            }
+
+            strong:first-of-type {
+                background: $dark-pink;
+                border-radius: 50%;
+                display: inline-block;
+                height: ($font-size*2)+10;
+                line-height: initial;
+                width: ($font-size*2)+10;
+            }
+        }
+
+        .justica-mulheres {
+            display: flex;
+            justify-content: space-between;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1400px;
+        }
+
+        .justica-mulheres div {
+            background: white;
+            height: 80px;
+            overflow: hidden;
+            padding: 0 5px;
+            width: 100px;
+
+            &:before {
+                content: '';
+                background: $dark-pink;
+                border: 2px dashed $dark-pink;
+                border-radius: 50%;
+                bottom: -30px;
+                display: block;
+                height: 90px;
+                position: relative;
+                width: 90px;
+            }
+
+            &.vazio:before {
+                background: none;
+            }
+        }
+
+    }
+
+    .trabalho-educacao {
+
+        h1 a::before {
+            @extend .icon-trabalho-educacao:before;
+        }
+
+        .container > ol > li:nth-child(1){
+            font-size: 1.65em;
+            line-height: 1;
+            padding-bottom: $font-size;
+        }
+
+        .container > ol > li:nth-child(2){
+            background-image: url(../images/infografico/trabalho-educacao-bg.png);
+            background-position: top right;
+            border-top: 3px solid white;
+        }
+
+        .container > ol > li:nth-child(2) div {
+            background: linear-gradient(to right, rgba(51,1,41,1) 0%,rgba(51,1,41,0.91) 10%,rgba(0,0,0,0.05) 100%); 
+            font-size: 1.13em;
+            padding: $font-size 0 $font-size  $font-size;
+            text-transform: uppercase;
+            width: 40%;
+
+            .br{
+                text-transform: none;
+                margin-top: -15px;
+                line-height: 1;
+            }
+
+            strong {
+                font-size: 2.66em;
+            }
+        }
+
+        .container > ol > li:nth-child(3){
+            border-bottom: 3px solid white;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: right;
+
+            div {
+                padding: $font-size 0 $font-size;
+                width: 50%;
+            }
+
+            .ideal, .real{
+                padding-left: $font-size;
+                text-align: left;
+
+                strong {
+                    display: block;
+                    float: left;
+                    font-size: 3em;
+                    line-height: 90%;
+                    padding-right: 10px;
+                }
+            }
+
+            .quantidade {
+                float:left;
+                max-width: calc(100% - 44px);
+
+                li {
+                    background: $purple;
+                    height:20px;
+                    margin-bottom: 5px;
+                    width: 20px;
+                }
+            }
+
+            .real .quantidade {
+                column-gap: 5px;
+                columns: 16;
+            }
+
+
+        }
+
+        .container > ol > li:nth-child(4){
+            padding: $font-size 0;
+
+            > div:first-of-type{ 
+                text-align: right;
+                width: 50%;
+            }
+
+            > div:first-of-type + div{ 
+                margin-left: auto;
+                padding: 0 $font-size;
+                position: relative;
+                width: 50%;
+
+                strong {
+                    left: -3.2em;
+                    position: absolute;
+                    top: .75em;
+                }
+            }
+
+            .load {
+                background: $purple;
+                display: inline-block;
+                height: 40px;
+                margin: $font-size 0;
+                position: relative;
+                width: 100%;
+            }
+
+            .load::before {
+                content: '18%';
+                background: white;
+                color: $purple;
+                display: inline-block;
+                font-family: $bold;
+                height: 100%;
+                padding-left: 10px;
+                position: absolute;
+                width: 18%;
+            }
+
+            .load .de-cem {
+                border-color: white;
+                border-width: 1px;
+                border-left-style: solid;
+                border-right-style: solid;
+                position: relative;
+                height: 10px;
+                top: 10px;
+            }
+
+            .load .de-cem::before {
+                border-top: 1px dashed white;
+                content: '';
+                display: block;
+                position: absolute;
+                top: 5px;
+                width: 100%;
+            }
+
+            .load .de-cem span {
+                font-size: .5em;
+                position: absolute;
+                right: -20px;
+                top: 10px;
+            }
+        }
+	}
+
+	section.saude {
+
+        background: white;
+        color: $dark-pink;
+        position: relative;
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        h1 a {
+            color: $dark-pink;
+            padding-bottom: .7em;
+        }
+
+        h1 a::before {
+            @extend .icon-saude:before;
+            font-size: 1.1em;
+            margin-right: 20px;
+            top: 3px;
+        }
+
+        li:nth-child(1)  {
+            background: url(../images/infografico/saude-bg.png) repeat-y;
+            background-size: calc(50% - 15px);
+            background-position: 15px 50%;
+            padding-left: 0;
+        }
+
+        li:nth-child(1) div:first-of-type{
+            border-left: 2px solid currentColor;
+            font-size: 1.6em;
+            line-height: 1.2;
+            margin-left: auto;
+            padding: $font-size 15px $font-size 0;
+            text-align: right;
+            width: 50%;
+
+            strong.br {
+                font-size: 1.88em;
+                line-height: 1;
+            }
+        }
+
+        li:nth-child(2){
+            background: $dark-pink;
+            color: white;
+            font-size: 2em;
+            line-height: 1;
+            padding: $font-size 0;
+            text-align: center;
+        }
+
+        .upper {
+            font-size: 1.13em;
+            padding-left: $font-size;
+        }
+
+        .br.upper {
+            padding-top: $font-size;
+        }
+
+        li:nth-child(3) {
+            color: $purple;
+            padding: $font-size 0;
+            position: relative;
+
+            strong {
+                color: $dark-pink;
+                display: block;
+                font-size: 3em;
+                line-height: .9;
+                padding: 0 0 $font-size $font-size;
+            }
+
+            &:before {
+                content: "\e909 \e909 \e909";
+                font-family: 'cp_infografico';
+                color: $purple;
+                font-size: 7.5em;
+                letter-spacing: .2em;
+                line-height: 130%;
+                position: absolute;
+                right: -.2em;
+                top: 0;
+                z-index: 0;
+            }
+        }
+	}
+
+	section.materno-infantil {
+
+        padding-bottom: 0;
+
+        h1 {
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        h1 a {
+            padding-bottom: $font-size;
+        }
+
+        h1 a::before {
+            @extend .icon-materno:before;
+            font-size: 1.5em;
+            margin-right: 15px;
+            top: 15px;
+        }
+
+        h1 a::after {
+            margin-top: 18px;
+        }
+
+        ol {
+            overflow: hidden;
+        }
+
+        li:nth-child(1) {
+            background-image: url(../images/infografico/materno-bg.png);
+            background-size: cover;
+            color: $dark-pink;
+            padding: $font-size;
+            text-align: right;
+        }
+
+        li:nth-child(1) div:first-of-type strong{
+            font-size: 3em;
+            line-height: 1;
+        }
+
+        li:nth-child(1) div:first-of-type span {
+            font-size: 2.5em;
+            line-height: 1;
+        }
+
+        li:nth-child(1) div:nth-child(2) {
+            font-family: 1.25em;
+            padding: $font-size 0;
+        }
+
+        li:nth-child(2){
+            background: white;
+            color: black;
+            font-size: 1.65em;
+            line-height: 1;
+        }
+
+        li:nth-child(2) .container {
+            padding: $font-size 0;
+            position: relative;
+
+            &::before {
+                @extend .icon-bebe:before;
+                color: $dark-pink;
+                font-family: 'cp_infografico';
+                font-size: 4.5em;
+                line-height: 1;
+                position: absolute;
+                right: -20px;
+                top: -10px;
+                z-index: 0;
+            }
+        }
+
+        li:nth-child(2) strong {
+            color: $dark-pink;
+            font-size: 1.22em;
+        }
+
+        li:nth-child(3) {
+            font-size: 1.65em;
+            line-height: 1;
+            padding: $font-size 0;
+            position: relative;
+            text-align: center
+        }
+
+        li:nth-child(3) strong {
+            font-size: 1.22em;
+        }
+	}
+
+	.alas-exclusivas {
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        h1 a {
+            color: $dark-pink;
+        }
+
+        h1 a::before {
+            @extend .icon-alas-exclusivas:before;
+        }
+
+        .conteudo {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-1 {
+            background: url(../images/infografico/alas-exclusivas-bg.png);
+            background-size: cover;
+            font-size: 2.5em;
+            line-height: 1.1;
+            padding: $font-size;
+            text-align: right;
+            width: 50%;
+        }
+
+        .col-1 strong{
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .col-2 {
+            line-height: 1.2;
+            padding: $font-size;
+            text-align: right;
+            width: 50%;
+        }
+
+        .col-2 .big {
+            font-size: 1.6em;
+            line-height: 1;
+        }
+
+        .comum, .adaptada {
+            font-family: 'cp_infografico'
+        }
+
+        .comum {
+            color: $dark-pink;
+            opacity: .5;
+
+        }
+        .comum:before {
+            @extend .icon-prisao:before;
+        }
+
+        .adaptada:before {
+            @extend .icon-cadeirante:before;
+        }
+
+        .celas {
+            margin-top: 1.6em;
+        }
+
+        .celas ol {
+            display: flex;
+            font-size: 2.2em;
+            flex-wrap: wrap;
+            flex-direction: row-reverse;
+            line-height: 1.4;
+        }
+
+        .celas li {
+            width: 20%;
+        }
+
+	}
+}
+
+//= Setas de scroll ======================================= /
+$size: 30px;
+
+.scrolldown-arrow {
+    position: fixed;
+    bottom: 50px;
+    right: 40px;
+    z-index: 1;
+}
+
+.arrow-down{
+  animation: softBlink 1500ms infinite;
+  opacity: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -10px;
+  height: $size;
+  width: $size;
+  border: 5px solid transparent;
+  border-right-color: $arrow-color;
+  border-bottom-color: $arrow-color;
+  transform: rotate(45deg);
+  transition: 1s ease-in-out;
+
+  &:nth-child(2){
+     animation: softBlink-mid 1500ms infinite;
+  }
+
+  &:nth-child(3){
+     animation: softBlink-opaque 1500ms infinite;
+  }
+}
+@keyframes softBlink{
+
+  60%{
+    opacity: 0;
+  }
+  100%{
+    opacity: .2;
+    transform: translateY($size/2) rotate(45deg);
+  }
+}
+
+@keyframes softBlink-mid{
+  40%{
+    opacity: 0;
+  }
+  100%{
+    opacity: .5;
+    transform: translateY($size/2) rotate(45deg);
+  }
+}
+
+@keyframes softBlink-opaque{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    transform: translateY($size/2) rotate(45deg);
+  }
+}

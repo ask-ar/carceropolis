@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+{% load static %}
+
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Dados" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/vendors/plotly-latest.min.js"></script>
+{% endblock %}
+
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Dados" %}
+{% endif %}
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+{% if tag or categoria or year or month or author %}
+<li>{% spaceless %}
+{% if tag %}
+    {% trans "Tag:" %} {{ tag }}
+{% else %}{% if categoria %}
+    {% trans "Categoria:" %} {{ Categoria }}
+{% else %}{% if year or month %}
+    {% if month %}{{ month }}, {% endif %}{{ year }}
+{% else %}{% if author %}
+    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% endif %}{% endif %}{% endif %}{% endif %}
+{% endspaceless %}
+</li>
+{% endif %}
+{% endblock %}
+
+
+{% block main %}
+<div class="container">
+  <nav class="menu-dados">
+    <a class="gerais active" href="/dados/gerais/" title="Dados Gerais">
+      <span>Dados Gerais</span>
+    </a>
+    <a class="perfil" href="/dados/perfil_populacional/" title="Perfil Populacional">
+      <span>Perfil Populacional</span>
+    </a>
+    <a class="infra" href="/dados/infraestrutura/" title="Infraestrutura">
+      <span>Infraestrutura</span>
+    </a>
+    <a class="juridico" href="/dados/juridico/" title="Situação Jurídica">
+      <span>Situação Jurídica</span>
+    </a>
+    <a class="educacao" href="/dados/educacao/" title="Trabalho e Educação">
+      <span>Trabalho e Educação</span>
+    </a>
+    <a class="saude" href="/dados/saude/" title="Saúde">
+        <span>Saúde</span>
+    </a>
+    <a class="materno" href="/dados/materno_infantil/" title="Materno-Infantil">
+      <span>Materno-Infantil</span>
+    </a>
+    <a class="alas-exclusivas" href="/dados/alas_exclusivas/" title="Alas Exclusivas">
+      <span>Alas Exclusivas</span>
+    </a>
+  </nav>
+</div>
+
+<section class="container dados-interna">
+  <h1>1. Dados Gerais</h1>
+  <p>
+    O Brasil ocupa o quarto lugar no ranking mundial de encarceramento: só
+    temos menos pessoas atrás das grades que Estados Unidos, China e Rússia,
+    nesta ordem. Ainda que muitos afirmem que a posição do país reflete seu
+    número de habitantes, é importante notar que, entre essas nações que mais
+    encarceram, somos a única em que a população prisional cresce mais do que a
+    população total. 
+  </p>
+  <p>
+    Por outro lado, exemplos como o da Índia, que tem pelo menos seis vezes
+    mais habitantes, mas menos da metade da nossa população prisional, mostram
+    que o encarceramento é fruto de escolhas políticas. 
+  </p>
+  <p>
+    Entre os Estados, destaca-se a posição de São Paulo, que abriga mais de um
+    terço (35%) de todos os presos do Brasil e registra a quinta maior taxa de
+    encarceramento (número de presos por cada 100 mil habitantes) do país, de
+    498,5. A média nacional é de 306,2. 
+  </p>
+  <p>
+    Nesse quesito específico, salta aos olhos a presença de dois Estados
+    fronteiriços - Rondônia e Acre - no topo da lista, o primeiro com mais de
+    mil presos para cada grupo de 100 mil pessoas. A título de comparação, a
+    taxa de encarceramento dos Estados Unidos, a segunda mais alta do mundo, é
+    de 666.
+  </p>
+
+  {% for grafico in graficos %}
+    <script>
+      figure1 = {};
+      figure1.data = JSON.parse('{{grafico.data|safe}}');
+      figure1.layout = JSON.parse('{{grafico.layout|safe}}');
+    </script>
+    <section class="frame graf" id="graf-{{forloop.counter}}">
+        <div class="graf-chart">
+          {{ grafico.graph|safe }}
+        </div>
+        <aside class="graf-meta">
+          <dl>
+            <dt>Fonte:</dt>
+            <dd>
+              {% if grafico.fonte_url %}
+                <a href="{{grafico.fonte_url}}">{{ grafico.fonte }}</a>
+              {% else %}
+                {{grafico.fonte}}
+              {% endif %}
+            </dd>
+            {% if grafico.notas %}
+              <dt>Notas:</dt>
+                
+                {% for nota in grafico.notas %}
+              <dd>
+                  <span class='graf-nota'>{{ nota }}</span>
+              </dd>
+                {% endfor %}
+            {% endif %}
+          </dl>
+          <span class='download'><a href="{% static grafico.data_file_url %}">Download dos dados deste gráfico</a></span>
+        </aside>
+    </section>
+  {% endfor %}
+  <div id="graphContainer">
+  </div>
+  <div id='toolMenuContainer'></div>
+
+</section>
+
+{% block final_js%}
+<!-- ToolPanel JS dependencies Bundle -->
+<script type="text/javascript" src="/static/js/vendors/toolpanel-dependencies-bundle.js"></script>
+
+<script src="/static/js/charts/dashboard.js"></script>
+{% endblock %}
+<script>
+</script>
+{% endblock %}
+
+{% block right_panel %}
+
+{% endblock %}

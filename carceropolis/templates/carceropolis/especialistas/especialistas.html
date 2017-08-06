@@ -34,7 +34,7 @@
             {% endif %}
           {% endwith %}
           {% if user.is_authenticated %}
-            <p>{{especialista.telefone}}</p>
+            <p>+{{especialista.ddi}}-{{especialista.ddd}}-{{especialista.telefone}}</p>
             <a href="mailto:{{especialista.email}}" class="email">{{especialista.email}}</a>
           {% else %}
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#login_modal">

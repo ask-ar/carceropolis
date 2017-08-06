@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags publicacoeshelper %}
 
 {% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Publicação" %}{% endif %}{% endblock %}
 
@@ -26,16 +26,16 @@
 
 {% block breadcrumb_menu %}
 {{ block.super }}
-{% if tag or categoria or year or month or author %}
+{% if tag or categoria or ano or autoria %}
 <li>{% spaceless %}
 {% if tag %}
     {% trans "Tag:" %} {{ tag }}
 {% else %}{% if categoria %}
     <!-- {% trans "Categoria:" %}  -->{{ categoria }}
-{% else %}{% if year or month %}
-    {% if month %}{{ month }}, {% endif %}{{ year }}
-{% else %}{% if author %}
-    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% else %}{% if ano %}
+    {{ ano }}
+{% else %}{% if autoria %}
+    {% trans "Author:" %} {{ autoria }}
 {% endif %}{% endif %}{% endif %}{% endif %}
 {% endspaceless %}
 </li>
@@ -45,22 +45,26 @@
 
 {% block main %}
 <section class="container frame">
+<div id='publicacao_filters' class='collapse_search'>
+{% include "carceropolis/publicacao/includes/search.html" %}
+</div>
 <!-- {{publicacoes}} -->
 
-{% if tag or Categoria or year or month or author %}
+{% if tag or Categoria or ano or autoria %}
     {% block publicacao_list_filterinfo %}
     <p>
     {% if tag %}
-        {% trans "Viewing posts tagged" %} {{ tag }}
-    {% else %}{% if Categoria %}
-        {% trans "Viewing posts for the Categoria" %} {{ Categoria }}
-    {% else %}{% if year or month %}
-        {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}
-        {{ year }}
-    {% else %}{% if author %}
-        {% trans "Viewing posts by" %}
-        {{ author.get_full_name|default:author.username }}
-    {% endif %}{% endif %}{% endif %}{% endif %}
+        {% trans "Viewing posts tagged" %} {{ tag }} | 
+    {% endif %}
+    {% if Categoria %}
+        {% trans "Viewing posts for the Categoria" %} {{ Categoria }} | 
+    {% endif %}
+    {% if ano %}
+        {% trans "Viewing posts from" %} {{ ano }} | 
+    {% endif %}
+    {% if autoria %}
+        {% trans "Viewing posts by authors with name like" %} {{ autoria }} |
+    {% endif %}
     {% endblock %}
     </p>
 {% else %}
@@ -130,11 +134,13 @@
           <ul class="list-inline tags">
           <li>{% trans "Tags" %}:</li>
           {% spaceless %}
+          {% with params=request.GET.urlencode %}
           {% for tag in tags %}
             <li class="tag">
-              <a href="{% url "publicacao_list_tag" tag.slug %}">{{ tag }}</a>
+              <a href="{% relative_url tag 'tag' params %}">{{ tag }}</a>
             </li>
           {% endfor %}
+          {% endwith %}
           {% endspaceless %}
           </ul>
         {% endif %}

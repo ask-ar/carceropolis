@@ -1,0 +1,48 @@
+{% load i18n %}
+<form id='filter_publicacoes' class="form-bar" name="FilterForm" action="{{ request.path }}" method="post">
+  <fieldset> {% csrf_token %}
+    <div class="control-group"><div class="controls">
+      <label for='q' class='help-block control-label'>Termo geral</label>
+      <input type="text" name="q" value="{% if q is not None %}{{q}}{% endif %}" id="filter_q">
+    </div></div>
+    <div class="control-group"><div class="controls">
+      <label for='ano' class='help-block control-label'>Ano</label>
+      <input type='text' name='ano' value='{% if ano is not None %}{{ano}}{% endif %}' id='filter_ano'>
+    </div></div>
+    <div class="control-group"><div class="controls">
+      <label for='autoria' class='help-block control-label'>Autoria</label>
+      <input type='text' name='autoria' value='{% if autoria is not None %}{{autoria}}{% endif %}' id='filter_autoria'>
+    </div></div>
+    <div class="control-group"><div class="controls">
+      <label for='tag' class='help-block control-label'>Tag</label>
+      <input type='text' name='tag' value='{% if tag is not None %}{{tag}}{% endif %}' id='filter_tag'>
+    </div></div>
+    <div class="control-group"><div class="controls">
+      <button type="submit" class="btn">Buscar</button>
+    </div></div>
+  </fieldset>
+</form>
+
+
+<script>
+$('#filter_publicacoes').on('submit', function(e){
+    var q = $('#filter_q').val(),
+        ano = $('#filter_ano').val(),
+        autoria = $('#filter_autoria').val(),
+        tag = $('#filter_tag').val(),
+        path = "{{request.path}}" + "?";
+
+    path += 'q=' + q;
+
+    if (ano != '') {
+        path += '&' + 'ano=' + ano;
+    }
+    if (autoria != '') {
+        path += '&' + 'autoria=' + autoria;
+    }
+    if (tag != ''){
+        path += '&' + 'tag=' + tag
+    }
+    this.action = path;
+});
+</script>
