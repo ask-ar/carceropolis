@@ -94,6 +94,7 @@ urlpatterns += [
     url(r'^sair/$', logout),
     url(r'^cadastro/$', views.register_user),
     url(r'^recuperar_senha/$', views.password_recovery),
+    url(r'^painel_dados/$', views.data_dashboard),
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 

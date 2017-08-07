@@ -8,3 +8,6 @@ pandas
 ipython
 # To be replaced by bokeh graphs
 plotly
+pandas
+numpy
+bokeh

@@ -30,6 +30,7 @@ from mezzanine.generic.models import Keyword
 from mezzanine.utils.email import send_verification_mail, send_approve_mail
 from mezzanine.utils.views import paginate
 from mezzanine.utils.urls import login_redirect, next_url
+from bokeh.embed import autoload_server
 
 from .models import AreaDeAtuacao, Especialidade, Especialista, Publicacao
 
@@ -460,3 +461,15 @@ def register_user(request):
 def password_recovery(request):
     # TODO
     pass
+
+
+def data_dashboard(request, template="dashboard/dashboard.html"):
+    """
+    Data dashboard.
+    """
+
+    script = autoload_server(url='http://localhost:5006/bkapp')
+    context = {"script": script}
+    templates = [template]
+
+    return TemplateResponse(request, templates, context)
