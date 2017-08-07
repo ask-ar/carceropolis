@@ -6,53 +6,103 @@ import threading
 from tornado.ioloop import IOLoop
 from bokeh.application import Application
 from bokeh.application.handlers import FunctionHandler
-from bokeh.layouts import column
+from bokeh.layouts import column, widgetbox, row
 from bokeh.models import ColumnDataSource, Slider
+from bokeh.models.widgets.inputs import AutocompleteInput, Select
 from bokeh.plotting import figure
 from bokeh.server.server import Server
 from bokeh.themes import Theme
+from bokeh.models import HoverTool
 
 
 def modify_doc(doc):
-    data_url = "http://www.neracoos.org/erddap/tabledap/B01_sbe37_all.csvp?time,temperature&depth=1&temperature_qc=0&time>=2016-02-15&time<=2017-03-22"
-    b, i, q = data_url.partition('?')
-    data_url = b+i+requests.utils.quote(q)
-    df = pd.read_csv(data_url, parse_dates=True, index_col=0)
-    df = df.rename(columns={'temperature (celsius)': 'temperature'})
-    df.index.name = 'time'
+    df = pd.read_csv('test.csv')
+    df.ano = df.ano.astype(str)
+    columns = sorted(df.columns)
+    discrete = [x for x in columns if df[x].dtype == object]
+    # continuous = [x for x in columns if x not in discrete]
+    # discrete.append(continuous.pop(continuous.index('ano')))
 
     source = ColumnDataSource(data=df)
 
-    plot = figure(x_axis_type='datetime', y_range=(0, 25),
-                  y_axis_label='Temperature (Celsius)',
-                  title="Sea Surface Temperature at 43.18, -70.43")
-    plot.line('time', 'temperature', source=source)
+    def plot_lines(fig, x, y, source):
+        fig.line(x, y, source=source)
+        # plot.line(x=xs, width=0.5, bottom=0, top=ys)
 
-    def callback(attr, old, new):
-        if new == 0:
-            data = df
-        else:
-            data = df.rolling('{0}D'.format(new)).mean()
-        source.data = ColumnDataSource(data=data).data
+    def plot_vbar(fig, x, y, source):
+        fig.vbar(x, 0.5, y, source=source)
+        # plot.vbar(x=xs, width=0.5, bottom=0, top=ys)
 
-    slider = Slider(start=0, end=30, value=0, step=1,
-                    title="Smoothing by N days")
-    slider.on_change('value', callback)
+    def plot_hbar(fig, x, y, source):
+        fig.hbar(y=y, height=0.5, right=x, left=0, source=source)
 
-    doc.add_root(column(slider, plot))
+    def plot_circles(fig, x, y, source):
+        fig.circle(x, y, source=source)
+        # plot.circle(x=xs, y=ys)
 
-    doc.theme = Theme(json=yaml.load("""
-        attrs:
-            Figure:
-                background_fill_color: "#000000"
-                outline_line_color: white
-                toolbar_location: above
-                height: 500
-                width: 800
-            Grid:
-                grid_line_dash: [6, 4]
-                grid_line_color: white
-    """))
+    chart_types = {
+        'linha': plot_lines,
+        'barras horizontais': plot_hbar,
+        'barras verticais': plot_vbar,
+        'círculos': plot_circles,
+    }
+
+    def create_figure():
+        xs = df[x.value].values
+        ys = df[y.value].values
+        x_title = x.value.title()
+        y_title = y.value.title()
+
+        kw = dict()
+        if x.value in discrete:
+            kw['x_range'] = sorted(set(xs))
+        if y.value in discrete:
+            kw['y_range'] = sorted(set(ys))
+        kw['title'] = "%s vs %s" % (x_title, y_title)
+
+        fig = figure(plot_height=600, plot_width=800, tools='pan,box_zoom,reset,save', **kw)
+        fig.xaxis.axis_label = x_title
+        fig.yaxis.axis_label = y_title
+
+        if x.value in discrete:
+            fig.xaxis.major_label_orientation = pd.np.pi / 4
+
+        chart_types[chart_type.value](fig, x.value, y.value, source)
+
+        hover = HoverTool(tooltips=[
+            ("index", "$index"),
+            (x.value, '@'+x.value),
+            (y.value, '@'+y.value),
+        ])
+        fig.add_tools(hover)
+
+        return fig
+
+    def update(attr, old, new):
+        layout.children[1] = create_figure()
+
+    x = Select(title='X-Axis', value='ano', options=columns)
+    x.on_change('value', update)
+
+    y = Select(title='Y-Axis', value='pop_masc', options=columns)
+    y.on_change('value', update)
+
+    charts_names = list(chart_types)
+    chart_type = Select(title='Tipo', value=charts_names[2],
+                        options=charts_names)
+    chart_type.on_change('value', update)
+
+    # size = Select(title='Size', value='None', options=['None'] + quantileable)
+    # size.on_change('value', update)
+
+    # color = Select(title='Color', value='None', options=['None'] + quantileable)
+    # color.on_change('value', update)
+
+    controls = widgetbox([x, y, chart_type], width=200)
+    layout = row(controls, create_figure())
+
+    doc.add_root(layout)
+    doc.title = "Crossfilter"
 
 
 class BackgroundBokeh(threading.Thread):
