@@ -1,0 +1,8 @@
+<h1 class="area-titulo" id="{{grupo.area.slug}}">{{grupo.area}}</h1>
+  <ul class="lista-especialistas area-{{grupo.area}}">
+    {% for especialista in grupo.especialistas %}
+      <li>
+        {% include "carceropolis/especialistas/especialista.html" %}
+      </li>
+    {% endfor %}
+  </ul>
