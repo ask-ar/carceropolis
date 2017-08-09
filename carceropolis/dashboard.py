@@ -103,9 +103,13 @@ class Dashboard(object):
         # Bind callbacks
         [control.on_change('value', self.update) for control in controls]
 
+        # TODO: this widget is bugged, but it seems they are
+        # improving it.
         self.filter_range_sel = RangeSlider(
-            start=0, end=10, range=(1, 9), step=1, title="Valores")
+            start=0, end=10, step=1, title="Valores")
         self.filter_range_sel.on_change('range', self.update)
+        # TODO: seems to have no effect
+        self.filter_range_sel.callback_policy = 'mouseup'
         controls.append(self.filter_range_sel)
 
         controls = widgetbox(controls, width=200)
@@ -117,7 +121,7 @@ class Dashboard(object):
         '''
         Called when chart options are modified.
         '''
-        self.layout.children[1] = self.create_figure()
+        self.layout.children[1] = self.create_figure(attr, old, new)
 
     # TODO: move helpers (don't really need self) to a new file?
     def plot_lines(self, fig, x, y, source):
@@ -136,32 +140,62 @@ class Dashboard(object):
         # plot.circle(x=xs, y=ys)
     # -----------------------------------------
 
-    def create_figure(self):
+    def handle_filtering(self, df):
+        '''
+        Update filter selectors widgets and use their values
+        to filter `df`.
+        '''
+        frs = self.filter_range_sel
+        fvs = self.filter_value_sel
+        if self.filter_sel.value != self.filter_options[0]:
+            filter_column = df[self.filter_sel.value]
+            if self.filter_sel.value in self.discrete:
+                # Discrete filter
+
+                # update selector
+                options = sorted(list(filter_column.unique()))
+                fvs.options = options
+                if fvs.value not in options:
+                    fvs.value = options[0]
+
+                show_widget(fvs)
+                hide_widget(frs)
+
+                # filter df
+                df = df[filter_column == fvs.value]
+
+            else:
+                # Continuous filter
+
+                min_val = filter_column.min()
+                max_val = filter_column.max()
+
+                # update slider
+                frs.start = min_val
+                frs.end = max_val
+                if frs.range[0] < min_val or frs.range[1] > max_val:
+                    frs.range = (min_val, max_val)
+                frs.step = (max_val-min_val)/10
+
+                show_widget(frs)
+                hide_widget(fvs)
+
+                # filter df
+                df = df[filter_column >= frs.range[0]]
+                df = df[filter_column <= frs.range[1]]
+        else:
+            # No filter
+            hide_widget(fvs)
+            hide_widget(frs)
+
+        return df
+
+    def create_figure(self, attr=None, old=None, new=None):
         '''
         Creates the chart.
         '''
-        df = self.df
-
-        # Handle filtering
-        if self.filter_sel.value != self.filter_options[0]:
-            if self.filter_sel.value in self.discrete:
-                self.filter_value_sel.options = sorted(
-                    list(df[self.filter_sel.value].unique()))
-                if self.filter_value_sel.value not in self.filter_value_sel.options:
-                    self.filter_value_sel.value = self.filter_value_sel.options[0]
-                show_widget(self.filter_value_sel)
-                hide_widget(self.filter_range_sel)
-            else:
-                # TODO: continuous, use range
-                show_widget(self.filter_range_sel)
-                hide_widget(self.filter_value_sel)
-
-            # filter df
-            df = df[df[self.filter_sel.value] == self.filter_value_sel.value]
-        else:
-            hide_widget(self.filter_value_sel)
-            hide_widget(self.filter_range_sel)
-
+        print(attr, old, new)
+        df = self.handle_filtering(self.df)
         df = df.groupby(self.x_sel.value).sum()
         source = ColumnDataSource(data=df)
 
