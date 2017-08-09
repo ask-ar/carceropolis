@@ -6,7 +6,7 @@ from tornado.ioloop import IOLoop
 from bokeh.application import Application
 from bokeh.application.handlers import FunctionHandler
 from bokeh.layouts import widgetbox, row
-from bokeh.models import ColumnDataSource, Slider
+from bokeh.models import ColumnDataSource, RangeSlider
 from bokeh.models.widgets.inputs import Select
 from bokeh.plotting import figure
 from bokeh.server.server import Server
@@ -58,26 +58,45 @@ class Dashboard(object):
         # continuous = [x for x in columns if x not in discrete]
         # discrete.append(continuous.pop(continuous.index('ano')))
 
-        self.x_selector = Select(
+        self.x_sel = Select(
             title='X-Axis', value='ano', options=self.columns)
-        self.x_selector.on_change('value', self.update)
 
-        self.y_selector = Select(
+        self.y_sel = Select(
             title='Y-Axis', value='pop_masc', options=self.columns)
-        self.y_selector.on_change('value', self.update)
 
         charts_names = list(self.chart_types)
-        self.chart_type_selector = Select(
-            title='Tipo', value=charts_names[2], options=charts_names)
-        self.chart_type_selector.on_change('value', self.update)
+        self.chart_type_sel = Select(
+            title='Tipo de Gráfico',
+            value=charts_names[2],
+            options=charts_names)
 
-        filter_selector = Select(
-            title='Y-Axis', value='pop_masc', options=self.columns)
-        filter_selector.on_change('value', self.update)
+        none_value = 'Nenhum'
+        self.filter_options = [none_value]+self.columns
+        self.filter_sel = Select(
+            title='Filtro', value=self.filter_options[0],
+            options=self.filter_options)
 
-        controls = widgetbox(
-            [self.x_selector, self.y_selector, self.chart_type_selector],
-            width=200)
+        self.filter_value_sel = Select(
+            title='Valor', value=none_value,
+            options=[none_value])
+
+        controls = [
+            self.x_sel,
+            self.y_sel,
+            self.chart_type_sel,
+            self.filter_sel,
+            self.filter_value_sel,
+        ]
+
+        # Bind callbacks
+        [control.on_change('value', self.update) for control in controls]
+
+        self.filter_range_sel = RangeSlider(
+            start=0, end=10, range=(1, 9), step=1, title="Valores")
+        self.filter_range_sel.on_change('range', self.update)
+        controls.append(self.filter_range_sel)
+
+        controls = widgetbox(controls, width=200)
         self.layout = row(controls, self.create_figure())
 
         doc.add_root(self.layout)
@@ -107,18 +126,36 @@ class Dashboard(object):
         '''
         Creates the chart.
         '''
-        grouped_df = self.df.groupby(self.x_selector.value).sum()
-        source = ColumnDataSource(data=grouped_df)
+        df = self.df
 
-        xs = self.df[self.x_selector.value].values
-        ys = self.df[self.y_selector.value].values
-        x_title = self.x_selector.value.title()
-        y_title = self.y_selector.value.title()
+        if self.filter_sel.value != self.filter_options[0]:
+            if self.filter_sel.value in self.discrete:
+                self.filter_value_sel.options = sorted(
+                    list(df[self.filter_sel.value].unique()))
+                if self.filter_value_sel.value not in self.filter_value_sel.options:
+                    self.filter_value_sel.value = self.filter_value_sel.options[0]
+            else:
+                # TODO: continuous, use range
+                pass
+
+            # filter df
+            print(self.filter_value_sel.value)
+            df = df[df[self.filter_sel.value] == self.filter_value_sel.value]
+            # import IPython;IPython.embed()
+
+        df = df.groupby(self.x_sel.value).sum()
+        print(df)
+        source = ColumnDataSource(data=df)
+
+        xs = self.df[self.x_sel.value].values
+        ys = self.df[self.y_sel.value].values
+        x_title = self.x_sel.value.title()
+        y_title = self.y_sel.value.title()
 
         kw = dict()
-        if self.x_selector.value in self.discrete:
+        if self.x_sel.value in self.discrete:
             kw['x_range'] = sorted(set(xs))
-        if self.y_selector.value in self.discrete:
+        if self.y_sel.value in self.discrete:
             kw['y_range'] = sorted(set(ys))
         kw['title'] = "%s vs %s" % (x_title, y_title)
 
@@ -127,16 +164,16 @@ class Dashboard(object):
         fig.xaxis.axis_label = x_title
         fig.yaxis.axis_label = y_title
 
-        if self.x_selector.value in self.discrete:
+        if self.x_sel.value in self.discrete:
             fig.xaxis.major_label_orientation = pd.np.pi / 4
 
-        self.chart_types[self.chart_type_selector.value](
-            fig, self.x_selector.value, self.y_selector.value, source)
+        self.chart_types[self.chart_type_sel.value](
+            fig, self.x_sel.value, self.y_sel.value, source)
 
         hover = HoverTool(tooltips=[
             ("index", "$index"),
-            (self.x_selector.value, '@'+self.x_selector.value),
-            (self.y_selector.value, '@'+self.y_selector.value),
+            (self.x_sel.value, '@'+self.x_sel.value),
+            (self.y_sel.value, '@'+self.y_sel.value),
         ])
         fig.add_tools(hover)
 
