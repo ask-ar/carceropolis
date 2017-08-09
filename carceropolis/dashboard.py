@@ -19,6 +19,18 @@ def load_db():
     return df
 
 
+def hide_widget(widget):
+    if not widget.css_classes:
+        widget.css_classes = []
+    if 'hidden' not in widget.css_classes:
+        widget.css_classes.append('hidden')
+
+
+def show_widget(widget):
+    if widget.css_classes and 'hidden' in widget.css_classes:
+        widget.css_classes.remove('hidden')
+
+
 class Dashboard(object):
     '''
     This class represents a dashboard and should be instanciated
@@ -107,6 +119,7 @@ class Dashboard(object):
         '''
         self.layout.children[1] = self.create_figure()
 
+    # TODO: move helpers (don't really need self) to a new file?
     def plot_lines(self, fig, x, y, source):
         fig.line(x, y, source=source)
         # plot.line(x=xs, width=0.5, bottom=0, top=ys)
@@ -121,6 +134,7 @@ class Dashboard(object):
     def plot_circles(self, fig, x, y, source):
         fig.circle(x, y, source=source)
         # plot.circle(x=xs, y=ys)
+    # -----------------------------------------
 
     def create_figure(self):
         '''
@@ -128,23 +142,27 @@ class Dashboard(object):
         '''
         df = self.df
 
+        # Handle filtering
         if self.filter_sel.value != self.filter_options[0]:
             if self.filter_sel.value in self.discrete:
                 self.filter_value_sel.options = sorted(
                     list(df[self.filter_sel.value].unique()))
                 if self.filter_value_sel.value not in self.filter_value_sel.options:
                     self.filter_value_sel.value = self.filter_value_sel.options[0]
+                show_widget(self.filter_value_sel)
+                hide_widget(self.filter_range_sel)
             else:
                 # TODO: continuous, use range
-                pass
+                show_widget(self.filter_range_sel)
+                hide_widget(self.filter_value_sel)
 
             # filter df
-            print(self.filter_value_sel.value)
             df = df[df[self.filter_sel.value] == self.filter_value_sel.value]
-            # import IPython;IPython.embed()
+        else:
+            hide_widget(self.filter_value_sel)
+            hide_widget(self.filter_range_sel)
 
         df = df.groupby(self.x_sel.value).sum()
-        print(df)
         source = ColumnDataSource(data=df)
 
         xs = self.df[self.x_sel.value].values
