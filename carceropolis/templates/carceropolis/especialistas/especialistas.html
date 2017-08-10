@@ -13,9 +13,12 @@
 {% block main %}
 
 <section class="container">
-  {% for grupo in especialistas_agrupados %}
-    {% include "carceropolis/especialistas/area_especialistas.html" %}
-  {% endfor %}
+  <ul class="lista-especialistas">
+    {% for especialista in especialistas %}
+      {% include "carceropolis/especialistas/especialista.html" %}
+    {% endfor %}
+  </ul>
+  {% pagination_for especialistas %}
 </section>
 
 {% endblock %}

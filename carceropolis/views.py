@@ -194,28 +194,21 @@ def especialistas_list(request, area_de_atuacao=None, especialidade=None):
     if area_de_atuacao is not None:
         area_de_atuacao = get_object_or_404(AreaDeAtuacao, slug=area_de_atuacao)
         especialistas = especialistas.filter(area_de_atuacao__nome__in=[area_de_atuacao])
-        # templates.append(u"carceropolis/especialistas/area_atuacao.html")
         context['area_de_atuacao'] = area_de_atuacao
     if especialidade is not None:
         especialidade = get_object_or_404(Especialidade, slug=especialidade)
         especialistas = especialistas.filter(especialidades__nome__in=[especialidade])
-        # templates.append(u"carceropolis/especialistas/especialidade.html")
         context['especialidade'] = especialidade
 
     prefetch = ("area_de_atuacao", 'especialidades')
     especialistas = especialistas.prefetch_related(*prefetch)
-    # especialistas = paginate(especialistas, request.GET.get("page", 1),
-                             # settings.PUBLICACAO_PER_PAGE,
-                             # settings.MAX_PAGING_LINKS)
+    especialistas = paginate(especialistas, request.GET.get("page", 1),
+                             settings.PUBLICACAO_PER_PAGE,
+                             settings.MAX_PAGING_LINKS)
     areas_de_atuacao = AreaDeAtuacao.objects.all()
     areas_de_atuacao = areas_de_atuacao.order_by('ordem')
-    agrupados = []
-    for area in areas_de_atuacao:
-        item = {'area': area, 'especialistas':
-                especialistas.filter(area_de_atuacao=area)}
-        if item['especialistas']:
-            agrupados.append(item)
-    context = {"especialistas_agrupados": agrupados}
+    context['areas_de_atuacao'] = areas_de_atuacao
+    context['especialistas'] = especialistas
     templates.append(u'carceropolis/especialistas/especialistas.html')
     return TemplateResponse(request, templates, context)
 
