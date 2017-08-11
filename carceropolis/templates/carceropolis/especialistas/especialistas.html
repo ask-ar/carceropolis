@@ -13,6 +13,7 @@
 {% block main %}
 
 <section class="container">
+  {% include "carceropolis/especialistas/includes/search.html" %}
   <ul class="lista-especialistas">
     {% for especialista in especialistas %}
       {% include "carceropolis/especialistas/especialista.html" %}

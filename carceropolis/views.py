@@ -3,6 +3,7 @@ import logging
 import operator
 from collections import OrderedDict
 from csv import DictReader
+from functools import reduce
 import json
 
 import plotly as py
@@ -181,23 +182,44 @@ def publicacao_feed(request, fmt, **kwargs):
 ###############################################################################
 
 
-def especialistas_list(request, area_de_atuacao=None, especialidade=None):
+def especialistas_list(request, extra_context=None):
     """Display a list of blog posts that are filtered by tag, year, month,
     author or categoria. Custom templates are checked for using the name
     ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is
     either the categoria slug or author's username if given.
     """
-    templates = []
-    context = {}
+    areas_de_atuacao = AreaDeAtuacao.objects.all()
+    areas_de_atuacao = areas_de_atuacao.order_by('ordem')
     especialistas = Especialista.objects.all()
     especialistas = especialistas.order_by('nome')
-    if area_de_atuacao is not None:
-        area_de_atuacao = get_object_or_404(AreaDeAtuacao, slug=area_de_atuacao)
-        especialistas = especialistas.filter(area_de_atuacao__nome__in=[area_de_atuacao])
-        context['area_de_atuacao'] = area_de_atuacao
-    if especialidade is not None:
-        especialidade = get_object_or_404(Especialidade, slug=especialidade)
-        especialistas = especialistas.filter(especialidades__nome__in=[especialidade])
+
+    context = {
+        'area_atuacao': '',
+        'nome': '',
+        'especialidade': '',
+        'areas_de_atuacao': areas_de_atuacao,
+        'especialistas': None
+    }
+
+    if 'nome' in request.GET.keys():
+        nome = request.GET.get('nome'),
+        nome = nome[0]
+        especialistas = especialistas.filter(
+            nome__icontains=nome)
+        context['nome'] = nome
+
+    if 'area_atuacao' in request.GET.keys():
+        area_atuacao = request.GET.get('area_atuacao'),
+        area_atuacao = area_atuacao[0]
+        especialistas = especialistas.filter(
+            area_de_atuacao__nome__in=[area_atuacao])
+        context['area_atuacao'] = area_atuacao
+
+    if 'especialidade' in request.GET.keys():
+        especialidade = request.GET.get('especialidade'),
+        especialidade = especialidade[0]
+        especialistas = especialistas.filter(
+            especialidades__nome__in=[especialidade])
         context['especialidade'] = especialidade
 
     prefetch = ("area_de_atuacao", 'especialidades')
@@ -205,11 +227,13 @@ def especialistas_list(request, area_de_atuacao=None, especialidade=None):
     especialistas = paginate(especialistas, request.GET.get("page", 1),
                              settings.PUBLICACAO_PER_PAGE,
                              settings.MAX_PAGING_LINKS)
-    areas_de_atuacao = AreaDeAtuacao.objects.all()
-    areas_de_atuacao = areas_de_atuacao.order_by('ordem')
-    context['areas_de_atuacao'] = areas_de_atuacao
-    context['especialistas'] = especialistas
-    templates.append(u'carceropolis/especialistas/especialistas.html')
+
+    context = {'areas_de_atuacao': areas_de_atuacao,
+               'especialistas': especialistas}
+    context.update(extra_context or {})
+
+    templates = ['carceropolis/especialistas/especialistas.html']
+
     return TemplateResponse(request, templates, context)
 
 
