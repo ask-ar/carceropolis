@@ -17,11 +17,10 @@ from bokeh.models import HoverTool
 
 def update_querystring(window=None, cb_obj=None):
     '''
-    This callback will be converted to JS!
+    This callback should be converted to JS! It updates
+    the url querystring when chart options change.
     '''
     params = []
-    window.console.log(params)
-    # TODO: não colocar vazios
     for c in cb_obj.document.roots()[0].children[0].children:
         value = c.value if c.value else c.range
         params.append(
