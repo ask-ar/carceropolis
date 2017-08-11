@@ -1,4 +1,6 @@
+import base64
 import threading
+from urllib.parse import parse_qs
 
 import pandas as pd
 
@@ -6,11 +8,28 @@ from tornado.ioloop import IOLoop
 from bokeh.application import Application
 from bokeh.application.handlers import FunctionHandler
 from bokeh.layouts import widgetbox, row
-from bokeh.models import ColumnDataSource, RangeSlider
+from bokeh.models import ColumnDataSource, RangeSlider, CustomJS
 from bokeh.models.widgets.inputs import Select
 from bokeh.plotting import figure
 from bokeh.server.server import Server
 from bokeh.models import HoverTool
+
+
+def update_querystring(window=None, cb_obj=None):
+    '''
+    This callback will be converted to JS!
+    '''
+    params = []
+    window.console.log(params)
+    # TODO: não colocar vazios
+    for c in cb_obj.document.roots()[0].children[0].children:
+        value = c.value if c.value else c.range
+        params.append(
+            window.encodeURIComponent(c.name) + '=' +
+            window.encodeURIComponent(value)
+        )
+    query = '?' + '&'.join(params)
+    window.history.pushState({}, '', query)
 
 
 def load_db():
@@ -56,12 +75,21 @@ class Dashboard(object):
         while the connection remain, and is used by only one user.
         '''
 
+        state = doc.session_context.request.arguments.get('state')
+        # import IPython;IPython.embed()
+        if state:
+            state = parse_qs(base64.urlsafe_b64decode(state[0]).decode())
+        else:
+            state = {}
+
         self.chart_types = {
             'linha': self.plot_lines,
             'barras horizontais': self.plot_hbar,
             'barras verticais': self.plot_vbar,
             'círculos': self.plot_circles,
         }
+        charts_names = list(self.chart_types)
+        none_value = 'Nenhum'
 
         self.df = df
         self.doc = doc
@@ -69,52 +97,90 @@ class Dashboard(object):
         self.discrete = [x for x in self.columns if self.df[x].dtype == object]
         # continuous = [x for x in columns if x not in discrete]
         # discrete.append(continuous.pop(continuous.index('ano')))
-
-        self.x_sel = Select(
-            title='X-Axis', value='ano', options=self.columns)
-
-        self.y_sel = Select(
-            title='Y-Axis', value='pop_masc', options=self.columns)
-
-        charts_names = list(self.chart_types)
-        self.chart_type_sel = Select(
-            title='Tipo de Gráfico',
-            value=charts_names[2],
-            options=charts_names)
-
-        none_value = 'Nenhum'
         self.filter_options = [none_value]+self.columns
-        self.filter_sel = Select(
-            title='Filtro', value=self.filter_options[0],
-            options=self.filter_options)
 
-        self.filter_value_sel = Select(
-            title='Valor', value=none_value,
-            options=[none_value])
+        gui_data = {
+            'x_sel': {
+                'name': 'x',
+                'title': 'Eixo X',
+                'value': 'ano',
+                'options': self.columns,
+                'class': Select,
+            },
+            'y_sel': {
+                'name': 'y',
+                'title': 'Eixo Y',
+                'value': 'pop_masc',
+                'options': self.columns,
+                'class': Select,
+            },
+            'chart_type_sel': {
+                'name': 'type',
+                'title': 'Tipo de Gráfico',
+                'value': charts_names[2],
+                'options': charts_names,
+                'class': Select,
+            },
+            'filter_sel': {
+                'name': 'filter',
+                'title': 'Filtro',
+                'value': self.filter_options[0],
+                'options': self.filter_options,
+                'class': Select,
+            },
+            'filter_value_sel': {
+                'name': 'f_value',
+                'title': 'Valor',
+                'value': none_value,
+                'options': [none_value],
+                'class': Select,
+            },
+            # TODO: this widget is bugged, but it seems they are improving it.
+            'filter_range_sel': {
+                'name': 'f_range',
+                'title': 'Intervalo',
+                'start': 0,
+                'end': 10,
+                'step': 1,
+                'range': (0, 0),
+                'class': RangeSlider,
+            },
+        }
+        # TODO: validate state? Dangerous?
+        if state:
+            for gui, data in gui_data.items():
+                value = state.get(data['name'])
+                if value:
+                    value = value[0]
+                    if data.get('value'):
+                        data['value'] = value
+                    elif data.get('range'):
+                        print(value)
+                        data['range'] = tuple(float(i)
+                                              for i in value.split(','))
 
-        controls = [
-            self.x_sel,
-            self.y_sel,
-            self.chart_type_sel,
-            self.filter_sel,
-            self.filter_value_sel,
-        ]
+        # Create gui inputs
+        for k, v in gui_data.items():
+            v = v.copy()
+            class_ = v.pop('class')
+            setattr(self, k, class_(**v))
+
+        controls = [getattr(self, k) for k, v in gui_data.items()]
 
         # Bind callbacks
-        [control.on_change('value', self.update) for control in controls]
+        js_update_querytstring = CustomJS.from_py_func(update_querystring)
+        for control in controls:
+            if hasattr(control, 'value'):
+                control.on_change('value', self.update)
+            elif hasattr(control, 'range'):
+                control.on_change('range', self.update)
+            control.callback = js_update_querytstring
 
-        # TODO: this widget is bugged, but it seems they are
-        # improving it.
-        self.filter_range_sel = RangeSlider(
-            start=0, end=10, step=1, title="Valores")
-        self.filter_range_sel.on_change('range', self.update)
         # TODO: seems to have no effect
         self.filter_range_sel.callback_policy = 'mouseup'
-        controls.append(self.filter_range_sel)
 
         controls = widgetbox(controls, width=200)
         self.layout = row(controls, self.create_figure())
-
         doc.add_root(self.layout)
 
     def update(self, attr, old, new):

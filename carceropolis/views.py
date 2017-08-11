@@ -5,6 +5,7 @@ from collections import OrderedDict
 from csv import DictReader
 from functools import reduce
 import json
+import base64
 
 import plotly as py
 import plotly.offline as opy
@@ -467,9 +468,14 @@ def data_dashboard(request, template="dashboard/dashboard.html"):
     """
     Data dashboard.
     """
-
     script = autoload_server(url='http://localhost:5006/bkapp')
+    if request.GET.urlencode():
+        state = base64.urlsafe_b64encode(request.GET.urlencode().encode()).decode('utf8')
+        mark = 'bokeh-absolute-url'
+        insert = 'state=' + state + '&' + mark
+        script = script.replace(mark, insert)
     context = {"script": script}
+    # context = {"script": ' '.join(script.splitlines()).replace('/script', 'end-script')}
     templates = [template]
 
     return TemplateResponse(request, templates, context)

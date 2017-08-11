@@ -11,3 +11,4 @@ plotly
 pandas
 numpy
 bokeh
+flexx
