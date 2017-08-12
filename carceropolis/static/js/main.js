@@ -120,7 +120,7 @@ jQuery(function ($) {
     allSections.each(function(i, el) {
       var el = $(el);
       if (el.visible(true)) {
-        el.addClass("come-in"); 
+        el.addClass('animated slideInLeft'); 
       } 
     });
     
