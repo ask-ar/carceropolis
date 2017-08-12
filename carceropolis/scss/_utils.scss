@@ -3,6 +3,18 @@
   box-shadow: 0px ($base-size / 4) ($base-size / 2) 0px rgba(45, 45, 45, 0.5);
 }
 
+.btn-orange {
+
+  background-color: $conectas-laranja-escuro;
+  color: white;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $conectas-laranja-claro;
+    color: white;
+  }
+}
+
 
 .btn-red {
   background-color: $cp-red;
