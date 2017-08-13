@@ -73,13 +73,11 @@ jQuery(function ($) {
     check_modals();
   })
 
-
   // Pagina de dados
   $('.dados-gerais').addClass('animated fadeInDownBig')
 
   // Animação Scroll com AOS
   AOS.init()
-
 
   //funcoes
   function hide_all_modals() {
