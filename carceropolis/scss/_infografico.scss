@@ -126,7 +126,7 @@ help unidades
 
 	.dados-gerais {
 
-        transform: translateY(1.4em);
+        transition: 0.8s;
 
         h1 {
             margin-bottom: 0;
@@ -926,7 +926,7 @@ help unidades
 	}
 }
 
-//= Setas de scroll ======================================= /
+// // //= Setas de scroll ======================================= /
 $size: 30px;
 
 .scrolldown-arrow {
