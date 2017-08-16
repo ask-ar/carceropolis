@@ -74,15 +74,14 @@ jQuery(function ($) {
   })
 
 
-// Pagina de dados
+  // Pagina de dados
   $('.dados-gerais').addClass('animated fadeInDownBig')
 
   // Animação Scroll com AOS
   AOS.init()
-  AOS.refresh()
 
 
-//funcoes
+  //funcoes
   function hide_all_modals() {
     $('#login_modal').modal('hide');
     $('#cadastro_modal').modal('hide');
@@ -103,3 +102,28 @@ jQuery(function ($) {
   }
 
 })
+
+//vanilla functions
+function contador(elements) {
+
+    for(let element of elements){
+
+        let startNumber = parseInt(element.textContent),
+            endNumber = parseInt(element.getAttribute('data-final-number'))
+            
+        setInterval(
+            () => {
+
+                if(startNumber < endNumber) {
+
+                    startNumber++
+                    element.textContent = startNumber
+
+                } 
+
+            }
+            ,1
+        )
+    
+    }
+}
