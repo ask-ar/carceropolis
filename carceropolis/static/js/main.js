@@ -79,6 +79,49 @@ jQuery(function ($) {
   // Animação Scroll com AOS
   AOS.init()
 
+  // Scroll em determinada section
+
+$("#arrow").click(function() {
+
+    let idAtual = $(this).attr('href').replace('#','')
+
+    let clicado = $(':target').attr('id')
+
+    //verifica se tem algum target na url
+    if(idAtual == clicado ){
+
+
+        //verifica se não é o ultimo
+        if($('#'+idAtual).next().length){
+
+            let idProximo = $('#'+idAtual).next().attr('id')
+
+            console.log(idProximo)
+
+            $('html, body').animate({
+                scrollTop: $('#'+idProximo).offset().top
+            }, 2000);
+
+            $(this).attr('href','#'+idProximo)
+
+        } else {
+            //se for o ultimo, joga pra cima
+            $('html, body').animate({
+                scrollTop: $('.infografico').offset().top
+            },  2000);
+        }
+
+    } 
+
+    else {
+        //se nao tem target, é o primeiro click
+        $('html, body').animate({
+            scrollTop: $('#'+idAtual).offset().top
+        }, 2000);
+    }
+
+});
+
   //funcoes
   function hide_all_modals() {
     $('#login_modal').modal('hide');
