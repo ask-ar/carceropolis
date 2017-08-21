@@ -4,10 +4,10 @@
   </g>
   <g transform="matrix(1.25 0 0 -1.25 -242.95 5212.65)">
     <path fill="#fff" d="M689 4160.47c-101-.35-182.544-82.75-182.544-184.356 0-65.467 33.54-122.96 84.97-155.67 98.354 155.496 97.574 155.5 97.574 155.5v184.525z"/>
-    <path fill="#b81f3c" d="M499.456 3972.113c0-64.848 32.92-121.855 83.528-154.72l97.88 154.158-181.408.563z"/>
+    <path fill="rgb(175,30,35)" d="M499.456 3972.113c0-64.848 32.92-121.855 83.528-154.72l97.88 154.158-181.408.563z"/>
     <path fill="none" stroke="#fff" stroke-miterlimit="10" d="M887.295 3901.737c5.386 17.345 8.287 35.785 8.287 54.903 0 62.14-30.63 117.113-77.687 150.61-30.096 21.362-66.956 33.922-106.673 33.922-.215 0 .278-.007-.722-.008V3956.64s.27-.005-98.084-155.502c28.56-18.165 62.49-28.693 98.845-28.693 82.64 0 152.615 54.372 176.035 129.292z" stroke-dasharray="1, 3"/>
-    <path fill="none" stroke="#fff" stroke-miterlimit="10" d="M197 4159.5h359" stroke-dasharray="1, 1"/>
-    <path fill="none" stroke="#b81f3c" stroke-miterlimit="10" d="M297 3885.5h259" stroke-dasharray="1, 1"/>
-    <path fill="none" stroke="#fff" stroke-miterlimit="10" d="M555.5 4030v130" stroke-dasharray="1, 1"/>
+    <path fill="none" stroke="#fff" stroke-miterlimit="10" d="M197 4159.5h359" stroke-dasharray="1, 3"/>
+    <path fill="none" stroke="rgb(175,30,35)" stroke-miterlimit="10" d="M297 3885.5h259" stroke-dasharray="1, 3"/>
+    <path fill="none" stroke="#fff" stroke-miterlimit="10" d="M555.5 4030v130" stroke-dasharray="1, 3"/>
   </g>
 </svg>
