@@ -198,7 +198,8 @@ def especialistas_list(request, extra_context=None):
         'nome': '',
         'especialidade': '',
         'areas_de_atuacao': areas_de_atuacao,
-        'especialistas': None
+        'especialistas': None,
+        'error_message': ''
     }
 
     if 'nome' in request.GET.keys():
@@ -228,9 +229,12 @@ def especialistas_list(request, extra_context=None):
                              settings.PUBLICACAO_PER_PAGE,
                              settings.MAX_PAGING_LINKS)
 
-    context = {'areas_de_atuacao': areas_de_atuacao,
-               'especialistas': especialistas}
-    context.update(extra_context or {})
+    if not especialistas:
+        especialistas = Especialista.objects.all()
+        context['error_message'] = 'Nenhum(a) especialista encontrado(a) com '
+        context['error_message'] += 'os parâmetros passados.'
+
+    context['especialistas'] = especialistas
 
     templates = ['carceropolis/especialistas/especialistas.html']
 
