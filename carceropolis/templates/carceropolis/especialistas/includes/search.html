@@ -1,32 +1,28 @@
 {% load i18n %}
-<div id='especialistas_filters' class='collapse_search'>
-  <form id='filter_especialistas' class="form-bar" name="FilterForm" action="{{ request.path }}" method="post">
-    <fieldset> {% csrf_token %}
-      <div class="control-group"><div class="controls">
-        <label for='area_atuacao' class='help-block control-label'>Macro Área</label>
-        <select name="filter_area_atuacao" id="filter_area_atuacao">
-          {% if not area_atuacao %}
-            <option disabled selected value> -- Selecione uma opção -- </option>
-          {% endif %}
-          {% for area in areas_de_atuacao %}
-            <option value="{{area}}" {% if area_atuacao == area %} selected {% endif %}>{{area}}</option>
-          {% endfor %}
-        </select>
-      </div></div>
-      <div class="control-group"><div class="controls">
-        <label for="nome" class="help-block control-label">Nome</label>
-        <input type="text" name="nome" value="{% if nome %}{{nome}}{% endif %}" id="filter_nome">
-      </div></div>
-      <div class="control-group"><div class="controls">
-        <label for='especialidade' class='help-block control-label'>Especialidade</label>
-        <input type='text' name='especialidade' value='{% if especialidade %}{{especialidade}}{% endif %}' id='filter_especialidade'>
-      </div></div>
-      <div class="control-group"><div class="controls">
-        <button type="submit" class="btn">Filtrar</button>
-      </div></div>
-    </fieldset>
-  </form>
-</div>
+<form id='filter_especialistas' class="form-bar" name="FilterForm" action="{{ request.path }}" method="post">
+  <fieldset> {% csrf_token %}
+    <div class="control-group">
+      <label for='area_atuacao' class='help-block control-label'>Macro Área</label>
+      <select name="filter_area_atuacao" id="filter_area_atuacao" class="form-control">
+        <option {% if not area_atuacao %}selected {% endif %}value=''> -- Selecione uma opção -- </option>
+        {% for area in areas_de_atuacao %}
+          <option value="{{area}}" {% if area_atuacao == area %} selected {% endif %}>{{area}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="nome" class="help-block control-label">Nome</label>
+      <input type="text" name="nome" value="{% if nome %}{{nome}}{% endif %}" id="filter_nome" class="form-control">
+    </div>
+    <div class="control-group">
+      <label for='especialidade' class='help-block control-label'>Especialidade</label>
+      <input type='text' name='especialidade' value='{% if especialidade %}{{especialidade}}{% endif %}' id='filter_especialidade' class="form-control">
+    </div>
+    <div class="control-group">
+      <button type="submit" class="btn btn-orange">Filtrar</button>
+    </div>
+  </fieldset>
+</form>
 
 <script>
   $('#filter_especialistas').on('submit', function(e){
