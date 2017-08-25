@@ -54,7 +54,7 @@ section.container {
 
 	@media(min-height: 768px){
 		left: 0;
-		position: absolute;
+		position: fixed;
 		right: 0;
 		top: calc(100% - 53px);
 	}
