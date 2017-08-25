@@ -208,31 +208,37 @@ body {
   height: 100vh;
   padding-top: 0;
 }
+@media (min-height: 768px) {
+  /* line 5, ../../scss/_base.scss */
+  body {
+    padding-bottom: 53px;
+  }
+}
 
-/* line 12, ../../scss/_base.scss */
+/* line 16, ../../scss/_base.scss */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "source_sans_prosemibold";
 }
 
 @media (max-width: 768px) {
-  /* line 17, ../../scss/_base.scss */
+  /* line 21, ../../scss/_base.scss */
   #editable-toolbar,
   .editable-link {
     right: 0 !important;
     left: inherit !important;
   }
 }
-/* line 24, ../../scss/_base.scss */
+/* line 28, ../../scss/_base.scss */
 section.container {
   min-height: 50%;
 }
 
-/* line 28, ../../scss/_base.scss */
+/* line 32, ../../scss/_base.scss */
 #title {
   background: whitesmoke;
 }
 
-/* line 32, ../../scss/_base.scss */
+/* line 36, ../../scss/_base.scss */
 .breadcrumb {
   background: transparent;
   border-radius: 0;
@@ -240,29 +246,29 @@ section.container {
   margin: 0;
   padding: 15px;
 }
-/* line 39, ../../scss/_base.scss */
+/* line 43, ../../scss/_base.scss */
 .breadcrumb > .active,
 .breadcrumb a {
   color: #b6b6b6;
 }
 @media (max-width: 768px) {
-  /* line 32, ../../scss/_base.scss */
+  /* line 36, ../../scss/_base.scss */
   .breadcrumb {
     padding: 15px;
   }
 }
 
-/* line 47, ../../scss/_base.scss */
+/* line 51, ../../scss/_base.scss */
 #footer {
   background: black;
   border: none;
-  height: 53px;
+  min-height: 53px;
   margin: 0;
   padding: 15px 0;
   text-align: center;
 }
 @media (min-height: 768px) {
-  /* line 47, ../../scss/_base.scss */
+  /* line 51, ../../scss/_base.scss */
   #footer {
     left: 0;
     position: fixed;
@@ -270,7 +276,7 @@ section.container {
     top: calc(100% - 53px);
   }
 }
-/* line 62, ../../scss/_base.scss */
+/* line 66, ../../scss/_base.scss */
 #footer address {
   color: #beb4aa;
   display: block;
@@ -279,17 +285,17 @@ section.container {
   width: 100%;
   font-family: "source_sans_prolight";
 }
-/* line 71, ../../scss/_base.scss */
+/* line 75, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
 }
 
-/* line 76, ../../scss/_base.scss */
+/* line 80, ../../scss/_base.scss */
 .pagination > li > a {
   color: #ea702e;
 }
 
-/* line 80, ../../scss/_base.scss */
+/* line 84, ../../scss/_base.scss */
 .pagination > .active > a,
 .pagination > .active > span,
 .pagination > .active > a:hover,
@@ -300,14 +306,14 @@ section.container {
   border-color: #ea702e;
 }
 
-/* line 90, ../../scss/_base.scss */
+/* line 94, ../../scss/_base.scss */
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
 }
 
-/* line 95, ../../scss/_base.scss */
+/* line 99, ../../scss/_base.scss */
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-top-right-radius: 2px;
@@ -327,10 +333,9 @@ header.navbar {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: 0;
   min-height: inherit;
-  position: relative;
   width: 100%;
 }
-/* line 16, ../../scss/_navbar.scss */
+/* line 15, ../../scss/_navbar.scss */
 header.navbar .navbar-toggle {
   border: none;
   float: left;
@@ -338,25 +343,25 @@ header.navbar .navbar-toggle {
   margin-left: 2px;
   border-radius: 0;
 }
-/* line 23, ../../scss/_navbar.scss */
+/* line 22, ../../scss/_navbar.scss */
 header.navbar .navbar-toggle:hover, header.navbar .navbar-toggle:focus {
   background: none;
 }
-/* line 28, ../../scss/_navbar.scss */
+/* line 27, ../../scss/_navbar.scss */
 header.navbar .navbar-toggle .icon-bar {
   background: #9c0009;
 }
-/* line 33, ../../scss/_navbar.scss */
+/* line 32, ../../scss/_navbar.scss */
 header.navbar .navbar-nav {
   background: #9c0009;
   margin: 0;
 }
-/* line 38, ../../scss/_navbar.scss */
+/* line 37, ../../scss/_navbar.scss */
 header.navbar .main-nav {
   border-color: white;
   padding: 0;
 }
-/* line 43, ../../scss/_navbar.scss */
+/* line 42, ../../scss/_navbar.scss */
 header.navbar .navbar-nav > li > a {
   cursor: pointer;
   font-family: "source_sans_prosemibold";
@@ -369,51 +374,49 @@ header.navbar .navbar-nav > li > a {
   header.navbar {
     background-position: calc(100% + 15px);
     min-height: 80px;
-    position: fixed;
-    top: 0;
   }
-  /* line 57, ../../scss/_navbar.scss */
+  /* line 54, ../../scss/_navbar.scss */
   header.navbar .conectas {
     position: absolute;
     top: 5px;
     right: 60px;
   }
-  /* line 62, ../../scss/_navbar.scss */
+  /* line 59, ../../scss/_navbar.scss */
   header.navbar .conectas h2 {
     margin: 0;
     padding: 0;
     font-size: 11px;
   }
-  /* line 68, ../../scss/_navbar.scss */
+  /* line 65, ../../scss/_navbar.scss */
   header.navbar .conectas h2 a {
     color: #5a504b;
     font-weight: normal;
     text-decoration: none;
   }
-  /* line 75, ../../scss/_navbar.scss */
+  /* line 72, ../../scss/_navbar.scss */
   header.navbar .navbar-nav {
     background: transparent;
   }
-  /* line 81, ../../scss/_navbar.scss */
+  /* line 78, ../../scss/_navbar.scss */
   header.navbar .navbar-nav > li > a {
     color: #af1e23;
     padding: 10px 15px;
     border-bottom: 2px solid transparent;
     transition: .30s;
   }
-  /* line 88, ../../scss/_navbar.scss */
+  /* line 85, ../../scss/_navbar.scss */
   header.navbar .navbar-nav > li:active > a, header.navbar .navbar-nav > li:hover > a, header.navbar .navbar-nav > li.active > a {
     background: none;
     color: #fa9128;
     border-color: currentColor;
     transition: .30s;
   }
-  /* line 98, ../../scss/_navbar.scss */
+  /* line 95, ../../scss/_navbar.scss */
   header.navbar .navbar-brand {
     margin: 0;
     padding: 0;
   }
-  /* line 102, ../../scss/_navbar.scss */
+  /* line 99, ../../scss/_navbar.scss */
   header.navbar .navbar-brand a {
     color: transparent;
     overflow: hidden;
@@ -428,29 +431,42 @@ header.navbar .navbar-nav > li > a {
     padding: 0;
     width: 200px;
   }
-  /* line 116, ../../scss/_navbar.scss */
+  /* line 113, ../../scss/_navbar.scss */
   header.navbar .container .navbar-brand {
     margin-left: 0;
   }
-  /* line 120, ../../scss/_navbar.scss */
+  /* line 117, ../../scss/_navbar.scss */
   header.navbar .navbar-header {
     padding-top: 20px;
   }
-  /* line 124, ../../scss/_navbar.scss */
+  /* line 121, ../../scss/_navbar.scss */
   header.navbar .main-nav {
     padding-top: 22px;
   }
-  /* line 128, ../../scss/_navbar.scss */
+  /* line 125, ../../scss/_navbar.scss */
   header.navbar .dropdown-menu {
     display: none !important;
   }
 }
 
 @media (max-width: 768px) {
-  /* line 135, ../../scss/_navbar.scss */
+  /* line 132, ../../scss/_navbar.scss */
   #home header.navbar {
     background: none;
     box-shadow: none;
+  }
+
+  /* line 137, ../../scss/_navbar.scss */
+  .navbar-fixed-top {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  /* line 144, ../../scss/_navbar.scss */
+  .toggled .navbar-fixed-top {
+    left: 280px;
   }
 }
 /*!
@@ -588,13 +604,14 @@ body {
   }
 }
 /* Custom */
-/* line 125, ../../scss/_sidebar.scss */
+/* line 123, ../../scss/_sidebar.scss */
 .sidebar-brand {
   border-bottom: 1px solid white;
   display: block;
+  margin: 0;
   padding: 15px 15px 20px;
 }
-/* line 130, ../../scss/_sidebar.scss */
+/* line 129, ../../scss/_sidebar.scss */
 .sidebar-brand:before {
   background: url(../images/carceropolis-logo-branco.svg) no-repeat;
   background-size: 100% auto;
@@ -604,7 +621,7 @@ body {
   width: 120px;
 }
 
-/* line 141, ../../scss/_sidebar.scss */
+/* line 140, ../../scss/_sidebar.scss */
 .sidebar-nav .conectas {
   position: absolute;
   top: 32px;
@@ -614,7 +631,7 @@ body {
   letter-spacing: .04em;
 }
 
-/* line 152, ../../scss/_sidebar.scss */
+/* line 151, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right li a {
   color: white;
   font-family: "source_sans_prosemibold";
@@ -622,23 +639,23 @@ body {
   padding: 0 0 10px;
   text-transform: uppercase;
 }
-/* line 160, ../../scss/_sidebar.scss */
+/* line 159, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right li:active > a, .sidebar-nav .nav.navbar-nav.navbar-right li:hover > a, .sidebar-nav .nav.navbar-nav.navbar-right li.active > a {
   color: #ea702e !important;
 }
 
-/* line 168, ../../scss/_sidebar.scss */
+/* line 167, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li > {
   margin: 5px 0;
   padding: 5px 0 12px;
 }
 
-/* line 173, ../../scss/_sidebar.scss */
+/* line 172, ../../scss/_sidebar.scss */
 .navbar-nav {
   margin: 10px 0 0;
 }
 
-/* line 179, ../../scss/_sidebar.scss */
+/* line 178, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li > a:before {
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -650,34 +667,34 @@ body {
   position: relative;
   width: 20px;
 }
-/* line 191, ../../scss/_sidebar.scss */
+/* line 190, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(1) > a:before {
   background-image: url(../images/dados.svg);
   top: 4px;
 }
-/* line 195, ../../scss/_sidebar.scss */
+/* line 194, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(2) > a:before {
   background-image: url(../images/publicacoes.svg);
   top: 5px;
 }
-/* line 199, ../../scss/_sidebar.scss */
+/* line 198, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(3) > a:before {
   background-image: url(../images/especialistas.svg);
   top: 1px;
   margin-left: -4px;
   width: 24px;
 }
-/* line 205, ../../scss/_sidebar.scss */
+/* line 204, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(4) > a:before {
   background-image: url(../images/contato.svg);
   top: 8px;
 }
-/* line 209, ../../scss/_sidebar.scss */
+/* line 208, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right > li:nth-child(5) > a:before {
   background-image: url(../images/sobre.svg);
   top: 4px;
 }
-/* line 214, ../../scss/_sidebar.scss */
+/* line 213, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right .dropdown-menu {
   display: block !important;
   position: static;
@@ -694,7 +711,7 @@ body {
   border-radius: 0;
   box-shadow: none;
 }
-/* line 230, ../../scss/_sidebar.scss */
+/* line 229, ../../scss/_sidebar.scss */
 .sidebar-nav .nav.navbar-nav.navbar-right .dropdown-menu li a {
   text-transform: none;
   padding-left: 54px;

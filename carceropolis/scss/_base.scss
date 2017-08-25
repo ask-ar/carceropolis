@@ -7,6 +7,10 @@ body {
 	font-family: "source_sans_proregular";
 	height: 100vh;
 	padding-top: 0;
+	
+	@media(min-height: 768px){
+		padding-bottom: 53px;
+	}
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -47,7 +51,7 @@ section.container {
 #footer {
 	background: black;
 	border: none;
-	height: 53px;
+	min-height: 53px;
 	margin: 0;
 	padding: 15px 0;
 	text-align: center;
