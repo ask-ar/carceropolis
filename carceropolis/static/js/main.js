@@ -79,6 +79,10 @@ jQuery(function ($) {
   // Animação Scroll com AOS
   AOS.init()
 
+  // Scrollspy do bootstrap 
+
+  $('body').scrollspy({ target: '#navbarlateral' })
+
   // Scroll em determinada section
 
 $("#arrow").click(function() {

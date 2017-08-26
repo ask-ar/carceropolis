@@ -991,3 +991,21 @@ help unidades
     transform: translateY(20px);
   }
 }
+
+// Menu lateral scroll ///////////////
+
+#navbarlateral {
+    position: fixed;
+    right: 20px;
+    top: 20%;
+    z-index: 5;
+    background-color: antiquewhite;
+}
+
+#navbarlateral ul {
+    list-style: none;
+}
+
+#navbarlateral li {
+    padding: 10px;
+}
