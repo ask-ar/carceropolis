@@ -35,7 +35,7 @@ help unidades
 
 .infografico {
 
-    background: $conectas-vermelho;
+    background: $dark-pink;
     $font-size: 32px;
     font-size: $font-size;
     line-height: 110%;
@@ -49,7 +49,7 @@ help unidades
     }
 
     section {
-        background: $conectas-vermelho;
+        background: $dark-pink;
         color: white;
         // min-height: 100vh;  
         font-family: $light;
@@ -62,7 +62,7 @@ help unidades
         }
 
         &:nth-child(even){
-            background: $conectas-cinza-escuro;
+            background: $purple;
         }
 
         h1 {
@@ -163,7 +163,7 @@ help unidades
             background-image: url(../images/infografico/dados-gerais-bg.png);
             background-repeat: no-repeat;
             background-size: cover;
-            color: $conectas-roxo-escuro;
+            color: $purple;
             display: flex;
             flex-wrap: wrap;
             font-size: 1.65em;
@@ -196,11 +196,11 @@ help unidades
 	}
 
 	.perfil-populacional {
-        background: $conectas-cinza-escuro;
+        background: $purple;
         color: white;
 
         h1 a {
-            color: $conectas-amarelo;
+            color: $dark-pink;
         }
 
         h1 a::before {
@@ -217,14 +217,14 @@ help unidades
         }
 
         li:nth-child(1){
-            border-bottom: 3px solid $conectas-amarelo;
+            border-bottom: 3px solid $dark-pink;
             margin-bottom: 2em;
             padding-bottom: 2em;
             position: relative;
             width: 100%;
 
             p:not(:first-of-type){
-                color: $conectas-amarelo;
+                color: $dark-pink;
             }
 
             strong {
@@ -239,20 +239,20 @@ help unidades
                 width: 49%;
 
                 .symbol{
-                    fill:$conectas-amarelo;
+                    fill: $dark-pink;
                     opacity: .2;
                 }
 
                 .dotted{
                     opacity: .4;
-                    stroke: $conectas-amarelo;
+                    stroke: $dark-pink;
                     stroke-miterlimit:10;
                     stroke-dasharray:2 3;
                 }
             }
 
             svg text {
-                fill: $conectas-amarelo;
+                fill: $dark-pink;
                 font-size: 13px;
             }
 
@@ -273,7 +273,7 @@ help unidades
             width: 95%;
 
             strong {
-                color: $conectas-amarelo;
+                color: $dark-pink;
             }
 
             svg {
@@ -302,7 +302,7 @@ help unidades
 
         .ibge span {
             bottom: -2px;
-            color: $conectas-cinza-escuro;
+            color: $purple;
             left: 118px;
         }
 
@@ -312,7 +312,7 @@ help unidades
 
         background-image: url(../images/infografico/infraestrutura@2x.png);
         background-blend-mode: luminosity;
-        background-color: $conectas-vermelho;
+        background-color: $dark-pink;
         background-repeat: no-repeat;
         background-size: cover;
         height: auto;
@@ -338,7 +338,7 @@ help unidades
             }
 
             &:last-child {
-                background: $conectas-vermelho;
+                background: $dark-pink;
                 margin: -1em auto 1em;
                 text-align: center;
 
@@ -363,7 +363,7 @@ help unidades
         }
 
         .cela {
-            background: $conectas-cinza-escuro;
+            background: $purple;
             display: flex;
             height: 10em;
             flex-wrap: wrap;
@@ -422,7 +422,7 @@ help unidades
             width: 50%;
 
             strong {
-                color: $conectas-amarelo;
+                color: $dark-pink;
             }
         }
 
@@ -437,7 +437,7 @@ help unidades
 
         .full li:nth-child(1){
             background-color: white;
-            color: black;
+            color: $purple;
             font-size: 1.65em;
             line-height: 1;
 
@@ -448,11 +448,11 @@ help unidades
         }
 
         .full li:nth-child(1) strong{
-            color: $conectas-vermelho;
+            color: $dark-pink;
         }
 
         .full li:nth-child(2){
-            background: $conectas-cinza-escuro;
+            background: $purple;
             text-align: center;
 
             p {
@@ -468,11 +468,11 @@ help unidades
             em {
                 font-style: normal;
                 font-family: $bold;
-                color: black;
+                color: $dark-pink;
             }
 
             strong:first-of-type {
-                background: $conectas-vermelho;
+                background: $dark-pink;
                 border-radius: 50%;
                 display: inline-block;
                 height: ($font-size*2)+10;
@@ -498,8 +498,8 @@ help unidades
 
             &:before {
                 content: '';
-                background: $conectas-vermelho;
-                border: 2px dashed $conectas-vermelho;
+                background: $dark-pink;
+                border: 2px dashed $dark-pink;
                 border-radius: 50%;
                 bottom: -30px;
                 display: block;
@@ -567,7 +567,6 @@ help unidades
                 text-align: left;
 
                 strong {
-                    color: $conectas-amarelo;
                     display: block;
                     float: left;
                     font-size: 3em;
@@ -581,7 +580,7 @@ help unidades
                 max-width: calc(100% - 44px);
 
                 li {
-                    background: $conectas-cinza-claro;
+                    background: $purple;
                     height:20px;
                     margin-bottom: 5px;
                     width: 20px;
@@ -618,7 +617,7 @@ help unidades
             }
 
             .load {
-                background: $conectas-cinza-escuro;
+                background: $purple;
                 display: inline-block;
                 height: 40px;
                 margin: $font-size 0;
@@ -629,7 +628,7 @@ help unidades
             .load::before {
                 content: '18%';
                 background: white;
-                color: black;
+                color: $purple;
                 display: inline-block;
                 font-family: $bold;
                 height: 100%;
@@ -669,7 +668,7 @@ help unidades
 	section.saude {
 
         background: white;
-        color: $conectas-vermelho;
+        color: $dark-pink;
         position: relative;
 
         h1 {
@@ -677,7 +676,7 @@ help unidades
         }
 
         h1 a {
-            color: $conectas-vermelho;
+            color: $dark-pink;
             padding-bottom: .7em;
         }
 
@@ -711,7 +710,7 @@ help unidades
         }
 
         li:nth-child(2){
-            background: $conectas-vermelho;
+            background: $dark-pink;
             color: white;
             font-size: 2em;
             line-height: 1;
@@ -729,12 +728,12 @@ help unidades
         }
 
         li:nth-child(3) {
-            color: black;
+            color: $purple;
             padding: $font-size 0;
             position: relative;
 
             strong {
-                color: $conectas-vermelho;
+                color: $dark-pink;
                 display: block;
                 font-size: 3em;
                 line-height: .9;
@@ -744,7 +743,7 @@ help unidades
             &:before {
                 content: "\e909 \e909 \e909";
                 font-family: 'cp_infografico';
-                color: $conectas-cinza-escuro;
+                color: $purple;
                 font-size: 7.5em;
                 letter-spacing: .2em;
                 line-height: 130%;
@@ -787,7 +786,7 @@ help unidades
         li:nth-child(1) {
             background-image: url(../images/infografico/materno-bg.png);
             background-size: cover;
-            color: $conectas-vermelho;
+            color: $dark-pink;
             padding: $font-size;
             text-align: right;
         }
@@ -809,7 +808,7 @@ help unidades
 
         li:nth-child(2){
             background: white;
-            color: black;
+            color: $dark-pink;
             font-size: 1.65em;
             line-height: 1;
         }
@@ -820,7 +819,7 @@ help unidades
 
             &::before {
                 @extend .icon-bebe:before;
-                color: $conectas-vermelho;
+                color: $dark-pink;
                 font-family: 'cp_infografico';
                 font-size: 4.5em;
                 line-height: 1;
@@ -832,7 +831,7 @@ help unidades
         }
 
         li:nth-child(2) strong {
-            color: $conectas-vermelho;
+            color: $dark-pink;
             font-size: 1.22em;
         }
 
@@ -856,7 +855,7 @@ help unidades
         }
 
         h1 a {
-            color: white;
+            color: $dark-pink;
         }
 
         h1 a::before {
@@ -900,7 +899,8 @@ help unidades
         }
 
         .comum {
-            color: $conectas-vermelho;
+            color: $dark-pink;
+            opacity: .5;
         }
 
         .comum:before {
