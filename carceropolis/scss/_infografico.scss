@@ -999,7 +999,12 @@ help unidades
     right: 20px;
     top: 20%;
     z-index: 5;
-    background-color: antiquewhite;
+    background-color: $bg-light;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.navbarlateral {
+    border-radius: 5px;
 }
 
 #navbarlateral ul {
@@ -1007,5 +1012,19 @@ help unidades
 }
 
 #navbarlateral li {
-    padding: 10px;
+    padding: 1px;
+}
+
+a {
+    color: #af1e23;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #af1e23;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #fff;
+    background-color: #af1e23;
 }

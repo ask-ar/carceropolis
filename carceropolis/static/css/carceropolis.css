@@ -2821,15 +2821,38 @@ help unidades
   right: 20px;
   top: 20%;
   z-index: 5;
-  background-color: antiquewhite;
+  background-color: whitesmoke;
+  box-shadow: 1px 1px 5px #888888;
 }
 
-/* line 1005, ../../scss/_infografico.scss */
+/* line 1006, ../../scss/_infografico.scss */
+.navbarlateral {
+  border-radius: 5px;
+}
+
+/* line 1010, ../../scss/_infografico.scss */
 #navbarlateral ul {
   list-style: none;
 }
 
-/* line 1009, ../../scss/_infografico.scss */
+/* line 1014, ../../scss/_infografico.scss */
 #navbarlateral li {
-  padding: 10px;
+  padding: 1px;
+}
+
+/* line 1018, ../../scss/_infografico.scss */
+a {
+  color: #af1e23;
+  text-decoration: none;
+}
+
+/* line 1023, ../../scss/_infografico.scss */
+a:hover {
+  color: #af1e23;
+}
+
+/* line 1027, ../../scss/_infografico.scss */
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #af1e23;
 }
