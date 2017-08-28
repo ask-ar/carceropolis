@@ -109,6 +109,7 @@
         min-height: 100%;
         position: relative;
         width: auto;
+        padding-top: 80px;
     }
 
     #wrapper.toggled #page-content-wrapper {
@@ -119,11 +120,10 @@
 
 /* Custom */
 
-
-
 .sidebar-brand {
     border-bottom: 1px solid white;
     display: block;
+    margin: 0;
     padding: 15px 15px 20px;
 
     &:before {

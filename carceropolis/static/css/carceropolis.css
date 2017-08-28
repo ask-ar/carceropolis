@@ -198,40 +198,47 @@
 
 /* line 1, ../../scss/_base.scss */
 html {
-  height: 100%;
+  height: 100vh;
 }
 
 /* line 5, ../../scss/_base.scss */
 body {
   background-color: whitesmoke;
   font-family: "source_sans_proregular";
-  height: 100%;
+  height: 100vh;
   padding-top: 0;
 }
+@media (min-height: 768px) {
+  /* line 5, ../../scss/_base.scss */
+  body {
+    padding-bottom: 53px;
+  }
+}
 
-/* line 12, ../../scss/_base.scss */
+/* line 16, ../../scss/_base.scss */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "source_sans_prosemibold";
 }
 
 @media (max-width: 768px) {
-  /* line 17, ../../scss/_base.scss */
-  #editable-toolbar, .editable-link {
+  /* line 21, ../../scss/_base.scss */
+  #editable-toolbar,
+  .editable-link {
     right: 0 !important;
     left: inherit !important;
   }
 }
-/* line 23, ../../scss/_base.scss */
+/* line 28, ../../scss/_base.scss */
 section.container {
   min-height: 50%;
 }
 
-/* line 28, ../../scss/_base.scss */
+/* line 32, ../../scss/_base.scss */
 #title {
   background: whitesmoke;
 }
 
-/* line 32, ../../scss/_base.scss */
+/* line 36, ../../scss/_base.scss */
 .breadcrumb {
   background: transparent;
   border-radius: 0;
@@ -239,149 +246,56 @@ section.container {
   margin: 0;
   padding: 15px;
 }
-/* line 39, ../../scss/_base.scss */
+/* line 43, ../../scss/_base.scss */
 .breadcrumb > .active,
 .breadcrumb a {
   color: #b6b6b6;
 }
 @media (max-width: 768px) {
-  /* line 32, ../../scss/_base.scss */
+  /* line 36, ../../scss/_base.scss */
   .breadcrumb {
     padding: 15px;
   }
 }
 
-/* line 48, ../../scss/_base.scss */
+/* line 51, ../../scss/_base.scss */
 #footer {
   background: black;
   border: none;
+  min-height: 53px;
   margin: 0;
   padding: 15px 0;
   text-align: center;
 }
-/* line 55, ../../scss/_base.scss */
-#footer .container {
-  -webkit-align-items: center;
-  align-items: center;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkitjustify-content: center;
-  justify-content: center;
+@media (min-height: 768px) {
+  /* line 51, ../../scss/_base.scss */
+  #footer {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: calc(100% - 53px);
+  }
 }
-/* line 65, ../../scss/_base.scss */
-#footer .nav.navbar-nav.navbar-right {
-  display: block;
-  float: none !important;
-}
-/* line 69, ../../scss/_base.scss */
-#footer .nav.navbar-nav.navbar-right li {
-  display: inline-block;
-  float: none;
-}
-/* line 73, ../../scss/_base.scss */
-#footer .nav.navbar-nav.navbar-right li a {
-  color: white;
-  font-family: "source_sans_prosemibold";
-  text-transform: uppercase;
-}
-/* line 79, ../../scss/_base.scss */
-#footer .nav.navbar-nav.navbar-right li a:hover,
-#footer .nav.navbar-nav.navbar-right li a:active, #footer .nav.navbar-nav.navbar-right li.active a {
-  background: none;
-}
-/* line 87, ../../scss/_base.scss */
-#footer .social-media {
-  display: none;
-}
-/* line 91, ../../scss/_base.scss */
-#footer .social-media ul {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin: 30px auto 40px;
-  max-width: 126px;
-  padding: 0;
-}
-/* line 100, ../../scss/_base.scss */
-#footer .social-media li {
-  list-style: none;
-}
-/* line 104, ../../scss/_base.scss */
-#footer .social-media .icon-facebook {
-  background-color: #f18941;
-  border-radius: 0.05em;
-  color: black;
-  font-size: 26px;
-  line-height: 35px;
-}
-/* line 111, ../../scss/_base.scss */
-#footer .social-media .icon-facebook:before {
-  margin-left: 6px;
-}
-/* line 115, ../../scss/_base.scss */
-#footer .social-media .icon-twitter {
-  color: #f18941;
-  font-size: 30px;
-}
-/* line 120, ../../scss/_base.scss */
-#footer .social-media [class^="icon-"] {
-  display: block;
-  width: 26px;
-  height: 26px;
-}
-/* line 126, ../../scss/_base.scss */
-#footer .social-media a:hover {
-  text-decoration: none;
-}
-/* line 131, ../../scss/_base.scss */
-#footer .author {
-  display: none;
-}
-/* line 134, ../../scss/_base.scss */
-#footer .author h5 {
-  margin: 0;
-  position: relative;
-}
-/* line 139, ../../scss/_base.scss */
-#footer .author h5 span {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 15px;
-  font-family: inherit;
-  font-weight: normal;
-  padding-bottom: 30px;
-  text-align: center;
-  position: absolute;
-  top: 20px;
-  left: 0;
-}
-/* line 152, ../../scss/_base.scss */
-#footer .author h5 img {
-  display: block;
-  height: 100px;
-  margin: 20px auto;
-  width: 200px;
-}
-/* line 161, ../../scss/_base.scss */
+/* line 66, ../../scss/_base.scss */
 #footer address {
-  color: rgba(255, 255, 255, 0.5);
+  color: #beb4aa;
   display: block;
   font-size: 16px;
   margin: 0;
   width: 100%;
   font-family: "source_sans_prolight";
 }
-/* line 170, ../../scss/_base.scss */
+/* line 75, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
 }
 
-/* line 175, ../../scss/_base.scss */
+/* line 80, ../../scss/_base.scss */
 .pagination > li > a {
   color: #ea702e;
 }
 
-/* line 179, ../../scss/_base.scss */
+/* line 84, ../../scss/_base.scss */
 .pagination > .active > a,
 .pagination > .active > span,
 .pagination > .active > a:hover,
@@ -392,22 +306,23 @@ section.container {
   border-color: #ea702e;
 }
 
-/* line 189, ../../scss/_base.scss */
+/* line 94, ../../scss/_base.scss */
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
 }
 
-/* line 194, ../../scss/_base.scss */
+/* line 99, ../../scss/_base.scss */
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
 
-/* line 1, ../../scss/_navbar.scss */
-.navbar {
+/* header */
+/* line 2, ../../scss/_navbar.scss */
+header.navbar {
   background-color: whitesmoke;
   background-image: url(../images/simbolo-conectas.svg);
   background-position: calc(100% + 5px);
@@ -418,91 +333,91 @@ section.container {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: 0;
   min-height: inherit;
-  position: relative;
+  width: 100%;
 }
-/* line 14, ../../scss/_navbar.scss */
-.navbar .navbar-toggle {
+/* line 15, ../../scss/_navbar.scss */
+header.navbar .navbar-toggle {
   border: none;
   float: left;
   margin-right: 0;
   margin-left: 2px;
   border-radius: 0;
 }
-/* line 21, ../../scss/_navbar.scss */
-.navbar .navbar-toggle:hover, .navbar .navbar-toggle:focus {
+/* line 22, ../../scss/_navbar.scss */
+header.navbar .navbar-toggle:hover, header.navbar .navbar-toggle:focus {
   background: none;
 }
-/* line 26, ../../scss/_navbar.scss */
-.navbar .navbar-toggle .icon-bar {
+/* line 27, ../../scss/_navbar.scss */
+header.navbar .navbar-toggle .icon-bar {
   background: #9c0009;
 }
-/* line 31, ../../scss/_navbar.scss */
-.navbar .navbar-nav {
+/* line 32, ../../scss/_navbar.scss */
+header.navbar .navbar-nav {
   background: #9c0009;
   margin: 0;
 }
-/* line 36, ../../scss/_navbar.scss */
-.navbar .main-nav {
+/* line 37, ../../scss/_navbar.scss */
+header.navbar .main-nav {
   border-color: white;
   padding: 0;
 }
-/* line 41, ../../scss/_navbar.scss */
-.navbar .navbar-nav > li > a {
+/* line 42, ../../scss/_navbar.scss */
+header.navbar .navbar-nav > li > a {
+  cursor: pointer;
   font-family: "source_sans_prosemibold";
   font-size: 18px;
   padding: 20px;
   text-transform: uppercase;
 }
 @media (min-width: 768px) {
-  /* line 1, ../../scss/_navbar.scss */
-  .navbar {
-    background-color: whitesmoke;
+  /* line 2, ../../scss/_navbar.scss */
+  header.navbar {
     background-position: calc(100% + 15px);
     min-height: 80px;
   }
-  /* line 53, ../../scss/_navbar.scss */
-  .navbar .conectas {
+  /* line 54, ../../scss/_navbar.scss */
+  header.navbar .conectas {
     position: absolute;
     top: 5px;
     right: 60px;
   }
-  /* line 58, ../../scss/_navbar.scss */
-  .navbar .conectas h2 {
+  /* line 59, ../../scss/_navbar.scss */
+  header.navbar .conectas h2 {
     margin: 0;
     padding: 0;
     font-size: 11px;
   }
-  /* line 64, ../../scss/_navbar.scss */
-  .navbar .conectas h2 a {
-    color: #a5a5a5;
+  /* line 65, ../../scss/_navbar.scss */
+  header.navbar .conectas h2 a {
+    color: #5a504b;
     font-weight: normal;
     text-decoration: none;
   }
-  /* line 71, ../../scss/_navbar.scss */
-  .navbar .navbar-nav {
+  /* line 72, ../../scss/_navbar.scss */
+  header.navbar .navbar-nav {
     background: transparent;
   }
-  /* line 77, ../../scss/_navbar.scss */
-  .navbar .navbar-nav > li > a {
-    color: #ab0e00;
+  /* line 78, ../../scss/_navbar.scss */
+  header.navbar .navbar-nav > li > a {
+    color: #af1e23;
     padding: 10px 15px;
     border-bottom: 2px solid transparent;
     transition: .30s;
   }
-  /* line 84, ../../scss/_navbar.scss */
-  .navbar .navbar-nav > li:active > a, .navbar .navbar-nav > li:hover > a, .navbar .navbar-nav > li.active > a {
+  /* line 85, ../../scss/_navbar.scss */
+  header.navbar .navbar-nav > li:active > a, header.navbar .navbar-nav > li:hover > a, header.navbar .navbar-nav > li.active > a {
     background: none;
-    color: #f18941;
-    border-color: #f18941;
+    color: #fa9128;
+    border-color: currentColor;
     transition: .30s;
   }
-  /* line 94, ../../scss/_navbar.scss */
-  .navbar .navbar-brand {
+  /* line 95, ../../scss/_navbar.scss */
+  header.navbar .navbar-brand {
     margin: 0;
     padding: 0;
   }
-  /* line 98, ../../scss/_navbar.scss */
-  .navbar .navbar-brand a {
+  /* line 99, ../../scss/_navbar.scss */
+  header.navbar .navbar-brand a {
     color: transparent;
     overflow: hidden;
     text-indent: -999em;
@@ -516,29 +431,42 @@ section.container {
     padding: 0;
     width: 200px;
   }
-  /* line 112, ../../scss/_navbar.scss */
-  .navbar .container .navbar-brand {
+  /* line 113, ../../scss/_navbar.scss */
+  header.navbar .container .navbar-brand {
     margin-left: 0;
   }
-  /* line 116, ../../scss/_navbar.scss */
-  .navbar .navbar-header {
+  /* line 117, ../../scss/_navbar.scss */
+  header.navbar .navbar-header {
     padding-top: 20px;
   }
-  /* line 120, ../../scss/_navbar.scss */
-  .navbar .main-nav {
+  /* line 121, ../../scss/_navbar.scss */
+  header.navbar .main-nav {
     padding-top: 22px;
   }
-  /* line 124, ../../scss/_navbar.scss */
-  .navbar .dropdown-menu {
+  /* line 125, ../../scss/_navbar.scss */
+  header.navbar .dropdown-menu {
     display: none !important;
   }
 }
 
 @media (max-width: 768px) {
-  /* line 131, ../../scss/_navbar.scss */
-  #home .navbar {
+  /* line 132, ../../scss/_navbar.scss */
+  #home header.navbar {
     background: none;
     box-shadow: none;
+  }
+
+  /* line 137, ../../scss/_navbar.scss */
+  .navbar-fixed-top {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  /* line 144, ../../scss/_navbar.scss */
+  .toggled .navbar-fixed-top {
+    left: 280px;
   }
 }
 /*!
@@ -666,19 +594,21 @@ body {
     min-height: 100%;
     position: relative;
     width: auto;
+    padding-top: 80px;
   }
 
-  /* line 114, ../../scss/_sidebar.scss */
+  /* line 115, ../../scss/_sidebar.scss */
   #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
   }
 }
 /* Custom */
-/* line 124, ../../scss/_sidebar.scss */
+/* line 123, ../../scss/_sidebar.scss */
 .sidebar-brand {
   border-bottom: 1px solid white;
   display: block;
+  margin: 0;
   padding: 15px 15px 20px;
 }
 /* line 129, ../../scss/_sidebar.scss */
@@ -925,41 +855,47 @@ body {
   background-position: calc(100% + 5px) 0;
   background-size: 50px;
 }
+@media (min-height: 768px) {
+  /* line 8, ../../scss/_dados.scss */
+  .dados #footer, .Dados #footer {
+    position: static;
+  }
+}
 
 @media (max-width: 768px) {
-  /* line 9, ../../scss/_dados.scss */
+  /* line 15, ../../scss/_dados.scss */
   .breadcrumb {
     display: none;
   }
 }
-/* line 15, ../../scss/_dados.scss */
+/* line 20, ../../scss/_dados.scss */
 .menu-dados {
   height: 50px;
   float: right;
   margin: 20px 0;
 }
-/* line 21, ../../scss/_dados.scss */
+/* line 26, ../../scss/_dados.scss */
 .menu-dados a {
   color: #b6b6b6;
   display: block;
   float: left;
   height: 100%;
 }
-/* line 28, ../../scss/_dados.scss */
+/* line 33, ../../scss/_dados.scss */
 .menu-dados a.active {
   color: #b81f3c;
 }
-/* line 32, ../../scss/_dados.scss */
+/* line 37, ../../scss/_dados.scss */
 .menu-dados a:hover {
   text-decoration: none;
 }
-/* line 36, ../../scss/_dados.scss */
+/* line 41, ../../scss/_dados.scss */
 .menu-dados span {
   display: inline-block;
   text-indent: -99999em;
   width: 0;
 }
-/* line 43, ../../scss/_dados.scss */
+/* line 48, ../../scss/_dados.scss */
 .menu-dados a::before {
   display: block;
   font-family: 'cp_infografico';
@@ -971,11 +907,11 @@ body {
   width: 50px;
 }
 
-/* line 88, ../../scss/_dados.scss */
+/* line 93, ../../scss/_dados.scss */
 .dados-interna a {
   color: #b81f3c;
 }
-/* line 92, ../../scss/_dados.scss */
+/* line 97, ../../scss/_dados.scss */
 .dados-interna h1 {
   background: #b81f3c;
   color: white;
@@ -985,35 +921,35 @@ body {
   padding: 20px;
   text-transform: uppercase;
 }
-/* line 102, ../../scss/_dados.scss */
+/* line 107, ../../scss/_dados.scss */
 .dados-interna p {
   font-size: 18px;
   margin-bottom: 20px;
 }
-/* line 107, ../../scss/_dados.scss */
+/* line 112, ../../scss/_dados.scss */
 .dados-interna .graf {
   padding: 15px;
   position: relative;
   margin: 0 0 80px;
 }
-/* line 114, ../../scss/_dados.scss */
+/* line 119, ../../scss/_dados.scss */
 .dados-interna .graf-meta {
   color: #868584;
 }
-/* line 117, ../../scss/_dados.scss */
+/* line 122, ../../scss/_dados.scss */
 .dados-interna .graf-meta .js-plot-link-container {
   color: #868584;
 }
-/* line 121, ../../scss/_dados.scss */
+/* line 126, ../../scss/_dados.scss */
 .dados-interna .graf-meta dl {
   margin: 0;
   max-width: 70%;
 }
-/* line 126, ../../scss/_dados.scss */
+/* line 131, ../../scss/_dados.scss */
 .dados-interna .graf-meta dd {
   text-indent: 10px;
 }
-/* line 131, ../../scss/_dados.scss */
+/* line 136, ../../scss/_dados.scss */
 .dados-interna .graf .download {
   background: white;
   font-size: 14px;
@@ -1023,22 +959,22 @@ body {
   top: calc(100% + 1px);
   text-transform: lowercase;
 }
-/* line 140, ../../scss/_dados.scss */
+/* line 145, ../../scss/_dados.scss */
 .dados-interna .graf .download a:hover {
   text-decoration: none;
 }
-/* line 144, ../../scss/_dados.scss */
+/* line 149, ../../scss/_dados.scss */
 .dados-interna .graf .download ::before, .dados-interna .graf .download ::after {
   font-family: "source_sans_probold";
   font-size: 2em;
   position: relative;
   top: 3px;
 }
-/* line 151, ../../scss/_dados.scss */
+/* line 156, ../../scss/_dados.scss */
 .dados-interna .graf .download ::before {
   content: "[";
 }
-/* line 155, ../../scss/_dados.scss */
+/* line 160, ../../scss/_dados.scss */
 .dados-interna .graf .download ::after {
   content: "]";
 }
@@ -2369,27 +2305,31 @@ help unidades
   background-position: 100% 13px;
 }
 /* line 450, ../../scss/_infografico.scss */
+.infografico section.situacao-juridica .full li:nth-child(1) strong {
+  color: #b81f3c;
+}
+/* line 454, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .full li:nth-child(2) {
   background: #330129;
   text-align: center;
 }
-/* line 454, ../../scss/_infografico.scss */
+/* line 458, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .full li:nth-child(2) p {
   font-size: 1.65em;
   line-height: 1.2;
 }
-/* line 459, ../../scss/_infografico.scss */
+/* line 463, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .full li:nth-child(2) p:first-of-type {
   font-size: 1.08em;
   text-transform: uppercase;
 }
-/* line 464, ../../scss/_infografico.scss */
+/* line 468, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .full li:nth-child(2) em {
   font-style: normal;
   font-family: "source_sans_probold";
   color: #b81f3c;
 }
-/* line 470, ../../scss/_infografico.scss */
+/* line 474, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .full li:nth-child(2) strong:first-of-type {
   background: #b81f3c;
   border-radius: 50%;
@@ -2398,7 +2338,7 @@ help unidades
   line-height: initial;
   width: 74px;
 }
-/* line 480, ../../scss/_infografico.scss */
+/* line 484, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .justica-mulheres {
   display: flex;
   justify-content: space-between;
@@ -2406,7 +2346,7 @@ help unidades
   margin-right: auto;
   max-width: 1400px;
 }
-/* line 488, ../../scss/_infografico.scss */
+/* line 492, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .justica-mulheres div {
   background: white;
   height: 80px;
@@ -2414,7 +2354,7 @@ help unidades
   padding: 0 5px;
   width: 100px;
 }
-/* line 495, ../../scss/_infografico.scss */
+/* line 499, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .justica-mulheres div:before {
   content: '';
   background: #b81f3c;
@@ -2426,23 +2366,23 @@ help unidades
   position: relative;
   width: 90px;
 }
-/* line 507, ../../scss/_infografico.scss */
+/* line 511, ../../scss/_infografico.scss */
 .infografico section.situacao-juridica .justica-mulheres div.vazio:before {
   background: none;
 }
-/* line 520, ../../scss/_infografico.scss */
+/* line 524, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(1) {
   font-size: 1.65em;
   line-height: 1;
   padding-bottom: 32px;
 }
-/* line 526, ../../scss/_infografico.scss */
+/* line 530, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(2) {
   background-image: url(../images/infografico/trabalho-educacao-bg.png);
   background-position: top right;
   border-top: 3px solid white;
 }
-/* line 532, ../../scss/_infografico.scss */
+/* line 536, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(2) div {
   background: linear-gradient(to right, #330129 0%, rgba(51, 1, 41, 0.91) 10%, rgba(0, 0, 0, 0.05) 100%);
   font-size: 1.13em;
@@ -2450,34 +2390,34 @@ help unidades
   text-transform: uppercase;
   width: 40%;
 }
-/* line 539, ../../scss/_infografico.scss */
+/* line 543, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(2) div .br {
   text-transform: none;
   margin-top: -15px;
   line-height: 1;
 }
-/* line 545, ../../scss/_infografico.scss */
+/* line 549, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(2) div strong {
   font-size: 2.66em;
 }
-/* line 550, ../../scss/_infografico.scss */
+/* line 554, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(3) {
   border-bottom: 3px solid white;
   display: flex;
   flex-wrap: wrap;
   text-align: right;
 }
-/* line 556, ../../scss/_infografico.scss */
+/* line 560, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(3) div {
   padding: 32px 0 32px;
   width: 50%;
 }
-/* line 561, ../../scss/_infografico.scss */
+/* line 565, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(3) .ideal, .infografico .trabalho-educacao .container > ol > li:nth-child(3) .real {
   padding-left: 32px;
   text-align: left;
 }
-/* line 565, ../../scss/_infografico.scss */
+/* line 569, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(3) .ideal strong, .infografico .trabalho-educacao .container > ol > li:nth-child(3) .real strong {
   display: block;
   float: left;
@@ -2485,46 +2425,46 @@ help unidades
   line-height: 90%;
   padding-right: 10px;
 }
-/* line 574, ../../scss/_infografico.scss */
+/* line 578, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(3) .quantidade {
   float: left;
   max-width: calc(100% - 44px);
 }
-/* line 578, ../../scss/_infografico.scss */
+/* line 582, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(3) .quantidade li {
   background: #330129;
   height: 20px;
   margin-bottom: 5px;
   width: 20px;
 }
-/* line 586, ../../scss/_infografico.scss */
+/* line 590, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(3) .real .quantidade {
   column-gap: 5px;
   columns: 16;
 }
-/* line 594, ../../scss/_infografico.scss */
+/* line 598, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) {
   padding: 32px 0;
 }
-/* line 597, ../../scss/_infografico.scss */
+/* line 601, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) > div:first-of-type {
   text-align: right;
   width: 50%;
 }
-/* line 602, ../../scss/_infografico.scss */
+/* line 606, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) > div:first-of-type + div {
   margin-left: auto;
   padding: 0 32px;
   position: relative;
   width: 50%;
 }
-/* line 608, ../../scss/_infografico.scss */
+/* line 612, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) > div:first-of-type + div strong {
   left: -3.2em;
   position: absolute;
   top: .75em;
 }
-/* line 615, ../../scss/_infografico.scss */
+/* line 619, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) .load {
   background: #330129;
   display: inline-block;
@@ -2533,7 +2473,7 @@ help unidades
   position: relative;
   width: 100%;
 }
-/* line 624, ../../scss/_infografico.scss */
+/* line 628, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) .load::before {
   content: '18%';
   background: white;
@@ -2545,7 +2485,7 @@ help unidades
   position: absolute;
   width: 18%;
 }
-/* line 636, ../../scss/_infografico.scss */
+/* line 640, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) .load .de-cem {
   border-color: white;
   border-width: 1px;
@@ -2555,7 +2495,7 @@ help unidades
   height: 10px;
   top: 10px;
 }
-/* line 646, ../../scss/_infografico.scss */
+/* line 650, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) .load .de-cem::before {
   border-top: 1px dashed white;
   content: '';
@@ -2564,42 +2504,42 @@ help unidades
   top: 5px;
   width: 100%;
 }
-/* line 655, ../../scss/_infografico.scss */
+/* line 659, ../../scss/_infografico.scss */
 .infografico .trabalho-educacao .container > ol > li:nth-child(4) .load .de-cem span {
   font-size: .5em;
   position: absolute;
   right: -20px;
   top: 10px;
 }
-/* line 664, ../../scss/_infografico.scss */
+/* line 668, ../../scss/_infografico.scss */
 .infografico section.saude {
   background: white;
   color: #b81f3c;
   position: relative;
 }
-/* line 670, ../../scss/_infografico.scss */
+/* line 674, ../../scss/_infografico.scss */
 .infografico section.saude h1 {
   margin-bottom: 0;
 }
-/* line 674, ../../scss/_infografico.scss */
+/* line 678, ../../scss/_infografico.scss */
 .infografico section.saude h1 a {
   color: #b81f3c;
   padding-bottom: .7em;
 }
-/* line 679, ../../scss/_infografico.scss */
+/* line 683, ../../scss/_infografico.scss */
 .infografico section.saude h1 a::before {
   font-size: 1.1em;
   margin-right: 20px;
   top: 3px;
 }
-/* line 686, ../../scss/_infografico.scss */
+/* line 690, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(1) {
   background: url(../images/infografico/saude-bg.png) repeat-y;
   background-size: calc(50% - 15px);
   background-position: 15px 50%;
   padding-left: 0;
 }
-/* line 693, ../../scss/_infografico.scss */
+/* line 697, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(1) div:first-of-type {
   border-left: 2px solid currentColor;
   font-size: 1.6em;
@@ -2609,12 +2549,12 @@ help unidades
   text-align: right;
   width: 50%;
 }
-/* line 702, ../../scss/_infografico.scss */
+/* line 706, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(1) div:first-of-type strong.br {
   font-size: 1.88em;
   line-height: 1;
 }
-/* line 708, ../../scss/_infografico.scss */
+/* line 712, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(2) {
   background: #b81f3c;
   color: white;
@@ -2623,22 +2563,22 @@ help unidades
   padding: 32px 0;
   text-align: center;
 }
-/* line 717, ../../scss/_infografico.scss */
+/* line 721, ../../scss/_infografico.scss */
 .infografico section.saude .upper {
   font-size: 1.13em;
   padding-left: 32px;
 }
-/* line 722, ../../scss/_infografico.scss */
+/* line 726, ../../scss/_infografico.scss */
 .infografico section.saude .br.upper {
   padding-top: 32px;
 }
-/* line 726, ../../scss/_infografico.scss */
+/* line 730, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(3) {
   color: #330129;
   padding: 32px 0;
   position: relative;
 }
-/* line 731, ../../scss/_infografico.scss */
+/* line 735, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(3) strong {
   color: #b81f3c;
   display: block;
@@ -2646,7 +2586,7 @@ help unidades
   line-height: .9;
   padding: 0 0 32px 32px;
 }
-/* line 739, ../../scss/_infografico.scss */
+/* line 743, ../../scss/_infografico.scss */
 .infografico section.saude li:nth-child(3):before {
   content: "\e909 \e909 \e909";
   font-family: 'cp_infografico';
@@ -2659,34 +2599,34 @@ help unidades
   top: 0;
   z-index: 0;
 }
-/* line 754, ../../scss/_infografico.scss */
+/* line 758, ../../scss/_infografico.scss */
 .infografico section.materno-infantil {
   padding-bottom: 0;
 }
-/* line 758, ../../scss/_infografico.scss */
+/* line 762, ../../scss/_infografico.scss */
 .infografico section.materno-infantil h1 {
   margin-bottom: 0;
   padding: 0;
 }
-/* line 763, ../../scss/_infografico.scss */
+/* line 767, ../../scss/_infografico.scss */
 .infografico section.materno-infantil h1 a {
   padding-bottom: 32px;
 }
-/* line 767, ../../scss/_infografico.scss */
+/* line 771, ../../scss/_infografico.scss */
 .infografico section.materno-infantil h1 a::before {
   font-size: 1.5em;
   margin-right: 15px;
   top: 15px;
 }
-/* line 774, ../../scss/_infografico.scss */
+/* line 778, ../../scss/_infografico.scss */
 .infografico section.materno-infantil h1 a::after {
   margin-top: 18px;
 }
-/* line 778, ../../scss/_infografico.scss */
+/* line 782, ../../scss/_infografico.scss */
 .infografico section.materno-infantil ol {
   overflow: hidden;
 }
-/* line 782, ../../scss/_infografico.scss */
+/* line 786, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(1) {
   background-image: url(../images/infografico/materno-bg.png);
   background-size: cover;
@@ -2694,50 +2634,50 @@ help unidades
   padding: 32px;
   text-align: right;
 }
-/* line 790, ../../scss/_infografico.scss */
+/* line 794, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(1) div:first-of-type strong {
   font-size: 3em;
   line-height: 1;
 }
-/* line 795, ../../scss/_infografico.scss */
+/* line 799, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(1) div:first-of-type span {
   font-size: 2.5em;
   line-height: 1;
 }
-/* line 800, ../../scss/_infografico.scss */
+/* line 804, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(1) div:nth-child(2) {
   font-family: 1.25em;
   padding: 32px 0;
 }
-/* line 805, ../../scss/_infografico.scss */
+/* line 809, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(2) {
   background: white;
-  color: black;
+  color: #b81f3c;
   font-size: 1.65em;
   line-height: 1;
 }
-/* line 812, ../../scss/_infografico.scss */
+/* line 816, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(2) .container {
   padding: 32px 0;
   position: relative;
 }
-/* line 816, ../../scss/_infografico.scss */
+/* line 820, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(2) .container::before {
   color: #b81f3c;
   font-family: 'cp_infografico';
   font-size: 4.5em;
   line-height: 1;
   position: absolute;
-  right: -20px;
+  right: -40px;
   top: -10px;
   z-index: 0;
 }
-/* line 829, ../../scss/_infografico.scss */
+/* line 833, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(2) strong {
   color: #b81f3c;
   font-size: 1.22em;
 }
-/* line 834, ../../scss/_infografico.scss */
+/* line 838, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(3) {
   font-size: 1.65em;
   line-height: 1;
@@ -2745,24 +2685,24 @@ help unidades
   position: relative;
   text-align: center;
 }
-/* line 842, ../../scss/_infografico.scss */
+/* line 846, ../../scss/_infografico.scss */
 .infografico section.materno-infantil li:nth-child(3) strong {
   font-size: 1.22em;
 }
-/* line 849, ../../scss/_infografico.scss */
+/* line 853, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas h1 {
   margin-bottom: 0;
 }
-/* line 853, ../../scss/_infografico.scss */
+/* line 857, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas h1 a {
   color: #b81f3c;
 }
-/* line 861, ../../scss/_infografico.scss */
+/* line 865, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .conteudo {
   display: flex;
   flex-wrap: wrap;
 }
-/* line 866, ../../scss/_infografico.scss */
+/* line 870, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .col-1 {
   background: url(../images/infografico/alas-exclusivas-bg.png);
   background-size: cover;
@@ -2772,37 +2712,37 @@ help unidades
   text-align: right;
   width: 50%;
 }
-/* line 876, ../../scss/_infografico.scss */
+/* line 880, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .col-1 strong {
   font-size: 1.2em;
   line-height: 1;
 }
-/* line 881, ../../scss/_infografico.scss */
+/* line 885, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .col-2 {
   line-height: 1.2;
   padding: 32px;
   text-align: right;
   width: 50%;
 }
-/* line 888, ../../scss/_infografico.scss */
+/* line 892, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .col-2 .big {
   font-size: 1.6em;
   line-height: 1;
 }
-/* line 893, ../../scss/_infografico.scss */
+/* line 897, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .comum, .infografico .alas-exclusivas .adaptada {
   font-family: "cp_infografico";
 }
-/* line 897, ../../scss/_infografico.scss */
+/* line 901, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .comum {
   color: #b81f3c;
   opacity: .5;
 }
-/* line 910, ../../scss/_infografico.scss */
+/* line 914, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .celas {
   margin-top: 1.6em;
 }
-/* line 914, ../../scss/_infografico.scss */
+/* line 918, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .celas ol {
   display: flex;
   font-size: 2.2em;
@@ -2810,39 +2750,40 @@ help unidades
   flex-direction: row-reverse;
   line-height: 1.4;
 }
-/* line 922, ../../scss/_infografico.scss */
+/* line 926, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .celas li {
   width: 20%;
 }
 
-/* line 932, ../../scss/_infografico.scss */
-.scrolldown-arrow {
+/* line 934, ../../scss/_infografico.scss */
+.scrolldown {
   position: fixed;
   bottom: 50px;
   right: 40px;
   z-index: 1;
 }
 
-/* line 939, ../../scss/_infografico.scss */
+/* line 941, ../../scss/_infografico.scss */
 .arrow-down {
   animation: softBlink 1500ms infinite;
-  opacity: 0;
+  background-image: url(../images/infografico/arrow-down.svg);
+  background-repeat: no-repeat;
+  background-size: 162%;
+  background-position: -18px -25px;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: -10px;
-  height: 30px;
-  width: 30px;
-  border: 5px solid transparent;
-  border-right-color: white;
-  border-bottom-color: white;
-  transform: rotate(45deg);
+  height: 40px;
+  opacity: 0;
   transition: 1s ease-in-out;
+  width: 60px;
 }
-/* line 953, ../../scss/_infografico.scss */
+/* line 956, ../../scss/_infografico.scss */
 .arrow-down:nth-child(2) {
   animation: softBlink-mid 1500ms infinite;
 }
-/* line 957, ../../scss/_infografico.scss */
+/* line 960, ../../scss/_infografico.scss */
 .arrow-down:nth-child(3) {
   animation: softBlink-opaque 1500ms infinite;
 }
@@ -2853,7 +2794,7 @@ help unidades
   }
   100% {
     opacity: .2;
-    transform: translateY(15px) rotate(45deg);
+    transform: translateY(20px);
   }
 }
 @keyframes softBlink-mid {
@@ -2862,7 +2803,7 @@ help unidades
   }
   100% {
     opacity: .5;
-    transform: translateY(15px) rotate(45deg);
+    transform: translateY(20px);
   }
 }
 @keyframes softBlink-opaque {
@@ -2871,6 +2812,6 @@ help unidades
   }
   100% {
     opacity: 1;
-    transform: translateY(15px) rotate(45deg);
+    transform: translateY(20px);
   }
 }

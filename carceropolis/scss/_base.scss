@@ -1,12 +1,16 @@
 html {
-	height: 100%;
+	height: 100vh;
 }
 
 body {
 	background-color: $cp-grey;
 	font-family: "source_sans_proregular";
-	height: 100%;
+	height: 100vh;
 	padding-top: 0;
+	
+	@media(min-height: 768px){
+		padding-bottom: 53px;
+	}
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -14,7 +18,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 @media (max-width: 768px) {
-	#editable-toolbar, .editable-link {
+	#editable-toolbar,
+	.editable-link {
 	    right: 0 !important;
 	    left: inherit !important;
 	}
@@ -23,7 +28,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 section.container {
 	min-height: 50%;
 }
-
 
 #title {
 	background: $cp-grey;
@@ -44,122 +48,23 @@ section.container {
 	}
 }
 
-
 #footer {
 	background: black;
 	border: none;
+	min-height: 53px;
 	margin: 0;
 	padding: 15px 0;
 	text-align: center;
 
-	.container{
-    	-webkit-align-items: center;
-    	align-items: center;
-		display: flex;
-		-webkit-flex-wrap: wrap;
-		flex-wrap: wrap;
-	    -webkitjustify-content: center;
-	    justify-content: center;
-	}
-
-	.nav.navbar-nav.navbar-right {
-		display: block;
-		float: none !important;
-
-		li {
-			display: inline-block;
-			float: none;
-
-			a {
-				color: white;
-				font-family: $semibold;
-				text-transform: uppercase;
-			}
-
-			a:hover,
-			a:active,
-			&.active a, {
-				background: none;
-			}
-		}
-	}
-
-	.social-media {
-
-		display: none;
-
-		ul {
-			align-items: center;
-			display: flex;
-			justify-content: space-between;
-			margin: 30px auto 40px;
-			max-width: 126px;
-			padding: 0;
-		}
-
-		li {
-			list-style: none;
-		}
-
-		.icon-facebook {
-			background-color: $cp-orange;
-			border-radius: 0.05em;
-			color: black;
-			font-size: 26px;
-			line-height: 35px;
-
-			&:before { margin-left: 6px; }
-
-		}
-
-		.icon-twitter {
-			color: $cp-orange;
-			font-size: 30px;
-		}
-
-		[class^="icon-"] {
-			display: block;
-			width: 26px;
-			height: 26px;
-		}
-
-		a:hover {
-			text-decoration: none;
-		}
-	}
-
-	.author {
-		display: none;
-
-		h5 {
-
-			margin: 0;
-			position: relative;
-
-			span {
-				color: rgba(255,255,255,.5);
-				font-size: 15px;
-				font-family: inherit;
-				font-weight: normal;
-				padding-bottom: 30px;
-				text-align: center;
-				position: absolute;
-				top: 20px;
-				left: 0;
-
-			}
-
-			img {
-				display: block;
-				height: 100px;
-				margin: 20px auto;
-				width: 200px;
-			}
-		}
+	@media(min-height: 768px){
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: calc(100% - 53px);
 	}
 
 	address {
-		color: rgba(255,255,255,.5);
+		color: $conectas-cinza-claro;
 		display: block;
 		font-size: 16px;
 		margin: 0;

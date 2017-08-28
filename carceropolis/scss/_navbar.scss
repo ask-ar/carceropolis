@@ -1,5 +1,6 @@
-.navbar {
-	background-color: $cp-grey;
+/* header */
+header.navbar {
+	background-color: $bg-light;
 	background-image: url(../images/simbolo-conectas.svg);
 	background-position: calc(100% + 5px);
 	background-repeat: no-repeat;
@@ -9,7 +10,7 @@
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	margin: 0;
 	min-height: inherit;
-	position: relative;
+	width: 100%;
 
 	.navbar-toggle {
 		border: none;
@@ -39,6 +40,7 @@
 	}
 
 	.navbar-nav > li > a {
+		cursor: pointer;
 		font-family: $semibold;
 		font-size: 18px;
 		padding: 20px;
@@ -46,7 +48,6 @@
 	}
 
 	@media (min-width: 768px) {
-		background-color: $cp-grey;
 		background-position: calc(100% + 15px);
 		min-height: 80px;
 
@@ -62,7 +63,7 @@
 			}
 
 			h2 a {
-				color: $cp-grey-dark;
+				color: $conectas-cinza-escuro;
 				font-weight: normal;
 				text-decoration: none;
 			}
@@ -75,7 +76,7 @@
 		.navbar-nav > li {
 
 			> a {
-				color: $navbar-links;
+				color: $conectas-vermelho;
 				padding: 10px 15px;
     			border-bottom: 2px solid transparent;
     			transition: .30s;
@@ -85,8 +86,8 @@
 			&:hover > a,
 			&.active > a {
     			background: none;
-    			color: $cp-orange;
-    			border-color: $cp-orange;
+    			color: $conectas-laranja-claro;
+    			border-color: currentColor;
     			transition: .30s;
 			}
 		}
@@ -128,8 +129,19 @@
 }
 
 @media (max-width: 768px) {
-	#home .navbar {
+	#home header.navbar {
 		background: none;
 		box-shadow: none;
+	}
+
+	.navbar-fixed-top {
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+
+	.toggled .navbar-fixed-top {
+		left: 280px;
 	}
 }

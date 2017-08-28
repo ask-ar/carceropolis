@@ -239,7 +239,7 @@ help unidades
                 width: 49%;
 
                 .symbol{
-                    fill:$dark-pink;
+                    fill: $dark-pink;
                     opacity: .2;
                 }
 
@@ -445,6 +445,10 @@ help unidades
                 background: url(../images/infografico/balanca.svg) no-repeat;
                 background-position: 100% 13px;
             }
+        }
+
+        .full li:nth-child(1) strong{
+            color: $dark-pink;
         }
 
         .full li:nth-child(2){
@@ -804,7 +808,7 @@ help unidades
 
         li:nth-child(2){
             background: white;
-            color: black;
+            color: $dark-pink;
             font-size: 1.65em;
             line-height: 1;
         }
@@ -820,7 +824,7 @@ help unidades
                 font-size: 4.5em;
                 line-height: 1;
                 position: absolute;
-                right: -20px;
+                right: -40px;
                 top: -10px;
                 z-index: 0;
             }
@@ -897,8 +901,8 @@ help unidades
         .comum {
             color: $dark-pink;
             opacity: .5;
-
         }
+
         .comum:before {
             @extend .icon-prisao:before;
         }
@@ -927,9 +931,7 @@ help unidades
 }
 
 // // //= Setas de scroll ======================================= /
-$size: 30px;
-
-.scrolldown-arrow {
+.scrolldown {
     position: fixed;
     bottom: 50px;
     right: 40px;
@@ -938,24 +940,25 @@ $size: 30px;
 
 .arrow-down{
   animation: softBlink 1500ms infinite;
-  opacity: 0;
+  background-image: url(../images/infografico/arrow-down.svg);
+  background-repeat: no-repeat;
+  background-size: 162%;
+  background-position: -18px -25px;  
+  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: -10px;
-  height: $size;
-  width: $size;
-  border: 5px solid transparent;
-  border-right-color: $arrow-color;
-  border-bottom-color: $arrow-color;
-  transform: rotate(45deg);
+  height: 40px;
+  opacity: 0;
   transition: 1s ease-in-out;
+  width: 60px;
 
   &:nth-child(2){
-     animation: softBlink-mid 1500ms infinite;
+      animation: softBlink-mid 1500ms infinite;
   }
 
   &:nth-child(3){
-     animation: softBlink-opaque 1500ms infinite;
+      animation: softBlink-opaque 1500ms infinite;
   }
 }
 @keyframes softBlink{
@@ -965,7 +968,7 @@ $size: 30px;
   }
   100%{
     opacity: .2;
-    transform: translateY($size/2) rotate(45deg);
+    transform: translateY(20px);
   }
 }
 
@@ -975,7 +978,7 @@ $size: 30px;
   }
   100%{
     opacity: .5;
-    transform: translateY($size/2) rotate(45deg);
+    transform: translateY(20px);
   }
 }
 
@@ -985,6 +988,6 @@ $size: 30px;
   }
   100%{
     opacity: 1;
-    transform: translateY($size/2) rotate(45deg);
+    transform: translateY(20px);
   }
 }
