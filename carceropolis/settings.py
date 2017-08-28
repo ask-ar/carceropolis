@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
 import os
+from pathlib import Path
 
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
@@ -199,9 +199,9 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 #########
 
 # Full filesystem path to the project.
-PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
-PROJECT_APP = os.path.basename(PROJECT_APP_PATH)
-PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
+PROJECT_APP_PATH = Path(__file__).resolve().parent
+PROJECT_APP = PROJECT_APP_PATH.stem
+PROJECT_ROOT = BASE_DIR = PROJECT_APP_PATH.parent
 
 # Every cache key will get prefixed with this value - here we set it to
 # the name of the directory the project is in to try and use something
@@ -216,7 +216,7 @@ STATIC_URL = "/static/"
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
+STATIC_ROOT = PROJECT_ROOT / STATIC_URL.strip("/")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -225,7 +225,7 @@ MEDIA_URL = STATIC_URL + "media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+MEDIA_ROOT = PROJECT_ROOT / MEDIA_URL.strip("/")
 
 # Package/module name to import the root urlpatterns from for the project.
 ROOT_URLCONF = "%s.urls" % PROJECT_APP
@@ -234,7 +234,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(PROJECT_ROOT, "templates")
+            PROJECT_ROOT / "templates"
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -373,15 +373,13 @@ MAX_UPLOAD_SIZE = "5242880"
 # local_settings has full access to everything defined in this module.
 # Also force into sys.modules so it's visible to Django's autoreload.
 
-f = os.path.join(PROJECT_APP_PATH, "local_settings.py")
-if os.path.exists(f):
-    import sys
-    import imp
-    module_name = "%s.local_settings" % PROJECT_APP
-    module = imp.new_module(module_name)
-    module.__file__ = f
-    sys.modules[module_name] = module
-    exec(open(f, "rb").read())
+f = PROJECT_APP_PATH / "local_settings.py"
+try:
+    from .local_settings import *
+except ImportError:
+    msg = 'Please, check if you have local_settings.py file and if it have all'
+    msg += ' necessary items correctly setup.'
+    raise Exception(msg)
 
 ####################
 # DYNAMIC SETTINGS #
