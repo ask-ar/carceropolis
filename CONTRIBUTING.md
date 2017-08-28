@@ -241,13 +241,18 @@ sistema o [Docker](https://docs.docker.com/engine/installation/)
 [docker-compose](https://docs.docker.com/compose/install/) (versão >= 1.15.0).
 
 Após instalar ambos, faça o clone deste repositório em algum diretório em seu
-computador e rode os seguintes comandos:
+computador e rode o seguinte comando para iniciar os containers:
+`docker-compose up`. Para "desligar" o container basta apertar CTRL+C. Se quiser
+subir novamente o mesmo container, rode o mesmo comando novamente.
+
+Agora, com os containers rodando execute os seguintes comandos (considerando
+que o nome do container criado é "carceropolis_web_1". Para conferir execute
+`docker container ls`):
 
 ```
-docker-compose build
-docker-compose run web python3 manage.py migrate
-docker-compose run web python3 manage.py loaddata cidades/fixtures/cidade.json.bz2
-docker-compose run web python3 manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
+docker run carceropolis_web_1 python3 manage.py migrate
+docker run carceropolis_web_1 python3 manage.py loaddata cidades/fixtures/cidade.json.bz2
+docker run carceropolis_web_1 python3 manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
 ```
 
 Com isto você terá criado uma imagem docker para o postgresql (base de dados) e
@@ -258,9 +263,11 @@ do container chamado `web` (ou `carceropolis_web`).
 Agora, para rodar o projeto utilize o comando: `docker-compose up`. Caso alguma
 modificação tenha sido realizada no modelo de dados (gerando uma nova
 migration), basta que você rode o comando
-`docker-compose run web python3 manage.py migrate`
+`docker exec carceropolis_web_1 python3 manage.py migrate`
 para atualizar a base de dados.
 
 Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
 em seu sistema será automaticamente aplicada à instancia do projeto sendo
 executada.
+
+REF: https://docs.docker.com/compose/django/#connect-the-database
