@@ -1,5 +1,21 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+import sys
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+        }
+    },
+    'loggers': {
+        'carceropolis.views': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        }
+    }
+}
 
 SECRET_KEY = "%(secret_key)s"
 NEVERCACHE_KEY = "%(nevercache_key)s"
@@ -37,7 +53,7 @@ ACCOUNTS_VERIFICATION_REQUIRED = True
 
 ACCOUNTS_APPROVAL_EMAILS = u''
 
-PUBLICACAO_PER_PAGE = 9
+PUBLICACAO_PER_PAGE = 12
 
 CACHE_MIDDLEWARE_SECONDS = 60
 
@@ -65,3 +81,13 @@ MAX_UPLOAD_SIZE = "5242880"
 COMMENTS_DISQUS_SHORTNAME = False
 
 ENABLE_COMMENTS = False
+#
+##################
+# EMAIL SETTINGS #
+##################
+EMAIL_HOST_USER = '%(email_host_user)s'
+EMAIL_USE_TLS = True
+EMAIL_HOST = '%(email_host)s'
+EMAIL_HOST_PASSWORD = '%(email_host_password)s'
+EMAIL_PORT = %(email_port)s
+

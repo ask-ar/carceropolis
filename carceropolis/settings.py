@@ -200,7 +200,7 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 
 # Full filesystem path to the project.
 PROJECT_APP_PATH = Path(__file__).resolve().parent
-PROJECT_APP = PROJECT_APP_PATH.stem
+PROJECT_APP = str(PROJECT_APP_PATH.stem)
 PROJECT_ROOT = BASE_DIR = PROJECT_APP_PATH.parent
 
 # Every cache key will get prefixed with this value - here we set it to
@@ -228,13 +228,13 @@ MEDIA_URL = STATIC_URL + "media/"
 MEDIA_ROOT = PROJECT_ROOT / MEDIA_URL.strip("/")
 
 # Package/module name to import the root urlpatterns from for the project.
-ROOT_URLCONF = "%s.urls" % PROJECT_APP
+ROOT_URLCONF = "%s.urls" % (PROJECT_APP)
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            PROJECT_ROOT / "templates"
+            str(PROJECT_ROOT / "templates")
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -373,13 +373,19 @@ MAX_UPLOAD_SIZE = "5242880"
 # local_settings has full access to everything defined in this module.
 # Also force into sys.modules so it's visible to Django's autoreload.
 
-f = PROJECT_APP_PATH / "local_settings.py"
 try:
     from .local_settings import *
 except ImportError:
     msg = 'Please, check if you have local_settings.py file and if it have all'
     msg += ' necessary items correctly setup.'
     raise Exception(msg)
+
+# Converting from PosixPath to str
+PROJECT_APP_PATH = str(PROJECT_APP_PATH)
+PROJECT_APP = str(PROJECT_APP)
+PROJECT_ROOT = str(PROJECT_ROOT)
+STATIC_ROOT = str(STATIC_ROOT)
+MEDIA_ROOT = str(MEDIA_ROOT)
 
 ####################
 # DYNAMIC SETTINGS #
