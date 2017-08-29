@@ -1,6 +1,6 @@
 {% load i18n %}
 <form id='filter_publicacoes' class="form-bar" name="FilterForm" action="{{ request.path }}" method="post">
-  <fieldset class="row"> {% csrf_token %}
+  <fieldset> {% csrf_token %}
     <div class="control-group">
       <label for='filter_q' class='help-block control-label'>Termo geral</label>
       <input type="text" name="q" value="{% if q %}{{q}}{% endif %}" class="form-control" id="filter_q">

@@ -1,4 +1,4 @@
-## INSTALAÇÃO (para desenvolvimento)
+## INSTALAÇÃO (para desenvolvimento local)
 Abaixo os principais passos para instalação do projeto em ambiente de desenvolvimento.
 
 ### GNU/Linux - Básico
@@ -230,3 +230,44 @@ Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watc
 ```
 Execute este comando e após isto o watcher voltará a funcionar:
 `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
+
+### Desenvolvendo com Docker
+Para facilitar o ambiente de desenvolvimento também disponibilizamos um
+Dockerfile e um docker-compose.
+
+Assim, para poder utilizar estes recursos, você precisará ter instalado em seu
+sistema o [Docker](https://docs.docker.com/engine/installation/)
+(versão Community Edtion >= 17.06) e o
+[docker-compose](https://docs.docker.com/compose/install/) (versão >= 1.15.0).
+
+Após instalar ambos, faça o clone deste repositório em algum diretório em seu
+computador e rode o seguinte comando para iniciar os containers:
+`docker-compose up`. Para "desligar" o container basta apertar CTRL+C. Se quiser
+subir novamente o mesmo container, rode o mesmo comando novamente.
+
+Agora, com os containers rodando execute os seguintes comandos (considerando
+que o nome do container criado é "carceropolis_web_1". Para conferir execute
+`docker container ls`):
+
+```
+docker run carceropolis_web_1 python3 manage.py migrate
+docker run carceropolis_web_1 python3 manage.py loaddata cidades/fixtures/cidade.json.bz2
+docker run carceropolis_web_1 python3 manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
+```
+
+Com isto você terá criado uma imagem docker para o postgresql (base de dados) e
+outra imagem docker para o projeto carcerópolis, vinculando o diretório
+corrente, aonde está o source-code do projeto, ao diretório "/project" dentro
+do container chamado `web` (ou `carceropolis_web`).
+
+Agora, para rodar o projeto utilize o comando: `docker-compose up`. Caso alguma
+modificação tenha sido realizada no modelo de dados (gerando uma nova
+migration), basta que você rode o comando
+`docker exec carceropolis_web_1 python3 manage.py migrate`
+para atualizar a base de dados.
+
+Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
+em seu sistema será automaticamente aplicada à instancia do projeto sendo
+executada.
+
+REF: https://docs.docker.com/compose/django/#connect-the-database
