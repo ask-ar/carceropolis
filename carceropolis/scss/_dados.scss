@@ -3,6 +3,12 @@
 		background-position: calc(100% + 5px) 0;
 		background-size: 50px;
 	}
+
+	@media(min-height: 768px){
+		#footer {
+			position: static;
+		}
+	}
 }
 
 @media (max-width: 768px) {
@@ -10,7 +16,6 @@
 		display: none;
 	}
 }
-
 
 .menu-dados {
 

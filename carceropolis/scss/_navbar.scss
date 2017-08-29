@@ -10,7 +10,6 @@ header.navbar {
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	margin: 0;
 	min-height: inherit;
-	position: relative;
 	width: 100%;
 
 	.navbar-toggle {
@@ -51,8 +50,6 @@ header.navbar {
 	@media (min-width: 768px) {
 		background-position: calc(100% + 15px);
 		min-height: 80px;
-		position: fixed;
-		top: 0;
 
 		.conectas {
 			position: absolute;
@@ -135,5 +132,16 @@ header.navbar {
 	#home header.navbar {
 		background: none;
 		box-shadow: none;
+	}
+
+	.navbar-fixed-top {
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+
+	.toggled .navbar-fixed-top {
+		left: 280px;
 	}
 }
