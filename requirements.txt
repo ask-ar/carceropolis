@@ -10,5 +10,5 @@ ipython
 plotly
 pandas
 numpy
-bokeh
+bokeh==0.12.7
 flexx
