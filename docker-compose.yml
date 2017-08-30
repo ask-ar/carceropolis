@@ -21,5 +21,6 @@ services:
             - .:/project
         ports:
             - "8000:8000"
+            - "5006:5006"
         depends_on:
             - db
