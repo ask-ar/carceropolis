@@ -22,7 +22,7 @@ def update_querystring(window=None, cb_obj=None):
     '''
     params = []
     for c in cb_obj.document.roots()[0].children[0].children:
-        value = c.value if c.value else c.range
+        value = c.value
         params.append(
             window.encodeURIComponent(c.name) + '=' +
             window.encodeURIComponent(value)
@@ -75,7 +75,6 @@ class Dashboard(object):
         '''
 
         state = doc.session_context.request.arguments.get('state')
-        # import IPython;IPython.embed()
         if state:
             state = parse_qs(base64.urlsafe_b64decode(state[0]).decode())
         else:
@@ -141,22 +140,23 @@ class Dashboard(object):
                 'start': 0,
                 'end': 10,
                 'step': 1,
-                'range': (0, 0),
+                'value': [1, 9],
                 'class': RangeSlider,
             },
         }
+
+        # If has a previous state (passed throught querystring)
+        # restore it.
         # TODO: validate state? Dangerous?
         if state:
             for gui, data in gui_data.items():
                 value = state.get(data['name'])
                 if value:
                     value = value[0]
-                    if data.get('value'):
+                    if data['name'] == 'f_range':
+                        data['value'] = tuple(float(i) for i in value.split(','))
+                    else:
                         data['value'] = value
-                    elif data.get('range'):
-                        print(value)
-                        data['range'] = tuple(float(i)
-                                              for i in value.split(','))
 
         # Create gui inputs
         for k, v in gui_data.items():
@@ -169,10 +169,7 @@ class Dashboard(object):
         # Bind callbacks
         js_update_querytstring = CustomJS.from_py_func(update_querystring)
         for control in controls:
-            if hasattr(control, 'value'):
-                control.on_change('value', self.update)
-            elif hasattr(control, 'range'):
-                control.on_change('range', self.update)
+            control.on_change('value', self.update)
             control.callback = js_update_querytstring
 
         # TODO: seems to have no effect
@@ -186,7 +183,10 @@ class Dashboard(object):
         '''
         Called when chart options are modified.
         '''
-        self.layout.children[1] = self.create_figure(attr, old, new)
+        # It seems sometimes, when restoring state, self has no layout.
+        # This if avoids error.
+        if self.layout:
+            self.layout.children[1] = self.create_figure(attr, old, new)
 
     # TODO: move helpers (don't really need self) to a new file?
     def plot_lines(self, fig, x, y, source):
@@ -238,20 +238,21 @@ class Dashboard(object):
                 # update slider
                 frs.start = min_val
                 frs.end = max_val
-                if frs.range[0] < min_val or frs.range[1] > max_val:
-                    frs.range = (min_val, max_val)
+                if frs.value[0] < min_val or frs.value[1] > max_val:
+                    frs.value = (min_val, max_val)
                 frs.step = (max_val-min_val)/10
 
                 show_widget(frs)
                 hide_widget(fvs)
 
                 # filter df
-                df = df[filter_column >= frs.range[0]]
-                df = df[filter_column <= frs.range[1]]
+                df = df[filter_column >= frs.value[0]]
+                df = df[filter_column <= frs.value[1]]
         else:
             # No filter
             hide_widget(fvs)
-            hide_widget(frs)
+            # TODO: hide when RangeSlider css_classes work again
+            # hide_widget(frs)
 
         return df
 
@@ -259,7 +260,6 @@ class Dashboard(object):
         '''
         Creates the chart.
         '''
-        print(attr, old, new)
         df = self.handle_filtering(self.df)
         df = df.groupby(self.x_sel.value).sum()
         source = ColumnDataSource(data=df)
