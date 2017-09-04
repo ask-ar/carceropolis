@@ -12,3 +12,4 @@ pandas
 numpy
 bokeh==0.12.7
 flexx
+tornado
