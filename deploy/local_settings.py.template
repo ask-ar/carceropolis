@@ -28,6 +28,14 @@ ALLOWED_HOSTS = [%(domains_python)s]
 # of settings Mezzanine implements:
 # http://mezzanine.jupo.org/docs/configuration.html#default-settings
 
+
+# ATTENTION: If you are using the dockerfile/docker-compose, then the config
+# for the DATABASES section must be:
+# "NAME": "postgres",
+# "USER": "postgres",
+# "HOST": "db"
+#
+# You may remove the "password" line.
 DATABASES = {
     "default": {
         # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".

@@ -163,6 +163,10 @@ com as devidas modificações de conteúdo/valor das variáveis:
     ALLOWED_HOSTS = [""]
 
 
+**ATENÇÃO**: SE VOCÊ ESTIVER USANDO O DOCKERFILE/DOCKER-COMPOSE PARA RODAR O
+PROJETO, CONFIGURE O **NAME** COMO `postgres`, **USER** COMO `postgres` e
+**HOST** COMO `db`. Comente ou remova a linha do **PASSWORD**.
+
 Agora iremos rodar o projeto para que as principais configurações sejam
 implementadas:
 
@@ -269,5 +273,8 @@ para atualizar a base de dados.
 Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
 em seu sistema será automaticamente aplicada à instancia do projeto sendo
 executada.
+
+**ATENÇÃO**: Veja a forma de configurar o `local_settings.py` de seu projeto ao
+rodá-lo com docker (instruções neste arquivo mesmo).
 
 REF: https://docs.docker.com/compose/django/#connect-the-database
