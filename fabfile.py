@@ -70,6 +70,10 @@ env.num_workers = conf.get("NUM_WORKERS",
 
 env.secret_key = conf.get("SECRET_KEY", "")
 env.nevercache_key = conf.get("NEVERCACHE_KEY", "")
+env.email_host_user = conf.get("EMAIL_HOST_USER")
+env.email_host = conf.get("EMAIL_HOST")
+env.email_host_password = conf.get("EMAIL_HOST_PASSWORD")
+env.email_port = conf.get("EMAIL_PORT")
 
 # Remote git repos need to be "bare" and reside separated from the project
 if env.deploy_tool == "git":
