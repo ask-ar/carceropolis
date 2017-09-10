@@ -3,8 +3,19 @@ version: "3"
 services:
     db:
         image: postgres
+    bootstrap:
+        build: .
+        links:
+            - db
+        volumes:
+            - .:/project
+        command: bash -c 'python3 manage.py migrate && python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2 && python3 manage.py makemigrations && python3 manage.py migrate'
+        depends_on:
+            - db
     web:
         build: .
+        links:
+            - db
         command: python3 manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/project

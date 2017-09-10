@@ -225,7 +225,7 @@ Para compilar apenas uma vez:
 
 Parar parar o watch `control c`
 
-###Compass no Linux
+### Compass no Linux
 Caso obtenha o seguinte erro no terminal após executar o comando `compass watch`
 
 ```
@@ -245,30 +245,21 @@ sistema o [Docker](https://docs.docker.com/engine/installation/)
 [docker-compose](https://docs.docker.com/compose/install/) (versão >= 1.15.0).
 
 Após instalar ambos, faça o clone deste repositório em algum diretório em seu
-computador e rode o seguinte comando para iniciar os containers:
-`docker-compose up`. Para "desligar" o container basta apertar CTRL+C. Se quiser
-subir novamente o mesmo container, rode o mesmo comando novamente.
+computador. Na primeira vez em que for rodar o projeto, precisaremos criar e
+popular a base de dados, então utilize os seguintes comandos, nesta ordem,
+rodando da raiz do projeto: `docker-compose up -d db` e `docker-compose up
+bootstrap`. A opção `-d` no primeiro comando serve para manter o serviço rodando
+em background.
 
-Agora, com os containers rodando execute os seguintes comandos (considerando
-que o nome do container criado é "carceropolis_web_1". Para conferir execute
-`docker container ls`):
+Agora, para rodar efetivamente o projeto (nesta e nas próximas vezes), basta
+utilizara o comando `docker-compose up web`. Para "desligar" o container basta
+apertar CTRL+C. Se quiser subir novamente o mesmo container, rode o mesmo
+comando novamente.
 
-```
-docker run carceropolis_web_1 python3 manage.py migrate
-docker run carceropolis_web_1 python3 manage.py loaddata cidades/fixtures/cidade.json.bz2
-docker run carceropolis_web_1 python3 manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
-```
-
-Com isto você terá criado uma imagem docker para o postgresql (base de dados) e
-outra imagem docker para o projeto carcerópolis, vinculando o diretório
-corrente, aonde está o source-code do projeto, ao diretório "/project" dentro
-do container chamado `web` (ou `carceropolis_web`).
-
-Agora, para rodar o projeto utilize o comando: `docker-compose up`. Caso alguma
-modificação tenha sido realizada no modelo de dados (gerando uma nova
-migration), basta que você rode o comando
-`docker exec carceropolis_web_1 python3 manage.py migrate`
-para atualizar a base de dados.
+Caso hajam alterações na base (novas migrations), basta rodar `docker-compose
+exec web python3 manage.py migrate`. Se quiser gerar novas migrations, rode:
+`docker-compose exec web python3 manage.py makemigrations` (considerando que
+seu container 'web' está rodando).
 
 Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
 em seu sistema será automaticamente aplicada à instancia do projeto sendo
