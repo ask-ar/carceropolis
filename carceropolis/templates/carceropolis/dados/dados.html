@@ -32,13 +32,13 @@
 {% block breadcrumb_menu %}{% endblock %}
 
 {% block main %}
-<article class="infografico">
-    <section id="dados-gerais" class="dados-gerais">
+<article class="infografico" data-spy="scroll" data-target="#dados-bar">
+    <section data-offset="100" id="dados-gerais" class="dados-gerais">
         <div class="container">
             <h1><a href="/dados/gerais">Dados Gerais</a></h1>
             <ol>
                 <li>
-                    <strong>+</strong> de <strong>622 mil</strong> 
+                    <strong>+</strong> de <strong>622mil</strong> 
                     <span class="br">pessoas estão </span>
                     <span class="br">encarceradas </span>
                     no Brasil.
@@ -51,7 +51,8 @@
                     <span class="br">das grades.</span> 
                 </li>
                 <li>
-                    O número aumentou <strong>111%</strong> desde 2005.
+                    O número aumentou <br> 
+                    <strong><b data-final-number="111">0</b>%</strong> desde 2005.
                 </li>
                 <li>
                     Entre os quatro países com mais pessoas presas (Estados Unidos, Rússia e China), o Brasil é o único que a população prisional cresce mais que a população total.
@@ -59,7 +60,7 @@
             </ol>
         </div>
     </section>
-    <section id="perfil-populacional" class="perfil-populacional" data-aos="zoom-in" data-aos-duration="1000">
+    <section  data-offset="-100" id="perfil-populacional" class="perfil-populacional">
         <div class="container">
             <h1><a href="/dados/perfil_populacional">Perfil Populacional</a></h1>
             <ol>
@@ -111,7 +112,7 @@
             </ol>
         </div>
     </section>
-    <section id="infraestrutura" class="infraestrutura" data-aos="fade-up" data-aos-duration="2000">
+    <section id="infraestrutura" class="infraestrutura" >
             <h1 class="container"><a href="/dados/infraestrutura">Infraestrutura</a></h1>
             <ol>
                 <li class="container">
@@ -195,15 +196,15 @@
                 </li>
             </ol>
     </section>
-    <section id="situacao-juridica" class="situacao-juridica" data-aos="fade-up" data-aos-duration="3000">
+    <section id="situacao-juridica" class="situacao-juridica" >
         <div class="container">
             <h1><a href="/dados/juridico">Situação Jurídica</a></h1>
             <ol>
                 <li>
-                    <strong>41%</strong> das pessoas presas no Brasil não foram condenadas. São chamados de <strong>presos provisórios.</strong>
+                    <strong><b data-final-number="41">0</b>%</strong> das pessoas presas no Brasil não foram condenadas. São chamados de <strong>presos provisórios.</strong>
                 </li>
                 <li>
-                    Em média, <strong>37%</strong> desses presos próvisórios <strong>são absolvidos</strong> depois do julgamento (Ipea, 2014).
+                    Em média, <strong><b data-final-number="37">0</b>%</strong> desses presos próvisórios <strong>são absolvidos</strong> depois do julgamento (Ipea, 2014).
                 </li>
             </ol>
         </div>
@@ -237,7 +238,7 @@
             </li>
         </ol>
     </section>
-    <section id="trabalho-educacao" class="trabalho-educacao" data-aos="flip-left" data-aos-duration="2000">
+    <section id="trabalho-educacao" class="trabalho-educacao">
         <div class="container">
             <h1><a href="/dados/educacao">Trabalho e Educação</a></h1>
             <ol>
@@ -352,7 +353,7 @@
             </ol>
         </div>
     </section>
-    <section id="saude" class="saude" data-aos="flip-right" data-aos-duration="2000">
+    <section id="saude" class="saude">
         <div class="container">
             <h1><a href="/dados/saude">Saúde</a></h1>
         </div>
@@ -369,7 +370,7 @@
             </li>
             <li>
                 <div class="container">
-                    Somente <strong>49 ginecologistas</strong> atendem às <strong>36.495 mulheres presas</strong> nos 27 estados.
+                    Somente <strong><b data-final-number="49">0</b> ginecologistas</strong> atendem às <strong>36.495 mulheres presas</strong> nos 27 estados.
                 </div>
             </li>
             <li class="container">
@@ -385,12 +386,12 @@
             </li>
         </ol>
     </section>
-    <section id="materno-infantil" class="materno-infantil" data-aos="zoom-in" data-aos-duration="2000">
+    <section id="materno-infantil" class="materno-infantil" >
         <h1 class="container"><a href="/dados/materno_infantil">Materno-Infantil</a></h1>
         <ol>
             <li class="container">
                 <div>
-                    <strong class="br">534 gestantes</strong>
+                    <strong class="br"><b data-final-number="534">0</b> gestantes</strong>
                     <span>estão presas no Brasil.</span>
                 </div>
                 <div>
@@ -401,13 +402,13 @@
             </li>
             <li>
                 <div class="container">
-                    <strong>585 crianças</strong> vivem em presídios brasileiros
+                    <strong><b data-final-number="585">0</b> crianças</strong> vivem em presídios brasileiros
                 </div>
             </li>
             <li class="container">destas, mais da metade tem menos de <strong>6 meses.</strong></li>
         </ol>
     </section>
-    <section id="alas-exclusivas" class="alas-exclusivas" data-aos="fade-up" data-aos-duration="2000">
+    <section id="alas-exclusivas" class="alas-exclusivas">
         <div class="container">
             <h1><a href="/dados/alas_exclusivas">Alas exclusivas</a></h1>
             
@@ -422,7 +423,7 @@
                     prisional.
                 </p>
                 <div class="col-2">
-                    <span class="br"><strong class="big">Apenas 12%</strong> das prisões </span>
+                    <span class="br"><strong class="big">Apenas <b data-final-number="12">0</b>%</strong> das prisões </span>
                     <span class="br">brasileiras dispõem de pelo menos </span>
                     uma <strong>cela adaptada</strong>.
                     <div class="celas">
@@ -459,4 +460,16 @@
         </div>
     </section>
 </article>
+<nav id="dados-bar" class="navbarlateral">
+    <ul class="nav nav-pills nav-stacked">
+       <li><a class="icon-dados-gerais" href="#dados-gerais"></a></li>
+       <li><a class="icon-perfil-populacional" href="#perfil-populacional"></a></li>
+       <li><a class="icon-infraestrutura" href="#infraestrutura"></a></li>
+       <li><a class="icon-juridica" href="#situacao-juridica"></a></li>
+       <li><a class="icon-trabalho-educacao" href="#trabalho-educacao"></a></li>
+       <li><a class="icon-saude" href="#saude"></a></li>
+       <li><a class="icon-materno" href="#materno-infantil"></a></li>
+       <li><a class="icon-alas-exclusivas" href="#alas-exclusivas"></a></li>
+    </ul>
+</nav>
 {% endblock %}

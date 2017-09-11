@@ -5,12 +5,24 @@ html {
 body {
 	background-color: $cp-grey;
 	font-family: "source_sans_proregular";
-	height: 100vh;
+	min-height: 100vh;
 	padding-top: 0;
-	
+
 	@media(min-height: 768px){
-		padding-bottom: 53px;
+
+		&:not(.dados) {
+			padding-bottom: 53px;
+		}
+
+		&:not(.dados) #footer{
+				left: 0;
+				position: fixed;
+				right: 0;
+				top: calc(100% - 53px);
+		}
+
 	}
+
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -56,12 +68,7 @@ section.container {
 	padding: 15px 0;
 	text-align: center;
 
-	@media(min-height: 768px){
-		left: 0;
-		position: fixed;
-		right: 0;
-		top: calc(100% - 53px);
-	}
+
 
 	address {
 		color: $conectas-cinza-claro;
@@ -77,27 +84,28 @@ section.container {
 	}
 }
 
-.pagination>li>a {
+.pagination > li > a {
 	color: $cp-orange-dark;
 }
 
-.pagination>.active>a,
-.pagination>.active>span,
-.pagination>.active>a:hover,
-.pagination>.active>span:hover,
-.pagination>.active>a:focus,
-.pagination>.active>span:focus {
+.pagination > .active > span,
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
     background-color: $cp-orange-dark;
-    border-color: $cp-orange-dark;
+	border-color: $cp-orange-dark;
+	z-index: 0;
 }
 
-.pagination>li:first-child>a,
-.pagination>li:first-child>span {
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
     border-bottom-left-radius: 2px;
     border-top-left-radius: 2px;
 }
-.pagination>li:last-child>a,
-.pagination>li:last-child>span {
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
 }

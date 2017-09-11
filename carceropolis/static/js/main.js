@@ -74,57 +74,99 @@ jQuery(function ($) {
   })
 
   // Pagina de dados
-  $('.dados-gerais').addClass('animated fadeInDownBig')
+  $('body').scrollspy({ target: '#dados-bar' })
 
-  // Animação Scroll com AOS
-  AOS.init()
+  $('#dados-bar').on('activate.bs.scrollspy', function (event) {
+  
+      let ativo = $(event.target).find('a').attr('href')
 
-  // Scrollspy do bootstrap 
+      console.log(ativo)
 
-  $('body').scrollspy({ target: '#navbarlateral' })
+      if(ativo === '#dados-gerais'){
+          contador(document.querySelectorAll('#dados-gerais [data-final-number]'),20)
 
-  // Scroll em determinada section
+          /*
+          1. Dados Gerais
+          - número 622 inciando normal e tornando-se negrito
+          - animação (contador) no 111%
+          */
+      }
 
-$("#arrow").click(function() {
+      if(ativo === '#perfil-populacional'){
+      /* 
+        2. Perfil Populacional
+        - aparecer primeiro o bloco "A população carcerária..."
+        - aparecer depois o gráfico, animando a linha 
+        - aparecer depois o Estado de São Paulo e preencher proporcionalmente a 35% da área (animação)
+        - aparecer, por fim, o bloco "segundo dados do IBGE..."
+      */
+      }
 
-    let idAtual = $(this).attr('href').replace('#','')
+      if(ativo === '#infraestrutura'){
 
-    let clicado = $(':target').attr('id')
+        /* 
+        3. Infraestrutura
+        - fixar topo e rodapé (sobre déficit)
+        - aparecer os blocos conforme usuário rolar o scroll 
+        */
+      }
 
-    //verifica se tem algum target na url
-    if(idAtual == clicado ){
+      if(ativo === '#situacao-juridica'){
+        contador(document.querySelectorAll('#situacao-juridica [data-final-number]'),20)
+
+        /*         
+        4. Situação Jurídica
+        - preencher o branco
+        - destacar e aparecer o respectivo texto em branco com animação (contador) do 41%
+        - preencher o vermelho
+        - destacar e aparecer o respectivo texto em vermelho com animação (contador) do 37%
+        - aparecer "1 em cada 5" e depois o restante do rexto "presídio oferece..."
+        - aparecer o último bloco de conteúdo, com apenas os quadrados brancos e com "crimes sem violência" em branco
+        - depois, preencher os semi-círculos vermelhos ao mesmo que tempo que aparece o círculo vermelho 
+          do 7 ao mesmo tempo que  "crimes sem violência" torna-se vermelho
+        */
+      }
+
+      if(ativo === '#trabalho-educacao'){
+
+        /* 5. Trabalho e educação
+        - imagem aparece primeiro
+        - depois vem o texto por cima, pelo lado esquerdo
+        - primeiro conjunto de 5 quadradinhos alinhados verticalmente
+        - segundo conjunto de quadradinhos, aparecer num grid de 5 linhas e aparecer coluna por coluna (da esquerda para a direita)
+        - preencher barra de progresso da esquerda para a direita de forma que o 18% seja revelado dentro da barra */
+      }
+
+      if(ativo === '#saude'){
+        contador(document.querySelectorAll('#saude [data-final-number]'),20)
+       /*  6. Saúde
+        - aparecer o texto "consultório médico"
+        - "Saúde" e texto "Apesar da metade..." na mesma cor do atual texto "49 ginecologistas..." com fundo branco
+        - animação (contador) no 49
+        - número 36.495 inciando normal e tornando-se negrito
+        - entrar próxima caixa de texto, sem o "3 vezes..." e os caixões
+        - por fim, aparecer o "3 vezes mais chances de morrer" e os 3 caixoes concomitantemente */
+
+      }
+
+      if(ativo === '#materno-infantil'){
+        contador(document.querySelectorAll('#materno-infantil [data-final-number]'),1)
+       /*  7. Materno-infantil
+        - animação (contador) no 534
+        - animação (contador) no 585 */
+      }
+
+      if(ativo === '#alas-exclusivas'){
+        contador(document.querySelectorAll('#alas-exclusivas [data-final-number]'),50)
+
+        /* 8. Alas Exclusivas
+        - animação (contador) no 12%
+        - número 1.294 inciando normal e tornando-se negrito
+        - preencher celas vermelhas e depois as cadeiras de rodas brancas */
+      }
 
 
-        //verifica se não é o ultimo
-        if($('#'+idAtual).next().length){
-
-            let idProximo = $('#'+idAtual).next().attr('id')
-
-            console.log(idProximo)
-
-            $('html, body').animate({
-                scrollTop: $('#'+idProximo).offset().top
-            }, 2000);
-
-            $(this).attr('href','#'+idProximo)
-
-        } else {
-            //se for o ultimo, joga pra cima
-            $('html, body').animate({
-                scrollTop: $('.infografico').offset().top
-            },  2000);
-        }
-
-    } 
-
-    else {
-        //se nao tem target, é o primeiro click
-        $('html, body').animate({
-            scrollTop: $('#'+idAtual).offset().top
-        }, 2000);
-    }
-
-});
+  })
 
   //funcoes
   function hide_all_modals() {
@@ -149,13 +191,15 @@ $("#arrow").click(function() {
 })
 
 //vanilla functions
-function contador(elements) {
+
+
+function contador(elements, speed = 1) {
 
     for(let element of elements){
 
         let startNumber = parseInt(element.textContent),
             endNumber = parseInt(element.getAttribute('data-final-number'))
-            
+
         setInterval(
             () => {
 
@@ -164,11 +208,11 @@ function contador(elements) {
                     startNumber++
                     element.textContent = startNumber
 
-                } 
+                }
 
             }
-            ,1
+            ,speed
         )
-    
+
     }
 }

@@ -1,11 +1,10 @@
 body[class^='sobre'] {
 
     @media (min-width: 768px) {
-        #page-content-wrapper {
-            background-image: url(../images/about.jpg);
-            background-position: center;
-            background-size: cover;
-        }
+
+        background-image: url(../images/about.jpg);
+        background-position: center;
+        background-size: cover;
 
         #footer {
             bottom: 0;

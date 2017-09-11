@@ -1,6 +1,4 @@
 /*
-help unidades
-
 24pt => 32px (1em)
 26pt -> 34.6px (1.08em)
 27pt => 36px (1.13em)
@@ -17,28 +15,16 @@ help unidades
     display: none;
 }
 
-.come-in {
-  transform: translateY(300px);
-  animation: come-in 0.8s ease forwards;
-}
-.come-in:nth-child(odd) {
-  animation-duration: 0.6s;
-}
-.already-visible {
-  transform: translateY(0);
-  animation: none;
-}
-
-@keyframes come-in {
-  to { transform: translateY(0); }
-}
-
 .infografico {
 
-    background: $dark-pink;
     $font-size: 32px;
+
+    background: $dark-pink;
     font-size: $font-size;
     line-height: 110%;
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
 
     .br {
         display: block;
@@ -51,7 +37,7 @@ help unidades
     section {
         background: $dark-pink;
         color: white;
-        // min-height: 100vh;  
+        min-height: 100vh;
         font-family: $light;
         font-weight: lighter;
         letter-spacing: .01em;
@@ -127,6 +113,8 @@ help unidades
 	.dados-gerais {
 
         transition: 0.8s;
+        display: flex;
+        align-items: center;
 
         h1 {
             margin-bottom: 0;
@@ -993,38 +981,90 @@ help unidades
 }
 
 // Menu lateral scroll ///////////////
-
-#navbarlateral {
+.navbarlateral {
+    background-color: $bg-light;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #888888;
     position: fixed;
     right: 20px;
     top: 20%;
     z-index: 5;
-    background-color: $bg-light;
-    box-shadow: 1px 1px 5px #888888;
-}
 
-.navbarlateral {
-    border-radius: 5px;
-}
+    ul {
+        font-size: 2em;
+        list-style: none;
+        text-align: center;
+    }
 
-#navbarlateral ul {
-    list-style: none;
-}
+    li {
+        padding: 1px;
+    }
 
-#navbarlateral li {
-    padding: 1px;
-}
+    li:first-child a {
+        padding-top: 20px;
+        &:before{
+           position: relative;
+           top: -3px;
 
-a {
-    color: #af1e23;
-    text-decoration: none;
-}
+        }
+    }
 
-a:hover {
-    color: #af1e23;
-}
+    li:last-child a {
+        padding-bottom: 20px;
+        &:before{
+            position: relative;
+            top: 6px;
+        }
+    }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-    color: #fff;
-    background-color: #af1e23;
+    a {
+        border-radius: 2.5px;
+        color: #af1e23;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #af1e23;
+    }
+
+    .nav-pills > li.active > a,
+    .nav-pills > li.active > a:hover,
+    .nav-pills > li.active > a:focus {
+        color: #fff;
+        background-color: #af1e23;
+    }
+
+    .icon-dados-gerais {
+
+    }
+
+    .icon-perfil-populacional {
+
+    }
+
+    .icon-infraestrutura {
+
+    }
+
+    .icon-juridica {
+
+    }
+
+    .icon-trabalho-educacao {
+
+    }
+
+    .icon-saude {
+
+    }
+
+    .icon-materno {
+
+    }
+
+    .icon-alas-exclusivas {
+
+    }
+
+
 }
