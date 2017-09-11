@@ -31,7 +31,7 @@ from mezzanine.generic.models import Keyword
 from mezzanine.utils.email import send_verification_mail, send_approve_mail
 from mezzanine.utils.views import paginate
 from mezzanine.utils.urls import login_redirect, next_url
-from bokeh.embed import autoload_server
+from bokeh.embed import server_document
 
 from .models import AreaDeAtuacao, Especialidade, Especialista, Publicacao
 
@@ -468,7 +468,7 @@ def data_dashboard(request, template="dashboard/dashboard.html"):
     """
     Data dashboard.
     """
-    script = autoload_server(url='http://localhost:5006/bkapp')
+    script = server_document(url='http://localhost:5006/bkapp')
     if request.GET.urlencode():
         state = base64.urlsafe_b64encode(request.GET.urlencode().encode()).decode('utf8')
         mark = 'bokeh-absolute-url'
