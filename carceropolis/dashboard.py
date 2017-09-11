@@ -81,10 +81,19 @@ class Dashboard(object):
             state = {}
 
         self.chart_types = {
-            'linha': self.plot_lines,
-            'barras horizontais': self.plot_hbar,
-            'barras verticais': self.plot_vbar,
-            'círculos': self.plot_circles,
+            'linha': {
+                'fn': self.plot_lines
+            },
+            'barras horizontais': {
+                'fn': self.plot_hbar,
+                'invert_axies': True
+            },
+            'barras verticais': {
+                'fn': self.plot_vbar
+            },
+            'círculos': {
+                'fn': self.plot_circles
+            },
         }
         charts_names = list(self.chart_types)
         none_value = 'Nenhum'
@@ -191,18 +200,15 @@ class Dashboard(object):
     # TODO: move helpers (don't really need self) to a new file?
     def plot_lines(self, fig, x, y, source):
         fig.line(x, y, source=source)
-        # plot.line(x=xs, width=0.5, bottom=0, top=ys)
 
     def plot_vbar(self, fig, x, y, source):
         fig.vbar(x, 0.5, y, source=source)
-        # plot.vbar(x=xs, width=0.5, bottom=0, top=ys)
 
     def plot_hbar(self, fig, x, y, source):
         fig.hbar(y=y, height=0.5, right=x, left=0, source=source)
 
     def plot_circles(self, fig, x, y, source):
-        fig.circle(x, y, source=source)
-        # plot.circle(x=xs, y=ys)
+        fig.circle(x, y, size=10, source=source)
     # -----------------------------------------
 
     def handle_filtering(self, df):
@@ -261,18 +267,24 @@ class Dashboard(object):
         Creates the chart.
         '''
         df = self.handle_filtering(self.df)
-        df = df.groupby(self.x_sel.value).sum()
+        df = df.groupby(self.x_sel.value, as_index=False).sum()
         source = ColumnDataSource(data=df)
 
-        xs = self.df[self.x_sel.value].values
-        ys = self.df[self.y_sel.value].values
-        x_title = self.x_sel.value.title()
-        y_title = self.y_sel.value.title()
+        chart_type_info = self.chart_types[self.chart_type_sel.value]
+        x_value = self.x_sel.value
+        y_value = self.y_sel.value
+        if chart_type_info.get('invert_axies'):
+            x_value, y_value = y_value, x_value
+
+        xs = df[x_value].values
+        ys = df[y_value].values
+        x_title = x_value.title()
+        y_title = y_value.title()
 
         kw = dict()
-        if self.x_sel.value in self.discrete:
+        if x_value in self.discrete:
             kw['x_range'] = sorted(set(xs))
-        if self.y_sel.value in self.discrete:
+        if y_value in self.discrete:
             kw['y_range'] = sorted(set(ys))
         kw['title'] = "%s vs %s" % (x_title, y_title)
 
@@ -281,16 +293,20 @@ class Dashboard(object):
         fig.xaxis.axis_label = x_title
         fig.yaxis.axis_label = y_title
 
-        if self.x_sel.value in self.discrete:
+        # TODO: fix needed for hbar, not sure why...
+        if chart_type_info.get('invert_axies'):
+            fig.x_range.start = 0
+            fig.x_range.end = xs.max()
+
+        if x_value in self.discrete:
             fig.xaxis.major_label_orientation = pd.np.pi / 4
 
-        self.chart_types[self.chart_type_sel.value](
-            fig, self.x_sel.value, self.y_sel.value, source)
+        chart_type_info['fn'](fig, x_value, y_value, source)
 
         hover = HoverTool(tooltips=[
             ("index", "$index"),
-            (self.x_sel.value, '@'+self.x_sel.value),
-            (self.y_sel.value, '@'+self.y_sel.value),
+            (x_value, '@'+x_value),
+            (y_value, '@'+y_value),
         ])
         fig.add_tools(hover)
 
