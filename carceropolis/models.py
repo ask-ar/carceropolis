@@ -1,4 +1,3 @@
-# coding= utf-8
 """Modelos definidos para o Projeto carcerópolis."""
 import logging
 
@@ -16,7 +15,9 @@ log = logging.getLogger(__name__)
 
 
 class AreaDeAtuacao(models.Model):
+
     """Categorias Gerais de classificação de Especialistas e Publicações."""
+
     nome = models.CharField(max_length=250, unique=True,
                             verbose_name='Nome da área')
     descricao = models.TextField(verbose_name='Descrição')
@@ -24,6 +25,7 @@ class AreaDeAtuacao(models.Model):
     slug = AutoSlugField(populate_from='nome', always_update=True)
 
     def __str__(self):
+        """String representation of an instance."""
         return self.nome
 
     class Meta:
@@ -32,7 +34,9 @@ class AreaDeAtuacao(models.Model):
 
 
 class Especialidade(models.Model):
+
     """Definição das Especialidades principais mapeadas no projeto."""
+
     nome = models.CharField(max_length=80, unique=True,
                             verbose_name='Nome da especialidade')
     descricao = models.TextField(blank=True, verbose_name='Descrição')
@@ -40,6 +44,7 @@ class Especialidade(models.Model):
                          always_update=True)
 
     def __str__(self):
+        """String representation of an instance."""
         return self.nome
 
     class Meta:
@@ -48,7 +53,9 @@ class Especialidade(models.Model):
 
 
 class Especialista(models.Model):
+
     """Classe que define os especialistas para o 'Banco de Especialistas'."""
+
     nome = models.CharField(max_length=250)
     email = models.EmailField()
     ddi = models.IntegerField(verbose_name='DDI', blank=True, null=True,
@@ -64,6 +71,7 @@ class Especialista(models.Model):
     especialidades = models.ManyToManyField(Especialidade)
 
     def __str__(self):
+        """String representation of an instance."""
         return self.nome
 
     class Meta:
@@ -72,7 +80,9 @@ class Especialista(models.Model):
 
 
 class Publicacao(BlogPost):
+
     """Publicações relacionadas à temática do site."""
+
     autoria = models.CharField(max_length=150, verbose_name='Autoria')
     categorias = models.ManyToManyField(AreaDeAtuacao,
                                         verbose_name='Categorias')
@@ -87,6 +97,7 @@ class Publicacao(BlogPost):
         verbose_name_plural = 'Publicações'
 
     def __str__(self):
+        """String representation of an instance."""
         return self.title
 
 
@@ -102,7 +113,9 @@ Publicacao._meta.get_field('allow_comments').default = False
 
 
 class UnidadePrisional(models.Model):
+
     """Unidades Prisionais."""
+
     nome_unidade = models.CharField(max_length=255,
                                     verbose_name='Nome da Unidade')
     sigla_unidade = models.CharField(max_length=10)
@@ -127,6 +140,7 @@ class UnidadePrisional(models.Model):
         verbose_name_plural = 'Unidades Prisionais'
 
     def __str__(self):
+        """String representation of an instance."""
         return "%s (%s/%s)" % (self.nome_unidade, self.municipio, self.uf)
 
     @classmethod
@@ -136,7 +150,6 @@ class UnidadePrisional(models.Model):
         The 'data' attribute is a dictionary with the necessary fields to
         generate a new Unidade Prisional.
         """
-
         unidade = UnidadePrisional()
         unidade.nome_unidade = data['nome_unidade']
         unidade.sigla_unidade = data['sigla_unidade']
@@ -243,7 +256,6 @@ class UnidadePrisional(models.Model):
         The 'data' attribute is a dictionary with the necessary fields to
         generate a new Unidade Prisional.
         """
-
         self.sigla_unidade = data['sigla_unidade']
         self.tipo_logradouro = data['tipo_logradouro']
         self.nome_logradouro = data['nome_logradouro']
@@ -278,6 +290,7 @@ class UnidadePrisional(models.Model):
 
 
 class BaseMJ(models.Model):
+
     """Manage the multiple versions of MJ Infopen raw database."""
 
     ano = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
@@ -288,6 +301,7 @@ class BaseMJ(models.Model):
     salvo_em = models.DateTimeField(verbose_name='Salvo em', auto_now_add=True)
 
     def __str__(self):
+        """String representation of an instance."""
         return "{}/{}".format(self.mes, self.ano)
 
     class Meta:
@@ -296,6 +310,7 @@ class BaseMJ(models.Model):
 
 
 class ArquivoBaseCarceropolis(models.Model):
+
     """Manage the multiple raw versions of the cleaned MJ/Infopen database."""
 
     ano = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
@@ -306,6 +321,7 @@ class ArquivoBaseCarceropolis(models.Model):
     salvo_em = models.DateTimeField(verbose_name='Salvo em', auto_now_add=True)
 
     def __str__(self):
+        """String representation of an instance."""
         return "{}/{}".format(self.mes, self.ano)
 
     class Meta:
