@@ -116,7 +116,11 @@ class UnidadePrisional(models.Model):
     cep = models.CharField(max_length=8)
     ddd = models.IntegerField(verbose_name='DDD', null=True, blank=True)
     telefone = models.IntegerField(null=True, blank=True)
-    email = models.EmailField()
+    email = models.EmailField(null=True, blank=True)
+    responsavel = models.CharField(blank=True, max_length=255,
+                                   verbose_name='Responsável')
+    lat = models.FloatField(blank=True, null=True)
+    lon = models.FloatField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'Unidade Prisional'
