@@ -57,7 +57,7 @@ class Especialista(models.Model):
     """Classe que define os especialistas para o 'Banco de Especialistas'."""
 
     nome = models.CharField(max_length=250)
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     ddi = models.IntegerField(verbose_name='DDI', blank=True, null=True,
                               default=55)
     ddd = models.IntegerField(verbose_name='DDD', blank=True, null=True)
