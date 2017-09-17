@@ -205,22 +205,28 @@ def especialistas_list(request, extra_context=None):
     if 'nome' in request.GET.keys():
         nome = request.GET.get('nome'),
         nome = nome[0]
-        especialistas = especialistas.filter(
-            nome__icontains=nome)
-        context['nome'] = nome
+        nomes = nome.split('-')
+        for item in nomes:
+            especialistas = especialistas.filter(
+                nome__icontains=item)
+        context['nome'] = nomes
 
     if 'area_atuacao' in request.GET.keys():
         area_atuacao = request.GET.get('area_atuacao'),
         area_atuacao = area_atuacao[0]
-        especialistas = especialistas.filter(
-            area_de_atuacao__nome__in=[area_atuacao])
+        areas = area_atuacao.split('-')
+        for area in areas:
+            especialistas = especialistas.filter(
+                area_de_atuacao__nome__icontains=area)
         context['area_atuacao'] = area_atuacao
 
     if 'especialidade' in request.GET.keys():
         especialidade = request.GET.get('especialidade'),
         especialidade = especialidade[0]
-        especialistas = especialistas.filter(
-            especialidades__nome__in=[especialidade])
+        especialidades = especialidade.split('-')
+        for item in especialidades:
+            especialistas = especialistas.filter(
+                especialidades__nome__icontains=item)
         context['especialidade'] = especialidade
 
     prefetch = ("area_de_atuacao", 'especialidades')
