@@ -80,10 +80,17 @@ jQuery(function ($) {
   
       let ativo = $(event.target).find('a').attr('href')
 
-      console.log(ativo)
+      //console.log(ativo)
 
       if(ativo === '#dados-gerais'){
-          contador(document.querySelectorAll('#dados-gerais [data-final-number]'),20)
+
+          let dadosGerais = new Promise(
+
+            function(resolve, reject){
+                  $(`#dados-gerais [data-tobold]`).addClass(`toBold`)
+                  contador(document.querySelectorAll('#dados-gerais [data-final-number]'), 15, 1500)
+            }
+          )
 
           /*
           1. Dados Gerais
@@ -93,6 +100,9 @@ jQuery(function ($) {
       }
 
       if(ativo === '#perfil-populacional'){
+
+          $(`#perfil-populacional .anim1`).addClass(`slideInLeft`)
+          $(`#perfil-populacional svg .linha`).attr(`class`, `linha full`)
       /* 
         2. Perfil Populacional
         - aparecer primeiro o bloco "A população carcerária..."
@@ -191,28 +201,30 @@ jQuery(function ($) {
 })
 
 //vanilla functions
+function contador(elements, speed = 1, delay = 0) {
 
+  setTimeout(incrementador, delay)
 
-function contador(elements, speed = 1) {
+    function incrementador() {
 
-    for(let element of elements){
+      for(let element of elements){
 
-        let startNumber = parseInt(element.textContent),
-            endNumber = parseInt(element.getAttribute('data-final-number'))
+          let startNumber = parseInt(element.textContent),
+          endNumber = parseInt(element.getAttribute('data-final-number'))
 
-        setInterval(
+          setInterval(
             () => {
 
-                if(startNumber < endNumber) {
+              if(startNumber < endNumber) {
 
-                    startNumber++
-                    element.textContent = startNumber
+                startNumber++
+                element.textContent = startNumber
 
-                }
-
+              }
             }
-            ,speed
+          , speed
         )
 
-    }
+      }
+  }
 }
