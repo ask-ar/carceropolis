@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Admin module of Carceropolis project personalizations."""
 from copy import deepcopy
 from django.contrib import admin
@@ -8,12 +7,10 @@ from mezzanine.blog.admin import BlogPostAdmin
 from .models import (AreaDeAtuacao, ArquivoBaseCarceropolis, BaseMJ,
                      Especialidade, Especialista, Publicacao, UnidadePrisional)
 
-from django.contrib.admin.models import LogEntry, DELETION
-from django.utils.html import escape
-from django.core.urlresolvers import reverse
-
 
 class EspecialistaAdmin(admin.ModelAdmin):
+    """Especialista admin class."""
+
     search_fields = ['nome', 'instituicao', 'area_de_atuacao__nome',
                      'especialidades__nome']
     list_filter = ['area_de_atuacao', 'especialidades', 'instituicao']
@@ -21,6 +18,7 @@ class EspecialistaAdmin(admin.ModelAdmin):
 
 
 def generate_publicacao_fieldset():
+    """Generate a list with Publicacao fields."""
     publicacao_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
     fields = publicacao_fieldsets[0][1]["fields"]
 
@@ -44,13 +42,17 @@ def generate_publicacao_fieldset():
     return publicacao_fieldsets
 
 
-class PublicacaoAdmin(BlogPostAdmin):
+class PublicacaoAdmin(BlogPostAdmin):  # pylint: disable=too-many-ancestors
+    """Publicacao admin class."""
+
     fieldsets = generate_publicacao_fieldset()
     list_display = ['title', 'autoria', 'status', 'view_link']
     list_filter = ['ano_de_publicacao', 'categorias', 'status', 'keywords']
     search_fields = ['title', 'autoria']
 
-    def view_link(self, obj):
+    @staticmethod
+    def view_link(obj):
+        """Create a safe link."""
         return mark_safe('<a href="{0}">{1}</a>'.format(obj.get_absolute_url(),
                                                         _("View on Site")))
 
@@ -59,6 +61,8 @@ class PublicacaoAdmin(BlogPostAdmin):
 
 
 class UnidadePrisionalAdmin(admin.ModelAdmin):
+    """Unidade Prisional admin class."""
+
     fieldsets = [(None, {u'fields': [u'nome_unidade', u'sigla_unidade',
                                      u'tipo_logradouro', u'nome_logradouro',
                                      u'numero', u'complemento', u'bairro',
@@ -70,6 +74,8 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
 
 
 class BaseMJAdmin(admin.ModelAdmin):
+    """Base MJ admin class."""
+
     list_display = ['mes', 'ano', 'salvo_em']
     list_filter = ['mes', 'ano']
     readonly_fields = ()
@@ -80,71 +86,12 @@ class BaseMJAdmin(admin.ModelAdmin):
         If the user is creating a new object (ADD), then there are no readonly
         fields, otherwise, all fields are readonly.
         """
-        if obj:
-            return ['mes', 'ano', 'salvo_em', 'arquivo']
-        else:
-            return []
-
-
-class LogEntryAdmin(admin.ModelAdmin):
-
-    date_hierarchy = 'action_time'
-
-    readonly_fields = [f.name for f in LogEntry._meta.get_fields()]
-
-    list_filter = [
-        'user',
-        'content_type',
-        'action_flag'
-    ]
-
-    search_fields = [
-        'object_repr',
-        'change_message'
-    ]
-
-    list_display = [
-        'action_time',
-        'user',
-        'content_type',
-        'object_link',
-        'action_flag',
-        'change_message',
-    ]
-
-    def has_add_permission(self, request):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return request.user.is_superuser and request.method != 'POST'
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def object_link(self, obj):
-        if obj.action_flag == DELETION:
-            link = escape(obj.object_repr)
-        else:
-            ctype = obj.content_type
-            url = 'admin:{}_{}_change'.format(ctype.app_label, ctype.model)
-            url = reverse(url, args=[obj.object_id])
-            text = escape(obj.object_repr)
-            link = u'<a href="{}">{}</a>'.format(url, text)
-        return link
-
-    object_link.allow_tags = True
-    object_link.admin_order_field = 'object_repr'
-    object_link.short_description = u'object'
-
-    def queryset(self, request):
-        return super(LogEntryAdmin, self).queryset(request) \
-            .prefetch_related('content_type')
-
-
-admin.site.register(LogEntry, LogEntryAdmin)
+        return ['mes', 'ano', 'salvo_em', 'arquivo'] if obj else []
 
 
 class ArquivoBaseCarceropolisAdmin(admin.ModelAdmin):
+    """Arquivo Base Carceropolis admin class."""
+
     list_display = ['mes', 'ano', 'salvo_em']
     list_filter = ['mes', 'ano']
     readonly_fields = ()
@@ -156,10 +103,7 @@ class ArquivoBaseCarceropolisAdmin(admin.ModelAdmin):
         If the user is creating a new object (ADD), then there are no readonly
         fields, otherwise, all fields are readonly.
         """
-        if obj:
-            return ['mes', 'ano', 'salvo_em', 'arquivo']
-        else:
-            return []
+        return ['mes', 'ano', 'salvo_em', 'arquivo'] if obj else []
 
 
 admin.site.register(AreaDeAtuacao)
