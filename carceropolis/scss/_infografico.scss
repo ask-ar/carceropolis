@@ -206,6 +206,15 @@
         li:nth-child(4){
             padding-top: $font-size;
             text-align: right;
+
+            > div {
+                color: transparent;
+                transition: 1s ease-in;
+            }
+
+            > div.bounceInDown {
+                color: white;
+            }
         }
 
 	}
@@ -218,6 +227,13 @@
 
         .anim1 {
             transform: translate3d(-100%, 0, 0);
+        }
+
+        .anim3,
+        .anim2 {
+            transform: translate3d(0, 130%, 0);
+            visibility: hidden;
+            z-index: -1;
         }
 
         h1 a {
