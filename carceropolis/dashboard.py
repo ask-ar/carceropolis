@@ -4,6 +4,7 @@ from urllib.parse import parse_qs
 
 import pandas as pd
 from tornado.ioloop import IOLoop
+from bokeh.core.properties import value
 from bokeh import palettes
 from bokeh.plotting import figure
 from bokeh.transform import dodge
@@ -62,11 +63,24 @@ def show_widget(widget):
 def get_legend(y, ys):
     '''
     Return a legend string for a column.
-    An empty space is added to avoid Bokeh behavior of replacing
+    A `value` is used to avoid Bokeh behavior of replacing
     the string with the column data when the name matches.
     If only one column will be plotted, uses empty legend.
     '''
-    return y+' ' if len(ys) > 1 else None
+    return value(y) if len(ys) > 1 else None
+
+
+def create_source(df, x, y, color):
+    '''
+    Creates a datasource in the format needed for tooltips.
+    '''
+    return ColumnDataSource(data={
+        x: df[x],
+        'value': df[y],
+        'value_name': [y]*len(df),
+        'color': [color]*len(df),
+    })
+    return ColumnDataSource(data=df)
 
 
 def plot_bar_iterator(ys, outer_width, palette):
@@ -81,45 +95,49 @@ def plot_bar_iterator(ys, outer_width, palette):
         yield y, offset, color
 
 
-def plot_lines(fig, x, ys, source, palette):
+def plot_lines(fig, x, ys, df, palette):
     '''
     Plot a line chart.
     '''
     for y, color in zip(ys, palette):
+        source = create_source(df, x, y, color)
         fig.line(
-            x, y, source=source, line_width=3, color=color,
+            x, 'value', source=source, line_width=3, color=color,
             legend=get_legend(y, ys))
 
 
-def plot_vbar(fig, x, ys, source, palette):
+def plot_vbar(fig, x, ys, df, palette):
     '''
     Plot a vertical bar chart.
     '''
     width = 0.2
     for y, offset, color in plot_bar_iterator(ys, width+.03, palette):
+        source = create_source(df, x, y, color)
         fig.vbar(
-            x=dodge(x, offset, range=fig.x_range), width=width+.03, top=y,
+            x=dodge(x, offset, range=fig.x_range), width=width+.03, top='value',
             source=source, color=color, legend=get_legend(y, ys))
 
 
-def plot_hbar(fig, x, ys, source, palette):
+def plot_hbar(fig, x, ys, df, palette):
     '''
     Plot a horizontal bar chart.
     '''
     width = 0.2
     for y, offset, color in plot_bar_iterator(ys, width+.03, palette):
+        source = create_source(df, x, y, color)
         fig.hbar(
-            y=dodge(x, offset, range=fig.y_range), height=width, right=y,
+            y=dodge(x, offset, range=fig.y_range), height=width, right='value',
             source=source, color=color, legend=get_legend(y, ys))
 
 
-def plot_circles(fig, x, ys, source, palette):
+def plot_circles(fig, x, ys, df, palette):
     '''
     Plot a scatter chart.
     '''
     for y, color in zip(ys, palette):
+        source = create_source(df, x, y, color)
         fig.circle(
-            x, y, size=10, source=source, color=color,
+            x, 'value', size=10, source=source, color=color,
             legend=get_legend(y, ys))
 
 
@@ -349,7 +367,6 @@ class Dashboard(object):
         '''
         df = self.handle_filtering(self.df)
         df = df.groupby(self.controls['x_sel'].value, as_index=False).sum()
-        source = ColumnDataSource(data=df)
 
         chart_type_info = self.chart_types[
             self.controls['chart_type_sel'].value]
@@ -369,28 +386,37 @@ class Dashboard(object):
 
         kw['y_range'] = (0, max([max(df[y].values) for y in y_values]))
 
+        no_color_grid_direction = 'xgrid'
         if chart_type_info.get('invert_axies'):
             x_title, y_title = y_title, x_title
             kw['x_range'], kw['y_range'] = kw['y_range'], kw['x_range']
+            no_color_grid_direction = 'ygrid'
 
         kw['title'] = "%s vs %s" % (x_title, y_title)
 
-        fig = figure(plot_height=600, plot_width=800,
-                     tools='pan,box_zoom,reset,save', **kw)
+        fig = figure(
+            plot_height=600, plot_width=800, background_fill_alpha=0,
+            border_fill_alpha=0, tools='pan,box_zoom,reset,save', **kw)
         fig.xaxis.axis_label = x_title
         fig.yaxis.axis_label = y_title
-        fig.xgrid.grid_line_color = None
+        getattr(fig, no_color_grid_direction).grid_line_color = None
 
         # Rotate category labels so they have more space
         if x_value in self.discrete:
             fig.xaxis.major_label_orientation = pd.np.pi / 4
 
         # Plot
-        chart_type_info['fn'](fig, x_value, y_values, source, self.palette)
+        chart_type_info['fn'](fig, x_value, y_values, df, self.palette)
 
         # Tooltips
-        tooltips = [(y, '@'+y) for y in y_values]
-        tooltips.insert(0, (x_value, '@'+x_value))
+        tooltips = '''
+        <div class="mytooltip" style="color:@color;">
+            <ul>
+                <li>{xname}: @{xname}</li>
+                <li>@value_name: @value</li>
+            </ul>
+        </div>
+        '''.format(xname=x_value)
         hover = HoverTool(tooltips=tooltips)
         fig.add_tools(hover)
 
