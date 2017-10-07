@@ -470,12 +470,14 @@ def data_dashboard(request, template="dashboard/dashboard.html"):
     """
     script = server_document(url='http://localhost:5006/bkapp')
     if request.GET.urlencode():
-        state = base64.urlsafe_b64encode(request.GET.urlencode().encode()).decode('utf8')
+        state = base64.urlsafe_b64encode(
+            request.GET.urlencode().encode()).decode('utf8')
         mark = 'bokeh-absolute-url'
         insert = 'state=' + state + '&' + mark
         script = script.replace(mark, insert)
     context = {"script": script}
-    # context = {"script": ' '.join(script.splitlines()).replace('/script', 'end-script')}
+    # context = {"script": ' '.join(
+    #     script.splitlines()).replace('/script', 'end-script')}
     templates = [template]
 
     return TemplateResponse(request, templates, context)

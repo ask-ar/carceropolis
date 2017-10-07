@@ -8,8 +8,7 @@ pandas
 ipython
 # To be replaced by bokeh graphs
 plotly
-pandas
 numpy
-bokeh==0.12.7
+bokeh==0.12.9
 flexx
 tornado
