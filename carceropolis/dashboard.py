@@ -267,6 +267,7 @@ class Dashboard(object):
         self.layout = row(
             widgetbox(list(self.controls.values()), width=200),
             self.create_figure())
+        self.layout.css_classes = ['centered']
         doc.add_root(self.layout)
 
     def create_control(self, class_, args):

@@ -1,4 +1,38 @@
-<h1>Painel</h1>
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}
+    {% if page %}
+        {{ page.meta_title }}
+    {% else %}
+        {% trans "Painel de Dados" %}
+    {% endif %}
+{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Painel de Dados" %}
+{% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}{% endblock %}
+
+{% block main %}
+<h1>Painel de Dados</h1>
 
 {{ script|safe }}
 
@@ -6,4 +40,16 @@
 .hidden {
     display: none;
 }
+.centered {
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+}
+.bk-root .bk-widget select {
+    border: solid 2px #9C0009;
+    border-radius: 0px;
+}
 </style>
+
+{% endblock %}
