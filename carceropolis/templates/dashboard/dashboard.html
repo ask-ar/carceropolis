@@ -9,53 +9,44 @@
     {% endif %}
 {% endblock %}
 
-{% block meta_keywords %}{% metablock %}
-{% keywords_for page as keywords %}
-{% for keyword in keywords %}
-    {% if not forloop.first %}, {% endif %}
-    {{ keyword }}
-{% endfor %}
-{% endmetablock %}{% endblock %}
-
-{% block meta_description %}{% metablock %}
-{{ page.description }}
-{% endmetablock %}{% endblock %}
-
 {% block title %}
-{% if page %}
-{% editable page.title %}{{ page.title }}{% endeditable %}
-{% else %}
-{% trans "Painel de Dados" %}
-{% endif %}
+    {% if page %}
+        {% editable page.title %}
+            {{ page.title }}
+        {% endeditable %}
+    {% else %}
+        {% trans "Painel de Dados" %}
+    {% endif %}
 {% endblock %}
 
-{% block breadcrumb_menu %}{% endblock %}
+{% block extra_css %}
+    <style>
+    .hidden {
+        display: none;
+    }
+    .centered {
+        margin: 0 auto;
+    }
+    h1 {
+        text-align: center;
+    }
+    .bk-root .bk-widget select {
+        border: solid 2px #9C0009;
+        border-radius: 0px;
+    }
+    .mytooltip > ul {
+        list-style-type: none;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+    }
+    </style>
+{% endblock %}
 
 {% block main %}
-<h1>Painel de Dados</h1>
+  <section class="container">
+    <h1>Painel de Dados</h1>
 
-{{ script|safe }}
-
-<style>
-.hidden {
-    display: none;
-}
-.centered {
-    margin: 0 auto;
-}
-h1 {
-    text-align: center;
-}
-.bk-root .bk-widget select {
-    border: solid 2px #9C0009;
-    border-radius: 0px;
-}
-.mytooltip > ul {
-    list-style-type: none;
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-}
-</style>
-
+    {{ script|safe }}
+  </section>
 {% endblock %}
