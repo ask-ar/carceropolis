@@ -46,6 +46,24 @@
         text-transform: uppercase;
     }
 
+    .data-fonte {
+
+      &.br {
+        line-height: 16px;
+      }
+
+      &:before {
+        content: "[Fonte: ";
+      }
+
+      &:after {
+        content: "]";
+      }
+
+      font-weight: lighter;
+      font-size: 26px;
+    }
+
     section {
         background: $dark-pink;
         color: white;
@@ -206,6 +224,7 @@
         li:nth-child(4){
             padding-top: $font-size;
             text-align: right;
+            line-height: 1.35em;
 
             > div {
                 color: transparent;
@@ -463,7 +482,6 @@
 
         ol:not(.full) li:nth-child(1) strong:first-of-type {
             font-size: 1.82em;
-            
         }
 
         ol:not(.full) li:nth-child(2){
@@ -506,13 +524,12 @@
             text-align: center;
 
             p {
-                font-size: 1.65em;
-                line-height: 1.2;
-            }
+              font-size: 1.65em;
+              line-height: 1.2;
 
-            p:first-of-type {
-                font-size: 1.08em;
-                text-transform: uppercase;
+              .decrease-font {
+                font-size: 0.85em;
+              }
             }
 
             em {
@@ -536,7 +553,7 @@
             justify-content: space-between;
             margin-left: auto;
             margin-right: auto;
-            max-width: 1400px;
+            max-width: 1140px;
         }
 
         .justica-mulheres div {
@@ -676,7 +693,7 @@
             }
 
             .load::before {
-                content: '18%';
+                content: '20%';
                 background: white;
                 color: $purple;
                 display: inline-block;
@@ -684,7 +701,7 @@
                 height: 100%;
                 padding-left: 10px;
                 position: absolute;
-                width: 18%;
+                width: 20%;
             }
 
             .load .de-cem {
