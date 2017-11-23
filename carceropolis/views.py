@@ -465,10 +465,13 @@ def password_recovery(request):
 
 
 def data_dashboard(request, template="dashboard/dashboard.html"):
-    """
-    Data dashboard.
-    """
-    script = server_document(url='http://localhost:5006/bkapp')
+    """Data bokeh dashboard."""
+    HOST = request.get_host().split(':' + str(request.get_port()))[0]
+    if request.is_secure():
+        PROTOCOL = 'https://'
+    else:
+        PROTOCOL = 'http://'
+    script = server_document(url=PROTOCOL + HOST + ':5006/bkapp')
     if request.GET.urlencode():
         state = base64.urlsafe_b64encode(
             request.GET.urlencode().encode()).decode('utf8')
