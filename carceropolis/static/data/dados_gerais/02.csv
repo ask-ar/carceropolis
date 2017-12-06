@@ -1,8 +1,8 @@
 "Título","Taxa de encarceramento nos quatro países com a maior população prisional desde 2005",,,,,,,,,,,,
 "Unidade","Número de pessoas presas para cada 100 mil habitantes",,,,,,,,,,,,
-"Fonte","World Prison Brief",,,,,,,,,,,,
+"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Dezembro de 2014. Pesquisa Nacional por Amostragem Domiciliar – PNAD/IBGE.",,,,,,,,,,,,
 "Fonte link",,,,,,,,,,,,,
-"Notas","ONU possui indicador de taxa de encarceramento máxima, desde YYYY, de 110 pessoas presas para cada 100 mil habitantes.",,,,,,,,,,,,
+"Notas","ONU possui indicador de taxa de encarceramento máxima, desde YYYY, de 110 pessoas presas para cada 100 mil habitantes.; Os dados consideram a soma das populações custodiadas nas unidades prisionais do sistema penitenciário estadual (estabelecimentos penais geridos pelos estados ou por modelos de parceria entre a gestão estadual e entidades privadas, normalmente inseridos na estrutura das Secretarias de Justiça e Administração Prisional); e as pessoas custodiadas em carceragens de delegacias ou outros espaços de custódia geridos pelos órgãos da segurança pública estadual.",,,,,,,,,,,,
 ,,,,,,,,,,,,," "
 "Ano","EUA","China","Rússia","Brasil","ONU",,,,,,,,
 1992,501,,487,74,110,,,,,,,,
