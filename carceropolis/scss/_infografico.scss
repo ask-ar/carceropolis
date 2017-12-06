@@ -1,6 +1,4 @@
 /*
-help unidades
-
 24pt => 32px (1em)
 26pt -> 34.6px (1.08em)
 27pt => 36px (1.13em)
@@ -17,28 +15,28 @@ help unidades
     display: none;
 }
 
-.come-in {
-  transform: translateY(300px);
-  animation: come-in 0.8s ease forwards;
-}
-.come-in:nth-child(odd) {
-  animation-duration: 0.6s;
-}
-.already-visible {
-  transform: translateY(0);
-  animation: none;
-}
-
-@keyframes come-in {
-  to { transform: translateY(0); }
-}
-
 .infografico {
 
-    background: $dark-pink;
     $font-size: 32px;
-    font-size: $font-size;
+
+    @media (max-width: 768px){
+        font-size: 22px;
+    }
+    @media (min-width: 768px){
+        font-size: 24px;
+    }
+    @media (min-width: 992px){
+        font-size: 28px;
+    }
+    @media (min-width: 1200px){
+        font-size: 32px;
+    }
+
+    background: $dark-pink;
     line-height: 110%;
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
 
     .br {
         display: block;
@@ -48,10 +46,28 @@ help unidades
         text-transform: uppercase;
     }
 
+    .data-fonte {
+
+      &.br {
+        line-height: 16px;
+      }
+
+      &:before {
+        content: "[Fonte: ";
+      }
+
+      &:after {
+        content: "]";
+      }
+
+      font-weight: lighter;
+      font-size: 26px;
+    }
+
     section {
         background: $dark-pink;
         color: white;
-        // min-height: 100vh;  
+        min-height: calc(100vh - 80px);
         font-family: $light;
         font-weight: lighter;
         letter-spacing: .01em;
@@ -118,8 +134,23 @@ help unidades
             list-style: none;
             padding: 0;
         }
+
         strong {
             font-family: $bold;
+        }
+
+        strong[data-tobold]{
+            font-family: $regular;
+        }
+
+        strong.toBold {
+            animation: toBold 2s forwards;
+        }
+
+        @keyframes toBold {
+            to {
+                font-family: $bold;
+            }
         }
 
     }
@@ -127,6 +158,8 @@ help unidades
 	.dados-gerais {
 
         transition: 0.8s;
+        display: flex;
+        align-items: center;
 
         h1 {
             margin-bottom: 0;
@@ -191,6 +224,16 @@ help unidades
         li:nth-child(4){
             padding-top: $font-size;
             text-align: right;
+            line-height: 1.35em;
+
+            > div {
+                color: transparent;
+                transition: 1s ease-in;
+            }
+
+            > div.bounceInDown {
+                color: white;
+            }
         }
 
 	}
@@ -198,6 +241,19 @@ help unidades
 	.perfil-populacional {
         background: $purple;
         color: white;
+        display: flex;
+        align-items: center;
+
+        .anim1 {
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        .anim3,
+        .anim2 {
+            transform: translate3d(0, 130%, 0);
+            visibility: hidden;
+            z-index: -1;
+        }
 
         h1 a {
             color: $dark-pink;
@@ -259,12 +315,25 @@ help unidades
             svg .linha {
                 width: 90%;
             }
-            
+
             svg .linha path {
                 fill: none;
                 stroke: white;
                 stroke-width: 3px;
-            } 
+                stroke-dasharray: 446;
+                stroke-dashoffset: 446;
+            }
+
+            svg .linha.full path {
+                animation: dasharray 2s ease-out forwards;
+                animation-delay: 1s;
+            }
+
+            @keyframes dasharray {
+                to {
+                    stroke-dashoffset: 892;
+                }
+            }
         }
 
         li:nth-child(2) {
@@ -413,7 +482,6 @@ help unidades
 
         ol:not(.full) li:nth-child(1) strong:first-of-type {
             font-size: 1.82em;
-            
         }
 
         ol:not(.full) li:nth-child(2){
@@ -456,13 +524,12 @@ help unidades
             text-align: center;
 
             p {
-                font-size: 1.65em;
-                line-height: 1.2;
-            }
+              font-size: 1.65em;
+              line-height: 1.2;
 
-            p:first-of-type {
-                font-size: 1.08em;
-                text-transform: uppercase;
+              .decrease-font {
+                font-size: 0.85em;
+              }
             }
 
             em {
@@ -486,7 +553,7 @@ help unidades
             justify-content: space-between;
             margin-left: auto;
             margin-right: auto;
-            max-width: 1400px;
+            max-width: 1140px;
         }
 
         .justica-mulheres div {
@@ -626,7 +693,7 @@ help unidades
             }
 
             .load::before {
-                content: '18%';
+                content: '20%';
                 background: white;
                 color: $purple;
                 display: inline-block;
@@ -634,7 +701,7 @@ help unidades
                 height: 100%;
                 padding-left: 10px;
                 position: absolute;
-                width: 18%;
+                width: 20%;
             }
 
             .load .de-cem {
@@ -756,7 +823,9 @@ help unidades
 	}
 
 	section.materno-infantil {
-
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding-bottom: 0;
 
         h1 {
@@ -850,6 +919,8 @@ help unidades
 
 	.alas-exclusivas {
 
+        min-height: calc(100vh - 80px - 53px); //-header -footer
+
         h1 {
             margin-bottom: 0;
         }
@@ -930,101 +1001,91 @@ help unidades
 	}
 }
 
-// // //= Setas de scroll ======================================= /
-.scrolldown {
-    position: fixed;
-    bottom: 50px;
-    right: 40px;
-    z-index: 1;
-}
-
-.arrow-down{
-  animation: softBlink 1500ms infinite;
-  background-image: url(../images/infografico/arrow-down.svg);
-  background-repeat: no-repeat;
-  background-size: 162%;
-  background-position: -18px -25px;  
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -10px;
-  height: 40px;
-  opacity: 0;
-  transition: 1s ease-in-out;
-  width: 60px;
-
-  &:nth-child(2){
-      animation: softBlink-mid 1500ms infinite;
-  }
-
-  &:nth-child(3){
-      animation: softBlink-opaque 1500ms infinite;
-  }
-}
-@keyframes softBlink{
-
-  60%{
-    opacity: 0;
-  }
-  100%{
-    opacity: .2;
-    transform: translateY(20px);
-  }
-}
-
-@keyframes softBlink-mid{
-  40%{
-    opacity: 0;
-  }
-  100%{
-    opacity: .5;
-    transform: translateY(20px);
-  }
-}
-
-@keyframes softBlink-opaque{
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-    transform: translateY(20px);
-  }
-}
-
 // Menu lateral scroll ///////////////
-
-#navbarlateral {
+.navbarlateral {
+    background-color: $bg-light;
+    border-radius: 5px;
+    box-shadow: 10px 12px 16px rgba(0,0,0,.3);
     position: fixed;
     right: 20px;
     top: 20%;
     z-index: 5;
-    background-color: $bg-light;
-    box-shadow: 1px 1px 5px #888888;
-}
 
-.navbarlateral {
-    border-radius: 5px;
-}
+    ul {
+        font-size: 2em;
+        list-style: none;
+        text-align: center;
+    }
 
-#navbarlateral ul {
-    list-style: none;
-}
+    li {
+        padding: 1px;
+    }
 
-#navbarlateral li {
-    padding: 1px;
-}
+    li:first-child a {
+        padding-top: 20px;
+        &:before{
+           position: relative;
+           top: -3px;
 
-a {
-    color: #af1e23;
-    text-decoration: none;
-}
+        }
+    }
 
-a:hover {
-    color: #af1e23;
-}
+    li:last-child a {
+        padding-bottom: 20px;
+        &:before{
+            position: relative;
+            top: 6px;
+        }
+    }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-    color: #fff;
-    background-color: #af1e23;
+    a {
+        border-radius: 2.5px;
+        color: #af1e23;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #af1e23;
+    }
+
+    .nav-pills > li.active > a,
+    .nav-pills > li.active > a:hover,
+    .nav-pills > li.active > a:focus {
+        color: #fff;
+        background-color: #af1e23;
+    }
+
+    .icon-dados-gerais {
+
+    }
+
+    .icon-perfil-populacional {
+
+    }
+
+    .icon-infraestrutura {
+
+    }
+
+    .icon-juridica {
+
+    }
+
+    .icon-trabalho-educacao {
+
+    }
+
+    .icon-saude {
+
+    }
+
+    .icon-materno {
+
+    }
+
+    .icon-alas-exclusivas {
+
+    }
+
+
 }

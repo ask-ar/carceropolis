@@ -1,6 +1,42 @@
-## INSTALAÇÃO (para desenvolvimento local)
+# INSTALAÇÃO (para desenvolvimento local)
 Abaixo os principais passos para instalação do projeto em ambiente de desenvolvimento.
 
+## Desenvolvendo com Docker
+Para facilitar o ambiente de desenvolvimento também disponibilizamos um
+Dockerfile e um docker-compose.
+
+Assim, para poder utilizar estes recursos, você precisará ter instalado em seu
+sistema o [Docker](https://docs.docker.com/engine/installation/)
+(versão Community Edtion >= 17.06) e o
+[docker-compose](https://docs.docker.com/compose/install/) (versão >= 1.15.0).
+
+Após instalar ambos, faça o clone deste repositório em algum diretório em seu
+computador. Na primeira vez em que for rodar o projeto, precisaremos criar e
+popular a base de dados, então utilize os seguintes comandos, nesta ordem,
+rodando da raiz do projeto: `docker-compose up -d db` e `docker-compose up
+bootstrap`. A opção `-d` no primeiro comando serve para manter o serviço rodando
+em background.
+
+Agora, para rodar efetivamente o projeto (nesta e nas próximas vezes), basta
+utilizara o comando `docker-compose up web`. Para "desligar" o container basta
+apertar CTRL+C. Se quiser subir novamente o mesmo container, rode o mesmo
+comando novamente.
+
+Caso hajam alterações na base (novas migrations), basta rodar `docker-compose
+exec web python3 manage.py migrate`. Se quiser gerar novas migrations, rode:
+`docker-compose exec web python3 manage.py makemigrations` (considerando que
+seu container 'web' está rodando).
+
+Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
+em seu sistema será automaticamente aplicada à instancia do projeto sendo
+executada.
+
+**ATENÇÃO**: Veja a forma de configurar o `local_settings.py` de seu projeto ao
+rodá-lo com docker (instruções neste arquivo mesmo).
+
+REF: https://docs.docker.com/compose/django/#connect-the-database
+
+## Server local (sem Docker)
 ### GNU/Linux - Básico
 Sistemas GNU/Linux contém python por padrão, então o que precisaremos é
 garantir que duas aplicações python estejam instaladas: O projeto está rodando
@@ -196,7 +232,7 @@ virtualenv venv $(which python3)
 Pronto, agora você tem um virtualenv com a versão do python3 instalada no seu
 sistema. =)
 
-### Trabalhando com o CSS
+## Trabalhando com o CSS
 Este projeto utiliza o Compass para escrever CSS. O Compass é um
 pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.
 
@@ -235,37 +271,4 @@ Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watc
 Execute este comando e após isto o watcher voltará a funcionar:
 `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
 
-### Desenvolvendo com Docker
-Para facilitar o ambiente de desenvolvimento também disponibilizamos um
-Dockerfile e um docker-compose.
 
-Assim, para poder utilizar estes recursos, você precisará ter instalado em seu
-sistema o [Docker](https://docs.docker.com/engine/installation/)
-(versão Community Edtion >= 17.06) e o
-[docker-compose](https://docs.docker.com/compose/install/) (versão >= 1.15.0).
-
-Após instalar ambos, faça o clone deste repositório em algum diretório em seu
-computador. Na primeira vez em que for rodar o projeto, precisaremos criar e
-popular a base de dados, então utilize os seguintes comandos, nesta ordem,
-rodando da raiz do projeto: `docker-compose up -d db` e `docker-compose up
-bootstrap`. A opção `-d` no primeiro comando serve para manter o serviço rodando
-em background.
-
-Agora, para rodar efetivamente o projeto (nesta e nas próximas vezes), basta
-utilizara o comando `docker-compose up web`. Para "desligar" o container basta
-apertar CTRL+C. Se quiser subir novamente o mesmo container, rode o mesmo
-comando novamente.
-
-Caso hajam alterações na base (novas migrations), basta rodar `docker-compose
-exec web python3 manage.py migrate`. Se quiser gerar novas migrations, rode:
-`docker-compose exec web python3 manage.py makemigrations` (considerando que
-seu container 'web' está rodando).
-
-Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
-em seu sistema será automaticamente aplicada à instancia do projeto sendo
-executada.
-
-**ATENÇÃO**: Veja a forma de configurar o `local_settings.py` de seu projeto ao
-rodá-lo com docker (instruções neste arquivo mesmo).
-
-REF: https://docs.docker.com/compose/django/#connect-the-database

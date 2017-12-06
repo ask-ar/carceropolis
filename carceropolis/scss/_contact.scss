@@ -1,10 +1,8 @@
-.fale-conosco {
-  #page-content-wrapper {
+body.fale-conosco {
     background-image: url(../images/background-contact.jpg);
     background-position: center;
     background-size: cover;
     height: auto;
-  }
 
   @media (min-width: 768px) {
     #title {
