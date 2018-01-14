@@ -24,8 +24,9 @@
 }
 
 #sidebar-wrapper {
-    background: $sidebar-bg url(../images/simbolo-conectas-sidenav.svg) no-repeat;
-    background-position: calc(100% + 20px) -10px;
+    background: $sidebar-bg url(../images/grafismo_principal.svg) no-repeat;
+    background-position: top right;
+    background-size: 138px;
     z-index: 1000;
     position: fixed;
     left: 280px;
@@ -122,15 +123,15 @@
     border-bottom: 1px solid white;
     display: block;
     margin: 0;
-    padding: 15px 15px 20px;
+    padding: 15px 0;
 
-    &:before {
-        background: url(../images/carceropolis-logo-branco.svg) no-repeat;
-        background-size: 100% auto;
-        content: '';
+    svg {
         display: block;
-        height: 22px;
-        width: 120px;
+        transform: scale(0.7) translateX(-20px);
+    }
+
+    svg g {
+        fill: #FFF;
     }
 }
 

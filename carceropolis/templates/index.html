@@ -10,17 +10,20 @@
 {% block main %}
 <section class="no-margin" id="main-slider">
   <div class="banner">
-    <video id="intro-video" class="video" poster="static/images/slider/carceropolis.png" muted loop autoplay>
-      <source src="static/videos/carceropolis-intro.mp4" type="video/mp4">
-    </video><!-- /video -->
-    <h2>Carcerópolis</h2>
+    <video id="intro-video" class="video" poster="{% static "images/slider/carceropolis.png" %}" muted loop autoplay>
+      <source src="{% static "videos/carceropolis-intro.mp4" %}" type="video/mp4">
+    </video>
+    <img src="{% static "images/carceropolis-logo.svg" %}" alt="Carcerópolis" class="carceropolis-logo">
     <p class="intro">
       O Brasil é um dos países que mais prende no mundo. Carcerópolis reúne dados e pesquisas que ajudam a revelar a estrutura e a população dessa nação atrás das grades.
     </p>
-    <p class="links">
+    <nav class="links">
       <a href="Dados">Dados</a>
       <a href="Publicacoes">Publicações</a>
-    </p>
+    </nav>
   </div>
+  <a href="http://www.conectas.org/" class="conectas-home" title="Por Conectas Direitos Humanos">
+    <img src="{% static "images/conectas-marca.svg" %}" alt="Conectas Direitos Humanos">
+  </a>
 </section>
 {% endblock %}
