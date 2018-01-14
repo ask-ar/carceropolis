@@ -68,7 +68,18 @@ section.container {
 	padding: 15px 0;
 	text-align: center;
 
+	.logo {
+		background: url(../images/conectas-marca.svg) no-repeat top center;
+		display: block;
+		font-size: 2.3em;
+		margin-bottom: .5em;
+		text-indent: -99999em;
 
+		@media (min-width: 768px){
+			display: inline-block;
+			margin-bottom: 0;
+		}
+	}
 
 	address {
 		color: $conectas-cinza-claro;
