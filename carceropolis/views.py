@@ -412,6 +412,15 @@ def dados_piramide_etaria(request):
     return TemplateResponse(request, templates, context)
 
 
+def unidades_map(request):
+    """Display the Unidades Prisionais Map.
+    """
+    templates = ["carceropolis/unidades/mapa.html"]
+    context = {}
+
+    return TemplateResponse(request, templates, context)
+
+
 def login_user(request):
     logout(request)
     username = password = ''

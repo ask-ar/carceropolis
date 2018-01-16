@@ -71,6 +71,10 @@ especialistas_pattern = [
     url(r'^$', views.especialistas_list, name='especialista_list'),
 ]
 
+unidades_pattern = [
+    url(r'^$', views.unidades_map, name='unidades_map'),
+]
+
 # Add the urlpatterns for any custom Django applications here.
 # You can also change the ``home`` view to add your own functionality
 # to the project's homepage.
@@ -90,6 +94,7 @@ urlpatterns += [
     url(r'^[Pp]ublicacoes/', include(publicacao_pattern)),
     url(r'^[Ee]specialistas/', include(especialistas_pattern)),
     url(r'^[Dd]ados/', include(dados_pattern)),
+    url(r'^[Uu]nidades/', include(unidades_pattern)),
     url(r'^entrar/$', views.login_user),
     url(r'^sair/$', logout),
     url(r'^cadastro/$', views.register_user),
