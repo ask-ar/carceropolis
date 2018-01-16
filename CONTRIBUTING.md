@@ -271,4 +271,15 @@ Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watc
 Execute este comando e após isto o watcher voltará a funcionar:
 `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
 
+## Exportando a base de dados
+Para exportar a base de dados após alterar algum dado, de forma que ela possa
+ser reimportada, o comando a ser executado é:
+`./manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > initialdata.json`
 
+Para importá-lo de volta à base utilize:
+`./manage.py loaddata initialdata.json`
+
+Vale a ressalva que se o projeto estiver sendo rodado utilizando Docker, esses
+comandos devem ser rodados no container em execução:
+
+`docker exec <CONTAINER_ID> python3 manage.py ...`
