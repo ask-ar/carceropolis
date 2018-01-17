@@ -1,7 +1,7 @@
 # coding: utf-8
 import logging
 import operator
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 from csv import DictReader
 from functools import reduce
 import json
@@ -18,6 +18,7 @@ from IPython.display import Image
 from requests.compat import json as _json
 from plotly import utils
 
+from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.messages import info, error
 from django.db.models import Q
@@ -33,7 +34,8 @@ from mezzanine.utils.views import paginate
 from mezzanine.utils.urls import login_redirect, next_url
 from bokeh.embed import server_document
 
-from .models import AreaDeAtuacao, Especialidade, Especialista, Publicacao
+from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
+                     UnidadePrisional)
 
 # from mezzanine.utils.views import render
 
@@ -413,10 +415,24 @@ def dados_piramide_etaria(request):
 
 
 def unidades_map(request):
-    """Display the Unidades Prisionais Map.
-    """
+    """Display the Unidades Prisionais Map."""
     templates = ["carceropolis/unidades/mapa.html"]
-    context = {}
+
+    # Fields included in JSON sent to client
+    fields = [
+        f.name
+        for f in UnidadePrisional._meta.get_fields()
+        if f not in ['id', 'response']]
+    fields.append('municipio__nome')
+
+    # JSON with unidades grouped by uf
+    states = defaultdict(list)
+    for unidade in UnidadePrisional.objects.exclude(lat=None).values(*fields):
+        unidade['municipio'] = unidade.pop('municipio__nome')
+        states[unidade['uf']].append(unidade)
+    context = {
+        'states': mark_safe(json.dumps(states))
+    }
 
     return TemplateResponse(request, templates, context)
 

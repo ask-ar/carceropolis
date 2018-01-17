@@ -1,22 +1,6 @@
 var map = null
-var mapData = window.map_data
 var statesLayerGroup = null
 
-function createMap () {
-  map = L.map('map').setView([-15, -50], 4)
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		id: 'mapbox.streets'
-	}).addTo(map)
-  statesLayerGroup = L.featureGroup().addTo(map).on('click', function(marker) {
-    displayShortInfo(marker.layer.unidade)
-  })
-
-  plotMap()
-}
 
 function displayShortInfo(unidade) {
   $('#unidade-short-info').text(unidade.nome_unidade)
@@ -34,31 +18,80 @@ function unidadeMatchesFilter(unidade, filter) {
   else return false
 }
 
-function plotMap(filter) {
-  statesLayerGroup.clearLayers()
-  $.each(mapData, function (uf, unidades) {
-    var stateLayer = L.markerClusterGroup()
 
-    var i = 0
-    var markers = []
-    for (i = 0; i < unidades.length; ++i) {
-      var unidade = unidades[i]
-      if (filter && !unidadeMatchesFilter(unidade, filter)) continue
-      var marker = L.marker([unidade.lat, unidade.lon])
-      marker.unidade = unidade
-      markers.push(marker)
-    }
-    stateLayer.addLayers(markers)
-    statesLayerGroup.addLayer(stateLayer)
-    // map.addLayer(stateLayer)
-  })
-}
-
-function applyFilter() {
-  var filterStr = stripDiacritics($('#filterInput').val())
-  plotMap(filterStr)
-}
 
 $(window).ready(function(){
-  createMap()
+  new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#map-vue-app',
+    data: {
+      // string used in map filtering
+      filterStr: '',
+      // selected unidade
+      unidade: null,
+      // if should show complete info about selected unidade
+      showCompleteInfo: false,
+    },
+    methods: {
+      createMap: function () {
+        map = L.map('map').setView([-15, -50], 4)
+	      L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+		      maxZoom: 18,
+		      attribution: 'Map tiles by <a href="https://carto.com">Carto</a>, ' +
+            'under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. ' +
+            'Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
+	      }).addTo(map)
+        var self = this
+        statesLayerGroup = L.featureGroup().addTo(map).on('click', function(marker) {
+          self.unidade = marker.layer.unidade
+        })
+
+        this.plotMap()
+      },
+      plotMap: function () {
+        var filter = this.filterStr
+        statesLayerGroup.clearLayers()
+        $.each(states, function (uf, unidades) {
+          var stateLayer = L.markerClusterGroup()
+          var i = 0
+          var markers = []
+          for (i = 0; i < unidades.length; ++i) {
+            var unidade = unidades[i]
+            if (filter && !unidadeMatchesFilter(unidade, filter)) continue
+            var marker = L.marker([unidade.lat, unidade.lon])
+            marker.unidade = unidade
+            markers.push(marker)
+          }
+          stateLayer.addLayers(markers)
+          statesLayerGroup.addLayer(stateLayer)
+        })
+      },
+      // Format used by mailto links
+      formatMailto: function (email) {
+        return 'mailto:' + email
+      },
+      // Format phone numbers with DDD
+      formatFone: function (fone, ddd) {
+        var foneStr = fone.toString()
+        return '(' + ddd + ') ' + foneStr.slice(0,4) + ' ' + foneStr.slice(4)
+      },
+      formatAddress: function (unidade) {
+        return unidade.tipo_logradouro +
+          ' ' + unidade.nome_logradouro +
+          (unidade.numero ? ', ' + unidade.numero : '') +
+          (unidade.complemento ? ', ' + unidade.complemento : '') +
+          ' - CEP: ' + unidade.cep.slice(0,-3) + '-' + unidade.cep.slice(-3) +
+          ' - ' + unidade.municipio +
+          ' - ' + unidade.uf
+      }
+    },
+    watch: {
+      filterStr: function (a, b) {
+        this.plotMap()
+      }
+    },
+    mounted: function () {
+      this.createMap()
+    }
+  })
 })

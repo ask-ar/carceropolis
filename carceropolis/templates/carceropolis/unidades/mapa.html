@@ -23,21 +23,65 @@
    integrity="sha512-C7BBF9irt5R7hqbUm2uxtODlUVs+IsNu2UULGuZN7gM+k/mmeG4xvIEac01BtQa4YIkUpp23zZC4wIwuXaPMQA=="
    crossorigin=""></script>
  <script src="https://unpkg.com/leaflet.markercluster@1.2.0/dist/leaflet.markercluster.js"></script>
+  <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
   <script src="{% static "js/map_data.js" %}"></script>
   <script src="{% static "js/map.js" %}"></script>
 {% endblock %}
 
 {% block main %}
 
+<style>
+ #map {
+     height: 600px;
+     max-width: 600px;
+ }
+</style>
+
+<script>
+ var states = {{ states }}
+</script>
+
 <section class="container">
-  <h1>Unidades Prisionais no Brasil</h1>
-  <div id="map" style="height: 600px;"></div>
-  <span>Filtro</span>
-  <input id="filterInput" type="text"
-         oninput="applyFilter()">
-  <!-- onkeyup="if (event.keyCode === 13) applyFilter()" -->
-  <!-- <button onclick="applyFilter()">filtro</button> -->
-  <div id="unidade-short-info"></div>
+  <div id="map-vue-app">
+
+    <h1>Unidades Prisionais no Brasil</h1>
+    <p>blah blah</p>
+
+    <div>
+
+      <!-- Complete info about unidade -->
+      <div v-if="showCompleteInfo" class="completeInfoPannel">
+        <h3>Dados Gerais</h3>
+        <h3>Perfil Populacional</h3>
+      </div>
+
+      <!-- Map side pannel -->
+      <div class="map-side-pannel">
+        <!-- Filter -->
+        <span>Filtro</span>
+        <input v-model.trim="filterStr" type="text">
+
+        <!-- Short info about unidade -->
+        <div v-if="unidade">
+          <h2>[[ unidade.nome_unidade ]]</h2>
+          <p v-if="unidade.nome_logradouro">
+            [[ formatAddress(unidade) ]]
+          </p>
+          <p v-if="unidade.email">
+            E-mail: <a :href="formatMailto(unidade.email)">[[ unidade.email ]]</a>
+          </p>
+          <p v-if="unidade.telefone">
+            Fone: [[ formatFone(unidade.telefone, unidade.ddd) ]]
+          </p>
+          <a href="#" @click="showCompleteInfo = true">[ ver dados dessa unidade ]</a>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div id="map"></div>
+
+    </div>
+  </div>
 </section>
 
 {% endblock %}
