@@ -163,15 +163,15 @@
     </div>
 
     <div id="page-content-wrapper">
-      <header class="navbar navbar-fixed-top" role="banner">
+      <header class="navbar" role="banner">
         <div class="container">
             <div class="navbar-header">
-                <a href="#menu-toggle" class="navbar-toggle sb-toggle-left" id="menu-toggle" data-toggle="collapse" data-target=".sidebar-nav">
+                <button href="#menu-toggle" class="navbar-toggle sb-toggle-left" id="menu-toggle" data-toggle="collapse" data-target=".sidebar-nav">
                     <span class="sr-only">Veja o menu</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </a>
+                </button>
                 {% if settings.SITE_TITLE %}<h1 class="navbar-brand hidden-xs"><a href="/">{{ settings.SITE_TITLE }}</a></h1>{% endif %}
             </div>
             <div class="main-nav hidden-xs">
@@ -179,53 +179,53 @@
             </div>
         </div>
     </header><!--/header-->
+    <main class="main-content">
+        {% block left_panel %}{% endblock %}
 
-
-    {% nevercache %}
-      {% if messages %}
-      <div class="container">
-        <div class="messages">
-        {% for message in messages %}
-        <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          {{ message }}
-        </div>
-        {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-      {% if form and form.errors %}
-        <div class="container">
-          <div class="messages">
+        {% nevercache %}
+          {% if messages %}
+          <div class="container">
+            <div class="messages">
+            {% for message in messages %}
             <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <p>Your username and password didn't match. Please try again.</p>
+              {{ message }}
+            </div>
+            {% endfor %}
             </div>
           </div>
-        </div>
-      {% endif %}
-    {% endnevercache %}
-    
-    {% block top %}
-      {% if page.html_id != 'sobre-nos' and page.html_id != 'fale-conosco' and page.html_id != 'especialistas' %}
-        <section class="emerald" id="title">
-          <div class="container">
-            <div class="row">
-              <ul class="breadcrumb">
-                {% spaceless %}
-                  {% block breadcrumb_menu %}
-                    {% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-                {% endspaceless %}
-              </ul>
+          {% endif %}
+          {% if form and form.errors %}
+            <div class="container">
+              <div class="messages">
+                <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <p>Your username and password didn't match. Please try again.</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-      {% endif %}
-    {% endblock %}
+          {% endif %}
+        {% endnevercache %}
 
-    {% block left_panel %}{% endblock %}
-    {% block main %}{% endblock %}
+        {% block top %}
+          {% if page.html_id != 'sobre-nos' and page.html_id != 'fale-conosco' and page.html_id != 'especialistas' %}
+            <section class="emerald" id="title">
+              <div class="container">
+                <div class="row">
+                  <ul class="breadcrumb">
+                    {% spaceless %}
+                      {% block breadcrumb_menu %}
+                        {% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+                    {% endspaceless %}
+                  </ul>
+                </div>
+              </div>
+            </section>
+          {% endif %}
+        {% endblock %}
 
+      {% block main %}{% endblock %}
+    </main>
     <footer id="footer">
         <div class="container">
            {% page_menu "pages/menus/footer.html" %}

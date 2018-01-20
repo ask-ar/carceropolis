@@ -2,11 +2,10 @@
 	.navbar {
 		background-position: calc(100% + 5px) 0;
 		background-size: 50px;
+		position: fixed;
 	}
-}
 
-@media (max-width: 768px) {
-	.breadcrumb {
+	.emerald {
 		display: none;
 	}
 }
