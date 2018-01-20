@@ -5,14 +5,14 @@
     height: calc(100vh - 48px);
 
     @media (min-width: 768px) {
-        height: calc(100vh - 80px);
+        height: calc(100vh - 65px);
     }
 }
 
 .banner {
 
     @media (min-width: 768px) {
-        margin-top: -80px;
+        margin-top: -65px;
     }
 
     .carceropolis-logo {
@@ -46,27 +46,23 @@
             border-radius: 2px;
             color: white;
             font-family: $semibold;
+            margin-bottom: 2em;
             padding: 1em 0;
             text-align: center;
             text-transform: uppercase;
+            transition: background .3s ease;
             width: 200px;
-        }
 
-        a:hover {
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: none;
-        }
-        
-        @media (max-width: 768px) {
-            a:first-of-type {
-                margin-bottom: 2em;
+            @media (min-width: 768px) {
+                margin-bottom: 0;
             }
         }
-    }
 
+        a:hover, a:active, a:focus {
+            background-color: $sidebar-bg;
+            text-decoration: none;
+        }
+    }
 }
 
 .banner .video  {

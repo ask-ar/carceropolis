@@ -8,136 +8,93 @@ header.navbar {
 	min-height: inherit;
 	width: 100%;
 
+	//icone mobile
 	.navbar-toggle {
 		border: none;
 		float: left;
-		margin-right: 0;
-		margin-left: 2px;
+		margin: 0;
+		padding: 1em;
 		border-radius: 0;
-
-		&:hover,
-		&:focus {
-			background: none;
-		}
 
 		.icon-bar {
 			background: $cp-red;
+			height: 3px;
+			width: 30px;
+		}
+
+		.icon-bar + .icon-bar {
+			margin-top: 6px;
 		}
 	}
 
-	.navbar-nav {
-		background: $cp-red;
+	//logo desktop
+	.navbar-brand {
 		margin: 0;
+
+		a {
+			@include hidetext;
+			background: url(../images/carceropolis-logo-vermelho.svg) no-repeat;
+			background-size: 100% auto;
+			display: block;
+			height: 35px;
+            width: 200px;
+            
+		}
+        
+        @media (min-width: 768px) and (max-width: 992px) {
+            padding-right: 0;
+
+            a {width: 150px;}
+        }
 	}
 
-	.main-nav {
-		border-color: white;
-		padding: 0;
+    //menu desktop
+    .navbar-nav {
+        display: flex;
+        padding-top: 15px;
+    }
+    
+	.navbar-nav > li { float: none; }
+    
+    .navbar-nav > li > a {
+        border-bottom: 2px solid transparent;
+        color: $conectas-vermelho;
+        font-family: $semibold;
+        font-size: 1.2em;
+        padding: 10px 15px 18px;
+        text-transform: uppercase;
+        transition: color, border .3s linear;		
+
+		&:active, &:hover, &:focus, &.active {
+            background: none;
+			border-color: currentColor;
+			color: $conectas-laranja-claro;
+        }
+    
+        @media (min-width: 768px) and (max-width: 992px) {
+            font-size: 1em;
+            padding: 5px 12px 23px;
+        }
+
 	}
 
-	.navbar-nav > li > a {
-		cursor: pointer;
-		font-family: $semibold;
-		font-size: 18px;
-		padding: 20px;
-		text-transform: uppercase;
-	}
+    @media (max-width: 768px) {
 
-	@media (min-width: 768px) {
-		background-position: calc(100% + 15px);
-		min-height: 80px;
+        #home header.navbar {
+            background: none;
+            box-shadow: none;
 
-		.conectas {
-			position: absolute;
-			top: 5px;
-			right: 60px;
+            .icon-bar {
+                background: white
+            }
+        }
 
-			h2 {
-				margin: 0;
-				padding: 0;
-				font-size: 11px;
-			}
+        .navbar-fixed-top {
+            transition: all 0.5s ease;
+        }
 
-			h2 a {
-				color: $conectas-cinza-escuro;
-				font-weight: normal;
-				text-decoration: none;
-			}
-		}
-
-		.navbar-nav {
-			background: transparent;
-		}
-
-		.navbar-nav > li {
-
-			> a {
-				color: $conectas-vermelho;
-				padding: 10px 15px;
-    			border-bottom: 2px solid transparent;
-    			transition: .30s;
-			}
-
-			&:active > a,
-			&:hover > a,
-			&.active > a {
-    			background: none;
-    			color: $conectas-laranja-claro;
-    			border-color: currentColor;
-    			transition: .30s;
-			}
-		}
-
-		.navbar-brand {
-			margin: 0;
-			padding: 0;
-
-	    	a {
-	    		@include hidetext;
-				background: url(../images/carceropolis-logo-vermelho.svg) no-repeat;
-				background-size: 100% auto;
-				display: block;
-				font-size: 100%;
-				height: 35px;
-				line-height: inherit;
-				margin: 0;
-				padding: 0;
-		    	width: 200px;
-	    	}
-		}
-
-		.container .navbar-brand {
-			margin-left: 0;
-		}
-
-		.navbar-header {
-			padding-top: 20px;
-		}
-
-		.main-nav {
-			padding-top: 22px;
-		}
-
-		.dropdown-menu {
-			display: none !important;
-		}
-	}
-}
-
-@media (max-width: 768px) {
-	#home header.navbar {
-		background: none;
-		box-shadow: none;
-	}
-
-	.navbar-fixed-top {
-		-webkit-transition: all 0.5s ease;
-		-moz-transition: all 0.5s ease;
-		-o-transition: all 0.5s ease;
-		transition: all 0.5s ease;
-	}
-
-	.toggled .navbar-fixed-top {
-		left: 280px;
-	}
+        .toggled .navbar-fixed-top {
+            left: 280px;
+        }
+    }
 }

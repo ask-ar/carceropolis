@@ -1,30 +1,28 @@
 //Seleção de categorias de publicações ======================
+body.Publicacoes,
+body.publicacoes {
 
-#body.Publicacoes,
-#body.publicacoes {
-
-  .tag {
-
-    display: inline-block;
-    margin: 3px 0;
-
-    a {
-        background: #efefef;
-        border-radius: 3px;
-        color: $author-publication;
+    .tag {
         display: inline-block;
-        font-size: 12px;
-        padding: 1px 8px;
-        text-transform: lowercase;
+        margin: 3px 0;
 
-        &:hover {
-          background-color: $cp-orange;
-          color: white;
-          text-decoration: none;
+        a {
+            background: #efefef;
+            border-radius: 3px;
+            color: $author-publication;
+            display: inline-block;
+            font-size: 12px;
+            padding: 1px 8px;
+            text-transform: lowercase;
         }
-      }
+        
+        a:hover {
+            background-color: $cp-orange;
+            color: white;
+            text-decoration: none;
+        }
     }
-}
+} 
 
 .categorias-publicacoes {
   list-style: none;
@@ -64,9 +62,7 @@
   }
 
   @media (min-width: 768px) {
-    -webkit-display: flex;
     display: flex;
-    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     margin: 7px 0;
 
