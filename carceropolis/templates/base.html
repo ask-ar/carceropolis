@@ -167,12 +167,15 @@
         <div class="container">
             <div class="navbar-header">
                 <button href="#menu-toggle" class="navbar-toggle sb-toggle-left" id="menu-toggle" data-toggle="collapse" data-target=".sidebar-nav">
-                    <span class="sr-only">Veja o menu</span>
+                    <span class="sr-only">Menu Principal</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                {% if settings.SITE_TITLE %}<h1 class="navbar-brand hidden-xs"><a href="/">{{ settings.SITE_TITLE }}</a></h1>{% endif %}
+                {% if settings.SITE_TITLE %}
+                    <h1 class="navbar-brand hidden-xs"><a href="/">{{ settings.SITE_TITLE }}</a></h1>
+                    <h1 class="mobile-title display-xs">{{ page.meta_title }}</h1>
+                {% endif %}
             </div>
             <div class="main-nav hidden-xs">
                {% page_menu "pages/menus/dropdown.html" %}
