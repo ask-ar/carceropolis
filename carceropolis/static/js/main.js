@@ -74,25 +74,32 @@ jQuery(function ($) {
     })
 
     // Pagina de dados
-    $('body').scrollspy({ target: '#dados-bar' })
+    $('body.dados').scrollspy({ target: '#dados-bar', offset: 60 })
 
     $('#dados-bar').on('activate.bs.scrollspy', function (event) {
 
         let ativo = $(event.target).find('a').attr('href')
 
-        switch (ativo) {
-            case `#dados-gerais`:
-                /*
+        function animDadosGerais(){
+            /*
                 1. Dados Gerais
                 - número 622 inciando normal e tornando-se negrito
                 - animação (contador) no 111%
-                */
-                $(`${ativo} [data-tobold]`).addClass(`toBold`)
-                contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1500)
-                setTimeout(
-                    () => $(`${ativo} .anim1`).addClass(`bounceInDown`)
-                    , 3000
-                )
+            */
+            $(`${ativo} [data-tobold]`).addClass(`toBold`)
+            contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1500)
+            setTimeout(
+                () => $(`${ativo} .anim1`).addClass(`bounceInDown`)
+                , 3000
+            )
+        }
+
+        animDadosGerais()
+
+        switch (ativo) {
+            case `#dados-gerais`:
+
+                animDadosGerais()
                 break
 
             case `#perfil-populacional`:
@@ -167,7 +174,7 @@ jQuery(function ($) {
                 break
 
             case `#alas-exclusivas`:
-                contador(document.querySelectorAll('#alas-exclusivas [data-final-number]'), 50)
+                contador(document.querySelectorAll('#alas-exclusivas [data-final-number]'), 1)
                 /* 8. Alas Exclusivas
                 - animação (contador) no 12%
                 - número 1.294 inciando normal e tornando-se negrito
@@ -202,9 +209,9 @@ jQuery(function ($) {
 })
 
 //vanilla functions
-function contador(elements, speed = 1, delay = 0) {
+function contador(elements, speed = 1, delayToStart = 0) {
 
-    setTimeout(incrementador, delay)
+    setTimeout(incrementador, delayToStart)
 
     function incrementador() {
 
@@ -215,12 +222,9 @@ function contador(elements, speed = 1, delay = 0) {
 
             setInterval(
                 () => {
-
                     if (startNumber < endNumber) {
-
                         startNumber++
                         element.textContent = startNumber
-
                     }
                 }
                 , speed

@@ -32,9 +32,9 @@
 {% block breadcrumb_menu %}{% endblock %}
 
 {% block main %}
-<article class="infografico" data-spy="scroll" data-target="#dados-bar">
-  <section data-offset="100" id="dados-gerais" class="dados-gerais">
-    <div class="container animated slideInDown">
+<article class="infografico" >
+  <section id="dados-gerais" class="dados-gerais">
+    <div class="container">
       <h1><a href="/dados/gerais">Dados Gerais</a></h1>
       <ol>
         <li>
@@ -375,7 +375,7 @@
       <h1><a href="/dados/alas_exclusivas">Alas exclusivas</a></h1>
       <div class="conteudo">
         <p class="col-1">
-          Existem <strong><b data-final-numbers="1105">0</b></strong>
+          Existem <strong><b data-final-number="1105">660</b></strong>
           pessoas com
           deficiência física
           no sistema prisional.
@@ -421,7 +421,7 @@
 </article>
 <nav id="dados-bar" class="navbarlateral">
   <ul class="nav nav-pills nav-stacked">
-    <li><a class="icon-dados-gerais" href="#dados-gerais"></a></li>
+    <li class="active"><a class="icon-dados-gerais" href="#dados-gerais"></a></li>
     <li><a class="icon-perfil-populacional" href="#perfil-populacional"></a></li>
     <li><a class="icon-infraestrutura" href="#infraestrutura"></a></li>
     <li><a class="icon-juridica" href="#situacao-juridica"></a></li>

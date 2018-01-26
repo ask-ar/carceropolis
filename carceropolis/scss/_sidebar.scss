@@ -15,12 +15,13 @@
     overflow-y: auto;
     position: fixed;
     transform: translateX(-280px);
-    transition: transform, width .5s ease;
+    transition: transform, width, box-shadow .5s ease;
     width: 280px;
     z-index: 1000;
 }
 
 #wrapper.toggled #sidebar-wrapper {
+    box-shadow: 0 50px 20px rgba(0,0,0,.5);
     width: 280px;
 }
 
@@ -36,6 +37,10 @@
 
 /* Sidebar Styles */
 .sidebar-nav {
+
+    .navbar-right {
+        margin: 0;
+    }
 
     li {
 
