@@ -47,12 +47,15 @@ header.navbar {
 
             a {width: 150px;}
         }
-	}
+    }
+
     // Title mobile
     .mobile-title {
-        font-size: 24px;
-        margin-top: 12px;
-        margin-bottom: 14px;
+        color: $conectas-vermelho;
+        font-size: 1.4em;
+        line-height: 2.6em;
+        margin: 0;
+        text-transform: uppercase;
     }
 
     //menu desktop
@@ -61,29 +64,41 @@ header.navbar {
         padding-top: 15px;
     }
     
-	.navbar-nav > li { float: none; }
+	.navbar-nav > li { 
+        float: none;
     
-    .navbar-nav > li > a {
-        border-bottom: 2px solid transparent;
-        color: $conectas-vermelho;
-        font-family: $semibold;
-        font-size: 1.2em;
-        padding: 10px 15px 18px;
-        text-transform: uppercase;
-        transition: color, border .3s linear;		
-
-		&:active, &:hover, &:focus, &.active {
-            background: none;
-			border-color: currentColor;
-			color: $conectas-laranja-claro;
-        }
+        > a {
+            border-bottom: 2px solid transparent;
+            color: $conectas-vermelho;
+            font-family: $semibold;
+            font-size: 1.2em;
+            padding: 10px 15px 18px;
+            text-transform: uppercase;
+            transition: color, border .3s linear;		
     
-        @media (min-width: 768px) and (max-width: 992px) {
-            font-size: 1em;
-            padding: 5px 12px 23px;
+            &:active, &:hover, &:focus, &.active  {
+                background: none;
+            }
+            
+            @media (min-width: 768px) and (max-width: 992px) {
+                font-size: 1em;
+                padding: 5px 12px 23px;
+            }
+            
         }
 
-	}
+        &:hover > a, &:active > a, &:focus > a {
+            border-color: currentColor;
+            color: $title-publication;
+        }
+
+        &.active > a {
+            border-color: currentColor;
+            color: $conectas-laranja-claro;
+            cursor: default;
+        }
+    }
+    
 
     @media (max-width: 768px) {
 

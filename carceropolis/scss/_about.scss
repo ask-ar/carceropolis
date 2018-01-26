@@ -1,29 +1,35 @@
 body[class^='sobre'] {
 
-    @media (min-width: 768px) {
-
+    @media (min-width: 992px) {
         background-image: url(../images/about.jpg);
         background-position: center;
         background-size: cover;
-
-       
     }
 
     .main-content {
+        background: $conectas-roxo-escuro;
         align-items: center;
         display: flex;
         justify-content: center;
+
+        @media (min-width: 992px) {
+            background: none;
+        }
     }
 
     section.container {
         background: $conectas-roxo-escuro;
-        box-shadow: 0px 10px 15px rgba(0,0,0,.8);
+        height: 100%;
         margin: 0;
-
-        @media (min-width: 768px) {
+        padding: 3em;
+        
+        @media (min-width: 992px) {
+            box-shadow: 0px 10px 15px rgba(0,0,0,.8);
+        }
+        
+        @media (min-width: 1200px) {
             column-count: 2;
             column-gap: 3.5em;
-            padding: 3em;
         }
 
         h2 {
@@ -33,9 +39,8 @@ body[class^='sobre'] {
         p {
             color: #fff;
             font-size: 1.2em;
-            line-height: 1.4em;
-            margin: 0 0 1em;
-            padding-bottom: .5em;
+            line-height: 2em;
+            margin: 0 0 2em;
             text-align: justify;
             text-indent: 2em;
         }

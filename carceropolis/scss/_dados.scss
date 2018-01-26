@@ -1,10 +1,6 @@
 .dados, .Dados {
-	.navbar {
-		background-position: calc(100% + 5px) 0;
-		background-size: 50px;
-		position: fixed;
-	}
-
+	position: relative; //necessario para as animacoes
+	
 	.emerald {
 		display: none;
 	}
