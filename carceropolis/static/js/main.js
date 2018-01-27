@@ -1,7 +1,7 @@
 jQuery(function ($) {
 
     //sidebar mobile menu
-    $("#menu-toggle").click(function (e) {
+    $("#menu-toggle").on('click', function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
@@ -17,14 +17,14 @@ jQuery(function ($) {
         $(this).css('margin-top', ($('#main-slider').height() - $(this).height()) / 2);
     });
 
-    $(window).resize(function () {
+    $(window).on('resize', function () {
         $('.centered').each(function (e) {
             $(this).css('margin-top', ($('#main-slider').height() - $(this).height()) / 2);
         });
     });
 
     //portfolio
-    $(window).load(function () {
+    $(window).on('loadl', function () {
         $portfolio_selectors = $('.portfolio-filter >li>a');
         if ($portfolio_selectors != 'undefined') {
             $portfolio = $('.portfolio-items');
@@ -53,7 +53,7 @@ jQuery(function ($) {
     });
 
     //goto top
-    $('.gototop').click(function (event) {
+    $('.gototop').on('click', function (event) {
         event.preventDefault();
         $('html, body').animate({
             scrollTop: $("body").offset().top
@@ -106,7 +106,7 @@ jQuery(function ($) {
                 /*
                   2. Perfil Populacional
                   - aparecer primeiro o bloco "A população carcerária..."
-                  - aparecer depois o gráfico, animando a linha 
+                  - aparecer depois o gráfico, animando a linha
                   - aparecer depois o Estado de São Paulo e preencher proporcionalmente a 35% da área (animação)
                   - aparecer, por fim, o bloco "segundo dados do IBGE..."
                 */
@@ -124,10 +124,10 @@ jQuery(function ($) {
                 break
 
             case `#perfil-populacional`:
-                /* 
+                /*
                3. Infraestrutura
                - fixar topo e rodapé (sobre déficit)
-               - aparecer os blocos conforme usuário rolar o scroll 
+               - aparecer os blocos conforme usuário rolar o scroll
                */
                 break
 
@@ -141,7 +141,7 @@ jQuery(function ($) {
                 - destacar e aparecer o respectivo texto em vermelho com animação (contador) do 37%
                 - aparecer "1 em cada 5" e depois o restante do rexto "presídio oferece..."
                 - aparecer o último bloco de conteúdo, com apenas os quadrados brancos e com "crimes sem violência" em branco
-                - depois, preencher os semi-círculos vermelhos ao mesmo que tempo que aparece o círculo vermelho 
+                - depois, preencher os semi-círculos vermelhos ao mesmo que tempo que aparece o círculo vermelho
                   do 7 ao mesmo tempo que  "crimes sem violência" torna-se vermelho
                 */
                 break
