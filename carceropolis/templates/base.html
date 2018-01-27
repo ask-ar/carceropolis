@@ -46,7 +46,7 @@
 
 {% compress js %}
   <!-- <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script> -->
-  <script src="{% static "js/jquery.js" %}" type="text/javascript"></script>
+  <script src="{% static "js/jquery.min.js" %}" type="text/javascript"></script>
   <script src="{% static "third/bootstrap/js/bootstrap.min.js" %}" type="text/javascript"></script>
 {% block extra_js %}{% endblock %}
 {% include "includes/footer_scripts.html" %}
