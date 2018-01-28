@@ -1,3 +1,4 @@
+# coding: utf-8
 import os
 from pathlib import Path
 
@@ -386,7 +387,7 @@ f = PROJECT_APP_PATH / 'local_settings.py'
 if f.exists():
     import sys
     import imp
-    module_name = f"{str(PROJECT_APP_PATH)}.local_settings"
+    module_name = "{}.local_settings".format(str(PROJECT_APP_PATH))
     module = imp.new_module(module_name)
     module.__file__ = str(f)
     sys.modules[module_name] = module
