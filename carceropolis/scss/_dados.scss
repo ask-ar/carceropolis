@@ -76,6 +76,10 @@
 	.alas-exclusivas::before {
 		@extend .icon-alas-exclusivas:before;
 	}
+	
+	.unidades-prisionais::before {
+		@extend .icon-unidades-prisionais:before;
+	}
 }
 
 .dados-interna {
