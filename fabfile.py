@@ -334,7 +334,7 @@ def pip(packages):
     Installs one or more Python packages within the virtual environment.
     """
     with virtualenv():
-        return run("pip3 install %s" % packages)
+        return run("pip3 install -U %s" % packages)
 
 
 def postgres(command):
