@@ -4,25 +4,10 @@ html {
 
 body {
 	background-color: $cp-grey;
-	font-family: "source_sans_proregular";
-	min-height: 100vh;
+	font-family: $regular;
+	height: 100vh;
 	padding-top: 0;
-
-	@media(min-height: 768px){
-
-		&:not(.dados) {
-			padding-bottom: 53px;
-		}
-
-		&:not(.dados) #footer{
-				left: 0;
-				position: fixed;
-				right: 0;
-				top: calc(100% - 53px);
-		}
-
-	}
-
+	overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -35,10 +20,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	    right: 0 !important;
 	    left: inherit !important;
 	}
-}
-
-section.container {
-	min-height: 50%;
 }
 
 #title {
@@ -60,6 +41,11 @@ section.container {
 	}
 }
 
+main.main-content {
+	width: 100%;
+	min-height: calc(100vh - 65px - 82px);
+}
+
 #footer {
 	background: black;
 	border: none;
@@ -68,7 +54,19 @@ section.container {
 	padding: 15px 0;
 	text-align: center;
 
+	.logo {
+		background: url(../images/conectas-marca.svg) no-repeat top center;
+		display: block;
+		font-size: 2.3em;
+		margin-bottom: .5em;
+		text-indent: -99999em;
+		min-width: 130px;
 
+		@media (min-width: 768px){
+			display: inline-block;
+			margin-bottom: 0;
+		}
+	}
 
 	address {
 		color: $conectas-cinza-claro;

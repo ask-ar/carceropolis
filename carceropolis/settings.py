@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 from pathlib import Path
 
@@ -154,7 +153,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -236,7 +235,7 @@ TEMPLATES = [
         "DIRS": [
             str(PROJECT_ROOT / "templates")
         ],
-        "APP_DIRS": True,
+        #  "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.contrib.auth.context_processors.auth",
@@ -256,6 +255,12 @@ TEMPLATES = [
             "builtins": [
                 "mezzanine.template.loader_tags",
             ],
+            "loaders": [
+                "mezzanine.template.loaders.host_themes.Loader",
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader"
+            ]
+
         },
     },
 ]
@@ -302,7 +307,7 @@ INSTALLED_APPS = (
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
 
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -317,8 +322,6 @@ MIDDLEWARE_CLASSES = (
 
     "mezzanine.core.request.CurrentRequestMiddleware",
     "mezzanine.core.middleware.RedirectFallbackMiddleware",
-    "mezzanine.core.middleware.TemplateForDeviceMiddleware",
-    "mezzanine.core.middleware.TemplateForHostMiddleware",
     "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
     "mezzanine.core.middleware.SitePermissionMiddleware",
     # Uncomment the following if using any of the SSL settings:
@@ -326,6 +329,10 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
+
+if DJANGO_VERSION < (1, 10):
+    MIDDLEWARE_CLASSES = MIDDLEWARE
+    del MIDDLEWARE
 
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.
@@ -374,12 +381,16 @@ MAX_UPLOAD_SIZE = "5242880"
 # local_settings has full access to everything defined in this module.
 # Also force into sys.modules so it's visible to Django's autoreload.
 
-try:
-    from .local_settings import *
-except ImportError:
-    msg = 'Please, check if you have local_settings.py file and if it have all'
-    msg += ' necessary items correctly setup.'
-    raise Exception(msg)
+f = PROJECT_APP_PATH / 'local_settings.py'
+
+if f.exists():
+    import sys
+    import imp
+    module_name = f"{str(PROJECT_APP_PATH)}.local_settings"
+    module = imp.new_module(module_name)
+    module.__file__ = str(f)
+    sys.modules[module_name] = module
+    exec(open(str(f), "rb").read())
 
 # Converting from PosixPath to str
 PROJECT_APP_PATH = str(PROJECT_APP_PATH)

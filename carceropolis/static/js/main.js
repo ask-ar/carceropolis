@@ -1,7 +1,7 @@
 jQuery(function ($) {
 
     //sidebar mobile menu
-    $("#menu-toggle").click(function (e) {
+    $("#menu-toggle").on('click', function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
@@ -17,14 +17,14 @@ jQuery(function ($) {
         $(this).css('margin-top', ($('#main-slider').height() - $(this).height()) / 2);
     });
 
-    $(window).resize(function () {
+    $(window).on('resize', function () {
         $('.centered').each(function (e) {
             $(this).css('margin-top', ($('#main-slider').height() - $(this).height()) / 2);
         });
     });
 
     //portfolio
-    $(window).load(function () {
+    $(window).on('loadl', function () {
         $portfolio_selectors = $('.portfolio-filter >li>a');
         if ($portfolio_selectors != 'undefined') {
             $portfolio = $('.portfolio-items');
@@ -53,7 +53,7 @@ jQuery(function ($) {
     });
 
     //goto top
-    $('.gototop').click(function (event) {
+    $('.gototop').on('click', function (event) {
         event.preventDefault();
         $('html, body').animate({
             scrollTop: $("body").offset().top
@@ -74,32 +74,39 @@ jQuery(function ($) {
     })
 
     // Pagina de dados
-    $('body').scrollspy({ target: '#dados-bar' })
+    $('body.dados').scrollspy({ target: '#dados-bar', offset: 60 })
 
     $('#dados-bar').on('activate.bs.scrollspy', function (event) {
 
         let ativo = $(event.target).find('a').attr('href')
 
-        switch (ativo) {
-            case `#dados-gerais`:
-                /*
+        function animDadosGerais(){
+            /*
                 1. Dados Gerais
                 - número 622 inciando normal e tornando-se negrito
                 - animação (contador) no 111%
-                */
-                $(`${ativo} [data-tobold]`).addClass(`toBold`)
-                contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1500)
-                setTimeout(
-                    () => $(`${ativo} .anim1`).addClass(`bounceInDown`)
-                    , 3000
-                )
+            */
+            $(`${ativo} [data-tobold]`).addClass(`toBold`)
+            contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1500)
+            setTimeout(
+                () => $(`${ativo} .anim1`).addClass(`bounceInDown`)
+                , 3000
+            )
+        }
+
+        animDadosGerais()
+
+        switch (ativo) {
+            case `#dados-gerais`:
+
+                animDadosGerais()
                 break
 
             case `#perfil-populacional`:
                 /*
                   2. Perfil Populacional
                   - aparecer primeiro o bloco "A população carcerária..."
-                  - aparecer depois o gráfico, animando a linha 
+                  - aparecer depois o gráfico, animando a linha
                   - aparecer depois o Estado de São Paulo e preencher proporcionalmente a 35% da área (animação)
                   - aparecer, por fim, o bloco "segundo dados do IBGE..."
                 */
@@ -117,10 +124,10 @@ jQuery(function ($) {
                 break
 
             case `#perfil-populacional`:
-                /* 
+                /*
                3. Infraestrutura
                - fixar topo e rodapé (sobre déficit)
-               - aparecer os blocos conforme usuário rolar o scroll 
+               - aparecer os blocos conforme usuário rolar o scroll
                */
                 break
 
@@ -134,7 +141,7 @@ jQuery(function ($) {
                 - destacar e aparecer o respectivo texto em vermelho com animação (contador) do 37%
                 - aparecer "1 em cada 5" e depois o restante do rexto "presídio oferece..."
                 - aparecer o último bloco de conteúdo, com apenas os quadrados brancos e com "crimes sem violência" em branco
-                - depois, preencher os semi-círculos vermelhos ao mesmo que tempo que aparece o círculo vermelho 
+                - depois, preencher os semi-círculos vermelhos ao mesmo que tempo que aparece o círculo vermelho
                   do 7 ao mesmo tempo que  "crimes sem violência" torna-se vermelho
                 */
                 break
@@ -167,7 +174,7 @@ jQuery(function ($) {
                 break
 
             case `#alas-exclusivas`:
-                contador(document.querySelectorAll('#alas-exclusivas [data-final-number]'), 50)
+                contador(document.querySelectorAll('#alas-exclusivas [data-final-number]'), 1)
                 /* 8. Alas Exclusivas
                 - animação (contador) no 12%
                 - número 1.294 inciando normal e tornando-se negrito
@@ -202,9 +209,9 @@ jQuery(function ($) {
 })
 
 //vanilla functions
-function contador(elements, speed = 1, delay = 0) {
+function contador(elements, speed = 1, delayToStart = 0) {
 
-    setTimeout(incrementador, delay)
+    setTimeout(incrementador, delayToStart)
 
     function incrementador() {
 
@@ -215,12 +222,9 @@ function contador(elements, speed = 1, delay = 0) {
 
             setInterval(
                 () => {
-
                     if (startNumber < endNumber) {
-
                         startNumber++
                         element.textContent = startNumber
-
                     }
                 }
                 , speed

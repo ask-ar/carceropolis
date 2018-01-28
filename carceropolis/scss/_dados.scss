@@ -1,12 +1,7 @@
 .dados, .Dados {
-	.navbar {
-		background-position: calc(100% + 5px) 0;
-		background-size: 50px;
-	}
-}
-
-@media (max-width: 768px) {
-	.breadcrumb {
+	position: relative; //necessario para as animacoes
+	
+	.emerald {
 		display: none;
 	}
 }

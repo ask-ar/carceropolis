@@ -1,16 +1,11 @@
 @import "compass/css3";
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 @import
   'variables',
   'utils',
   'base',
-  'navbar',
   'sidebar',
+  'navbar',
   'home',
   'dados',
   'publicacoes',

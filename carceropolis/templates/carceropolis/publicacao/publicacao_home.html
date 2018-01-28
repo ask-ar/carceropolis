@@ -32,15 +32,13 @@
 {% block breadcrumb_menu %}{% endblock %}
 
 {% block main %}
-<section class="container frame">
-
-<ul class="categorias-publicacoes">
-  {% for categoria in categorias %} <!-- Categoria == Área de Atuação -->
-    <li class="categoria-{{categoria.slug}}">
-        <a href="categoria/{{ categoria.slug }}">{{ categoria.nome }}</a>
-    </li>
-  {% endfor %}
-</ul>
-
+<section class="publicacao-home">
+    <ul class="categorias-publicacoes">
+    {% for categoria in categorias %} <!-- Categoria == Área de Atuação -->
+        <li class="categoria-{{categoria.slug}}">
+            <a href="categoria/{{ categoria.slug }}">{{ categoria.nome }}</a>
+        </li>
+    {% endfor %}
+    </ul>
 </section>
 {% endblock %}
