@@ -7,9 +7,10 @@ from bokeh.embed import components
 from bokeh.plotting import figure
 from bokeh.resources import INLINE
 from bokeh.models import HoverTool
+from bokeh.models import FixedTicker
 
 from carceropolis.utils.bokeh import (
-    plot_lines)
+    plot_lines, plot_circles)
 
 
 def get_context():
@@ -26,39 +27,40 @@ def get_context():
     for item, url in data_files.items():
         content = {}
         with open(url, 'r') as fo:
+
             content['data_file_url'] = url.split('/static/')[-1]
-            content['titulo'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['unidade'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['fonte'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['fonte_url'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            notas = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['notas'] = notas.split(';') if notas else None
+
+            for info in ['titulo', 'unidade', 'fonte', 'fonte_url', 'notas']:
+                text = fo.readline().partition(',')[2].strip('"\n ')
+                content[info] = text if text else None
+
+            if content['notas']:
+                content['notas'] = content['notas'].split(';')
+
             next(fo)  # Pula uma linha em branco
+
             data = pd.read_csv(fo, decimal=",", quotechar='"')
 
         if item == '01':
-            kw = {
-                'x_range': [2005, 2016],
-                # 'y_range': [0, 1000],
-            }
-            # layout = go.Layout(title=content['titulo'],
-            #                    yaxis={'rangemode': 'tozero'},
-            #                    xaxis={
-            #                        'tickangle': -45,
-            #                        'dtick': "M6",
-            #                        'tick0': min(data['Data']),
-            #                        'tickformat': '%b-%y',
-            #                        'range': [min(data['Data']) - pd.DateOffset(months=1),
-            #                                  max(data['Data'])]
-            #                    })
             fig = figure(
+                title=content['titulo'],
                 plot_height=600, plot_width=800, background_fill_alpha=0,
-                border_fill_alpha=0, tools='pan,box_zoom,reset,save', **kw)
+                border_fill_alpha=0, tools='pan,box_zoom,reset,save')
 
-            plot_lines(fig, 'Ano', ['População'], data, ["#ea702e"])
-            # fig.line(
-            #     data['Ano'], data['População'], line_width=3)
+            x_name = 'Ano'
+            y_name = 'População'
 
+            fig.xaxis.axis_label = x_name
+            fig.yaxis.axis_label = y_name + ' (em milhares)'
+            fig.axis.axis_label_text_font_style = "bold"
+            fig.title.text_font_size = '14pt'
+            fig.title.align = 'center'
+            # xticks = FixedTicker(ticks=list(data[x_name]))
+            # fig.xaxis.ticker = xticks
+            # fig.xgrid.ticker = xticks
+
+            plot_lines(fig, x_name, [y_name], data, ["#ea702e"])
+            plot_circles(fig, x_name, [y_name], data, ["#ea702e"], 5)
 
             # Tooltips
             tooltips = '''
@@ -68,10 +70,12 @@ def get_context():
                     <li>@value_name: @value</li>
                 </ul>
             </div>
-            '''.format(xname='Ano')
+            '''.format(xname=x_name)
             hover = HoverTool(tooltips=tooltips)
             fig.add_tools(hover)
+
             script, div = components(fig)
+
         elif item == '02':
             # data['Ano'] = pd.to_datetime(data['Ano'], format='%Y')
             trace1 = go.Scatter(x=data['Ano'], y=data['EUA'], mode='lines',

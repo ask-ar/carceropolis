@@ -15,7 +15,7 @@ from bokeh.models.widgets.inputs import Select, MultiSelect
 from bokeh.models import RangeSlider, CustomJS
 
 from carceropolis.utils.bokeh import (
-    create_source, get_legend, plot_lines, MAIN_PALLETE)
+    create_source, get_legend, plot_lines, plot_circles, MAIN_PALLETE)
 
 
 def update_querystring(window=None, cb_obj=None):
@@ -95,17 +95,6 @@ def plot_hbar(fig, x, ys, df, palette):
         fig.hbar(
             y=dodge(x, offset, range=fig.y_range), height=width, right='value',
             source=source, color=color, legend=get_legend(y, ys))
-
-
-def plot_circles(fig, x, ys, df, palette):
-    '''
-    Plot a scatter chart.
-    '''
-    for y, color in zip(ys, palette):
-        source = create_source(df, x, y, color)
-        fig.circle(
-            x, 'value', size=10, source=source, color=color,
-            legend=get_legend(y, ys))
 
 
 class Dashboard(object):

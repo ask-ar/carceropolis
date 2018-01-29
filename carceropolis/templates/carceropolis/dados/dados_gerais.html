@@ -22,7 +22,6 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="/static/js/vendors/plotly-latest.min.js"></script>
 {{ bokeh_js|safe }}
 {% endblock %}
 
@@ -131,11 +130,6 @@
   </p>
 
   {% for grafico in graficos %}
-    <script>
-      figure1 = {};
-     /* figure1.data = JSON.parse('{{grafico.data|safe}}');*/
-     /* figure1.layout = JSON.parse('{{grafico.layout|safe}}');*/
-    </script>
     <section class="frame graf" id="graf-{{forloop.counter}}">
         <div class="graf-chart">
           {{ grafico.graph|safe }}

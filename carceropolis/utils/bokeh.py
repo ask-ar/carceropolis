@@ -37,3 +37,14 @@ def plot_lines(fig, x, ys, df, palette=MAIN_PALLETE):
         fig.line(
             x, 'value', source=source, line_width=3, color=color,
             legend=get_legend(y, ys))
+
+
+def plot_circles(fig, x, ys, df, palette, size=10):
+    '''
+    Plot a scatter chart.
+    '''
+    for y, color in zip(ys, palette):
+        source = create_source(df, x, y, color)
+        fig.circle(
+            x, 'value', size=size, source=source, color=color,
+            legend=get_legend(y, ys))
