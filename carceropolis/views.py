@@ -7,17 +7,6 @@ from functools import reduce
 import json
 import base64
 
-import plotly as py
-import plotly.offline as opy
-import plotly.graph_objs as go
-import pandas as pd
-import plotly.dashboard_objs as dashboard
-import IPython.display
-from IPython.display import Image
-
-from requests.compat import json as _json
-from plotly import utils
-
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.messages import info, error
@@ -36,6 +25,7 @@ from bokeh.embed import server_document
 
 from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
                      UnidadePrisional)
+from carceropolis.charts.dados_gerais import context as dados_gerais_context
 
 # from mezzanine.utils.views import render
 
@@ -266,115 +256,7 @@ def dados_gerais(request):
     categories (only categories, not the items from the Publicação Class).
     """
     templates = ["carceropolis/dados/dados_gerais.html"]
-    context = {}
-    graficos = []
-
-    data_files = {
-        '01': 'carceropolis/static/data/dados_gerais/01.csv',
-        '02': 'carceropolis/static/data/dados_gerais/02.csv',
-        '03': 'carceropolis/static/data/dados_gerais/03.csv',
-        '04': 'carceropolis/static/data/dados_gerais/04.csv'
-    }
-
-    for item, url in data_files.items():
-        content = {}
-        with open(url, 'r') as fo:
-            content['data_file_url'] = url.split('/static/')[-1]
-            content['titulo'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['unidade'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['fonte'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['fonte_url'] = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            notas = fo.readline().split(',')[1].lstrip('"').rstrip('"')
-            content['notas'] = notas.split(';') if notas else None
-            next(fo)  # Pula uma linha em branco
-            data = pd.read_csv(fo, decimal=",", quotechar='"')
-
-        if item == '01':
-            data['Data'] = pd.to_datetime(data['Data'], format='%m/%Y')
-            trace1 = go.Scatter(x=data['Data'], y=data['População'],
-                                mode='lines',
-                                line={'color': "#ea702e"})
-            graf_data = go.Data([trace1])
-            layout = go.Layout(title=content['titulo'],
-                               yaxis={'rangemode': 'tozero'},
-                               xaxis={
-                                   'tickangle': -45,
-                                   'dtick': "M6",
-                                   'tick0': min(data['Data']),
-                                   'tickformat': '%b-%y',
-                                   'range': [min(data['Data']) - pd.DateOffset(months=1),
-                                             max(data['Data'])]
-                               })
-        elif item == '02':
-            # data['Ano'] = pd.to_datetime(data['Ano'], format='%Y')
-            trace1 = go.Scatter(x=data['Ano'], y=data['EUA'], mode='lines',
-                                name='EUA', connectgaps=True)
-            trace2 = go.Scatter(x=data['Ano'], y=data['China'], mode='lines',
-                                name='China', connectgaps=True)
-            trace3 = go.Scatter(x=data['Ano'], y=data['Rússia'], mode='lines',
-                                name='Rússia', connectgaps=True)
-            trace4 = go.Scatter(x=data['Ano'], y=data['Brasil'], mode='lines',
-                                name='Brasil', connectgaps=True)
-            trace5 = go.Scatter(x=data['Ano'], y=data['ONU'], mode='lines',
-                                name='ONU', connectgaps=True)
-            graf_data = go.Data([trace1, trace2, trace3, trace4, trace5])
-            layout = go.Layout(title=content['titulo'],
-                               yaxis={'rangemode': 'tozero'},
-                               xaxis={
-                                   'tickangle': -45,
-                                   'dtick': 1,
-                                   'tick0': min(data['Ano']),
-                                   'range': [min(data['Ano']),
-                                             max(data['Ano'])]
-                               })
-        elif item == '03':
-            dados_estados = data[(data['Estado'] != 'BR') &
-                                 (data['Estado'] != 'ONU')]
-            trace1 = go.Bar(x=dados_estados['População prisional'],
-                            y=dados_estados['Estado'],
-                            orientation='h',
-                            marker={
-                                'line':{
-                                    'color': "#bb551d"
-                                },
-                                'color': '#ea702e'
-                            })
-            graf_data = go.Data([trace1])
-            layout = go.Layout(title=content['titulo'],
-                               xaxis={'rangemode': 'tozero'},
-                               height=600)
-        elif item == '04':
-            dados_estados = data[(data['Estado'] != 'BR') &
-                                 (data['Estado'] != 'ONU')]
-            trace1 = go.Bar(x=dados_estados['Taxa de encarceramento'],
-                            y=dados_estados['Estado'],
-                            orientation='h',
-                            marker={
-                                'line':{
-                                    'color': "#bb551d"
-                                },
-                                'color': '#ea702e'
-                            })
-            graf_data = go.Data([trace1])
-            layout = go.Layout(title=content['titulo'],
-                               xaxis={'rangemode': 'tozero'},
-                               height=600)
-
-        content['dados'] = data
-        figure = go.Figure(data=graf_data, layout=layout)
-
-        div = opy.plot(figure, auto_open=False, output_type='div',
-                       include_plotlyjs=False)
-        content['graph'] = div
-        content['data'] = _json.dumps(figure.get('data', []),
-                                      cls=utils.PlotlyJSONEncoder)
-        content['layout'] = _json.dumps(figure.get('layout', {}),
-                                        cls=utils.PlotlyJSONEncoder)
-        graficos.append(content)
-
-    context['graficos'] = graficos
-
-    return TemplateResponse(request, templates, context)
+    return TemplateResponse(request, templates, dados_gerais_context)
 
 
 def _fileId_from_url(url):

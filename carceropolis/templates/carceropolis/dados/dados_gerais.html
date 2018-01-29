@@ -18,11 +18,12 @@
 
 
 {% block extra_css %}
-
+{{ bokeh_css|safe }}
 {% endblock %}
 
 {% block extra_js %}
 <script src="/static/js/vendors/plotly-latest.min.js"></script>
+{{ bokeh_js|safe }}
 {% endblock %}
 
 
@@ -132,12 +133,13 @@
   {% for grafico in graficos %}
     <script>
       figure1 = {};
-      figure1.data = JSON.parse('{{grafico.data|safe}}');
-      figure1.layout = JSON.parse('{{grafico.layout|safe}}');
+     /* figure1.data = JSON.parse('{{grafico.data|safe}}');*/
+     /* figure1.layout = JSON.parse('{{grafico.layout|safe}}');*/
     </script>
     <section class="frame graf" id="graf-{{forloop.counter}}">
         <div class="graf-chart">
           {{ grafico.graph|safe }}
+          {{ grafico.script|safe }}
         </div>
         <aside class="graf-meta">
           <dl>
@@ -151,7 +153,6 @@
             </dd>
             {% if grafico.notas %}
               <dt>Notas:</dt>
-                
                 {% for nota in grafico.notas %}
               <dd>
                   <span class='graf-nota'>{{ nota }}</span>

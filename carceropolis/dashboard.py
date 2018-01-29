@@ -4,8 +4,6 @@ from urllib.parse import parse_qs
 
 import pandas as pd
 from tornado.ioloop import IOLoop
-from bokeh.core.properties import value
-from bokeh import palettes
 from bokeh.plotting import figure
 from bokeh.transform import dodge
 from bokeh.models import HoverTool
@@ -14,7 +12,10 @@ from bokeh.layouts import widgetbox, row
 from bokeh.application import Application
 from bokeh.application.handlers import FunctionHandler
 from bokeh.models.widgets.inputs import Select, MultiSelect
-from bokeh.models import ColumnDataSource, RangeSlider, CustomJS
+from bokeh.models import RangeSlider, CustomJS
+
+from carceropolis.utils.bokeh import (
+    create_source, get_legend, plot_lines, MAIN_PALLETE)
 
 
 def update_querystring(window=None, cb_obj=None):
@@ -60,29 +61,6 @@ def show_widget(widget):
         widget.css_classes.remove('hidden')
 
 
-def get_legend(y, ys):
-    '''
-    Return a legend string for a column.
-    A `value` is used to avoid Bokeh behavior of replacing
-    the string with the column data when the name matches.
-    If only one column will be plotted, uses empty legend.
-    '''
-    return value(y) if len(ys) > 1 else None
-
-
-def create_source(df, x, y, color):
-    '''
-    Creates a datasource in the format needed for tooltips.
-    '''
-    return ColumnDataSource(data={
-        x: df[x],
-        'value': df[y],
-        'value_name': [y]*len(df),
-        'color': [color]*len(df),
-    })
-    return ColumnDataSource(data=df)
-
-
 def plot_bar_iterator(ys, outer_width, palette):
     '''
     Helper function that generates values used to plot bars.
@@ -93,17 +71,6 @@ def plot_bar_iterator(ys, outer_width, palette):
         # width, so they don't overlap
         offset = round(-outer_width*l/2 + outer_width/2 + outer_width*i, 2)
         yield y, offset, color
-
-
-def plot_lines(fig, x, ys, df, palette):
-    '''
-    Plot a line chart.
-    '''
-    for y, color in zip(ys, palette):
-        source = create_source(df, x, y, color)
-        fig.line(
-            x, 'value', source=source, line_width=3, color=color,
-            legend=get_legend(y, ys))
 
 
 def plot_vbar(fig, x, ys, df, palette):
@@ -193,7 +160,7 @@ class Dashboard(object):
         self.df = df
         self.doc = doc
         self.columns = sorted(df.columns)
-        self.palette = palettes.Dark2_8
+        self.palette = MAIN_PALLETE
         self.discrete = [x for x in self.columns if self.df[x].dtype == object]
         # continuous = [x for x in columns if x not in discrete]
         # discrete.append(continuous.pop(continuous.index('ano')))
