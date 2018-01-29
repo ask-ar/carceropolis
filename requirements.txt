@@ -10,6 +10,6 @@ geocoder==1.33.0
 # To be replaced by bokeh graphs
 plotly
 numpy
-bokeh==0.12.9
+bokeh==0.12.13
 flexx
 tornado
