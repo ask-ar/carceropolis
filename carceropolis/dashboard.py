@@ -4,9 +4,6 @@ from urllib.parse import parse_qs
 
 import pandas as pd
 from tornado.ioloop import IOLoop
-from bokeh.plotting import figure
-from bokeh.transform import dodge
-from bokeh.models import HoverTool
 from bokeh.server.server import Server
 from bokeh.layouts import widgetbox, row
 from bokeh.application import Application
@@ -15,7 +12,8 @@ from bokeh.models.widgets.inputs import Select, MultiSelect
 from bokeh.models import RangeSlider, CustomJS
 
 from carceropolis.utils.bokeh import (
-    create_source, get_legend, plot_lines, plot_circles, MAIN_PALLETE)
+    create_figure, plot_lines, plot_circles,
+    plot_hbar, plot_vbar, add_tooltip, MAIN_PALLETE)
 
 
 def update_querystring(window=None, cb_obj=None):
@@ -59,42 +57,6 @@ def show_widget(widget):
     '''
     if widget.css_classes and 'hidden' in widget.css_classes:
         widget.css_classes.remove('hidden')
-
-
-def plot_bar_iterator(ys, outer_width, palette):
-    '''
-    Helper function that generates values used to plot bars.
-    '''
-    l = len(ys)
-    for y, color, i in zip(ys, palette, range(0, l)):
-        # Spreads bars based on the number of bars and their
-        # width, so they don't overlap
-        offset = round(-outer_width*l/2 + outer_width/2 + outer_width*i, 2)
-        yield y, offset, color
-
-
-def plot_vbar(fig, x, ys, df, palette):
-    '''
-    Plot a vertical bar chart.
-    '''
-    width = 0.2
-    for y, offset, color in plot_bar_iterator(ys, width+.03, palette):
-        source = create_source(df, x, y, color)
-        fig.vbar(
-            x=dodge(x, offset, range=fig.x_range), width=width+.03, top='value',
-            source=source, color=color, legend=get_legend(y, ys))
-
-
-def plot_hbar(fig, x, ys, df, palette):
-    '''
-    Plot a horizontal bar chart.
-    '''
-    width = 0.2
-    for y, offset, color in plot_bar_iterator(ys, width+.03, palette):
-        source = create_source(df, x, y, color)
-        fig.hbar(
-            y=dodge(x, offset, range=fig.y_range), height=width, right='value',
-            source=source, color=color, legend=get_legend(y, ys))
 
 
 class Dashboard(object):
@@ -350,11 +312,7 @@ class Dashboard(object):
 
         kw['title'] = "%s vs %s" % (x_title, y_title)
 
-        fig = figure(
-            plot_height=600, plot_width=800, background_fill_alpha=0,
-            border_fill_alpha=0, tools='pan,box_zoom,reset,save', **kw)
-        fig.xaxis.axis_label = x_title
-        fig.yaxis.axis_label = y_title
+        fig = create_figure(x_title, y_title, **kw)
         getattr(fig, no_color_grid_direction).grid_line_color = None
 
         # Rotate category labels so they have more space
@@ -365,16 +323,7 @@ class Dashboard(object):
         chart_type_info['fn'](fig, x_value, y_values, df, self.palette)
 
         # Tooltips
-        tooltips = '''
-        <div class="mytooltip" style="color:@color;">
-            <ul>
-                <li>{xname}: @{xname}</li>
-                <li>@value_name: @value</li>
-            </ul>
-        </div>
-        '''.format(xname=x_value)
-        hover = HoverTool(tooltips=tooltips)
-        fig.add_tools(hover)
+        add_tooltip(fig, xname=x_value)
 
         return fig
 
