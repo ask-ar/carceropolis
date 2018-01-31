@@ -9,7 +9,7 @@ services:
             - db
         volumes:
             - .:/project
-        command: bash -c 'python3 manage.py migrate && python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2 && python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py collectstatic --noinput'
+        command: bash -c 'python3 manage.py migrate && python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2 && python3 manage.py makemigrations && python3 manage.py migrate'
         depends_on:
             - db
     web:
