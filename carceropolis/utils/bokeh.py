@@ -7,6 +7,8 @@ from bokeh.models import ColumnDataSource
 
 
 MAIN_PALLETE = palettes.Dark2_8
+# Orange before green
+MAIN_PALLETE.insert(1, MAIN_PALLETE.pop(0))
 
 
 def get_legend(y, ys):

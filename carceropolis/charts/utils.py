@@ -2,9 +2,16 @@ import os
 import numpy as np
 import pandas as pd
 
+from bokeh.resources import CDN
+from bokeh.embed import components
 from bokeh.models import NumeralTickFormatter
 
-from carceropolis.utils.bokeh import create_figure, plot_hbar
+from carceropolis.utils.bokeh import (
+    create_figure, plot_hbar, plot_lines, plot_circles)
+
+
+# TODO: está usando , no lugar de .
+NUMERAL_TICK_FORMATER = NumeralTickFormatter(format='0,0', language='pt-br')
 
 
 def read_mini_csv(csv_path):
@@ -47,6 +54,48 @@ def plot_simple_hbar_helper(content):
     fig = create_figure_from_content(content, y_range=list(dados['Estado']))
     fig.xaxis.axis_label = content['unidade']
     fig.yaxis.axis_label = content['xname']
-    fig.xaxis.formatter = NumeralTickFormatter(format='0,0', language='pt-br')
+    fig.xaxis.formatter = NUMERAL_TICK_FORMATER
     plot_hbar(fig, content['xname'], content['ynames'], dados)
     return fig
+
+
+def plot_simple_lines(content, circles=True, circles_size=5, continuous=False):
+    fig = create_figure_from_content(content)
+    plot_lines(fig, content['xname'], content['ynames'], content['dados'],
+               continuous=continuous)
+    if circles_size:
+        plot_circles(
+            fig, content['xname'], content['ynames'], content['dados'],
+            size=circles_size)
+    fig.yaxis.formatter = NUMERAL_TICK_FORMATER
+    return fig
+
+
+def plot_charts(charts):
+    '''
+    Plot charts and return context to be used by view template.
+    `charts` should be a list of tuples:
+    (plotter_function, path_to_data_csv, args).
+    '''
+    context = {}
+    graficos = []
+    for function, csv_path, *args in charts:
+        if args:
+            args = args[0]
+        else:
+            args = {}
+        content = read_mini_csv(csv_path)
+        fig = function(content, **args)
+        fig.legend.location = 'top_left'
+        script, div = components(fig)
+        content['graph'] = div
+        content['script'] = script
+        graficos.append(content)
+    context['graficos'] = graficos
+
+    # TODO: As duas linhas abaixo carregam o Bokeh de um CDN. Mas o
+    # dashboard carrega de arquivos locais, logo não vão utilizar a mesma
+    # cache. Talvez seja bom melhorar isso.
+    context['bokeh_js'] = CDN.render_js()
+    context['bokeh_css'] = CDN.render_css()
+    return context

@@ -1,7 +1,7 @@
 # import os
-import importlib
+# import importlib
 
-from bokeh.resources import CDN
+# from bokeh.resources import CDN
 
 # '''
 # Loads all files in this folder not starting with '__' as a chart context.
@@ -20,14 +20,14 @@ from bokeh.resources import CDN
 #         globals()[module_name] = module.get_context()
 
 
-def get_context(module_name):
-    ''' Returns the context to render a chart page. '''
-    context = importlib.import_module(
-        'carceropolis.charts.%s' % module_name).get_context()
+# def get_context(module_name):
+#     ''' Returns the context to render a chart page. '''
+#     context = importlib.import_module(
+#         'carceropolis.charts.%s' % module_name).get_context()
 
-    # TODO: As duas linhas abaixo carregam o Bokeh de um CDN. Mas o
-    # dashboard carrega de arquivos locais, logo não vão utilizar a mesma
-    # cache. Talvez seja bom melhorar isso.
-    context['bokeh_js'] = CDN.render_js()
-    context['bokeh_css'] = CDN.render_css()
-    return context
+#     # TODO: As duas linhas abaixo carregam o Bokeh de um CDN. Mas o
+#     # dashboard carrega de arquivos locais, logo não vão utilizar a mesma
+#     # cache. Talvez seja bom melhorar isso.
+#     context['bokeh_js'] = CDN.render_js()
+#     context['bokeh_css'] = CDN.render_css()
+#     return context

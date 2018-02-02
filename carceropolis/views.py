@@ -25,7 +25,8 @@ from bokeh.embed import server_document
 
 from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
                      UnidadePrisional)
-from carceropolis import charts
+from carceropolis.charts.utils import (
+    plot_charts, plot_simple_lines, plot_simple_hbar_helper)
 
 # from mezzanine.utils.views import render
 
@@ -269,52 +270,84 @@ def dados_gerais(request):
     categories (only categories, not the items from the Publicação Class).
     """
     templates = ["carceropolis/dados/dados_gerais.html"]
-    return TemplateResponse(request, templates,
-                            charts.get_context('dados_gerais'))
+    context = plot_charts([
+        (plot_simple_lines, 'dados_gerais/01.csv'),
+        (plot_simple_lines, 'dados_gerais/02.csv', {'continuous': True}),
+        (plot_simple_hbar_helper, 'dados_gerais/03.csv'),
+        (plot_simple_hbar_helper, 'dados_gerais/04.csv'),
+    ])
+    return TemplateResponse(request, templates, context)
 
 
 def dados_perfil_populacional(request):
     """First test"""
-    templates = [u'carceropolis/dados/perfil_populacional.html']
-    context = {}
-
+    templates = ['carceropolis/dados/perfil_populacional.html']
+    context = plot_charts([
+        (plot_simple_lines, 'perfil_populacional/01.csv'),
+        (plot_simple_lines, 'perfil_populacional/02.csv'),
+        # TODO: faltam dados para 2 gráficos
+    ])
+    # TODO: Nos 2 primeiros gráficos, o Produto1 diz:
+    # Nesse caso, pode-se trabalhar com o destaque textual para o aumento
+    # percentual da população masculina comparado ao aumento percentual da
+    # população feminina na década (2006 a 2016) ou com um gráfico de linhas
+    # que apresentem as duas linhas de evolução juntas (nesse caso, será
+    # necessário considerar a população feminina no eixo principal e a
+    # masculina em um eixo secundário, uma vez que as magnitudes são
+    # distintas).
     return TemplateResponse(request, templates, context)
 
 
 def dados_infraestrutura(request):
     templates = [u'carceropolis/dados/infraestrutura.html']
-    context = {}
+    context = plot_charts([
+        # TODO: faltam 3 gráficos
+    ])
     return TemplateResponse(request, templates, context)
 
 
 def dados_juridico(request):
     templates = [u'carceropolis/dados/juridico.html']
-    context = {}
+    context = plot_charts([
+        # TODO: faltam 2 gráficos
+    ])
     return TemplateResponse(request, templates, context)
 
 
 def dados_educacao(request):
     """Second test"""
+    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/educacao.html']
-    context = {}
+    context = plot_charts([
+        # TODO: faltam 3 gráficos
+    ])
     return TemplateResponse(request, templates, context)
 
 
 def dados_saude(request):
+    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/saude.html']
-    context = {}
+    context = plot_charts([
+        # TODO: faltam 2 gráficos
+    ])
     return TemplateResponse(request, templates, context)
 
 
 def dados_materno_infantil(request):
+    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/materno_infantil.html']
-    context = {}
+    context = plot_charts([
+        # TODO: faltam 2 gráficos
+    ])
     return TemplateResponse(request, templates, context)
 
 
 def dados_alas_exclusivas(request):
+    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/alas_exclusivas.html']
-    context = {}
+    context = plot_charts([
+        # TODO: faltam 4 gráficos
+    ])
     return TemplateResponse(request, templates, context)
 
 
