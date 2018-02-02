@@ -25,7 +25,7 @@ from bokeh.embed import server_document
 
 from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
                      UnidadePrisional)
-from carceropolis.charts.dados_gerais import context as dados_gerais_context
+from carceropolis import charts
 
 # from mezzanine.utils.views import render
 
@@ -241,6 +241,19 @@ def especialistas_list(request, extra_context=None):
     return TemplateResponse(request, templates, context)
 
 
+def _fileId_from_url(url):
+    """Return fileId from a url."""
+    index = url.find('~')
+    fileId = url[index + 1:]
+    # local_id_index = fileId.find('/')
+
+    share_key_index = fileId.find('?share_key')
+    if share_key_index == -1:
+        return fileId.replace('/', ':')
+    else:
+        return fileId[:share_key_index].replace('/', ':')
+
+
 def dados_home(request):
     """Display the Dados Home page, which is a matrix with all available
     categories (only categories, not the items from the Publicação Class).
@@ -256,20 +269,8 @@ def dados_gerais(request):
     categories (only categories, not the items from the Publicação Class).
     """
     templates = ["carceropolis/dados/dados_gerais.html"]
-    return TemplateResponse(request, templates, dados_gerais_context)
-
-
-def _fileId_from_url(url):
-    """Return fileId from a url."""
-    index = url.find('~')
-    fileId = url[index + 1:]
-    # local_id_index = fileId.find('/')
-
-    share_key_index = fileId.find('?share_key')
-    if share_key_index == -1:
-        return fileId.replace('/', ':')
-    else:
-        return fileId[:share_key_index].replace('/', ':')
+    return TemplateResponse(request, templates,
+                            charts.get_context('dados_gerais'))
 
 
 def dados_perfil_populacional(request):
@@ -280,11 +281,40 @@ def dados_perfil_populacional(request):
     return TemplateResponse(request, templates, context)
 
 
+def dados_infraestrutura(request):
+    templates = [u'carceropolis/dados/infraestrutura.html']
+    context = {}
+    return TemplateResponse(request, templates, context)
+
+
+def dados_juridico(request):
+    templates = [u'carceropolis/dados/juridico.html']
+    context = {}
+    return TemplateResponse(request, templates, context)
+
+
 def dados_educacao(request):
     """Second test"""
     templates = [u'carceropolis/dados/educacao.html']
     context = {}
+    return TemplateResponse(request, templates, context)
 
+
+def dados_saude(request):
+    templates = [u'carceropolis/dados/saude.html']
+    context = {}
+    return TemplateResponse(request, templates, context)
+
+
+def dados_materno_infantil(request):
+    templates = [u'carceropolis/dados/materno_infantil.html']
+    context = {}
+    return TemplateResponse(request, templates, context)
+
+
+def dados_alas_exclusivas(request):
+    templates = [u'carceropolis/dados/alas_exclusivas.html']
+    context = {}
     return TemplateResponse(request, templates, context)
 
 

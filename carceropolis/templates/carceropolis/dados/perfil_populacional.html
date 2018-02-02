@@ -1,158 +1,26 @@
-{% extends "base.html" %}
-{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
-
-{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Publicação" %}{% endif %}{% endblock %}
-
-{% block meta_keywords %}{% metablock %}
-{% keywords_for page as keywords %}
-{% for keyword in keywords %}
-    {% if not forloop.first %}, {% endif %}
-    {{ keyword }}
-{% endfor %}
-{% endmetablock %}{% endblock %}
-
-{% block meta_description %}{% metablock %}
-{{ page.description }}
-{% endmetablock %}{% endblock %}
-
-
-{% block extra_css %}
-
-{% endblock %}
-
-{% block extra_js %}
-<script src="/static/js/vendors/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<!-- optional -->
-<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
-{% endblock %}
-
-
-{% block title %}
-{% if page %}
-{% editable page.title %}{{ page.title }}{% endeditable %}
-{% else %}
-{% trans "Dados" %}
-{% endif %}
-{% endblock %}
-
-
-{% block breadcrumb_menu %}
-{{ block.super }}
-{% if tag or categoria or year or month or author %}
-<li>{% spaceless %}
-{% if tag %}
-    {% trans "Tag:" %} {{ tag }}
-{% else %}{% if categoria %}
-    {% trans "Categoria:" %} {{ Categoria }}
-{% else %}{% if year or month %}
-    {% if month %}{{ month }}, {% endif %}{{ year }}
-{% else %}{% if author %}
-    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
-{% endif %}{% endif %}{% endif %}{% endif %}
-{% endspaceless %}
-</li>
-{% endif %}
-{% endblock %}
-
-
-{% block main %}
-
-<div class="container">
-  <nav class="menu-dados">
-    <a class="gerais" href="/dados/gerais/" title="Dados Gerais">
-      <span>Dados Gerais</span>
-    </a>
-    <a class="perfil active" href="/dados/perfil_populacional/" title="Perfil Populacional">
-      <span>Perfil Populacional</span>
-    </a>
-    <a class="infra" href="/dados/infraestrutura/" title="Infraestrutura">
-      <span>Infraestrutura</span>
-    </a>
-    <a class="juridico" href="/dados/juridico/" title="Situação Jurídica">
-      <span>Situação Jurídica</span>
-    </a>
-    <a class="educacao" href="/dados/educacao/" title="Trabalho e Educação">
-      <span>Trabalho e Educação</span>
-    </a>
-    <a class="saude" href="/dados/saude/" title="Saúde">
-        <span>Saúde</span>
-    </a>
-    <a class="materno" href="/dados/materno_infantil/" title="Materno-Infantil">
-      <span>Materno-Infantil</span>
-    </a>
-    <a class="alas-exclusivas" href="/dados/alas_exclusivas/" title="Alas Exclusivas">
-      <span>Alas Exclusivas</span>
-    </a>
-  </nav>
-</div>
-
-<section class="container dados-interna">
-  <h1>2. ESTABELECIMENTO PRISIONAL FEMININO SANTA LUZIA</h1>
-  <div id='data-main-container'>
-    <div class='cards'>
-      <div id="gender-timeline" class='card'>
-        <div class="card-header">
-          <div class="card-title">
-            Evolução da população carcerária, por gênero
-          </div>
-        </div>
-        <div class="card-chart" id='gender-timeline-chart'>
-        </div>
-        <div class="card-meta">
-          Fonte: Infopen
-        </div>
-      </div>
-      <div id="race-timeline" class='card'>
-        <div class="card-header" >
-          <div class="card-title">
-            Evolução da população carcerária, por raça/etnia/cor de pele
-          </div>
-        </div>
-        <div class="card-chart" id='race-timeline-chart'>
-        </div>
-        <div class="card-meta">
-          Fonte: Infopen
-        </div>
-      </div>
-      <!-- bar charts -->
-      <div id="gender-timeline-bar" class='card'>
-        <div class="card-header" >
-          <div class="card-title">
-            Evolução da população carcerária, por gênero
-          </div>
-        </div>
-        <div class="card-chart" id='gender-timeline-bar-chart'>
-          A chart will also be present. Usually two to three brief sentences about the content on the detail page.
-        </div>
-        <div class="card-meta">
-          Fonte: Infopen
-        </div>
-      </div>
-      <div id="race-timeline-bar" class='card'>
-        <div class="card-header" >
-          <div class="card-title">
-            Evolução da população carcerária, por raça/etnia/cor de pele
-          </div>
-        </div>
-        <div class="card-chart" id='race-timeline-bar-chart'>
-        </div>
-        <div class="card-meta">
-          Fonte: Infopen
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{% block final_js%}
-<script src='/static/js/charts/genero_e_raca.js'></script>
-{% endblock %}
-<script>
-
-</script>
-{% endblock %}
-
-{% block right_panel %}
-
+{% extends "carceropolis/dados/base_charts.html" %}
+{% block text_intro %}
+<h1>2. Perfil Populacional</h1>
+<p>
+  A população que se encontra atrás das grades no Brasil tem idade, cor, procedência
+  e gênero. Embora tenhamos a terceira maior população prisional do mundo, a
+  pequena variabilidade de perfis sócio demográficos entre a população prisional
+  demonstra que existe uma parcela da população brasileira que compõe o alvo
+  prioritário do Sistema de Justiça Criminal.
+</p>
+<p>
+  Os dados do Levantamento de Informações Penitenciárias – Infopen mostram que os
+  jovens e as pessoas negras compõem, historicamente, a maior parcela da população
+  prisional. As mulheres, por sua vez, representam o grupo populacional que,
+  isoladamente, mais cresce dentro do sistema prisional, em uma curva de crescimento
+  que não se compara à de nenhum dos países que mais encarceram no mundo.
+  Para formulação de dados sobre perfil da população prisional no Brasil são utilizados
+  os dados do Infopen, que são informados diretamente pelos responsáveis pelas
+  unidades prisionais ao Departamento Penitenciário Nacional. A maior parte das
+  informações sobre perfil são extraídas dos registros internos dos estabelecimentos
+  penais sobre sua população e cadastradas pelos responsáveis, o que pode representar
+  determinadas limitações metodológicas, especialmente quando se trata de
+  informações que deveriam ser autodeclaradas pela pessoa privada de liberdade, como
+  é o caso do gênero e da raça, cor ou etnia.
+</p>
 {% endblock %}
