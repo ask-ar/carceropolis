@@ -1,11 +1,9 @@
 import os
 import numpy as np
-import plotly.graph_objs as go
 import pandas as pd
 from bokeh.embed import components
 from bokeh.resources import INLINE
 from bokeh.models import NumeralTickFormatter
-# from bokeh.models import FixedTicker
 
 from carceropolis.utils.bokeh import (
     create_figure, plot_lines, plot_circles, plot_hbar)
@@ -59,9 +57,6 @@ def plot_simple_hbar_helper(content):
 def pop_prisional_brasil(content):
     '''Plot chart 1'''
     fig = create_figure_from_content(content)
-    # xticks = FixedTicker(ticks=list(data[x_name]))
-    # fig.xaxis.ticker = xticks
-    # fig.xgrid.ticker = xticks
     plot_lines(fig, content['xname'], content['ynames'], content['dados'],
                ["#ea702e"])
     plot_circles(fig, content['xname'], content['ynames'], content['dados'],
@@ -72,19 +67,11 @@ def pop_prisional_brasil(content):
 def taxa_encarceramento_paises(content):
     '''Plot chart 2'''
     fig = create_figure_from_content(content)
-    plot_circles(fig, content['xname'], content['ynames'], content['dados'])
+    plot_circles(fig, content['xname'], content['ynames'], content['dados'],
+                 size=5)
+    plot_lines(fig, content['xname'], content['ynames'], content['dados'],
+               continuous=True)
     return fig
-
-
-def pop_prisional_por_estado(content):
-    '''Plot chart 3'''
-    fig = plot_simple_hbar_helper(content)
-    return fig
-
-
-def taxa_encarceramento_por_estado(content):
-    '''Plot chart 4'''
-    return plot_simple_hbar_helper(content)
 
 
 def get_context():
@@ -94,8 +81,8 @@ def get_context():
     for csv_path, function in [
             ('dados_gerais/01.csv', pop_prisional_brasil),
             ('dados_gerais/02.csv', taxa_encarceramento_paises),
-            ('dados_gerais/03.csv', pop_prisional_por_estado),
-            ('dados_gerais/04.csv', taxa_encarceramento_por_estado),
+            ('dados_gerais/03.csv', plot_simple_hbar_helper),
+            ('dados_gerais/04.csv', plot_simple_hbar_helper),
     ]:
         content = read_mini_csv(csv_path)
         fig = function(content)

@@ -66,10 +66,14 @@ def add_tooltip(fig, xname):
     fig.add_tools(hover)
 
 
-def plot_lines(fig, x, ys, df, palette=MAIN_PALLETE):
+def plot_lines(fig, x, ys, df, palette=MAIN_PALLETE, continuous=False):
     ''' Plot a line chart. '''
     for y, color in zip(ys, palette):
-        source = create_source(df, x, y, color)
+        if continuous:
+            source_df = df[[x, y]].dropna(axis=0, how='any')
+        else:
+            source_df = df
+        source = create_source(source_df, x, y, color)
         fig.line(
             x, 'value', source=source, line_width=3, color=color,
             legend=get_legend(y, ys))
