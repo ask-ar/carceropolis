@@ -1,10 +1,15 @@
-{% load i18n pages_tags blog_tags keyword_tags mezzanine_tags staticfiles %}
-<address>
-    <a href="http://www.conectas.org/" class="logo" title="Por Conectas Direitos Humanos">
-        Conectas Direitos Humanos
-    </a>
-    {% now "Y" %}
-    | São Paulo - SP - Brasil 
-    | Tel/Fax +55 11 3884-7440 
-    | Caixa Postal nº 62633 CEP: 01214-970 - São Paulo - SP
-</address>
+{% load i18n pages_tags blog_tags keyword_tags mezzanine_tags staticfiles static %}
+<footer id="footer">
+  <div class="container">
+    <address>
+      <a href="http://www.conectas.org/" class="logo" title="Por Conectas Direitos Humanos">
+          Conectas Direitos Humanos
+      </a>
+      {% now "Y" %}
+      | São Paulo - SP - Brasil 
+      | Tel/Fax +55 11 3884-7440 
+      | Caixa Postal nº 62633 CEP: 01214-970 - São Paulo - SP
+    </address>
+    <a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a>
+  </div>
+</footer>
