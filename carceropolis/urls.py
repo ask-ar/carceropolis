@@ -20,12 +20,25 @@ admin.site.unregister(BlogPost)
 admin.site.unregister(Site)
 
 dados_pattern = [
-    url(r'^perfil_populacional/$', views.dados_perfil_populacional,
-        name='dados_perfil_populacional'),
-    url(r'^educacao/$', views.dados_educacao, name='dados_educacao'),
+    # TODO: Alguém usa essa piramide etaria? Não está no menu dos dados...
     url(r'^piramide_etaria/$', views.dados_piramide_etaria,
         name='dados_piramide_etaria'),
-    url(r'^gerais/$', views.dados_gerais, name='dados_gerais'),
+    url(r'^alas_exclusivas/$', views.dados_alas_exclusivas,
+        name='dados_alas_exclusivas'),
+    url(r'^materno_infantil/$', views.dados_materno_infantil,
+        name='dados_materno_infantil'),
+    url(r'^saude/$', views.dados_saude,
+        name='dados_saude'),
+    url(r'^educacao/$', views.dados_educacao,
+        name='dados_educacao'),
+    url(r'^juridico/$', views.dados_juridico,
+        name='dados_juridico'),
+    url(r'^infraestrutura/$', views.dados_infraestrutura,
+        name='dados_infraestrutura'),
+    url(r'^perfil_populacional/$', views.dados_perfil_populacional,
+        name='dados_perfil_populacional'),
+    url(r'^gerais/$', views.dados_gerais,
+        name='dados_gerais'),
     url(r'^$', views.dados_home, name='dados_home')
 ]
 
@@ -71,6 +84,10 @@ especialistas_pattern = [
     url(r'^$', views.especialistas_list, name='especialista_list'),
 ]
 
+unidades_pattern = [
+    url(r'^$', views.unidades_map, name='unidades_map'),
+]
+
 # Add the urlpatterns for any custom Django applications here.
 # You can also change the ``home`` view to add your own functionality
 # to the project's homepage.
@@ -90,10 +107,12 @@ urlpatterns += [
     url(r'^[Pp]ublicacoes/', include(publicacao_pattern)),
     url(r'^[Ee]specialistas/', include(especialistas_pattern)),
     url(r'^[Dd]ados/', include(dados_pattern)),
+    url(r'^[Uu]nidades/', include(unidades_pattern)),
     url(r'^entrar/$', views.login_user),
     url(r'^sair/$', logout),
     url(r'^cadastro/$', views.register_user),
     url(r'^recuperar_senha/$', views.password_recovery),
+    url(r'^painel_dados/$', views.data_dashboard),
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 

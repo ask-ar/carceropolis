@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}
+    {% if page %}
+        {{ page.meta_title }}
+    {% else %}
+        {% trans "Painel de Dados" %}
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {% if page %}
+        {% editable page.title %}
+            {{ page.title }}
+        {% endeditable %}
+    {% else %}
+        {% trans "Painel de Dados" %}
+    {% endif %}
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+    .hidden {
+        display: none;
+    }
+    .centered {
+        margin: 0 auto;
+    }
+    h1 {
+        text-align: center;
+    }
+    .bk-root .bk-widget select {
+        border: solid 2px #9C0009;
+        border-radius: 0px;
+    }
+    .mytooltip > ul {
+        list-style-type: none;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+    }
+    </style>
+{% endblock %}
+
+{% block main %}
+  <section class="container">
+    <h1>Painel de Dados</h1>
+
+    {{ script|safe }}
+  </section>
+{% endblock %}

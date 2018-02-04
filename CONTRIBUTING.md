@@ -283,3 +283,13 @@ Vale a ressalva que se o projeto estiver sendo rodado utilizando Docker, esses
 comandos devem ser rodados no container em execução:
 
 `docker exec <CONTAINER_ID> python3 manage.py ...`
+
+## Geolocalização dos dados
+
+Para geolocalizar unidades prisionais que estejam na base, usar o seguinte comando:
+
+    python manage.py geolocate
+
+Pode ser usado o parâmetro `--all` para forçar a geolocalização de todas as unidades.
+
+É usada uma cache local (`geo.cache`) para armazenar os retornos das APIs de mapeamento, agilizando o processo.
