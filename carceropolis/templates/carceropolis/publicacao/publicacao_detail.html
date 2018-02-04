@@ -1,12 +1,7 @@
 {% extends "base.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n static %}
 
 {% block meta_title %}{{ publicacao.meta_title }}{% endblock %}
-
-{% block meta_keywords %}{% metablock %}
-{% keywords_for publicacao as tags %}
-{% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
-{% endmetablock %}{% endblock %}
 
 {% block meta_description %}{% metablock %}
 {{ publicacao.description }}
@@ -16,10 +11,6 @@
     {% editable publicacao.title %}{{ publicacao.title }}{% endeditable %}
 {% endblock %}
 
-{% block breadcrumb_menu %}
-{{ block.super }}
-{% endblock %}
-
 {% block main %}
 <article class="container content">
   <header>
@@ -27,23 +18,6 @@
       <h1 class="post-title">{{ publicacao.title }}</h1>
       <h6 class="post-meta"> Autoria: {{ publicacao.autoria }} </h6>
       <h6 class="post-meta"> Data da publicação: {{ publicacao.ano_de_publicacao }} </h6>
-    {% endblock %}
-
-    {% block publicacao_detail_commentlink %}
-      {% if publicacao.allow_comments and settings.ENABLE_COMMENTS %}
-        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-          (<a href="{{ publicacao.get_absolute_url }}#disqus_thread"
-        data-disqus-identifier="{% disqus_id_for publicacao %}">{% spaceless %}
-            {% trans "Comments" %}
-          {% endspaceless %}</a>)
-        {% else %}
-          (<a href="#comments">{% spaceless %}
-            <p>
-              {% blocktrans count comments_count=publicacao.comments_count %}
-              {{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-            {% endspaceless %}</p></a>)
-        {% endif %}
-      {% endif %}
     {% endblock %}
   </header>
 
