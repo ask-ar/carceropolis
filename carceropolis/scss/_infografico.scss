@@ -108,7 +108,7 @@
 
             &::before,
             &::after {
-                font-family: 'cp_infografico';
+                font-family: 'carceropolis';
             }
 
             &::before {
@@ -119,7 +119,7 @@
             }
 
             &::after {
-                @extend .icon-btn-mais:after;
+                content: $icon-btn-mais;
                 float: right;
             }
 
@@ -165,7 +165,7 @@
         }
 
         h1 a::before {
-            @extend .icon-dados-gerais:before;
+            content: $icon-dados-gerais;
         }
 
         .container {
@@ -263,7 +263,7 @@
         }
 
         h1 a::before {
-            @extend .icon-perfil-populacional:before;
+            content: $icon-perfil-populacional;
         }
 
         .container {
@@ -394,7 +394,7 @@
         }
 
         h1 a::before {
-            @extend .icon-infraestrutura:before;
+            content: $icon-infraestrutura;
         }
 
         strong{
@@ -455,7 +455,7 @@
         }
 
         .pessoa::before{
-            @extend .icon-pessoa:before;
+            content: $icon-pessoa;
         }
 
 	}
@@ -467,7 +467,7 @@
         }
 
         h1 a::before {
-            @extend .icon-juridica:before;
+            content: $icon-juridica;
         }
 
         ol:not(.full){
@@ -588,7 +588,7 @@
     .trabalho-educacao {
 
         h1 a::before {
-            @extend .icon-trabalho-educacao:before;
+            content: $icon-trabalho-educacao;
         }
 
         .container > ol > li:nth-child(1){
@@ -751,7 +751,7 @@
         }
 
         h1 a::before {
-            @extend .icon-saude:before;
+            content: $icon-saude;
             font-size: 1.1em;
             margin-right: 20px;
             top: 3px;
@@ -811,8 +811,8 @@
             }
 
             &:before {
-                content: "\e909 \e909 \e909";
-                font-family: 'cp_infografico';
+                content: $icon-caixao$icon-caixao$icon-caixao;
+                font-family: 'carceropolis';
                 color: $purple;
                 font-size: 7.5em;
                 letter-spacing: .2em;
@@ -841,7 +841,7 @@
         }
 
         h1 a::before {
-            @extend .icon-materno:before;
+            content: $icon-materno;
             font-size: 1.5em;
             margin-right: 15px;
             top: 15px;
@@ -890,9 +890,9 @@
             position: relative;
 
             &::before {
-                @extend .icon-bebe:before;
+                content: $icon-bebe;
                 color: $dark-pink;
-                font-family: 'cp_infografico';
+                font-family: 'carceropolis';
                 font-size: 4.5em;
                 line-height: 1;
                 position: absolute;
@@ -933,7 +933,7 @@
         }
 
         h1 a::before {
-            @extend .icon-alas-exclusivas:before;
+            content: $icon-alas-exclusivas;
         }
 
         .conteudo {
@@ -969,7 +969,7 @@
         }
 
         .comum, .adaptada {
-            font-family: 'cp_infografico'
+            font-family: 'carceropolis'
         }
 
         .comum {
@@ -978,11 +978,11 @@
         }
 
         .comum:before {
-            @extend .icon-prisao:before;
+            content: $icon-prisao;
         }
 
         .adaptada:before {
-            @extend .icon-cadeirante:before;
+            content: $icon-cadeirante;
         }
 
         .celas {
@@ -1021,7 +1021,7 @@
         }
 
         h1 a::before {
-            @extend .icon-unidades-prisionais:before;
+            content: $icon-brasil;
             font-size: 1.5em;
             margin-right: 15px;
             top: 15px;
@@ -1092,40 +1092,5 @@
         background-color: #af1e23;
     }
 
-    .icon-dados-gerais {
-
-    }
-
-    .icon-perfil-populacional {
-
-    }
-
-    .icon-infraestrutura {
-
-    }
-
-    .icon-juridica {
-
-    }
-
-    .icon-trabalho-educacao {
-
-    }
-
-    .icon-saude {
-
-    }
-
-    .icon-materno {
-
-    }
-
-    .icon-alas-exclusivas {
-
-    }
-
-    .icon-unidades-prisionais {
-
-    }
 
 }
