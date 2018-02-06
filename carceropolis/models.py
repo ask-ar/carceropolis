@@ -2,7 +2,7 @@
 import logging
 
 from cidades.models import Cidade, STATE_CHOICES
-from csv import DictReader
+from csv import DictReader, DictWriter
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from mezzanine.blog.models import BlogPost
@@ -184,6 +184,20 @@ class UnidadePrisional(models.Model):
                 unidade.telefone = None
         unidade.email = data['email']
         return unidade
+
+    @classmethod
+    def _export_to_csv(cls, path):
+        ''' Export this class table to a CSV. '''
+        fieldnames = [f.name for f in cls._meta.fields]
+        with open(path, 'w') as csv_file:
+            writer = DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            objects = cls.objects.all()
+            for obj in objects:
+                data = {field: getattr(obj, field, None)
+                        for field in fieldnames}
+                data['municipio'] = data['municipio'].nome
+                writer.writerow(data)
 
     @classmethod
     def _import_from_csv(cls, path):
