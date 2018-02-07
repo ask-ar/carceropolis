@@ -42,8 +42,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 main.main-content {
+	min-height: calc(100vh - #{$header} - #{$footer});
 	width: 100%;
-	min-height: calc(100vh - 65px - 82px);
 }
 
 #footer {

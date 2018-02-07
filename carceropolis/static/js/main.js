@@ -74,32 +74,32 @@ jQuery(function ($) {
     })
 
     // Pagina de dados
+    let animDadosGerais = (ativo = `#dados-gerais`) => {
+        /*
+            1. Dados Gerais
+            - número 622 inciando normal e tornando-se negrito
+            - animação (contador) no 111%
+        */
+        $(`${ativo} [data-tobold]`).addClass(`toBold`)
+        contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1500)
+        setTimeout(
+            () => $(`${ativo} .anim1`).addClass(`bounceInDown`)
+            , 3000
+        )
+    }    
+    
+    $(document).ready(() => animDadosGerais())
+    
     $('body.dados').scrollspy({ target: '#dados-bar', offset: 60 })
 
     $('#dados-bar').on('activate.bs.scrollspy', function (event) {
 
         let ativo = $(event.target).find('a').attr('href')
 
-        function animDadosGerais(){
-            /*
-                1. Dados Gerais
-                - número 622 inciando normal e tornando-se negrito
-                - animação (contador) no 111%
-            */
-            $(`${ativo} [data-tobold]`).addClass(`toBold`)
-            contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1500)
-            setTimeout(
-                () => $(`${ativo} .anim1`).addClass(`bounceInDown`)
-                , 3000
-            )
-        }
-
-        animDadosGerais()
-
         switch (ativo) {
             case `#dados-gerais`:
 
-                animDadosGerais()
+                animDadosGerais(ativo)
                 break
 
             case `#perfil-populacional`:
@@ -180,9 +180,13 @@ jQuery(function ($) {
                 - número 1.294 inciando normal e tornando-se negrito
                 - preencher celas vermelhas e depois as cadeiras de rodas brancas */
                 break
+            
+            case `#unidades-prisionais`:
+
+                break
 
             default:
-                console.log("Animation error")
+                console.log(`Animation error ${ativo}`)
         }
     })
 

@@ -2,10 +2,10 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    height: calc(100vh - 48px);
+    height: calc(100vh - #{$headerXs});
 
     @media (min-width: 768px) {
-        height: calc(100vh - 65px);
+        height: calc(100vh - #{$header});
     }
 }
 
