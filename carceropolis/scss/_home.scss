@@ -84,21 +84,18 @@
 }
 
 .conectas-home {
+    bottom: 2vh;
+    display: block;
     position: absolute;
-    bottom: 1em;
-    right: 2em;
+    right: 2vw;
+    width: 121px;
 
     @media (min-width: 768px) {
-        right: 3em;
-
-        img {
-            width: 131px;
-        }
+        bottom: 3vh;
+        right: 3vw;
     }
 
     img {
-        display: inline-block;
-        height: auto;
-        width: 121px;
+        width: 100%;
     }
 }

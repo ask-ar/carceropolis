@@ -361,7 +361,6 @@
 	}
 
 	.infraestrutura {
-
         background-image: url(../images/infografico/infraestrutura_bg.jpg);
         background-blend-mode: luminosity;
         background-color: $dark-pink;
@@ -716,7 +715,6 @@
 	}
 
 	section.saude {
-
         background: white;
         color: $dark-pink;
         position: relative;
@@ -808,7 +806,6 @@
 	section.materno-infantil {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         padding-bottom: 0;
 
         h1 {
@@ -901,7 +898,6 @@
 	}
 
 	.alas-exclusivas {
-
         min-height: calc(100vh - #{$header} - #{$footer});
 
         h1 {
@@ -984,11 +980,10 @@
 	}
 
 	.unidades-prisionais {
-        min-height: calc(100vh - #{$footer});
-
         display: flex;
         flex-direction: column;
         justify-content: center;
+        min-height: calc(100vh - #{$footer});
         padding-bottom: 0;
 
         h1 {
