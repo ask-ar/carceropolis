@@ -19,6 +19,14 @@
 
 {% block extra_css %}
 {{ bokeh_css|safe }}
+    <style>
+    .mytooltip > ul {
+        list-style-type: none;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+    }
+    </style>
 {% endblock %}
 
 {% block extra_js %}
