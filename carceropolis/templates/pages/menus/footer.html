@@ -1,9 +1,9 @@
-{% load i18n pages_tags blog_tags keyword_tags mezzanine_tags staticfiles static %}
+{% load staticfiles static %}
 <footer id="footer">
   <div class="container">
     <address>
       <a href="http://www.conectas.org/" class="logo" title="Por Conectas Direitos Humanos">
-          Conectas Direitos Humanos
+          <img src="{% static "images/conectas-marca-sd.svg" %}" alt="Conectas Direitos Humanos">
       </a>
       {% now "Y" %}
       | São Paulo - SP - Brasil 

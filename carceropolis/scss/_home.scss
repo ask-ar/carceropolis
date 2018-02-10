@@ -2,10 +2,10 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    height: calc(100vh - 48px);
+    height: calc(100vh - #{$headerXs});
 
     @media (min-width: 768px) {
-        height: calc(100vh - 65px);
+        height: calc(100vh - #{$header});
     }
 }
 
@@ -84,21 +84,18 @@
 }
 
 .conectas-home {
+    bottom: 2vh;
+    display: block;
     position: absolute;
-    bottom: 1em;
-    right: 2em;
+    right: 2vw;
+    width: 121px;
 
     @media (min-width: 768px) {
-        right: 3em;
-
-        img {
-            width: 131px;
-        }
+        bottom: 3vh;
+        right: 3vw;
     }
 
     img {
-        display: inline-block;
-        height: auto;
-        width: 121px;
+        width: 100%;
     }
 }

@@ -33,10 +33,9 @@
 		width: 0;
 	}
 
-
 	a::before {
 		display: block;
-		font-family: 'cp_infografico';
+		font-family: 'carceropolis';
 		font-size: 2.4em;
 		height: 100%;
 		line-height: 50px;
@@ -46,39 +45,39 @@
 	}
 	
 	.gerais::before {
-		@extend .icon-dados-gerais:before;
+		content: $icon-dados-gerais;
 	}
 	
 	.perfil::before {
-		@extend .icon-perfil-populacional:before;
+		content: $icon-perfil-populacional;
 	}
 	
 	.infra::before {
-		@extend .icon-infraestrutura:before;
+		content: $icon-infraestrutura;
 	}
 	
 	.juridico::before {
-		@extend .icon-juridica:before;
+		content: $icon-juridica;
 	}
 	
 	.educacao::before {
-		@extend .icon-trabalho-educacao:before;
+		content: $icon-trabalho-educacao;
 	}
 	
 	.saude::before {
-		@extend .icon-saude:before;
+		content: $icon-saude;
 	}
 	
 	.materno::before {
-		@extend .icon-materno:before;
+		content: $icon-materno;
 	}
 	
 	.alas-exclusivas::before {
-		@extend .icon-alas-exclusivas:before;
+		content: $icon-alas-exclusivas;
 	}
 	
 	.unidades-prisionais::before {
-		@extend .icon-unidades-prisionais:before;
+		content: $icon-brasil;
 	}
 }
 
