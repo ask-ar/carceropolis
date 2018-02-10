@@ -6,7 +6,7 @@
       <select name="filter_area_atuacao" id="filter_area_atuacao" class="form-control">
         <option {% if not area_atuacao %}selected {% endif %}value=''> -- Selecione uma opção -- </option>
         {% for area in areas_de_atuacao %}
-          <option value="{{area}}" {% if area_atuacao == area %} selected {% endif %}>{{area}}</option>
+          <option value="{{area}}" {% if area_atuacao|slugify == area|slugify %} selected{% endif %}>{{area}}</option>
         {% endfor %}
       </select>
     </div>
