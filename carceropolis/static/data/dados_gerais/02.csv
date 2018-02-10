@@ -1,33 +1,34 @@
-"Título","Taxa de encarceramento nos quatro países com a maior população prisional desde 2005",,,,,,,,,,,,
-"Unidade","Número de pessoas presas para cada 100 mil habitantes",,,,,,,,,,,,
-"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Dezembro de 2014. Pesquisa Nacional por Amostragem Domiciliar – PNAD/IBGE.",,,,,,,,,,,,
-"Fonte link",,,,,,,,,,,,,
-"Notas","ONU possui indicador de taxa de encarceramento máxima, desde YYYY, de 110 pessoas presas para cada 100 mil habitantes.; Os dados consideram a soma das populações custodiadas nas unidades prisionais do sistema penitenciário estadual (estabelecimentos penais geridos pelos estados ou por modelos de parceria entre a gestão estadual e entidades privadas, normalmente inseridos na estrutura das Secretarias de Justiça e Administração Prisional); e as pessoas custodiadas em carceragens de delegacias ou outros espaços de custódia geridos pelos órgãos da segurança pública estadual.",,,,,,,,,,,,
-,,,,,,,,,,,,," "
-"Ano","EUA","China","Rússia","Brasil","ONU",,,,,,,,
-1992,501,,487,74,110,,,,,,,,
-1993,,,,,110,,,,,,,,
-1994,,,,,110,,,,,,,,
-1995,592,109,622,92,110,,,,,,,,
-1996,,,,,110,,,,,,,,
-1997,,,,102,110,,,,,,,,
-1998,655,115,688,,110,,,,,,,,
-1999,,,,,110,,,,,,,,
-2000,,,,,110,,,,,,,,
-2001,685,112,636,133,110,,,,,,,,
-2002,,,,,110,,,,,,,,
-2003,,,,,110,,,,,,,,
-2004,725,122,588,183,110,,,,,,,,
-2005,,,,,110,,,,,,,,
-2006,,,,,110,,,,,,,,
-2007,758,124,613,220,110,,,,,,,,
-2008,,,,,110,,,,,,,,
-2009,,,,,110,,,,,,,,
-2010,,123,609,253,110,,,,,,,,
-2011,,,,,110,,,,,,,,
-2012,707,,,287,110,,,,,,,,
-2013,,121,,,110,,,,,,,,
-2014,693,119,471,307,110,,,,,,,,
-2015,666,118,,,110,,,,,,,,
-2016,,,448,,110,,,,,,,,
-2017,,,433,316,110,,,,,,,,
+Título,Evolução da População Prisional Brasileira
+Unidade,mil pessoas presas
+Fonte,Ministério da Justiça (1990-2015) e Levantamento de Informações Penitenciárias - Ministério da Justiça (2005-2016)
+Fonte link,
+Notas,"Dados referentes ao mês de dezembro de cada ano, exceto para o ano de 2002 e 2016, em que o dado refere-se a junho.;Os dados consideram as pessoas custodiadas nas unidades do sistema prisional e nos espaços de custódia geridos pelos órgãos de segurança pública.
+,
+Ano,População
+1990,"90,0"
+1991,
+1992,"114,3"
+1993,"126,2"
+1994,"129,2"
+1995,"148,8"
+1996,
+1997,"170,6"
+1998,
+1999,"194,1"
+2000,"232,8"
+2001,"233,9"
+2002,"239,3"
+2003,"308,3"
+2004,"336,4"
+2005,"361,4"
+2006,"401,2"
+2007,"422,4"
+2008,"451,4"
+2009,"473,6"
+2010,"496,3"
+2011,"514,6"
+2012,"549,8"
+2013,"581,5"
+2014,"622,2"
+2015,"698,6"
+2016,"726,7"

@@ -2,7 +2,15 @@
 {% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags  static %}
 
 {% block extra_css %}
-    {{ bokeh_css|safe }}
+{{ bokeh_css|safe }}
+    <style>
+    .mytooltip > ul {
+        list-style-type: none;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+    }
+    </style>
 {% endblock %}
 
 {% block extra_js %}

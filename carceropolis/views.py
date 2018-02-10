@@ -302,8 +302,8 @@ def dados_gerais(request):
     """
     templates = ["carceropolis/dados/dados_gerais.html"]
     context = plot_charts([
-        (plot_simple_lines, 'dados_gerais/01.csv'),
-        (plot_simple_lines, 'dados_gerais/02.csv', {'continuous': True}),
+        (plot_simple_lines, 'dados_gerais/01.csv', {'continuous': True}),
+        (plot_simple_lines, 'dados_gerais/02.csv'),
         (plot_simple_hbar_helper, 'dados_gerais/03.csv'),
         (plot_simple_hbar_helper, 'dados_gerais/04.csv'),
     ])

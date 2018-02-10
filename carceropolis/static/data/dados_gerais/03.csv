@@ -1,8 +1,8 @@
-Título,"População prisional, por estado"
+Título,"População prisional por unidade da Federação"
 Unidade,Número de pessoas presas
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Dezembro de 2014."
+Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
 Fonte link,
-Notas,"Os dados consideram a soma das populações custodiadas nas unidades prisionais do sistema penitenciário estadual (estabelecimentos penais geridos pelos estados ou por modelos de parceria entre a gestão estadual e entidades privadas, normalmente inseridos na estrutura das Secretarias de Justiça e Administração Prisional); e as pessoas custodiadas em carceragens de delegacias ou outros espaços de custódia geridos pelos órgãos da segurança pública estadual."
+Notas,"Os dados consideram as pessoas custodiadas nas unidades dos sistemas prisionais estadual e federal."
 ,
 Estado,População prisional
 RR,1609
