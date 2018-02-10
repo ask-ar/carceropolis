@@ -76,9 +76,9 @@ publicacao_pattern = [
 
 especialistas_pattern = [
     url(r'^area_de_atuacao/(?P<area_de_atuacao>.*)%s$' % _slash,
-        views.especialistas_list, name='especialista_list'),
+        views.especialistas_list, name='especialista_list_area_atuacao'),
     url(r'^especialidade/(?P<especialidade>.*)%s$' % _slash,
-        views.especialistas_list, name='especialista_list'),
+        views.especialistas_list, name='especialista_list_especialidade'),
     url(r'^(?P<slug>.*)%s$' % _slash, views.publicacao_detail,
         name='publicacao_detail'),
     url(r'^$', views.especialistas_list, name='especialista_list'),
