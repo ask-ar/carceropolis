@@ -13,3 +13,4 @@ numpy
 bokeh==0.12.13
 flexx
 tornado
+unidecode

@@ -6,6 +6,7 @@ from csv import DictReader
 from functools import reduce
 import json
 import base64
+from unidecode import unidecode
 
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, get_user_model, login, logout
@@ -177,7 +178,7 @@ def publicacao_feed(request, fmt, **kwargs):
 ###############################################################################
 
 
-def especialistas_list(request, extra_context=None):
+def especialistas_list(request, extra_context=None, **kwargs):
     """Display a list of blog posts that are filtered by tag, year, month,
     author or categoria. Custom templates are checked for using the name
     ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is
@@ -197,34 +198,59 @@ def especialistas_list(request, extra_context=None):
         'error_message': ''
     }
 
-    if 'nome' in request.GET.keys():
-        nome = request.GET.get('nome'),
-        nome = nome[0]
-        nomes = nome.split('-')
-        for item in nomes:
-            especialistas = especialistas.filter(
-                nome__icontains=item)
-        context['nome'] = nomes
+    def build_filter_keywords(tipo):
+        item = kwargs.get(tipo, None)
+        outputs = set([unidecode(item).lower()]) if item else set()
 
-    if 'area_atuacao' in request.GET.keys():
-        area_atuacao = request.GET.get('area_atuacao'),
-        area_atuacao = area_atuacao[0]
-        areas = area_atuacao.split('-')
-        for area in areas:
-            especialistas = especialistas.filter(
-                area_de_atuacao__nome__icontains=area)
-        context['area_atuacao'] = area_atuacao
+        if tipo in request.GET.keys():
+            items = request.GET.get(tipo)
+            # Remove accents
+            items = unidecode(items)
+            # To Lowercase
+            items = items.lower()
+            # Remove leading and trailing spaces
+            items = items.strip()
+            # Replace '-' with spaces
+            items = items.replace('-', ' ').replace(',',' ').replace(';', ' ')
+            # Split on spaces into multiple items
+            items = items.split(' ')
+            # Update outputs set.
+            outputs.update(items)
 
-    if 'especialidade' in request.GET.keys():
-        especialidade = request.GET.get('especialidade'),
-        especialidade = especialidade[0]
-        especialidades = especialidade.split('-')
-        for item in especialidades:
-            especialistas = especialistas.filter(
-                especialidades__nome__icontains=item)
-        context['especialidade'] = especialidade
+        if outputs:
+            stop_words = ["", " ", "de"]
+            _ = [outputs.discard(word) for word in stop_words]
+            print(".",outputs,".")
+            return outputs
+        return []
+
+    nomes = build_filter_keywords('nome')
+    areas = build_filter_keywords('area_atuacao')
+    especialidades = build_filter_keywords('especialidade')
+
+    for nome in nomes:
+        especialistas = especialistas.filter(
+            nome__unaccent__icontains=nome)
+
+    for area in areas:
+        especialistas = especialistas.filter(
+            area_de_atuacao__nome__unaccent__icontains=area)
+
+    for especialidade in especialidades:
+        especialistas = especialistas.filter(
+            especialidades__nome__unaccent__icontains=especialidade)
+
+    if nomes:
+        context['nome'] = ' '.join(sorted(list(nomes)))
+
+    if areas:
+        context['area_atuacao'] = request.GET.get('area_atuacao')
+
+    if especialidades:
+        context['especialidade'] = ' '.join(sorted(list(especialidades)))
 
     prefetch = ("area_de_atuacao", 'especialidades')
+    especialistas = especialistas.distinct()
     especialistas = especialistas.prefetch_related(*prefetch)
     especialistas = paginate(especialistas, request.GET.get("page", 1),
                              settings.PUBLICACAO_PER_PAGE,
@@ -232,8 +258,11 @@ def especialistas_list(request, extra_context=None):
 
     if not especialistas:
         especialistas = Especialista.objects.all()
-        context['error_message'] = 'Nenhum(a) especialista encontrado(a) com '
-        context['error_message'] += 'os parâmetros passados.'
+        context['nome'] = ''
+        context['area_atuacao'] = ''
+        context['especialidade'] = ''
+        context['error_message'] = ('Nenhum(a) especialista encontrado(a) com '
+                                    'os parâmetros passados.')
 
     context['especialistas'] = especialistas
 
