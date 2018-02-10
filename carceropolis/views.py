@@ -295,8 +295,10 @@ def dados_home(request):
 
 
 def dados_gerais(request):
-    """Display the Dados Home page, which is a matrix with all available
-    categories (only categories, not the items from the Publicação Class).
+    """Display the Dados Home page.
+
+    It is a matrix with all available categories (only categories, not the
+    items from the Publicação Class).
     """
     templates = ["carceropolis/dados/dados_gerais.html"]
     context = plot_charts([
