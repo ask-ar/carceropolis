@@ -26,3 +26,26 @@
 </section>
 
 {% endblock %}
+
+{% block final_js %}
+  {{ block.super }}
+  <script>
+  $(function( ){
+      let qs = "?"
+      {% if area_atuacao %}
+          qs += "area_atuacao={{area_atuacao}}&"
+      {% endif %}
+      {% if nome %}
+          qs += "nome={{nome}}&"
+      {% endif %}
+      {% if especialidade %}
+          qs += "especialidade={{especialidade}}"
+      {% endif %}
+
+      if (history.pushState && qs != "?") {
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + qs;
+          window.history.pushState({path:newurl},'',newurl);
+      }
+  });
+  </script>
+{% endblock %}

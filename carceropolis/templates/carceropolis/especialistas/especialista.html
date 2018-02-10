@@ -9,7 +9,9 @@
       <ul class="especialidades">
       {% for especialidade in especialidades %}
         <li>
-          <a href='/especialistas/especialidade/{{especialidade.slug}}/'>{{ especialidade.nome }}</a>
+          <a onclick="javascript:add_especialidade_filter('{{especialidade.nome}}')" title='Adiciona filtro de especialidade {{especialidade.nome}}'>
+            {{ especialidade.nome }}
+          </a>
         </li>
       {% endfor %}
       </ul>
@@ -24,3 +26,11 @@
     </button>
   {% endif %}
 </li>
+
+<script>
+  function add_especialidade_filter(especialidade){
+    let curr_filter = $("#filter_especialidade").val();
+    $("#filter_especialidade").val(curr_filter + " " + especialidade);
+    $("#filter_especialistas").submit();
+  }
+</script>
