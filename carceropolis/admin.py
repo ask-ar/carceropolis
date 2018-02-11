@@ -63,13 +63,24 @@ class PublicacaoAdmin(BlogPostAdmin):  # pylint: disable=too-many-ancestors
 class UnidadePrisionalAdmin(admin.ModelAdmin):
     """Unidade Prisional admin class."""
 
-    fieldsets = [(None, {u'fields': [u'nome_unidade', u'sigla_unidade',
-                                     u'tipo_logradouro', u'nome_logradouro',
-                                     u'numero', u'complemento', u'bairro',
-                                     u'municipio', u'uf', u'cep', u'ddd',
-                                     u'telefone', u'email']})]
+    fieldsets = (
+        (None, {
+            'fields': ('nome_unidade', 'sigla_unidade')
+        }),
+        ('Contatos', {
+            'classes': ('collapse', 'extrapretty'),
+            'fields': ('ddd', 'telefone', 'email')
+        }),
+        ('Endereço', {
+            'classes': ('collapse',),
+            'fields': ('tipo_logradouro', 'nome_logradouro', 'numero',
+                       'complemento', 'bairro', 'municipio', 'uf', 'cep',
+                       'lat', 'lon')
+        })
+    )
+    list_select_related = ('municipio',)
     list_display = ['nome_unidade', 'municipio', 'uf']
-    search_fields = ['nome_unidade', 'municipio__nome', 'uf']
+    search_fields = ['nome_unidade', 'municipio__nome', 'uf', 'sigla_unidade']
     list_filter = ['uf']
 
 
