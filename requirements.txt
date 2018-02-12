@@ -2,7 +2,7 @@ git+https://github.com/stephenmcd/mezzanine.git#egg=Mezzanine
 django-extensions
 django-phonenumber-field
 django-logentry-admin
-psycopg2
+psycopg2-binary
 django-autoslug
 pandas
 ipython
