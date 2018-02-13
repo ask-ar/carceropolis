@@ -65,7 +65,7 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('nome_unidade', 'sigla_unidade')
+            'fields': ('id_unidade', 'nome_unidade', 'sigla_unidade')
         }),
         ('Contatos', {
             'classes': ('collapse', 'extrapretty'),
@@ -79,8 +79,9 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
         })
     )
     list_select_related = ('municipio',)
-    list_display = ['nome_unidade', 'municipio', 'uf']
-    search_fields = ['nome_unidade', 'municipio__nome', 'uf', 'sigla_unidade']
+    list_display = ['id_unidade', 'nome_unidade', 'municipio', 'uf']
+    search_fields = ['nome_unidade', 'municipio__nome', 'uf', 'sigla_unidade',
+                     'id_unidade']
     list_filter = ['uf']
 
 

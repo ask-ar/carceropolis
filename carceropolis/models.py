@@ -116,7 +116,7 @@ class UnidadePrisional(models.Model):
 
     """Unidades Prisionais."""
 
-    id_unidade = models.IntegerField()
+    id_unidade = models.IntegerField(primary_key=True)
     nome_unidade = models.CharField(max_length=255,
                                     verbose_name='Nome da Unidade')
     sigla_unidade = models.CharField(max_length=10)
