@@ -1,5 +1,6 @@
 """Modelos definidos para o Projeto carcerópolis."""
 import logging
+import re
 
 from cidades.models import Cidade, STATE_CHOICES
 from csv import DictReader, DictWriter
@@ -150,48 +151,6 @@ class UnidadePrisional(models.Model):
         return "%s (%s/%s)" % (self.nome_unidade, self.municipio, self.uf)
 
     @classmethod
-    def _new_from_dict(cls, data):
-        """Generate a new 'Unidade Prisional' and return it.
-
-        The 'data' attribute is a dictionary with the necessary fields to
-        generate a new Unidade Prisional.
-        """
-        unidade = UnidadePrisional()
-        unidade.nome_unidade = data['nome_unidade']
-        unidade.sigla_unidade = data['sigla_unidade']
-        unidade.tipo_logradouro = data['tipo_logradouro']
-        unidade.nome_logradouro = data['nome_logradouro']
-        if isinstance(data['numero'], int):
-            unidade.numero = data['numero']
-        else:
-            try:
-                unidade.numero = int(data['numero'])
-            except:
-                unidade.numero = None
-        unidade.complemento = data['complemento']
-        unidade.bairro = data['bairro']
-        unidade.municipio = Cidade.objects.get(nome=data['municipio'],
-                                               estado=data['uf'])
-        unidade.uf = data['uf']
-        unidade.cep = data['cep']
-        if isinstance(data['ddd'], int):
-            unidade.ddd = data['ddd']
-        else:
-            try:
-                unidade.ddd = int(data['ddd'])
-            except:
-                unidade.ddd = None
-        if isinstance(data['telefone'], int):
-            unidade.telefone = data['telefone']
-        else:
-            try:
-                unidade.telefone = int(data['telefone'])
-            except:
-                unidade.telefone = None
-        unidade.email = data['email']
-        return unidade
-
-    @classmethod
     def _export_to_csv(cls, path):
         ''' Export this class table to a CSV. '''
         fieldnames = [f.name for f in cls._meta.fields]
@@ -200,7 +159,7 @@ class UnidadePrisional(models.Model):
             writer.writeheader()
             objects = cls.objects.all()
             for obj in objects:
-                data = {field: getattr(obj, field, None)
+                data = {field: getattr(obj, field, '')
                         for field in fieldnames}
                 data['municipio'] = data['municipio'].nome
                 writer.writerow(data)
@@ -216,35 +175,35 @@ class UnidadePrisional(models.Model):
         novas = []
         errors = []
 
-        fieldnames = ['remove1', 'nome_unidade', 'sigla_unidade',
+        fieldnames = ['id_unidade', 'nome_unidade', 'sigla_unidade',
                       'tipo_logradouro', 'nome_logradouro', 'numero',
                       'complemento', 'bairro', 'municipio', 'uf', 'cep', 'ddd',
-                      'telefone', 'email', 'remove2']
+                      'telefone', 'email', 'responsavel', 'visitacao', 'lat',
+                      'lon', 'id_2014_06', 'id_2014_12', 'id_2015_12',
+                      'id_2016_06']
         with open(path, 'r') as csv_file:
             data = DictReader(csv_file, fieldnames=fieldnames)
 
             for row in data:
-                if row['nome_unidade'] == 'nome_unidade':
-                    row = data.next()
-
-                del row['remove1']
-                del row['remove2']
+                nome_unidade = row.get('nome_unidade')
+                if not nome_unidade or nome_unidade == 'nome_unidade':
+                    continue
 
                 try:
-                    unidade = UnidadePrisional.objects.get(
-                        nome_unidade=row['nome_unidade'],
-                        municipio=Cidade.objects.get(nome=row['municipio'],
-                                                     estado=row['uf']))
+                    unidade = cls.objects.get(
+                        id_unidade=row.get('id_unidade'),
+                        municipio=Cidade.objects.get(nome=row.get('municipio'),
+                                                     estado=row.get('uf')))
                     unidade._update_from_dict(row)
                     unidade.save()
                     atualizadas.append(unidade.nome_unidade)
                 except ObjectDoesNotExist:
                     try:
-                        unidade = UnidadePrisional._new_from_dict(row)
+                        unidade = cls._new_from_dict(row)
                         unidade.save()
                         novas.append(unidade.nome_unidade)
                     except Exception as e:
-                        error = {'nome_unidade': row['nome_unidade'],
+                        error = {'nome_unidade': nome_unidade,
                                  'erro': str(e),
                                  'data': row}
                         errors.append(error)
@@ -252,61 +211,91 @@ class UnidadePrisional(models.Model):
         msg = 'Resumo da operação:\n'
         if atualizadas:
             msg += '    - '
-            msg += '{} unidades foram atualizadas.\n'.format(len(atualizadas))
-            log.info('    {}'.format(atualizadas))
+            msg += f'{len(atualizadas)} unidades foram atualizadas.\n'
 
         if novas:
             msg += '    - '
-            msg += '{} unidades foram adicionadas.\n'.format(len(novas))
+            msg += f'{len(novas)} unidades foram adicionadas.\n'
 
         if errors:
-            msg += 'Ocorreram {} erros de importação:\n'.format(len(errors))
+            msg += 'Ocorreram {len(errors)} erros de importação:\n'
             for error in errors:
                 msg += '    - '
-                msg += 'Unidade: {:.30}'.format(error['nome_unidade'])
-                msg += ' | {} | {}/{}\n'.format(error['erro'],
-                                                error['data']['uf'],
-                                                error['data']['municipio'])
+                msg += f'Unidade: {error["nome_unidade"]:.30}'
+                msg += f' | {error["erro"]} | {error["data"]["uf"]}/'
+                msg += f'{error["data"]["municipio"]}\n'
 
         log.info(msg)
 
-    def _update_from_dict(self, data):
+    @classmethod
+    def _new_from_dict(cls, data):
+        """Generate a new 'Unidade Prisional' and return it.
+
+        The 'data' attribute is a dictionary with the necessary fields to
+        generate a new Unidade Prisional.
+        """
+        unidade = cls()
+
+        return cls._update_from_dict(unidade, data)
+
+    @staticmethod
+    def _update_from_dict(unidade, data):
         """Update a 'Unidade Prisional' based on its name and return it.
 
         The 'data' attribute is a dictionary with the necessary fields to
         generate a new Unidade Prisional.
         """
-        self.sigla_unidade = data['sigla_unidade']
-        self.tipo_logradouro = data['tipo_logradouro']
-        self.nome_logradouro = data['nome_logradouro']
-        if isinstance(data['numero'], int):
-            self.numero = data['numero']
-        else:
-            try:
-                self.numero = int(data['numero'])
-            except:
-                self.numero = None
-        self.complemento = data['complemento']
-        self.bairro = data['bairro']
-        self.municipio = Cidade.objects.get(nome=data['municipio'],
-                                            estado=data['uf'])
-        self.uf = data['uf']
-        self.cep = data['cep']
-        if isinstance(data['ddd'], int):
-            self.ddd = data['ddd']
-        else:
-            try:
-                self.ddd = int(data['ddd'])
-            except:
-                self.ddd = None
-        if isinstance(data['telefone'], int):
-            self.telefone = data['telefone']
-        else:
-            try:
-                self.telefone = int(data['telefone'])
-            except:
-                self.telefone = None
-        self.email = data['email']
+        # Campos Obrigatórios
+        unidade.id_unidade = int(data.get('id_unidade'))
+        unidade.nome_unidade = data.get('nome_unidade').strip()
+        unidade.sigla_unidade = data.get('sigla_unidade').strip()
+        unidade.tipo_logradouro = data.get('tipo_logradouro').strip()
+        unidade.nome_logradouro = data.get('nome_logradouro').strip()
+        unidade.uf = data.get('uf').strip()
+        unidade.municipio = Cidade.objects.get(nome=data.get('municipio'),
+                                               estado=unidade.uf)
+        unidade.cep = data.get('cep').strip()
+        if not re.match(r'\d{5}-\d{3}', unidade.cep):
+            raise ValueError(f'Invalid CEP format {unidade.cep}.')
+        unidade.id_2014_06 = int(data.get('id_2014_06'))
+        unidade.id_2014_12 = int(data.get('id_2014_12'))
+        unidade.id_2015_12 = int(data.get('id_2015_12'))
+        unidade.id_2016_06 = int(data.get('id_2016_06'))
+
+        # Campos opcionais
+        unidade.complemento = data.get('complemento', '').strip()
+        unidade.bairro = data.get('bairro', '').strip()
+        unidade.email = data.get('email', '')
+        unidade.responsavel = data.get('responsavel', '').strip()
+        unidade.visitacao = data.get('visitacao', '').strip()
+        unidade.lat = float(unidade.get('lat', '-15.7997067'))
+        unidade.lon = float(unidade.get('lon', '-47.8663516'))
+
+        try:
+            unidade.numero = int(data.get('numero'))
+        except (TypeError, ValueError, KeyError):
+            pass
+
+        try:
+            ddd = data.get('ddd', 0)
+            if isinstance(ddd, str):
+                ddd = ddd.replace('(', '').replace(')', '').replace('-', '')
+            ddd = int(ddd)
+            if ddd < 10 or ddd >= 100:
+                raise ValueError(f"Bad DDD value {ddd}")
+            unidade.ddd = ddd
+        except (ValueError, TypeError):
+            pass
+
+        try:
+            telefone = data.get('telefone', None)
+            if isinstance(telefone, str):
+                telefone.replace('-', '').replace(' ', '')
+            unidade.telefone = int(telefone)
+        except (ValueError, TypeError):
+            pass
+
+        return unidade
 
 
 class BaseMJ(models.Model):
