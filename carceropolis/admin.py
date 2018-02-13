@@ -76,6 +76,12 @@ class UnidadePrisionalAdmin(admin.ModelAdmin):
             'fields': ('tipo_logradouro', 'nome_logradouro', 'numero',
                        'complemento', 'bairro', 'municipio', 'uf', 'cep',
                        'lat', 'lon')
+        }),
+        ('Outros dados', {
+            'fields': ('responsavel', 'visitacao')
+        }),
+        ('Ocorrências nos anos', {
+            'fields': ('id_2014_06', 'id_2014_12', 'id_2015_12', 'id_2016_06')
         })
     )
     list_select_related = ('municipio',)
