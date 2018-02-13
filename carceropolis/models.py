@@ -133,8 +133,13 @@ class UnidadePrisional(models.Model):
     email = models.EmailField(null=True, blank=True)
     responsavel = models.CharField(blank=True, max_length=255,
                                    verbose_name='Responsável')
+    visitacao = models.TextField(blank=True, verbose_name='Visitação')
     lat = models.FloatField(blank=True, null=True)
     lon = models.FloatField(blank=True, null=True)
+    id_2014_06 = models.IntegerField()
+    id_2014_12 = models.IntegerField()
+    id_2015_12 = models.IntegerField()
+    id_2016_06 = models.IntegerField()
 
     class Meta:
         verbose_name = 'Unidade Prisional'
