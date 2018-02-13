@@ -576,6 +576,29 @@ def load_initial_data():
 
 @task
 @log_call
+def migrate():
+    """
+    Apply migrations.
+    """
+    manage("migrate")
+
+    return True
+
+
+@task
+@log_call
+def makemigrations_migrate():
+    """
+    Apply migrations.
+    """
+    manage("makemigrations")
+    manage("migrate")
+
+    return True
+
+
+@task
+@log_call
 def remove():
     """
     Blow away the current project.
