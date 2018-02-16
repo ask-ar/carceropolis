@@ -21,8 +21,47 @@ function unidadeMatchesFilter(unidade, filter) {
 
 
 $(window).ready(function(){
+
+  var delimiters = ['[[', ']]']
+
+  Vue.component('perc-bar', {
+    delimiters: delimiters,
+    template: '#perc-bar-template',
+    props: {
+      'value': Number,
+      'label': [String, Number],
+      'color': String,
+      'labelPosition': {
+        // "inside", "outside" or number
+        // if is a number, will position label inside if value > number
+        type: [String, Number],
+        default: 20,
+      }
+    },
+    computed: {
+      labelInside: function () {
+        if (this.labelPosition === 'inside') return true
+        if (this.labelPosition === 'outside') return false
+        if (this.value > this.labelPosition) return true
+        return false
+      }
+    }
+  })
+
+  Vue.component('age-pyramid', {
+    delimiters: delimiters,
+    template: '#age-pyramid-template',
+    props: ['data'],
+  })
+
+  Vue.component('detailed-info', {
+    delimiters: delimiters,
+    template: '#detailed-info-template',
+    props: ['unidade'],
+  })
+
   new Vue({
-    delimiters: ['[[', ']]'],
+    delimiters: delimiters,
     el: '#map-vue-app',
     data: {
       // string used in map filtering
@@ -83,6 +122,10 @@ $(window).ready(function(){
           ' - CEP: ' + unidade.cep.slice(0,-3) + '-' + unidade.cep.slice(-3) +
           ' - ' + unidade.municipio +
           ' - ' + unidade.uf
+      },
+      formatBool: function (value) {
+        if (value) return '✓'
+        else return '✘'
       }
     },
     watch: {

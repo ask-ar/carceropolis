@@ -405,6 +405,45 @@ def unidades_map(request):
     states = defaultdict(list)
     for unidade in UnidadePrisional.objects.exclude(lat=None).values(*fields):
         unidade['municipio'] = unidade.pop('municipio__nome')
+
+        # TODO: ---------- fake data ----------
+        unidade.update({
+            'tipo_gestao': 'Organização sem fins lucrativos',
+            'visitacao': 'Domingos, 8h30-16h30',
+            'indices': {
+                'educacao': 9.5, 'trabalho': 2.5,
+                'saude': 6.5, 'juridico': True},
+            'pop_total': 1000,
+            'vagas': 1000,
+            'qualidade_info': 5.5,
+            'pop_perc': {
+                'provisoria': 20,
+                'origem': [
+                    {'label': 'brasileiros', 'value': 65},
+                    {'label': 'naturalizados', 'value': 25},
+                    {'label': 'estrangeiros', 'value': 10},
+                ],
+                'cor': [
+                    {'label': 'preta', 'value': 70, 'color': 'blue'},
+                    {'label': 'parda', 'value': 20, 'color': 'yellow'},
+                    {'label': 'branca', 'value': 10, 'color': 'green'},
+                ],
+            },
+            'pyramid': {
+                'ages': [
+                    {'range': '+ de 70', 'male': 10, 'female': 15},
+                    {'range': '61 a 70', 'male': 20, 'female': 25},
+                    {'range': '46 a 60', 'male': 30, 'female': 10},
+                ],
+                'total': {
+                    'perc': {'male': 70, 'female': 30},
+                    'abs': {'male': 60, 'female': 20},
+                },
+                'idade_media': 40
+            }
+        })
+        # TODO: ---------- --------- ----------
+
         states[unidade['uf']].append(unidade)
     context = {
         'states': mark_safe(json.dumps(states))

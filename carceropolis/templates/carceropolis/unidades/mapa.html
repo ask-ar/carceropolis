@@ -31,14 +31,140 @@
 {% block main %}
 
 <style>
- #map {
-     height: 600px;
-     max-width: 600px;
- }
+#map {
+    height: 600px;
+    max-width: 600px;
+}
+
+.inner-bar {
+    display: inline-block;
+}
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
+}
+.full-width {
+    width: 100%;
+}
 </style>
 
 <script>
  var states = {{ states }}
+</script>
+
+<script id="perc-bar-template" type="text/x-template">
+  <div>
+    <div class="inner-bar"
+        :style="{width: value + '%', height: '20px', 'background-color': color}">
+        <span v-if="labelInside" :style="{color: 'white'}">
+            [[ value ]]% [[ label ]]
+        </span>
+    </div>
+    <span v-if="!labelInside" :style="{color: color}">
+        [[ value ]]% [[ label ]]
+    </span>
+  </div>
+</script>
+
+<script id="age-pyramid-template" type="text/x-template">
+  <div>
+    <table class="full-width">
+      <!-- Header -->
+      <thead>
+        <tr>
+          <th class="align-right">Homens</th>
+          <th>Mulheres</th>
+          <th class="align-center">Idade</th>
+        </tr>
+      </thead>
+
+      <!-- Body -->
+      <tbody>
+        <tr v-for="age in data.ages">
+          <td class="align-right">
+            <perc-bar :value="age.male"
+                      :key="age.range"
+                      label-position="inside"
+                      color="purple"></perc-bar>
+          </td>
+          <td>
+            <perc-bar :value="age.female"
+                      :key="age.range"
+                      color="red"></perc-bar>
+          </td>
+          <td class="align-center">[[ age.range ]]</td>
+        </tr>
+        <tr>
+          <td class="align-right">
+            <perc-bar :value="data.total.perc.male"
+                      :label="data.total.abs.male"
+                      color="purple"></perc-bar>
+          </td>
+          <td>
+            <perc-bar :value="data.total.perc.female"
+                      :label="data.total.abs.female"
+                      color="red"></perc-bar>
+          </td>
+          <td class="align-center">%</td>
+        </tr>
+      </tbody>
+
+      <!-- Footer -->
+      <tfoot class="align-center">
+        <tr>
+          <td colspan="3">
+            Idade média na unidade prisional: [[ data.idade_media ]] anos
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</script>
+
+<script id="detailed-info-template" type="text/x-template">
+  <div>
+    <div>
+      [[ unidade.pop_total ]] pessoas
+      [[ unidade.vagas ]] vagas
+      [[ unidade.pop_perc.provisoria ]]% de presos(as) provisórios(as)
+    </div>
+    <div>
+      Gestão da Unidade:
+      [ [[ unidade.tipo_gestao ]] ]
+    </div>
+    <div>
+      Índice da Qualidade da informação: [[ unidade.qualidade_info ]]
+      <a href="#">[saiba mais]</a>
+    </div>
+    <h3>Demografia da Unidade</h3>
+
+    <!-- Population Origin -->
+    <div>
+      <perc-bar v-for="pop in unidade.pop_perc.origem"
+                :value="pop.value"
+                :label="pop.label"
+                label-position="outside"
+                :key="pop.label"
+                color="grey">
+      </perc-bar>
+    </div>
+
+    <!-- Population Color -->
+    <div>
+      <perc-bar v-for="pop in unidade.pop_perc.cor"
+                :value="pop.value"
+                :label="pop.label"
+                label-position="outside"
+                :key="pop.label"
+                :color="pop.color">
+      </perc-bar>
+    </div>
+
+    <age-pyramid :data="unidade.pyramid"></age-pyramid>
+
+  </div>
 </script>
 
 <section class="container">
@@ -49,12 +175,11 @@
 
     <div>
 
-      <!-- Complete info about unidade -->
-      <div v-if="showCompleteInfo" class="completeInfoPannel">
-        <h3>Dados Gerais</h3>
-        <h3>Perfil Populacional</h3>
-        <a @click="showCompleteInfo = false">[ ☓ ]</a>
-      </div>
+      <!-- Detailed info about unidade -->
+      <detailed-info v-if="showCompleteInfo"
+                     class="completeInfoPannel"
+                     :unidade="unidade">
+      </detailed-info>
 
       <!-- Map side pannel -->
       <div class="map-side-pannel">
@@ -75,6 +200,18 @@
             Fone: [[ formatFone(unidade.telefone, unidade.ddd) ]]
           </p>
           <a href="#" @click="showCompleteInfo = true">[ ver dados dessa unidade ]</a>
+          <a @click="showCompleteInfo = false">[ ☓ ]</a>
+
+          <p v-if="unidade.visitacao"><strong>Visitação:</strong> [[ unidade.visitacao ]]</p>
+
+          <h3>Índices de Infraestrutura Prisional</h3>
+          <a>[saiba mais]</a>
+          <ul>
+            <li>Educação: [[unidade.indices.educacao]]</li>
+            <li>Trabalho: [[unidade.indices.trabalho]]</li>
+            <li>Saúde: [[unidade.indices.saude]]</li>
+            <li>Jurídico: [[ formatBool(unidade.indices.juridico) ]]</li>
+          </ul>
         </div>
       </div>
 
