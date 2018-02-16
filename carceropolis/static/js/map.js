@@ -28,12 +28,17 @@ $(window).ready(function(){
     delimiters: delimiters,
     template: '#perc-bar-template',
     props: {
+      // Percentual value
       'value': Number,
+      // Label text
       'label': [String, Number],
+      // Bar color
       'color': String,
+      // If label should be positioned inside or outside the bar
+      // Should be "inside", "outside" or a number
+      // if a number, will position label inside if value > number
+      // this is usefull for auto position based on bar size
       'labelPosition': {
-        // "inside", "outside" or number
-        // if is a number, will position label inside if value > number
         type: [String, Number],
         default: 20,
       }
