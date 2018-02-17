@@ -261,6 +261,14 @@
   padding-right: 0;
 }
 
+/* line 63, ../../scss/_utils.scss */
+.col-text-2 {
+  columns: 2;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  text-indent: 1em;
+}
+
 /* line 1, ../../scss/_base.scss */
 html {
   height: 100vh;
@@ -2899,4 +2907,130 @@ body[class^='sobre'] section.container p {
 .navbarlateral .nav-pills > li.active > a:focus {
   color: #fff;
   background-color: #af1e23;
+}
+
+/* line 1, ../../scss/_unidades.scss */
+.unidades-prisionais {
+  margin-bottom: 2em;
+}
+
+/* line 5, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa {
+  background-color: white;
+  position: relative;
+}
+/* line 9, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa:after {
+  clear: both;
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+}
+/* line 13, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .col-md-8 {
+  padding-left: 0;
+}
+/* line 17, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .col-md-4 {
+  padding-top: 20px;
+}
+/* line 21, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa input[type=search].form-control {
+  -webkit-appearance: searchfield !important;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #a5a5a5;
+  box-shadow: none;
+}
+/* line 29, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .btn {
+  color: #a5a5a5;
+  font-size: 22px;
+  font-weight: bold;
+}
+/* line 35, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info {
+  color: #330129;
+  font-size: 1.2em;
+}
+/* line 39, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info h2 {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+/* line 45, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info h3 {
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+/* line 50, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info h2 + p {
+  font-style: italic;
+}
+/* line 54, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info a {
+  color: #330129;
+}
+/* line 58, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* line 64, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info dt {
+  font-family: "source_sans_probold";
+  margin-bottom: .5em;
+  padding-right: 10px;
+  text-transform: uppercase;
+}
+/* line 71, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info dd {
+  margin-bottom: .5em;
+  padding-bottom: .5em;
+  width: 70%;
+}
+/* line 77, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info .indices {
+  color: #a5a5a5;
+  margin: 0;
+  padding: 0;
+}
+/* line 82, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info .indices li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 88, ../../scss/_unidades.scss */
+.unidades-prisionais .mapa .unidade-info .indices li::before {
+  content: '-';
+  padding-right: 10px;
+}
+
+/* line 98, ../../scss/_unidades.scss */
+#map {
+  height: 600px;
+  width: 100%;
+}
+
+/* line 103, ../../scss/_unidades.scss */
+.inner-bar {
+  display: inline-block;
+}
+
+/* line 106, ../../scss/_unidades.scss */
+.align-right {
+  text-align: right;
+}
+
+/* line 109, ../../scss/_unidades.scss */
+.align-center {
+  text-align: center;
+}
+
+/* line 112, ../../scss/_unidades.scss */
+.full-width {
+  width: 100%;
 }

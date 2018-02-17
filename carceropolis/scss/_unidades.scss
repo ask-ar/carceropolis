@@ -1,0 +1,114 @@
+.unidades-prisionais {
+    margin-bottom: 2em;
+}
+
+.unidades-prisionais .mapa {
+    background-color: white;
+    position: relative;
+
+    &:after {
+        @include clearfix;
+    }
+
+    .col-md-8 {
+        padding-left: 0;
+    }
+
+    .col-md-4 {
+        padding-top: 20px;
+    }
+
+    input[type=search].form-control {
+        -webkit-appearance: searchfield !important;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid $cp-grey-dark;
+        box-shadow: none;
+    }
+
+    .btn {
+        color: $cp-grey-dark;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .unidade-info {
+        color: $purple;
+        font-size: 1.2em;
+        
+        h2 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+
+        h2 + p {
+            font-style: italic;
+        }
+        
+        a {
+            color: $purple;
+        }
+
+        dl {
+            display: flex;
+            flex-wrap: wrap;
+           
+        }
+
+        dt {
+            font-family: $bold;
+            margin-bottom: .5em;
+            padding-right: 10px;
+            text-transform: uppercase;
+        }
+
+        dd {
+            margin-bottom: .5em;
+            padding-bottom: .5em;
+            width: 70%;
+        }
+
+        .indices {
+            color: $cp-grey-dark;
+            margin: 0;
+            padding: 0;
+
+            li {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            li::before {
+                content: '-';
+                padding-right: 10px;
+            }
+        }
+    }
+
+
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+}
+
+.inner-bar {
+    display: inline-block;
+}
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
+}
+.full-width {
+    width: 100%;
+}

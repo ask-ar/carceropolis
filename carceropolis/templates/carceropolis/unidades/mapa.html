@@ -30,26 +30,6 @@
 
 {% block main %}
 
-<style>
-#map {
-    height: 600px;
-    max-width: 600px;
-}
-
-.inner-bar {
-    display: inline-block;
-}
-.align-right {
-    text-align: right;
-}
-.align-center {
-    text-align: center;
-}
-.full-width {
-    width: 100%;
-}
-</style>
-
 <script>
  var states = {{ states }}
 </script>
@@ -167,56 +147,74 @@
   </div>
 </script>
 
-<section class="container">
+<section class="container dados-interna unidades-prisionais">
   <div id="map-vue-app">
 
     <h1>Unidades Prisionais no Brasil</h1>
-    <p>blah blah</p>
+    <div class="col-text-2">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, illum. Autem distinctio commodi dicta at vero eos nesciunt
+        nobis, praesentium, labore quam nisi modi saepe, molestiae corporis earum? Autem, quis.
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti illo maiores ad amet sequi fugiat placeat veritatis. Dignissimos
+        saepe id amet incidunt enim, dolor aliquid soluta autem aliquam minima natus?
+      </p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero tenetur, numquam est at laudantium voluptatem temporibus aut
+        eos maxime nesciunt veniam necessitatibus commodi, voluptatum quos repellendus in doloremque beatae. Atque!
+      </p>
+    </div>
 
-    <div>
+    <div class="mapa">
+      <div class="col-md-8">
+        <!-- Map -->
+        <div id="map"></div>
+        <!-- Detailed info about unidade -->
+        <detailed-info v-if="showCompleteInfo" class="completeInfoPannel" :unidade="unidade">
+        </detailed-info>
+      </div>
+      <div class="col-md-4">
+        <!-- Map side pannel -->
+        <div class="map-side-pannel">
+          <!-- Filter -->
 
-      <!-- Detailed info about unidade -->
-      <detailed-info v-if="showCompleteInfo"
-                     class="completeInfoPannel"
-                     :unidade="unidade">
-      </detailed-info>
+          <div class="input-group">
+            <input autofocus title="Filtro" placeholder="Filtre por nome, sigla ou endereço" v-model.trim="filterStr" type="search" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn" title="limpar filtro" @click="filterStr = ``">[ x ]</button>
+            </span>
+          </div>
 
-      <!-- Map side pannel -->
-      <div class="map-side-pannel">
-        <!-- Filter -->
-        <span>Filtro</span>
-        <input v-model.trim="filterStr" type="text">
-
-        <!-- Short info about unidade -->
-        <div v-if="unidade">
-          <h2>[[ unidade.nome_unidade ]]</h2>
-          <p v-if="unidade.nome_logradouro">
-            [[ formatAddress(unidade) ]]
-          </p>
-          <p v-if="unidade.email">
-            E-mail: <a :href="formatMailto(unidade.email)">[[ unidade.email ]]</a>
-          </p>
-          <p v-if="unidade.telefone">
-            Fone: [[ formatFone(unidade.telefone, unidade.ddd) ]]
-          </p>
-          <a href="#" @click="showCompleteInfo = true">[ ver dados dessa unidade ]</a>
-          <a @click="showCompleteInfo = false">[ ☓ ]</a>
-
-          <p v-if="unidade.visitacao"><strong>Visitação:</strong> [[ unidade.visitacao ]]</p>
-
-          <h3>Índices de Infraestrutura Prisional</h3>
-          <a>[saiba mais]</a>
-          <ul>
-            <li>Educação: [[unidade.indices.educacao]]</li>
-            <li>Trabalho: [[unidade.indices.trabalho]]</li>
-            <li>Saúde: [[unidade.indices.saude]]</li>
-            <li>Jurídico: [[ formatBool(unidade.indices.juridico) ]]</li>
-          </ul>
+          <!-- Short info about unidade -->
+          <section v-if="unidade" class="unidade-info">
+            <h2>[[ unidade.nome_unidade ]]</h2>
+            <p v-if="unidade.nome_logradouro">
+              [[ formatAddress(unidade) ]]
+            </p>
+            <dl>
+              <dt v-if="unidade.email">E-mail:</dt>
+              <dd v-if="unidade.email"><a :href="formatMailto(unidade.email)">[[ unidade.email ]]</a></dd>
+           
+              <dt v-if="unidade.telefone">Fone:</dt>
+              <dd v-if="unidade.telefone" >[[ formatFone(unidade.telefone, unidade.ddd) ]]</dd>
+              
+              <dt v-if="unidade.visitacao">Visitação:</dt>
+              <dd v-if="unidade.visitacao">[[ unidade.visitacao ]]</dd>
+            </dl>
+           
+            <h3>Índices de Infraestrutura Prisional</h3>
+            <!-- <a @click="showCompleteInfo = false">[ ☓ ]</a> -->
+            <ul class="indices">
+              <li>Educação: [[unidade.indices.educacao]]</li>
+              <li>Trabalho: [[unidade.indices.trabalho]]</li>
+              <li>Saúde: [[unidade.indices.saude]]</li>
+              <li>Jurídico: [[ formatBool(unidade.indices.juridico) ]]</li>
+            </ul>
+            <button class="btn pull-right" @click="showCompleteInfo = true">[ ver dados dessa unidade ]</button>
+          </section>
         </div>
       </div>
-
-      <!-- Map -->
-      <div id="map"></div>
 
     </div>
   </div>
