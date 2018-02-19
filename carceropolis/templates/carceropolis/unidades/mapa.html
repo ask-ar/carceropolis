@@ -9,9 +9,8 @@
     {% endif %}
 {% endblock %}
 
-
 {% block extra_css %}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css"
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css"
    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
    crossorigin=""/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.2.0/dist/MarkerCluster.css"/>
@@ -19,10 +18,10 @@
 {% endblock %}
 
 {% block extra_js %}
- <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"
-   integrity="sha512-C7BBF9irt5R7hqbUm2uxtODlUVs+IsNu2UULGuZN7gM+k/mmeG4xvIEac01BtQa4YIkUpp23zZC4wIwuXaPMQA=="
-   crossorigin=""></script>
- <script src="https://unpkg.com/leaflet.markercluster@1.2.0/dist/leaflet.markercluster.js"></script>
+  <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"
+    integrity="sha512-C7BBF9irt5R7hqbUm2uxtODlUVs+IsNu2UULGuZN7gM+k/mmeG4xvIEac01BtQa4YIkUpp23zZC4wIwuXaPMQA=="
+    crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.2.0/dist/leaflet.markercluster.js"></script>
   <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
   <script src="{% static "js/map_data.js" %}"></script>
   <script src="{% static "js/map.js" %}"></script>
@@ -147,76 +146,79 @@
   </div>
 </script>
 
-<section class="container dados-interna unidades-prisionais">
-  <div id="map-vue-app">
+<section class="container dados-interna unidades-prisionais" id="map-vue-app">
+  <h1>Unidades Prisionais no Brasil</h1>
+  <div class="col-text-2">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, illum. Autem distinctio commodi dicta at vero eos nesciunt
+      nobis, praesentium, labore quam nisi modi saepe, molestiae corporis earum? Autem, quis.
+    </p>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti illo maiores ad amet sequi fugiat placeat veritatis. Dignissimos
+      saepe id amet incidunt enim, dolor aliquid soluta autem aliquam minima natus?
+    </p>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero tenetur, numquam est at laudantium voluptatem temporibus aut
+      eos maxime nesciunt veniam necessitatibus commodi, voluptatum quos repellendus in doloremque beatae. Atque!
+    </p>
+  </div>
 
-    <h1>Unidades Prisionais no Brasil</h1>
-    <div class="col-text-2">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, illum. Autem distinctio commodi dicta at vero eos nesciunt
-        nobis, praesentium, labore quam nisi modi saepe, molestiae corporis earum? Autem, quis.
-      </p>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti illo maiores ad amet sequi fugiat placeat veritatis. Dignissimos
-        saepe id amet incidunt enim, dolor aliquid soluta autem aliquam minima natus?
-      </p>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero tenetur, numquam est at laudantium voluptatem temporibus aut
-        eos maxime nesciunt veniam necessitatibus commodi, voluptatum quos repellendus in doloremque beatae. Atque!
-      </p>
+  <div class="mapa">
+    <div class="col-md-8">
+      <!-- Map -->
+      <div id="map" v-show="showCompleteInfo == false" aria-live="polite"></div>
+      <!-- Detailed info about unidade -->
+      <button class="btn detailed-info" @click="showCompleteInfo = false" title="Fechar informações detalhadas da unidade">x</button>
+      <detailed-info v-if="showCompleteInfo" class="completeInfoPannel" :unidade="unidade" aria-live="polite">
+      </detailed-info>
     </div>
+    <div class="col-md-4">
+      <!-- Map side pannel -->
+      <div class="map-side-pannel">
+        <!-- Filter -->
 
-    <div class="mapa">
-      <div class="col-md-8">
-        <!-- Map -->
-        <div id="map"></div>
-        <!-- Detailed info about unidade -->
-        <detailed-info v-if="showCompleteInfo" class="completeInfoPannel" :unidade="unidade">
-        </detailed-info>
-      </div>
-      <div class="col-md-4">
-        <!-- Map side pannel -->
-        <div class="map-side-pannel">
-          <!-- Filter -->
-
-          <div class="input-group">
-            <input autofocus title="Filtro" placeholder="Filtre por nome, sigla ou endereço" v-model.trim="filterStr" type="search" class="form-control">
-            <span class="input-group-btn">
-              <button class="btn" title="limpar filtro" @click="filterStr = ``">[ x ]</button>
-            </span>
-          </div>
-
-          <!-- Short info about unidade -->
-          <section v-if="unidade" class="unidade-info">
-            <h2>[[ unidade.nome_unidade ]]</h2>
-            <p v-if="unidade.nome_logradouro">
-              [[ formatAddress(unidade) ]]
-            </p>
-            <dl>
-              <dt v-if="unidade.email">E-mail:</dt>
-              <dd v-if="unidade.email"><a :href="formatMailto(unidade.email)">[[ unidade.email ]]</a></dd>
-           
-              <dt v-if="unidade.telefone">Fone:</dt>
-              <dd v-if="unidade.telefone" >[[ formatFone(unidade.telefone, unidade.ddd) ]]</dd>
-              
-              <dt v-if="unidade.visitacao">Visitação:</dt>
-              <dd v-if="unidade.visitacao">[[ unidade.visitacao ]]</dd>
-            </dl>
-           
-            <h3>Índices de Infraestrutura Prisional</h3>
-            <!-- <a @click="showCompleteInfo = false">[ ☓ ]</a> -->
-            <ul class="indices">
-              <li>Educação: [[unidade.indices.educacao]]</li>
-              <li>Trabalho: [[unidade.indices.trabalho]]</li>
-              <li>Saúde: [[unidade.indices.saude]]</li>
-              <li>Jurídico: [[ formatBool(unidade.indices.juridico) ]]</li>
-            </ul>
-            <button class="btn pull-right" @click="showCompleteInfo = true">[ ver dados dessa unidade ]</button>
-          </section>
+        <div class="input-group">
+          <input autofocus title="Filtro" placeholder="Filtre por nome, sigla ou endereço" v-model.trim="filterStr" type="search" class="form-control">
+          <span class="input-group-btn">
+            <button class="btn" title="limpar filtro" @click="filterStr = ``">x</button>
+          </span>
         </div>
-      </div>
 
+        <!-- Short info about unidade -->
+        <section v-if="unidade" class="unidade-info" aria-live="polite">
+          <h2>[[ unidade.nome_unidade ]]</h2>
+          <p v-if="unidade.nome_logradouro">
+            [[ formatAddress(unidade) ]]
+          </p>
+          <dl class="contato">
+            <dt v-if="unidade.email">E-mail:</dt>
+            <dd v-if="unidade.email"><a :href="formatMailto(unidade.email)">[[ unidade.email ]]</a></dd>
+          
+            <dt v-if="unidade.telefone">Fone:</dt>
+            <dd v-if="unidade.telefone" >[[ formatFone(unidade.telefone, unidade.ddd) ]]</dd>
+            
+            <dt v-if="unidade.visitacao">Visitação:</dt>
+            <dd v-if="unidade.visitacao">[[ unidade.visitacao ]]</dd>
+          </dl>
+          
+          <h3>
+            Índices de Infraestrutura Prisional 
+            <button class="btn pull-right" @click="showCompleteInfo = true">saiba mais</button>
+          </h3>
+          <dl class="indices">
+            <dt>Educação:</dt>
+            <dd>[[unidade.indices.educacao]]</dd>
+            <dt>Trabalho:</dt>
+            <dd>[[unidade.indices.trabalho]]</dd>
+            <dt>Saúde:</dt>
+            <dd>[[unidade.indices.saude]]</dd>
+            <dt>Jurídico:</dt>
+            <dd :data-juridico="unidade.indices.juridico.toString()">[[ formatBool(unidade.indices.juridico) ]]</dd>
+          </dl>
+        </section>
+      </div>
     </div>
+
   </div>
 </section>
 

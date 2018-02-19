@@ -18,11 +18,9 @@ function unidadeMatchesFilter(unidade, filter) {
   else return false
 }
 
-
-
 $(window).ready(function(){
 
-  var delimiters = ['[[', ']]']
+  const delimiters = ['[[', ']]']
 
   Vue.component('perc-bar', {
     delimiters: delimiters,
@@ -84,11 +82,9 @@ $(window).ready(function(){
 		      attribution: 'Map tiles by <a href="https://carto.com">Carto</a>, ' +
             'under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. ' +
             'Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
-	      }).addTo(map)
-        var self = this
-        statesLayerGroup = L.featureGroup().addTo(map).on('click', function(marker) {
-          self.unidade = marker.layer.unidade
-        })
+        }).addTo(map)
+        
+        statesLayerGroup = L.featureGroup().addTo(map).on('click', (marker) => this.unidade = marker.layer.unidade)
 
         this.plotMap()
       },
@@ -128,10 +124,7 @@ $(window).ready(function(){
           ' - ' + unidade.municipio +
           ' - ' + unidade.uf
       },
-      formatBool: function (value) {
-        if (value) return '✓'
-        else return '✘'
-      }
+      formatBool: value => value ? '✓' : '✘'
     },
     watch: {
       filterStr: function (a, b) {

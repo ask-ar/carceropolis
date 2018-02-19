@@ -12,6 +12,7 @@
 
     .col-md-8 {
         padding-left: 0;
+        padding-right: 0;
     }
 
     .col-md-4 {
@@ -27,9 +28,29 @@
     }
 
     .btn {
+        background-color: transparent;
         color: $cp-grey-dark;
         font-size: 22px;
         font-weight: bold;
+        
+        &::before, &::after {
+            color: $cp-grey-dark;
+        }
+        
+        &::before {
+            content: '[';
+            padding-right: 5px;
+        }
+
+        &::after {
+            content: ']';
+            padding-left: 5px;
+        }
+
+        &:active {
+            box-shadow: none;
+            color: $purple;
+        }
     }
 
     .unidade-info {
@@ -44,6 +65,7 @@
 
         h3 {
             font-size: 1.1em;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
@@ -55,44 +77,71 @@
             color: $purple;
         }
 
-        dl {
-            display: flex;
-            flex-wrap: wrap;
-           
+        dl:after {
+            @include clearfix;
+        }
+        
+        dt, dd {
+            float: left;
         }
 
         dt {
+            clear: left;
             font-family: $bold;
-            margin-bottom: .5em;
+            margin-bottom: .25em;
+            padding-bottom: .25em;
             padding-right: 10px;
             text-transform: uppercase;
         }
 
         dd {
-            margin-bottom: .5em;
-            padding-bottom: .5em;
-            width: 70%;
+            margin-bottom: .25em;
+            padding-bottom: .25em;
         }
 
         .indices {
             color: $cp-grey-dark;
-            margin: 0;
-            padding: 0;
 
-            li {
+            dt {
                 list-style-type: none;
-                margin: 0;
-                padding: 0;
             }
 
-            li::before {
+            dt::before {
                 content: '-';
                 padding-right: 10px;
             }
+
+            [data-juridico] {
+                font-size: 1.5em;
+                line-height: 1em;
+            }
+
+            [data-juridico=true] {
+                color: $purple;
+            }
+
+            [data-juridico=false] {
+                color: $fg-dark;
+            }
+        }
+
+        .btn.pull-right {
+            color: $purple;
+            font-size: 18px;
         }
     }
 
+    .btn.detailed-info {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 
+    .completeInfoPannel {
+        border: 2px solid $cp-grey-dark;
+        min-height: 600px;
+        padding: 20px;
+    }
 }
 
 #map {
