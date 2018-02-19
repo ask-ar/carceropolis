@@ -19,44 +19,7 @@
 
 {% block main %}
 <div class="container">
-  <nav class="menu-dados">
-    <a class="gerais{% if request.resolver_match.url_name == 'dados_gerais' %} active{% endif %}"
-       href="{% url 'dados_gerais' %}" title="Dados Gerais">
-      <span>Dados Gerais</span>
-    </a>
-    <a class="perfil{% if request.resolver_match.url_name == 'dados_perfil_populacional' %} active{% endif %}"
-       href="{% url 'dados_perfil_populacional' %}" title="Perfil Populacional">
-      <span>Perfil Populacional</span>
-    </a>
-    <a class="infra{% if request.resolver_match.url_name == 'dados_infraestrutura' %} active{% endif %}"
-       href="{% url 'dados_infraestrutura' %}" title="Infraestrutura">
-      <span>Infraestrutura</span>
-    </a>
-    <a class="juridico{% if request.resolver_match.url_name == 'dados_juridico' %} active{% endif %}"
-       href="{% url 'dados_juridico' %}" title="Situação Jurídica">
-      <span>Situação Jurídica</span>
-    </a>
-    <a class="educacao{% if request.resolver_match.url_name == 'dados_educacao' %} active{% endif %}"
-       href="{% url 'dados_educacao' %}" title="Trabalho e Educação">
-      <span>Trabalho e Educação</span>
-    </a>
-    <a class="saude{% if request.resolver_match.url_name == 'dados_saude' %} active{% endif %}"
-       href="{% url 'dados_saude' %}" title="Saúde">
-        <span>Saúde</span>
-    </a>
-    <a class="materno{% if request.resolver_match.url_name == 'dados_materno_infantil' %} active{% endif %}"
-       href="{% url 'dados_materno_infantil' %}" title="Materno-Infantil">
-      <span>Materno-Infantil</span>
-    </a>
-    <a class="alas-exclusivas{% if request.resolver_match.url_name == 'dados_alas_exclusivas' %} active{% endif %}"
-       href="{% url 'dados_alas_exclusivas' %}" title="Alas Exclusivas">
-      <span>Alas Exclusivas</span>
-    </a>
-    <a class="unidades-prisionais" href="/unidades"
-      title="Unidades Prisionais">
-      <span>Unidades Prisionais</span>
-    </a>
-  </nav>
+  {% include 'carceropolis/includes/menu_dados.html' %}
 </div>
 
 <section class="container dados-interna">
