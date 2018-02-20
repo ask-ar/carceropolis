@@ -14,7 +14,10 @@ function stripDiacritics(str) {
 // Compares strings converting them to "canonical" form (replace dicritics)
 function unidadeMatchesFilter(unidade, filter) {
   // TODO: add cidade and estado to filter check
-  if (stripDiacritics(unidade.nome_unidade).indexOf(filter) > -1) return true
+  let content = unidade.nome_unidade + " " + unidade.uf + " ";
+  content += unidade.municipio + " " + unidade.nome_logradouro + " ";
+  content = stripDiacritics(content)
+  if (content.indexOf(stripDiacritics(filter)) > -1) return true
   else return false
 }
 
@@ -83,7 +86,7 @@ $(window).ready(function(){
             'under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. ' +
             'Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
         }).addTo(map)
-        
+
         statesLayerGroup = L.featureGroup().addTo(map).on('click', (marker) => this.unidade = marker.layer.unidade)
 
         this.plotMap()
@@ -95,8 +98,7 @@ $(window).ready(function(){
           var stateLayer = L.markerClusterGroup()
           var i = 0
           var markers = []
-          for (i = 0; i < unidades.length; ++i) {
-            var unidade = unidades[i]
+          for (let unidade of unidades) {
             if (filter && !unidadeMatchesFilter(unidade, filter)) continue
             var marker = L.marker([unidade.lat, unidade.lon])
             marker.unidade = unidade
