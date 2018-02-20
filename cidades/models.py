@@ -22,5 +22,5 @@ class Cidade(models.Model):
     nome = models.CharField(max_length=60)
     estado = models.CharField(max_length=2, choices=STATE_CHOICES)
 
-    def __unicode__(self):
-        return self.nome
+    def __str__(self):
+        return f"{self.nome} ({self.estado})"

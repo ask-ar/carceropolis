@@ -63,13 +63,31 @@ class PublicacaoAdmin(BlogPostAdmin):  # pylint: disable=too-many-ancestors
 class UnidadePrisionalAdmin(admin.ModelAdmin):
     """Unidade Prisional admin class."""
 
-    fieldsets = [(None, {u'fields': [u'nome_unidade', u'sigla_unidade',
-                                     u'tipo_logradouro', u'nome_logradouro',
-                                     u'numero', u'complemento', u'bairro',
-                                     u'municipio', u'uf', u'cep', u'ddd',
-                                     u'telefone', u'email']})]
-    list_display = ['nome_unidade', 'municipio', 'uf']
-    search_fields = ['nome_unidade', 'municipio__nome', 'uf']
+    fieldsets = (
+        (None, {
+            'fields': ('id_unidade', 'nome_unidade', 'sigla_unidade')
+        }),
+        ('Contatos', {
+            'classes': ('collapse', 'extrapretty'),
+            'fields': ('ddd', 'telefone', 'email')
+        }),
+        ('Endereço', {
+            'classes': ('collapse',),
+            'fields': ('tipo_logradouro', 'nome_logradouro', 'numero',
+                       'complemento', 'bairro', 'municipio', 'uf', 'cep',
+                       'lat', 'lon')
+        }),
+        ('Outros dados', {
+            'fields': ('responsavel', 'visitacao')
+        }),
+        ('Ocorrências nos anos', {
+            'fields': ('id_2014_06', 'id_2014_12', 'id_2015_12', 'id_2016_06')
+        })
+    )
+    list_select_related = ('municipio',)
+    list_display = ['id_unidade', 'nome_unidade', 'municipio', 'uf']
+    search_fields = ['nome_unidade', 'municipio__nome', 'uf', 'sigla_unidade',
+                     'id_unidade']
     list_filter = ['uf']
 
 
