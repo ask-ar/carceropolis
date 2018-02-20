@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="253.75027"
+   height="121.73238"
+   id="svg4378"
+   version="1.1"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="logo_ask_bco.svg"
+   inkscape:export-filename="/home/diraol/Projetos/ASK/Site/high_res_logo_ask_preto.png"
+   inkscape:export-xdpi="300.17001"
+   inkscape:export-ydpi="300.17001">
+  <defs
+     id="defs4380" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="148.30202"
+     inkscape:cy="37.481173"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3024"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1276"
+     inkscape:window-height="1041"
+     inkscape:window-x="2646"
+     inkscape:window-y="37"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata4383">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-223.12486,-471.49599)"
+     id="g3024"
+     inkscape:groupmode="layer"
+     inkscape:label="Logo Branco"
+     style="display:inline">
+    <g
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/diraol/Projetos/ASK/ask_verde01.png"
+       id="g3026"
+       transform="matrix(1.25,0,0,-1.25,-613,328.36218)"
+       style="fill:#ffffff">
+      <g
+         id="g3092"
+         transform="translate(871.11603,-174.35955)"
+         style="fill:#ffffff">
+        <path
+           inkscape:connector-curvature="0"
+           d="M 0,0 V 41.79 L -20.761,21.162 Z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path3094" />
+      </g>
+      <g
+         id="g3096"
+         transform="translate(737.08889,-170.15605)"
+         style="fill:#ffffff">
+        <path
+           inkscape:connector-curvature="0"
+           d="M 0,0 H 53.297 V 10.189 H 10.973 V 43.892 H 78.378 V 55.649 H -68.189 V 43.892 H 0 Z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path3098" />
+      </g>
+      <g
+         id="g3100"
+         transform="translate(837.95411,-161.53455)"
+         style="fill:#ffffff">
+        <path
+           inkscape:connector-curvature="0"
+           d="M 0,0 H -8.379 V -21.162 H -22.487 V 21.946 H -75 v -8.622 h 41.54 v -34.486 h -67.356 -2.462 -54.02 v 34.486 h 41.541 v 8.622 h -53.297 V -31.351 H 12.859 l 7.67,-7.967 13.417,18.156 H 20.628 Z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path3102" />
+      </g>
+      <g
+         id="g3104"
+         transform="translate(829.57539,-114.50745)"
+         style="fill:#ffffff">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,0 v -32.919 h 8.685 l 21.163,21.162 H 41.541 V 0 Z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path3106" />
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         d="m 722.19659,-159.96685 h -28.216 v -10.189 h 28.216 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path3108" />
+    </g>
+  </g>
+</svg>

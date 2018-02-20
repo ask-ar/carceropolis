@@ -58,11 +58,18 @@ main.main-content {
 		display: block;
 		margin: 0 auto 10px;
 		width: 90px;
+        padding-left: 10px;
+        .ask {
+          width: 50px;
+        }
 		
 		@media (min-width: 768px){
 			display: inline-block;
 			margin: 0 10px 0 0;
 			width: 100px;
+            .ask {
+              width: 60px;
+            }
 		}
 
 		img {
