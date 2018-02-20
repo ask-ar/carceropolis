@@ -81,16 +81,12 @@ jQuery(function ($) {
             - animação (contador) no 111%
         */
         $(`${ativo} [data-tobold]`).addClass(`toBold`)
-        contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1500)
-        setTimeout(
-            () => $(`${ativo} .anim1`).addClass(`bounceInDown`)
-            , 3000
-        )
-    }    
-    
+        contador(document.querySelectorAll(`${ativo} [data-final-number]`), 12, 1000, ()=>{$(`${ativo} .anim1`).addClass(`bounceInDown`)})
+    }
+
     $(document).ready(() => animDadosGerais())
-    
-    $('body.dados').scrollspy({ target: '#dados-bar', offset: 60 })
+
+    $('body.dados').scrollspy({ target: '#dados-bar', offset: 600 })
 
     $('#dados-bar').on('activate.bs.scrollspy', function (event) {
 
@@ -115,11 +111,11 @@ jQuery(function ($) {
 
                 setTimeout(
                     () => $(`${ativo} .anim2`).addClass(`slideInUp`).removeClass(`anim2`)
-                    , 3000
+                    , 2500
                 )
                 setTimeout(
                     () => $(`${ativo} .anim3`).addClass(`slideInUp`).removeClass(`anim3`)
-                    , 4500
+                    , 3500
                 )
                 break
 
@@ -153,10 +149,11 @@ jQuery(function ($) {
                 - primeiro conjunto de 5 quadradinhos alinhados verticalmente
                 - segundo conjunto de quadradinhos, aparecer num grid de 5 linhas e aparecer coluna por coluna (da esquerda para a direita)
                 - preencher barra de progresso da esquerda para a direita de forma que o 18% seja revelado dentro da barra */
+                contador(document.querySelectorAll('#trabalho-educacao [data-final-number]'), 5)
                 break
 
             case `#saude`:
-                contador(document.querySelectorAll('#saude [data-final-number]'), 20)
+                contador(document.querySelectorAll('#saude [data-final-number]'), 5)
                 /*  6. Saúde
                 - aparecer o texto "consultório médico"
                 - "Saúde" e texto "Apesar da metade..." na mesma cor do atual texto "49 ginecologistas..." com fundo branco
@@ -180,7 +177,7 @@ jQuery(function ($) {
                 - número 1.294 inciando normal e tornando-se negrito
                 - preencher celas vermelhas e depois as cadeiras de rodas brancas */
                 break
-            
+
             case `#unidades-prisionais`:
 
                 break
@@ -213,27 +210,25 @@ jQuery(function ($) {
 })
 
 //vanilla functions
-function contador(elements, speed = 1, delayToStart = 0) {
-
+function contador(elements, speed = 1, delayToStart = 0, callback=undefined, callback_args=undefined) {
     setTimeout(incrementador, delayToStart)
-
     function incrementador() {
-
         for (let element of elements) {
-
             let startNumber = parseInt(element.textContent),
                 endNumber = parseInt(element.getAttribute('data-final-number'))
-
             setInterval(
                 () => {
                     if (startNumber < endNumber) {
                         startNumber++
                         element.textContent = startNumber
                     }
+                    if (startNumber == endNumber) {
+
+                    }
                 }
                 , speed
             )
-
         }
+        if (callback !== undefined) callback(callback_args)
     }
 }
