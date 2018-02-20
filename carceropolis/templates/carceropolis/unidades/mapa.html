@@ -34,9 +34,9 @@
 </script>
 
 <script id="perc-bar-template" type="text/x-template">
-  <div>
+  <div class="perc-bar">
     <div class="inner-bar"
-        :style="{width: value + '%', height: '20px', 'background-color': color}">
+        :style="{width: value + '%', height: '100%', 'background-color': color}">
         <span v-if="labelInside" :style="{color: 'white'}">
             [[ value ]]% [[ label ]]
         </span>
@@ -49,52 +49,46 @@
 
 <script id="age-pyramid-template" type="text/x-template">
   <div>
-    <table class="full-width">
-      <!-- Header -->
+    <table class="piramide-idade">
       <thead>
         <tr>
-          <th class="align-right">Homens</th>
+          <th>Homens</th>
           <th>Mulheres</th>
-          <th class="align-center">Idade</th>
+          <th>Idade</th>
         </tr>
       </thead>
-
-      <!-- Body -->
       <tbody>
         <tr v-for="age in data.ages">
-          <td class="align-right">
+          <td>
             <perc-bar :value="age.male"
                       :key="age.range"
-                      label-position="inside"
-                      color="purple"></perc-bar>
+                      color="rgba(51,1,41,1)"></perc-bar>
           </td>
           <td>
             <perc-bar :value="age.female"
                       :key="age.range"
-                      color="red"></perc-bar>
+                      color="rgb(171,14,0)"></perc-bar>
           </td>
-          <td class="align-center">[[ age.range ]]</td>
+          <td>[[ age.range ]]</td>
         </tr>
         <tr>
-          <td class="align-right">
+          <td>
             <perc-bar :value="data.total.perc.male"
                       :label="data.total.abs.male"
-                      color="purple"></perc-bar>
+                      color="rgba(51,1,41,1)"></perc-bar>
           </td>
           <td>
             <perc-bar :value="data.total.perc.female"
                       :label="data.total.abs.female"
-                      color="red"></perc-bar>
+                      color="rgb(171,14,0)"></perc-bar>
           </td>
-          <td class="align-center">%</td>
+          <td>%</td>
         </tr>
       </tbody>
-
-      <!-- Footer -->
-      <tfoot class="align-center">
+      <tfoot>
         <tr>
           <td colspan="3">
-            Idade média na unidade prisional: [[ data.idade_media ]] anos
+            <span>Idade média na unidade prisional:</span> [[ data.idade_media ]] anos
           </td>
         </tr>
       </tfoot>
@@ -104,45 +98,49 @@
 
 <script id="detailed-info-template" type="text/x-template">
   <div>
-    <div>
-      [[ unidade.pop_total ]] pessoas
-      [[ unidade.vagas ]] vagas
-      [[ unidade.pop_perc.provisoria ]]% de presos(as) provisórios(as)
-    </div>
-    <div>
-      Gestão da Unidade:
-      [ [[ unidade.tipo_gestao ]] ]
-    </div>
-    <div>
-      Índice da Qualidade da informação: [[ unidade.qualidade_info ]]
-      <a href="#">[saiba mais]</a>
-    </div>
-    <h3>Demografia da Unidade</h3>
-
-    <!-- Population Origin -->
-    <div>
-      <perc-bar v-for="pop in unidade.pop_perc.origem"
-                :value="pop.value"
-                :label="pop.label"
-                label-position="outside"
-                :key="pop.label"
-                color="grey">
-      </perc-bar>
-    </div>
-
-    <!-- Population Color -->
-    <div>
-      <perc-bar v-for="pop in unidade.pop_perc.cor"
-                :value="pop.value"
-                :label="pop.label"
-                label-position="outside"
-                :key="pop.label"
-                :color="pop.color">
-      </perc-bar>
-    </div>
-
-    <age-pyramid :data="unidade.pyramid"></age-pyramid>
-
+    <section class="informacoes">
+      <dl class="vagas">
+        <dd>[[ unidade.pop_total ]]</dd> <dt>pessoas</dt>
+        <dd>[[ unidade.vagas ]]</dd> <dt>vagas</dt>
+        <dd>[[ unidade.pop_perc.provisoria ]]%</dd> <dt>presos(as) provisórios(as)</dt>
+      </dl>
+      <dl class="gestao">
+        <dt>Gestão da Unidade:</dt>
+        <dd>[[ unidade.tipo_gestao ]]</dd>
+      </dl>
+      <dl class="qualidade">
+        <dt>Índice da Qualidade da informação:</dt>
+        <dd>[[ unidade.qualidade_info.toLocaleString('pt-br') ]]</dd>
+      </dl>
+    </section>
+    <section class="demografia">
+      <h3>Demografia da Unidade</h3>
+      <div class="col-md-5">
+        <div class="row">
+          <!-- Population Origin -->
+          <perc-bar v-for="pop in unidade.pop_perc.origem"
+                    :value="pop.value"
+                    :label="pop.label"
+                    label-position="outside"
+                    :key="pop.label"
+                    color="rgb(165, 165, 165)">
+          </perc-bar>
+        </div>
+        <div class="row">
+          <!-- Population Color -->
+          <perc-bar v-for="pop in unidade.pop_perc.cor"
+                    :value="pop.value"
+                    :label="pop.label"
+                    label-position="outside"
+                    :key="pop.label"
+                    :color="pop.color">
+          </perc-bar>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <age-pyramid :data="unidade.pyramid"></age-pyramid>
+      </div>
+    </section>
   </div>
 </script>
 
@@ -159,10 +157,6 @@
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti illo maiores ad amet sequi fugiat placeat veritatis. Dignissimos
       saepe id amet incidunt enim, dolor aliquid soluta autem aliquam minima natus?
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero tenetur, numquam est at laudantium voluptatem temporibus aut
-      eos maxime nesciunt veniam necessitatibus commodi, voluptatum quos repellendus in doloremque beatae. Atque!
     </p>
   </div>
 
