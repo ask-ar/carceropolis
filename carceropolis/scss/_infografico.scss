@@ -42,7 +42,8 @@
       }
 
       font-weight: lighter;
-      font-size: 26px;
+      font-size: 16px;
+      padding-top: 12px;
     }
 
     section {
@@ -390,8 +391,8 @@
 
             &:last-child {
                 background: $dark-pink;
-                margin: -1em auto 1em;
                 text-align: center;
+                padding-bottom: 1em;
 
                 span {
                     border-bottom: 1px solid white;
@@ -785,7 +786,7 @@
                 display: block;
                 font-size: 3em;
                 line-height: .9;
-                padding: 0 0 $font-size $font-size;
+                padding: 0 0 $font-size 0;
             }
 
             &:before {
@@ -858,7 +859,7 @@
         li:nth-child(2){
             background: white;
             color: $dark-pink;
-            font-size: 1.65em;
+            font-size: 1.55em;
             line-height: 1;
         }
 
@@ -870,7 +871,7 @@
                 content: $icon-bebe;
                 color: $dark-pink;
                 font-family: 'carceropolis';
-                font-size: 4.5em;
+                font-size: 4em;
                 line-height: 1;
                 position: absolute;
                 right: -40px;
