@@ -170,7 +170,7 @@
             padding: $font-size 0;
         }
 
-        .aracaju {
+        .amapa {
             align-content: flex-end;
             align-self: stretch;
             background-image: url(../images/infografico/dados-gerais-bg.png);
@@ -188,6 +188,10 @@
             strong {
                 text-transform: uppercase;
                 font-size: 1.2em
+            }
+
+            .br {
+                flex-basis: 100%;
             }
         }
 
