@@ -2,21 +2,27 @@ version: "3"
 
 services:
     db:
+        restart: always
         image: postgres
-    bootstrap:
-        build: .
-        links:
-            - db
-        volumes:
-            - .:/project
-        command: bash -c 'python3 manage.py migrate && python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2 && python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py collectstatic --noinput'
-        depends_on:
-            - db
+        ports:
+            - "5432:5432"
+    memcached:
+        restart: always
+        image: memcached
+        ports:
+            - "11211:11211"
     web:
+        restart: always
         build: .
+        image: carceropolis
         links:
             - db
-        command: python3 manage.py runserver 0.0.0.0:8000
+            - memcached
+        command: >
+            bash -c "python manage.py makemigrations &&
+            python manage.py migrate --no-input &&
+            python manage.py collectstatic --no-input &&
+            python manage.py runserver 0.0.0.0:8000"
         volumes:
             - .:/project
         ports:
@@ -24,3 +30,28 @@ services:
             - "5006:5006"
         depends_on:
             - db
+            - memcached
+            - migrate
+    loaddata:
+        image: carceropolis
+        links:
+            - db
+            - memcached
+        volumes:
+            - .:/project
+        command: python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2
+        depends_on:
+            - db
+            - memcached
+            - migrate
+    migrate:
+        image: carceropolis
+        links:
+            - db
+            - memcached
+        volumes:
+            - .:/project
+        command: bash -c "python manage.py makemigrations && python manage.py migrate"
+        depends_on:
+            - db
+            - memcached
