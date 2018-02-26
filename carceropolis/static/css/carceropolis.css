@@ -343,9 +343,9 @@ main.main-content {
   width: 90px;
   padding-left: 10px;
 }
-/* line 62, ../../scss/_base.scss */
-#footer .logo .ask {
-  width: 50px;
+/* line 63, ../../scss/_base.scss */
+#footer .logo.ask {
+  width: 48px;
 }
 @media (min-width: 768px) {
   /* line 57, ../../scss/_base.scss */
@@ -354,35 +354,36 @@ main.main-content {
     margin: 0 10px 0 0;
     width: 100px;
   }
-  /* line 70, ../../scss/_base.scss */
-  #footer .logo .ask {
-    width: 60px;
+  /* line 72, ../../scss/_base.scss */
+  #footer .logo.ask {
+    width: 58px;
   }
 }
-/* line 75, ../../scss/_base.scss */
+/* line 77, ../../scss/_base.scss */
 #footer .logo img {
   width: 100%;
 }
-/* line 80, ../../scss/_base.scss */
+/* line 82, ../../scss/_base.scss */
 #footer address {
   color: #beb4aa;
   display: block;
   font-size: 16px;
+  line-height: 1.6em;
   margin: 0;
   width: 100%;
   font-family: "source_sans_prolight";
 }
-/* line 89, ../../scss/_base.scss */
+/* line 92, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
 }
 
-/* line 94, ../../scss/_base.scss */
+/* line 97, ../../scss/_base.scss */
 .pagination > li > a {
   color: #ea702e;
 }
 
-/* line 98, ../../scss/_base.scss */
+/* line 101, ../../scss/_base.scss */
 .pagination > .active > span,
 .pagination > .active > a,
 .pagination > .active > a:hover,
@@ -394,14 +395,14 @@ main.main-content {
   z-index: 0;
 }
 
-/* line 109, ../../scss/_base.scss */
+/* line 112, ../../scss/_base.scss */
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
 }
 
-/* line 114, ../../scss/_base.scss */
+/* line 117, ../../scss/_base.scss */
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-top-right-radius: 2px;

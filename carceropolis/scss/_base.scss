@@ -58,17 +58,19 @@ main.main-content {
 		display: block;
 		margin: 0 auto 10px;
 		width: 90px;
-        padding-left: 10px;
-        .ask {
-          width: 50px;
+		padding-left: 10px;
+		
+        &.ask {
+          width: 48px;
         }
 		
 		@media (min-width: 768px){
 			display: inline-block;
 			margin: 0 10px 0 0;
 			width: 100px;
-            .ask {
-              width: 60px;
+			
+			&.ask {
+              width: 58px;
             }
 		}
 
@@ -81,6 +83,7 @@ main.main-content {
 		color: $conectas-cinza-claro;
 		display: block;
 		font-size: 16px;
+		line-height: 1.6em;
 		margin: 0;
 		width: 100%;
 		font-family: $light;
