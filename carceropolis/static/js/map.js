@@ -41,7 +41,7 @@ $(window).ready(function(){
       // this is usefull for auto position based on bar size
       'labelPosition': {
         type: [String, Number],
-        default: 20,
+        default: 30,
       }
     },
     computed: {
