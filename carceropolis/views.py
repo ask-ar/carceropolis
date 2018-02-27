@@ -424,20 +424,27 @@ def unidades_map(request):
                     {'label': 'estrangeiros', 'value': 10},
                 ],
                 'cor': [
-                    {'label': 'preta', 'value': 70, 'color': 'blue'},
-                    {'label': 'parda', 'value': 20, 'color': 'yellow'},
-                    {'label': 'branca', 'value': 10, 'color': 'green'},
+                    {'label': 'preta', 'value': 45, 'color': 'rgb(11,102,176)'},
+                    {'label': 'parda', 'value': 20, 'color': 'rgb(255,108,1)'},
+                    {'label': 'branca', 'value': 10, 'color': 'rgb(2,161,19)'},
+                    {'label': 'indígena', 'value': 5, 'color': 'rgb(228,0,121)'},
+                    {'label': 'amarela', 'value': 5, 'color': 'rgb(150,73,185)'},
+                    {'label': 'outros', 'value': 5, 'color': 'rgb(0,0,0)'},
                 ],
             },
             'pyramid': {
                 'ages': [
-                    {'range': '+ de 70', 'male': 10, 'female': 15},
-                    {'range': '61 a 70', 'male': 20, 'female': 25},
-                    {'range': '46 a 60', 'male': 30, 'female': 10},
+                    {'range': '+ de 70', 'male': 2, 'female': 1},
+                    {'range': '61 a 70', 'male': 4, 'female': 2},
+                    {'range': '46 a 60', 'male': 3, 'female': 1},
+                    {'range': '35 a 45', 'male': 8, 'female': 2},
+                    {'range': '30 a 34', 'male': 13, 'female': 7},
+                    {'range': '25 a 29', 'male': 33, 'female': 10},
+                    {'range': '18 a 24', 'male': 43, 'female': 11},
                 ],
                 'total': {
-                    'perc': {'male': 70, 'female': 30},
-                    'abs': {'male': 60, 'female': 20},
+                    'perc': {'male': 75.52, 'female': 23.72},
+                    'abs': {'male': 1006, 'female': 316},
                 },
                 'idade_media': 40
             }

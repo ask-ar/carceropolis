@@ -1,37 +1,36 @@
 .unidades-prisionais {
     margin-bottom: 2em;
-}
 
-.unidades-prisionais .mapa {
-    background-color: white;
-    position: relative;
+    .mapa {
+        background-color: white;
+        position: relative;
 
-    &:after {
-        @include clearfix;
-    }
+        &:after {
+            @include clearfix;
+        }
 
-    .col-md-8 {
-        padding-left: 0;
-        padding-right: 0;
-    }
+        .col-md-8 {
+            padding-left: 0;
+            padding-right: 0;
+        }
 
-    .col-md-4 {
-        padding-top: 20px;
-    }
+        .col-md-4 {
+            padding-top: 20px;
+        }
 
-    input[type=search].form-control {
-        -webkit-appearance: searchfield !important;
-        border: none;
-        border-radius: 0;
-        border-bottom: 2px solid $cp-grey-dark;
-        box-shadow: none;
+        input[type=search].form-control {
+            -webkit-appearance: searchfield !important;
+            border: none;
+            border-radius: 0;
+            border-bottom: 2px solid $cp-grey-dark;
+            box-shadow: none;
+        }
     }
 
     .btn {
         background-color: transparent;
         color: $cp-grey-dark;
         font-size: 22px;
-        font-weight: bold;
         
         &::before, &::after {
             color: $cp-grey-dark;
@@ -50,6 +49,18 @@
         &:active {
             box-shadow: none;
             color: $purple;
+        }
+
+        &.pull-right {
+            color: $purple;
+            font-size: 18px;
+        }
+
+        &.detailed-info {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 0;
         }
     }
 
@@ -87,7 +98,6 @@
 
         dt {
             clear: left;
-            font-family: $bold;
             margin-bottom: .25em;
             padding-bottom: .25em;
             padding-right: 10px;
@@ -125,159 +135,177 @@
             }
         }
 
-        .btn.pull-right {
-            color: $purple;
-            font-size: 18px;
-        }
-    }
-
-    .btn.detailed-info {
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 0;
     }
 
     .completeInfoPannel {
         border: 2px solid $cp-grey-dark;
-        min-height: 600px;
+        min-height: 602px;
         padding: 20px;
 
-        .informacoes {
-            border-bottom: 2px solid $cp-grey;
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
+        &:empty {
+            visibility: hidden;
+        }
+    }
 
-            dl {
-                color: $conectas-cinza-escuro;
-                font-size: 1.3em;
-                margin-bottom: 0;
-                text-transform: uppercase;
-            }
+    .informacoes {
+        border-bottom: 2px solid $cp-grey;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding: 20px 0 10px;
 
-            dl:after {
-                @include clearfix;
-            }
+        dl {
+            color: $conectas-cinza-escuro;
+            font-size: 1.3em;
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
 
-            .vagas {
-                border-bottom: 2px solid $cp-grey;
-                flex-basis: 100%;
-                margin-bottom: 20px;
-                padding: 10px 0 15px;
-                text-align: center;
-            }
+        dl:after {
+            @include clearfix;
+        }
 
-            .vagas dt, .vagas dd {
+        .vagas {
+            background: linear-gradient(to bottom, #fff 43%, #fff 42%, #888 46%, #fff 48%);
+            flex-basis: 17%;
+            margin-top: -5px;
+
+            dt, 
+            dd {
                 display: inline-block;
             }
+        }
 
-            .gestao, .qualidade {
-                flex-basis: 50%;
-            }
-
-            .gestao dd {
+        .gestao {
+            flex-basis: 36%;
+            
+            .btn {
                 color: $purple;
+                font-size: inherit;
+                padding: 0;
                 text-transform: none;
             }
-
-            .qualidade dt, .qualidade dd {
-                display: inline;
-            }
-
-            .vagas dd,
-            .qualidade dd {
-                color: $purple;
-                font-family: $bold;
-                font-size: 1.2em;
-                padding-right: 5px;
-                text-indent: 1em;
-            }
         }
 
-        .demografia {
-            h3 {
-                color: $conectas-cinza-escuro;
-                font-size: 1.5em;
-                margin-bottom: 30px;
-                text-transform: uppercase;
-            }
-
-            .col-md-5 .row:first-of-type {
-                margin-bottom: 40px;
-            }
-
-            .col-md-5 .perc-bar {
-                height: 24px;
-                margin-bottom: 14px;
-            }
+        .qualidade {
+            flex-basis: 28%;
+            text-align: right;
         }
 
-        .piramide-idade {
-            border-collapse: separate;
-            border-spacing: 0 4px;
+        .provisorio dt, .provisorio dd,
+        .qualidade dt, .qualidade dd {
+            display: inline;
+        }
+
+        .vagas dd,
+        .qualidade dd {
+            color: $purple;
             font-size: 1.2em;
-            width: 100%;
+        }
 
-            th {
-                font-family: $bold;
-                font-size: 1.1em;
-                text-transform: uppercase;
-            }
+        .provisorio {
+            flex-basis: 80%;
+            padding-top: 10px;
 
-            th:nth-child(1){
+            dd {
                 color: $purple;
-                text-align: right;
-                padding-right: 10px;
-                width: 45%;               
-            }
-
-            th:nth-child(2){
-                color: $navbar-links;
-            }
-
-            th:nth-child(3){
-                color: $conectas-cinza-escuro;
-                text-align: center;
-                width: 70px;
-            }
-
-            td {
-                background-color: $cp-grey;
-            }
-
-            tbody td:nth-child(1){
-                padding-right: 10px;
-                text-align: right;
-
-                .inner-bar {
-                    float: right;
-                }
-
-                .perc-bar > span,
-                .inner-bar > span {
-                    padding: 0 5px 0 0;
-                }
-            }
-
-            td:nth-child(3){
-                color: $conectas-cinza-escuro;
-                font-family: $bold;
-                text-align: center;
-            }
-
-            tfoot td {
-                color: $conectas-cinza-escuro;
-                text-align: center;
-                text-transform: uppercase;
-                padding: 4px 0;
-            }
-
-            tfoot span {
-                font-family: $bold;
             }
         }
+    }
+
+    .demografia {
+        h3 {
+            color: $conectas-cinza-escuro;
+            font-size: 1.5em;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+        }
+
+        .col-md-5 .row:first-of-type {
+            margin-bottom: 30px;
+        }
+
+        .col-md-5 .perc-bar {
+            height: 24px;
+            margin-bottom: 14px;
+        }
+    }
+
+    .piramide-idade {
+        border-collapse: separate;
+        border-spacing: 0 4px;
+        font-size: 1.2em;
+        margin-top: 10px;
+        width: 100%;
+
+        th {
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+
+        th:nth-child(1){
+            color: $purple;
+            text-align: right;
+            padding-right: 10px;
+            width: 45%;               
+        }
+
+        th:nth-child(2){
+            color: $navbar-links;
+        }
+
+        th:nth-child(3){
+            color: $conectas-cinza-escuro;
+            text-align: center;
+            width: 70px;
+        }
+
+        td {
+            background-color: $cp-grey;
+        }
+
+        tbody td:nth-child(1){
+            padding-right: 10px;
+            text-align: right;
+
+            .inner-bar {
+                float: right;
+            }
+
+            .perc-bar > span,
+            .inner-bar > span {
+                padding: 0 5px 0 0;
+            }
+        }
+
+        td:nth-child(3){
+            color: $conectas-cinza-escuro;
+            text-align: center;
+        }
+
+        .total .label-of {
+
+            &::before {
+                content: '['
+            }
+            &::after {
+                content: ']'
+            }
+
+        }
+
+        .perc-bar .value {
+            font-size: 1em;
+        }
+
+        tfoot td {
+            color: $conectas-cinza-escuro;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 4px 0;
+        }
+
     }
 }
 
@@ -289,6 +317,10 @@
 .perc-bar {
     height: 30px;
     line-height: 30px;
+
+    .value {
+        font-size: 1.4em;
+    }
 }
 
 .inner-bar {

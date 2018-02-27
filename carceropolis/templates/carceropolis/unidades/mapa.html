@@ -38,11 +38,11 @@
     <div class="inner-bar"
         :style="{width: value + '%', height: '100%', 'background-color': color}">
         <span v-if="labelInside" :style="{color: 'white'}">
-            [[ value ]]% [[ label ]]
+            <span class="value">[[ value ]]%</span> <span class="label-of">[[ label ]]</span>
         </span>
     </div>
     <span v-if="!labelInside" :style="{color: color}">
-        [[ value ]]% [[ label ]]
+        <span class="value">[[ value ]]%</span> <span class="label-of">[[ label ]]</span>
     </span>
   </div>
 </script>
@@ -71,7 +71,7 @@
           </td>
           <td>[[ age.range ]]</td>
         </tr>
-        <tr>
+        <tr class="total">
           <td>
             <perc-bar :value="data.total.perc.male"
                       :label="data.total.abs.male"
@@ -102,21 +102,24 @@
       <dl class="vagas">
         <dd>[[ unidade.pop_total ]]</dd> <dt>pessoas</dt>
         <dd>[[ unidade.vagas ]]</dd> <dt>vagas</dt>
-        <dd>[[ unidade.pop_perc.provisoria ]]%</dd> <dt>presos(as) provisórios(as)</dt>
       </dl>
       <dl class="gestao">
         <dt>Gestão da Unidade:</dt>
-        <dd>[[ unidade.tipo_gestao ]]</dd>
+        <dd><a href="#" class="btn">[[ unidade.tipo_gestao ]]</a></dd>
       </dl>
       <dl class="qualidade">
-        <dt>Índice da Qualidade da informação:</dt>
+        <dt>Índice da Qualidade <br>da informação:</dt>
         <dd>[[ unidade.qualidade_info.toLocaleString('pt-br') ]]</dd>
       </dl>
+      <dl class="provisorio">
+        <dd>[[ unidade.pop_perc.provisoria ]]%</dd> <dt>de presos(as) provisórios(as)</dt>
+      </dl>
+      <a href="#" class="btn pull-right">saiba mais</a>
     </section>
     <section class="demografia">
-      <h3>Demografia da Unidade</h3>
       <div class="col-md-5">
         <div class="row">
+          <h3>Demografia da Unidade</h3>
           <!-- Population Origin -->
           <perc-bar v-for="pop in unidade.pop_perc.origem"
                     :value="pop.value"
