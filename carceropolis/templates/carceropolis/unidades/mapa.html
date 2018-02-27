@@ -48,7 +48,7 @@
 </script>
 
 <script id="age-pyramid-template" type="text/x-template">
-  <div>
+  <div class="row">
     <table class="piramide-idade">
       <thead>
         <tr>
@@ -117,7 +117,7 @@
       <a href="#" class="btn pull-right">saiba mais</a>
     </section>
     <section class="demografia">
-      <div class="col-md-5">
+      <div class="col-lg-5 etnico">
         <div class="row">
           <h3>Demografia da Unidade</h3>
           <!-- Population Origin -->
@@ -140,18 +140,18 @@
           </perc-bar>
         </div>
       </div>
-      <div class="col-md-7">
+      <div class="col-lg-7 etario">
         <age-pyramid :data="unidade.pyramid"></age-pyramid>
       </div>
     </section>
   </div>
 </script>
 
+<div class="container">
+  {% include 'carceropolis/includes/menu_dados.html' %}
+</div>
 <section class="container dados-interna unidades-prisionais" id="map-vue-app">
-  <div class="container">
-    {% include 'carceropolis/includes/menu_dados.html' %}
-  </div>
-  <h1>Unidades Prisionais no Brasil</h1>
+  <h1>9. Unidades Prisionais no Brasil</h1>
   <div class="col-text-2">
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, illum. Autem distinctio commodi dicta at vero eos nesciunt
@@ -168,7 +168,7 @@
       <!-- Map -->
       <div id="map" v-show="showCompleteInfo == false" aria-live="polite"></div>
       <!-- Detailed info about unidade -->
-      <button class="btn detailed-info" @click="showCompleteInfo = false" title="Fechar informações detalhadas da unidade">x</button>
+      <button class="btn detailed-info" v-show="showCompleteInfo" @click="showCompleteInfo = false" title="Fechar informações detalhadas da unidade">x</button>
       <detailed-info v-if="showCompleteInfo" class="completeInfoPannel" :unidade="unidade" aria-live="polite">
       </detailed-info>
     </div>

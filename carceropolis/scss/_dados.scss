@@ -7,22 +7,35 @@
 }
 
 .menu-dados {
-
-	height: 50px;
-	float: right;
-	margin: 20px 0;
+	display: flex;
+	height: 42px;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	text-align: center;
+	
+	@media (min-width: 480px){
+		display: block;
+		float: right;
+		height: 50px;
+		margin: 20px 0;
+	}
 
 	a {
 		color: $breadcrumb;
-		display: block;
-		float: left;
 		height: 100%;
+		
+		@media (min-width: 480px){
+			display: block;
+			float: left;
+		}
 	}
 
 	a.active {
 		color: $dark-pink;
 	}
 
+	a:active,
+	a:focus,
 	a:hover {
 		text-decoration: none;
 	}
@@ -36,12 +49,17 @@
 	a::before {
 		display: block;
 		font-family: 'carceropolis';
-		font-size: 2.4em;
+		font-size: 2em;
 		height: 100%;
-		line-height: 50px;
-		text-align: center;
+		line-height: 40px;
 		text-indent: 0;
-		width: 50px;
+		width: 36px;
+		
+		@media (min-width: 480px){
+			font-size: 2.4em;
+			line-height: 50px;
+			width: 50px;
+		}
 	}
 	
 	.gerais::before {
@@ -90,10 +108,16 @@
 		background: $dark-pink;
 		color: white;
 		font-family: $bold;
-		font-weight: bolder;
-		margin: 0 0 30px;
-		padding: 20px;
+		font-size: 1.6em;
+		margin: 0 0 15px;
+		padding: 15px 20px;
 		text-transform: uppercase;
+		
+		@media (min-width: 480px){
+			font-size: 2.4em;
+			margin: 0 0 30px;
+			padding: 20px;
+		}
 	}
 
 	p {

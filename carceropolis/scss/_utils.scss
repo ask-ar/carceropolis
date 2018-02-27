@@ -61,8 +61,12 @@
 }
 
 .col-text-2 {
-  columns: 2;
-  margin-bottom: 1em;
   padding-bottom: 1em;
+  text-align: justify;
   text-indent: 1em;
+  
+  @media (min-width: 480px){
+    text-align: left;
+    columns: 2;
+  }
 }
