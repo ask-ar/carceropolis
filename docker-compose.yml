@@ -2,24 +2,19 @@ version: "3"
 
 services:
     db:
-        restart: always
-        image: postgres
-        ports:
-            - "5432:5432"
+        image: postgres:10.2-alpine
+
     memcached:
-        restart: always
-        image: memcached
-        ports:
-            - "11211:11211"
+        image: memcached:1.5-alpine
+
     web:
-        restart: always
         build: .
         image: carceropolis
         links:
             - db
             - memcached
         command: >
-            bash -c "python manage.py makemigrations &&
+            sh -c "python manage.py makemigrations &&
             python manage.py migrate --no-input &&
             python manage.py collectstatic --no-input &&
             python manage.py runserver 0.0.0.0:8000"
@@ -32,6 +27,7 @@ services:
             - db
             - memcached
             - migrate
+
     loaddata:
         image: carceropolis
         links:
@@ -51,7 +47,7 @@ services:
             - memcached
         volumes:
             - .:/project
-        command: bash -c "python manage.py makemigrations && python manage.py migrate"
+        command: sh -c "python manage.py makemigrations && python manage.py migrate"
         depends_on:
             - db
             - memcached
