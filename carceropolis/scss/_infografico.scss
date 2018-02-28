@@ -55,7 +55,7 @@
         letter-spacing: .01em;
         padding: 1em 0;
 
-        > .container {
+        > .container:not(h1) {
             height: 100%;
         }
 
@@ -223,10 +223,10 @@
 	}
 
 	.perfil-populacional {
+        align-items: center;
         background: $purple;
         color: white;
         display: flex;
-        align-items: center;
 
         .anim1 {
             transform: translate3d(-100%, 0, 0);
@@ -365,69 +365,103 @@
 
 	}
 
-	.infraestrutura {
-        background-image: url(../images/infografico/infraestrutura_bg.jpg);
-        background-blend-mode: luminosity;
-        background-color: $dark-pink;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: auto;
+	.infraestrutura {        
+        position: relative;
 
-        h1 {
-            margin-bottom: 1.5em;
+        h1 { 
+            margin-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+            
+            a::before {
+                content: $icon-infraestrutura;
+            }
         }
-
-        h1 a::before {
-            content: $icon-infraestrutura;
-        }
-
-        strong{
+        
+        strong {
             font-size: 2.3em;
             line-height: 1;
         }
+        
+        .stage {
+            background-image: url(../images/infografico/infraestrutura_bg.jpg);
+            background-blend-mode: color-burn;
+            background-color: $mid-pink;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 80vh;
+            max-height: 800px;
+            min-height: 400px;
+            margin-bottom: 1em;
+            position: relative;
+            overflow: hidden;
 
-        li{
+            &::before {
+                content: '';
+                background: $purple;
+                height: 300px;
+                overflow: hidden;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 350px;
+                z-index: 0;
+                transform: translate(8px, -150px);
 
-            &:not(:last-child) {
-                margin-bottom: 2em;
-                text-align: right;
+                @media (min-width: 992px){
+                    width: 440px;
+                }
+                
+            }
+        }
+
+        .moving {
+            height: 100%;
+
+            &.anim {
+                animation: movingY 6s ease-in-out 5s forwards;
+            }
+        }
+
+        @keyframes movingY {
+            10% {
+                transform: translateY(-100%)    
+            }
+            90%{
+                transform: translateY(-100%)
+            }
+            100% {
+                transform: translateY(-200%)
+            }
+        }
+        
+        .moving > div {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            line-height: 1.4em;
+            position: relative;
+            text-align: right;
+            width: 100%;
+
+            > div:first-of-type {
+                width: 420px;
             }
 
-            &:last-child {
-                background: $dark-pink;
-                text-align: center;
-                padding-bottom: 1em;
-
-                span {
-                    border-bottom: 1px solid white;
-                    font-size: 1.13em;
-                    letter-spacing: .06em;
-                    padding-bottom: .1em;
-                    text-transform: uppercase;
-                }
-
-                strong {
-                    display: inline-block;
-                    font-size: 3em;
-                    transform: translate(.3em, .1em);
-                }
-            }
-
-            &::after {
-                @include clearfix;
+            &.hide {
+                height: 0;
             }
         }
 
         .cela {
-            background: $purple;
             display: flex;
-            height: 10em;
+            height: 300px;
             flex-wrap: wrap;
             float: right;
             margin-left: 1em;
-            margin-top: -.5em;
             overflow: hidden;
-            width: 50%;
+            width: 430px;
         }
 
         svg {
@@ -438,10 +472,38 @@
             fill: white;
         }
 
-        .pessoa::before{
-            content: $icon-pessoa;
-        }
+        .deficit-vagas {
+            font-size: .9em;
+            text-align: center;
+            padding-bottom: 1em;
+            
+            span {
+                border-bottom: 1px solid white;
+                font-size: 1.13em;
+                letter-spacing: .06em;
+                padding-bottom: .1em;
+                text-transform: uppercase;
+            }
 
+            strong {
+                display: inline-block;
+                font-size: 3em;
+                transform: translate(.3em, .1em);
+            }
+
+            @media(min-width: 768px){
+                font-size: .8em;
+            }
+
+            @media(min-width: 992px){
+                font-size: .9em;
+            }
+
+            @media(min-width: 1200px){
+                font-size: 1em;
+            }
+
+        }
 	}
 
 	section.situacao-juridica {

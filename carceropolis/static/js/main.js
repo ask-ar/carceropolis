@@ -94,7 +94,6 @@ jQuery(function ($) {
 
         switch (ativo) {
             case `#dados-gerais`:
-
                 animDadosGerais(ativo)
                 break
 
@@ -119,12 +118,13 @@ jQuery(function ($) {
                 )
                 break
 
-            case `#perfil-populacional`:
+            case `#infraestrutura`:
                 /*
                3. Infraestrutura
                - fixar topo e rodapé (sobre déficit)
                - aparecer os blocos conforme usuário rolar o scroll
                */
+                $(`${ativo} .moving`).addClass('anim')
                 break
 
             case `#situacao-juridica`:
