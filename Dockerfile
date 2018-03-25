@@ -9,6 +9,7 @@ RUN set -ex \
     && apt update \
     && apt upgrade -yqq --no-install-recommends \
     && apt install git git-core -yqq --no-install-recommends \
+    && pip install -U pip setuptools wheel \
     && pip install uwsgi -r requirements.txt \
     && apt-get purge --auto-remove -yqq git git-core \
     && apt-get clean \

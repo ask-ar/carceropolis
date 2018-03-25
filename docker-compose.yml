@@ -1,53 +1,63 @@
 version: "3"
 
+volumes:
+    carceropolis_db:
+    carceropolis_media:
+
 services:
     db:
         image: postgres:10.2-alpine
+        environment:
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+            - carceropolis_db:/var/lib/postgresql/data/pgdata
 
     memcached:
         image: memcached:1.5-alpine
 
     web:
         build: .
-        image: carceropolis
+        image: askar/carceropolis
+        environment:
+            - IS_PRODUCTION=${IS_PRODUCTION}
+        volumes:
+            - .:/project
+            - carceropolis_media:/project/static/media
+        ports:
+            - "8000:8000"
+            - "5006:5006"
         links:
             - db
             - memcached
+        depends_on:
+            - db
+            - memcached
+            - migrate
         command: >
             sh -c "python manage.py makemigrations &&
             python manage.py migrate --no-input &&
             python manage.py collectstatic --no-input &&
             python manage.py runserver 0.0.0.0:8000"
-        volumes:
-            - .:/project
-        ports:
-            - "8000:8000"
-            - "5006:5006"
-        depends_on:
-            - db
-            - memcached
-            - migrate
 
     loaddata:
-        image: carceropolis
-        links:
-            - db
-            - memcached
+        image: askar/carceropolis
         volumes:
             - .:/project
-        command: python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2
+            - carceropolis_media:/project/static/media
+        links:
+            - db
         depends_on:
             - db
-            - memcached
             - migrate
+        command: python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2
+
     migrate:
-        image: carceropolis
-        links:
-            - db
-            - memcached
+        image: askar/carceropolis
         volumes:
             - .:/project
-        command: sh -c "python manage.py makemigrations && python manage.py migrate"
+            - carceropolis_media:/project/static/media
+        links:
+            - db
         depends_on:
             - db
-            - memcached
+        command: sh -c "python manage.py makemigrations && python manage.py migrate --no-input"

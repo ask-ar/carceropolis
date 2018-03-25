@@ -1,4 +1,4 @@
-# coding: utf-8
+"""Main settings."""
 import os
 from pathlib import Path
 
@@ -309,9 +309,7 @@ INSTALLED_APPS = (
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.
-MIDDLEWARE = (
-    "mezzanine.core.middleware.UpdateCacheMiddleware",
-
+MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     # Uncomment if using internationalisation or localisation
     # "django.middleware.locale.LocaleMiddleware",
@@ -329,12 +327,11 @@ MIDDLEWARE = (
     # Uncomment the following if using any of the SSL settings:
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
-    "mezzanine.core.middleware.FetchFromCacheMiddleware",
-)
+]
 
-if DJANGO_VERSION < (1, 10):
-    MIDDLEWARE_CLASSES = MIDDLEWARE
-    del MIDDLEWARE
+if os.getenv('IS_PRODUCTION'):
+    MIDDLEWARE.insert(0, "mezzanine.core.middleware.UpdateCacheMiddleware")
+    MIDDLEWARE.append("mezzanine.core.middleware.FetchFromCacheMiddleware")
 
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.
