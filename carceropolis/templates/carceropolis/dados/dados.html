@@ -204,7 +204,7 @@
                 <div>
                     <div>
                         <span class="br">ela estaria ocupada com</span>
-                        <strong>17 pessoas</strong>
+                        <strong>19 pessoas</strong>
                     </div>
                     <div class="cela">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 505 255">
@@ -247,8 +247,8 @@
                 </div>
                 <div>
                     <div>
-                        <span class="br">Em estados como Alagoas,</span>
-                        <strong>23 pessoas</strong>
+                        <span class="br">Em estados como Amazonas,</span>
+                        <strong>48 pessoas</strong>
                         <span class="br">dividiriam esse mesmo espaço</span>
                     </div>
                     <div class="cela">
@@ -307,7 +307,7 @@
         <aside class='deficit-vagas extra-padding-bottom'>
             <div class="container">
                 <span>O déficit de vagas nos presídios é igual a:</span>
-                <strong>250 mil</strong>
+                <strong>358 mil</strong>
             </div>
         </aside>
     </section>
@@ -319,8 +319,9 @@
             <ol>
                 <li>
                     <strong>
-                        <b data-final-number="41">0</b>%</strong> das pessoas presas no Brasil não foram condenadas. São chamados de
+                        <b data-final-number="40">0</b>%</strong> das pessoas presas no Brasil não foram condenadas. São chamados de
                     <strong>presos provisórios.</strong>
+                    <span class="data-fonte">MJ, Jun/2016</span>
                 </li>
                 <li>
                     Em média,
@@ -344,16 +345,12 @@
             <li>
                 <p>&nbsp;</p>
                 <div class="justica-mulheres">
+                  {% for i in "x"|rjust:"7" %}
                     <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                  {% endfor %}
+                  {% for i in "x"|rjust:"3" %}
                     <div class="vazio"></div>
-                    <div class="vazio"></div>
-                    <div class="vazio"></div>
+                  {% endfor %}
                 </div>
                 <p class="container">
                     <span class="br decrease-font">A maioria das mulheres responde por crimes
@@ -396,10 +393,9 @@
                     <div class="ideal">
                         <strong>{</strong>
                         <ol class="quantidade">
+                          {% for i in "x"|rjust:"4" %}
                             <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                          {% endfor %}
                         </ol>
                     </div>
                     <div>
@@ -409,70 +405,9 @@
                     <div class="real">
                         <strong>{</strong>
                         <ol class="quantidade">
+                          {% for i in "x"|rjust:"64" %}
                             <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                          {% endfor %}
                         </ol>
                     </div>
                 </li>
@@ -517,8 +452,9 @@
                     <strong>um único médico ginecologista</strong>
                     <br/>para cada
                     <strong>
-                        <b data-final-number="1168">0</b>
+                        <b data-final-number="1284">0</b>
                     </strong> mulheres encarceradas.
+                    <span class="data-fonte">MJ, jun/2016</span>
                 </div>
             </li>
             <li class="container">
@@ -543,9 +479,10 @@
             <li class="container">
                 <div>
                     <strong class="br">
-                        <b data-final-number="562">0</b> gestantes</strong>
+                        <b data-final-number="536">0</b> gestantes</strong>
                     <span>estão presas no Brasil.</span>
                 </div>
+                <span class="data-fonte">MJ, jun/2016</span>
                 <div>
                     <span class="br">Segundo a legislação brasileira,</span>
                     <span class="br">elas deveriam estar em</span>
@@ -555,7 +492,7 @@
             <li>
                 <div class="container">
                     <strong>
-                        <b data-final-number="1017">0</b> crianças</strong> vivem em presídios brasileiros
+                        <b data-final-number="1111">0</b> crianças</strong> vivem em presídios brasileiros
                 </div>
             </li>
         </ol>
@@ -566,48 +503,36 @@
                 <a href="/dados/alas_exclusivas">Alas exclusivas</a>
             </h1>
             <div class="conteudo">
-                <p class="col-1">
+                <div class="col-1">
+                  <p>
                     Existem
                     <strong>
-                        <b data-final-number="1105">0</b>
-                    </strong>
-                    pessoas com deficiência física no sistema prisional.
-                    <!-- Destas 62% estão encarceradas em unidades não adaptadas para cadeirantes -->
-                </p>
+                        <b data-final-number="1169">0</b>
+                    </strong><br/>
+                    pessoas com deficiência física no sistema prisional.<br/>
+                  </p>
+                  <p>
+                    <span class="br">
+                        Destas, 64% estão encarceradas em unidades não
+                        adaptadas para cadeirantes.
+                    </span>
+                  </p>
+                </div>
                 <div class="col-2">
                     <span class="br">
                         <strong class="big">Apenas
-                            <b data-final-number="13">0</b>%</strong> das prisões </span>
+                            <b data-final-number="11">0</b>%</strong> das prisões </span>
                     <span class="br">brasileiras dispõem de pelo menos </span>
                     uma
                     <strong>cela adaptada</strong>.
                     <div class="celas">
                         <ol>
-                            <li class="adaptada"></li>
-                            <li class="adaptada"></li>
-                            <li class="adaptada"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
-                            <li class="comum"></li>
+                            {% for i in "x"|rjust:"3" %}
+                                <li class="adaptada"></li>
+                            {% endfor %}
+                            {% for i in "x"|rjust:"22" %}
+                                <li class="comum"></li>
+                            {% endfor %}
                         </ol>
                     </div>
                 </div>
