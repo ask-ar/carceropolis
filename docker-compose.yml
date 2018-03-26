@@ -1,27 +1,41 @@
-version: "3"
+version: "3.4"
 
 volumes:
     carceropolis_db:
+    carceropolis_static:
     carceropolis_media:
+    carceropolis_sockets:
 
 services:
+    memcached:
+        image: memcached:1.5-alpine
+
     db:
         image: postgres:10.2-alpine
         environment:
-            - POSTGRES_NAME=${DB_NAME:-postgres}
+            - POSTGRES_DB=${DB_NAME:-postgres}
             - POSTGRES_USER=${DB_USER:-postgres}
             - POSTGRES_PASSWORD=${DB_PASS:-carceropolis}
             - PGDATA=/var/lib/postgresql/data/pgdata
         volumes:
             - carceropolis_db:/var/lib/postgresql/data/pgdata
 
-    memcached:
-        image: memcached:1.5-alpine
+    nginx:
+        image: nginx:1.13-alpine
+        volumes:
+            - carceropolis_static:/project/carceropolis/static
+            - carceropolis_sockets:/sockets
+            - ./deploy:/project/deploy
+            - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "80:80"
+            - "443:443"
 
-    web:
-        build: .
+    carceropolis:
         image: askbr/carceropolis
+        build: .
         environment:
+            # This options are used on settings.py
             - DEBUG=${DEBUG}  # Default to True
             - IS_PRODUCTION=${IS_PRODUCTION}  # Default to empty
             - CONSOLE_LOG_LEVEL=${CONSOLE_LOG_LEVEL}  # Default to DEBUG
@@ -31,46 +45,21 @@ services:
             - DB_USER=${DB_USER:-postgres}
             - DB_PASS=${DB_PASS:-carceropolis}
             - DB_HOST=${DB_HOST:-db}
-            - PUBLICACAO_PER_PAGE=${PUBLICACAO_PER_PAGE}
-            - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE}
+            - DB_PORT=${DB_PORT:-5432}
+            - PUBLICACAO_PER_PAGE=${PUBLICACAO_PER_PAGE}  # Default to 9
+            - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE}  # Default to 50MB
         volumes:
-            - ./carceropolis:/project
-            - carceropolis_media:/project/static/media
+            - .:/project
+            - carceropolis_sockets:/sockets
+            - carceropolis_static:/project/carceropolis/static
+            - carceropolis_media:/project/carceropolis/static/media
         ports:
-            - "8000:8000"
             - "5006:5006"
         links:
             - db
+            - nginx
             - memcached
         depends_on:
             - db
+            - nginx
             - memcached
-            - migrate
-        command: >
-            sh -c "python manage.py makemigrations &&
-            python manage.py migrate --no-input &&
-            python manage.py collectstatic --no-input &&
-            python manage.py runserver 0.0.0.0:8000"
-
-    loaddata:
-        image: askbr/carceropolis
-        volumes:
-            - ./carceropolis:/project
-            - carceropolis_media:/project/static/media
-        links:
-            - db
-        depends_on:
-            - db
-            - migrate
-        command: python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2
-
-    migrate:
-        image: askbr/carceropolis
-        volumes:
-            - ./carceropolis:/project
-            - carceropolis_media:/project/static/media
-        links:
-            - db
-        depends_on:
-            - db
-        command: sh -c "python manage.py makemigrations && python manage.py migrate --no-input"

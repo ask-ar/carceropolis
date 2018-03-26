@@ -128,8 +128,9 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["carceropolis.org.br", "localhost:8000", "localhost",
-                 "127.0.0.1", "127.0.0.1:8000", "dev.carceropolis.org.br"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "dev.carceropolis.org.br"]
+if os.getenv("IS_PRODUCTION"):
+    ALLOWED_HOSTS.insert(0, "carceropolis.org.br")
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

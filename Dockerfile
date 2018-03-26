@@ -1,46 +1,47 @@
-FROM python:3.6
+FROM diraol/alpine-py36-pandas-numpy-psql:1.0.0
 
 ENV PYTHONUNBUFFERED 1
 
 RUN set -ex \
-    && apt update \
-    && apt upgrade -yqq --no-install-recommends \
-    && pip install -U pip setuptools wheel \
+    && apk --no-cache add libstdc++ \
+    && apk --no-cache add --virtual _build_deps \
+        build-base \
+        libc-dev \
+        linux-headers \
+        git \
+        gcc \
+        # Pillow deps
+        jpeg-dev \
+        zlib-dev \
+        freetype-dev \
+        lcms2-dev \
+        openjpeg-dev \
+        tiff-dev \
+        tk-dev \
+        tcl-dev \
+        harfbuzz-dev \
+        fribidi-dev \
     && pip install \
-        ipython \
-        numpy \
-        pandas \
-        psycopg2-binary \
         uwsgi \
-    && apt-get clean \
+        git+https://github.com/stephenmcd/mezzanine.git#egg=Mezzanine \
+    && apk del _build_deps \
     && rm -rf \
-        /var/lib/apt/lists/* \
-        /tmp/* \
-        /var/tmp/* \
-        /usr/share/man \
-        /usr/share/doc \
-        /usr/share/doc-base \
-        ~/.cache/pip
+        ~/.cache/pip \
+        /var/cache/apk/*
 
-ADD requirements.txt /
+COPY requirements.txt /tmp/requirements.txt
 RUN set -ex \
-    && apt update \
-    && apt upgrade -yqq --no-install-recommends \
-    && apt install git -yqq --no-install-recommends \
     && pip install -U pip setuptools wheel \
-    && pip install -r requirements.txt \
-    && apt-get purge --auto-remove -yqq git \
-    && apt-get clean \
+    && pip install -r /tmp/requirements.txt \
     && rm -rf \
-        /var/lib/apt/lists/* \
-        /tmp/* \
-        /var/tmp/* \
-        /usr/share/man \
-        /usr/share/doc \
-        /usr/share/doc-base \
-        ~/.cache/pip
+        ~/.cache/pip \
+        /var/cache/apk/*
 
-RUN mkdir /project
-ADD carceropolis /project
-ENV PYTHONPATH /project
-WORKDIR /project
+ENV CARCEROPOLIS_HOME=/project/carceropolis
+RUN mkdir -p ${CARCEROPOLIS_HOME} /var/log/uwsgi
+
+WORKDIR ${CARCEROPOLIS_HOME}
+
+COPY deploy/entrypoint.sh /usr/bin/entrypoint
+RUN apk --no-cache add pcre-dev
+ENTRYPOINT ["/usr/bin/entrypoint"]

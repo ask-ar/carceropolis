@@ -11,21 +11,25 @@ sistema o [Docker](https://docs.docker.com/engine/installation/)
 [docker-compose](https://docs.docker.com/compose/install/) (versão >= 1.15.0).
 
 Após instalar ambos, faça o clone deste repositório em algum diretório em seu
-computador. Na primeira vez em que for rodar o projeto, precisaremos criar e
-popular a base de dados, então utilize os seguintes comandos, nesta ordem,
-rodando da raiz do projeto: `docker-compose up -d db` e `docker-compose up
-bootstrap`. A opção `-d` no primeiro comando serve para manter o serviço rodando
-em background.
+computador.
 
-Agora, para rodar efetivamente o projeto (nesta e nas próximas vezes), basta
-utilizara o comando `docker-compose up web`. Para "desligar" o container basta
-apertar CTRL+C. Se quiser subir novamente o mesmo container, rode o mesmo
-comando novamente.
+Estando no diretório do repositório, utilize o seguinte comando para iniciar o
+projeto completo: `docker-compose up`. Se desejar rodar o projeto em
+background, utilize a flag `-d`: `docker-compose up -d`.
 
-Caso hajam alterações na base (novas migrations), basta rodar `docker-compose
-exec web python3 manage.py migrate`. Se quiser gerar novas migrations, rode:
-`docker-compose exec web python3 manage.py makemigrations` (considerando que
-seu container 'web' está rodando).
+Na primeira vez em que você rodar o projeto e criar os containers, será
+realizada uma rotina de configuração da base de dados e também o carregamento
+(load) de dados pré-configurados. Esse processo pode demorar um pouco (menos de
+um minuto em média).
+
+Se o projeto estiver rodando em "foreground" e você quiser pará-lo, basta
+pressionar ctrl+c. Se ele estiver rodando em background, rode
+`docker-compose stop`. Se quiser apagar os containers e volumes criados para
+realizar uma nova instalação do zero, basta rodar `docker-compose down -v`.
+
+Caso hajam alterações na base, para gerar novas "migrations" basta rodar
+`docker-compose exec carceropolis python3 manage.py makemigrations` (com o
+projeto rodando).
 
 Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
 em seu sistema será automaticamente aplicada à instancia do projeto sendo
