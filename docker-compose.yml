@@ -8,6 +8,9 @@ services:
     db:
         image: postgres:10.2-alpine
         environment:
+            - POSTGRES_NAME=${DB_NAME:-postgres}
+            - POSTGRES_USER=${DB_USER:-postgres}
+            - POSTGRES_PASSWORD=${DB_PASS:-carceropolis}
             - PGDATA=/var/lib/postgresql/data/pgdata
         volumes:
             - carceropolis_db:/var/lib/postgresql/data/pgdata
@@ -19,9 +22,19 @@ services:
         build: .
         image: askbr/carceropolis
         environment:
-            - IS_PRODUCTION=${IS_PRODUCTION}
+            - DEBUG=${DEBUG}  # Default to True
+            - IS_PRODUCTION=${IS_PRODUCTION}  # Default to empty
+            - CONSOLE_LOG_LEVEL=${CONSOLE_LOG_LEVEL}  # Default to DEBUG
+            - SECRET_KEY=${SECRET_KEY}
+            - NEVERCACHE_KEY=${NEVERCACHE_KEY}
+            - DB_NAME=${DB_NAME:-postgres}
+            - DB_USER=${DB_USER:-postgres}
+            - DB_PASS=${DB_PASS:-carceropolis}
+            - DB_HOST=${DB_HOST:-db}
+            - PUBLICACAO_PER_PAGE=${PUBLICACAO_PER_PAGE}
+            - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE}
         volumes:
-            - .:/project
+            - ./carceropolis:/project
             - carceropolis_media:/project/static/media
         ports:
             - "8000:8000"
@@ -42,7 +55,7 @@ services:
     loaddata:
         image: askbr/carceropolis
         volumes:
-            - .:/project
+            - ./carceropolis:/project
             - carceropolis_media:/project/static/media
         links:
             - db
@@ -54,7 +67,7 @@ services:
     migrate:
         image: askbr/carceropolis
         volumes:
-            - .:/project
+            - ./carceropolis:/project
             - carceropolis_media:/project/static/media
         links:
             - db

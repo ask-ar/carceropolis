@@ -92,6 +92,7 @@ ENV/
 *.db
 .DS_Store
 /static
+carceropolis/static
 .sublime-workspace
 .sass-cache/
 .editorconfig

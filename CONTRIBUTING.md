@@ -31,11 +31,6 @@ Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
 em seu sistema será automaticamente aplicada à instancia do projeto sendo
 executada.
 
-**ATENÇÃO**: Veja a forma de configurar o `local_settings.py` de seu projeto ao
-rodá-lo com docker (instruções neste arquivo mesmo).
-
-REF: https://docs.docker.com/compose/django/#connect-the-database
-
 ## Server local (sem Docker)
 ### GNU/Linux - Básico
 Sistemas GNU/Linux contém python por padrão, então o que precisaremos é

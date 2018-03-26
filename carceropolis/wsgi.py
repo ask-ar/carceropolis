@@ -1,18 +1,24 @@
-"""
-WSGI config for carceropolis project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
-"""
+#!/usr/bin/env python
 
 import os
+import sys
 
+import django
+from django.core.management import execute_from_command_line
 from django.core.wsgi import get_wsgi_application
-from mezzanine.utils.conf import real_project_name
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE",
-                      "%s.settings" % real_project_name("carceropolis"))
+possible_topdir = os.path.normpath(os.path.join(os.path.abspath(sys.argv[0]),
+                                                os.pardir,
+                                                os.pardir,
+                                                os.pardir))
+
+
+if os.path.exists(os.path.join(possible_topdir, 'carceropolis', '__init__.py')):
+    sys.path.insert(0, possible_topdir)
+    sys.path.insert(0, os.path.normpath(
+        os.path.join(possible_topdir, os.pardir)))
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'carceropolis.settings'
+django.setup()
 
 application = get_wsgi_application()

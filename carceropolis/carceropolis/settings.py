@@ -1,8 +1,8 @@
 """Main settings."""
 import os
+import sys
 from pathlib import Path
 
-from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -128,7 +128,8 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["carceropolis.org.br"]
+ALLOWED_HOSTS = ["carceropolis.org.br", "localhost:8000", "localhost",
+                 "127.0.0.1", "127.0.0.1:8000", "dev.carceropolis.org.br"]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -154,7 +155,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = True
+DEBUG = os.getenv('DEBUG') not in ['False', 'false', 'FALSE']
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -165,34 +166,13 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = False
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
+AUTHENTICATION_BACKENDS = {
+    "mezzanine.core.auth_backends.MezzanineBackend",
+}
 
 # The numeric mode to set newly-uploaded files to. The value should be
 # a mode you'd pass directly to os.chmod.
 FILE_UPLOAD_PERMISSIONS = 0o644
-
-
-#############
-# DATABASES #
-#############
-
-# DATABASES = {
-#     "default": {
-#         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-#         "ENGINE": "django.db.backends.",
-#         # DB name or path to database file if using sqlite3.
-#         "NAME": "",
-#         # Not used with sqlite3.
-#         "USER": "",
-#         # Not used with sqlite3.
-#         "PASSWORD": "",
-#         # Set to empty string for localhost. Not used with sqlite3.
-#         "HOST": "",
-#         # Set to empty string for default. Not used with sqlite3.
-#         "PORT": "",
-#     }
-# }
-
 
 #########
 # PATHS #
@@ -228,7 +208,7 @@ MEDIA_URL = STATIC_URL + "media/"
 MEDIA_ROOT = PROJECT_ROOT / MEDIA_URL.strip("/")
 
 # Package/module name to import the root urlpatterns from for the project.
-ROOT_URLCONF = "%s.urls" % (PROJECT_APP)
+ROOT_URLCONF = f"{PROJECT_APP}.urls"
 
 TEMPLATES = [
     {
@@ -265,10 +245,6 @@ TEMPLATES = [
         },
     },
 ]
-
-if DJANGO_VERSION < (1, 9):
-    del TEMPLATES[0]["OPTIONS"]["builtins"]
-
 
 ################
 # APPLICATIONS #
@@ -358,6 +334,48 @@ PHONENUMBER_DB_FORMAT = "E164"
 PHONENUMBER_DEFAULT_REGION = "BR"
 BLOG_SLUG = "publicacoes"
 
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+        }
+    },
+    'loggers': {
+        'carceropolis.views': {
+            'handlers': ['console'],
+            'level': os.getenv('CONSOLE_LOG_LEVEL') or 'DEBUG',
+        }
+    }
+}
+
+SECRET_KEY = os.getenv('SECRET_KEY') or '9b9n_5u!y-ge6+1+f##vt3ub9tp5hq(aq^4g&'
+NEVERCACHE_KEY = os.getenv('NEVERCACHE_KEY') or '%vpsl!vjiw9m^4j(=c#gv47m849+t'
+
+# Os valores DEFAULT aqui definidos são pensados para o projeto sendo rodado
+# com o docker-compose do repositório do projeto.
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.getenv('DB_NAME') or 'postgres',
+        "USER": os.getenv('DB_USER') or 'postgres',
+        "PASSWORD": os.getenv('DB_PASS') or 'carceropolis',
+        "HOST": os.getenv('DB_HOST') or 'db',
+    }
+}
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+
+ACCOUNTS_APPROVAL_REQUIRED = True
+
+ACCOUNTS_VERIFICATION_REQUIRED = True
+
+try:
+    PUBLICACAO_PER_PAGE = int(os.getenv('PUBLICACAO_PER_PAGE'))
+except (ValueError, TypeError):
+    PUBLICACAO_PER_PAGE = 9
+
 # 2.5MB - 2621440
 # 5MB - 5242880
 # 10MB - 10485760
@@ -366,30 +384,11 @@ BLOG_SLUG = "publicacoes"
 # 100MB 104857600
 # 250MB - 214958080
 # 500MB - 429916160
-MAX_UPLOAD_SIZE = "5242880"
+MAX_UPLOAD_SIZE = os.getenv('MAX_UPLOAD_SIZE') or "5242880"
 
-##################
-# LOCAL SETTINGS #
-##################
+COMMENTS_DISQUS_SHORTNAME = False
 
-# Allow any settings to be defined in local_settings.py which should be
-# ignored in your version control system allowing for settings to be
-# defined per machine.
-
-# Instead of doing "from .local_settings import *", we use exec so that
-# local_settings has full access to everything defined in this module.
-# Also force into sys.modules so it's visible to Django's autoreload.
-
-f = PROJECT_APP_PATH / 'local_settings.py'
-
-if f.exists():
-    import sys
-    import imp
-    module_name = "{}.local_settings".format(str(PROJECT_APP_PATH))
-    module = imp.new_module(module_name)
-    module.__file__ = str(f)
-    sys.modules[module_name] = module
-    exec(open(str(f), "rb").read())
+ENABLE_COMMENTS = False
 
 # Converting from PosixPath to str
 PROJECT_APP_PATH = str(PROJECT_APP_PATH)
