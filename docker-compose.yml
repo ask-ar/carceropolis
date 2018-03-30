@@ -17,7 +17,7 @@ services:
 
     web:
         build: .
-        image: askar/carceropolis
+        image: askbr/carceropolis
         environment:
             - IS_PRODUCTION=${IS_PRODUCTION}
         volumes:
@@ -40,7 +40,7 @@ services:
             python manage.py runserver 0.0.0.0:8000"
 
     loaddata:
-        image: askar/carceropolis
+        image: askbr/carceropolis
         volumes:
             - .:/project
             - carceropolis_media:/project/static/media
@@ -52,7 +52,7 @@ services:
         command: python3 manage.py loaddata cidades/fixtures/cidade.json.bz2 carceropolis/fixtures/initialdata.json.bz2
 
     migrate:
-        image: askar/carceropolis
+        image: askbr/carceropolis
         volumes:
             - .:/project
             - carceropolis_media:/project/static/media
