@@ -136,10 +136,6 @@
     }
 
 	.dados-gerais {
-        align-items: center;
-        display: flex;
-        padding-top: calc(#{$header} + 1em);
-        transform: translateY(-#{$header});
 
         h1 {
             margin-bottom: 0;
@@ -223,10 +219,6 @@
 	}
 
 	.perfil-populacional {
-        align-items: center;
-        background: $purple;
-        color: white;
-        display: flex;
 
         .anim1 {
             transform: translate3d(-100%, 0, 0);
@@ -792,7 +784,6 @@
 
         h1 a {
             color: $dark-pink;
-            padding-bottom: .7em;
         }
 
         h1 a::before {
@@ -880,15 +871,11 @@
             padding: 0;
         }
 
-        h1 a {
-            padding-bottom: $font-size;
-        }
-
         h1 a::before {
             content: $icon-materno;
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-right: 15px;
-            top: 15px;
+            top: 10px;
         }
 
         h1 a::after {
@@ -965,7 +952,6 @@
 	}
 
 	.alas-exclusivas {
-        min-height: calc(100vh - #{$header} - #{$footer});
 
         h1 {
             margin-bottom: 0;
@@ -1049,9 +1035,7 @@
 	.unidades-prisionais {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        min-height: calc(100vh - #{$footer});
-        padding-bottom: 0;
+        min-height: calc(100vh - #{$header} - #{$footer});
 
         h1 {
             margin-bottom: 0;
