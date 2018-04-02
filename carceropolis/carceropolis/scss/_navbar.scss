@@ -5,7 +5,6 @@ header.navbar {
 	border-radius: 0;
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	margin: 0;
-	min-height: inherit;
 	width: 100%;
 
 	//icone mobile
@@ -59,6 +58,10 @@ header.navbar {
     }
 
     //menu desktop
+    .main-nav {
+        height: $header;
+    }
+    
     .navbar-nav {
         display: flex;
         padding-top: 15px;
@@ -99,7 +102,6 @@ header.navbar {
         }
     }
     
-
     @media (max-width: 768px) {
 
         #home header.navbar {
