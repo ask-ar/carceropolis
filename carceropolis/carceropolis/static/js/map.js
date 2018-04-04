@@ -93,14 +93,33 @@ $(window).ready(function(){
       },
       plotMap: function () {
         var filter = this.filterStr
+        var customIcon = L.icon({
+          iconUrl: '/static/images/map/marker-icon.png',
+          shadowUrl: '/static/images/map/marker-shadow.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          tooltipAnchor: [16, -28],
+          shadowSize: [41, 41]
+        })
+
         statesLayerGroup.clearLayers()
         $.each(states, function (uf, unidades) {
-          var stateLayer = L.markerClusterGroup()
+          var stateLayer = L.markerClusterGroup({
+            // showCoverageOnHover: false,
+            polygonOptions: {
+              fillColor: 'grey',
+              color: '#1b2557',
+              weight: 0.0,
+              opacity: 0,
+              fillOpacity: 0.5
+            }
+          })
           var i = 0
           var markers = []
           for (let unidade of unidades) {
             if (filter && !unidadeMatchesFilter(unidade, filter)) continue
-            var marker = L.marker([unidade.lat, unidade.lon])
+            var marker = L.marker([unidade.lat, unidade.lon], {icon: customIcon})
             marker.unidade = unidade
             markers.push(marker)
           }
