@@ -434,6 +434,15 @@
     pointer-events: none;
     width: 100%;
 }
+.marker-cluster-large, .marker-cluster-medium, .marker-cluster-small {
+    background-color: rgba(241, 128, 23, 0.6);
+}
+.marker-cluster-large div, .marker-cluster-medium div, .marker-cluster-small div {
+    background-color: rgba(241, 128, 23, 0.0);
+}
+.marker-cluster div {
+    font-family: "source_sans_proregular";
+}
 
 .perc-bar {
     height: 30px;
