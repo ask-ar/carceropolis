@@ -378,83 +378,106 @@
         .stage {
             background-image: url(../images/infografico/infraestrutura_bg.jpg);
             background-blend-mode: color-burn;
-            background-color: $mid-pink;
-            background-repeat: no-repeat;
+            background-color: rgba(201,61,101,.8);
+            background-position: 50% 50%;
             background-size: cover;
-            height: 80vh;
+            height: 71vh;
             max-height: 800px;
             min-height: 400px;
-            margin-bottom: 1em;
             position: relative;
             overflow: hidden;
 
             &::before {
                 content: '';
                 background: $purple;
-                height: 300px;
                 overflow: hidden;
-                position: absolute;
+            }
+            
+            &::before,
+            .cela {
+                height: 300px;
                 left: 50%;
+                position: absolute;
                 top: 50%;
+                transform: translate(8px, -150px);
                 width: 350px;
                 z-index: 0;
-                transform: translate(8px, -150px);
-
+                
                 @media (min-width: 992px){
                     width: 440px;
-                }
-                
+                }    
+            }
+
+            .cela {
+                opacity: 0;
+            }
+
+            .glyphicon-chevron-down {
+                position: absolute;
+                top: 90%;
+                left: 50%;
             }
         }
 
         .moving {
             height: 100%;
+            transform: translateY(100%);
+            transition: transform 1s ease-in-out;
+
+            .qtd {
+                height: 100%;
+                max-width: 48%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: right;
+            }
 
             &.anim {
-                animation: movingY 6s ease-in-out 5s forwards;
+                animation: movingYback 1s ease-in-out 250ms forwards;
+            }
+
+            &.anim2 {
+                transform: translateY(0%);
+                animation: movingYback100 1s ease-in-out 500ms forwards;
+            }
+
+            &.anim3 {
+                transform: translateY(-100%);
+                animation: movingYback200 1s ease-in-out 500ms forwards;
             }
         }
 
-        @keyframes movingY {
-            10% {
-                transform: translateY(-100%)    
+        @keyframes movingYback {
+            100% {
+                transform: translateY(0%)
             }
-            90%{
+        }
+
+        @keyframes movingYback100 {
+            0% {
+                transform: translateY(0%)
+            }
+            100% {
+                transform: translateY(-100%)
+            }
+        }
+
+        @keyframes movingYback200 {
+            0% {
                 transform: translateY(-100%)
             }
             100% {
                 transform: translateY(-200%)
             }
         }
-        
-        .moving > div {
-            align-items: center;
-            display: flex;
-            height: 100%;
-            justify-content: center;
-            line-height: 1.4em;
-            position: relative;
-            text-align: right;
-            width: 100%;
 
-            > div:first-of-type {
-                width: 420px;
-            }
-
-            &.hide {
-                height: 0;
+        @keyframes toOpaque {
+            100% {
+                opacity: 1;
             }
         }
 
-        .cela {
-            display: flex;
-            height: 300px;
-            flex-wrap: wrap;
-            float: right;
-            margin-left: 1em;
-            overflow: hidden;
-            width: 430px;
-        }
 
         svg {
             width: 100%;

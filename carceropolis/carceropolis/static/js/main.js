@@ -100,7 +100,7 @@ jQuery(function ($) {
             ? this.ativo = location.hash 
             : this.ativo = $(eventOrHash.target).find('a').attr('href')
 
-            switch (ativo) {
+            switch (this.ativo) {
                 case `#dados-gerais`:
                     animDadosGerais(this.ativo)
                     break
@@ -133,7 +133,53 @@ jQuery(function ($) {
                     - fixar topo e rodapé (sobre déficit)
                     - aparecer os blocos conforme usuário rolar o scroll
                     */
-                    $(`${this.ativo} .moving`).addClass('anim')
+                    let moving = `${this.ativo} .moving`
+
+                    $(moving).addClass('anim')
+                    setTimeout(
+                        () => $(`${this.ativo} .c10`).addClass(`fadeIn`)
+                        , 1000
+                    )
+
+                    $(`${this.ativo}`).on('click', evento => {
+                          
+                        //third
+                        if($(moving).hasClass('anim3')) {
+                            $(moving).removeClass('anim anim2 anim3')
+                                
+                            $(`${this.ativo} .cela`).removeClass(`fadeIn`).addClass(`fadeOut`)
+                            
+                            setTimeout(
+                                () => {
+                                    $(moving).addClass('anim')
+                                    $(`${this.ativo} .cela`).removeClass(`fadeOut`)
+                                    $(`${this.ativo} .c10`).addClass(`fadeIn`)
+                                    return
+                                }
+                                , 1200
+                            )                            
+                        }
+                        
+                        //second
+                        if ($(moving).hasClass('anim2')){
+                            $(moving).addClass('anim3')    
+                            setTimeout(
+                                () => $(`${this.ativo} .c48`).addClass(`fadeIn`)
+                                , 1000
+                            )
+                        }
+
+                        //first click
+                        if ($(moving).hasClass('anim')) {
+                            $(moving).addClass('anim2')
+                            setTimeout(
+                                () => $(`${this.ativo} .c19`).addClass(`fadeIn`)
+                                , 1000
+                            )
+                        }
+
+                    })
+        
                     break
 
                 case `#situacao-juridica`:
