@@ -332,8 +332,7 @@
                 </div>
             </li>
             <li>
-                <p>&nbsp;</p>
-                <div class="justica-mulheres">
+                <div class="empty-justice">
                   {% for i in "x"|rjust:"7" %}
                     <div></div>
                   {% endfor %}
@@ -364,12 +363,11 @@
                 </li>
                 <li>
                     <div>
-                        <span class="br">
-                            <strong>+</strong> de
-                            <strong data-final-number="40">0</strong>
-                            <strong>%</strong>
-                        </span>
-                        das unidades prisionais no brasil não contam com salas de aula
+                        <span class="br"><strong>50%</strong> da</span>
+                        <span class="br"><em>população prisional</em> não tem</span>
+                        <span class="efc br">ensino fundamental completo</span> 
+                        <span class="br">em comparação com <strong>25%</strong></span>
+                        <span class="br">da <em>população em geral</em>.</span>
                     </div>
                 </li>
                 <li>
@@ -377,7 +375,7 @@
                         <span class="br">A
                             <strong>capacidade atual</strong>
                         </span>
-                        precisaria ser
+                         de salas de aula
                     </div>
                     <div class="ideal">
                         <strong>{</strong>
@@ -401,17 +399,23 @@
                     </div>
                 </li>
                 <li>
-                    <div>O trabalho também é para poucos:</div>
-                    <div>
-                        <strong>apenas</strong>
-                        <div class="load">
-                            20%
-                            <div class="de-cem">
-                                <span>100%</span>
-                            </div>
-                        </div>
-                        <span class="br">têm alguma ocupação laboral.</span>
+                    <div class="empty-justice">
+                    {% for i in "x"|rjust:"3" %}
+                        <div></div>
+                    {% endfor %}
+                    {% for i in "x"|rjust:"1" %}
+                        <div class="vazio"></div>
+                    {% endfor %}
                     </div>
+                    <p>
+                        <span class="br">
+                            <strong>3</strong> em <strong>4</strong> cada pessoas presas que trabalham
+                        </span>
+                        <span class="br">
+                            recebem <em class="salario-minimo">menos de 3/4 de salário mínimo</em>,
+                        </span> 
+                        em <strong>desacordo</strong> com a <span class="lep">Lei de Execução Penal</span>.
+                    </p>
                 </li>
             </ol>
         </div>

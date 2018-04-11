@@ -46,6 +46,38 @@
       padding-top: 12px;
     }
 
+    .empty-justice {
+        display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1140px;
+    
+        div {
+            background: white;
+            height: 80px;
+            overflow: hidden;
+            padding: 0 5px;
+            width: 100px;
+
+            &:before {
+                content: '';
+                background: $dark-pink;
+                border: 2px dashed $dark-pink;
+                border-radius: 50%;
+                bottom: -30px;
+                display: block;
+                height: 90px;
+                position: relative;
+                width: 90px;
+            }
+
+            &.vazio:before {
+                background: none;
+            }
+        }
+    }
+
     section {
         background: $dark-pink;
         color: white;
@@ -585,6 +617,7 @@
 
         .full li:nth-child(2){
             background: $purple;
+            padding-top: $font-size*2;
             text-align: center;
 
             p {
@@ -612,38 +645,6 @@
             }
         }
 
-        .justica-mulheres {
-            display: flex;
-            justify-content: space-between;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 1140px;
-        }
-
-        .justica-mulheres div {
-            background: white;
-            height: 80px;
-            overflow: hidden;
-            padding: 0 5px;
-            width: 100px;
-
-            &:before {
-                content: '';
-                background: $dark-pink;
-                border: 2px dashed $dark-pink;
-                border-radius: 50%;
-                bottom: -30px;
-                display: block;
-                height: 90px;
-                position: relative;
-                width: 90px;
-            }
-
-            &.vazio:before {
-                background: none;
-            }
-        }
-
     }
 
     .trabalho-educacao {
@@ -660,6 +661,8 @@
 
         .container > ol > li:nth-child(2){
             background-image: url(../images/infografico/trabalho-educacao-bg.png);
+            background-blend-mode: soft-light;
+            background-color: rgba(201,61,101,.9);
             background-position: top right;
             border-top: 3px solid white;
         }
@@ -667,18 +670,23 @@
         .container > ol > li:nth-child(2) div {
             background: linear-gradient(to right, rgba(51,1,41,1) 0%,rgba(51,1,41,0.91) 10%,rgba(0,0,0,0.05) 100%); 
             font-size: 1.13em;
+            line-height: 1.1em;
             padding: $font-size 0 $font-size  $font-size;
-            text-transform: uppercase;
-            width: 40%;
+            width: 50%;
 
-            .br{
-                text-transform: none;
-                margin-top: -15px;
-                line-height: 1;
+            em {
+                text-transform: uppercase;
+                font-style: normal;
+                font-family: $semibold;
             }
 
             strong {
-                font-size: 2.66em;
+                font-size: 2em;
+            }
+
+            .efc {
+                font-family: $semibold;
+                padding-bottom: $font-size/2;
             }
         }
 
@@ -687,9 +695,10 @@
             display: flex;
             flex-wrap: wrap;
             text-align: right;
+            padding: $font-size/2 0;
 
             div {
-                padding: $font-size 0 $font-size;
+                padding: $font-size/2 0;
                 width: 50%;
             }
 
@@ -729,69 +738,38 @@
         .container > ol > li:nth-child(4){
             padding: $font-size 0;
 
-            > div:first-of-type{ 
-                text-align: right;
-                width: 50%;
+            .empty-justice {
+                max-width: 500px;
+                padding-bottom: $font-size;
             }
 
-            > div:first-of-type + div{ 
-                margin-left: auto;
-                padding: 0 $font-size;
-                position: relative;
-                width: 50%;
-
-                strong {
-                    left: -3.2em;
-                    position: absolute;
-                    top: .75em;
-                }
+            .empty-justice div:before {
+                border-color: $purple;
             }
 
-            .load {
+            .empty-justice div:not(.vazio):before {
                 background: $purple;
-                display: inline-block;
-                height: 40px;
-                margin: $font-size 0;
-                position: relative;
-                width: 100%;
             }
 
-            .load::before {
-                content: '20%';
-                background: white;
+            p {
                 color: $purple;
-                display: inline-block;
-                font-family: $bold;
-                height: 100%;
-                padding-left: 10px;
-                position: absolute;
-                width: 20%;
+                font-size: 1.3em;
+                line-height: 1.5em;
+                text-align: center;
             }
 
-            .load .de-cem {
-                border-color: white;
-                border-width: 1px;
-                border-left-style: solid;
-                border-right-style: solid;
-                position: relative;
-                height: 10px;
-                top: 10px;
+            strong{
+                color: white;
             }
 
-            .load .de-cem::before {
-                border-top: 1px dashed white;
-                content: '';
-                display: block;
-                position: absolute;
-                top: 5px;
-                width: 100%;
+            em {
+                color: white;
+                font-style: normal;
+                font-family: $semibold;
             }
 
-            .load .de-cem span {
-                font-size: .5em;
-                position: absolute;
-                right: -20px;
-                top: 10px;
+            .lep {
+                color: white;
             }
         }
 	}
