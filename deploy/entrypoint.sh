@@ -54,6 +54,9 @@ wait_for_db() {
 }
 
 case "$1" in
+  deploy)
+    deploy
+      ;;
   migrate)
     echo "Initializing migrate mode."
     wait_for_db

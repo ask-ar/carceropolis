@@ -1,1 +1,1 @@
-docker-compose exec web python manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > initialdata.json
+docker-compose exec web sh -c "python manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > carceropolis/carceropolis/fixtures/initialdata.json"

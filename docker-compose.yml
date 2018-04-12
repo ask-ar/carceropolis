@@ -26,7 +26,8 @@ services:
             - carceropolis_static:/project/carceropolis/static
             - carceropolis_sockets:/sockets
             - ./deploy:/project/deploy
-            - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./deploy/nginx:/etc/nginx/conf.d
+            - ./commingsoon:/project/commingsoon
         ports:
             - "80:80"
             - "443:443"
