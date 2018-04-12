@@ -183,7 +183,7 @@ jQuery(function ($) {
                     break
 
                 case `#situacao-juridica`:
-                    contador(document.querySelectorAll('#situacao-juridica [data-final-number]'), 20)
+                    contador(document.querySelectorAll(`${this.ativo} [data-final-number]`), 20)
                     /*
                     4. Situação Jurídica
                     - preencher o branco
@@ -204,11 +204,11 @@ jQuery(function ($) {
                     - primeiro conjunto de 5 quadradinhos alinhados verticalmente
                     - segundo conjunto de quadradinhos, aparecer num grid de 5 linhas e aparecer coluna por coluna (da esquerda para a direita)
                     - preencher barra de progresso da esquerda para a direita de forma que o 18% seja revelado dentro da barra */
-                    contador(document.querySelectorAll('#trabalho-educacao [data-final-number]'), 5)
+                    contador(document.querySelectorAll(`${this.ativo} [data-final-number]`), 5)
                     break
 
                 case `#saude`:
-                    contador(document.querySelectorAll('#saude [data-final-number]'), 5)
+                    contador(document.querySelectorAll(`${this.ativo} [data-final-number]`), 5)
                     /*  6. Saúde
                     - aparecer o texto "consultório médico"
                     - "Saúde" e texto "Apesar da metade..." na mesma cor do atual texto "49 ginecologistas..." com fundo branco
@@ -219,14 +219,14 @@ jQuery(function ($) {
                     break
 
                 case `#materno-infantil`:
-                    contador(document.querySelectorAll('#materno-infantil [data-final-number]'), 1)
+                    contador(document.querySelectorAll(`${this.ativo} [data-final-number]`), 1)
                     /*  7. Materno-infantil
                     - animação (contador) no 534
                     - animação (contador) no 585 */
                     break
 
                 case `#alas-exclusivas`:
-                    contador(document.querySelectorAll('#alas-exclusivas [data-final-number]'), 1)
+                    contador(document.querySelectorAll(`${this.ativo} [data-final-number]`), 1)
                     /* 8. Alas Exclusivas
                     - animação (contador) no 12%
                     - número 1.294 inciando normal e tornando-se negrito
@@ -234,6 +234,7 @@ jQuery(function ($) {
                     break
 
                 case `#unidades-prisionais`:
+                    contador(document.querySelectorAll(`${this.ativo} [data-final-number]`), 1)
 
                     break
 

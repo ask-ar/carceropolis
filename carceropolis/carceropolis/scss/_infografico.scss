@@ -1033,34 +1033,145 @@
 	}
 
 	.unidades-prisionais {
-        display: flex;
-        flex-direction: column;
-        min-height: calc(100vh - #{$header} - #{$footer});
+        background: $purple url(../images/infografico/grafico_unidades.svg) no-repeat;
+        background-position: 46% 40%;
+        background-size: 40%;
+        min-height: calc(100vh - #{$footer});
+        padding: 0;
 
-        h1 {
-            margin-bottom: 0;
-            padding: 0;
-        }
-
-        h1 a {
-            padding-bottom: $font-size;
+        @media(min-width: 1200px){
+            background-position: 48% 44%;
+            background-size: inherit;
         }
 
         h1 a::before {
             content: $icon-brasil;
-            font-size: 1.5em;
+            font-size: 1.3em;
             margin-right: 15px;
-            top: 15px;
+            top: 10px;
         }
 
-        h1 a::after {
-            margin-top: 18px;
+        ul.container { margin-bottom: 0 }
+
+        li:first-child {
+            font-size: 2.4em;
+            line-height: 1em;
+            padding-right: 1em;
+        }
+        
+        em {
+            font-family: $semibold;
+            font-style: normal;
         }
 
-        .conteudo {
+        .grafico {
             display: flex;
-            flex-wrap: wrap;
+        
+            .col1 {
+                width: 72%;
+                
+                p {
+                    color: $dark-pink;
+                    font-size: 1em;
+                    line-height: 1.2;
+                    margin: 2em 0 0 1em;
+                    max-width: 260px;
+                    width: 40%;
+                    
+                    @media(min-width: 1200px){
+                        width: 280px;
+                    }
+                }
+
+                strong { font-size: 3.5em; }
+
+            }
+
+            .col2 {
+                line-height: 1;
+                width: 28%;
+
+                > p {
+                    margin-bottom: 1em;
+                    position: relative;
+                    top: -1em;
+                }
+
+                > p strong {
+                    font-size: 3.5em;
+                }
+            }
+
+            .custodia {
+                background: url(../images/infografico/custodia.svg) no-repeat top right;
+                color: $dark-pink;
+                line-height: 1.2;
+                padding: 80px 20px 0;
+                text-align: right;
+                
+                em { font-size: 2em; }
+            }
         }
+
+        .publico {
+            align-items: flex-end;
+            display: flex;
+            line-height: 1.2em;
+            transform: translateY(-90px);
+
+            .col1 { 
+                align-self: flex-start;
+                flex-basis: 125px;
+            }
+
+            .col2 {
+                flex-grow: 2;
+                padding: 0 20px;
+            }
+
+            .col3 {flex-basis: 74px; }
+
+        }
+
+        .indent {
+            padding-left: .5em;
+
+            em.br { 
+                font-size: 2em;
+                line-height: 1;
+            }
+        }
+
+        .purple {
+            display: block;
+            color: $purple;
+            background-color: white;
+            padding: 0 10px 0 .5em;
+        }
+
+        .dotted {
+            text-align: right;
+            
+            > span {
+                border: 1px dotted white;
+                display: inline-block;
+                padding: 0 10px;
+            }
+        }
+
+        .masc path{
+            fill: white;
+        }
+
+        .fem {
+            fill: none;
+            stroke: #f5f5f5;
+            stroke-miterlimit: 10;
+            stroke-dasharray: 1,1; 
+            stroke-width: 1.25;
+        }
+
+
 	}
 }
 
