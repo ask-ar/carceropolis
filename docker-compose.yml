@@ -24,6 +24,7 @@ services:
         image: nginx:1.13-alpine
         volumes:
             - carceropolis_static:/project/carceropolis/static
+            - carceropolis_media:/project/carceropolis/static/media
             - carceropolis_sockets:/sockets
             - ./deploy:/project/deploy
             - ./deploy/nginx:/etc/nginx/conf.d
