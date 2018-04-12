@@ -11,7 +11,6 @@ body.fale-conosco {
 }
 
 .contact-form {
-
     color: white;
     padding: 2em;
     text-shadow: 1px 1px 1px rgba(0,0,0,.5);
@@ -46,7 +45,7 @@ body.fale-conosco {
     legend {
         border: 0;
         color: white;
-        font-size: 14px;
+        font-size: 1em;
 
         @media(min-width:768px) {
             display: none;
@@ -57,30 +56,16 @@ body.fale-conosco {
     .help-block {
         color: white;
         font-family: $light;
-        text-transform: uppercase;
         font-size: 12px;
         letter-spacing: .05em;
+        margin-bottom: 0;
+        text-transform: uppercase;
     }
 
-    .btn-primary,
-    .form-group > input[type="text"],
-    .form-group > input[type="password"],
-    .form-group > input[type="datetime"],
-    .form-group > input[type="datetime-local"],
-    .form-group > input[type="date"],
-    .form-group > input[type="month"],
-    .form-group > input[type="time"],
-    .form-group > input[type="week"],
-    .form-group > input[type="number"],
-    .form-group > input[type="email"],
-    .form-group > input[type="url"],
-    .form-group > input[type="search"],
-    .form-group > input[type="tel"],
-    .form-group > input[type="color"],
-    .form-group > select,
-    .form-group > textarea {
-        background-color: transparent;
-        background-image: none;
+    input,
+    select,
+    textarea {
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.26) 60%,rgba(0,0,0,0.45) 100%);
         border: none;
         border-bottom: 2px solid $cp-orange-dark;
         border-radius: initial;
@@ -88,7 +73,8 @@ body.fale-conosco {
         color: white;
         display: block;
         max-width: inherit;
-        padding: 0;
+        margin-bottom: 30px;
+        padding: 4px;
         transition: inherit;
         width: 100%;
 
@@ -97,7 +83,7 @@ body.fale-conosco {
         }
     }
 
-    .form-group > textarea {
+    textarea {
         border: 2px solid $cp-orange-dark;
         line-height: 24px;
         margin-top: 30px;
@@ -113,6 +99,7 @@ body.fale-conosco {
     }
 
     .btn-primary {
+        background: transparent;
         border: 2px solid $cp-orange-dark;
         float: right;
         padding: 10px;
