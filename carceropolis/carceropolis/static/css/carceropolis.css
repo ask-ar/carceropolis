@@ -2897,21 +2897,21 @@ body[class^='sobre'] section.container p {
 }
 /* line 1017, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .celas {
-  margin-top: 1.6em;
+  margin-top: 1.4em;
 }
 /* line 1021, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .celas ol {
   display: flex;
-  font-size: 2.2em;
+  font-size: 2em;
   flex-wrap: wrap;
   flex-direction: row-reverse;
   line-height: 1.4;
 }
 /* line 1029, ../../scss/_infografico.scss */
 .infografico .alas-exclusivas .celas li {
-  width: 20%;
+  width: 16%;
 }
-/* line 1035, ../../scss/_infografico.scss */
+/* line 1033, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais {
   background: #330129 url(../images/infografico/grafico_unidades.svg) no-repeat;
   background-position: 46% 40%;
@@ -2920,43 +2920,43 @@ body[class^='sobre'] section.container p {
   padding: 0;
 }
 @media (min-width: 1200px) {
-  /* line 1035, ../../scss/_infografico.scss */
+  /* line 1033, ../../scss/_infografico.scss */
   .infografico .unidades-prisionais {
     background-position: 48% 44%;
     background-size: inherit;
   }
 }
-/* line 1047, ../../scss/_infografico.scss */
+/* line 1045, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais h1 a::before {
   content: "";
   font-size: 1.3em;
   margin-right: 15px;
   top: 10px;
 }
-/* line 1054, ../../scss/_infografico.scss */
+/* line 1052, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais ul.container {
   margin-bottom: 0;
 }
-/* line 1056, ../../scss/_infografico.scss */
+/* line 1054, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais li:first-child {
   font-size: 2.4em;
   line-height: 1em;
   padding-right: 1em;
 }
-/* line 1062, ../../scss/_infografico.scss */
+/* line 1060, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais em {
   font-family: "source_sans_prosemibold";
   font-style: normal;
 }
-/* line 1067, ../../scss/_infografico.scss */
+/* line 1065, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico {
   display: flex;
 }
-/* line 1070, ../../scss/_infografico.scss */
+/* line 1068, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .col1 {
   width: 72%;
 }
-/* line 1073, ../../scss/_infografico.scss */
+/* line 1071, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .col1 p {
   color: #b81f3c;
   font-size: 1em;
@@ -2966,31 +2966,31 @@ body[class^='sobre'] section.container p {
   width: 40%;
 }
 @media (min-width: 1200px) {
-  /* line 1073, ../../scss/_infografico.scss */
+  /* line 1071, ../../scss/_infografico.scss */
   .infografico .unidades-prisionais .grafico .col1 p {
     width: 280px;
   }
 }
-/* line 1086, ../../scss/_infografico.scss */
+/* line 1084, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .col1 strong {
   font-size: 3.5em;
 }
-/* line 1090, ../../scss/_infografico.scss */
+/* line 1088, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .col2 {
   line-height: 1;
   width: 28%;
 }
-/* line 1094, ../../scss/_infografico.scss */
+/* line 1092, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .col2 > p {
   margin-bottom: 1em;
   position: relative;
   top: -1em;
 }
-/* line 1100, ../../scss/_infografico.scss */
+/* line 1098, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .col2 > p strong {
   font-size: 3.5em;
 }
-/* line 1105, ../../scss/_infografico.scss */
+/* line 1103, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .custodia {
   background: url(../images/infografico/custodia.svg) no-repeat top right;
   color: #b81f3c;
@@ -2998,62 +2998,62 @@ body[class^='sobre'] section.container p {
   padding: 80px 20px 0;
   text-align: right;
 }
-/* line 1112, ../../scss/_infografico.scss */
+/* line 1110, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .grafico .custodia em {
   font-size: 2em;
 }
-/* line 1116, ../../scss/_infografico.scss */
+/* line 1114, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .publico {
   align-items: flex-end;
   display: flex;
   line-height: 1.2em;
   transform: translateY(-90px);
 }
-/* line 1122, ../../scss/_infografico.scss */
+/* line 1120, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .publico .col1 {
   align-self: flex-start;
   flex-basis: 125px;
 }
-/* line 1127, ../../scss/_infografico.scss */
+/* line 1125, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .publico .col2 {
   flex-grow: 2;
   padding: 0 20px;
 }
-/* line 1132, ../../scss/_infografico.scss */
+/* line 1130, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .publico .col3 {
   flex-basis: 74px;
 }
-/* line 1136, ../../scss/_infografico.scss */
+/* line 1134, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .indent {
   padding-left: .5em;
 }
-/* line 1139, ../../scss/_infografico.scss */
+/* line 1137, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .indent em.br {
   font-size: 2em;
   line-height: 1;
 }
-/* line 1145, ../../scss/_infografico.scss */
+/* line 1143, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .purple {
   display: block;
   color: #330129;
   background-color: white;
   padding: 0 10px 0 .5em;
 }
-/* line 1152, ../../scss/_infografico.scss */
+/* line 1150, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .dotted {
   text-align: right;
 }
-/* line 1155, ../../scss/_infografico.scss */
+/* line 1153, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .dotted > span {
   border: 1px dotted white;
   display: inline-block;
   padding: 0 10px;
 }
-/* line 1162, ../../scss/_infografico.scss */
+/* line 1160, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .masc path {
   fill: white;
 }
-/* line 1166, ../../scss/_infografico.scss */
+/* line 1164, ../../scss/_infografico.scss */
 .infografico .unidades-prisionais .fem {
   fill: none;
   stroke: #f5f5f5;
@@ -3062,7 +3062,7 @@ body[class^='sobre'] section.container p {
   stroke-width: 1.25;
 }
 
-/* line 1179, ../../scss/_infografico.scss */
+/* line 1177, ../../scss/_infografico.scss */
 .navbarlateral {
   background-color: whitesmoke;
   border-radius: 5px;
@@ -3072,39 +3072,39 @@ body[class^='sobre'] section.container p {
   top: 20%;
   z-index: 5;
 }
-/* line 1188, ../../scss/_infografico.scss */
+/* line 1186, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills {
   font-size: 2em;
   list-style: none;
   text-align: center;
 }
-/* line 1194, ../../scss/_infografico.scss */
+/* line 1192, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li {
   padding: 1px 2px;
 }
-/* line 1198, ../../scss/_infografico.scss */
+/* line 1196, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li:first-child > a {
   padding-top: 20px;
 }
-/* line 1200, ../../scss/_infografico.scss */
+/* line 1198, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li:first-child > a:before {
   position: relative;
   top: -3px;
 }
-/* line 1206, ../../scss/_infografico.scss */
+/* line 1204, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li:last-child > a {
   padding-bottom: 20px;
 }
-/* line 1208, ../../scss/_infografico.scss */
+/* line 1206, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li:last-child > a:before {
   position: relative;
   top: 6px;
 }
-/* line 1214, ../../scss/_infografico.scss */
+/* line 1212, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li > a {
   color: #af1e23;
 }
-/* line 1218, ../../scss/_infografico.scss */
+/* line 1216, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li > a span {
   color: transparent;
   display: inline-block;
@@ -3114,11 +3114,11 @@ body[class^='sobre'] section.container p {
   text-indent: -999999em;
   width: 0;
 }
-/* line 1222, ../../scss/_infografico.scss */
+/* line 1220, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li > a:hover {
   color: #af1e23;
 }
-/* line 1226, ../../scss/_infografico.scss */
+/* line 1224, ../../scss/_infografico.scss */
 .navbarlateral .nav-pills > li.active > a,
 .navbarlateral .nav-pills > li.active > a:hover,
 .navbarlateral .nav-pills > li.active > a:focus {
