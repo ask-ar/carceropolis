@@ -306,7 +306,7 @@
                 top: 0;
                 width: 49%;
 
-                .symbol{
+                .fem, .masc {
                     fill: $dark-pink;
                     opacity: .2;
                 }
@@ -349,10 +349,6 @@
         }
 
         li:nth-child(2) {
-            @include flexcenter;
-            flex-wrap: nowrap;
-            width: 95%;
-
             strong {
                 color: $dark-pink;
             }
@@ -361,10 +357,31 @@
                 display: block;
                 height: 150px;
                 float: left;
-                margin: 0 1em;
-                width: 40%;
+                width: 205px;
             }
 
+            .ibge svg {
+                float: right;
+            }
+
+            .sp svg {
+                margin-right: 10px;
+                padding-right: 10px;
+                transform: translateY(-30px);
+                width: 200px;
+            }
+
+            .cls-1 {
+                fill: #b81f3c;
+            }
+
+            .cls-2 {
+                fill: #fff;
+            }
+
+            .cls-3 {
+                opacity: 0.3;
+            }
         }
 
         .sp, .ibge {
@@ -377,16 +394,15 @@
         }
 
         .sp span {
-            bottom: 13px;
-            left: 135px;
+            transform: translate(89px,66px);
+            z-index: 1;
         }
 
         .ibge span {
             bottom: -2px;
             color: $purple;
-            left: 118px;
+            right: 80px;
         }
-
 	}
 
 	.infraestrutura {        
