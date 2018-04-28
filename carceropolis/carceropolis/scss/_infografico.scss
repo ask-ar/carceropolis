@@ -679,14 +679,7 @@
             background-color: rgba(201,61,101,.9);
             background-position: top right;
             border-top: 3px solid white;
-        }
-
-        .container > ol > li:nth-child(2) div {
-            background: linear-gradient(to right, rgba(51,1,41,1) 0%,rgba(51,1,41,0.91) 10%,rgba(0,0,0,0.05) 100%); 
-            font-size: 1.13em;
-            line-height: 1.1em;
-            padding: $font-size 0 $font-size  $font-size;
-            width: 50%;
+            position: relative;
 
             em {
                 text-transform: uppercase;
@@ -702,6 +695,22 @@
                 font-family: $semibold;
                 padding-bottom: $font-size/2;
             }
+
+            .pop-geral {
+                bottom: 0;
+                padding: 0 $font-size $font-size 0;
+                position: absolute;
+                right: 0;
+            }
+        }
+
+        .container > ol > li:nth-child(2) > div {
+            background: linear-gradient(to right, rgba(51,1,41,1) 0%,rgba(51,1,41,0.91) 10%,rgba(0,0,0,0.05) 100%); 
+            font-size: 1.13em;
+            line-height: 1.1em;
+            min-height: 300px;
+            padding: $font-size 0 $font-size  $font-size;
+            width: 50%;
         }
 
         .container > ol > li:nth-child(3){
@@ -766,25 +775,16 @@
             }
 
             p {
-                color: $purple;
-                font-size: 1.3em;
+                font-size: 1.2em;
                 line-height: 1.5em;
                 text-align: center;
             }
 
-            strong{
-                color: white;
-            }
-
             em {
-                color: white;
                 font-style: normal;
                 font-family: $semibold;
             }
 
-            .lep {
-                color: white;
-            }
         }
 	}
 
