@@ -2736,7 +2736,7 @@ body[class^='sobre'] section.container p {
   position: relative;
 }
 /* line 857, ../../scss/_infografico.scss */
-.infografico section.saude li:nth-child(3) strong {
+.infografico section.saude li:nth-child(3) > strong {
   color: #b81f3c;
   display: block;
   font-size: 3em;

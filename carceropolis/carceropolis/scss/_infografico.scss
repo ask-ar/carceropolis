@@ -854,7 +854,7 @@
             padding: $font-size 0;
             position: relative;
 
-            strong {
+            > strong {
                 color: $dark-pink;
                 display: block;
                 font-size: 3em;
