@@ -362,6 +362,7 @@
 
             .ibge svg {
                 float: right;
+                transform: translateY(-30px);
             }
 
             .sp svg {
@@ -394,14 +395,17 @@
         }
 
         .sp span {
-            transform: translate(89px,66px);
+            left: 0;
+            top: 0;
+            transform: translate(100px,66px);
             z-index: 1;
         }
 
         .ibge span {
-            bottom: -2px;
+            bottom: 27px;
             color: $purple;
             right: 80px;
+            z-index: 1;
         }
 	}
 
