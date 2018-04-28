@@ -405,6 +405,7 @@
 
 	.infraestrutura {        
         position: relative;
+        cursor: pointer;
 
         h1 { 
             margin-bottom: 0;
@@ -459,9 +460,10 @@
             }
 
             .glyphicon-chevron-down {
+                font-size: 2em; 
+                left: 83%;
                 position: absolute;
-                top: 90%;
-                left: 50%;
+                top: 80%;
             }
         }
 
