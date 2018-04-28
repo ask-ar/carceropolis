@@ -1048,13 +1048,13 @@
 
 	.unidades-prisionais {
         background: $purple url(../images/infografico/grafico_unidades.svg) no-repeat;
-        background-position: 46% 40%;
+        background-position: 50% 35%;
         background-size: 40%;
         min-height: calc(100vh - #{$footer});
         padding: 0;
 
         @media(min-width: 1200px){
-            background-position: 48% 44%;
+            background-position: 50% 44%;
             background-size: inherit;
         }
 
@@ -1068,9 +1068,9 @@
         ul.container { margin-bottom: 0 }
 
         li:first-child {
-            font-size: 2.4em;
-            line-height: 1em;
-            padding-right: 1em;
+            font-size: 2.2em;
+            line-height: 1;
+            text-align: center;
         }
         
         em {
@@ -1085,7 +1085,6 @@
                 width: 72%;
                 
                 p {
-                    color: $dark-pink;
                     font-size: 1em;
                     line-height: 1.2;
                     margin: 2em 0 0 1em;
@@ -1099,6 +1098,8 @@
 
                 strong { font-size: 3.5em; }
 
+                strong, em { color: $dark-pink; }
+
             }
 
             .col2 {
@@ -1106,9 +1107,7 @@
                 width: 28%;
 
                 > p {
-                    margin-bottom: 1em;
-                    position: relative;
-                    top: -1em;
+                    margin: 1em 0;
                 }
 
                 > p strong {
@@ -1118,12 +1117,13 @@
 
             .custodia {
                 background: url(../images/infografico/custodia.svg) no-repeat top right;
-                color: $dark-pink;
                 line-height: 1.2;
                 padding: 80px 20px 0;
                 text-align: right;
                 
                 em { font-size: 2em; }
+
+                strong, em { color: $dark-pink; }
             }
         }
 
@@ -1173,19 +1173,13 @@
             }
         }
 
-        .masc path{
-            fill: white;
-        }
+        .masc path { fill: white; }
 
         .fem {
             fill: none;
-            stroke: #f5f5f5;
-            stroke-miterlimit: 10;
-            stroke-dasharray: 1,1; 
-            stroke-width: 1.25;
+            stroke: white;
+            stroke-width: 1.5;
         }
-
-
 	}
 }
 
