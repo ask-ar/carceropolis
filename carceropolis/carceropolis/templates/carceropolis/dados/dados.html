@@ -1,21 +1,21 @@
-{% extends "base.html" %} 
-{% load i18n mezzanine_tags blog_tags keyword_tags static staticfiles %} 
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags static staticfiles %}
 {% block meta_title %}
-    {% if page %} 
-        {{ page.meta_title }} 
-    {% else %} 
-        {% trans "Infografia Carcerópolis" %} 
-    {% endif %} 
-{% endblock %} 
-{% block title %} 
-    {% if page %} 
+    {% if page %}
+        {{ page.meta_title }}
+    {% else %}
+        {% trans "Infografia Carcerópolis" %}
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if page %}
         {% editable page.title %}
             {{ page.title }}
-        {% endeditable %} 
-    {% else %} 
-        {% trans "Infografia Carcerópolis" %} 
-    {% endif %} 
-{% endblock %} 
+        {% endeditable %}
+    {% else %}
+        {% trans "Infografia Carcerópolis" %}
+    {% endif %}
+{% endblock %}
 {% block main %}
 <article class="infografico">
     <section id="dados-gerais" class="dados-gerais">
@@ -339,7 +339,7 @@
                     <div>
                         <span class="br"><strong>50%</strong> da</span>
                         <span class="br"><em>população prisional</em> não tem</span>
-                        <span class="efc br">ensino fundamental completo</span> 
+                        <span class="efc br">ensino fundamental completo</span>
                        <div class="pop-geral">
                             <span class="br">em comparação com <strong>25%</strong></span>
                             <span class="br">da<em> população em geral</em>.</span>
@@ -350,7 +350,7 @@
                     <div>
                         <span class="br">A <strong>capacidade atual</strong> </span>
                         <span class="br">de salas de aula</span>
-                       
+
                     </div>
                     <div class="ideal">
                         <strong>{</strong>
@@ -513,22 +513,22 @@
                 <li class="grafico">
                     <div class="col1">
                         <p>
-                            <strong class="br"><b data-final-number="49">0</b>%</strong> 
-                            são destinados ao recolhimento de 
-                            <em>presos provisórios</em>
+                            <strong class="br"><b data-final-number="49">0</b>%</strong>
+                            são destinados ao recolhimento de
+                            <em>presos provisórios</em>
                         </p>
                     </div>
                     <div class="col2">
                         <p>
-                             <span class="br">apenas <strong><b data-final-number="21">0</b>%</strong></span>
-                             das unidades prisionais 
-                             <em>não são superlotadas</em>
+                             <span class="br">Apenas <strong><b data-final-number="21">0</b>%</strong></span>
+                             das unidades prisionais
+                             <em>não são superlotadas</em>
                         </p>
                         <div class="custodia">
                             <p>
-                                Em <em>11%</em> das 
-                                unidades prisionais, custodia-se 
-                                <strong>mais de 4 pessoas 
+                                Em <em>11%</em> das
+                                unidades prisionais, custodia-se
+                                <strong>mais de 4 pessoas
                                 por vaga</strong>
                             </p>
                         </div>
@@ -546,12 +546,12 @@
                             <span class="br indent">
                                 <em class="br"><b data-final-number="74">0</b>%</em>
                                 <span class="br">das unidades</span>
-                                é destinada ao
+                                é destinada ao
                             </span>
-                            <span class="purple">público masculino</span>
+                            <span class="purple">público masculino</span>
                         </p>
                         <p class="dotted">
-                            e <span><em></em><b data-final-number="26">0</b>%</em> ao público feminino</span>
+                            e <span><em></em><b data-final-number="26">0</b>%</em> ao público feminino</span>
                         </p>
                     </div>
                     <div class="col3">
