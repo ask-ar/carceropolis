@@ -205,7 +205,8 @@
             color: $purple;
             font-size: 1.65em;
             line-height: 1.1;
-            padding: $font-size 0 0 $font-size;
+            padding: $font-size $font-size 0 $font-size;
+            text-align: right;
 
             strong {
                 text-transform: uppercase;
