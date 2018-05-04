@@ -96,8 +96,8 @@ $(window).ready(function(){
         var filter = this.filterStr
         var multiplier = 0.5;
         var customIcon = L.icon({
-          iconUrl: '/static/images/map/marker-icon.svg',
-          shadowUrl: '/static/images/map/marker-shadow.svg',
+          iconUrl: '/static/images/map/marker-icon.png',
+          shadowUrl: '/static/images/map/marker-shadow.png',
           iconSize: [25, 41],
           iconAnchor: [12, 41],
           popupAnchor: [1, -34],
@@ -108,14 +108,14 @@ $(window).ready(function(){
         statesLayerGroup.clearLayers()
         $.each(states, function (uf, unidades) {
           var stateLayer = L.markerClusterGroup({
-            // showCoverageOnHover: false,
-            polygonOptions: {
-              fillColor: 'grey',
-              color: '#1b2557',
-              weight: 0.0,
-              opacity: 0,
-              fillOpacity: 0.5
-            }
+            showCoverageOnHover: false,
+            // polygonOptions: {
+            //   fillColor: 'grey',
+            //   color: '#1b2557',
+            //   weight: 0.0,
+            //   opacity: 0,
+            //   fillOpacity: 0.5
+            // }
           })
           var i = 0
           var markers = []
