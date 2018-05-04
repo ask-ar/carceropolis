@@ -7,7 +7,7 @@ from bokeh.embed import components
 from bokeh.models import NumeralTickFormatter
 
 from carceropolis.utils.bokeh import (
-    create_figure, plot_hbar, plot_lines, plot_circles)
+    create_figure, plot_vbar, plot_hbar, plot_lines, plot_circles)
 
 
 # TODO: está usando , no lugar de .
@@ -50,12 +50,26 @@ def create_figure_from_content(content, **kw):
 def plot_simple_hbar_helper(content):
     ''' Helper for sigle category hbar chart'''
     dados = content['dados']
-    dados = dados[~dados['Estado'].isin(['ONU', 'BR'])]
-    fig = create_figure_from_content(content, y_range=list(dados['Estado']))
+    y_col_name = dados.columns[0]
+    dados = dados[~dados[y_col_name].isin(['ONU', 'BR'])]
+    fig = create_figure_from_content(content, y_range=list(dados[y_col_name]))
     fig.xaxis.axis_label = content['unidade']
     fig.yaxis.axis_label = content['xname']
     fig.xaxis.formatter = NUMERAL_TICK_FORMATER
     plot_hbar(fig, content['xname'], content['ynames'], dados)
+    return fig
+
+
+def plot_simple_vbar_helper(content):
+    ''' Helper for sigle category vbar chart'''
+    dados = content['dados']
+    x_col_name = dados.columns[0]
+    dados = dados[~dados[x_col_name].isin(['total'])]
+    fig = create_figure_from_content(content, x_range=list(dados[x_col_name]))
+    fig.yaxis.axis_label = content['unidade']
+    fig.xaxis.axis_label = content['xname']
+    fig.yaxis.formatter = NUMERAL_TICK_FORMATER
+    plot_vbar(fig, content['xname'], content['ynames'], dados)
     return fig
 
 

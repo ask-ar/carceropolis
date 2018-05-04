@@ -1,12 +1,11 @@
 # coding: utf-8
-import logging
-import operator
-from collections import OrderedDict, defaultdict
-from csv import DictReader
-from functools import reduce
 import json
 import base64
+import logging
+import operator
+from functools import reduce
 from unidecode import unidecode
+from collections import defaultdict
 
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, get_user_model, login, logout
@@ -15,7 +14,6 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
-from django.utils.text import slugify
 from mezzanine.accounts import get_profile_form
 from mezzanine.conf import settings
 from mezzanine.generic.models import Keyword
@@ -24,10 +22,10 @@ from mezzanine.utils.views import paginate
 from mezzanine.utils.urls import login_redirect, next_url
 from bokeh.embed import server_document
 
-from .models import (AreaDeAtuacao, Especialidade, Especialista, Publicacao,
+from .models import (AreaDeAtuacao, Especialista, Publicacao,
                      UnidadePrisional)
 from carceropolis.charts.utils import (
-    plot_charts, plot_simple_lines, plot_simple_hbar_helper)
+    plot_charts, plot_simple_lines, plot_simple_hbar_helper, plot_simple_vbar_helper)
 
 # from mezzanine.utils.views import render
 
@@ -311,12 +309,13 @@ def dados_gerais(request):
 
 
 def dados_perfil_populacional(request):
-    """First test"""
+    """Perfil Populacional page"""
     templates = ['carceropolis/dados/perfil_populacional.html']
     context = plot_charts([
         (plot_simple_lines, 'perfil_populacional/01.csv'),
         (plot_simple_lines, 'perfil_populacional/02.csv'),
-        # TODO: faltam dados para 2 gráficos
+        (plot_simple_vbar_helper, 'perfil_populacional/03_raca_cor.csv'),
+        (plot_simple_vbar_helper, 'perfil_populacional/04_faixa_etaria.csv'),
     ])
     # TODO: Nos 2 primeiros gráficos, o Produto1 diz:
     # Nesse caso, pode-se trabalhar com o destaque textual para o aumento

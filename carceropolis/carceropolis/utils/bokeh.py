@@ -59,7 +59,7 @@ def add_tooltip(fig, xname):
     tooltips = '''
     <div class="mytooltip" style="color:@color;">
         <ul>
-            <li>{xname}: @{xname}</li>
+    <li>{xname}: @{{{xname}}}</li>
             <li>@value_name: @value</li>
         </ul>
     </div>
@@ -69,7 +69,7 @@ def add_tooltip(fig, xname):
 
 
 def plot_lines(fig, x, ys, df, palette=MAIN_PALLETE, continuous=False):
-    ''' Plot a line chart. '''
+    '''Plot a line chart.'''
     for y, color in zip(ys, palette):
         if continuous:
             source_df = df[[x, y]].dropna(axis=0, how='any')
@@ -82,7 +82,7 @@ def plot_lines(fig, x, ys, df, palette=MAIN_PALLETE, continuous=False):
 
 
 def plot_circles(fig, x, ys, df, palette=MAIN_PALLETE, size=10):
-    ''' Plot a scatter chart. '''
+    '''Plot a scatter chart.'''
     for y, color in zip(ys, palette):
         source = create_source(df, x, y, color)
         fig.circle(
@@ -91,7 +91,7 @@ def plot_circles(fig, x, ys, df, palette=MAIN_PALLETE, size=10):
 
 
 def plot_bar_iterator(ys, outer_width, palette):
-    ''' Helper function that generates values used to plot bars. '''
+    '''Helper function that generates values used to plot bars.'''
     le = len(ys)
     for y, color, i in zip(ys, palette, range(0, le)):
         # Spreads bars based on the number of bars and their
@@ -101,7 +101,7 @@ def plot_bar_iterator(ys, outer_width, palette):
 
 
 def plot_vbar(fig, x, ys, df, palette=MAIN_PALLETE):
-    ''' Plot a vertical bar chart. '''
+    '''Plot a vertical bar chart.'''
     width = 0.2
     for y, offset, color in plot_bar_iterator(ys, width+.03, palette):
         source = create_source(df, x, y, color)
@@ -111,7 +111,7 @@ def plot_vbar(fig, x, ys, df, palette=MAIN_PALLETE):
 
 
 def plot_hbar(fig, x, ys, df, palette=MAIN_PALLETE, width=0.5):
-    ''' Plot a horizontal bar chart. '''
+    '''Plot a horizontal bar chart.'''
     for y, offset, color in plot_bar_iterator(ys, width+.03, palette):
         source = create_source(df, x, y, color)
         fig.hbar(
