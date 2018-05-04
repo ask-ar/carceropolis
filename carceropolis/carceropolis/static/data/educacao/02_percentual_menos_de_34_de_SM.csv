@@ -1,0 +1,34 @@
+Título,"Percentual de pessoas que trabalham e recebem menos de 3/4 do salário mínimo, por Unidade da Federação"
+Unidade,Percentual de pessoas presas que trabalham e recebem menos de 3/4 do salário mínimo
+Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+Fonte link,
+Notas,O percentual de pessoas que recebem menos de 3/4 do salário mínimo é calculado tendo como referência o número total de pessoas que trabalham e têm informação sobre remuneração recebida, conforme registrado pelos responsáveis pelo preenchimento do INFOPEN. Nesse sentido, esse percentual não se refere ao total de pessoas que trabalham no sistema prisional, pois nem sempre são apresentadas informações precisas sobre a existência ou não de remuneração.
+,
+"Unidade da Federação","percentual"
+"AC",100
+"AL",0
+"AM",62.84
+"AP",0
+"BA",74.03
+"CE",92.88
+"DF",63.14
+"ES",16.57
+"GO",58.86
+"MA",85.91
+"MG",61.33
+"MS",60.44
+"MT",60.96
+"PA",76.97
+"PB",44.37
+"PE",13.1
+"PI",100
+"PR",78.12
+"RJ",
+"RN",76.19
+"RO",35.2
+"RR",62.5
+"RS",84.62
+"SC",26.59
+"SE",56.22
+"SP",80.48
+"TO",87.83

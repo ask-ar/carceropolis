@@ -343,8 +343,10 @@ def dados_educacao(request):
     """Second test"""
     # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/educacao.html']
-    context = plot_charts([
-        # TODO: faltam 3 gráficos
+    context = plot_charts('educacao', [
+        (plot_simple_hbar_helper, '01_percentual_pessoas_trabalhando'),
+        (plot_simple_hbar_helper, '02_percentual_menos_de_34_de_SM'),
+        # TODO: falta 1 gráfico
     ])
     return TemplateResponse(request, templates, context)
 
