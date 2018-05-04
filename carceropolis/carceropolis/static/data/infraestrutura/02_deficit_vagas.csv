@@ -1,0 +1,34 @@
+Título,Déficit de vagas por Unidade da Federação
+Unidade,Déficit de vagas
+Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+Fonte link,
+Notas,"Não são consideradas as vagas e as pessoas custodiadas em delegacias no cálculo do total da população prisional (e número de vagas) para composição da taxa de ocupação total, visto que essas informações não estão presentes nas bases de microdados disponibilizadas pelo DEPEN."
+,
+"Unidade da Federação","Déficit"
+"AC",2221
+"AL",3694
+"AM",7923
+"AP",1292
+"BA",5717
+"CE",11522
+"DF",7806
+"ES",5996
+"GO",9122
+"MA",2384
+"MG",27469
+"MS",10259
+"MT",3993
+"PA",5322
+"PB",6132
+"PE",23061
+"PI",1669
+"PR",23436
+"RJ",21772
+"RN",4311
+"RO",5762
+"RR",1130
+"RS",13029
+"SC",7602
+"SE",2768
+"SP",105894
+"TO",3468

@@ -299,11 +299,11 @@ def dados_gerais(request):
     items from the Publicação Class).
     """
     templates = ["carceropolis/dados/dados_gerais.html"]
-    context = plot_charts([
-        (plot_simple_lines, 'dados_gerais/01.csv', {'continuous': True}),
-        (plot_simple_lines, 'dados_gerais/02.csv'),
-        (plot_simple_hbar_helper, 'dados_gerais/03.csv'),
-        (plot_simple_hbar_helper, 'dados_gerais/04.csv'),
+    context = plot_charts('dados_gerais', [
+        (plot_simple_lines, '01', {'continuous': True}),
+        (plot_simple_lines, '02'),
+        (plot_simple_hbar_helper, '03'),
+        (plot_simple_hbar_helper, '04'),
     ])
     return TemplateResponse(request, templates, context)
 
@@ -311,27 +311,21 @@ def dados_gerais(request):
 def dados_perfil_populacional(request):
     """Perfil Populacional page"""
     templates = ['carceropolis/dados/perfil_populacional.html']
-    context = plot_charts([
-        (plot_simple_lines, 'perfil_populacional/01.csv'),
-        (plot_simple_lines, 'perfil_populacional/02.csv'),
-        (plot_simple_vbar_helper, 'perfil_populacional/03_raca_cor.csv'),
-        (plot_simple_vbar_helper, 'perfil_populacional/04_faixa_etaria.csv'),
+    context = plot_charts('perfil_populacional', [
+        (plot_simple_lines, '01'),
+        (plot_simple_lines, '02'),
+        (plot_simple_vbar_helper, '03_raca_cor'),
+        (plot_simple_vbar_helper, '04_faixa_etaria'),
     ])
-    # TODO: Nos 2 primeiros gráficos, o Produto1 diz:
-    # Nesse caso, pode-se trabalhar com o destaque textual para o aumento
-    # percentual da população masculina comparado ao aumento percentual da
-    # população feminina na década (2006 a 2016) ou com um gráfico de linhas
-    # que apresentem as duas linhas de evolução juntas (nesse caso, será
-    # necessário considerar a população feminina no eixo principal e a
-    # masculina em um eixo secundário, uma vez que as magnitudes são
-    # distintas).
     return TemplateResponse(request, templates, context)
 
 
 def dados_infraestrutura(request):
     templates = [u'carceropolis/dados/infraestrutura.html']
-    context = plot_charts([
-        # TODO: faltam 3 gráficos
+    context = plot_charts('infraestrutura', [
+        (plot_simple_hbar_helper, '01_ocupacao'),
+        (plot_simple_hbar_helper, '02_deficit_vagas'),
+        (plot_simple_hbar_helper, '03_coeficiente_entradas_saidas'),
     ])
     return TemplateResponse(request, templates, context)
 

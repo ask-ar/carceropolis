@@ -35,6 +35,7 @@ def read_mini_csv(csv_path):
                 .replace(r'^\s*$', np.nan, regex=True)
                 # Remove columns with all nan cells
                 .dropna(axis=1, how='all'))
+        # data = data.sort_values(by=data.columns[1], ascending=False)
         content['xname'] = data.columns[0]
         content['ynames'] = list(data.columns[1:])
         content['dados'] = data
@@ -85,7 +86,7 @@ def plot_simple_lines(content, circles=True, circles_size=5, continuous=False):
     return fig
 
 
-def plot_charts(charts):
+def plot_charts(folder, charts):
     '''
     Plot charts and return context to be used by view template.
     `charts` should be a list of tuples:
@@ -98,7 +99,7 @@ def plot_charts(charts):
             args = args[0]
         else:
             args = {}
-        content = read_mini_csv(csv_path)
+        content = read_mini_csv(os.path.join(folder, csv_path) + '.csv')
         fig = function(content, **args)
         fig.legend.location = 'top_left'
         script, div = components(fig)

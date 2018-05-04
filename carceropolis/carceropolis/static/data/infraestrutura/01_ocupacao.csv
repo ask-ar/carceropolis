@@ -1,0 +1,34 @@
+Título,Taxa de ocupação por Unidade da Federação
+Unidade,Taxa de ocupação (pessoas presas / vagas)
+Fonte,"Levantamento Nacional de Informações Penitenciárias, Ministério da Justiça."
+Fonte link,
+Notas,"Não são consideradas as pessoas custodiadas em delegacias no cálculo do total da população prisional (e número de vagas) para composição da taxa de ocupação total, visto que essas informações não estão presentes nas bases de microdados disponibilizadas pelo DEPEN."
+,
+"Unidade da Federação","taxa de ocupação"
+"AC",1.70664969774101
+"AL",2.29841827768014
+"AM",4.36576040781648
+"AP",1.93083573487032
+"BA",1.83691992387645
+"CE",2.03068252974327
+"DF",2.07981740213031
+"ES",1.44689572929865
+"GO",2.2758041958042
+"MA",1.45040619686378
+"MG",1.75142247510669
+"MS",2.29222824033254
+"MT",1.62694300518135
+"PA",1.62692896689834
+"PB",2.17000572409845
+"PE",3.0061765985211
+"PI",1.70630554380025
+"PR",2.26183169116459
+"RJ",1.76546074605351
+"RN",1.96378269617706
+"RO",2.11558567279768
+"RR",1.9432387312187
+"RS",1.62699711260828
+"SC",1.54808940158616
+"SE",2.22967569968903
+"SP",1.80737120594088
+"TO",
