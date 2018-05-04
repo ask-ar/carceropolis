@@ -51,6 +51,7 @@ def create_figure(x_title, y_title, **kw):
     fig.axis.axis_label_text_font_style = "bold"
     fig.title.text_font_size = '14pt'
     fig.title.align = 'center'
+    fig.legend.location = 'top_right'
     return fig
 
 

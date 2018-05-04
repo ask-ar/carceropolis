@@ -49,7 +49,7 @@ def create_figure_from_content(content, **kw):
 
 
 def plot_simple_hbar_helper(content):
-    ''' Helper for sigle category hbar chart'''
+    '''Helper for sigle category hbar chart'''
     dados = content['dados']
     y_col_name = dados.columns[0]
     dados = dados[~dados[y_col_name].isin(['ONU', 'BR'])]
@@ -62,7 +62,7 @@ def plot_simple_hbar_helper(content):
 
 
 def plot_simple_vbar_helper(content):
-    ''' Helper for sigle category vbar chart'''
+    '''Helper for sigle category vbar chart'''
     dados = content['dados']
     x_col_name = dados.columns[0]
     dados = dados[~dados[x_col_name].isin(['total'])]
@@ -101,7 +101,6 @@ def plot_charts(folder, charts):
             args = {}
         content = read_mini_csv(os.path.join(folder, csv_path) + '.csv')
         fig = function(content, **args)
-        fig.legend.location = 'top_left'
         script, div = components(fig)
         content['graph'] = div
         content['script'] = script

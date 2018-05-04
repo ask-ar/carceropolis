@@ -332,8 +332,9 @@ def dados_infraestrutura(request):
 
 def dados_juridico(request):
     templates = [u'carceropolis/dados/juridico.html']
-    context = plot_charts([
-        # TODO: faltam 2 gráficos
+    context = plot_charts('juridico', [
+        (plot_simple_hbar_helper, '01_incidencias_criminais_por_sexo'),
+        (plot_simple_hbar_helper, '02_percentual_presos_sem_condenacao'),
     ])
     return TemplateResponse(request, templates, context)
 
