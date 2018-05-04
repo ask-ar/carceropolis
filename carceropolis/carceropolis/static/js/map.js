@@ -80,11 +80,12 @@ $(window).ready(function(){
     methods: {
       createMap: function () {
         map = L.map('map').setView([-15, -50], 4)
-	      L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-		      maxZoom: 18,
-		      attribution: 'Map tiles by <a href="https://carto.com">Carto</a>, ' +
+          L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: 'Map tiles by <a href="https://carto.com">Carto</a>, ' +
             'under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. ' +
-            'Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
+            'Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL. ' +
+            'Icon by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">Flaticon</a> under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.'
         }).addTo(map)
 
         statesLayerGroup = L.featureGroup().addTo(map).on('click', (marker) => this.unidade = marker.layer.unidade)
@@ -93,14 +94,15 @@ $(window).ready(function(){
       },
       plotMap: function () {
         var filter = this.filterStr
+        var multiplier = 0.5;
         var customIcon = L.icon({
-          iconUrl: '/static/images/map/marker-icon.png',
-          shadowUrl: '/static/images/map/marker-shadow.png',
+          iconUrl: '/static/images/map/marker-icon.svg',
+          shadowUrl: '/static/images/map/marker-shadow.svg',
           iconSize: [25, 41],
           iconAnchor: [12, 41],
           popupAnchor: [1, -34],
           tooltipAnchor: [16, -28],
-          shadowSize: [41, 41]
+          shadowSize: [51, 33]
         })
 
         statesLayerGroup.clearLayers()

@@ -199,14 +199,14 @@
           <dl class="contato">
             <dt v-if="unidade.email">E-mail:</dt>
             <dd v-if="unidade.email"><a :href="formatMailto(unidade.email)">[[ unidade.email ]]</a></dd>
-          
+
             <dt v-if="unidade.telefone">Fone:</dt>
             <dd v-if="unidade.telefone" >[[ formatFone(unidade.telefone, unidade.ddd) ]]</dd>
-            
+
             <dt v-if="unidade.visitacao">Visitação:</dt>
             <dd v-if="unidade.visitacao">[[ unidade.visitacao ]]</dd>
           </dl>
-          
+
           <button class="btn pull-right bracket" @click="showCompleteInfo = true">saiba mais</button>
           <div v-show="showCompleteInfo" aria-live="polite">
             <h3>
