@@ -1,5 +1,5 @@
 Título,Taxa de ocupação por Unidade da Federação
-Unidade,Taxa de ocupação (pessoas presas / vagas)
+Unidade,Taxa de ocupação (pessoas presas / vaga)
 Fonte,"Levantamento Nacional de Informações Penitenciárias, Ministério da Justiça."
 Fonte link,
 Notas,"Não são consideradas as pessoas custodiadas em delegacias no cálculo do total da população prisional (e número de vagas) para composição da taxa de ocupação total, visto que essas informações não estão presentes nas bases de microdados disponibilizadas pelo DEPEN."
