@@ -48,12 +48,12 @@ def create_figure_from_content(content, **kw):
         content['xname'], content['unidade'], title=content['titulo'], **kw)
 
 
-def plot_simple_hbar_helper(content):
+def plot_simple_hbar_helper(content, **kw):
     '''Helper for sigle category hbar chart'''
     dados = content['dados']
     y_col_name = dados.columns[0]
     dados = dados[~dados[y_col_name].isin(['ONU', 'BR'])]
-    fig = create_figure_from_content(content, y_range=list(dados[y_col_name]))
+    fig = create_figure_from_content(content, y_range=list(dados[y_col_name]), **kw)
     fig.xaxis.axis_label = content['unidade']
     fig.yaxis.axis_label = content['xname']
     fig.xaxis.formatter = NUMERAL_TICK_FORMATER

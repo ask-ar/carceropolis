@@ -35,9 +35,9 @@ log = logging.getLogger(__name__)
 
 
 # def setlanguage(request):
-    # return render(request, 'set-language.html',
-                  # {'LANGUAGES':settings.LANGUAGES,
-                   # 'SELECTEDLANG':request.LANGUAGE_CODE})
+#     return render(request, 'set-language.html',
+#         {'LANGUAGES':settings.LANGUAGES,
+#         'SELECTEDLANG':request.LANGUAGE_CODE})
 
 
 ###############################################################################
@@ -72,7 +72,7 @@ def publicacao_list_tag(request, tag, extra_context=None):
     publicacoes = paginate(publicacoes, request.GET.get("page", 1),
                            settings.PUBLICACAO_PER_PAGE,
                            settings.MAX_PAGING_LINKS)
-    context = {"publicacoes": publicacoes, "tag": tag,}
+    context = {"publicacoes": publicacoes, "tag": tag, }
     context.update(extra_context or {})
     templates.append(template)
     return TemplateResponse(request, templates, context)
@@ -209,7 +209,7 @@ def especialistas_list(request, extra_context=None, **kwargs):
             # Remove leading and trailing spaces
             items = items.strip()
             # Replace '-' with spaces
-            items = items.replace('-', ' ').replace(',',' ').replace(';', ' ')
+            items = items.replace('-', ' ').replace(',', ' ').replace(';', ' ')
             # Split on spaces into multiple items
             items = items.split(' ')
             # Update outputs set.
@@ -217,8 +217,8 @@ def especialistas_list(request, extra_context=None, **kwargs):
 
         if outputs:
             stop_words = ["", " ", "de"]
-            _ = [outputs.discard(word) for word in stop_words]
-            print(".",outputs,".")
+            [outputs.discard(word) for word in stop_words]
+            print(".", outputs, ".")
             return outputs
         return []
 
@@ -333,8 +333,10 @@ def dados_infraestrutura(request):
 def dados_juridico(request):
     templates = [u'carceropolis/dados/juridico.html']
     context = plot_charts('juridico', [
-        (plot_simple_hbar_helper, '01_incidencias_criminais_por_sexo'),
-        (plot_simple_hbar_helper, '02_percentual_presos_sem_condenacao'),
+        (plot_simple_hbar_helper, '01_incidencias_criminais_por_sexo',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '02_percentual_presos_sem_condenacao',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 

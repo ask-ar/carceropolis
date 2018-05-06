@@ -39,14 +39,22 @@ def create_figure(x_title, y_title, **kw):
         'plot_width': 800,
         'background_fill_alpha': 0,
         'border_fill_alpha': 0,
-        'tools': 'pan,box_zoom,reset,save'
+        'tools': 'pan,box_zoom,reset,save',
+
+        'tooltip_value_format': '0,0.00',
+        'tooltip_value_sufix': ''
     }
     # replace with arg values
     attrs.update(kw)
+    tooltip_args = {
+        'xname': x_title,
+        'value_format': attrs.pop('tooltip_value_format'),
+        'value_sufix': attrs.pop('tooltip_value_sufix'),
+    }
     fig = figure(**attrs)
     fig.xaxis.axis_label = x_title
     fig.yaxis.axis_label = y_title
-    add_tooltip(fig, x_title)
+    add_tooltip(fig, tooltip_args)
     # more defaults
     fig.axis.axis_label_text_font_style = "bold"
     fig.title.text_font_size = '14pt'
@@ -55,16 +63,16 @@ def create_figure(x_title, y_title, **kw):
     return fig
 
 
-def add_tooltip(fig, xname):
+def add_tooltip(fig, args):
     '''Adds tooltip to a figure.'''
     tooltips = '''
     <div class="mytooltip" style="color:@color;">
-        <ul>
-    <li>{xname}: @{{{xname}}}</li>
-            <li>@value_name: @value</li>
-        </ul>
+    <ul>
+        <li>{xname}: @{{{xname}}}</li>
+        <li>@value_name: @value{{{value_format}}}{value_sufix}</li>
+    </ul>
     </div>
-    '''.format(xname=xname)
+    '''.format(**args)
     hover = HoverTool(tooltips=tooltips)
     fig.add_tools(hover)
 
