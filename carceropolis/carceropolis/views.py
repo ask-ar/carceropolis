@@ -314,8 +314,10 @@ def dados_perfil_populacional(request):
     context = plot_charts('perfil_populacional', [
         (plot_simple_lines, '01'),
         (plot_simple_lines, '02'),
-        (plot_simple_vbar_helper, '03_raca_cor'),
-        (plot_simple_vbar_helper, '04_faixa_etaria'),
+        (plot_simple_vbar_helper, '03_raca_cor',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_vbar_helper, '04_faixa_etaria',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 
@@ -334,7 +336,7 @@ def dados_juridico(request):
     templates = [u'carceropolis/dados/juridico.html']
     context = plot_charts('juridico', [
         (plot_simple_hbar_helper, '01_incidencias_criminais_por_sexo',
-         {'tooltip_value_sufix': '%'}),
+         {'width': .3, 'tooltip_value_sufix': '%'}),
         (plot_simple_hbar_helper, '02_percentual_presos_sem_condenacao',
          {'tooltip_value_sufix': '%'}),
     ])
@@ -345,9 +347,12 @@ def dados_educacao(request):
     # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/educacao.html']
     context = plot_charts('educacao', [
-        (plot_simple_hbar_helper, '01_percentual_pessoas_trabalhando'),
-        (plot_simple_hbar_helper, '02_percentual_menos_de_34_de_SM'),
-        (plot_simple_hbar_helper, '03_percentual_pessoas_estudando'),
+        (plot_simple_hbar_helper, '01_percentual_pessoas_trabalhando',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '02_percentual_menos_de_34_de_SM',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '03_percentual_pessoas_estudando',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 

@@ -4,7 +4,7 @@ Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, 
 Fonte link,
 Notas,O percentual de pessoas que recebem menos de 3/4 do salário mínimo é calculado tendo como referência o número total de pessoas que trabalham e têm informação sobre remuneração recebida, conforme registrado pelos responsáveis pelo preenchimento do INFOPEN. Nesse sentido, esse percentual não se refere ao total de pessoas que trabalham no sistema prisional, pois nem sempre são apresentadas informações precisas sobre a existência ou não de remuneração.
 ,
-"Unidade da Federação","percentual"
+"Unidade da Federação","pessoas presas que trabalham e recebem menos de 3/4 do salário mínimo"
 "AC",100
 "AL",0
 "AM",62.84

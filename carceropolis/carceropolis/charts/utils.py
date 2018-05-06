@@ -48,7 +48,7 @@ def create_figure_from_content(content, **kw):
         content['xname'], content['unidade'], title=content['titulo'], **kw)
 
 
-def plot_simple_hbar_helper(content, **kw):
+def plot_simple_hbar_helper(content, width=.5, **kw):
     '''Helper for sigle category hbar chart'''
     dados = content['dados']
     y_col_name = dados.columns[0]
@@ -57,20 +57,20 @@ def plot_simple_hbar_helper(content, **kw):
     fig.xaxis.axis_label = content['unidade']
     fig.yaxis.axis_label = content['xname']
     fig.xaxis.formatter = NUMERAL_TICK_FORMATER
-    plot_hbar(fig, content['xname'], content['ynames'], dados)
+    plot_hbar(fig, content['xname'], content['ynames'], dados, width=width)
     return fig
 
 
-def plot_simple_vbar_helper(content):
+def plot_simple_vbar_helper(content, width=.2, **kw):
     '''Helper for sigle category vbar chart'''
     dados = content['dados']
     x_col_name = dados.columns[0]
     dados = dados[~dados[x_col_name].isin(['total'])]
-    fig = create_figure_from_content(content, x_range=list(dados[x_col_name]))
+    fig = create_figure_from_content(content, x_range=list(dados[x_col_name]), **kw)
     fig.yaxis.axis_label = content['unidade']
     fig.xaxis.axis_label = content['xname']
     fig.yaxis.formatter = NUMERAL_TICK_FORMATER
-    plot_vbar(fig, content['xname'], content['ynames'], dados)
+    plot_vbar(fig, content['xname'], content['ynames'], dados, width=width)
     return fig
 
 

@@ -109,9 +109,8 @@ def plot_bar_iterator(ys, outer_width, palette):
         yield y, offset, color
 
 
-def plot_vbar(fig, x, ys, df, palette=MAIN_PALLETE):
+def plot_vbar(fig, x, ys, df, palette=MAIN_PALLETE, width=0.2):
     '''Plot a vertical bar chart.'''
-    width = 0.2
     for y, offset, color in plot_bar_iterator(ys, width+.03, palette):
         source = create_source(df, x, y, color)
         fig.vbar(
