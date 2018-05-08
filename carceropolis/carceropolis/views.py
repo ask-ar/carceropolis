@@ -344,7 +344,6 @@ def dados_juridico(request):
 
 
 def dados_educacao(request):
-    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/educacao.html']
     context = plot_charts('educacao', [
         (plot_simple_hbar_helper, '01_percentual_pessoas_trabalhando',
@@ -358,19 +357,18 @@ def dados_educacao(request):
 
 
 def dados_saude(request):
-    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/saude.html']
-    context = plot_charts([
-        # TODO: faltam 2 gráficos
+    context = plot_charts('saude', [
+        (plot_simple_hbar_helper, '02_taxa_obitos')
     ])
     return TemplateResponse(request, templates, context)
 
 
 def dados_materno_infantil(request):
-    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/materno_infantil.html']
-    context = plot_charts([
-        # TODO: faltam 2 gráficos
+    context = plot_charts('materno', [
+        (plot_simple_hbar_helper, '01_percentual_gestantes',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 

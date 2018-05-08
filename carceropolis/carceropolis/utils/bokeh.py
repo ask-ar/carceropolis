@@ -1,4 +1,7 @@
+import textwrap
+
 from bokeh import palettes
+from bokeh.models import Title
 from bokeh.plotting import figure
 from bokeh.transform import dodge
 from bokeh.models import HoverTool
@@ -51,7 +54,13 @@ def create_figure(x_title, y_title, **kw):
         'value_format': attrs.pop('tooltip_value_format'),
         'value_sufix': attrs.pop('tooltip_value_sufix'),
     }
+
+    title = attrs.pop('title')
     fig = figure(**attrs)
+
+    for text in reversed(textwrap.wrap(title, width=67)):
+        fig.add_layout(Title(text=text, text_font_size='15pt', align='center'), 'above')
+
     fig.xaxis.axis_label = x_title
     fig.yaxis.axis_label = y_title
     add_tooltip(fig, tooltip_args)

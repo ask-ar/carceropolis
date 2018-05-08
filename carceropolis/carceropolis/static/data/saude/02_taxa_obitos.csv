@@ -1,0 +1,34 @@
+Título,"Taxa de óbitos por 10 mil pessoas presas, por UF"
+Unidade,Taxa de óbitos por 10 mil habitantes
+Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+Fonte link,
+Notas,"No levantamento do INFOPEN de 2016, o estado do Rio de Janeiro não ofereceu dados sobre o número de mortes registradas no sistema prisional e, assim, a população deste estado não foi considerada no cálculo das taxas nacionais."
+,
+"Unidade da Federação","taxa de óbitos"
+"AC",5.59
+"AL",7.65
+"AM",11.68
+"AP",18.66
+"BA",17.53
+"CE",40.09
+"DF",10.64
+"ES",6.18
+"GO",13.52
+"MA",24.75
+"MG",11.71
+"MS",19.78
+"MT",8.69
+"PA",23.89
+"PB",17.59
+"PE",19.68
+"PI",37.2
+"PR",7.38
+"RJ",0
+"RN",25.05
+"RO",10.98
+"RR",0
+"RS",14.2
+"SC",12.11
+"SE",23.91
+"SP",10.29
+"TO",25.95
