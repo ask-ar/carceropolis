@@ -1,0 +1,35 @@
+Título,"Número total de crianças presentes nos estabelecimentos penais, por UF"
+Unidade,Número total de crianças
+Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+Fonte link,
+Notas,"O gráfico considera o número total de crianças presentes nos estabelecimentos penais femininos ou mistos, independente da faixa etária, que pode ser de 0 a 7 anos, conforme estabelecido na Lei no 11.942, de 28 de maio de 2009."
+,
+"Unidade da Federação","percentual de gestantes lactantes"
+"UF","total_filhos_estabelecimento"
+"AC",4
+"AL",2
+"AM",42
+"AP",2
+"BA",1
+"CE",0
+"DF",8
+"ES",4
+"GO",33
+"MA",4
+"MG",43
+"MS",13
+"MT",4
+"PA",0
+"PB",10
+"PE",13
+"PI",0
+"PR",35
+"RJ",0
+"RN",0
+"RO",130
+"RR",0
+"RS",309
+"SC",8
+"SE",1
+"SP",1120
+"TO",17

@@ -369,6 +369,8 @@ def dados_materno_infantil(request):
     context = plot_charts('materno', [
         (plot_simple_hbar_helper, '01_percentual_gestantes',
          {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '02_total_criancas',
+         {'tooltip_value_format': '0,0'}),
     ])
     return TemplateResponse(request, templates, context)
 
