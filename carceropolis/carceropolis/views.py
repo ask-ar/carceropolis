@@ -354,6 +354,8 @@ def dados_educacao(request):
          {'tooltip_value_sufix': '%'}),
         (plot_simple_hbar_helper, '03_percentual_pessoas_estudando',
          {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '04_escolaridade',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 
