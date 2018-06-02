@@ -1,16 +1,16 @@
-Título,"Escolaridade da população prisional brasileira, total e por Sexo"
-Unidade,Grau de Instrução
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
-Fonte link,
-Notas,
-,
-"feminino","masculino","total"
-0,0.15,0.01
-2.53,4.3,4.2
-1.76,2.5,2.46
-10.87,9.79,9.85
-32.46,36.04,35.82
-0.67,99.4,6.55
-0.77,10.03,10.16
-0.06,4.58,0.33
-0.09,8.88,0.61
+Título,"Escolaridade da população prisional brasileira, total e por Sexo",
+Unidade,Grau de Instrução,
+Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016.",
+Fonte link,,
+Notas,,
+,,
+categoria,feminino,masculino
+Analfabeto,"1,76","2,5"
+Alfabetizado,"2,53","4,3"
+Fundamental Incompleto,"32,46","36,04"
+Fundamental Completo,"10,87","9,79"
+Médio Incompleto,"0,77","10,03"
+Médio Completo,"0,67","99,4"
+Superior Incompleto,"0,09","8,88"
+Superior Completo,"0,06","4,58"
+Acima Superior,0,"0,15"
