@@ -339,6 +339,8 @@ def dados_juridico(request):
          {'width': .3, 'tooltip_value_sufix': '%'}),
         (plot_simple_hbar_helper, '02_percentual_presos_sem_condenacao',
          {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '03_percentual_unidades_com_visitacao',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 
