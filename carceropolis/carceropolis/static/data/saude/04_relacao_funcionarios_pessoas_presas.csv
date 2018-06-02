@@ -1,10 +1,10 @@
 Título,"Relação entre profissionais de saúde e pessoas presas, por Unidade da Federação"
-Unidade,% de profissionais de saúde para cada 500 presos
+Unidade,Profissionais de saúde para cada 500 presos
 Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
 Fonte link,
 Notas,"Referência para padrão exigido de 1 para 500"
 ,
-"Unidade da Federação","proporção"
+"Unidade da Federação","profissionais de saúde para cada 500 presos"
 "AC",6.9
 "AL",10.02
 "AM",7.49

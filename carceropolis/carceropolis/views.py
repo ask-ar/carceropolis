@@ -365,8 +365,7 @@ def dados_saude(request):
     context = plot_charts('saude', [
         (plot_simple_hbar_helper, '02_taxa_obitos'),
         (plot_simple_hbar_helper, '03_obitos_sistema_prisional'),
-        (plot_simple_hbar_helper, '04_relacao_funcionarios_pessoas_presas',
-         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '04_relacao_funcionarios_pessoas_presas')
     ])
     return TemplateResponse(request, templates, context)
 
