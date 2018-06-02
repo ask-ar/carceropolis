@@ -65,10 +65,11 @@ def create_figure(x_title, y_title, **kw):
     fig.yaxis.axis_label = y_title
     add_tooltip(fig, tooltip_args)
     # more defaults
-    fig.axis.axis_label_text_font_style = "bold"
+    fig.axis.axis_label_text_font_style = 'bold'
     fig.title.text_font_size = '14pt'
     fig.title.align = 'center'
-    fig.legend.location = 'top_right'
+    # fig.legend.location = 'top_left'
+    # fig.legend.orientation = 'horizontal'
     return fig
 
 
@@ -97,6 +98,8 @@ def plot_lines(fig, x, ys, df, palette=MAIN_PALLETE, continuous=False):
         fig.line(
             x, 'value', source=source, line_width=3, color=color,
             legend=get_legend(y, ys))
+    fig.legend.location = 'top_left'
+    fig.legend.orientation = 'horizontal'
 
 
 def plot_circles(fig, x, ys, df, palette=MAIN_PALLETE, size=10):
