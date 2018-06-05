@@ -33,6 +33,11 @@
           {{ grafico.script|safe }}
         </div>
         <aside class="graf-meta">
+          <span class='download'>
+            <a href="{% static grafico.data_file_url %}">
+              Download dos dados deste gráfico
+            </a>
+          </span>
           <dl>
             <dt>Fonte:</dt>
             <dd>
@@ -51,11 +56,6 @@
                 {% endfor %}
             {% endif %}
           </dl>
-          <span class='download'>
-            <a href="{% static grafico.data_file_url %}">
-              Download dos dados deste gráfico
-            </a>
-          </span>
         </aside>
     </section>
   {% endfor %}

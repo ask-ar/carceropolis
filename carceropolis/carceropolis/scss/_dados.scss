@@ -128,12 +128,13 @@
 	.graf {
 		padding: 15px;
 		position: relative;
-		margin: 0 0 80px;
+		margin: 0 0 30px;
 	}
 
 	
 	.graf-meta {
 		color: $author-publication;
+        position: relative;
 
 		.js-plot-link-container {
 				color: $author-publication;
@@ -144,25 +145,30 @@
 			max-width: 70%;
 		}
 
+        dd:first-of-type {
+            max-width: 540px;
+        }
+
 		dd {
-			text-indent: 10px;
+            padding-left: 10px;
+			// text-indent: 10px;
 		}
 	}
 
 	.graf .download {
-		background: white;
 		font-size: 14px;
-		padding: 0 2px 5px;
-		position: absolute;
-		right: 0;
-		top: calc(100% + 1px);
+		padding: 0 0 10px 545px;
 		text-transform: lowercase;
+        position: absolute;
+        top: 0;
 
 		a:hover {
+		    background: white;
 			text-decoration: none;
 		}
 
 		::before, ::after {
+		    background: white;
 			font-family: $bold;
 			font-size: 2em;
 			position: relative;
