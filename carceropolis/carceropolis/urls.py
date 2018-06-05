@@ -11,6 +11,10 @@ from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
 
 from . import views
+from carceropolis.charts.views import (
+    dados_alas_exclusivas, dados_materno_infantil, dados_saude, dados_educacao,
+    dados_juridico, dados_infraestrutura, dados_perfil_populacional,
+    dados_gerais)
 
 _slash = '/'
 
@@ -22,21 +26,21 @@ dados_pattern = [
     # TODO: Alguém usa essa piramide etaria? Não está no menu dos dados...
     url(r'^piramide_etaria/$', views.dados_piramide_etaria,
         name='dados_piramide_etaria'),
-    url(r'^alas_exclusivas/$', views.dados_alas_exclusivas,
+    url(r'^alas_exclusivas/$', dados_alas_exclusivas,
         name='dados_alas_exclusivas'),
-    url(r'^materno_infantil/$', views.dados_materno_infantil,
+    url(r'^materno_infantil/$', dados_materno_infantil,
         name='dados_materno_infantil'),
-    url(r'^saude/$', views.dados_saude,
+    url(r'^saude/$', dados_saude,
         name='dados_saude'),
-    url(r'^educacao/$', views.dados_educacao,
+    url(r'^educacao/$', dados_educacao,
         name='dados_educacao'),
-    url(r'^juridico/$', views.dados_juridico,
+    url(r'^juridico/$', dados_juridico,
         name='dados_juridico'),
-    url(r'^infraestrutura/$', views.dados_infraestrutura,
+    url(r'^infraestrutura/$', dados_infraestrutura,
         name='dados_infraestrutura'),
-    url(r'^perfil_populacional/$', views.dados_perfil_populacional,
+    url(r'^perfil_populacional/$', dados_perfil_populacional,
         name='dados_perfil_populacional'),
-    url(r'^gerais/$', views.dados_gerais,
+    url(r'^gerais/$', dados_gerais,
         name='dados_gerais'),
     url(r'^$', views.dados_home, name='dados_home')
 ]

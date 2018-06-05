@@ -11,7 +11,7 @@ from bokeh.application.handlers import FunctionHandler
 from bokeh.models.widgets.inputs import Select, MultiSelect
 from bokeh.models import RangeSlider, CustomJS
 
-from carceropolis.utils.bokeh import (
+from carceropolis.charts.utils import (
     create_figure, plot_lines, plot_circles,
     plot_hbar, plot_vbar, add_tooltip, MAIN_PALLETE)
 
