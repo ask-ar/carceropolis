@@ -10,7 +10,7 @@ geocoder==1.33.0
 # To be replaced by bokeh graphs
 plotly
 numpy
-bokeh==0.12.13
+bokeh
 flexx
 tornado
 unidecode
