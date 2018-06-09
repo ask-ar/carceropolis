@@ -7,12 +7,12 @@ from bokeh.resources import CDN
 from bokeh.embed import components
 # from bokeh.models import NumeralTickFormatter
 from bokeh import palettes
-from bokeh.models import Title
 from bokeh.plotting import figure
 from bokeh.transform import dodge
-from bokeh.models import HoverTool, FuncTickFormatter, CustomJSHover
-from bokeh.core.properties import value, Auto
-from bokeh.models import ColumnDataSource
+from bokeh.core.properties import value
+from bokeh.models import (
+    ColumnDataSource, SingleIntervalTicker, Title, HoverTool, FuncTickFormatter,
+    CustomJSHover)
 
 
 # NUMERAL_TICK_FORMATER = NumeralTickFormatter(format='0,0', language='pt-br')
@@ -59,6 +59,7 @@ def create_figure(x_title, y_title, **kw):
         'tooltip_value_format': '0,0',
         'tooltip_value_sufix': '',
         'tooltip_fn': add_tooltip,
+        'xaxis_tick_interval': None,
     }
     # replace with arg values
     attrs.update(kw)
@@ -71,6 +72,7 @@ def create_figure(x_title, y_title, **kw):
     custom_fn = attrs.pop('custom_fn')
     title = attrs.pop('title')
     tooltip_fn = attrs.pop('tooltip_fn')
+    xaxis_tick_interval = attrs.pop('xaxis_tick_interval')
     fig = figure(**attrs)
 
     for text in reversed(textwrap.wrap(title, width=67)):
@@ -86,6 +88,10 @@ def create_figure(x_title, y_title, **kw):
     fig.title.align = 'center'
     # fig.legend.location = 'top_left'
     # fig.legend.orientation = 'horizontal'
+
+    if xaxis_tick_interval:
+        fig.xaxis.ticker = SingleIntervalTicker(
+            interval=xaxis_tick_interval, num_minor_ticks=1)
 
     if custom_fn:
         custom_fn(fig)
@@ -255,7 +261,7 @@ def plot_stacked_hbar_helper(content, width=.5, **kw):
     tooltip_args = {
         'xname': content['xname'],
         'value_format': '0,0',
-        'value_sufix': '',
+        'value_sufix': kw.get('tooltip_value_sufix', ''),
     }
     for i in range(1, len(categories)):
         data[categories[i]] = [

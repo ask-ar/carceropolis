@@ -1,13 +1,8 @@
-from bokeh.models import SingleIntervalTicker
 from django.template.response import TemplateResponse
 
 from carceropolis.charts.utils import (
     plot_charts, plot_simple_lines, plot_simple_hbar_helper, plot_simple_vbar_helper,
     plot_stacked_hbar_helper)
-
-
-def year_xaxis(fig):
-    fig.xaxis.ticker = SingleIntervalTicker(interval=2, num_minor_ticks=1)
 
 
 def dados_gerais(request):
@@ -19,10 +14,8 @@ def dados_gerais(request):
 
     templates = ['carceropolis/dados/dados_gerais.html']
     context = plot_charts('dados_gerais', [
-        (plot_simple_lines, '01',
-         {'continuous': True, 'custom_fn': year_xaxis}),
-        (plot_simple_lines, '02',
-         {'custom_fn': year_xaxis}),
+        (plot_simple_lines, '01', {'continuous': True, 'xaxis_tick_interval': 2}),
+        (plot_simple_lines, '02', {'xaxis_tick_interval': 2}),
         (plot_simple_hbar_helper, '03'),
         (plot_simple_hbar_helper, '04'),
     ])
@@ -33,8 +26,8 @@ def dados_perfil_populacional(request):
     '''Perfil Populacional page'''
     templates = ['carceropolis/dados/perfil_populacional.html']
     context = plot_charts('perfil_populacional', [
-        (plot_simple_lines, '01'),
-        (plot_simple_lines, '02'),
+        (plot_simple_lines, '01', {'xaxis_tick_interval': 1}),
+        (plot_simple_lines, '02', {'xaxis_tick_interval': 1}),
         (plot_simple_vbar_helper, '03_raca_cor',
          {'tooltip_value_sufix': '%'}),
         (plot_simple_vbar_helper, '04_faixa_etaria',
@@ -46,7 +39,7 @@ def dados_perfil_populacional(request):
 def dados_infraestrutura(request):
     templates = [u'carceropolis/dados/infraestrutura.html']
     context = plot_charts('infraestrutura', [
-        (plot_simple_hbar_helper, '01_ocupacao'),
+        (plot_simple_hbar_helper, '01_ocupacao', {'xaxis_tick_interval': .5}),
         (plot_simple_hbar_helper, '02_deficit_vagas'),
         (plot_simple_hbar_helper, '03_coeficiente_entradas_saidas'),
         (plot_simple_hbar_helper, '04_proporcao_agentes_pessoas_presas'),
@@ -62,7 +55,7 @@ def dados_juridico(request):
         (plot_simple_hbar_helper, '02_percentual_presos_sem_condenacao',
          {'tooltip_value_sufix': '%'}),
         (plot_simple_hbar_helper, '03_percentual_unidades_com_visitacao',
-         {'tooltip_value_sufix': '%'}),
+         {'tooltip_value_sufix': '%', 'xaxis_tick_interval': 10}),
         (plot_simple_hbar_helper, '04_regimes_de_cumprimento_de_pena',
          {'width': .3, 'tooltip_value_sufix': '%'}),
     ])
@@ -75,11 +68,11 @@ def dados_educacao(request):
         (plot_simple_hbar_helper, '01_percentual_pessoas_trabalhando',
          {'tooltip_value_sufix': '%'}),
         (plot_simple_hbar_helper, '02_percentual_menos_de_34_de_SM',
-         {'tooltip_value_sufix': '%'}),
+         {'tooltip_value_sufix': '%', 'xaxis_tick_interval': 10}),
         (plot_simple_hbar_helper, '03_percentual_pessoas_estudando',
-         {'tooltip_value_sufix': '%'}),
+         {'tooltip_value_sufix': '%', 'xaxis_tick_interval': 5}),
         (plot_simple_hbar_helper, '04_escolaridade',
-         {'tooltip_value_sufix': '%', 'width': .4}),
+         {'tooltip_value_sufix': '%', 'width': .4, 'xaxis_tick_interval': 10}),
     ])
     return TemplateResponse(request, templates, context)
 
@@ -87,9 +80,12 @@ def dados_educacao(request):
 def dados_saude(request):
     templates = [u'carceropolis/dados/saude.html']
     context = plot_charts('saude', [
-        (plot_simple_hbar_helper, '02_taxa_obitos'),
-        (plot_stacked_hbar_helper, '03_obitos_sistema_prisional'),
-        (plot_simple_hbar_helper, '04_relacao_funcionarios_pessoas_presas')
+        (plot_simple_hbar_helper, '01_pessoas_com_agravo'),
+        (plot_stacked_hbar_helper, '03_obitos_sistema_prisional',
+         {'xaxis_tick_interval': 50}),
+        (plot_simple_hbar_helper, '02_taxa_obitos', {'xaxis_tick_interval': 5}),
+        (plot_simple_hbar_helper, '04_relacao_funcionarios_pessoas_presas',
+         {'xaxis_tick_interval': 5}),
     ])
     return TemplateResponse(request, templates, context)
 
@@ -99,9 +95,9 @@ def dados_materno_infantil(request):
     context = plot_charts('materno', [
         (plot_simple_hbar_helper, '03_total_gestantes_lactantes_por_UF'),
         (plot_stacked_hbar_helper, '01_percentual_gestantes',
-         {'tooltip_value_sufix': '%'}),
+         {'tooltip_value_sufix': '%', 'xaxis_tick_interval': 10}),
         (plot_simple_hbar_helper, '02_total_criancas',
-         {'tooltip_value_format': '0,0'}),
+         {'tooltip_value_format': '0,0', 'xaxis_tick_interval': 100}),
         (plot_simple_hbar_helper, '04_percentual_unidades_com_crmi_por_UF',
          {'tooltip_value_sufix': '%'}),
     ])
