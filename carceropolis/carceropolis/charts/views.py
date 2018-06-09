@@ -49,6 +49,7 @@ def dados_infraestrutura(request):
         (plot_simple_hbar_helper, '01_ocupacao'),
         (plot_simple_hbar_helper, '02_deficit_vagas'),
         (plot_simple_hbar_helper, '03_coeficiente_entradas_saidas'),
+        (plot_simple_hbar_helper, '04_proporcao_agentes_pessoas_presas'),
     ])
     return TemplateResponse(request, templates, context)
 
@@ -62,6 +63,8 @@ def dados_juridico(request):
          {'tooltip_value_sufix': '%'}),
         (plot_simple_hbar_helper, '03_percentual_unidades_com_visitacao',
          {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '04_regimes_de_cumprimento_de_pena',
+         {'width': .3, 'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 
@@ -94,18 +97,30 @@ def dados_saude(request):
 def dados_materno_infantil(request):
     templates = [u'carceropolis/dados/materno_infantil.html']
     context = plot_charts('materno', [
-        (plot_simple_hbar_helper, '01_percentual_gestantes',
+        (plot_simple_hbar_helper, '03_total_gestantes_lactantes_por_UF'),
+        (plot_stacked_hbar_helper, '01_percentual_gestantes',
          {'tooltip_value_sufix': '%'}),
         (plot_simple_hbar_helper, '02_total_criancas',
          {'tooltip_value_format': '0,0'}),
+        (plot_simple_hbar_helper, '04_percentual_unidades_com_crmi_por_UF',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
 
 
 def dados_alas_exclusivas(request):
-    # TODO: Produto1 não tem texto de intro!
     templates = [u'carceropolis/dados/alas_exclusivas.html']
-    context = plot_charts([
-        # TODO: faltam 4 gráficos
+    context = plot_charts('alas_exclusivas', [
+        (plot_simple_hbar_helper, '01_percentual_ala_cela_lgbt',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '02_percentual_ala_cela_idosos',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '03_percentual_ala_cela_indigenas',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper, '04_percentual_ala_cela_estrangeiros',
+         {'tooltip_value_sufix': '%'}),
+        (plot_simple_hbar_helper,
+         '05_percentual_pessoas_com_deficiencia_fisica_desassistidas_de_vagas_adaptadas',
+         {'tooltip_value_sufix': '%'}),
     ])
     return TemplateResponse(request, templates, context)
