@@ -186,7 +186,7 @@ def read_mini_csv(csv_path):
                 .replace(r'^\s*$', np.nan, regex=True)
                 # Remove columns with all nan cells
                 .dropna(axis=1, how='all'))
-        # data = data.sort_values(by=data.columns[1], ascending=False)
+        # data = data.sort_values(by=data.columns[1], ascending=True)
         content['xname'] = data.columns[0]
         content['ynames'] = list(data.columns[1:])
         content['dados'] = data
@@ -255,7 +255,6 @@ def plot_stacked_hbar_helper(content, width=.5, **kw):
         'value_format': '0,0',
         'value_sufix': '',
     }
-    print(content['xname'])
     for i in range(1, len(categories)):
         data[categories[i]] = [
             sum((float(i) for i in x))
