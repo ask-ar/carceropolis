@@ -187,7 +187,8 @@ def read_mini_csv(csv_path):
                 # Remove columns with all nan cells
                 .dropna(axis=1, how='all'))
         if data.columns[0] == 'Unidade da Federação':
-            data = data.sort_values(by=data.columns[1], ascending=True)
+            data = data.sort_values(
+                by=data.columns[1], ascending=True, na_position='first')
         content['xname'] = data.columns[0]
         content['ynames'] = list(data.columns[1:])
         content['dados'] = data
