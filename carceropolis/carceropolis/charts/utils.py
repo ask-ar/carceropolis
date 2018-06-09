@@ -11,7 +11,7 @@ from bokeh.models import Title
 from bokeh.plotting import figure
 from bokeh.transform import dodge
 from bokeh.models import HoverTool, FuncTickFormatter, CustomJSHover
-from bokeh.core.properties import value
+from bokeh.core.properties import value, Auto
 from bokeh.models import ColumnDataSource
 
 
@@ -57,7 +57,8 @@ def create_figure(x_title, y_title, **kw):
         'custom_fn': None,
 
         'tooltip_value_format': '0,0',
-        'tooltip_value_sufix': ''
+        'tooltip_value_sufix': '',
+        'tooltip_fn': add_tooltip,
     }
     # replace with arg values
     attrs.update(kw)
@@ -69,6 +70,7 @@ def create_figure(x_title, y_title, **kw):
 
     custom_fn = attrs.pop('custom_fn')
     title = attrs.pop('title')
+    tooltip_fn = attrs.pop('tooltip_fn')
     fig = figure(**attrs)
 
     for text in reversed(textwrap.wrap(title, width=67)):
@@ -76,7 +78,8 @@ def create_figure(x_title, y_title, **kw):
 
     fig.xaxis.axis_label = x_title
     fig.yaxis.axis_label = y_title
-    add_tooltip(fig, tooltip_args)
+    if tooltip_fn:
+        tooltip_fn(fig, tooltip_args)
     # more defaults
     fig.axis.axis_label_text_font_style = 'bold'
     fig.title.text_font_size = '14pt'
@@ -90,7 +93,7 @@ def create_figure(x_title, y_title, **kw):
     return fig
 
 
-def add_tooltip(fig, args):
+def add_tooltip(fig, args, renderers='auto'):
     '''Adds tooltip to a figure.'''
     tooltips = '''
     <div class="mytooltip" style="color:@color;">
@@ -105,7 +108,8 @@ def add_tooltip(fig, args):
         return parseFloat(value).toLocaleString('pt-BR')
     ''')
 
-    hover = HoverTool(tooltips=tooltips, formatters=dict(value=locale_format))
+    hover = HoverTool(
+        tooltips=tooltips, formatters=dict(value=locale_format), renderers=renderers)
     fig.add_tools(hover)
 
 
@@ -230,6 +234,52 @@ def plot_simple_lines(content, circles=True, circles_size=5, continuous=False, *
             fig, content['xname'], content['ynames'], content['dados'],
             size=circles_size)
     fig.yaxis.formatter = NUMERAL_TICK_FORMATER
+    return fig
+
+
+def plot_stacked_hbar_helper(content, width=.5, **kw):
+    dados = content['dados']
+    y_col_name = dados.columns[0]
+    categories = dados.columns[1:]
+    indexes = list(dados[y_col_name])
+    kw['tooltip_fn'] = False
+    fig = create_figure_from_content(content, y_range=list(dados[y_col_name]), **kw)
+    fig.xaxis.axis_label = content['unidade']
+    fig.yaxis.axis_label = content['xname']
+    fig.xaxis.formatter = NUMERAL_TICK_FORMATER
+
+    original = dados.copy()
+    data = dados
+    tooltip_args = {
+        'xname': content['xname'],
+        'value_format': '0,0',
+        'value_sufix': '',
+    }
+    print(content['xname'])
+    for i in range(1, len(categories)):
+        data[categories[i]] = [
+            sum(x) for x in zip(data[categories[i]], data[categories[i-1]])]
+    for i in range(len(categories)):
+        color = MAIN_PALLETE[i]
+        rx = fig.hbar(
+            y=indexes,
+            left=data[categories[i-1]] if i else [0]*len(indexes),
+            right=data[categories[i]],
+            height=0.9,
+            color=color,
+            legend=categories[i])
+        # TODO: refatorar
+        rx.data_source.add(original[categories[i]], 'value')
+        rx.data_source.add([categories[i]]*len(indexes), 'value_name')
+        rx.data_source.add([color]*len(indexes), 'color')
+        rx.data_source.add(indexes, y_col_name)
+        add_tooltip(fig, tooltip_args, [rx])
+
+    fig.legend.location = 'center_right'
+
+    # fig.hbar_stack(
+    #     categories, y=y_col_name, height=0.9, color=MAIN_PALLETE[:len(categories)],
+    #     source=ColumnDataSource(dados), legend=[value(i) for i in categories])
     return fig
 
 
