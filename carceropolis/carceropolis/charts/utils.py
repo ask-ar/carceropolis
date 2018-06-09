@@ -258,7 +258,8 @@ def plot_stacked_hbar_helper(content, width=.5, **kw):
     print(content['xname'])
     for i in range(1, len(categories)):
         data[categories[i]] = [
-            sum(x) for x in zip(data[categories[i]], data[categories[i-1]])]
+            sum((float(i) for i in x))
+            for x in zip(data[categories[i]], data[categories[i-1]])]
     for i in range(len(categories)):
         color = MAIN_PALLETE[i]
         rx = fig.hbar(
