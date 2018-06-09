@@ -2,33 +2,33 @@ Título,Proporção de agentes em relação ao número de presos por Unidade da 
 Unidade,Quantidade de agentes por pessoas presas
 Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
 Fonte link,
-Notas,"A ONU apresenta como referência a relação de 1 agente para cada 5 pessoas presas."
+Notas,A ONU apresenta como referência a relação de 1 agente para cada 5 pessoas presas.
 ,
-"Unidade da Federação","total_agentes","pop_total","proporcao"
-"AC",261,5364,0.05
-"AL",226,6539,0.03
-"AM",682,10277,0.07
-"AP",191,2680,0.07
-"BA",1030,12548,0.08
-"CE",1310,22701,0.06
-"DF",309,15035,0.02
-"ES",789,19413,0.04
-"GO",576,16272,0.04
-"MA",840,7677,0.11
-"MG",3650,64025,0.06
-"MS",540,18198,0.03
-"MT",502,10362,0.05
-"PA",740,13811,0.05
-"PB",735,11373,0.06
-"PE",1139,34556,0.03
-"PI",485,4032,0.12
-"PR",1170,42009,0.03
-"RJ",60,50215,0
-"RN",354,8784,0.04
-"RO",625,10927,0.06
-"RR",94,2328,0.04
-"RS",1607,33809,0.05
-"SC",1025,21472,0.05
-"SE",204,5019,0.04
-"SP",7360,237053,0.03
-"TO",695,3468,0.2
+Unidade da Federação,proporcao
+AC,"0,05"
+AL,"0,03"
+AM,"0,07"
+AP,"0,07"
+BA,"0,08"
+CE,"0,06"
+DF,"0,02"
+ES,"0,04"
+GO,"0,04"
+MA,"0,11"
+MG,"0,06"
+MS,"0,03"
+MT,"0,05"
+PA,"0,05"
+PB,"0,06"
+PE,"0,03"
+PI,"0,12"
+PR,"0,03"
+RJ,0
+RN,"0,04"
+RO,"0,06"
+RR,"0,04"
+RS,"0,05"
+SC,"0,05"
+SE,"0,04"
+SP,"0,03"
+TO,"0,2"
