@@ -1,14 +1,14 @@
-Título,População prisional por faixa etária
-Unidade,Porcentagem de pessoas presas
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
-Fonte link,
-Notas,
-,
-Faixa etária,População
-18 à 24,30.28
-25 à 29,24.56
-30 à 34,18.68
-35 à 45,18.68
-46 à 60,6.66
-61 à 70,1.0
-mais de 70,0.15
+"Título","População prisional por faixa etária"
+"Unidade","Porcentagem de pessoas presas"
+"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+"Fonte link",""
+"Notas",""
+"",""
+"Faixa etária","População"
+"18 à 24","30,28"
+"25 à 29","24,56"
+"30 à 34","18,68"
+"35 à 45","18,68"
+"46 à 60","6,66"
+"61 à 70","1,0"
+"mais de 70","0,15"

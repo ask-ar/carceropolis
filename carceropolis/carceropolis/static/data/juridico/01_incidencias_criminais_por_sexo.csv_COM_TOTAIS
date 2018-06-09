@@ -1,17 +1,17 @@
-Título,Distribuição das incidências criminais por tipo penal entre homens e mulheres,
-Unidade,Pessoas presas (% por grupo de sexo),
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016.",
-Fonte link,,
-Notas,,
-,,
-Tipo penal,feminino,masculino,total
-estatuto do desarmamento,1.72,5.38,5.18
-furto,8.43,12.08,11.88
-homicídio,6.2,11.33,11.05
-latrocínio,1.23,2.64,2.56
-outros,6.19,10.74,10.49
-quadrilha,2.17,1.6,1.63
-receptação,1.25,3.2,3.09
-roubo,10.67,25.68,24.86
-tráfico,62.08,26.53,28.47
-violência doméstica,0.06,0.82,0.78
+"Título","Distribuição das incidências criminais por tipo penal entre homens e mulheres","Unnamed: 2","Unnamed: 3"
+"Unidade","Pessoas presas (% por grupo de sexo)","",""
+"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016.","",""
+"Fonte link","","",""
+"Notas","","",""
+"","","",""
+"Tipo penal","feminino","masculino","total"
+"estatuto do desarmamento","1,72","5,38","5,18"
+"furto","8,43","12,08","11,88"
+"homicídio","6,2","11,33","11,05"
+"latrocínio","1,23","2,64","2,56"
+"outros","6,19","10,74","10,49"
+"quadrilha","2,17","1,6","1,63"
+"receptação","1,25","3,2","3,09"
+"roubo","10,67","25,68","24,86"
+"tráfico","62,08","26,53","28,47"
+"violência doméstica","0,06","0,82","0,78"

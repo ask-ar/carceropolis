@@ -1,34 +1,34 @@
-Título,Relação entre entradas e saídas por Unidade da Federação
-Unidade,total de entradas / total de saídas
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
-Fonte link,
-Notas,"O número de entradas no sistema prisional considera o número de inclusões originárias (Inclusões não decorrentes de remoção ou transferência de outro estabelecimento do Sistema Prisional).;O número de saídas no sistema prisional considera a soma das saídas por alvarás de soltura (nesse caso, devem ser computados apenas os alvarás efetivamente cumpridos, que motivam a colocação da pessoa em liberdade), as fugas, os abandonos (não retorno em saída temporária) e os óbitos.;O Ministério da Justição não disponibiliza os dados referentes a fugas."
-,
+"Título","Relação entre entradas e saídas por Unidade da Federação"
+"Unidade","total de entradas / total de saídas"
+"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+"Fonte link",""
+"Notas","O número de entradas no sistema prisional considera o número de inclusões originárias (Inclusões não decorrentes de remoção ou transferência de outro estabelecimento do Sistema Prisional).;O número de saídas no sistema prisional considera a soma das saídas por alvarás de soltura (nesse caso, devem ser computados apenas os alvarás efetivamente cumpridos, que motivam a colocação da pessoa em liberdade), as fugas, os abandonos (não retorno em saída temporária) e os óbitos.;O Ministério da Justição não disponibiliza os dados referentes a fugas."
+"",""
 "Unidade da Federação","Coeficiente entrada/saída"
-"AC",1.23
-"AL",0.94
-"AM",1.99
-"AP",1.03
-"BA",1.08
-"CE",1.63
-"DF",2.93
-"ES",1.26
-"GO",1.12
-"MA",0.84
-"MG",2.39
-"MS",2.32
-"MT",1.05
-"PA",1.15
-"PB",1.44
-"PE",1.4
-"PI",2.04
-"PR",1.42
-"RJ",1.38
-"RN",2.01
-"RO",1.44
-"RR",2.3
-"RS",1.38
-"SC",0.97
-"SE",0.26
-"SP",1.39
-"TO",1.04
+"AC","1,23"
+"AL","0,94"
+"AM","1,99"
+"AP","1,03"
+"BA","1,08"
+"CE","1,63"
+"DF","2,93"
+"ES","1,26"
+"GO","1,12"
+"MA","0,84"
+"MG","2,39"
+"MS","2,32"
+"MT","1,05"
+"PA","1,15"
+"PB","1,44"
+"PE","1,4"
+"PI","2,04"
+"PR","1,42"
+"RJ","1,38"
+"RN","2,01"
+"RO","1,44"
+"RR","2,3"
+"RS","1,38"
+"SC","0,97"
+"SE","0,26"
+"SP","1,39"
+"TO","1,04"

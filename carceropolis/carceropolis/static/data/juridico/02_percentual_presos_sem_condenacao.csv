@@ -1,34 +1,34 @@
-Título,Percentual de presos sem condenação por Unidade da Federação
-Unidade,Pessoas sem condenação presas
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
-Fonte link,
-Notas,"Não são consideradas as pessoas custodiadas em delegacias no cálculo do total da população prisional para composição da taxa de ocupação total pois essas informações não estão presentes nas bases de microdados disponibilizadas pelo DEPEN."
-,
+"Título","Percentual de presos sem condenação por Unidade da Federação"
+"Unidade","Pessoas sem condenação presas"
+"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+"Fonte link",""
+"Notas","Não são consideradas as pessoas custodiadas em delegacias no cálculo do total da população prisional para composição da taxa de ocupação total pois essas informações não estão presentes nas bases de microdados disponibilizadas pelo DEPEN."
+"",""
 "Unidade da Federação","Percentual sem condenação"
-"AC",37.08
-"AL",33.19
-"AM",60.56
-"AP",23.43
-"BA",49.05
-"CE",47.91
-"DF",23.23
-"ES",42.29
-"GO",38
-"MA",52.35
-"MG",54.99
-"MS",29.98
-"MT",52.46
-"PA",46.77
-"PB",42.15
-"PE",50.82
-"PI",54.99
-"PR",11.85
-"RJ",40.1
-"RN",32.57
-"RO",17.22
-"RR",43.9
-"RS",37.62
-"SC",35.52
-"SE",63.04
-"SP",30.73
-"TO",39.45
+"AC","37,08"
+"AL","33,19"
+"AM","60,56"
+"AP","23,43"
+"BA","49,05"
+"CE","47,91"
+"DF","23,23"
+"ES","42,29"
+"GO","38"
+"MA","52,35"
+"MG","54,99"
+"MS","29,98"
+"MT","52,46"
+"PA","46,77"
+"PB","42,15"
+"PE","50,82"
+"PI","54,99"
+"PR","11,85"
+"RJ","40,1"
+"RN","32,57"
+"RO","17,22"
+"RR","43,9"
+"RS","37,62"
+"SC","35,52"
+"SE","63,04"
+"SP","30,73"
+"TO","39,45"

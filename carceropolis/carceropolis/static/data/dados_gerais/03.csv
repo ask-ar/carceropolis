@@ -1,35 +1,35 @@
-Título,"População prisional por UF"
-Unidade,Número de pessoas presas
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
-Fonte link,
-Notas,"Os dados consideram as pessoas custodiadas nas unidades dos sistemas prisionais estadual e federal."
-,
-Unidade da Federação,População prisional
-RR,1609
-AP,2663
-PI,3182
-AC,4244
-SE,4653
-TO,5772
-AL,5920
-MA,6703
-RN,7658
-AM,8868
-MT,10138
-PB,10450
-PA,12622
-MS,13915
-DF,14405
-GO,15574
-BA,15611
-ES,16694
-SC,16828
-RO,17987
-CE,21648
-PE,26809
-PR,28004
-RS,28125
-RJ,40301
-MG,61392
-SP,220030
-BR,621805
+"Título","População prisional por UF"
+"Unidade","Número de pessoas presas"
+"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+"Fonte link",""
+"Notas","Os dados consideram as pessoas custodiadas nas unidades dos sistemas prisionais estadual e federal."
+"",""
+"Unidade da Federação","População prisional"
+"RR","1609"
+"AP","2663"
+"PI","3182"
+"AC","4244"
+"SE","4653"
+"TO","5772"
+"AL","5920"
+"MA","6703"
+"RN","7658"
+"AM","8868"
+"MT","10138"
+"PB","10450"
+"PA","12622"
+"MS","13915"
+"DF","14405"
+"GO","15574"
+"BA","15611"
+"ES","16694"
+"SC","16828"
+"RO","17987"
+"CE","21648"
+"PE","26809"
+"PR","28004"
+"RS","28125"
+"RJ","40301"
+"MG","61392"
+"SP","220030"
+"BR","621805"

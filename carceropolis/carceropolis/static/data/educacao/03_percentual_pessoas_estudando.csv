@@ -1,34 +1,34 @@
-Título,"Percentual de pessoas estudando, por Unidade da Federação"
-Unidade,Percentual de pessoas presas estudando
-Fonte,"Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
-Fonte link,
-Notas,"O total de pessoas que estudam no sistema prisional compreende aquelas envolvidas em atividades de ensino escolar e em atividades complementares, em suas modalidades presencial ou à distância."
-,
+"Título","Percentual de pessoas estudando, por Unidade da Federação"
+"Unidade","Percentual de pessoas presas estudando"
+"Fonte","Levantamento de Informações Penitenciárias - Ministério da Justiça, Junho de 2016."
+"Fonte link",""
+"Notas","O total de pessoas que estudam no sistema prisional compreende aquelas envolvidas em atividades de ensino escolar e em atividades complementares, em suas modalidades presencial ou à distância."
+"",""
 "Unidade da Federação","pessoas estudando"
-"AC",4.21
-"AL",5.61
-"AM",9.31
-"AP",1.83
-"BA",19.64
-"CE",7.49
-"DF",10.79
-"ES",23.06
-"GO",3.25
-"MA",12.79
-"MG",15.46
-"MS",8.67
-"MT",13.77
-"PA",9.12
-"PB",9.58
-"PE",14.68
-"PI",10.71
-"PR",19.19
-"RJ",0
-"RN",2.05
-"RO",13.05
-"RR",14.18
-"RS",6.93
-"SC",12.97
-"SE",5.08
-"SP",10.46
-"TO",24.94
+"AC","4,21"
+"AL","5,61"
+"AM","9,31"
+"AP","1,83"
+"BA","19,64"
+"CE","7,49"
+"DF","10,79"
+"ES","23,06"
+"GO","3,25"
+"MA","12,79"
+"MG","15,46"
+"MS","8,67"
+"MT","13,77"
+"PA","9,12"
+"PB","9,58"
+"PE","14,68"
+"PI","10,71"
+"PR","19,19"
+"RJ","0"
+"RN","2,05"
+"RO","13,05"
+"RR","14,18"
+"RS","6,93"
+"SC","12,97"
+"SE","5,08"
+"SP","10,46"
+"TO","24,94"
