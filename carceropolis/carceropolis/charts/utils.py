@@ -274,25 +274,24 @@ def plot_stacked_hbar_helper(content, width=.5, **params):
     fig.xaxis.formatter = get_tick_formater(params)
 
     original = dados.copy()
-    data = dados
     for i in range(1, len(categories)):
-        data[categories[i]] = [
+        dados[categories[i]] = [
             sum((float(i) for i in x))
-            for x in zip(data[categories[i]], data[categories[i-1]])]
+            for x in zip(dados[categories[i]], dados[categories[i-1]])]
     for i in range(len(categories)):
         color = MAIN_PALLETE[i]
         rx = fig.hbar(
             y=indexes,
-            left=data[categories[i-1]] if i else [0]*len(indexes),
-            right=data[categories[i]],
+            left=dados[categories[i-1]] if i else [0]*len(indexes),
+            right=dados[categories[i]],
             height=0.9,
             color=color,
+            # source=create_source(original, y_col_name, categories[i], color),
             legend=categories[i])
-        # TODO: refatorar
+        rx.data_source.add(indexes, y_col_name)
         rx.data_source.add(original[categories[i]], 'value')
         rx.data_source.add([categories[i]]*len(indexes), 'value_name')
         rx.data_source.add([color]*len(indexes), 'color')
-        rx.data_source.add(indexes, y_col_name)
         add_tooltip(fig, params['tooltip_params'], [rx])
 
     fig.legend.location = 'center_right'
