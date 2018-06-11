@@ -310,9 +310,7 @@ class Dashboard(object):
             kw['x_range'], kw['y_range'] = kw['y_range'], kw['x_range']
             no_color_grid_direction = 'ygrid'
 
-        kw['title'] = "%s vs %s" % (x_title, y_title)
-
-        fig = create_figure(x_title, y_title, **kw)
+        fig = create_figure(x_title, y_title, f'{x_title} vs {y_title}', **kw)
         getattr(fig, no_color_grid_direction).grid_line_color = None
 
         # Rotate category labels so they have more space

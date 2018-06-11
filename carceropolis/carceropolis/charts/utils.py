@@ -15,14 +15,20 @@ from bokeh.models import (
     CustomJSHover)
 
 
-# NUMERAL_TICK_FORMATER = NumeralTickFormatter(format='0,0', language='pt-br')
-NUMERAL_TICK_FORMATER = FuncTickFormatter(code='''
-    return tick.toLocaleString('pt-BR')
-''')
-
 MAIN_PALLETE = palettes.Dark2_8
 # Orange before green
 MAIN_PALLETE.insert(1, MAIN_PALLETE.pop(0))
+
+
+def get_tick_formater(params):
+    '''Get a tick formater for an axis based on parameters.'''
+    code = 'return tick.toLocaleString("pt-BR")'
+
+    axis_tick_sufix = params.get('axis_tick_sufix')
+    if axis_tick_sufix:
+        code += f' + "{axis_tick_sufix}"'
+
+    return FuncTickFormatter(code=code)
 
 
 def get_legend(y, ys):
@@ -35,6 +41,42 @@ def get_legend(y, ys):
     return value(y) if len(ys) > 1 else None
 
 
+def prepare_params(params):
+    xname = params['content']['xname']
+
+    # default figure values
+    default_params = {
+        'figure': {
+            'plot_height': 600,
+            'plot_width': 800,
+            'background_fill_alpha': 0,
+            'border_fill_alpha': 0,
+            'tools': 'pan,box_zoom,reset,save',
+        },
+
+        'x_title': xname,
+        'y_title': params['content']['unidade'],
+        'title': params['content']['titulo'],
+
+        'tooltip_value_format': '0,0',
+        'tooltip_value_sufix': '',
+        'xaxis_tick_interval': None,
+        'axis_tick_sufix': None,
+        'add_tooltip': True,
+        'custom_fn': None,
+    }
+    default_params.update(params)
+    p = default_params
+
+    p['tooltip_params'] = {
+        'xname': xname,
+        'value_format': p['tooltip_value_format'],
+        'value_sufix': p['tooltip_value_sufix'],
+    }
+
+    return p
+
+
 def create_source(df, x, y, color):
     ''' Creates a datasource in the format needed for tooltips. '''
     return ColumnDataSource(data={
@@ -45,43 +87,21 @@ def create_source(df, x, y, color):
     })
 
 
-def create_figure(x_title, y_title, **kw):
-    ''' Creates a figure using default style. `kw` can be used to customize.'''
-    # default figure values
-    attrs = {
-        'plot_height': 600,
-        'plot_width': 800,
-        'background_fill_alpha': 0,
-        'border_fill_alpha': 0,
-        'tools': 'pan,box_zoom,reset,save',
-        'custom_fn': None,
+def create_figure(x_title, y_title, title, **params):
+    ''' Creates a figure using default style. `params` can be used to customize.'''
 
-        'tooltip_value_format': '0,0',
-        'tooltip_value_sufix': '',
-        'tooltip_fn': add_tooltip,
-        'xaxis_tick_interval': None,
-    }
-    # replace with arg values
-    attrs.update(kw)
-    tooltip_args = {
-        'xname': x_title,
-        'value_format': attrs.pop('tooltip_value_format'),
-        'value_sufix': attrs.pop('tooltip_value_sufix'),
-    }
+    if params.get('x_range'):
+        params['figure']['x_range'] = params['x_range']
+    if params.get('y_range'):
+        params['figure']['y_range'] = params['y_range']
 
-    custom_fn = attrs.pop('custom_fn')
-    title = attrs.pop('title')
-    tooltip_fn = attrs.pop('tooltip_fn')
-    xaxis_tick_interval = attrs.pop('xaxis_tick_interval')
-    fig = figure(**attrs)
+    fig = figure(**params['figure'])
 
     for text in reversed(textwrap.wrap(title, width=67)):
         fig.add_layout(Title(text=text, text_font_size='15pt', align='center'), 'above')
 
     fig.xaxis.axis_label = x_title
     fig.yaxis.axis_label = y_title
-    if tooltip_fn:
-        tooltip_fn(fig, tooltip_args)
     # more defaults
     fig.axis.axis_label_text_font_style = 'bold'
     fig.title.text_font_size = '14pt'
@@ -89,12 +109,15 @@ def create_figure(x_title, y_title, **kw):
     # fig.legend.location = 'top_left'
     # fig.legend.orientation = 'horizontal'
 
-    if xaxis_tick_interval:
-        fig.xaxis.ticker = SingleIntervalTicker(
-            interval=xaxis_tick_interval, num_minor_ticks=1)
+    if params.get('add_tooltip'):
+        add_tooltip(fig, params['tooltip_params'])
 
-    if custom_fn:
-        custom_fn(fig)
+    if params.get('xaxis_tick_interval'):
+        fig.xaxis.ticker = SingleIntervalTicker(
+            interval=params['xaxis_tick_interval'], num_minor_ticks=1)
+
+    if params.get('custom_fn'):
+        params['custom_fn'](fig)
 
     return fig
 
@@ -201,21 +224,15 @@ def read_mini_csv(csv_path):
         return content
 
 
-def create_figure_from_content(content, **kw):
-    '''Helper to create a figure from content'''
-    return create_figure(
-        content['xname'], content['unidade'], title=content['titulo'], **kw)
-
-
 def plot_simple_hbar_helper(content, width=.5, **kw):
     '''Helper for sigle category hbar chart'''
     dados = content['dados']
     y_col_name = dados.columns[0]
     dados = dados[~dados[y_col_name].isin(['ONU', 'BR'])]
-    fig = create_figure_from_content(content, y_range=list(dados[y_col_name]), **kw)
+    fig = create_figure(y_range=list(dados[y_col_name]), **kw)
     fig.xaxis.axis_label = content['unidade']
     fig.yaxis.axis_label = content['xname']
-    fig.xaxis.formatter = NUMERAL_TICK_FORMATER
+    fig.xaxis.formatter = get_tick_formater(kw)
     plot_hbar(fig, content['xname'], content['ynames'], dados, width=width)
     return fig
 
@@ -225,44 +242,39 @@ def plot_simple_vbar_helper(content, width=.2, **kw):
     dados = content['dados']
     x_col_name = dados.columns[0]
     dados = dados[~dados[x_col_name].isin(['total'])]
-    fig = create_figure_from_content(content, x_range=list(dados[x_col_name]), **kw)
+    fig = create_figure(x_range=list(dados[x_col_name]), **kw)
     fig.yaxis.axis_label = content['unidade']
     fig.xaxis.axis_label = content['xname']
-    fig.yaxis.formatter = NUMERAL_TICK_FORMATER
+    fig.yaxis.formatter = get_tick_formater(kw)
     plot_vbar(fig, content['xname'], content['ynames'], dados, width=width)
     return fig
 
 
 def plot_simple_lines(content, circles=True, circles_size=5, continuous=False, **kw):
-    fig = create_figure_from_content(content, **kw)
+    fig = create_figure(**kw)
     plot_lines(fig, content['xname'], content['ynames'], content['dados'],
                continuous=continuous)
     if circles_size:
         plot_circles(
             fig, content['xname'], content['ynames'], content['dados'],
             size=circles_size)
-    fig.yaxis.formatter = NUMERAL_TICK_FORMATER
+    fig.yaxis.formatter = get_tick_formater(kw)
     return fig
 
 
-def plot_stacked_hbar_helper(content, width=.5, **kw):
+def plot_stacked_hbar_helper(content, width=.5, **params):
     dados = content['dados']
     y_col_name = dados.columns[0]
     categories = dados.columns[1:]
     indexes = list(dados[y_col_name])
-    kw['tooltip_fn'] = False
-    fig = create_figure_from_content(content, y_range=list(dados[y_col_name]), **kw)
+    params['add_tooltip'] = False
+    fig = create_figure(y_range=list(dados[y_col_name]), **params)
     fig.xaxis.axis_label = content['unidade']
     fig.yaxis.axis_label = content['xname']
-    fig.xaxis.formatter = NUMERAL_TICK_FORMATER
+    fig.xaxis.formatter = get_tick_formater(params)
 
     original = dados.copy()
     data = dados
-    tooltip_args = {
-        'xname': content['xname'],
-        'value_format': '0,0',
-        'value_sufix': kw.get('tooltip_value_sufix', ''),
-    }
     for i in range(1, len(categories)):
         data[categories[i]] = [
             sum((float(i) for i in x))
@@ -281,13 +293,9 @@ def plot_stacked_hbar_helper(content, width=.5, **kw):
         rx.data_source.add([categories[i]]*len(indexes), 'value_name')
         rx.data_source.add([color]*len(indexes), 'color')
         rx.data_source.add(indexes, y_col_name)
-        add_tooltip(fig, tooltip_args, [rx])
+        add_tooltip(fig, params['tooltip_params'], [rx])
 
     fig.legend.location = 'center_right'
-
-    # fig.hbar_stack(
-    #     categories, y=y_col_name, height=0.9, color=MAIN_PALLETE[:len(categories)],
-    #     source=ColumnDataSource(dados), legend=[value(i) for i in categories])
     return fig
 
 
@@ -305,7 +313,8 @@ def plot_charts(folder, charts):
         else:
             args = {}
         content = read_mini_csv(os.path.join(folder, csv_path) + '.csv')
-        fig = function(content, **args)
+        args['content'] = content
+        fig = function(**prepare_params(args))
         script, div = components(fig)
         content['graph'] = div
         content['script'] = script
