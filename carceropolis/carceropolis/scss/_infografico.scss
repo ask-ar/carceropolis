@@ -300,18 +300,16 @@
                 right: 0;
                 top: 0;
                 width: 49%;
+            }
+            
+            svg .fem {
+                fill: $dark-pink;
+                opacity: .2;
+            }
 
-                .fem, .masc {
-                    fill: $dark-pink;
-                    opacity: .2;
-                }
-
-                .dotted{
-                    opacity: .4;
-                    stroke: $dark-pink;
-                    stroke-miterlimit:10;
-                    stroke-dasharray:2 3;
-                }
+            svg .grid path {
+                stroke: $dark-pink;
+                opacity: .3;
             }
 
             svg text {
