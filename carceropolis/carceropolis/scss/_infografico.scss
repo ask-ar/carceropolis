@@ -1047,13 +1047,13 @@
 
 	.unidades-prisionais {
         background: $purple url(../images/infografico/grafico_unidades.svg) no-repeat;
-        background-position: 50% 35%;
+        background-position: 50% 35%; /* TODO */
         background-size: 40%;
         min-height: calc(100vh - #{$footer});
         padding: 0;
 
         @media(min-width: 1200px){
-            background-position: 50% 44%;
+            background-position: 49% 46%;
             background-size: inherit;
         }
 
@@ -1081,7 +1081,7 @@
             display: flex;
         
             .col1 {
-                width: 72%;
+                width: 71%;
                 
                 p {
                     font-size: 1em;
@@ -1103,7 +1103,7 @@
 
             .col2 {
                 line-height: 1;
-                width: 28%;
+                width: 29%;
 
                 > p {
                     margin: 1em 0;
