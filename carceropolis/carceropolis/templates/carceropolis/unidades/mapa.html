@@ -27,6 +27,12 @@
   <script src="{% static "js/map.js" %}"></script>
 {% endblock %}
 
+{% block top %}
+<div class="container">
+  {% include 'carceropolis/includes/menu_dados.html' %}
+</div>
+{% endblock %}
+
 {% block main %}
 
 <script>
@@ -151,9 +157,6 @@
   </div>
 </script>
 
-<div class="container">
-  {% include 'carceropolis/includes/menu_dados.html' %}
-</div>
 <section class="container dados-interna unidades-prisionais" id="map-vue-app">
   <h1>9. Unidades Prisionais no Brasil</h1>
   <div class="col-text-2">

@@ -17,11 +17,13 @@
     {{ bokeh_js|safe }}
 {% endblock %}
 
-{% block main %}
+{% block top %}
 <div class="container">
   {% include 'carceropolis/includes/menu_dados.html' %}
 </div>
+{% endblock %}
 
+{% block main %}
 <section class="container dados-interna">
   {% block text_intro %}
   {% endblock %}
