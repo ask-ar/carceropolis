@@ -3297,7 +3297,7 @@ body[class^='sobre'] section.container p {
 /* line 142, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .completeInfoPannel {
   border: 2px solid #a5a5a5;
-  min-height: 602px;
+  min-height: 550px;
   padding: 20px 10px;
 }
 @media (min-width: 480px) {
@@ -3333,7 +3333,6 @@ body[class^='sobre'] section.container p {
 /* line 171, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .informacoes .vagas {
   background: linear-gradient(to bottom, #ffffff 43%, #ffffff 42%, #888888 46%, #ffffff 48%);
-  background-position-y: -17px;
   flex-basis: 40%;
   margin-top: -5px;
 }
@@ -3363,33 +3362,41 @@ body[class^='sobre'] section.container p {
 .dados-interna.unidades-prisionais .informacoes .qualidade br {
   display: none;
 }
-/* line 202, ../../scss/_unidades.scss */
+/* line 201, ../../scss/_unidades.scss */
+.dados-interna.unidades-prisionais .informacoes .qualidade .btn {
+  padding: 0;
+  margin: 0;
+  margin-left: -5px;
+  font-size: 12px;
+  vertical-align: top;
+}
+/* line 210, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .informacoes .provisorio dt, .dados-interna.unidades-prisionais .informacoes .provisorio dd,
 .dados-interna.unidades-prisionais .informacoes .qualidade dt, .dados-interna.unidades-prisionais .informacoes .qualidade dd {
   display: inline;
 }
-/* line 207, ../../scss/_unidades.scss */
+/* line 215, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .informacoes .vagas dd,
 .dados-interna.unidades-prisionais .informacoes .qualidade dd {
   color: #330129;
   font-size: 1.2em;
 }
-/* line 213, ../../scss/_unidades.scss */
+/* line 221, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .informacoes .provisorio {
   flex-basis: 100%;
   padding-top: 10px;
 }
-/* line 217, ../../scss/_unidades.scss */
+/* line 225, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .informacoes .provisorio dd {
   color: #330129;
 }
-/* line 222, ../../scss/_unidades.scss */
+/* line 230, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .informacoes .btn {
   flex-basis: 100%;
   text-align: right;
 }
 @media (min-width: 460px) {
-  /* line 228, ../../scss/_unidades.scss */
+  /* line 236, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .vagas {
     flex-basis: 30%;
     background-position-y: 0px;
@@ -3400,27 +3407,27 @@ body[class^='sobre'] section.container p {
   .dados-interna.unidades-prisionais .informacoes {
     padding-top: 10px;
   }
-  /* line 238, ../../scss/_unidades.scss */
+  /* line 246, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .gestao {
     flex-basis: 68%;
     padding-top: 0;
     background-position-y: 0px;
   }
-  /* line 244, ../../scss/_unidades.scss */
+  /* line 252, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .qualidade {
     flex-basis: 100%;
   }
-  /* line 249, ../../scss/_unidades.scss */
+  /* line 257, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .provisorio {
     flex-basis: 70%;
   }
-  /* line 253, ../../scss/_unidades.scss */
+  /* line 261, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .btn {
     flex-basis: 20%;
   }
 }
 @media (min-width: 615px) {
-  /* line 259, ../../scss/_unidades.scss */
+  /* line 267, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .vagas {
     flex-basis: 22%;
   }
@@ -3430,19 +3437,15 @@ body[class^='sobre'] section.container p {
   .dados-interna.unidades-prisionais .informacoes {
     padding-top: 20px;
   }
-  /* line 268, ../../scss/_unidades.scss */
-  .dados-interna.unidades-prisionais .informacoes .vagas {
-    background-position-y: -17px;
-  }
-  /* line 272, ../../scss/_unidades.scss */
+  /* line 280, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .gestao {
     flex-basis: 40%;
   }
-  /* line 276, ../../scss/_unidades.scss */
+  /* line 284, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .qualidade {
     flex-basis: 30% !important;
     padding-top: 0;
-    text-align: right;
+    text-align: left;
   }
 }
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -3450,72 +3453,72 @@ body[class^='sobre'] section.container p {
   .dados-interna.unidades-prisionais .informacoes {
     padding-top: 10px;
   }
-  /* line 286, ../../scss/_unidades.scss */
+  /* line 294, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .gestao {
     flex-basis: 68%;
     padding-top: 0;
   }
-  /* line 291, ../../scss/_unidades.scss */
+  /* line 299, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .qualidade {
     flex-basis: 100%;
     padding-top: 10px;
     text-align: left;
   }
-  /* line 297, ../../scss/_unidades.scss */
+  /* line 305, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .provisorio {
     flex-basis: 70%;
   }
-  /* line 301, ../../scss/_unidades.scss */
+  /* line 309, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .btn {
     flex-basis: 20%;
   }
 }
 @media (min-width: 1200px) {
-  /* line 307, ../../scss/_unidades.scss */
+  /* line 315, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .vagas {
     flex-basis: 18%;
   }
-  /* line 311, ../../scss/_unidades.scss */
+  /* line 319, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .gestao {
     flex-basis: 36%;
   }
-  /* line 315, ../../scss/_unidades.scss */
+  /* line 323, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .qualidade {
     flex-basis: 30%;
-    text-align: right;
+    text-align: left;
   }
-  /* line 319, ../../scss/_unidades.scss */
+  /* line 327, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .informacoes .qualidade br {
     display: block;
   }
 }
-/* line 328, ../../scss/_unidades.scss */
+/* line 336, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .demografia h3 {
   color: #5a504b;
   font-size: 1.5em;
   margin: 0 0 20px;
   text-transform: uppercase;
 }
-/* line 335, ../../scss/_unidades.scss */
+/* line 343, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .demografia .etnico .row:first-of-type {
   margin-bottom: 30px;
 }
-/* line 339, ../../scss/_unidades.scss */
+/* line 347, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .demografia .etnico .perc-bar {
   height: 24px;
   margin-bottom: 14px;
 }
 @media (min-width: 992px) {
-  /* line 346, ../../scss/_unidades.scss */
+  /* line 354, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .demografia .etnico .row:first-of-type {
     margin-bottom: 20px;
   }
-  /* line 350, ../../scss/_unidades.scss */
+  /* line 358, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .demografia .etnico .perc-bar {
     margin-bottom: 10px;
   }
 }
-/* line 357, ../../scss/_unidades.scss */
+/* line 365, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade {
   border-collapse: separate;
   border-spacing: 0 4px;
@@ -3523,71 +3526,75 @@ body[class^='sobre'] section.container p {
   margin-top: 10px;
   width: 100%;
 }
-/* line 364, ../../scss/_unidades.scss */
+/* line 372, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade th {
   font-size: 1.1em;
   text-transform: uppercase;
 }
-/* line 369, ../../scss/_unidades.scss */
+/* line 377, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade th:nth-child(1) {
   color: #330129;
   text-align: right;
   padding-right: 10px;
   width: 45%;
 }
-/* line 376, ../../scss/_unidades.scss */
+/* line 384, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade th:nth-child(2) {
   color: #ab0e00;
 }
-/* line 380, ../../scss/_unidades.scss */
+/* line 388, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade th:nth-child(3) {
   color: #5a504b;
   text-align: center;
   width: 70px;
 }
-/* line 386, ../../scss/_unidades.scss */
+/* line 394, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade td {
   background-color: whitesmoke;
 }
-/* line 390, ../../scss/_unidades.scss */
+/* line 398, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade tbody td:nth-child(1) {
   padding-right: 10px;
   text-align: right;
 }
-/* line 394, ../../scss/_unidades.scss */
+/* line 402, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade tbody td:nth-child(1) .inner-bar {
   float: right;
 }
-/* line 398, ../../scss/_unidades.scss */
+/* line 406, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade tbody td:nth-child(1) .perc-bar > span,
 .dados-interna.unidades-prisionais .piramide-idade tbody td:nth-child(1) .inner-bar > span {
   padding: 0 5px 0 0;
 }
-/* line 404, ../../scss/_unidades.scss */
+/* line 412, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade td:nth-child(3) {
   color: #5a504b;
   text-align: center;
 }
-/* line 410, ../../scss/_unidades.scss */
+/* line 417, ../../scss/_unidades.scss */
+.dados-interna.unidades-prisionais .piramide-idade .total {
+  height: 57px;
+}
+/* line 419, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade .total .label-of::before {
   content: "[";
 }
-/* line 413, ../../scss/_unidades.scss */
+/* line 422, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade .total .label-of::after {
   content: "]";
 }
 @media (max-width: 430px) {
-  /* line 419, ../../scss/_unidades.scss */
+  /* line 428, ../../scss/_unidades.scss */
   .dados-interna.unidades-prisionais .piramide-idade .total .perc-bar .value,
   .dados-interna.unidades-prisionais .piramide-idade .total .perc-bar .label-of {
     font-size: .8em;
   }
 }
-/* line 427, ../../scss/_unidades.scss */
+/* line 436, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade .perc-bar .value {
   font-size: 1em;
 }
-/* line 431, ../../scss/_unidades.scss */
+/* line 440, ../../scss/_unidades.scss */
 .dados-interna.unidades-prisionais .piramide-idade tfoot td {
   color: #5a504b;
   text-align: center;
@@ -3595,30 +3602,30 @@ body[class^='sobre'] section.container p {
   padding: 4px 0;
 }
 
-/* line 441, ../../scss/_unidades.scss */
+/* line 450, ../../scss/_unidades.scss */
 #map {
   height: 600px;
   pointer-events: none;
   width: 100%;
 }
 
-/* line 446, ../../scss/_unidades.scss */
+/* line 455, ../../scss/_unidades.scss */
 .marker-cluster-large, .marker-cluster-medium, .marker-cluster-small {
   background-color: rgba(241, 128, 23, 0.6);
 }
 
-/* line 449, ../../scss/_unidades.scss */
+/* line 458, ../../scss/_unidades.scss */
 .marker-cluster-large div, .marker-cluster-medium div, .marker-cluster-small div {
   background-color: rgba(241, 128, 23, 0);
 }
 
-/* line 452, ../../scss/_unidades.scss */
+/* line 461, ../../scss/_unidades.scss */
 .marker-cluster {
   background-clip: padding-box;
   border-radius: 20px;
 }
 
-/* line 456, ../../scss/_unidades.scss */
+/* line 465, ../../scss/_unidades.scss */
 .marker-cluster div {
   width: 30px;
   height: 30px;
@@ -3629,27 +3636,27 @@ body[class^='sobre'] section.container p {
   font: 12px "source_sans_proregular", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-/* line 465, ../../scss/_unidades.scss */
+/* line 474, ../../scss/_unidades.scss */
 .marker-cluster span {
   line-height: 30px;
 }
 
-/* line 469, ../../scss/_unidades.scss */
+/* line 478, ../../scss/_unidades.scss */
 .perc-bar {
   height: 30px;
   line-height: 30px;
 }
-/* line 473, ../../scss/_unidades.scss */
+/* line 482, ../../scss/_unidades.scss */
 .perc-bar .value {
   font-size: 1.4em;
 }
 
-/* line 478, ../../scss/_unidades.scss */
+/* line 487, ../../scss/_unidades.scss */
 .inner-bar {
   display: inline-block;
   vertical-align: top;
 }
-/* line 482, ../../scss/_unidades.scss */
+/* line 491, ../../scss/_unidades.scss */
 .inner-bar > span {
   padding-left: 5px;
 }

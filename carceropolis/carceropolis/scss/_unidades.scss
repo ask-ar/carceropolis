@@ -141,7 +141,7 @@
 
     .completeInfoPannel {
         border: 2px solid $cp-grey-dark;
-        min-height: 602px;
+        min-height: 550px;
         padding: 20px 10px;
         
         @media (min-width: 480px){
@@ -170,7 +170,7 @@
 
         .vagas {
             background: linear-gradient(to bottom, #fff 43%, #fff 42%, #888 46%, #fff 48%);
-            background-position-y: -17px;
+            // background-position-y: -17px;
             flex-basis: 40%;
             margin-top: -5px;
 
@@ -197,6 +197,14 @@
             text-align: left;
 
             br { display: none; }
+
+            .btn {
+                padding: 0;
+                margin: 0;
+                margin-left: -5px;
+                font-size: 12px;
+                vertical-align: top;
+            }
         }
 
         .provisorio dt, .provisorio dd,
@@ -266,7 +274,7 @@
             padding-top: 20px;
 
             .vagas {
-                background-position-y: -17px;
+                // background-position-y: -17px;
             }
 
             .gestao {
@@ -276,7 +284,7 @@
             .qualidade {
                 flex-basis: 30% !important;
                 padding-top: 0;
-                text-align: right;
+                text-align: left;
             }
         }
 
@@ -314,7 +322,7 @@
 
             .qualidade {
                 flex-basis: 30%;
-                text-align: right;
+                text-align: left;
 
                 br {
                     display: block;
@@ -407,6 +415,7 @@
         }
 
         .total {
+            height: 57px;
             .label-of::before {
                 content: '['
             }
