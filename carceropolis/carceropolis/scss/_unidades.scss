@@ -170,6 +170,7 @@
 
         .vagas {
             background: linear-gradient(to bottom, #fff 43%, #fff 42%, #888 46%, #fff 48%);
+            background-position-y: -17px;
             flex-basis: 40%;
             margin-top: -5px;
 
@@ -226,6 +227,7 @@
         @media (min-width: 460px){
             .vagas {
                 flex-basis: 30%;
+                background-position-y: 0px;
             }
         }
 
@@ -236,6 +238,7 @@
             .gestao {
                 flex-basis: 68%;
                 padding-top: 0;
+                background-position-y: 0px;
             }
 
             .qualidade {
@@ -261,6 +264,10 @@
         @media (min-width: 768px){
 
             padding-top: 20px;
+
+            .vagas {
+                background-position-y: -17px;
+            }
 
             .gestao {
                 flex-basis: 40%;
@@ -298,7 +305,7 @@
 
         @media (min-width: 1200px){
             .vagas {
-                flex-basis: 17%;
+                flex-basis: 18%;
             }
 
             .gestao {
