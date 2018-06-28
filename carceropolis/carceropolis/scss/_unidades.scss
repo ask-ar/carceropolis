@@ -360,6 +360,11 @@
             }
 
         }
+
+        .etario .row {
+          padding-left: 5%;
+        }
+
     }
 
     .piramide-idade {
@@ -367,7 +372,8 @@
         border-spacing: 0 4px;
         font-size: 1.2em;
         margin-top: 10px;
-        width: 100%;
+        width: 95%;
+        
 
         th {
             font-size: 1.1em;
