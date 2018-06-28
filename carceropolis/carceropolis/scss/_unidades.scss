@@ -80,6 +80,14 @@
             font-size: 1.1em;
             margin-bottom: 15px;
             text-transform: uppercase;
+
+            a.btn {
+                padding: 0;
+                margin: 0;
+                margin-left: -5px;
+                font-size: 12px;
+                vertical-align: top;
+            }
         }
 
         h2 + p {
