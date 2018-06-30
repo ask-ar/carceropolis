@@ -316,45 +316,45 @@ def unidades_map(request):
 
         # TODO: ---------- fake data ----------
         unidade.update({
-            'tipo_gestao': 'Organização sem fins lucrativos',
-            'visitacao': 'Domingos, 8h30-16h30',
+            'tipo_gestao': 'Pública',
+            'visitacao': None,
             'indices': {
-                'educacao': 9.5, 'trabalho': 2.5,
-                'saude': 6.5, 'juridico': True},
-            'pop_total': 1000,
-            'vagas': 1000,
-            'qualidade_info': 5.5,
+                'educacao': 4, 'trabalho': 1.67,
+                'saude': 6.5, 'juridico': 1},
+            'pop_total': 1481,
+            'vagas': 528,
+            'qualidade_info': 5.86,
             'pop_perc': {
-                'provisoria': 20,
+                'provisoria': 78.39,
                 'origem': [
-                    {'label': 'brasileiros', 'value': 65},
-                    {'label': 'naturalizados', 'value': 25},
-                    {'label': 'estrangeiros', 'value': 10},
+                    {'label': 'brasileiros', 'value': 96.77},
+                    {'label': 'naturalizados', 'value': 0},
+                    {'label': 'estrangeiros', 'value': 3.23},
                 ],
                 'cor': [
-                    {'label': 'preta', 'value': 45, 'color': 'rgb(11,102,176)'},
-                    {'label': 'parda', 'value': 20, 'color': 'rgb(255,108,1)'},
-                    {'label': 'branca', 'value': 10, 'color': 'rgb(2,161,19)'},
-                    {'label': 'indígena', 'value': 5, 'color': 'rgb(228,0,121)'},
-                    {'label': 'amarela', 'value': 5, 'color': 'rgb(150,73,185)'},
-                    {'label': 'outros', 'value': 5, 'color': 'rgb(0,0,0)'},
+                    {'label': 'preta', 'value': 0, 'color': 'rgb(11,102,176)'},
+                    {'label': 'parda', 'value': 0, 'color': 'rgb(255,108,1)'},
+                    {'label': 'branca', 'value': 0, 'color': 'rgb(2,161,19)'},
+                    {'label': 'indígena', 'value': 0, 'color': 'rgb(228,0,121)'},
+                    {'label': 'amarela', 'value': 0, 'color': 'rgb(150,73,185)'},
+                    {'label': 'outros', 'value': 0, 'color': 'rgb(0,0,0)'},
                 ],
             },
             'pyramid': {
                 'ages': [
-                    {'range': '+ de 70', 'male': 2, 'female': 1},
-                    {'range': '61 a 70', 'male': 4, 'female': 2},
-                    {'range': '46 a 60', 'male': 3, 'female': 1},
-                    {'range': '35 a 45', 'male': 8, 'female': 2},
-                    {'range': '30 a 34', 'male': 13, 'female': 7},
-                    {'range': '25 a 29', 'male': 33, 'female': 10},
-                    {'range': '18 a 24', 'male': 43, 'female': 11},
+                    {'range': '+ de 70', 'male': 0.41, 'female': 0},
+                    {'range': '61 a 70', 'male': 2.30, 'female': 0},
+                    {'range': '46 a 60', 'male': 13.64, 'female': 0},
+                    {'range': '35 a 45', 'male': 15.06, 'female': 0},
+                    {'range': '30 a 34', 'male': 26.87, 'female': 0},
+                    {'range': '25 a 29', 'male': 37.68, 'female': 0},
+                    {'range': '18 a 24', 'male': 14.78, 'female': 0},
                 ],
                 'total': {
-                    'perc': {'male': 75.52, 'female': 23.72},
-                    'abs': {'male': 1006, 'female': 316},
+                    'perc': {'male': 100, 'female': 0},
+                    'abs': {'male': 1481, 'female': 0},
                 },
-                'idade_media': 40
+                'idade_media': 35
             }
         })
         # TODO: ---------- --------- ----------
