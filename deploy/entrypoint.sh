@@ -67,6 +67,10 @@ case "$1" in
     echo "Initializing cleaning mode."
     cleanup
     ;;
+  backup)
+    echo "Backing up the database"
+    python manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > carceropolis/carceropolis/fixtures/initialdata.json
+    bzip2 -9 -f carceropolis/fixtures/initialdata.json
   *)
     echo "Default initialization."
     wait_for_db
