@@ -79,8 +79,19 @@ $(window).ready(function(){
     },
     methods: {
       createMap: function () {
-        map = L.map('map').setView([-15, -50], 4)
+        map = L.map('map', {
+          zoomControl: true,
+          boxZoom: true,
+          doubleClickZoom: true,
+          dragging: true,
+          scrollWheelZoom: true
+        }).setView([-15, -50], 4)
           L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+          zoomControl: true,
+          boxZoom: true,
+          doubleClickZoom: true,
+          dragging: true,
+          scrollWheelZoom: true,
           maxZoom: 18,
           attribution: 'Map tiles by <a href="https://carto.com">Carto</a>, ' +
             'under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. ' +
