@@ -38,9 +38,9 @@ services:
         build: .
         environment:
             # This options are used on settings.py
-            - DEBUG=${DEBUG}  # Default to True
+            - DEBUG=${DEBUG:-True}  # Default to True
             - IS_PRODUCTION=${IS_PRODUCTION}  # Default to empty
-            - CONSOLE_LOG_LEVEL=${CONSOLE_LOG_LEVEL}  # Default to DEBUG
+            - CONSOLE_LOG_LEVEL=${CONSOLE_LOG_LEVEL:-DEBUG}  # Default to DEBUG
             - SECRET_KEY=${SECRET_KEY}
             - NEVERCACHE_KEY=${NEVERCACHE_KEY}
             - DB_NAME=${DB_NAME:-postgres}
@@ -48,8 +48,8 @@ services:
             - DB_PASS=${DB_PASS:-carceropolis}
             - DB_HOST=${DB_HOST:-db}
             - DB_PORT=${DB_PORT:-5432}
-            - PUBLICACAO_PER_PAGE=${PUBLICACAO_PER_PAGE}  # Default to 9
-            - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE}  # Default to 50MB
+            - PUBLICACAO_PER_PAGE=${PUBLICACAO_PER_PAGE:-9}  # Default to 9
+            - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE:-50MB}  # Default to 50MB
         volumes:
             - .:/project
             - carceropolis_sockets:/sockets
