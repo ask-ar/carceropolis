@@ -3672,3 +3672,7 @@ body[class^='sobre'] section.container p {
 .inner-bar > span {
   padding-left: 5px;
 }
+/* line 509, ../../scss/_unidades.scss */
+.inner-bar span {
+  line-height: 100%;
+}

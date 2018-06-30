@@ -503,6 +503,10 @@
     vertical-align: top;
 
     > span {
-        padding-left: 5px;
+      padding-left: 5px;
+    }
+
+    span {
+      line-height: 100%;
     }
 }
