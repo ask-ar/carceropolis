@@ -82,8 +82,11 @@ def dados_saude(request):
     context = plot_charts('saude', [
         (plot_simple_hbar_helper, '01_pessoas_com_agravo'),
         (plot_stacked_hbar_helper, '03_obitos_sistema_prisional',
-         {'xaxis_tick_interval': 50}),
-        (plot_simple_hbar_helper, '02_taxa_obitos', {'xaxis_tick_interval': 5}),
+         {"xaxis_tick_interval": 50,
+          "axis_tick_sufix": "%",
+          "tooltip_value_sufix": "%"}),
+        (plot_simple_hbar_helper, '02_taxa_obitos',
+         {'xaxis_tick_interval': 5}),
         (plot_simple_hbar_helper, '04_relacao_funcionarios_pessoas_presas',
          {'xaxis_tick_interval': 5}),
     ])
