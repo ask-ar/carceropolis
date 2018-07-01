@@ -85,6 +85,9 @@
         font-weight: lighter;
         letter-spacing: .01em;
         padding: 1em 0;
+        /* Add a right padding in order to avoid the navigation bar over the 
+            infographic */
+        padding-right: calc(2em + 20px) !important;
 
         > .container:not(h1) {
             height: 100%;
