@@ -42,8 +42,7 @@ def dados_infraestrutura(request):
         (plot_simple_hbar_helper, '01_ocupacao', {'xaxis_tick_interval': .5}),
         (plot_simple_hbar_helper, '02_deficit_vagas'),
         (plot_simple_hbar_helper, '03_coeficiente_entradas_saidas'),
-        (plot_simple_hbar_helper, '04_proporcao_agentes_pessoas_presas',
-         {'axis_tick_sufix': '%'}),
+        (plot_simple_hbar_helper, '04_proporcao_agentes_pessoas_presas'),
     ])
     return TemplateResponse(request, templates, context)
 
