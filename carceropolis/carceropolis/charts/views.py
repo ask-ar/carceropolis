@@ -72,7 +72,7 @@ def dados_educacao(request):
         (plot_simple_hbar_helper, '03_percentual_pessoas_estudando',
          {'tooltip_value_sufix': '%', 'xaxis_tick_interval': 5}),
         (plot_simple_hbar_helper, '04_escolaridade',
-         {'tooltip_value_sufix': '%', 'width': .4, 'xaxis_tick_interval': 10}),
+         {'tooltip_value_sufix': '%', 'width': .2, 'xaxis_tick_interval': 10}),
     ])
     return TemplateResponse(request, templates, context)
 
