@@ -386,7 +386,7 @@ except (ValueError, TypeError):
 # 100MB 104857600
 # 250MB - 214958080
 # 500MB - 429916160
-MAX_UPLOAD_SIZE = os.getenv('MAX_UPLOAD_SIZE') or "5242880"
+MAX_UPLOAD_SIZE = os.getenv("MAX_UPLOAD_SIZE") or "5242880"
 
 COMMENTS_DISQUS_SHORTNAME = False
 
@@ -398,6 +398,19 @@ PROJECT_APP = str(PROJECT_APP)
 PROJECT_ROOT = str(PROJECT_ROOT)
 STATIC_ROOT = str(STATIC_ROOT)
 MEDIA_ROOT = str(MEDIA_ROOT)
+
+##################
+# EMAIL SETTINGS #
+##################
+if (os.getenv("EMAIL_HOST") and
+        os.getenv("EMAIL_HOST_PASSWORD") and
+        os.getenv("EMAIL_HOST_USER")):
+    EMAIL_HOST = os.getenv("EMAIL_HOST")
+    EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+    EMAIL_PORT = os.getenv("EMAIL_PORT", 25)
+    EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", False)
+
 
 ####################
 # DYNAMIC SETTINGS #
