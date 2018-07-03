@@ -29,6 +29,7 @@ services:
             - ./deploy:/project/deploy
             - ./deploy/nginx:/etc/nginx/conf.d
             - ./letsencrypt:/letsencrypt:ro
+            - ./logs:/logs
         ports:
             - "80:80"
             - "443:443"
