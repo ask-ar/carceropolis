@@ -5,7 +5,9 @@ services:
     letsencrypt:
         image: certbot/certbot
         volumes:
-            - ./letsencrypt/etc:/etc/letsencrypt
+            # - ./letsencrypt/etc:/etc/letsencrypt
+            - ./letsencrypt/etc/live:/etc/letsencrypt/live
+            - ./letsencrypt/etc/archive:/etc/letsencrypt/archive
             - ./letsencrypt/var_lib:/var/lib/letsencrypt
             - ./letsencrypt/var_log:/var/log/letsencrypt
             - ./letsencrypt/data:/data/letsencrypt
