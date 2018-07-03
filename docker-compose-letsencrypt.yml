@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+    
+    letsencrypt:
+        image: certbot/certbot
+        volumes:
+            - ./letsencrypt/etc:/etc/letsencrypt
+            - ./letsencrypt/var_lib:/var/lib/letsencrypt
+            - ./letsencrypt/var_log:/var/log/letsencrypt
+            - ./letsencrypt/data:/data/letsencrypt
+        command: >
+             certonly
+             --webroot
+             --register-unsafely-without-email
+             --agree-tos
+             --webroot-path=/data/letsencrypt
+             --staging
+             -d carceropolis.org.br
+             -d www.carceropolis.org.br
