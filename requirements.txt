@@ -16,3 +16,4 @@ tornado
 unidecode
 python-memcached
 uwsgi
+django_postgres_extensions

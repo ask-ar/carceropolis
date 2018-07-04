@@ -1,4 +1,3 @@
-# coding= utf-8
 """Arquivo que irá manter um conjunto de 'opções' (choices)."""
 from datetime import datetime
 
@@ -20,10 +19,17 @@ MONTH_CHOICES = [('Janeiro', 'Janeiro'), ('Fevereiro', 'Fevereiro'),
                  ('Setembro', 'Setembro'), ('Outubro', 'Outubro'),
                  ('Novembro', 'Novembro'), ('Dezembro', 'Dezembro')]
 
+INFOPEN_YEARS = [2014, 2015, 2016]
+INFOPEN_MONTHS = [6, 12]
+INFOPEN_DEFAULT_YEAR = 2016
+INFOPEN_DEFAULT_MONTH = 6
+
+
 def current_year():
-    """Returns the current year (XXXX)."""
+    """Return the current year (XXXX)."""
     return datetime.now().year
 
+
 def current_month():
-    """Returns the current month (text)."""
+    """Return the current month (text)."""
     return MONTH_CHOICES[datetime.now().month - 1]

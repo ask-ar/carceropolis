@@ -286,7 +286,8 @@ INSTALLED_APPS = (
     # "mezzanine.twitter",
     "mezzanine.accounts",
     # "mezzanine.mobile",
-    "logentry_admin"
+    "logentry_admin",
+    "django_postgres_extensions"
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -364,7 +365,8 @@ NEVERCACHE_KEY = os.getenv('NEVERCACHE_KEY') or '%vpsl!vjiw9m^4j(=c#gv47m849+t'
 # com o docker-compose do repositório do projeto.
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        #"ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django_postgres_extensions.backends.postgresql",
         "NAME": os.getenv('DB_NAME') or 'postgres',
         "USER": os.getenv('DB_USER') or 'postgres',
         "PASSWORD": os.getenv('DB_PASS') or 'carceropolis',

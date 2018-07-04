@@ -2,14 +2,18 @@
 import logging
 import re
 
+from autoslug import AutoSlugField
 from cidades.models import Cidade, STATE_CHOICES
 from csv import DictReader, DictWriter
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+import pandas as pd
 from mezzanine.blog.models import BlogPost
-from autoslug import AutoSlugField
+from django_postgres_extensions.models.fields import JSONField
 
-from .options import current_month, current_year, MONTH_CHOICES, YEAR_CHOICES
+from .options import (
+    current_month, current_year,
+    MONTH_CHOICES, YEAR_CHOICES)
 from .validators import check_filetype
 
 log = logging.getLogger(__name__)
@@ -26,7 +30,7 @@ class AreaDeAtuacao(models.Model):
     slug = AutoSlugField(populate_from='nome', always_update=True)
 
     def __str__(self):
-        """String representation of an instance."""
+        """Return a string representation of an instance."""
         return self.nome
 
     class Meta:
@@ -114,7 +118,6 @@ Publicacao._meta.get_field('allow_comments').default = False
 
 
 class UnidadePrisional(models.Model):
-
     """Unidades Prisionais."""
 
     id_unidade = models.IntegerField(primary_key=True)
@@ -152,7 +155,7 @@ class UnidadePrisional(models.Model):
 
     @classmethod
     def _export_to_csv(cls, path):
-        ''' Export this class table to a CSV. '''
+        """Export this class table to a CSV."""
         fieldnames = [f.name for f in cls._meta.fields]
         with open(path, 'w') as csv_file:
             writer = DictWriter(csv_file, fieldnames=fieldnames)
@@ -179,8 +182,7 @@ class UnidadePrisional(models.Model):
                       'tipo_logradouro', 'nome_logradouro', 'numero',
                       'complemento', 'bairro', 'municipio', 'uf', 'cep', 'ddd',
                       'telefone', 'email', 'responsavel', 'visitacao', 'lat',
-                      'lon', 'id_2014_06', 'id_2014_12', 'id_2015_12',
-                      'id_2016_06']
+                      'lon']
         with open(path, 'r') as csv_file:
             data = DictReader(csv_file, fieldnames=fieldnames)
 
@@ -299,7 +301,6 @@ class UnidadePrisional(models.Model):
 
 
 class BaseMJ(models.Model):
-
     """Manage the multiple versions of MJ Infopen raw database."""
 
     ano = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
@@ -319,7 +320,6 @@ class BaseMJ(models.Model):
 
 
 class ArquivoBaseCarceropolis(models.Model):
-
     """Manage the multiple raw versions of the cleaned MJ/Infopen database."""
 
     ano = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
@@ -336,3 +336,38 @@ class ArquivoBaseCarceropolis(models.Model):
     class Meta:
         verbose_name = u'Base bruta Carcerópolis'
         verbose_name_plural = u'Bases brutas Carcerópolis'
+
+
+# class DadosEncarceramento(models.Model):
+#     """Contains all the historical prisional data for each UnidadePrisional."""
+#
+#     ano = models.CharField(max_length=4)
+#     mes = models.CharField(max_length=2)
+#     id_unidade = models.ForeignKey(UnidadePrisional,
+#                                    verbose_name='Unidade Prisional')
+#     dados = JSONField()
+#
+#     @classmethod
+#     def import_from_csv(cls, filepath):
+#         """Import data from CSV file."""
+#         data = None
+#         # data_dict = {2014: {6: {}, 12:{}}, 2015: {12: {}}, 2016: {6: {}}}
+#
+#         data = pd.read_csv(filepath, sep=";", engine="python")
+#
+#         data = data.to_dict("records")
+#         for item in data:
+#             cls.create_or_update_from_dict(item)
+#
+#     @classmethod
+#     def create_or_update_from_dict(cls, dados):
+#         ano = str(dados.get("ano"))
+#         mes = str(dados.get("mes"))
+#         id_unidade = dados.get("id_unidade")
+#         unidade = UnidadePrisional.objects.get(id_unidade=id_unidade)
+#
+#         try:
+#             item = cls.objects.get(ano=ano, mes=mes, unidade=unidade)
+#             item.dados = dados
+#         except ObjectDoesNotExist:
+#             item = cls(ano=ano, mes=mes, unidade=unidade, dados=dados)
