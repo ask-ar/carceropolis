@@ -132,6 +132,11 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "dev.carceropolis.org.br",
                  "carceropolis.org.br", "www.carceropolis.org.br"]
 if os.getenv("IS_PRODUCTION"):
     ALLOWED_HOSTS.insert(0, "carceropolis.org.br")
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

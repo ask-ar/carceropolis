@@ -28,8 +28,8 @@ services:
             - carceropolis_sockets:/sockets
             - ./deploy:/project/deploy
             - ./deploy/nginx:/etc/nginx/conf.d
-            - ./letsencrypt/etc:/etc/letsencrypt:ro
             - ./letsencrypt:/letsencrypt:ro
+            - ./logs:/logs
         ports:
             - "80:80"
             - "443:443"

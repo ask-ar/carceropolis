@@ -100,3 +100,9 @@ carceropolis/static
 
 *.ignoreme
 *.sublime*
+
+# Sensitive files
+letsencrypt/dh-param/dhparam-2048.pem
+letsencrypt/etc/live/*
+letsencrypt/etc/archive/*
+logs/
