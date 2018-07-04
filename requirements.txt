@@ -3,7 +3,7 @@ django-extensions
 django-phonenumber-field
 django-logentry-admin
 psycopg2-binary
-django-autoslug
+django-extensions
 pandas
 ipython
 geocoder==1.33.0
@@ -16,4 +16,3 @@ tornado
 unidecode
 python-memcached
 uwsgi
-django_postgres_extensions

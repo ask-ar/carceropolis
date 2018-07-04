@@ -2,14 +2,14 @@
 import logging
 import re
 
-from autoslug import AutoSlugField
+from django_extensions.db.fields import AutoSlugField
+from django_extensions.db.fields.json import JSONField
 from cidades.models import Cidade, STATE_CHOICES
 from csv import DictReader, DictWriter
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 import pandas as pd
 from mezzanine.blog.models import BlogPost
-from django_postgres_extensions.models.fields import JSONField
 
 from .options import (
     current_month, current_year,
@@ -27,7 +27,7 @@ class AreaDeAtuacao(models.Model):
                             verbose_name='Nome da área')
     descricao = models.TextField(verbose_name='Descrição')
     ordem = models.IntegerField(unique=True, verbose_name='Ordem')
-    slug = AutoSlugField(populate_from='nome', always_update=True)
+    slug = AutoSlugField(populate_from='nome')
 
     def __str__(self):
         """Return a string representation of an instance."""
@@ -45,8 +45,7 @@ class Especialidade(models.Model):
     nome = models.CharField(max_length=80, unique=True,
                             verbose_name='Nome da especialidade')
     descricao = models.TextField(blank=True, verbose_name='Descrição')
-    slug = AutoSlugField(populate_from='nome',
-                         always_update=True)
+    slug = AutoSlugField(populate_from='nome')
 
     def __str__(self):
         """String representation of an instance."""
