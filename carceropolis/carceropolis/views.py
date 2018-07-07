@@ -23,14 +23,10 @@ from mezzanine.utils.urls import login_redirect, next_url
 from bokeh.embed import server_document
 
 from .models import (AreaDeAtuacao, Especialista, Publicacao,
-                     UnidadePrisional)
-
-# from mezzanine.utils.views import render
+                     UnidadePrisional, DadosEncarceramento)
 
 User = get_user_model()
-
 log = logging.getLogger(__name__)
-
 
 # def setlanguage(request):
 #     return render(request, 'set-language.html',
@@ -302,64 +298,16 @@ def unidades_map(request):
     """Display the Unidades Prisionais Map."""
     templates = ["carceropolis/unidades/mapa.html"]
 
-    # Fields included in JSON sent to client
-    fields = [
-        f.name
-        for f in UnidadePrisional._meta.get_fields()
-        if f not in ['id', 'response']]
-    fields.append('municipio__nome')
+    registros = DadosEncarceramento.objects.filter(
+        ano=2016
+    ).exclude(
+        unidade__lat=None
+    )
 
-    # JSON with unidades grouped by uf
     states = defaultdict(list)
-    for unidade in UnidadePrisional.objects.exclude(lat=None).values(*fields):
-        unidade['municipio'] = unidade.pop('municipio__nome')
+    for registro in registros:
+        states[registro.unidade.uf].append(registro.card)
 
-        # TODO: ---------- fake data ----------
-        unidade.update({
-            'tipo_gestao': 'Pública',
-            'visitacao': None,
-            'indices': {
-                'educacao': 4, 'trabalho': 1.67,
-                'saude': 6.5, 'juridico': 1},
-            'pop_total': 1481,
-            'vagas': 528,
-            'qualidade_info': 5.86,
-            'pop_perc': {
-                'provisoria': 78.39,
-                'origem': [
-                    {'label': 'brasileiros', 'value': 96.77},
-                    {'label': 'naturalizados', 'value': 0},
-                    {'label': 'estrangeiros', 'value': 3.23},
-                ],
-                'cor': [
-                    {'label': 'preta', 'value': 0, 'color': 'rgb(11,102,176)'},
-                    {'label': 'parda', 'value': 0, 'color': 'rgb(255,108,1)'},
-                    {'label': 'branca', 'value': 0, 'color': 'rgb(2,161,19)'},
-                    {'label': 'indígena', 'value': 0, 'color': 'rgb(228,0,121)'},
-                    {'label': 'amarela', 'value': 0, 'color': 'rgb(150,73,185)'},
-                    {'label': 'outros', 'value': 0, 'color': 'rgb(0,0,0)'},
-                ],
-            },
-            'pyramid': {
-                'ages': [
-                    {'range': '+ de 70', 'male': 0.41, 'female': 0},
-                    {'range': '61 a 70', 'male': 2.30, 'female': 0},
-                    {'range': '46 a 60', 'male': 13.64, 'female': 0},
-                    {'range': '35 a 45', 'male': 15.06, 'female': 0},
-                    {'range': '30 a 34', 'male': 26.87, 'female': 0},
-                    {'range': '25 a 29', 'male': 37.68, 'female': 0},
-                    {'range': '18 a 24', 'male': 14.78, 'female': 0},
-                ],
-                'total': {
-                    'perc': {'male': 100, 'female': 0},
-                    'abs': {'male': 1481, 'female': 0},
-                },
-                'idade_media': 35
-            }
-        })
-        # TODO: ---------- --------- ----------
-
-        states[unidade['uf']].append(unidade)
     context = {
         'states': mark_safe(json.dumps(states))
     }

@@ -120,9 +120,9 @@
             <span class="glyphicon glyphicon-question-sign"></span>
           </a>:
       </dt>
-        <dd>[[ unidade.qualidade_info.toLocaleString('pt-br') ]]</dd>
+        <dd>[[ parseFloat(unidade.qualidade_info.replace(",", ".")).toFixed(2).toLocaleString("pt-br") ]]</dd>
       </dl>
-      <dl class="provisorio">
+      <dl v-if="unidade.pop_perc.provisoria || unidade.pop_perc.provisoria==0" class="provisorio">
         <dd>[[ unidade.pop_perc.provisoria ]]%</dd> <dt>de presos(as) provisórios(as)</dt>
       </dl>
     </section>
@@ -228,11 +228,11 @@ liberdade e à qualidade dos serviços que serão prestados a esta população.
             </h3>
             <dl class="indices">
               <dt>Educação:</dt>
-              <dd>[[unidade.indices.educacao]]</dd>
+              <dd>[[unidade.indices.educacao.toLocaleString('pt-br')]]</dd>
               <dt>Trabalho:</dt>
-              <dd>[[unidade.indices.trabalho]]</dd>
+              <dd>[[unidade.indices.trabalho.toLocaleString('pt-br')]]</dd>
               <dt>Saúde:</dt>
-              <dd>[[unidade.indices.saude]]</dd>
+              <dd>[[unidade.indices.saude.toLocaleString('pt-br')]]</dd>
               <dt>Jurídico:</dt>
               <dd :data-juridico="unidade.indices.juridico.toString()">[[ formatBool(unidade.indices.juridico) ]]</dd>
             </dl>

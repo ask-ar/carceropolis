@@ -3,9 +3,9 @@ import logging
 import re
 
 from django_extensions.db.fields import AutoSlugField
-from django_extensions.db.fields.json import JSONField
 from cidades.models import Cidade, STATE_CHOICES
 from csv import DictReader, DictWriter
+from django.contrib.postgres.fields import JSONField
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 import pandas as pd
@@ -120,29 +120,25 @@ class UnidadePrisional(models.Model):
     """Unidades Prisionais."""
 
     id_unidade = models.IntegerField(primary_key=True)
-    nome_unidade = models.CharField(max_length=255,
+    nome_unidade = models.CharField(max_length=600,
                                     verbose_name='Nome da Unidade')
-    sigla_unidade = models.CharField(max_length=10)
-    tipo_logradouro = models.CharField(max_length=20)
-    nome_logradouro = models.CharField(max_length=255)
+    sigla_unidade = models.CharField(max_length=600)
+    tipo_logradouro = models.CharField(max_length=600)
+    nome_logradouro = models.CharField(max_length=600)
     numero = models.IntegerField(blank=True, null=True, verbose_name='Número')
-    complemento = models.CharField(max_length=255, blank=True)
-    bairro = models.CharField(max_length=255)
+    complemento = models.CharField(max_length=600, blank=True)
+    bairro = models.CharField(max_length=600)
     municipio = models.ForeignKey(Cidade, verbose_name='Município')
     uf = models.CharField(max_length=2, choices=STATE_CHOICES)
-    cep = models.CharField(max_length=8)
+    cep = models.CharField(max_length=9)
     ddd = models.IntegerField(verbose_name='DDD', null=True, blank=True)
     telefone = models.IntegerField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
-    responsavel = models.CharField(blank=True, max_length=255,
+    responsavel = models.CharField(blank=True, max_length=600,
                                    verbose_name='Responsável')
     visitacao = models.TextField(blank=True, verbose_name='Visitação')
     lat = models.FloatField(blank=True, null=True)
     lon = models.FloatField(blank=True, null=True)
-    id_2014_06 = models.IntegerField()
-    id_2014_12 = models.IntegerField()
-    id_2015_12 = models.IntegerField()
-    id_2016_06 = models.IntegerField()
 
     class Meta:
         verbose_name = 'Unidade Prisional'
@@ -183,7 +179,11 @@ class UnidadePrisional(models.Model):
                       'telefone', 'email', 'responsavel', 'visitacao', 'lat',
                       'lon']
         with open(path, 'r') as csv_file:
-            data = DictReader(csv_file, fieldnames=fieldnames)
+            #  data = DictReader(csv_file, fieldnames=fieldnames)
+            data = pd.read_csv(csv_file, sep=";", engine="python",
+                               na_filter=False)
+
+            data = data.to_dict("records")
 
             for row in data:
                 nome_unidade = row.get('nome_unidade')
@@ -195,7 +195,7 @@ class UnidadePrisional(models.Model):
                         id_unidade=row.get('id_unidade'),
                         municipio=Cidade.objects.get(nome=row.get('municipio'),
                                                      estado=row.get('uf')))
-                    unidade._update_from_dict(row)
+                    unidade = cls._update_from_dict(unidade, row)
                     unidade.save()
                     atualizadas.append(unidade.nome_unidade)
                 except ObjectDoesNotExist:
@@ -219,7 +219,7 @@ class UnidadePrisional(models.Model):
             msg += f'{len(novas)} unidades foram adicionadas.\n'
 
         if errors:
-            msg += 'Ocorreram {len(errors)} erros de importação:\n'
+            msg += f'Ocorreram {len(errors)} erros de importação:\n'
             for error in errors:
                 msg += '    - '
                 msg += f'Unidade: {error["nome_unidade"]:.30}'
@@ -227,6 +227,7 @@ class UnidadePrisional(models.Model):
                 msg += f'{error["data"]["municipio"]}\n'
 
         log.info(msg)
+        print(msg)
 
     @classmethod
     def _new_from_dict(cls, data):
@@ -249,19 +250,20 @@ class UnidadePrisional(models.Model):
         # Campos Obrigatórios
         unidade.id_unidade = int(data.get('id_unidade'))
         unidade.nome_unidade = data.get('nome_unidade').strip()
-        unidade.sigla_unidade = data.get('sigla_unidade').strip()
-        unidade.tipo_logradouro = data.get('tipo_logradouro').strip()
-        unidade.nome_logradouro = data.get('nome_logradouro').strip()
+        unidade.sigla_unidade = data.get('sigla_unidade', "").strip()
+        unidade.tipo_logradouro = data.get('tipo_logradouro', "").strip()
+        unidade.nome_logradouro = data.get('nome_logradouro', "").strip()
         unidade.uf = data.get('uf').strip()
         unidade.municipio = Cidade.objects.get(nome=data.get('municipio'),
                                                estado=unidade.uf)
-        unidade.cep = data.get('cep').strip()
-        if not re.match(r'\d{5}-\d{3}', unidade.cep):
-            raise ValueError(f'Invalid CEP format {unidade.cep}.')
-        unidade.id_2014_06 = int(data.get('id_2014_06'))
-        unidade.id_2014_12 = int(data.get('id_2014_12'))
-        unidade.id_2015_12 = int(data.get('id_2015_12'))
-        unidade.id_2016_06 = int(data.get('id_2016_06'))
+        cep = data.get('cep', "").strip()
+        if re.match(r'\d{5}-\d{3}', cep):
+            unidade.cep = cep
+        elif re.match(r'\d{8}', cep):
+            unidade.cep = str(cep)[:5] + "-" + str(cep)[5:]
+        else:
+            unidade.cep = ""
+            # raise ValueError(f'Invalid CEP format {unidade.cep}.')
 
         # Campos opcionais
         unidade.complemento = data.get('complemento', '').strip()
@@ -269,8 +271,11 @@ class UnidadePrisional(models.Model):
         unidade.email = data.get('email', '')
         unidade.responsavel = data.get('responsavel', '').strip()
         unidade.visitacao = data.get('visitacao', '').strip()
-        unidade.lat = float(unidade.get('lat', '-15.7997067'))
-        unidade.lon = float(unidade.get('lon', '-47.8663516'))
+        try:
+            unidade.lat = float(data.get('lat', '-15.7997067'))
+            unidade.lon = float(data.get('lon', '-47.8663516'))
+        except ValueError:
+            pass
 
         try:
             unidade.numero = int(data.get('numero'))
@@ -337,36 +342,283 @@ class ArquivoBaseCarceropolis(models.Model):
         verbose_name_plural = u'Bases brutas Carcerópolis'
 
 
-# class DadosEncarceramento(models.Model):
-#     """Contains all the historical prisional data for each UnidadePrisional."""
-#
-#     ano = models.CharField(max_length=4)
-#     mes = models.CharField(max_length=2)
-#     id_unidade = models.ForeignKey(UnidadePrisional,
-#                                    verbose_name='Unidade Prisional')
-#     dados = JSONField()
-#
-#     @classmethod
-#     def import_from_csv(cls, filepath):
-#         """Import data from CSV file."""
-#         data = None
-#         # data_dict = {2014: {6: {}, 12:{}}, 2015: {12: {}}, 2016: {6: {}}}
-#
-#         data = pd.read_csv(filepath, sep=";", engine="python")
-#
-#         data = data.to_dict("records")
-#         for item in data:
-#             cls.create_or_update_from_dict(item)
-#
-#     @classmethod
-#     def create_or_update_from_dict(cls, dados):
-#         ano = str(dados.get("ano"))
-#         mes = str(dados.get("mes"))
-#         id_unidade = dados.get("id_unidade")
-#         unidade = UnidadePrisional.objects.get(id_unidade=id_unidade)
-#
-#         try:
-#             item = cls.objects.get(ano=ano, mes=mes, unidade=unidade)
-#             item.dados = dados
-#         except ObjectDoesNotExist:
-#             item = cls(ano=ano, mes=mes, unidade=unidade, dados=dados)
+class DadosEncarceramento(models.Model):
+    """Contains all the historical prisional data for each UnidadePrisional."""
+
+    ano = models.CharField(max_length=4)
+    mes = models.CharField(max_length=2)
+    unidade = models.ForeignKey(UnidadePrisional,
+                                verbose_name='Unidade Prisional')
+    dados = JSONField()
+    card = JSONField()
+
+    @classmethod
+    def import_from_csv(cls, filepath):
+        """Import data from CSV file."""
+        dataset = None
+        # data_dict = {2014: {6: {}, 12:{}}, 2015: {12: {}}, 2016: {6: {}}}
+
+        dataset = pd.read_csv(filepath, sep=";", engine="python",
+                              na_filter=False)
+
+        dataset = dataset.to_dict("records")
+        for data in dataset:
+            cls.create_or_update_from_dict(data)
+
+    @classmethod
+    def create_or_update_from_dict(cls, data):
+        ano = str(data.get("ano"))
+        mes = str(data.get("mes"))
+        id_unidade = int(data.get("id_unidade"))
+        try:
+            unidade = UnidadePrisional.objects.get(id_unidade=id_unidade)
+            data['nome_unidade'] = unidade.nome_unidade
+            try:
+                item = cls.objects.get(ano=ano, mes=mes, unidade=unidade)
+                item.dados = data
+            except ObjectDoesNotExist:
+                item = cls(ano=ano, mes=mes, unidade=unidade, dados=data)
+            item.save()
+            item._update_chart_data()
+        except UnidadePrisional.DoesNotExist:
+            print((f"id_unidade: {id_unidade} | "
+                   f"ano: {ano} | "
+                   f"mes: {mes} | "
+                   f"nome_unidade: {data.get('nome_unidade')}"))
+
+    def _update_chart_data(self):
+        self.pop_total = self._asint(self.dados.get("pop_total"))
+        card = {
+            'nome_unidade': self.unidade.nome_unidade,
+            'tipo_logradouro': self.unidade.tipo_logradouro,
+            'nome_logradouro': self.unidade.nome_logradouro,
+            'numero': self.unidade.numero,
+            'complemento': self.unidade.complemento,
+            'cep': self.unidade.cep,
+            'municipio': self.unidade.municipio.nome,
+            'uf': self.unidade.uf,
+            'lat': self.unidade.lat,
+            'lon': self.unidade.lon,
+            'email': self.unidade.email,
+            'telefone': self.unidade.telefone,
+            'ddd': self.unidade.ddd,
+            'tipo_gestao': self.dados.get("tipo_gestao") or "Não declarado",
+            'visitacao': self.unidade.visitacao,
+            'indices': {
+                'educacao': self.dados.get("DTDI_educacao"),
+                'trabalho': self.dados.get("DTDI_trabalho"),
+                'saude': self.dados.get("DTDI_saude"),
+                'juridico': self.dados.get("DTDI_juridico")
+            },
+            'pop_total': self.dados.get("pop_total"),
+            'vagas': self.dados.get("vagas_total"),
+            'qualidade_info': self.dados.get("ITQI"),
+            'pop_perc': {
+                'provisoria': self._percentual_presos_provisorios(),
+                'origem': [
+                    {'label': 'brasileiros',
+                     'value': self._percentual_naturalidade("brasileiros")},
+                    {'label': 'naturalizados',
+                     'value': self._percentual_naturalidade("naturalizados")},
+                    {'label': 'estrangeiros',
+                     'value': self._percentual_naturalidade("estrangeiros")},
+                ],
+                'cor': [
+                    {'label': 'preta', 'color': 'rgb(11,102,176)',
+                     'value': self._percentual_grupo_pop("preta")},
+                    {'label': 'parda', 'color': 'rgb(255,108,1)',
+                     'value': self._percentual_grupo_pop("parda")},
+                    {'label': 'branca', 'color': 'rgb(2,161,19)',
+                     'value': self._percentual_grupo_pop("branca")},
+                    {'label': 'indígena', 'color': 'rgb(228,0,121)',
+                     'value': self._percentual_grupo_pop("indigena")},
+                    {'label': 'amarela', 'color': 'rgb(150,73,185)',
+                     'value': self._percentual_grupo_pop("amarela")},
+                    {'label': 'outros', 'color': 'rgb(0,0,0)',
+                     'value': self._percentual_grupo_pop("outros")},
+                ],
+            },
+            'pyramid': {
+                'ages': [
+                    {'range': '+ de 70',
+                     'male': self._perc_faixa_etaria("masculino",
+                                                     "maisde70anos"),
+                     'female': self._perc_faixa_etaria("feminino",
+                                                       "maisde70anos")},
+                    {'range': '61 a 70',
+                     'male': self._perc_faixa_etaria("masculino",
+                                                     "61a70anos"),
+                     'female': self._perc_faixa_etaria("feminino",
+                                                       "61a70anos")},
+                    {'range': '46 a 60',
+                     'male': self._perc_faixa_etaria("masculino",
+                                                     "46a60anos"),
+                     'female': self._perc_faixa_etaria("feminino",
+                                                       "46a60anos")},
+                    {'range': '35 a 45',
+                     'male': self._perc_faixa_etaria("masculino",
+                                                     "35a45anos"),
+                     'female': self._perc_faixa_etaria("feminino",
+                                                       "35a45anos")},
+                    {'range': '30 a 34',
+                     'male': self._perc_faixa_etaria("masculino",
+                                                     "30a34anos"),
+                     'female': self._perc_faixa_etaria("feminino",
+                                                       "30a34anos")},
+                    {'range': '25 a 29',
+                     'male': self._perc_faixa_etaria("masculino",
+                                                     "25a29anos"),
+                     'female': self._perc_faixa_etaria("feminino",
+                                                       "25a29anos")},
+                    {'range': '18 a 24',
+                     'male': self._perc_faixa_etaria("masculino",
+                                                     "18a24anos"),
+                     'female': self._perc_faixa_etaria("feminino",
+                                                       "18a24anos")},
+                ],
+                'total': {
+                    'perc': {
+                        'male': self._perc_pop_sexo("masculino"),
+                        'female': self._perc_pop_sexo("feminino")},
+                    'abs': {
+                        'male': self._asint(
+                            self.dados.get("pop_masculino_total")
+                        ),
+                        'female': self._asint(
+                            self.dados.get("pop_feminino_total")
+                        )
+                    },
+                },
+                'idade_media': self._idade_media()
+            }
+        }
+        self.card = card
+        self.save()
+
+    @staticmethod
+    def _asint(number):
+        if not number:
+            return 0
+        try:
+            return int(number)
+        except ValueError:
+            return 0
+
+    def _percentual_presos_provisorios(self):
+        provisorios = 0
+        provisorios += self._asint(
+            self.dados.get("pop_masculino_provisorio_just_estadual")
+        )
+        provisorios += self._asint(
+            self.dados.get("pop_feminino_provisorio_just_estadual")
+        )
+        provisorios += self._asint(
+            self.dados.get("pop_masculino_provisorio_just_federal")
+        )
+        provisorios += self._asint(
+            self.dados.get("pop_feminino_provisorio_just_federal")
+        )
+        provisorios += self._asint(
+            self.dados.get("pop_masculino_provisorio_outros")
+        )
+        provisorios += self._asint(
+            self.dados.get("pop_feminino_provisorio_outros")
+        )
+        if self.pop_total:
+            return round(100 * (provisorios / self.pop_total), 2)
+        else:
+            return None
+
+    def _percentual_naturalidade(self, origem):
+        if not self.pop_total:
+            return None
+
+        if origem == "basileiros":
+            pop = self._asint(
+                self.dados.get("nacionalidade_brasil_nato_masculino")
+            )
+            pop += self._asint(
+                self.dados.get("nacionalidade_brasil_nato_feminino")
+            )
+        elif origem == "naturalizado":
+            pop = self._asint(
+                self.dados.get("nacionalidade_brasil_naturalizado_masculino")
+            )
+            pop += self._asint(
+                self.dados.get("nacionalidade_brasil_naturalizado_feminino")
+            )
+        else:
+            pop = self._asint(
+                self.dados.get("nacionalidade_estrangeiro_masculino")
+            )
+            pop += self._asint(
+                self.dados.get("nacionalidade_estrangeiro_feminino")
+            )
+
+        return round(100 * (pop / self.pop_total), 2)
+
+    def _percentual_grupo_pop(self, grupo):
+        if not self.pop_total:
+            return None
+
+        if grupo == "preta":
+            pop = self._asint(self.dados.get("raca_preta_masculino"))
+            pop += self._asint(self.dados.get("raca_preta_feminino"))
+        elif grupo == "parda":
+            pop = self._asint(self.dados.get("raca_parda_masculino"))
+            pop += self._asint(self.dados.get("raca_parda_feminino"))
+        elif grupo == "branca":
+            pop = self._asint(self.dados.get("raca_branca_masculino"))
+            pop += self._asint(self.dados.get("raca_branca_feminino"))
+        elif grupo == "indigena":
+            pop = self._asint(self.dados.get("raca_indigena_masculino"))
+            pop += self._asint(self.dados.get("raca_indigena_feminino"))
+        elif grupo == "amarela":
+            pop = self._asint(self.dados.get("raca_amarela_masculino"))
+            pop += self._asint(self.dados.get("raca_amarela_feminino"))
+        elif grupo == "outros":
+            pop = self._asint(self.dados.get("raca_outras_masculino"))
+            pop += self._asint(self.dados.get("raca_outras_feminino"))
+        else:
+            return None
+
+        return round(100 * (pop / self.pop_total), 2)
+
+    def _perc_faixa_etaria(self, sexo, faixa):
+        if not self.pop_total:
+            return None
+
+        pop = self._asint(self.dados.get(f"faixa_etaria_{faixa}_{sexo}"))
+
+        return round(100 * (pop / self.pop_total), 2)
+
+    def _perc_pop_sexo(self, sexo):
+        if not self.pop_total:
+            return None
+
+        pop = self._asint(self.dados.get(f"pop_{sexo}_total"))
+        return round(100 * (pop / self.pop_total), 2)
+
+    def _idade_media(self):
+        faixas = {
+            "18a24anos": (24 + 18)/2,
+            "25a29anos": (25 + 29)/2,
+            "30a34anos": (30 + 34)/2,
+            "35a45anos": (35 + 45)/2,
+            "46a60anos": (46 + 60)/2,
+        }
+        total = 0
+        qtdes = 0
+        for faixa, central in faixas.items():
+            qtd = self._asint(
+                self.dados.get(f"faixa_etaria_{faixa}_masculino")
+            )
+            qtd += self._asint(
+                self.dados.get(f"faixa_etaria_{faixa}_feminino")
+            )
+            total += central * qtd
+            qtdes += qtd
+        if qtdes:
+            return int(total /qtdes)
+        else:
+            return None

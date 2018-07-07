@@ -38,12 +38,12 @@ deploy() {
     python manage.py makemigrations
     echo "  Applying migrations."
     python manage.py migrate --no-input
-    echo "####################################################################"
-    echo "\n\n  Loading cidades fixtures.\n"
-    python manage.py loaddata cidades/fixtures/cidades.json.bz2
-    echo "####################################################################"
-    echo "\n\n  Loading carceropolis fixtures.\n"
-    python manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
+    # echo "####################################################################"
+    # echo "\n\n  Loading cidades fixtures.\n"
+    # python manage.py loaddata cidades/fixtures/cidades.json.bz2
+    # echo "####################################################################"
+    # echo "\n\n  Loading carceropolis fixtures.\n"
+    # python manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
 }
 
 wait_for_db() {

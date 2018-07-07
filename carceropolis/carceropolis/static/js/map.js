@@ -154,7 +154,7 @@ $(window).ready(function(){
           ' ' + unidade.nome_logradouro +
           (unidade.numero ? ', ' + unidade.numero : '') +
           (unidade.complemento ? ', ' + unidade.complemento : '') +
-          ' - CEP: ' + unidade.cep.slice(0,-3) + '-' + unidade.cep.slice(-3) +
+          ' - CEP: ' + unidade.cep +
           ' - ' + unidade.municipio +
           ' - ' + unidade.uf
       },
