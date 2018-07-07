@@ -130,13 +130,13 @@ USE_MODELTRANSLATION = False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "dev.carceropolis.org.br",
                  "carceropolis.org.br", "www.carceropolis.org.br"]
+
 if os.getenv("IS_PRODUCTION"):
     ALLOWED_HOSTS.insert(0, "carceropolis.org.br")
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
-
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -416,6 +416,26 @@ if (os.getenv("EMAIL_HOST") and
     EMAIL_PORT = os.getenv("EMAIL_PORT", 25)
     EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", False)
 
+if os.getenv("IS_PRODUCTION"):
+    # First one on the list
+    MIDDLEWARE.insert(0, 'django.middleware.cache.UpdateCacheMiddleware')
+    # Last one on the list
+    MIDDLEWARE.append('django.middleware.cache.FetchFromCacheMiddleware')
+
+    # Timeout here is the time that the django-server will hold the cached
+    # files on the server, it is not directly related to the http headers
+    # timeout information (defined below).
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': 'memcache:11211',
+            'TIMEOUT': 60*60*48
+        }
+    }
+
+    # The number of seconds each page should be cached
+    # https://docs.djangoproject.com/en/2.0/topics/cache/#the-per-site-cache
+    CACHE_MIDDLEWARE_SECONDS = 60*60
 
 ####################
 # DYNAMIC SETTINGS #
