@@ -98,11 +98,11 @@ $(window).ready(function(){
         var customIcon = L.icon({
           iconUrl: '/static/images/map/marker-icon.png',
           shadowUrl: '/static/images/map/marker-shadow.png',
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
+          iconSize: [32, 30],
+          iconAnchor: [16, 15],
           popupAnchor: [1, -34],
           tooltipAnchor: [16, -28],
-          shadowSize: [51, 33]
+          shadowSize: [68, 32]
         })
 
         statesLayerGroup.clearLayers()
