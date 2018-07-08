@@ -108,12 +108,12 @@ $(window).ready(function(){
         var multiplier = 0.5;
         var customIcon = L.icon({
           iconUrl: '/static/images/map/marker-icon.png',
-          shadowUrl: '/static/images/map/marker-shadow.png',
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
-          popupAnchor: [1, -34],
-          tooltipAnchor: [16, -28],
-          shadowSize: [51, 33]
+          // shadowUrl: '/static/images/map/marker-shadow.png',
+          iconSize: [32, 30],
+          iconAnchor: [16, 15],
+          // popupAnchor: [1, -34],
+          // tooltipAnchor: [16, -28],
+          // shadowSize: [68, 32]
         })
 
         statesLayerGroup.clearLayers()
