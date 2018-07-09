@@ -38,8 +38,10 @@ log = logging.getLogger(__name__)
 ###############################################################################
 
 def publicacao_home(request):
-    """Display the Publicações Home page, which is a matrix with all available
-    categories (only categories, not the items from the Publicação Class).
+    """Display the Publicações Home page.
+
+    It is a matrix with all available categories (only categories, not the
+    items from the Publicação Class).
     """
     categorias = AreaDeAtuacao.objects.all()
     categorias = categorias.order_by('ordem')
@@ -49,19 +51,17 @@ def publicacao_home(request):
 
 
 def publicacao_list_tag(request, tag, extra_context=None):
-    """Display a list of blog posts that are filtered by tag, year, month,
-    author or categoria. Custom templates are checked for using the name
-    ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is
-    either the categoria slug or author's username if given.
-    """
+    """Display a list of blog posts filtered by tag."""
     templates = []
     template = "carceropolis/publicacao/publicacao_list.html"
-    publicacoes = Publicacao.objects.published()
     tag = get_object_or_404(Keyword, slug=tag)
-    publicacoes = publicacoes.filter(keywords__keyword=tag)
-
     prefetch = ("categorias", "keywords__keyword")
-    publicacoes = publicacoes.prefetch_related(*prefetch)
+    publicacoes = Publicacao.objects.filter(
+        keywords__keyword=tag
+    ).prefetch_related(
+        *prefetch
+    ).published()
+
     publicacoes = paginate(publicacoes, request.GET.get("page", 1),
                            settings.PUBLICACAO_PER_PAGE,
                            settings.MAX_PAGING_LINKS)
@@ -83,39 +83,45 @@ def publicacao_list_categoria(request, categoria, extra_context=None):
 
     categoria = get_object_or_404(AreaDeAtuacao, slug=categoria)
 
-    publicacoes = Publicacao.objects.filter(categorias=categoria)
+    filtros = {
+        "categorias": categoria
+    }
 
     ano = request.GET.get('ano', None)
     if ano:
         log.debug('    filtering ano: %s', ano)
-        publicacoes = publicacoes.filter(ano_de_publicacao=ano)
+        filtros["ano_de_publicacao"] = ano
 
     autoria = request.GET.get('autoria', None)
     if autoria:
         log.debug('    filtering autoria: %s', autoria)
-        publicacoes = publicacoes.filter(autoria__icontains=autoria)
+        filtros["autoria__icontains"] = autoria
 
     tags = request.GET.get('tag', None)
     if tags:
         log.debug('    filtering tags: %s', tags)
-        publicacoes = publicacoes.filter(keywords__keyword__title__iregex=r'(' + '|'.join(tags.split()) + ')')
+        regex = r'(' + '|'.join(tags.split()) + ')'
+        filtros["keywords__keyword__title__iregex"] = regex
+
+    publicacoes = Publicacao.objects.filter(**filtros)
 
     search = request.GET.get('q', None)
     if search is not None and search:
         terms = search.split()
         log.debug('    general filtering: %s', terms)
 
-        publicacoes = publicacoes.filter(reduce(operator.and_,
-                                                (Q(title__icontains=q) for q in terms)) |
-                                         reduce(operator.or_,
-                                                (Q(autoria__icontains=q) for q in terms)) |
-                                         reduce(operator.or_,
-                                                (Q(content__icontains=q) for q in terms)) |
-                                         reduce(operator.or_,
-                                                (Q(description__icontains=q) for q in terms)) |
-                                         reduce(operator.or_,
-                                                (Q(keywords__keyword__title__icontains=q) for q in terms))
-                                         )
+        publicacoes = publicacoes.filter(
+            reduce(operator.and_,
+                   (Q(title__icontains=q) for q in terms)) |
+            reduce(operator.or_,
+                   (Q(autoria__icontains=q) for q in terms)) |
+            reduce(operator.or_,
+                   (Q(content__icontains=q) for q in terms)) |
+            reduce(operator.or_,
+                   (Q(description__icontains=q) for q in terms)) |
+            reduce(operator.or_,
+                   (Q(keywords__keyword__title__icontains=q) for q in terms))
+        )
 
     order_by = request.GET.get('order_by', None)
     sort = request.GET.get('sort', 'ASC')
@@ -155,26 +161,13 @@ def publicacao_detail(request, slug, extra_context=None):
     templates = [template]
     return TemplateResponse(request, templates, context)
 
-
-def publicacao_feed(request, fmt, **kwargs):
-    """Blog posts feeds - maps format to the correct feed view."""
-    try:
-        return {"rss": PostsRSS, "atom": PostsAtom}[fmt](**kwargs)(request)
-    except KeyError:
-        raise Http404()
-
-
 ###############################################################################
 # ESPECIALISTAS
 ###############################################################################
 
 
 def especialistas_list(request, extra_context=None, **kwargs):
-    """Display a list of blog posts that are filtered by tag, year, month,
-    author or categoria. Custom templates are checked for using the name
-    ``carceropolis/publicacao/publicacao_list_XXX.html`` where ``XXX`` is
-    either the categoria slug or author's username if given.
-    """
+    """Display a list of Especialistas."""
     areas_de_atuacao = AreaDeAtuacao.objects.all()
     areas_de_atuacao = areas_de_atuacao.order_by('ordem')
     especialistas = Especialista.objects.all()
@@ -276,18 +269,8 @@ def _fileId_from_url(url):
 
 
 def dados_home(request):
-    """Display the Dados Home page, which is a matrix with all available
-    categories (only categories, not the items from the Publicação Class).
-    """
+    """Display the Dados Home page."""
     templates = ["carceropolis/dados/dados.html"]
-    context = {}
-
-    return TemplateResponse(request, templates, context)
-
-
-def dados_piramide_etaria(request):
-    """Third test"""
-    templates = [u'carceropolis/dados/piramide_etaria.html']
     context = {}
 
     return TemplateResponse(request, templates, context)
@@ -354,6 +337,7 @@ def card_unidade(request, id_unidade, ano=2016, mes=6):
 
 
 def login_user(request):
+    # TODO
     logout(request)
     username = password = ''
     if request.POST:
@@ -364,6 +348,8 @@ def login_user(request):
             login(request, user)
         else:
             error(request, "Usuário e/ou senha inválidos.")
+            return redirect(request.META['HTTP_REFERER']+"#cadastro",
+                            kwargs={'registration_form': ''})
     return redirect(next_url(request) or request.META['HTTP_REFERER'])
 
 
@@ -396,7 +382,8 @@ def register_user(request):
             return login_redirect(request)
     else:
         error(request, form)
-        return redirect(request.META['HTTP_REFERER']+"#cadastro", kwargs={'registration_form': form})
+        return redirect(request.META['HTTP_REFERER']+"#cadastro",
+                        kwargs={'registration_form': form})
     return redirect(next_url(request) or request.META['HTTP_REFERER'])
 
 
@@ -406,7 +393,7 @@ def password_recovery(request):
 
 
 def data_dashboard(request, template="dashboard/dashboard.html"):
-    """Data bokeh dashboard."""
+    """Return Data for bokeh dashboard."""
     HOST = request.get_host().split(':' + str(request.get_port()))[0]
     if request.is_secure():
         PROTOCOL = 'https://'
