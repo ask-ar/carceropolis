@@ -35,7 +35,7 @@
 {% block main %}
 
 <script>
- var states = {{ states }}
+ var unidades = {{ unidades }}
 </script>
 
 <script id="perc-bar-template" type="text/x-template">
@@ -105,12 +105,12 @@
   <div>
     <section class="informacoes">
       <dl class="vagas">
-        <dd>[[ unidade.pop_total ]]</dd> <dt>pessoas</dt>
-        <dd>[[ unidade.vagas ]]</dd> <dt>vagas</dt>
+        <dd>[[ card_data.pop_total ]]</dd> <dt>pessoas</dt>
+        <dd>[[ card_data.vagas ]]</dd> <dt>vagas</dt>
       </dl>
       <dl class="gestao">
         <dt>Gestão da Unidade:</dt>
-        <dd>[[ unidade.tipo_gestao ]]</dd>
+        <dd>[[ card_data.tipo_gestao ]]</dd>
       </dl>
       <dl class="qualidade">
         <dt>
@@ -119,10 +119,10 @@
             <span class="glyphicon glyphicon-question-sign"></span>
           </a>:
       </dt>
-        <dd>[[ parseFloat(unidade.qualidade_info.replace(",", ".")).toFixed(2).toLocaleString("pt-br") ]]</dd>
+        <dd>[[ parseFloat(card_data.qualidade_info.replace(",", ".")).toFixed(2).toLocaleString("pt-br") ]]</dd>
       </dl>
-      <dl v-if="unidade.pop_perc.provisoria || unidade.pop_perc.provisoria==0" class="provisorio">
-        <dd>[[ unidade.pop_perc.provisoria ]]%</dd> <dt>de presos(as) provisórios(as)</dt>
+      <dl v-if="card_data.pop_perc.provisoria || card_data.pop_perc.provisoria==0" class="provisorio">
+        <dd>[[ card_data.pop_perc.provisoria ]]%</dd> <dt>de presos(as) provisórios(as)</dt>
       </dl>
     </section>
     <section class="demografia">
@@ -130,7 +130,7 @@
         <div class="row">
           <h3>Demografia da Unidade</h3>
           <!-- Population Origin -->
-          <perc-bar v-for="pop in unidade.pop_perc.origem"
+          <perc-bar v-for="pop in card_data.pop_perc.origem"
                     :value="pop.value"
                     :label="pop.label"
                     :key="pop.label"
@@ -139,17 +139,16 @@
         </div>
         <div class="row">
           <!-- Population Color -->
-          <perc-bar v-for="pop in unidade.pop_perc.cor"
+          <perc-bar v-for="pop in card_data.pop_perc.cor"
                     :value="pop.value"
                     :label="pop.label"
-                    label-position="outside"
                     :key="pop.label"
                     :color="pop.color">
           </perc-bar>
         </div>
       </div>
       <div class="col-lg-7 etario">
-        <age-pyramid :data="unidade.pyramid"></age-pyramid>
+        <age-pyramid :data="card_data.pyramid"></age-pyramid>
       </div>
     </section>
   </div>
@@ -184,7 +183,7 @@ liberdade e à qualidade dos serviços que serão prestados a esta população.
       <div id="map" v-show="showCompleteInfo == false" aria-live="polite"></div>
       <!-- Detailed info about unidade -->
       <button class="btn detailed-info bracket" v-show="showCompleteInfo" @click="showCompleteInfo = false" title="Fechar informações detalhadas da unidade">x</button>
-      <detailed-info v-if="showCompleteInfo" class="completeInfoPannel" :unidade="unidade" aria-live="polite">
+      <detailed-info v-if="showCompleteInfo" class="completeInfoPannel" :card_data="card_data" aria-live="polite">
       </detailed-info>
     </div>
     <div class="col-md-4">
@@ -218,8 +217,8 @@ liberdade e à qualidade dos serviços que serão prestados a esta população.
             <dd v-if="unidade.visitacao">[[ unidade.visitacao ]]</dd>
           </dl>
 
-          <button v-show="!showCompleteInfo" class="btn pull-right bracket" @click="showCompleteInfo = true">saiba mais</button>
-          <div v-show="showCompleteInfo" aria-live="polite">
+          <button v-show="!showCompleteInfo" class="btn pull-right bracket" @click="showCard">saiba mais</button>
+          <div v-if="showCompleteInfo" aria-live="polite">
             <h3>Índices de Infraestrutura Prisional 
                 <a href="/metodologia#iigd" class="btn question">
                     <span class="glyphicon glyphicon-question-sign"></span>
@@ -227,13 +226,13 @@ liberdade e à qualidade dos serviços que serão prestados a esta população.
             </h3>
             <dl class="indices">
               <dt>Educação:</dt>
-              <dd>[[unidade.indices.educacao.toLocaleString('pt-br')]]</dd>
+              <dd>[[card_data.indices.educacao.toLocaleString('pt-br')]]</dd>
               <dt>Trabalho:</dt>
-              <dd>[[unidade.indices.trabalho.toLocaleString('pt-br')]]</dd>
+              <dd>[[card_data.indices.trabalho.toLocaleString('pt-br')]]</dd>
               <dt>Saúde:</dt>
-              <dd>[[unidade.indices.saude.toLocaleString('pt-br')]]</dd>
+              <dd>[[card_data.indices.saude.toLocaleString('pt-br')]]</dd>
               <dt>Jurídico:</dt>
-              <dd :data-juridico="unidade.indices.juridico.toString()">[[ formatBool(unidade.indices.juridico) ]]</dd>
+              <dd :data-juridico="card_data.indices.juridico.toString()">[[ formatBool(card_data.indices.juridico) ]]</dd>
             </dl>
           </div>
         </section>

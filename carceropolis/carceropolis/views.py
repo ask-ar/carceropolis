@@ -1,17 +1,16 @@
-# coding: utf-8
+"""Carcerópolis views functions."""
 import json
 import base64
 import logging
 import operator
 from functools import reduce
 from unidecode import unidecode
-from collections import defaultdict
 
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.messages import info, error
-from django.db.models import Q
-from django.http import Http404
+from django.db.models import F, Q
+from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from mezzanine.accounts import get_profile_form
@@ -298,21 +297,60 @@ def unidades_map(request):
     """Display the Unidades Prisionais Map."""
     templates = ["carceropolis/unidades/mapa.html"]
 
+    fields = {
+        "unidade__id_unidade": "id_unidade",
+        "unidade__nome_unidade": "nome_unidade",
+        "unidade__tipo_logradouro": "tipo_logradouro",
+        "unidade__nome_logradouro": "nome_logradouro",
+        "unidade__numero": "numero",
+        "unidade__complemento": "complemento",
+        "unidade__cep": "cep",
+        "unidade__municipio__nome": "municipio",
+        "unidade__uf": "uf",
+        "unidade__lat": "lat",
+        "unidade__lon": "lon",
+        "unidade__email": "email",
+        "unidade__telefone": "telefone",
+        "unidade__ddd": "ddd",
+        "unidade__visitacao": "visitacao",
+    }
+
     registros = DadosEncarceramento.objects.filter(
         ano=2016
     ).exclude(
         unidade__lat=None
+    ).only(
+        "unidade"
+    ).select_related(
+        "unidade",
+        "unidade__municipio"
+    ).annotate(
+        **{v: F(k) for k, v in fields.items()}
+    ).values(
+        *list(fields.values())
     )
-
-    states = defaultdict(list)
-    for registro in registros:
-        states[registro.unidade.uf].append(registro.card)
-
-    context = {
-        'states': mark_safe(json.dumps(states))
-    }
-
+    context = {"unidades": mark_safe(json.dumps(list(registros)))}
     return TemplateResponse(request, templates, context)
+
+
+def card_unidade(request, id_unidade, ano=2016, mes=6):
+    """Return a JSON with the data for an 'Unidade' Card."""
+    try:
+        unidade = UnidadePrisional.objects.get(id_unidade=id_unidade)
+    except UnidadePrisional.DoesNotExist:
+        raise Http404(f"Unidade com id {id_unidade} não encontrada")
+    try:
+        registro = DadosEncarceramento.objects.get(
+            ano=ano,
+            mes=mes,
+            unidade=unidade
+        )
+    except DadosEncarceramento.DoesNotExist:
+        raise Http404((f"Não existem dados para a unidade {unidade.nome} "
+                       f"em {ano}/{mes}"))
+
+    return HttpResponse(json.dumps(registro.card),
+                        content_type='application/json')
 
 
 def login_user(request):

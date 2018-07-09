@@ -63,7 +63,7 @@ $(window).ready(function(){
   Vue.component('detailed-info', {
     delimiters: delimiters,
     template: '#detailed-info-template',
-    props: ['unidade'],
+    props: ['card_data'],
   })
 
   new Vue({
@@ -74,10 +74,23 @@ $(window).ready(function(){
       filterStr: '',
       // selected unidade
       unidade: null,
+      // id of the selected unidade
+      id_unidade: null,
+      // Card data
+      card_data: null,
       // if should show complete info about selected unidade
       showCompleteInfo: false,
     },
     methods: {
+      showCard: function() {
+        $.getJSON("/unidades/card/" + this.id_unidade + "/", function(){
+          console.log("Data for id_unidade: " + this.id_unidade + " retrieved")
+        }.bind(this)).done(function(data){
+          console.log(data)
+          this.card_data = data
+          this.showCompleteInfo = true
+        }.bind(this))
+      },
       createMap: function () {
         map = L.map('map', {
           zoomControl: true,
@@ -99,7 +112,7 @@ $(window).ready(function(){
             'Icon by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">Flaticon</a> under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.'
         }).addTo(map)
 
-        statesLayerGroup = L.featureGroup().addTo(map).on('click', (marker) => this.unidade = marker.layer.unidade)
+        statesLayerGroup = L.featureGroup().addTo(map).on('click', (marker) => {this.unidade = marker.layer.unidade; this.id_unidade = marker.layer.id_unidade})
 
         this.plotMap()
       },
@@ -117,28 +130,22 @@ $(window).ready(function(){
         })
 
         statesLayerGroup.clearLayers()
-        $.each(states, function (uf, unidades) {
-          var stateLayer = L.markerClusterGroup({
-            showCoverageOnHover: false,
-            // polygonOptions: {
-            //   fillColor: 'grey',
-            //   color: '#1b2557',
-            //   weight: 0.0,
-            //   opacity: 0,
-            //   fillOpacity: 0.5
-            // }
-          })
-          var i = 0
-          var markers = []
-          for (let unidade of unidades) {
-            if (filter && !unidadeMatchesFilter(unidade, filter)) continue
-            var marker = L.marker([unidade.lat, unidade.lon], {icon: customIcon})
-            marker.unidade = unidade
-            markers.push(marker)
-          }
-          stateLayer.addLayers(markers)
+
+        states = {}
+        for (let unidade of unidades){
+          if (filter && !unidadeMatchesFilter(unidade, filter)) continue
+          if (!(unidade.uf in states)) states[unidade.uf] = []
+          let marker = L.marker([unidade.lat, unidade.lon], {icon: customIcon})
+          marker.id_unidade = unidade.id_unidade
+          marker.unidade = unidade
+          states[unidade.uf].push(marker)
+        }
+
+        for (let state in states) {
+          let stateLayer = L.markerClusterGroup({showCoverageOnHover: false})
+          stateLayer.addLayers(states[state])
           statesLayerGroup.addLayer(stateLayer)
-        })
+        }
       },
       // Format used by mailto links
       formatMailto: function (email) {

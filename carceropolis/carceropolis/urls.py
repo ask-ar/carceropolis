@@ -1,6 +1,4 @@
-# coding: utf-8
-from __future__ import unicode_literals
-
+"""URL from carcerópolis project."""
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.sites.models import Site
@@ -23,9 +21,6 @@ admin.site.unregister(BlogPost)
 admin.site.unregister(Site)
 
 dados_pattern = [
-    # TODO: Alguém usa essa piramide etaria? Não está no menu dos dados...
-    url(r'^piramide_etaria/$', views.dados_piramide_etaria,
-        name='dados_piramide_etaria'),
     url(r'^alas_exclusivas/$', dados_alas_exclusivas,
         name='dados_alas_exclusivas'),
     url(r'^materno_infantil/$', dados_materno_infantil,
@@ -89,11 +84,9 @@ especialistas_pattern = [
 
 unidades_pattern = [
     url(r'^$', views.unidades_map, name='unidades_map'),
+    url(r'^card/(?P<id_unidade>.*)%s$' % _slash,
+        views.card_unidade, name='card_unidade'),
 ]
-
-# Add the urlpatterns for any custom Django applications here.
-# You can also change the ``home`` view to add your own functionality
-# to the project's homepage.
 
 urlpatterns = [
     # Change the admin prefix here to use an alternate URL for the
