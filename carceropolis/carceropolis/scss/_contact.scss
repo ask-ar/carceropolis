@@ -7,8 +7,8 @@ body.fale-conosco {
         align-items: center;
         display: flex;
         justify-content: center;
-    }
-}
+
+
 
 .contact-form {
     color: white;
@@ -32,6 +32,13 @@ body.fale-conosco {
         @include clearfix;
     }
 
+    .help-block {
+        text-align: right;
+        margin-top: -27px;
+        color: #aaa;
+        margin-bottom: 0;
+    }
+
     .mezzanine-form {
         display: block;
         margin-top: 50px;
@@ -53,7 +60,7 @@ body.fale-conosco {
     }
 
     .btn-primary,
-    .help-block {
+    label.control-label {
         color: white;
         font-family: $light;
         font-size: 12px;
@@ -86,7 +93,7 @@ body.fale-conosco {
     textarea {
         border: 2px solid $cp-orange-dark;
         line-height: 24px;
-        margin-top: 30px;
+        margin-top: 5px;
         padding: 5px;
     }
 
@@ -106,16 +113,22 @@ body.fale-conosco {
         width: 100px;
     }
 
-    .control-group {
+    .form-group {
         display: flex;
         flex-direction: column;
 
-        .help-block {
+        label.control-label {
             order: -1;
         }
 
         input, textarea {
             order: 1;
         }
+    }
+}
+
+
+
+
     }
 }
