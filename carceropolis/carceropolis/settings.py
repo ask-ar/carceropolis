@@ -157,6 +157,7 @@ LANGUAGE_CODE = 'pt-BR'
 # Supported languages
 LANGUAGES = (
     ("pt-br", _("Portugues")),
+    ("en", _("English")),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -262,6 +263,7 @@ INSTALLED_APPS = (
     # "moderna",
     # "nova",
     # "solid",
+    "mezzanine.blog",
     "cidades",
     "carceropolis",
     "django_extensions",
@@ -280,13 +282,12 @@ INSTALLED_APPS = (
     "mezzanine.core",
     "mezzanine.generic",
     "mezzanine.pages",
-    "mezzanine.blog",
     "mezzanine.forms",
     # "mezzanine.galleries",
     # "mezzanine.twitter",
     "mezzanine.accounts",
     # "mezzanine.mobile",
-    "logentry_admin"
+    "logentry_admin",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

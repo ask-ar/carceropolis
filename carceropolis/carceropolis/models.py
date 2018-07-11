@@ -105,14 +105,14 @@ class Publicacao(BlogPost):
         return self.title
 
 
-Publicacao._meta.get_field('title').verbose_name = 'Título'
-Publicacao._meta.get_field('publish_date').verbose_name = 'Publicado em'
-Publicacao._meta.get_field('content').verbose_name = 'Descrição'
-Publicacao._meta.get_field('keywords').verbose_name = 'Tags'
-Publicacao._meta.get_field('related_posts').verbose_name = 'Posts Relacionados'
-Publicacao._meta.get_field('_meta_title').verbose_name = 'Tílulo'
-Publicacao._meta.get_field('description').verbose_name = 'Descrição curta'
-Publicacao._meta.get_field('gen_description').verbose_name = 'Gerar descrição'
+# Publicacao._meta.get_field('title').verbose_name = 'Título'
+# Publicacao._meta.get_field('publish_date').verbose_name = 'Publicado em'
+# Publicacao._meta.get_field('content').verbose_name = 'Descrição'
+# Publicacao._meta.get_field('keywords').verbose_name = 'Tags'
+# Publicacao._meta.get_field('related_posts').verbose_name = 'Posts Relacionados'
+# Publicacao._meta.get_field('_meta_title').verbose_name = 'Tílulo'
+# Publicacao._meta.get_field('description').verbose_name = 'Descrição curta'
+# Publicacao._meta.get_field('gen_description').verbose_name = 'Gerar descrição'
 Publicacao._meta.get_field('allow_comments').default = False
 
 
