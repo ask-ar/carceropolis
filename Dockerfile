@@ -1,9 +1,9 @@
-FROM diraol/alpine-py36-pandas-numpy-psql:1.0.0
+FROM diraol/alpine-py36-pandas-numpy-psql:1.0.1
 
 ENV PYTHONUNBUFFERED 1
 
 RUN set -ex \
-    && apk --no-cache add libstdc++ \
+    && apk add libstdc++ pcre-dev libuuid \
     && apk --no-cache add --virtual _build_deps \
         build-base \
         libc-dev \
@@ -43,5 +43,4 @@ RUN mkdir -p ${CARCEROPOLIS_HOME} /var/log/uwsgi
 WORKDIR ${CARCEROPOLIS_HOME}
 
 COPY deploy/entrypoint.sh /usr/bin/entrypoint
-RUN apk --no-cache add pcre-dev
 ENTRYPOINT ["/usr/bin/entrypoint"]
