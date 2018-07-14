@@ -8,7 +8,6 @@ pandas
 ipython
 geocoder==1.33.0
 # To be replaced by bokeh graphs
-plotly
 numpy
 bokeh
 flexx
