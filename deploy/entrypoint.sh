@@ -28,22 +28,25 @@ cleanup() {
     rm -rf /project/static/[a-jt-z]* /project/static/mezzanine
     rm -rf /project/carceropolis/htmlcov
     rm -rf /project/.coverage
+    find /project | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }
 
 deploy() {
     echo "Loading initial data."
     echo "  Collecting static files."
     python manage.py collectstatic --noinput
+    echo "  Applying migrations."
+    python manage.py migrate --no-input
+    echo "####################################################################"
+    echo "\n\n  Loading cidades fixtures.\n"
+    python manage.py loaddata cidades/fixtures/cidades.json.bz2
+    echo "####################################################################"
+    echo "\n\n  Loading carceropolis fixtures.\n"
+    python manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
     echo "  Making migrations."
     python manage.py makemigrations
     echo "  Applying migrations."
     python manage.py migrate --no-input
-    # echo "####################################################################"
-    # echo "\n\n  Loading cidades fixtures.\n"
-    # python manage.py loaddata cidades/fixtures/cidades.json.bz2
-    # echo "####################################################################"
-    # echo "\n\n  Loading carceropolis fixtures.\n"
-    # python manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
 }
 
 wait_for_db() {
@@ -56,6 +59,9 @@ wait_for_db() {
 case "$1" in
   deploy)
     deploy
+      ;;
+  shell)
+      /bin/sh
       ;;
   migrate)
     echo "Initializing migrate mode."
