@@ -207,7 +207,7 @@ implementadas:
 
 ```
 python manage.py migrate
-python manage.py loaddata cidades/fixtures/cidade.json.bz2
+python manage.py loaddata cidades/fixtures/cidades.json.bz2
 python manage.py loaddata carceropolis/fixtures/initialdata.json.bz2
 ```
 
