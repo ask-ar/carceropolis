@@ -51,12 +51,6 @@
 
 <body id="{% block body_id %}body{% endblock %}" class="{{ page.html_id }}">
 
-
-{% nevercache %}
-{% include "includes/language_selector.html" %}
-{% include "includes/user_panel.html" %}
-{% endnevercache %}
-
 <!-- BEGIN OF MODAL DIVs -->
 <div id="login_modal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document"><div class="modal-content">
