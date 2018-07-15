@@ -120,7 +120,7 @@ MUNICIPIOS_GEO = False
 
 # If True, the django-modeltranslation will be added to the
 # INSTALLED_APPS setting.
-USE_MODELTRANSLATION = False
+USE_MODELTRANSLATION = True
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -156,8 +156,8 @@ LANGUAGE_CODE = 'pt-BR'
 
 # Supported languages
 LANGUAGES = (
-    ("pt-br", _("Portugues")),
-    ("en", _("English")),
+    ('pt-br', _('Portuguese')),
+    ('en', _('English')),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -289,6 +289,14 @@ INSTALLED_APPS = (
     # "mezzanine.mobile",
     "logentry_admin",
 )
+
+MIGRATION_MODULES = {
+    'carceropolis': 'carceropolis.migrations.carceropolis',
+    'pages': 'carceropolis.migrations.pages',
+    'forms': 'carceropolis.migrations.forms',
+    'blog': 'carceropolis.migrations.blog',
+    'conf': 'carceropolis.migrations.conf',
+}
 
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the

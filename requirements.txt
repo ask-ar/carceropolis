@@ -2,6 +2,7 @@ git+https://github.com/stephenmcd/mezzanine.git#egg=Mezzanine
 django-extensions
 django-phonenumber-field
 django-logentry-admin
+django-modeltranslation
 psycopg2-binary
 django-extensions
 pandas
