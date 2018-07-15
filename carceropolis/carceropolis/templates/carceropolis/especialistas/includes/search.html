@@ -12,17 +12,29 @@
     </div>
     <div class="control-group">
       <label for="nome" class="help-block control-label">Nome</label>
-      <input type="text" name="nome" value="{% if nome %}{{nome}}{% endif %}" id="filter_nome" class="form-control">
+      <input type="text" name="nome" value="{% if nome %}{{nome}}{% endif %}" id="filter_nome" class="form-control" list="nome_especialistas">
     </div>
     <div class="control-group">
       <label for='especialidade' class='help-block control-label'>Especialidade</label>
-      <input type='text' name='especialidade' value='{% if especialidade %}{{especialidade}}{% endif %}' id='filter_especialidade' class="form-control">
+      <input type='text' name='especialidade' value='{% if especialidade %}{{especialidade}}{% endif %}' id='filter_especialidade' class="form-control" list="especialidades">
     </div>
     <div class="control-group">
       <button type="submit" class="btn btn-orange">Filtrar</button>
     </div>
   </fieldset>
 </form>
+
+<datalist id="especialidades">
+  {% for especialidade in especialidades %}
+    <option value="{{ especialidade }}">
+  {% endfor %}
+</datalist>
+
+<datalist id="nome_especialistas">
+  {% for nome in nome_especialistas %}
+    <option value="{{ nome }}">
+  {% endfor %}
+</datalist>
 
 <script>
   $('#filter_especialistas').on('submit', function(e){

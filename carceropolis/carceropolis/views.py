@@ -21,7 +21,7 @@ from mezzanine.utils.views import paginate
 from mezzanine.utils.urls import login_redirect, next_url
 from bokeh.embed import server_document
 
-from .models import (AreaDeAtuacao, Especialista, Publicacao,
+from .models import (AreaDeAtuacao, Especialista, Publicacao, Especialidade,
                      UnidadePrisional, DadosEncarceramento)
 
 User = get_user_model()
@@ -249,6 +249,8 @@ def especialistas_list(request, extra_context=None, **kwargs):
                                     'os parâmetros passados.')
 
     context['especialistas'] = especialistas
+    context['nome_especialistas'] = Especialista.objects.values_list('nome', flat=True)
+    context['especialidades'] = especialistas = Especialidade.objects.all()
 
     templates = ['carceropolis/especialistas/especialistas.html']
 
