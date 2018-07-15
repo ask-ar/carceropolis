@@ -1,0 +1,285 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-15 11:33-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: carceropolis/admin.py:57 carceropolis/admin.py:60
+msgid "View on Site"
+msgstr ""
+
+#: carceropolis/settings.py:153
+msgid "Portuguese"
+msgstr ""
+
+#: carceropolis/settings.py:154
+msgid "English"
+msgstr ""
+
+#: carceropolis/templates/accounts/account_login.html:7
+msgid ""
+"You're already logged in. If you'd like to log in as a different user, "
+"you'll need to log out first."
+msgstr ""
+
+#: carceropolis/templates/accounts/account_login.html:11
+#, python-format
+msgid ""
+"If you don't have an account you can <a href=\"%(signup_url)s?next=%(next)s"
+"\">sign up</a> for one now."
+msgstr ""
+
+#: carceropolis/templates/accounts/account_login.html:14
+#, python-format
+msgid ""
+"<p>You can also <a href=\"%(password_reset_url)s?next=%(profile_update_url)s"
+"\">reset your password</a> if you've forgotten it.</p>"
+msgstr ""
+
+#: carceropolis/templates/accounts/account_signup.html:7
+msgid ""
+"You're already logged in. If you'd like to create a new account, you'll need "
+"to log out first."
+msgstr ""
+
+#: carceropolis/templates/accounts/account_signup.html:11
+msgid ""
+"After signing up, your account will be reviewed for approval. You'll receive "
+"an email when your account is activated."
+msgstr ""
+
+#: carceropolis/templates/accounts/account_signup.html:13
+msgid ""
+"After signing up, you'll receive an email with a link you need to click, in "
+"order to activate your account."
+msgstr ""
+
+#: carceropolis/templates/accounts/includes/user_panel.html:12
+msgid "Update profile"
+msgstr ""
+
+#: carceropolis/templates/accounts/includes/user_panel.html:22
+msgid "Log out"
+msgstr ""
+
+#: carceropolis/templates/accounts/includes/user_panel.html:27
+msgid "Log in"
+msgstr ""
+
+#: carceropolis/templates/accounts/includes/user_panel.html:30
+msgid "Sign up"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/dados/dados.html:7
+#: carceropolis/templates/carceropolis/dados/dados.html:16
+msgid "Infografia Carcerópolis"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/dados/piramide_etaria.html:4
+msgid "Publicação"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/dados/piramide_etaria.html:30
+msgid "Dados"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/dados/piramide_etaria.html:39
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:20
+msgid "Tag:"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/dados/piramide_etaria.html:41
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:22
+msgid "Categoria:"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/dados/piramide_etaria.html:45
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:26
+msgid "Author:"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/especialistas/especialistas.html:8
+msgid "Especialistas"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:6
+msgid "Recent Posts"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:27
+msgid "Archive"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:43
+msgid "Categories"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:56
+#: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:53
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:122
+msgid "Tags"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:72
+msgid "Authors"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:84
+msgid "Feeds"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:86
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:90
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:94
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:98
+msgid "RSS"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:87
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:91
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:95
+#: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:99
+msgid "Atom"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:64
+msgid "Share on Twitter"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:65
+msgid "Share on Facebook"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:73
+msgid "Related posts"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:8
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:4
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:10
+msgid "Publicações"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:16
+msgid "Publicacação"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:44
+msgid "Viewing posts tagged"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:47
+msgid "Viewing posts for the Categoria"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:50
+msgid "Viewing posts from"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:53
+msgid "Viewing posts by authors with name like"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:83
+msgid "Por"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:86
+#, python-format
+msgid "%(sometime)s"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:92
+msgid "em"
+msgstr ""
+
+#: carceropolis/templates/carceropolis/unidades/mapa.html:8
+msgid "Unidades Prisionais"
+msgstr ""
+
+#: carceropolis/templates/dashboard/dashboard.html:8
+#: carceropolis/templates/dashboard/dashboard.html:18
+msgid "Painel de Dados"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comment.html:23
+#: carceropolis/templates/generic/includes/comment.html:43
+#: carceropolis/templates/generic/includes/comment.html:82
+#, python-format
+msgid "%(sometime)s ago"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comment.html:25
+#: carceropolis/templates/generic/includes/comment.html:45
+#: carceropolis/templates/generic/includes/comment.html:72
+msgid "Reply"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comment.html:54
+msgid "Link"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comment.html:78
+msgid "Comment deleted"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comment.html:80
+msgid "Comment awaiting approval"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comment.html:95
+msgid "There are currently no comments"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comments.html:4
+msgid "Comments"
+msgstr ""
+
+#: carceropolis/templates/generic/includes/comments.html:23
+msgid "New Comment"
+msgstr ""
+
+#: carceropolis/templates/includes/language_selector.html:27
+msgid "Change"
+msgstr ""
+
+#: carceropolis/templates/index.html:3 carceropolis/templates/index.html:4
+msgid "Carcerópolis"
+msgstr ""
+
+#: carceropolis/templates/index.html:18
+msgid "text-home-intro"
+msgstr ""
+"O Brasil é um dos países que mais prende no mundo. Carcerópolis reúne dados "
+"e pesquisas que ajudam a revelar a estrutura e a população dessa nação atrás "
+"das grades."
+
+#: carceropolis/templates/index.html:21
+msgid "Data"
+msgstr "Dados"
+
+#: carceropolis/templates/index.html:22
+msgid "Publications"
+msgstr "Publicações"
+
+#: carceropolis/templates/pages/menus/admin.html:31
+msgid "Add"
+msgstr ""
+
+#: carceropolis/templates/pages/menus/dropdown.html:11
+msgid "Home"
+msgstr ""
