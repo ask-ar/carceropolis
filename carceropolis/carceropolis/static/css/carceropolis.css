@@ -354,18 +354,20 @@ main.main-content {
 }
 /* line 66, ../../scss/_base.scss */
 #footer .desenvolvimento-ask .logo.ask {
-  width: 60px;
+  color: white;
+  text-decoration: none;
+  width: 170px;
 }
-/* line 69, ../../scss/_base.scss */
+/* line 71, ../../scss/_base.scss */
 #footer .desenvolvimento-ask .logo.ask img {
-  padding-left: 0;
+  padding-left: 5px;
   padding-right: 0;
   margin-left: 0;
   margin-right: 0;
   width: 40px;
 }
 @media (min-width: 768px) {
-  /* line 69, ../../scss/_base.scss */
+  /* line 71, ../../scss/_base.scss */
   #footer .desenvolvimento-ask .logo.ask img {
     width: 50px;
   }
@@ -377,7 +379,7 @@ main.main-content {
     right: 5px;
   }
 }
-/* line 86, ../../scss/_base.scss */
+/* line 88, ../../scss/_base.scss */
 #footer .logo {
   display: block;
   margin: 0 auto 10px;
@@ -385,20 +387,20 @@ main.main-content {
   padding-left: 10px;
 }
 @media (min-width: 768px) {
-  /* line 86, ../../scss/_base.scss */
+  /* line 88, ../../scss/_base.scss */
   #footer .logo {
     display: inline-block;
     margin: 0 10px 0 0;
     width: 100px;
   }
 }
-/* line 96, ../../scss/_base.scss */
+/* line 98, ../../scss/_base.scss */
 #footer .logo img {
   width: 100%;
 }
-/* line 101, ../../scss/_base.scss */
+/* line 103, ../../scss/_base.scss */
 #footer address {
-  color: #beb4aa;
+  color: white;
   display: block;
   font-size: 16px;
   line-height: 1.6em;
@@ -406,17 +408,17 @@ main.main-content {
   width: 100%;
   font-family: "source_sans_prolight";
 }
-/* line 111, ../../scss/_base.scss */
+/* line 113, ../../scss/_base.scss */
 #footer #gototop {
   display: none;
 }
 
-/* line 116, ../../scss/_base.scss */
+/* line 118, ../../scss/_base.scss */
 .pagination > li > a {
   color: #ea702e;
 }
 
-/* line 120, ../../scss/_base.scss */
+/* line 122, ../../scss/_base.scss */
 .pagination > .active > span,
 .pagination > .active > a,
 .pagination > .active > a:hover,
@@ -428,14 +430,14 @@ main.main-content {
   z-index: 0;
 }
 
-/* line 131, ../../scss/_base.scss */
+/* line 133, ../../scss/_base.scss */
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
 }
 
-/* line 136, ../../scss/_base.scss */
+/* line 138, ../../scss/_base.scss */
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-top-right-radius: 2px;
