@@ -292,3 +292,20 @@ Para geolocalizar unidades prisionais que estejam na base, usar o seguinte coman
 Pode ser usado o parâmetro `--all` para forçar a geolocalização de todas as unidades.
 
 É usada uma cache local (`geo.cache`) para armazenar os retornos das APIs de mapeamento, agilizando o processo.
+
+## Traduções
+
+Para traduzir algum texto, primeiro adicione o que quer traduzir com `{% trans "palavra ou id" %}`, depois gere os `.po`:
+
+    python manage.py makemessages -l en -l pt_BR
+
+Depois edite:
+
+    carceropolis/carceropolis/locale/en/LC_MESSAGES/django.po
+    carceropolis/carceropolis/locale/pt_BR/LC_MESSAGES/django.po
+
+E por fim compile:
+
+    python manage.py compilemessages
+
+Mais informações aqui: https://docs.djangoproject.com/en/2.0/topics/i18n/translation/
