@@ -6,5 +6,5 @@ fonts_dir = "static/fonts/"
 javascripts_dir = "js"
 relative_assets = true
 
-output_style = :expanded
-environment = :development
+output_style = :compressed
+environment = :production
