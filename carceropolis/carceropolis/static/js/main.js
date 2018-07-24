@@ -80,11 +80,6 @@ jQuery(function ($) {
         const animTarget = "#dados-bar"
         
         const animDadosGerais = (ativo = `#dados-gerais`) => {
-            /*
-                1. Dados Gerais
-                - número 622 inciando normal e tornando-se negrito
-                - animação (contador) no 111%
-            */
             $(`${ativo} [data-tobold]`).addClass(`toBold`)
             contador(
                 document.querySelectorAll(`${ativo} [data-final-number]`)
@@ -106,81 +101,53 @@ jQuery(function ($) {
                     break
 
                 case `#perfil-populacional`:
-
-                    /*
-                        2. Perfil Populacional
-                        - aparecer primeiro o bloco "A população carcerária..."
-                        - aparecer depois o gráfico, animando a linha
-                        - aparecer depois o Estado de São Paulo e preencher proporcionalmente a 35% da área (animação)
-                        - aparecer, por fim, o bloco "segundo dados do IBGE..."
-                    */
+                    //aparecer primeiro o bloco "A população carcerária..."
                     $(`${this.ativo} .anim1`).addClass(`slideInLeft`)
-                    $(`${this.ativo} svg .linha`).attr(`class`, `linha full`)
-
-                    setTimeout(
-                        () => $(`${this.ativo} .anim2`).addClass(`slideInUp`).removeClass(`anim2`)
-                        , 2500
-                    )
-                    setTimeout(
-                        () => $(`${this.ativo} .anim3`).addClass(`slideInUp`).removeClass(`anim3`)
-                        , 3500
-                    )
+                    //aparecer depois o gráfico, animando a linha
+                    $(`${this.ativo} svg .linha`).addClass(`linha full`)
+                    //aparecer depois o Estado de São Paulo e preencher proporcionalmente a 35% da área (animação)
+                    $(`${this.ativo} svg .linha`).on('animationend', () => {
+                        $(`${this.ativo} .anim2`).addClass(`slideInUp`).removeClass(`anim2`)
+                    })
+                    //aparecer, por fim, o bloco "segundo dados do IBGE..."
+                    $(`${this.ativo} .anim2`).on('animationend', () => {
+                        $(`${this.ativo} .anim3`).addClass(`slideInUp`).removeClass(`anim3`)
+                    })
                     break
 
                 case `#infraestrutura`:
-                    /*
-                    3. Infraestrutura
-                    - fixar topo e rodapé (sobre déficit)
-                    - aparecer os blocos conforme usuário rolar o scroll
-                    */
-                    let moving = `${this.ativo} .moving`
+                    let moving = `${this.ativo} .moving`,
+                        clickIndex = 1
 
                     $(moving).addClass('anim')
-                    setTimeout(
-                        () => $(`${this.ativo} .c10`).addClass(`fadeIn`)
-                        , 1000
-                    )
+                    $(`${this.ativo} .c10`).addClass(`fadeIn`)
 
-                    $(`${this.ativo}`).on('click', evento => {
-                          
-                        //third
-                        if($(moving).hasClass('anim3')) {
-                            $(moving).removeClass('anim anim2 anim3')
-                                
-                            $(`${this.ativo} .cela`).removeClass(`fadeIn`).addClass(`fadeOut`)
-                            
-                            setTimeout(
-                                () => {
-                                    $(moving).addClass('anim')
-                                    $(`${this.ativo} .cela`).removeClass(`fadeOut`)
-                                    $(`${this.ativo} .c10`).addClass(`fadeIn`)
-                                    return
-                                }
-                                , 1200
-                            )                            
-                        }
+                    $(`${this.ativo}`).on('click', () => {
                         
-                        //second
-                        if ($(moving).hasClass('anim2')){
-                            $(moving).addClass('anim3')    
-                            setTimeout(
-                                () => $(`${this.ativo} .c48`).addClass(`fadeIn`)
-                                , 1000
-                            )
-                        }
+                        switch (clickIndex) {
+                            case 1:
+                                $(moving).addClass('anim2')
+                                $(`${this.ativo} .c19`).removeClass(`fadeOut`)
+                                $(`${this.ativo} .c19`).addClass(`fadeIn`)
+                                clickIndex++
+                            break
+                            case 2:
+                                $(moving).addClass('anim3')
+                                $(`${this.ativo} .c48`).removeClass(`fadeOut`)
+                                $(`${this.ativo} .c48`).addClass(`fadeIn`)
+                                clickIndex++
+                            break
+                            case 3:
+                                $(moving).removeClass('anim2 anim3')
+                                $(`${this.ativo} .c48`).addClass(`fadeOut`)
+                                $(`${this.ativo} .c19`).addClass(`fadeOut`)
 
-                        //first click
-                        if ($(moving).hasClass('anim')) {
-                            $(moving).addClass('anim2')
-                            setTimeout(
-                                () => $(`${this.ativo} .c19`).addClass(`fadeIn`)
-                                , 1000
-                            )
+                                $(`${this.ativo} .c48`).toggleClass(`fadeIn`)
+                                $(`${this.ativo} .c19`).toggleClass(`fadeIn`)
+                                
+                                clickIndex = 1
                         }
-
                     })
-        
-                    break
 
                 case `#situacao-juridica`:
                     contador(document.querySelectorAll(`${this.ativo} [data-final-number]`), 20)
@@ -239,7 +206,7 @@ jQuery(function ($) {
                     break
 
                 default:
-                    console.log(`Animation error: ${this.ativo}`)
+                    throw `Alvo da animação desconhecido: ${this.ativo}`
             }
         }
 
@@ -278,7 +245,15 @@ jQuery(function ($) {
 
 })
 
-//vanilla functions
+/**
+ * Contador
+ * @constructor
+ * @param {NodeList} elements - Elementos com o atributo data-final-number.
+ * @param {number} speed - Velocidade de incrementacao do contador.
+ * @param {number} delayToStart - Espera para iniciar o contador.
+ * @param {function} callback - Após o contador acontecer, chama esta função.
+ * @param {any} callback_args - Argumentos do callback.
+ */
 function contador(elements, speed = 1, delayToStart = 0, callback=undefined, callback_args=undefined) {
     setTimeout(incrementador, delayToStart)
     function incrementador() {
