@@ -35,6 +35,34 @@ Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
 em seu sistema será automaticamente aplicada à instancia do projeto sendo
 executada.
 
+#### Problemas com Docker
+Execute os comandos no **diretório do Carcerópolis** para apagar todas as imagens e container referente ao projeto. Após isto reinicie o processo de instalação.
+
+1. Remover todas as imagens:
+```bash
+docker-compose down --rmi all -v --remove-orphans
+```
+
+2. Remover todos os containers:
+```bash
+docker-compose rm -f -s -v
+``` 
+
+3. Verificar se ainda tem algum container:
+```bash
+docker ps -a 
+```
+Caso positivo, remover cada um manualmente com:
+```bash
+docker container rm <container_id>
+```
+
+#### Atualizando arquivos estáticos
+Para atualizar os arquivos estáticos do projeto, enquanto o Docker roda em um terminal, em outro execute este comando:
+```bash
+docker-compose exec carceropolis python manage.py collectstatic --no-input
+```
+
 ## Server local (sem Docker)
 ### GNU/Linux - Básico
 Sistemas GNU/Linux contém python por padrão, então o que precisaremos é
