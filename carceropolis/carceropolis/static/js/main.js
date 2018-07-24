@@ -252,27 +252,27 @@ jQuery(function ($) {
  * @param {number} speed - Velocidade de incrementacao do contador.
  * @param {number} delayToStart - Espera para iniciar o contador.
  * @param {function} callback - Após o contador acontecer, chama esta função.
- * @param {any} callback_args - Argumentos do callback.
  */
-function contador(elements, speed = 1, delayToStart = 0, callback=undefined, callback_args=undefined) {
-    setTimeout(incrementador, delayToStart)
+const contador = function(elements, speed = 1, delayToStart = 0, callback=undefined) {
+    
+    setTimeout(incrementador, delayToStart);
+
     function incrementador() {
+        'use strict'
+
         for (let element of elements) {
-            let startNumber = parseInt(element.textContent),
-                endNumber = parseInt(element.getAttribute('data-final-number'))
+            let startNumber = parseInt(element.innerText),
+                endNumber = parseInt(element.getAttribute('data-final-number'));
             setInterval(
                 () => {
                     if (startNumber < endNumber) {
                         startNumber++
-                        element.textContent = startNumber
-                    }
-                    if (startNumber == endNumber) {
-
+                        element.innerText = startNumber
                     }
                 }
                 , speed
-            )
+            );
         }
-        if (callback !== undefined) callback(callback_args)
+        if (callback) callback();
     }
 }
