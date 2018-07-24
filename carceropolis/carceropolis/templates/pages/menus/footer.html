@@ -1,20 +1,23 @@
 {% load staticfiles static %}
 <footer id="footer">
   <div class="container">
-    <address>
-      <a href="http://www.conectas.org/" class="logo" title="Por Conectas Direitos Humanos">
-          <img src="{% static "images/conectas-marca-sd.svg" %}" alt="Conectas Direitos Humanos">
-      </a>
-      {% now "Y" %}
-      | Tel/Fax +55 11 3884-7440 
-      | Caixa Postal nº 62633 CEP: 01214-970 - São Paulo - SP
-      <span class="desenvolvimento-ask">
-        <a href="https://ask-ar.xyz" class="logo ask" title="ASK">
-          Construído por:
+    <div class="row">
+      <div class="col-md-2">
+        <a href="http://www.conectas.org/" class="conectas" title="Por Conectas Direitos Humanos">
+            <img src="{% static "images/conectas-marca-sd.svg" %}" alt="Conectas Direitos Humanos">
+        </a>
+      </div>
+      <address class="col-md-7 col-lg-8">
+        {% now "Y" %}
+        | Tel/Fax +55 11 3884-7440 
+        | Caixa Postal nº 62633 CEP: 01214-970 - São Paulo - SP
+      </address>
+      <div class="col-md-3 col-lg-2">
+        <a href="https://ask-ar.xyz" class="ask" title="Construído por: ASK">
+          <span>Construído por:</span>
           <img src="{% static "images/logo_ask_bco.svg" %}" alt="ASK">
         </a>
-      </span>
-    </address>
-    <a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a>
+      </div>
+    </div>
   </div>
 </footer>
