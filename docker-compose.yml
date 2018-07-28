@@ -52,8 +52,11 @@ services:
             - PUBLICACAO_PER_PAGE=${PUBLICACAO_PER_PAGE:-9}  # Default to 9
             - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE:-50MB}  # Default to 50MB
             - EMAIL_HOST=${EMAIL_HOST}
+            - EMAIL_HOST_USER=${EMAIL_HOST_USER}
             - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
-            - EMAIL_PORT=${EMAIL_PORT:-587}
+            - EMAIL_PORT=${EMAIL_PORT:-465}
+            - EMAIL_USE_TLS=${EMAIL_USE_TLS:-False}
+            - EMAIL_USE_SSL=${EMAIL_USE_SSL:-True}
         volumes:
             - .:/project
             - carceropolis_sockets:/sockets
