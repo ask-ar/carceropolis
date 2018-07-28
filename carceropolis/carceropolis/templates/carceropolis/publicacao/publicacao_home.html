@@ -24,7 +24,9 @@
     <ul class="categorias-publicacoes">
     {% for categoria in categorias %} <!-- Categoria == Área de Atuação -->
         <li class="categoria-{{categoria.slug}}">
-            <a href="categoria/{{ categoria.slug }}">{{ categoria.nome }}</a>
+            <a href="categoria/{{ categoria.slug }}">
+                {{ categoria.nome }} ({{ categoria.quantidade }})
+            </a>
         </li>
     {% endfor %}
     </ul>

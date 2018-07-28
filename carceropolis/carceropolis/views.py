@@ -45,8 +45,15 @@ def publicacao_home(request):
     """
     categorias = AreaDeAtuacao.objects.all()
     categorias = categorias.order_by('ordem')
+    data = []
+    for categoria in categorias:
+        quantidade = Publicacao.objects.filter(categorias=categoria).count()
+        data.append({'nome': categoria.nome,
+                     'slug': categoria.slug,
+                     'quantidade': quantidade})
+
     templates = ["carceropolis/publicacao/publicacao_home.html"]
-    context = {'categorias': categorias}
+    context = {'categorias': data}
     return TemplateResponse(request, templates, context)
 
 
@@ -249,7 +256,8 @@ def especialistas_list(request, extra_context=None, **kwargs):
                                     'os parâmetros passados.')
 
     context['especialistas'] = especialistas
-    context['nome_especialistas'] = Especialista.objects.values_list('nome', flat=True)
+    context['nome_especialistas'] = Especialista.objects.values_list('nome',
+                                                                     flat=True)
     context['especialidades'] = especialistas = Especialidade.objects.all()
 
     templates = ['carceropolis/especialistas/especialistas.html']
