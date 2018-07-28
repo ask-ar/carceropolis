@@ -47,6 +47,8 @@ deploy() {
     python manage.py makemigrations
     echo "  Applying migrations."
     python manage.py migrate --no-input
+    echo "  Compiling translated messages"
+    python manage.py compilemessages
 }
 
 wait_for_db() {
@@ -88,6 +90,8 @@ case "$1" in
     fi
     echo "  Running migrations."
     python manage.py migrate
+    echo "  Compiling translated messages"
+    python manage.py compilemessages
     echo "  Collecting static files."
     python manage.py collectstatic --noinput
     echo "Starting uwsgi"
