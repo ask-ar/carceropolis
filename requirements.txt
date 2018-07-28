@@ -1,4 +1,4 @@
-git+https://github.com/stephenmcd/mezzanine.git#egg=Mezzanine
+mezzanine
 django-extensions
 django-phonenumber-field
 django-logentry-admin

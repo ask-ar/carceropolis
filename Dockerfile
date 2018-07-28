@@ -8,7 +8,6 @@ RUN set -ex \
         build-base \
         libc-dev \
         linux-headers \
-        git \
         gcc \
         # Pillow deps
         jpeg-dev \
@@ -23,7 +22,7 @@ RUN set -ex \
         fribidi-dev \
     && pip install \
         uwsgi \
-        git+https://github.com/stephenmcd/mezzanine.git#egg=Mezzanine \
+        pillow \
     && apk del _build_deps \
     && rm -rf \
         ~/.cache/pip \
