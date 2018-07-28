@@ -49,70 +49,52 @@ main.main-content {
 #footer {
 	background: black;
 	border: none;
+	color: white;
+	font-family: $light;
 	margin: 0;
 	min-height: 53px;
-	padding: 15px 0;
+	padding: 0;
 	text-align: center;
 
-    .desenvolvimento-ask {
-        position: relative;
-        font-size: 14px;
-        line-height: 39.39px;
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 0;
-        margin-right: 0;
+	.row {
+		padding-bottom: 10px;
+		padding-top: 10px;
+	}
 
-        .logo.ask {
-			color: white;
-			text-decoration: none;
-			width: 170px;
-
-            img {
-                @media (min-width: 768px){
-                    width: 50px;
-                }
-                padding-left: 5px;
-                padding-right: 0;
-                margin-left: 0;
-                margin-right: 0;
-                width: 40px;
-            }
-        }
-        @media (min-width: 768px){
-            position: absolute;
-            right: 5px;
-        }
-    }
-
-	.logo {
-		display: block;
-		margin: 0 auto 10px;
-		width: 90px;
-        padding-left: 10px;
-		@media (min-width: 768px){
-			display: inline-block;
-			margin: 0 10px 0 0;
-			width: 100px;
-		}
+	.conectas {
+		display: inline-block;
+		width: 100px;
+		
 		img {
-			width: 100%;
+			object-fit: contain;
 		}
 	}
 
 	address {
-		color: white;
-		display: block;
-		font-size: 16px;
-		line-height: 1.6em;
-		margin: 0;
-		width: 100%;
-		font-family: $light;
+		margin: 18px 0 10px;
+
+		@media (min-width: 992px){
+			margin: 12px 0 0;
+		}
+		
+		@media (min-width: 1200px){
+			font-size: 1.2em;
+		}
 	}
 
-	#gototop {
-		display: none;
-	}
+	.ask {
+		color: white;
+
+		@media (min-width: 992px){
+			display: block;
+			margin-top: 10px;
+		}
+
+		img {
+			padding-left: 5px;
+			width: 44px;
+		}        
+    }
 }
 
 .pagination > li > a {

@@ -40,6 +40,43 @@
 
     .navbar-right {
         margin: 0;
+
+        > li {
+            a:before {
+                background-position: 0 100%;
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+                content: '';
+                display: inline-block;
+                height: 24px;
+                margin-right: 10px;
+                position: relative;
+                width: 20px;
+            }
+
+            &:nth-child(1) > a:before {
+                background-image: url(../images/icon-dados.svg);
+                top: 5px;
+            }
+            &:nth-child(2) > a:before {
+                background-image: url(../images/icon-publicacoes.svg);
+                top: 6px;
+            }
+            &:nth-child(3) > a:before {
+                background-image: url(../images/icon-especialistas.svg);
+                top: 3px;
+                margin-left: -4px;
+                width: 24px;
+            }
+            &:nth-child(4) > a:before {
+                background-image: url(../images/icon-contato.svg);
+                top: 5px;
+            }
+            &:nth-child(5) > a:before {
+                background-image: url(../images/icon-sobre.svg);
+                top: 4px;
+            }
+        }
     }
 
     li {
@@ -56,43 +93,12 @@
             color: white;
             text-decoration: none;
         }
-        
-        a:before {
-            background-position: 0 100%;
-            background-repeat: no-repeat;
-            background-size: 100% auto;
-            content: '';
-            display: inline-block;
-            height: 24px;
-            margin-right: 10px;
-            position: relative;
-            width: 20px;
-        }
+    }
 
-        &:nth-child(1) > a:before {
-            background-image: url(../images/icon-dados.svg);
-            top: 5px;
-        }
-        &:nth-child(2) > a:before {
-            background-image: url(../images/icon-publicacoes.svg);
-            top: 6px;
-        }
-        &:nth-child(3) > a:before {
-            background-image: url(../images/icon-especialistas.svg);
-            top: 3px;
-            margin-left: -4px;
-            width: 24px;
-        }
-        &:nth-child(4) > a:before {
-            background-image: url(../images/icon-contato.svg);
-            top: 5px;
-        }
-        &:nth-child(5) > a:before {
-            background-image: url(../images/icon-sobre.svg);
-            top: 4px;
-        }
-
-    } //li
+    .navbar-right > li > a.dropdown-toggle:hover {
+        background-color: inherit;
+        color: $conectas-grafismo-amarelo;
+    }
 
     .dropdown-menu {
         display: block !important;

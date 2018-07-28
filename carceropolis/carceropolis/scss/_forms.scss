@@ -30,10 +30,18 @@
   }
 }
 
+.form-horizontal {
+  margin-bottom: 20px;
+}
 
 #login_modal.modal .modal-dialog,
 #cadastro_modal.modal .modal-dialog #cadastro {
     .form-horizontal .form-group {
         margin-left: 0;
     }
+}
+
+form.form-horizontal[name='RecuperarSenha'] .form-group {
+  margin-right: 0;
+  margin-left: 0;
 }
