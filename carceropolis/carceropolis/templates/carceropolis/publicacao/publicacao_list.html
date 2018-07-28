@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags publicacoeshelper %}
 
-{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Publicações" %}{% endif %}{% endblock %}
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Publications" %}{% endif %}{% endblock %}
 
 {% block title %}
 {% if page %}
 {% editable page.title %}{{ page.title }}{% endeditable %}
 {% else %}
-{% trans "Publicações" %}
+{% trans "Publications" %}
 {% endif %}
 {% endblock %}
 
@@ -19,7 +19,7 @@
 {% if tag %}
     {% trans "Tag:" %} {{ tag }}
 {% else %}{% if categoria %}
-    <!-- {% trans "Categoria:" %}  -->{{ categoria }}
+    <!-- {% trans "Category" %}:  -->{{ categoria }}
 {% else %}{% if ano %}
     {{ ano }}
 {% else %}{% if autoria %}
@@ -80,7 +80,7 @@
       {% block publicacao_list_post_metainfo %}
       {% editable publicacao.publish_date %}
       <h5 class="post-meta autoria">
-        {% trans "Por" %} <strong>{{ publicacao.autoria }}</strong>
+        {% trans "By" %} <strong>{{ publicacao.autoria }}</strong>
       </h5>
       <h6 class="post-meta data">
           Publicado em: {% blocktrans with sometime=publicacao.ano_de_publicacao %}{{ sometime }}{% endblocktrans %}
@@ -89,7 +89,7 @@
         <li>Categorias:</li>
         {% with publicacao.categorias.all as categorias %}
           {% if categorias %}
-            <!-- {% trans "em" %} -->
+            <!-- {% trans "at" %} -->
             {% for categoria in categorias %}
               <li><a href="{% url "publicacao_list_categoria" categoria.slug %}">{{ categoria }}</a>{% if not forloop.last %},{% endif %}</li>
             {% endfor %}

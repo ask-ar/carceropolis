@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-15 11:33-0300\n"
+"POT-Creation-Date: 2018-07-28 17:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "View on Site"
 msgstr ""
 
-#: carceropolis/settings.py:153
+#: carceropolis/settings.py:159
 msgid "Portuguese"
 msgstr ""
 
-#: carceropolis/settings.py:154
+#: carceropolis/settings.py:160
 msgid "English"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 
 #: carceropolis/templates/carceropolis/dados/dados.html:7
 #: carceropolis/templates/carceropolis/dados/dados.html:16
-msgid "Infografia Carcerópolis"
+msgid "Infographic"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/dados/piramide_etaria.html:4
@@ -102,7 +102,6 @@ msgid "Tag:"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/dados/piramide_etaria.html:41
-#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:22
 msgid "Categoria:"
 msgstr ""
 
@@ -112,7 +111,7 @@ msgid "Author:"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/especialistas/especialistas.html:8
-msgid "Especialistas"
+msgid "Specialists"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:6
@@ -168,13 +167,15 @@ msgid "Related posts"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:8
+#: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:16
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:4
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:10
-msgid "Publicações"
+#: carceropolis/templates/index.html:22
+msgid "Publications"
 msgstr ""
 
-#: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:16
-msgid "Publicacação"
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:22
+msgid "Category"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:44
@@ -194,7 +195,7 @@ msgid "Viewing posts by authors with name like"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:83
-msgid "Por"
+msgid "By"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:86
@@ -203,16 +204,16 @@ msgid "%(sometime)s"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:92
-msgid "em"
+msgid "at"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/unidades/mapa.html:8
-msgid "Unidades Prisionais"
+msgid "Prision Units"
 msgstr ""
 
 #: carceropolis/templates/dashboard/dashboard.html:8
 #: carceropolis/templates/dashboard/dashboard.html:18
-msgid "Painel de Dados"
+msgid "Data Panel"
 msgstr ""
 
 #: carceropolis/templates/generic/includes/comment.html:23
@@ -263,16 +264,12 @@ msgstr ""
 #: carceropolis/templates/index.html:18
 msgid "text-home-intro"
 msgstr ""
-"Brazil is one of the countries with the most people incarcerated in the "
-"world. Carcerópolis gathers data and research that help reveal the structure "
+"Brazil is one of the countries with the highest number of incarcerated "
+"people.<br/>Carcerópolis gathers data and researchs to reveal the structure "
 "and population of this nation behind the bars."
 
 #: carceropolis/templates/index.html:21
 msgid "Data"
-msgstr ""
-
-#: carceropolis/templates/index.html:22
-msgid "Publications"
 msgstr ""
 
 #: carceropolis/templates/pages/menus/admin.html:31

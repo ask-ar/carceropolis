@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-15 11:33-0300\n"
+"POT-Creation-Date: 2018-07-28 17:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,21 +20,23 @@ msgstr ""
 
 #: carceropolis/admin.py:57 carceropolis/admin.py:60
 msgid "View on Site"
-msgstr ""
+msgstr "Veja no Site"
 
-#: carceropolis/settings.py:153
+#: carceropolis/settings.py:159
 msgid "Portuguese"
-msgstr ""
+msgstr "Português"
 
-#: carceropolis/settings.py:154
+#: carceropolis/settings.py:160
 msgid "English"
-msgstr ""
+msgstr "Inglês"
 
 #: carceropolis/templates/accounts/account_login.html:7
 msgid ""
 "You're already logged in. If you'd like to log in as a different user, "
 "you'll need to log out first."
 msgstr ""
+"Você já está conectado. Se você gostaria de logar com um usuário diferente, "
+"você deverá deslogar-se primeiro."
 
 #: carceropolis/templates/accounts/account_login.html:11
 #, python-format
@@ -42,6 +44,8 @@ msgid ""
 "If you don't have an account you can <a href=\"%(signup_url)s?next=%(next)s"
 "\">sign up</a> for one now."
 msgstr ""
+"Se você não possui uma conta você pode <a href=\"%(signup_url)s?next=%(next)s"
+"\">registrar-se</a>."
 
 #: carceropolis/templates/accounts/account_login.html:14
 #, python-format
@@ -49,45 +53,53 @@ msgid ""
 "<p>You can also <a href=\"%(password_reset_url)s?next=%(profile_update_url)s"
 "\">reset your password</a> if you've forgotten it.</p>"
 msgstr ""
+"<p>Você também pode <a href=\"%(password_reset_url)s?next="
+"%(profile_update_url)s\">reiniciar sua senha</a> caso tenha esquecido.</p>"
 
 #: carceropolis/templates/accounts/account_signup.html:7
 msgid ""
 "You're already logged in. If you'd like to create a new account, you'll need "
 "to log out first."
 msgstr ""
+"Você já está conectado. Se deseja criar uma nova conta, você precisa "
+"deslogar-se primeiro."
 
 #: carceropolis/templates/accounts/account_signup.html:11
 msgid ""
 "After signing up, your account will be reviewed for approval. You'll receive "
 "an email when your account is activated."
 msgstr ""
+"Após cadastrar-se, sua conta será revisada para aprovação. Você receberá um "
+"email quando sua conta estiver aprovada e ativa."
 
 #: carceropolis/templates/accounts/account_signup.html:13
 msgid ""
 "After signing up, you'll receive an email with a link you need to click, in "
 "order to activate your account."
 msgstr ""
+"Após o cadastro, você receberá um email com um link no qual precisará clicar "
+"para ativar sua conta."
 
 #: carceropolis/templates/accounts/includes/user_panel.html:12
 msgid "Update profile"
-msgstr ""
+msgstr "Atualizar perfil"
 
 #: carceropolis/templates/accounts/includes/user_panel.html:22
 msgid "Log out"
-msgstr ""
+msgstr "Sair"
 
 #: carceropolis/templates/accounts/includes/user_panel.html:27
 msgid "Log in"
-msgstr ""
+msgstr "Entrar"
 
 #: carceropolis/templates/accounts/includes/user_panel.html:30
 msgid "Sign up"
-msgstr ""
+msgstr "Cadastro"
 
 #: carceropolis/templates/carceropolis/dados/dados.html:7
 #: carceropolis/templates/carceropolis/dados/dados.html:16
-msgid "Infografia Carcerópolis"
-msgstr ""
+msgid "Infographic"
+msgstr "Infográfico"
 
 #: carceropolis/templates/carceropolis/dados/piramide_etaria.html:4
 msgid "Publicação"
@@ -103,30 +115,29 @@ msgid "Tag:"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/dados/piramide_etaria.html:41
-#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:22
 msgid "Categoria:"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/dados/piramide_etaria.html:45
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:26
 msgid "Author:"
-msgstr ""
+msgstr "Autor"
 
 #: carceropolis/templates/carceropolis/especialistas/especialistas.html:8
-msgid "Especialistas"
-msgstr ""
+msgid "Specialists"
+msgstr "Especialistas"
 
 #: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:6
 msgid "Recent Posts"
-msgstr ""
+msgstr "Publicações recentes"
 
 #: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:27
 msgid "Archive"
-msgstr ""
+msgstr "Arquivo"
 
 #: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:43
 msgid "Categories"
-msgstr ""
+msgstr "Categorias"
 
 #: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:56
 #: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:53
@@ -136,7 +147,7 @@ msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:72
 msgid "Authors"
-msgstr ""
+msgstr "Autores(as)"
 
 #: carceropolis/templates/carceropolis/publicacao/includes/filter_panel.html:84
 msgid "Feeds"
@@ -158,45 +169,48 @@ msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:64
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Compartilhar no Twitter"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:65
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Compartilhar no Facebook"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_detail.html:73
 msgid "Related posts"
-msgstr ""
+msgstr "Publicações relacionadas"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:8
+#: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:16
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:4
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:10
-msgid "Publicações"
-msgstr ""
+#: carceropolis/templates/index.html:22
+msgid "Publications"
+msgstr "Publicações"
 
-#: carceropolis/templates/carceropolis/publicacao/publicacao_home.html:16
-msgid "Publicacação"
-msgstr ""
+#: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:22
+#, fuzzy
+msgid "Category"
+msgstr "Categoria"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:44
 msgid "Viewing posts tagged"
-msgstr ""
+msgstr "Publicações tagueadas"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:47
 msgid "Viewing posts for the Categoria"
-msgstr ""
+msgstr "Publicações da Categoria"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:50
 msgid "Viewing posts from"
-msgstr ""
+msgstr "Publicação de"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:53
 msgid "Viewing posts by authors with name like"
-msgstr ""
+msgstr "Publicações de autores com nomes parecidos com"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:83
-msgid "Por"
-msgstr ""
+msgid "By"
+msgstr "Por"
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:86
 #, python-format
@@ -204,17 +218,18 @@ msgid "%(sometime)s"
 msgstr ""
 
 #: carceropolis/templates/carceropolis/publicacao/publicacao_list.html:92
-msgid "em"
-msgstr ""
+#, fuzzy
+msgid "at"
+msgstr "em"
 
 #: carceropolis/templates/carceropolis/unidades/mapa.html:8
-msgid "Unidades Prisionais"
-msgstr ""
+msgid "Prision Units"
+msgstr "Unidades Prisionais"
 
 #: carceropolis/templates/dashboard/dashboard.html:8
 #: carceropolis/templates/dashboard/dashboard.html:18
-msgid "Painel de Dados"
-msgstr ""
+msgid "Data Panel"
+msgstr "Painel de dados"
 
 #: carceropolis/templates/generic/includes/comment.html:23
 #: carceropolis/templates/generic/includes/comment.html:43
@@ -255,7 +270,7 @@ msgstr ""
 
 #: carceropolis/templates/includes/language_selector.html:27
 msgid "Change"
-msgstr ""
+msgstr "Alterar"
 
 #: carceropolis/templates/index.html:3 carceropolis/templates/index.html:4
 msgid "Carcerópolis"
@@ -272,14 +287,10 @@ msgstr ""
 msgid "Data"
 msgstr "Dados"
 
-#: carceropolis/templates/index.html:22
-msgid "Publications"
-msgstr "Publicações"
-
 #: carceropolis/templates/pages/menus/admin.html:31
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: carceropolis/templates/pages/menus/dropdown.html:11
 msgid "Home"
-msgstr ""
+msgstr "Início"
