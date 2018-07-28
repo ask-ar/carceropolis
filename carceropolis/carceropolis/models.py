@@ -139,6 +139,10 @@ class UnidadePrisional(models.Model):
     visitacao = models.TextField(blank=True, verbose_name='Visitação')
     lat = models.FloatField(blank=True, null=True)
     lon = models.FloatField(blank=True, null=True)
+    exist_2014_jun = models.BooleanField(default=False)
+    exist_2014_dez = models.BooleanField(default=False)
+    exist_2015 = models.BooleanField(default=False)
+    exist_2016 = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Unidade Prisional'
