@@ -3,7 +3,7 @@ FROM diraol/alpine-py36-pandas-numpy-psql:1.0.1
 ENV PYTHONUNBUFFERED 1
 
 RUN set -ex \
-    && apk add libstdc++ pcre-dev libuuid \
+    && apk add libstdc++ pcre-dev libuuid gettext \
     && apk --no-cache add --virtual _build_deps \
         build-base \
         libc-dev \
