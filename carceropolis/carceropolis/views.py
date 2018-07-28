@@ -211,7 +211,7 @@ def especialistas_list(request, extra_context=None, **kwargs):
         if outputs:
             stop_words = ["", " ", "de"]
             [outputs.discard(word) for word in stop_words]
-            print(".", outputs, ".")
+            log.debug(f".{outputs}.")
             return outputs
         return []
 
@@ -364,29 +364,29 @@ def login_user(request):
 
 
 def register_user(request):
-    print("registrando um novo usuário")
+    log.debug("registrando um novo usuário")
     profile_form = get_profile_form()
     form = profile_form(request.POST or None, request.FILES or None)
-    print(form)
-    print(dir(form))
-    print(form.is_valid())
+    log.debug(form)
+    log.debug(dir(form))
+    log.debug(form.is_valid())
     if request.method == "POST" and form.is_valid():
-        print("Método post e form válido")
+        log.debug("Método post e form válido")
         new_user = form.save()
         if not new_user.is_active:
             if settings.ACCOUNTS_APPROVAL_REQUIRED:
-                print('Usuário cadastrado, aguardando aprovação')
+                log.debug('Usuário cadastrado, aguardando aprovação')
                 send_approve_mail(request, new_user)
                 info(request, "Obrigado por se cadastrar! Você receberá um "
                               "email quando sua conta for ativada.")
             else:
-                print('Usuário cadastrado, aguardando confirmação')
+                log.debug('Usuário cadastrado, aguardando confirmação')
                 send_verification_mail(request, new_user, "signup_verify")
                 info(request, "Um email de verificação foi enviado com um "
                               "link para ativação de sua conta.")
             return redirect(next_url(request) or "/")
         else:
-            print('usuário cadastrado com sucesso')
+            log.debug('usuário cadastrado com sucesso')
             info(request, "Cadastro realizado com sucesso")
             login(request, new_user)
             return login_redirect(request)
