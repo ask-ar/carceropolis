@@ -55,12 +55,6 @@ ADMIN_MENU_ORDER = (
 
 ADMIN_REMOVAL = ["django.contrib.sites.models.Site"]
 
-ACCOUNTS_APPROVAL_REQUIRED = False
-
-ACCOUNTS_VERIFICATION_REQUIRED = True
-
-PUBLICACAO_PER_PAGE = 9
-
 MUNICIPIOS_GEO = False
 
 # A three item sequence, each containing a sequence of template tags
@@ -383,7 +377,7 @@ DATABASES = {
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
 
-ACCOUNTS_APPROVAL_REQUIRED = True
+ACCOUNTS_APPROVAL_REQUIRED = False
 
 ACCOUNTS_VERIFICATION_REQUIRED = True
 
