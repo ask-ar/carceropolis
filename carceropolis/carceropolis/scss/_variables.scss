@@ -100,7 +100,7 @@ $semibold: 'source_sans_prosemibold';
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="cp-icon-"], [class*=" cp-icon-"] {
   font-family: 'carceropolis' !important;
   speak: none;
   font-style: normal;
@@ -144,97 +144,97 @@ $icon-bebe: "\e90c";
 $icon-balanca: "\e90d";
 $icon-alas-exclusivas: "\e90e";
 
-.icon-populacao::before {
+.cp-icon-populacao::before {
     content: $icon-populacao;
 }
-.icon-politicas::before {
+.cp-icon-politicas::before {
     content: $icon-politicas;
 }
-.icon-menu-sobre::before {
+.cp-icon-menu-sobre::before {
     content: $icon-menu-sobre;
 }
-.icon-menu-publicacoes::before {
+.cp-icon-menu-publicacoes::before {
     content: $icon-menu-publicacoes;
 }
-.icon-menu-especialistas::before {
+.cp-icon-menu-especialistas::before {
     content: $icon-menu-especialistas;
 }
-.icon-menu-dados::before {
+.cp-icon-menu-dados::before {
     content: $icon-menu-dados;
 }
-.icon-menu-contato::before {
+.cp-icon-menu-contato::before {
     content: $icon-menu-contato;
 }
-.icon-mapa::before {
+.cp-icon-mapa::before {
     content: $icon-mapa;
 }
-.icon-macro-dados::before {
+.cp-icon-macro-dados::before {
     content: $icon-macro-dados;
 }
-.icon-filtro::before {
+.cp-icon-filtro::before {
     content: $icon-filtro;
 }
-.icon-envelope::before {
+.cp-icon-envelope::before {
     content: $icon-envelope;
 }
-.icon-busca::before {
+.cp-icon-busca::before {
     content: $icon-busca;
 }
-.icon-unidades::before {
+.cp-icon-unidades::before {
     content: $icon-unidades;
 }
-.icon-brasil::before {
+.cp-icon-brasil::before {
     content: $icon-brasil;
 }
-.icon-article::before {
+.cp-icon-article::before {
     content: $icon-article;
 }
-.icon-arrow-down::before {
+.cp-icon-arrow-down::before {
     content: $icon-arrow-down;
 }
-.icon-trabalho-educacao::before {
+.cp-icon-trabalho-educacao::before {
     content: $icon-trabalho-educacao;
 }
-.icon-saude::before {
+.cp-icon-saude::before {
     content: $icon-saude;
 }
-.icon-prisao::before {
+.cp-icon-prisao::before {
     content: $icon-prisao;
 }
-.icon-pessoa::before {
+.cp-icon-pessoa::before {
     content: $icon-pessoa;
 }
-.icon-perfil-populacional::before {
+.cp-icon-perfil-populacional::before {
     content: $icon-perfil-populacional;
 }
-.icon-materno::before {
+.cp-icon-materno::before {
     content: $icon-materno;
 }
-.icon-juridica::before {
+.cp-icon-juridica::before {
     content: $icon-juridica;
 }
-.icon-infraestrutura::before {
+.cp-icon-infraestrutura::before {
     content: $icon-infraestrutura;
 }
-.icon-dados-gerais::before {
+.cp-icon-dados-gerais::before {
     content: $icon-dados-gerais;
 }
-.icon-caixao::before {
+.cp-icon-caixao::before {
     content: $icon-caixao;
 }
-.icon-cadeirante::before {
+.cp-icon-cadeirante::before {
     content: $icon-cadeirante;
 }
-.icon-btn-mais::before {
+.cp-icon-btn-mais::before {
     content: $icon-btn-mais;
 }
-.icon-bebe::before {
+.cp-icon-bebe::before {
     content: $icon-bebe;
 }
-.icon-balanca::before {
+.cp-icon-balanca::before {
     content: $icon-balanca;
 }
-.icon-alas-exclusivas::before {
+.cp-icon-alas-exclusivas::before {
     content: $icon-alas-exclusivas;
 }
 
