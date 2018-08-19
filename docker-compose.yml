@@ -21,7 +21,7 @@ services:
             - carceropolis_db:/var/lib/postgresql/data
 
     nginx:
-        image: nginx:1.13-alpine
+        image: nginx:1.15-alpine
         volumes:
             - carceropolis_static:/project/carceropolis/static
             - carceropolis_media:/project/carceropolis/static/media
