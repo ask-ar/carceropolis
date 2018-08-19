@@ -5,6 +5,7 @@ from pathlib import Path
 
 from django.utils.translation import ugettext_lazy as _
 
+IS_PRODUCTION = os.getenv("IS_PRODUCTION").strip() in ['True', 'true', 'TRUE']
 
 ######################
 # MEZZANINE SETTINGS #
@@ -125,7 +126,7 @@ USE_MODELTRANSLATION = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "dev.carceropolis.org.br",
                  "carceropolis.org.br", "www.carceropolis.org.br"]
 
-if os.getenv("IS_PRODUCTION"):
+if IS_PRODUCTION:
     ALLOWED_HOSTS.insert(0, "carceropolis.org.br")
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
@@ -314,7 +315,7 @@ MIDDLEWARE = [
     "mezzanine.pages.middleware.PageMiddleware",
 ]
 
-if os.getenv('IS_PRODUCTION'):
+if IS_PRODUCTION:
     MIDDLEWARE.insert(0, "mezzanine.core.middleware.UpdateCacheMiddleware")
     MIDDLEWARE.append("mezzanine.core.middleware.FetchFromCacheMiddleware")
 
@@ -417,7 +418,7 @@ EMAIL_PORT = str(os.getenv("EMAIL_PORT", 465))
 EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL") == "True" or True
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == "True" or False
 
-if os.getenv("IS_PRODUCTION"):
+if IS_PRODUCTION:
     # First one on the list
     MIDDLEWARE.insert(0, "django.middleware.cache.UpdateCacheMiddleware")
     # Last one on the list
