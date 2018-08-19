@@ -127,7 +127,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "dev.carceropolis.org.br",
 
 if os.getenv("IS_PRODUCTION"):
     ALLOWED_HOSTS.insert(0, "carceropolis.org.br")
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
@@ -146,17 +146,17 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = "pt-br"
 
 # Supported languages
 LANGUAGES = (
-    ('pt-br', _('Portuguese')),
+    ("pt-br", _("Portuguese")),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = os.getenv('DEBUG') not in ['False', 'false', 'FALSE']
+DEBUG = os.getenv("DEBUG") not in ["False", "false", "FALSE"]
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -284,11 +284,11 @@ INSTALLED_APPS = (
 )
 
 MIGRATION_MODULES = {
-    'carceropolis': 'carceropolis.migrations.carceropolis',
-    'pages': 'carceropolis.migrations.pages',
-    'forms': 'carceropolis.migrations.forms',
-    'blog': 'carceropolis.migrations.blog',
-    'conf': 'carceropolis.migrations.conf',
+    "carceropolis": "carceropolis.migrations.carceropolis",
+    "pages": "carceropolis.migrations.pages",
+    "forms": "carceropolis.migrations.forms",
+    "blog": "carceropolis.migrations.blog",
+    "conf": "carceropolis.migrations.conf",
 }
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -344,33 +344,33 @@ PHONENUMBER_DEFAULT_REGION = "BR"
 BLOG_SLUG = "publicacoes"
 
 LOGGING = {
-    'version': 1,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'stream': sys.stdout,
+    "version": 1,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "stream": sys.stdout,
         }
     },
-    'loggers': {
-        'carceropolis.views': {
-            'handlers': ['console'],
-            'level': os.getenv('CONSOLE_LOG_LEVEL') or 'DEBUG',
+    "loggers": {
+        "carceropolis.views": {
+            "handlers": ["console"],
+            "level": os.getenv("CONSOLE_LOG_LEVEL") or "DEBUG",
         }
     }
 }
 
-SECRET_KEY = os.getenv('SECRET_KEY') or '9b9n_5u!y-ge6+1+f##vt3ub9tp5hq(aq^4g&'
-NEVERCACHE_KEY = os.getenv('NEVERCACHE_KEY') or '%vpsl!vjiw9m^4j(=c#gv47m849+t'
+SECRET_KEY = os.getenv("SECRET_KEY") or "9b9n_5u!y-ge6+1+f##vt3ub9tp5hq(aq^4g&"
+NEVERCACHE_KEY = os.getenv("NEVERCACHE_KEY") or "%vpsl!vjiw9m^4j(=c#gv47m849+t"
 
 # Os valores DEFAULT aqui definidos são pensados para o projeto sendo rodado
 # com o docker-compose do repositório do projeto.
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv('DB_NAME') or 'postgres',
-        "USER": os.getenv('DB_USER') or 'postgres',
-        "PASSWORD": os.getenv('DB_PASS') or 'carceropolis',
-        "HOST": os.getenv('DB_HOST') or 'db',
+        "NAME": os.getenv("DB_NAME") or "postgres",
+        "USER": os.getenv("DB_USER") or "postgres",
+        "PASSWORD": os.getenv("DB_PASS") or "carceropolis",
+        "HOST": os.getenv("DB_HOST") or "db",
     }
 }
 
@@ -381,7 +381,7 @@ ACCOUNTS_APPROVAL_REQUIRED = False
 ACCOUNTS_VERIFICATION_REQUIRED = True
 
 try:
-    PUBLICACAO_PER_PAGE = int(os.getenv('PUBLICACAO_PER_PAGE'))
+    PUBLICACAO_PER_PAGE = int(os.getenv("PUBLICACAO_PER_PAGE"))
 except (ValueError, TypeError):
     PUBLICACAO_PER_PAGE = 9
 
@@ -409,31 +409,28 @@ MEDIA_ROOT = str(MEDIA_ROOT)
 ##################
 # EMAIL SETTINGS #
 ##################
-if (os.getenv("EMAIL_HOST") and
-        os.getenv("EMAIL_HOST_PASSWORD") and
-        os.getenv("EMAIL_HOST_USER")):
-    EMAIL_HOST = os.getenv("EMAIL_HOST")
-    EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-    EMAIL_PORT = str(os.getenv("EMAIL_PORT", 465))
-    EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL") == 'True' or True
-    EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == 'True' or False
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = str(os.getenv("EMAIL_PORT", 465))
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL") == "True" or True
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == "True" or False
 
 if os.getenv("IS_PRODUCTION"):
     # First one on the list
-    MIDDLEWARE.insert(0, 'django.middleware.cache.UpdateCacheMiddleware')
+    MIDDLEWARE.insert(0, "django.middleware.cache.UpdateCacheMiddleware")
     # Last one on the list
-    MIDDLEWARE.append('django.middleware.cache.FetchFromCacheMiddleware')
+    MIDDLEWARE.append("django.middleware.cache.FetchFromCacheMiddleware")
 
     # Timeout here is the time that the django-server will hold the cached
     # files on the server, it is not directly related to the http headers
     # timeout information (defined below).
     CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-            'LOCATION': 'memcache:11211',
-            'TIMEOUT': 60*60*48
+        "default": {
+            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "LOCATION": "memcache:11211",
+            "TIMEOUT": 60*60*48
         }
     }
 
