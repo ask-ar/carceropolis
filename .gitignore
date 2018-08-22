@@ -106,3 +106,4 @@ letsencrypt/dh-param/dhparam-2048.pem
 letsencrypt/etc/live/*
 letsencrypt/etc/archive/*
 logs/
+deploy/nginx/carceropolis.conf
