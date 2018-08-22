@@ -1,0 +1,38 @@
+upstream django_server {
+    server unix:/sockets/carceropolis.sock;
+}
+
+server {
+    server_name localhost;
+    listen      80 default_server;
+
+    location /static {
+        alias /project/carceropolis/static;
+        expires 30d;
+        add_header Pragma public;
+        add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+    }
+
+    location /robots.txt {
+        root            /project/carceropolis/static;
+        access_log      off;
+        log_not_found   off;
+    }
+
+    location /favicon.ico {
+        root            /project/carceropolis/static/images/ico/;
+        access_log      off;
+        log_not_found   off;
+    }
+
+    location / {
+      uwsgi_pass  django_server;
+      include     /project/deploy/uwsgi_params;
+
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_set_header   X-Real-IP $remote_addr;
+      proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header   X-Forwarded-Host $server_name;
+    }
+}

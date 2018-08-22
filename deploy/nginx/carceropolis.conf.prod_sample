@@ -3,7 +3,7 @@ upstream django_server {
 }
 
 server {
-    server_name www.carceropolis.org.br carceropolis.org.br localhost;
+    server_name www.carceropolis.org.br carceropolis.org.br;
     listen      80 default_server;
     # listen [::]:80;
 
@@ -44,7 +44,7 @@ server {
 }
 
 server {
-    server_name carceropolis.org.br localhost;
+    server_name carceropolis.org.br;
     listen 443 ssl http2 default_server;
     # listen [::]:443 ssl http2;
 
