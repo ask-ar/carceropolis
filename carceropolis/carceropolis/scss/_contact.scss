@@ -4,107 +4,86 @@ body.fale-conosco {
   background-size: cover;
 
   .main-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     color: white;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
-    padding: 2em;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
 
-    &:after {
-      @include clearfix;
+    @media (min-width: 768px) {
+      width: 750px;
+    }
+    @media (min-width: 992px) {
+      width: 970px;
+    }
+    @media (min-width: 1200px) {
+      width: 1170px;
+    }
+  }
+
+  .mezzanine-form {
+   
+    @media (min-width: 1200px) {
+      margin: 2em auto;
+      width: 65%;
+    }
+  
+    .help-block {
+      display: none;
     }
 
-    @media(min-width:768px) {
-      .layoutArea,
-      .editable-original,
-      > p:first-child {
-        flex: initial;
-        order: 2;
+    label {
+      color: white;
+      font-family: $light;
+      font-size: 1em;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    input:not(.btn),
+    textarea {
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.26) 60%,rgba(0,0,0,0.45) 100%);
+      border: none;
+      border-bottom: 2px solid $cp-orange-dark;
+      border-radius: initial;
+      box-shadow: inherit;
+      color: white;
+      max-width: 100%;
+      transition: inherit;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        max-width: 350px;
+      }
+
+      &:focus {
+        box-shadow: inherit;
+        border-color: $cp-orange-dark;
+        outline-color: $cp-orange-dark;
       }
     }
 
-    .mezzanine-form {
-      flex: auto;
-      margin-top: 50px;
-      order: 3;
+    textarea {
+      border: 2px solid $cp-orange-dark;
+      line-height: 24px;
+    }
 
-      @media(min-width:768px) {
-        margin: 0;
-        order: 1;
-      }
+    .form-actions {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
 
-      .form-group {
-        display: flex;
-        flex-shrink: 1;
-        flex-grow: 0;
-        flex-basis: content;
-        flex-flow: row wrap;
-
-        .help-block {
-            display: none;
-        }
-        label.control-label,
-        input,
-        select,
-        textarea {
-          flex: 0 1 content;
-          margin: 5px;
-          padding: 5px; 
-        }
-
-        label.control-label {
-          order: 1;
-        }
-
-        input,
-        select,
-        textarea {
-          order: 3;
-          background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.26) 60%,rgba(0,0,0,0.45) 100%);
-          border: none;
-          border-bottom: 2px solid $cp-orange-dark;
-          border-radius: initial;
-          box-shadow: inherit;
-          color: white;
-          transition: inherit;
-        }
-  
-        textarea {
-          border: 2px solid $cp-orange-dark;
-          line-height: 24px;
-        }
-        
-        @media(min-width:768px) {
-          padding: 5px; 
-        }
-      }
-  
-      .btn-primary,
-      label.control-label {
-        color: white;
-        font-family: $light;
-        font-size: 12px;
-        letter-spacing: .05em;
-        /* margin-bottom: 0; */
-        text-transform: uppercase;
-      }
-  
-      .form-actions {
-        background-color: transparent;
-        border: none;
-        padding: 0;
-        margin-bottom: 0;
-        border-radius: 0;
-
-        .btn-primary {
-          background: transparent;
-          border: 2px solid $cp-orange-dark;
-          padding: 10px;
-          width: 100px;
-        }
-      }
+    .btn-primary {
+      background: transparent;
+      border: 2px solid $cp-orange-dark;
+      border-radius: 0;
+      font-family: $light;
+      letter-spacing: .05em;
+      padding: 10px;
+      text-transform: uppercase;
+      width: 100px;
     }
   }
 }
