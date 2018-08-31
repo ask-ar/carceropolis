@@ -85,9 +85,6 @@
         font-weight: lighter;
         letter-spacing: .01em;
         padding: 1em 0;
-        /* Add a right padding in order to avoid the navigation bar over the 
-            infographic */
-        padding-right: calc(2em + 20px) !important;
 
         > .container:not(h1) {
             height: 100%;
@@ -1051,13 +1048,18 @@
 
 	.unidades-prisionais {
         background: $purple url(../images/infografico/grafico_unidades.svg) no-repeat;
-        background-position: 50% 35%; /* TODO */
-        background-size: 40%;
+        background-position: 36% 205px;
+        background-size: 744px;
         min-height: calc(100vh - #{$footer});
         padding: 0;
 
+        @media (min-width: 768px) {
+            background-position: 36% 205px;
+            background-size: 744px;
+        }
+
         @media(min-width: 1200px){
-            background-position: 49% 46%;
+            background-position: 30% 217px;
             background-size: inherit;
         }
 
@@ -1194,7 +1196,49 @@
     position: fixed;
     right: 20px;
     top: 20%;
+    transform: translateX(86px);
+    transition: transform .5s;
     z-index: 5;
+    
+    @media (min-width: 1320px) {
+        transform: translateX(0);
+    }
+    
+    &.show {
+        transform: translateX(0);
+
+        .tab{
+            box-shadow: none;
+        }
+    }
+
+    .tab {
+        background-color: $bg-light;
+        background-image: none;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: -8px 4px 16px rgba(0,0,0,.3);
+        height: 60px;
+        left: -26px;
+        line-height: 60px;
+        margin: 0;
+        padding: 9px 10px;
+        position: absolute;
+        text-align: center;
+        transform: rotate(-45deg);
+        transform-origin: center;
+        transition: box-shadow 1s ease-out;
+        top: 11px;
+        width: 60px;
+        outline: none;
+    }
+
+    .tab .glyphicon {
+        color: $cp-red;
+        font-size: 2em;
+        transform-origin: center;
+        transform: rotate(45deg) translateX(-15px);
+    }
 
     .nav-pills {
         font-size: 2em;
@@ -1203,6 +1247,8 @@
     }
 
     .nav-pills > li {
+        background-color: $bg-light;
+        border-radius: 5px;
         padding: 1px 2px;
     }
 
@@ -1223,7 +1269,8 @@
     }
 
     .nav-pills > li > a {
-        color: #af1e23;
+        color: $cp-red;
+        transition: background .2s;
     }
 
     .nav-pills > li > a span {
@@ -1231,13 +1278,13 @@
     }
 
     .nav-pills > li > a:hover {
-        color: #af1e23;
+        color: $cp-red;
     }
 
     .nav-pills > li.active > a,
-    .nav-pills > li.active > a:hover,
-    .nav-pills > li.active > a:focus {
+    .nav-pills > li:hover > a,
+    .nav-pills > li:focus > a {
         color: #fff;
-        background-color: #af1e23;
+        background-color: $cp-red;
     }
 }

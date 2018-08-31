@@ -220,6 +220,12 @@ jQuery(function ($) {
                 .addClass('dados')
                 .scrollspy({ target: animTarget, offset: 600 })
                 .on('activate.bs.scrollspy', event => animacoes(event))
+
+        document
+        .querySelector('.navbarlateral .tab')
+        .addEventListener(`click`, function() {
+            this.parentElement.classList.toggle('show')
+        })
         
     }
 
