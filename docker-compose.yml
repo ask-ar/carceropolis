@@ -9,9 +9,11 @@ volumes:
 services:
     memcached:
         image: memcached:1.5-alpine
+        restart: always
 
     db:
         image: postgres:10.2-alpine
+        restart: always
         environment:
             - POSTGRES_DB=${DB_NAME:-postgres}
             - POSTGRES_USER=${DB_USER:-postgres}
@@ -22,6 +24,7 @@ services:
 
     nginx:
         image: nginx:1.15-alpine
+        restart: always
         volumes:
             - carceropolis_static:/project/carceropolis/static
             - carceropolis_media:/project/carceropolis/static/media
@@ -36,6 +39,7 @@ services:
 
     carceropolis:
         image: askbr/carceropolis
+        restart: always
         build: .
         environment:
             # This options are used on settings.py
