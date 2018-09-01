@@ -1202,6 +1202,9 @@
     
     @media (min-width: 1320px) {
         transform: translateX(0);
+        .tab {
+            display: none;
+        }
     }
     
     &.show {
