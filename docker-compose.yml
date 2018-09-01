@@ -3,7 +3,6 @@ version: "3.4"
 volumes:
     carceropolis_db:
     carceropolis_static:
-    carceropolis_media:
     carceropolis_sockets:
 
 services:
@@ -27,8 +26,8 @@ services:
         restart: always
         volumes:
             - carceropolis_static:/project/carceropolis/static
-            - carceropolis_media:/project/carceropolis/static/media
             - carceropolis_sockets:/sockets
+            - ./carceropolis/static/media:/project/carceropolis/static/media
             - ./deploy:/project/deploy
             - ./deploy/nginx:/etc/nginx/conf.d
             - ./letsencrypt:/letsencrypt:ro
@@ -58,12 +57,12 @@ services:
             - EMAIL_HOST=${EMAIL_HOST}
             - EMAIL_HOST_USER=${EMAIL_HOST_USER}
             - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
-            - EMAIL_PORT=${EMAIL_PORT:-465}
+            - EMAIL_PORT=${EMAIL_PORT:-587}
         volumes:
             - .:/project
             - carceropolis_sockets:/sockets
             - carceropolis_static:/project/carceropolis/static
-            - carceropolis_media:/project/carceropolis/static/media
+            - ./carceropolis/static/media:/project/carceropolis/static/media
         ports:
             - "5006:5006"
         links:
