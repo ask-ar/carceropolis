@@ -107,3 +107,4 @@ letsencrypt/etc/live/*
 letsencrypt/etc/archive/*
 logs/
 deploy/nginx/carceropolis.conf
+bkps/*
