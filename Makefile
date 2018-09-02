@@ -1,8 +1,9 @@
 LOG_LINES = 100
 FG = FALSE
 UPDATE = FALSE
-DATE_PREFIX = `date +'%Y_%m_%d-%Hh_%Mm_%Ss_'`
-BKP_FILE := $(DATE_PREFIX)dump.json
+DATE_PREFIX = `date +'%Y_%m_%d-%Hh'`
+DB_BKP_FILE := bkps/$(DATE_PREFIX)dump.json
+MEDIA_BKP := bkps/$(DATE_PREFIX)media.tar
 
 DOCKER_UP := docker-compose up
 DOCKER_LOGS := docker-compose logs --tail=$(LOG_LINES)
@@ -157,7 +158,8 @@ update-carceropolis: makemigrations migrate collecetstatic
 .PHONY: update-carceropolis
 
 dump-database:
-	docker-compose exec carceropolis sh -c "python manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > /project/bkps/$(BKP_FILE) && bzip2 -9 -f /project/bkps/$(BKP_FILE)"
+	docker-compose exec carceropolis sh -c "python manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > /project/$(DB_BKP_FILE)"
+	bzip2 -9 -f $(DB_BKP_FILE)
 .PHONY: dump-database
 
 geolocate:
@@ -165,5 +167,5 @@ geolocate:
 .PHONY: geolocate
 
 backup: dump-database
-	tar -cf bkps/$(DATE_PREFIX)_media.tar carceropolis/static/media
+	tar -cf $(MEDIA_BKP) carceropolis/static/media
 .PHONY: backup
