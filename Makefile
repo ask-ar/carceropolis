@@ -1,6 +1,8 @@
 LOG_LINES = 100
 FG = FALSE
 UPDATE = FALSE
+DATE_PREFIX = `date +'%Y_%m_%d-%Hh_%Mm_%Ss_'`
+BKP_FILE := $(DATE_PREFIX)dump.json
 
 DOCKER_UP := docker-compose up
 DOCKER_LOGS := docker-compose logs --tail=$(LOG_LINES)
@@ -83,7 +85,8 @@ help:
 	@echo "        This command will execute 'makemigrations', 'migrate' and 'collectstatic' commands"
 	@echo "    "
 	@echo "    dump-database"
-	@echo "        Dump the database to the 'carceropolis/fixtures/initialdata.json.bz2' file"
+	@echo "        Dump the database to the 'bkps/' directory preppended by the current date-time"
+	@echo "    "
 	@echo "    geolocate [UPDATE=FALSE]"
 	@echo "        Execute the gelolocation script for the Unidades Prisionais entities."
 	@echo "        UPDATE: By default only Unidades without geolocation are updated, if you want to re-geolocate all Unidades, pass UPDATE=TRUE"
@@ -151,7 +154,7 @@ update-carceropolis: makemigrations migrate collecetstatic
 .PHONY: update-carceropolis
 
 dump-database:
-	docker-compose exec carceropolis sh -c "python manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > carceropolis/fixtures/initialdata.json && bzip2 -9 -f carceropolis/fixtures/initialdata.json"
+	docker-compose exec carceropolis sh -c "python manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > /project/bkps/$(BKP_FILE) && bzip2 -9 -f /project/bkps/$(BKP_FILE)"
 .PHONY: dump-database
 
 geolocate:
