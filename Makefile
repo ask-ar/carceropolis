@@ -90,6 +90,9 @@ help:
 	@echo "    geolocate [UPDATE=FALSE]"
 	@echo "        Execute the gelolocation script for the Unidades Prisionais entities."
 	@echo "        UPDATE: By default only Unidades without geolocation are updated, if you want to re-geolocate all Unidades, pass UPDATE=TRUE"
+	@echo "    "
+	@echo "    backup"
+	@echo "        Backup both the database and the media files to 'bkps/' directory"
 .PHONY: help
 
 run:
@@ -160,3 +163,7 @@ dump-database:
 geolocate:
 	$(DOCKER_GEOLOCATE)
 .PHONY: geolocate
+
+backup: dump-database
+	tar -cf bkps/$(DATE_PREFIX)_media.tar carceropolis/static/media
+.PHONY: backup
