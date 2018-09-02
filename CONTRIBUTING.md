@@ -1,5 +1,6 @@
 # INSTALAÇÃO (para desenvolvimento local)
-Abaixo os principais passos para instalação do projeto em ambiente de desenvolvimento.
+Abaixo os principais passos para instalação do projeto em ambiente de
+desenvolvimento.
 
 ## Desenvolvendo com Docker
 Para facilitar o ambiente de desenvolvimento também disponibilizamos um
@@ -13,55 +14,65 @@ sistema o [Docker](https://docs.docker.com/engine/installation/)
 Após instalar ambos, faça o clone deste repositório em algum diretório em seu
 computador.
 
-Estando no diretório do repositório, utilize o seguinte comando para iniciar o
-projeto completo: `docker-compose up`. Se desejar rodar o projeto em
-background, utilize a flag `-d`: `docker-compose up -d`.
+O próximo passo é ver nosso Makefile que facilita a vida. Para tanto, execute:
 
-Na primeira vez em que você rodar o projeto e criar os containers, será
-realizada uma rotina de configuração da base de dados e também o carregamento
-(load) de dados pré-configurados. Esse processo pode demorar um pouco (menos de
-um minuto em média).
+`make help`
 
-Se o projeto estiver rodando em "foreground" e você quiser pará-lo, basta
-pressionar ctrl+c. Se ele estiver rodando em background, rode
-`docker-compose stop`. Se quiser apagar os containers e volumes criados para
-realizar uma nova instalação do zero, basta rodar `docker-compose down -v`.
+## Trabalhando com o CSS
+Este projeto utiliza o Compass para escrever CSS. O Compass é um
+pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.
 
-Caso hajam alterações na base, para gerar novas "migrations" basta rodar
-`docker-compose exec carceropolis python3 manage.py makemigrations` (com o
-projeto rodando).
+Para utilizar o Compass, você deve instalar o [Ruby](http://rubyinstaller.org/)
+em seu computador e depois instalar o [Compass](http://compass-style.org/).
 
-Por fim, vale destacar que qualquer modificação nos arquivos da pasta clonada
-em seu sistema será automaticamente aplicada à instancia do projeto sendo
-executada.
+Após instalação, você pode verificar as configurações de compilação no arquivo
+`./carceropolis/config.rb`
 
-#### Problemas com Docker
-Execute os comandos no **diretório do Carcerópolis** para apagar todas as imagens e container referente ao projeto. Após isto reinicie o processo de instalação.
+Os arquivos .scss (compass) estão no diretório `./carceropolis/scss`
 
-1. Remover todas as imagens:
-```bash
-docker-compose down --rmi all -v --remove-orphans
+Para trabalhar com arquivos .sccs você deve iniciar o serviço que observa
+modificações neles, para compilar-los assim que salvos. Para isto você deve
+digitar no terminal no diretório onde o arquivo `config.rb` está salvo.
+
+`$ compass watch`
+
+Siga a sintaxe da linguagem para realizar as modificações necessárias.
+
+Nunca faça modificações direto nos arquivos CSS pois estes serão apagados a
+toda nova compilação do Compass.
+
+Para compilar apenas uma vez:
+
+`$ compass compile`
+
+Parar parar o watch `control c`
+
+### Compass no Linux
+Caso obtenha o seguinte erro no terminal após executar o comando `compass watch`
+
 ```
-
-2. Remover todos os containers:
-```bash
-docker-compose rm -f -s -v
-``` 
-
-3. Verificar se ainda tem algum container:
-```bash
-docker ps -a 
+FATAL: Listen error: unable to monitor directories for changes.
+Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers for info on how to fix this
 ```
-Caso positivo, remover cada um manualmente com:
-```bash
-docker container rm <container_id>
-```
+Execute este comando e após isto o watcher voltará a funcionar:
+`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
 
-#### Atualizando arquivos estáticos
-Para atualizar os arquivos estáticos do projeto, enquanto o Docker roda em um terminal, em outro execute este comando:
-```bash
-docker-compose exec carceropolis python manage.py collectstatic --no-input
-```
+## Traduções
+
+Para traduzir algum texto, primeiro adicione o que quer traduzir com `{% trans "palavra ou id" %}`, depois gere os `.po`:
+
+    python manage.py makemessages -l en -l pt_BR
+
+Depois edite:
+
+    carceropolis/carceropolis/locale/en/LC_MESSAGES/django.po
+    carceropolis/carceropolis/locale/pt_BR/LC_MESSAGES/django.po
+
+E por fim compile:
+
+    python manage.py compilemessages
+
+Mais informações aqui: https://docs.djangoproject.com/en/2.0/topics/i18n/translation/
 
 ## Server local (sem Docker)
 ### GNU/Linux - Básico
@@ -177,58 +188,27 @@ virtual:
 pip install -r requirements.txt
 ```
 
-O presente projeto é desenvolvido em Django. Dessa forma, ele possui um arquivo
-de configuração (settings.py), que, no nosso caso, fica no diretório
-`carceropolis`. Este arquivo contém as configurações principais e gerais do
-projeto. Precisamos também de um segundo arquivo, de nome `local_settings.py`,
-que conterá as configurações mais detalhadas que não deverão ser salvas no
-repositório git por conterem informações sensíveis.
+Você precisará definir, em seu ambiente, uma ou mais das seguintes variáveis:
 
-Assim, crie o arquivo `local_settings.py` no diretório `carceropolis` (o mesmo
-aonde está o `settings.py`). Este arquivo deverá conter o conteúdo abaixo,
-com as devidas modificações de conteúdo/valor das variáveis:
+    - `DEBUG`
+    - `IS_PRODUCTION`
+    - `CONSOLE_LOG_LEVEL`
+    - `SECRET_KEY`
+    - `NEVERCACHE_KEY`
+    - `DB_NAME`
+    - `DB_USER`
+    - `DB_PASS`
+    - `DB_HOST`
+    - `DB_PORT`
+    - `PUBLICACAO_PER_PAGE`
+    - `MAX_UPLOAD_SIZE`
+    - `EMAIL_HOST`
+    - `EMAIL_HOST_USER`
+    - `EMAIL_HOST_PASSWORD`
+    - `EMAIL_PORT`
 
-    # This file is exec'd from settings.py, so it has access to and can
-    # modify all the variables in settings.py.
-
-    # If this file is changed in development, the development server will
-    # have to be manually restarted because changes will not be noticed
-    # immediately.
-
-    DEBUG = True
-
-    # Make these unique, and don't share it with anybody.
-    SECRET_KEY = "as9d8j(*HJw(*&DHWQ87d!HQW87dhQ87whd(*"
-    NEVERCACHE_KEY = "&!@HFDmfmfiwfm8)#$*jfmkaslmdapdo213#@)"
-
-    DATABASES = {
-        "default": {
-            # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-            "ENGINE": "django.db.backends.sqlite3",
-            # DB name or path to database file if using sqlite3.
-            "NAME": "dev.db",
-            # Not used with sqlite3.
-            "USER": "",
-            # Not used with sqlite3.
-            "PASSWORD": "",
-            # Set to empty string for localhost. Not used with sqlite3.
-            "HOST": "",
-            # Set to empty string for default. Not used with sqlite3.
-            "PORT": "",
-        }
-    }
-
-    ###################
-    # DEPLOY SETTINGS #
-    ###################
-
-    # Domains for public site
-    ALLOWED_HOSTS = [""]
-
-
-**ATENÇÃO**: SE VOCÊ ESTIVER USANDO O DOCKERFILE/DOCKER-COMPOSE PARA RODAR O
-PROJETO, CONFIGURE O **NAME** COMO `postgres`, **USER** COMO `postgres` e
-**HOST** COMO `db`. Comente ou remova a linha do **PASSWORD**.
+Mais informações sobre estas variáveis podem ser encontradas no arquivo
+ `carceropolis/carceropolis/settings.py` ou no `deploy/env_sample`.
 
 Agora iremos rodar o projeto para que as principais configurações sejam
 implementadas:
@@ -258,82 +238,3 @@ virtualenv venv $(which python3)
 
 Pronto, agora você tem um virtualenv com a versão do python3 instalada no seu
 sistema. =)
-
-## Trabalhando com o CSS
-Este projeto utiliza o Compass para escrever CSS. O Compass é um
-pre-processador de CSS escrito em Ruby, no qual seu output é CSS puro.
-
-Para utilizar o Compass, você deve instalar o [Ruby](http://rubyinstaller.org/)
-em seu computador e depois instalar o [Compass](http://compass-style.org/).
-
-Após instalação, você pode verificar as configurações de compilação no arquivo
-`./carceropolis/config.rb`
-
-Os arquivos .scss (compass) estão no diretório `./carceropolis/scss`
-
-Para trabalhar com arquivos .sccs você deve iniciar o serviço que observa
-modificações neles, para compilar-los assim que salvos. Para isto você deve
-digitar no terminal no diretório onde o arquivo `config.rb` está salvo.
-
-`$ compass watch`
-
-Siga a sintaxe da linguagem para realizar as modificações necessárias.
-
-Nunca faça modificações direto nos arquivos CSS pois estes serão apagados a
-toda nova compilação do Compass.
-
-Para compilar apenas uma vez:
-
-`$ compass compile`
-
-Parar parar o watch `control c`
-
-### Compass no Linux
-Caso obtenha o seguinte erro no terminal após executar o comando `compass watch`
-
-```
-FATAL: Listen error: unable to monitor directories for changes.
-Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers for info on how to fix this
-```
-Execute este comando e após isto o watcher voltará a funcionar:
-`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
-
-## Exportando a base de dados
-Para exportar a base de dados após alterar algum dado, de forma que ela possa
-ser reimportada, o comando a ser executado é:
-`./manage.py dumpdata --natural-foreign -e sessions -e admin -e contenttypes -e auth.Permission > initialdata.json`
-
-Para importá-lo de volta à base utilize:
-`./manage.py loaddata initialdata.json`
-
-Vale a ressalva que se o projeto estiver sendo rodado utilizando Docker, esses
-comandos devem ser rodados no container em execução:
-
-`docker exec <CONTAINER_ID> python3 manage.py ...`
-
-## Geolocalização dos dados
-
-Para geolocalizar unidades prisionais que estejam na base, usar o seguinte comando:
-
-    python manage.py geolocate
-
-Pode ser usado o parâmetro `--all` para forçar a geolocalização de todas as unidades.
-
-É usada uma cache local (`geo.cache`) para armazenar os retornos das APIs de mapeamento, agilizando o processo.
-
-## Traduções
-
-Para traduzir algum texto, primeiro adicione o que quer traduzir com `{% trans "palavra ou id" %}`, depois gere os `.po`:
-
-    python manage.py makemessages -l en -l pt_BR
-
-Depois edite:
-
-    carceropolis/carceropolis/locale/en/LC_MESSAGES/django.po
-    carceropolis/carceropolis/locale/pt_BR/LC_MESSAGES/django.po
-
-E por fim compile:
-
-    python manage.py compilemessages
-
-Mais informações aqui: https://docs.djangoproject.com/en/2.0/topics/i18n/translation/
