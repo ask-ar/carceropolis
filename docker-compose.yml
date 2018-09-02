@@ -29,7 +29,7 @@ services:
             - carceropolis_sockets:/sockets
             - ./carceropolis/static/media:/project/carceropolis/static/media
             - ./deploy:/project/deploy
-            - ./deploy/nginx:/etc/nginx/conf.d
+            - ./deploy/nginx/${NGINX_CONF:-carceropolis.conf.dev}:/etc/nginx/conf.d/carceropolis.conf
             - ./letsencrypt:/letsencrypt:ro
             - ./logs:/logs
         ports:
@@ -55,8 +55,8 @@ services:
             - PUBLICACAO_PER_PAGE=${PUBLICACAO_PER_PAGE:-9}  # Default to 9
             - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE:-50MB}  # Default to 50MB
             - EMAIL_HOST=${EMAIL_HOST}
-            - EMAIL_HOST_USER=${EMAIL_HOST_USER}
-            - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+            - EMAIL_HOST_USER=${EMAIL_USER}
+            - EMAIL_HOST_PASSWORD=${EMAIL_PASSWORD}
             - EMAIL_PORT=${EMAIL_PORT:-587}
         volumes:
             - .:/project
