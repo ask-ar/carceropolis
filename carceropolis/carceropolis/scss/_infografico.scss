@@ -2,7 +2,8 @@
     $font-size: 32px;
 
     @media (max-width: 768px){
-        font-size: 22px;
+        font-size: 12px;
+        word-break: break-all;
     }
     @media (min-width: 768px){
         font-size: 24px;

@@ -1,8 +1,9 @@
 #home #main-slider {
     align-items: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     height: calc(100vh - #{$headerXs});
+    justify-content: space-evenly;
 
     @media (min-width: 768px) {
         height: calc(100vh - #{$header});
@@ -84,16 +85,8 @@
 }
 
 .conectas-home {
-    bottom: 2vh;
     display: block;
-    position: absolute;
-    right: 2vw;
     width: 121px;
-
-    @media (min-width: 768px) {
-        bottom: 3vh;
-        right: 3vw;
-    }
 
     img {
         width: 100%;
